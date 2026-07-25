@@ -1,0 +1,1892 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths cluster API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: cluster
+  description: 'ClusterController API /cluster
+
+    '
+paths:
+  /cluster/:
+    get:
+      tags:
+      - cluster
+      description: Output the status of the cluster
+      operationId: Cluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterRecordResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - cluster
+      description: set disk lighting mode of cluster
+      operationId: UpdateCluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: cluster disk lighting info
+        required: true
+        schema:
+          $ref: '#/definitions/ClusterUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/action-log-report:
+    get:
+      tags:
+      - cluster
+      description: Get report of cluster action logs
+      operationId: GetActionLogReport
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/alert-report:
+    get:
+      tags:
+      - cluster
+      description: Get report of cluster alerts
+      operationId: GetAlertReport
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /cluster/bootnode:
+    get:
+      tags:
+      - cluster
+      description: get bootnode info
+      operationId: BootNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BootNodeResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - cluster
+      description: set bootnode info
+      operationId: SetBootNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: bootnode info
+        required: true
+        schema:
+          $ref: '#/definitions/BootNodeReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BootNodeResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/BootNodeResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/event-log-report:
+    get:
+      tags:
+      - cluster
+      description: Get report of cluster event logs
+      operationId: GetEventLogReport
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/installation:
+    get:
+      tags:
+      - cluster
+      description: show the installation status
+      operationId: Installation
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterInstallationResp'
+        500:
+          description: InternalServerError
+  /cluster/maintenance:
+    put:
+      tags:
+      - cluster
+      description: update maintenance mode of cluster
+      operationId: UpdateClusterMaintenance
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: cluster maintenance info
+        required: true
+        schema:
+          $ref: '#/definitions/ClusterMaintainReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/object-storage:
+    get:
+      tags:
+      - cluster
+      description: Get object storage system status
+      operationId: GetObjectStorage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - cluster
+      description: Initialize object storage system in current cluster
+      operationId: InitObjectStorage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: init info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageInitReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - cluster
+      description: Delete object storage system in current cluster
+      operationId: DeleteObjectStorage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        409:
+          description: Conflicted
+        500:
+          description: Server Error
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - cluster
+      description: Set object storage system in current cluster
+      operationId: SetObjectStorage
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: set info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageSetReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/object-storage:commit-master-switching:
+    post:
+      tags:
+      - cluster
+      description: Commit the switch to new master os zone.
+      operationId: CommitMasterSwitching
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /cluster/object-storage:enable-multi-zone:
+    post:
+      tags:
+      - cluster
+      description: Enable multi zone for object storage system
+      operationId: EnableMultiZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /cluster/object-storage:prepare-master-switching:
+    post:
+      tags:
+      - cluster
+      description: Prepare to switch to new master os zone.
+      operationId: PrepareMasterSwitching
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/object-storage:rollback-master-switching:
+    post:
+      tags:
+      - cluster
+      description: Rollback the switch to new master os zone.
+      operationId: RollbackMasterSwitching
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /cluster/object-storage:switch-os-zone-to-master:
+    post:
+      tags:
+      - cluster
+      description: Switch current os zone to master
+      operationId: SwitchOSZoneToMaster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: force
+        in: query
+        description: force to switch even if old master is dead
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/report:
+    get:
+      tags:
+      - cluster
+      description: Get report of a cluster
+      operationId: GetClusterReport
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/samples:
+    get:
+      tags:
+      - cluster
+      description: get cluster's samples
+      operationId: GetClusterSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterSamplesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/stats:
+    get:
+      tags:
+      - cluster
+      description: Get overview data of a cluster
+      operationId: GetClusterOverview
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterOverviewResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/stats-usage-prediction:
+    get:
+      tags:
+      - cluster
+      description: Get prediction of stats space usage
+      operationId: GetStatsUsagePrediction
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterStatsPredictionResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster/time:
+    get:
+      tags:
+      - cluster
+      description: show current server time
+      operationId: ServerTime
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterServerTimeResp'
+  /cluster:remove-access-info:
+    post:
+      tags:
+      - cluster
+      description: Remove cluster access info
+      operationId: RemoveClusterAccessInfo
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cluster:set-access-info:
+    post:
+      tags:
+      - cluster
+      description: Set cluster access info
+      operationId: SetClusterAccessInfo
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: access info
+        required: true
+        schema:
+          $ref: '#/definitions/ClusterSetAccessInfoReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ObjectStorageSetReq_Info:
+    type: object
+    properties:
+      lifecycle_end_on:
+        type: string
+        description: lifecycle end execute time
+      lifecycle_start_on:
+        type: string
+        description: lifecycle start execute time
+      second_mergence_enabled:
+        type: boolean
+        description: SecondMergenceEnabled enable second mergence or not
+      second_mergence_end_on:
+        type: string
+        description: SecondMergenceEndOn indicates second mergence end time
+      second_mergence_start_on:
+        type: string
+        description: SecondMergenceStartOn indicates second mergence start time
+    title: ObjectStorageSetReq_Info
+    example:
+      lifecycle_start_on: lifecycle_start_on
+      second_mergence_enabled: true
+      second_mergence_end_on: second_mergence_end_on
+      second_mergence_start_on: second_mergence_start_on
+      lifecycle_end_on: lifecycle_end_on
+  ObjectStorageInitReq_Info:
+    type: object
+    required:
+    - pool_id
+    properties:
+      pool_id:
+        type: integer
+        format: int64
+        description: system pool id
+    title: ObjectStorageInitReq_Info
+    example:
+      pool_id: 0
+  Cluster:
+    type: object
+    properties:
+      access_token:
+        $ref: '#/definitions/AccessToken'
+      access_url:
+        type: string
+      create:
+        type: string
+        format: date-time
+      disk_lighting_mode:
+        type: string
+      down_out_interval:
+        type: integer
+        format: int64
+      elasticsearch_enabled:
+        type: boolean
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      maintained:
+        type: boolean
+      name:
+        type: string
+      os_gateway_oplog_switch:
+        type: boolean
+      snmp_enabled:
+        type: boolean
+      stats_reserved_days:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      version:
+        type: string
+    title: Cluster
+    description: Cluster defines the ceph cluster @grpc-models-proto
+    example:
+      access_url: access_url
+      snmp_enabled: true
+      update: '2000-01-23T04:56:07.000+00:00'
+      stats_reserved_days: 1
+      version: version
+      down_out_interval: 0
+      os_gateway_oplog_switch: true
+      access_token:
+        roles:
+        - roles
+        - roles
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        used: true
+        user:
+          name: name
+          id: 6
+      elasticsearch_enabled: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      maintained: true
+      fs_id: fs_id
+      disk_lighting_mode: disk_lighting_mode
+      status: status
+  ClusterStat:
+    type: object
+    properties:
+      actual_kbyte:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      data_kbyte:
+        type: integer
+        format: int64
+      degraded_percent:
+        type: number
+        format: double
+      error_kbyte:
+        type: integer
+        format: int64
+      healthy_percent:
+        type: number
+        format: double
+      os_down_bandwidth_kbyte:
+        type: number
+        format: double
+      os_down_iops:
+        type: number
+        format: double
+      os_merge_speed:
+        type: integer
+        format: int64
+      os_up_bandwidth_kbyte:
+        type: number
+        format: double
+      os_up_iops:
+        type: number
+        format: double
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_latency_us:
+        type: number
+        format: double
+      recovery_bandwidth_kbyte:
+        type: number
+        format: double
+      recovery_iops:
+        type: number
+        format: double
+      recovery_percent:
+        type: number
+        format: double
+      total_kbyte:
+        type: integer
+        format: int64
+      unavailable_percent:
+        type: number
+        format: double
+      used_kbyte:
+        type: integer
+        format: int64
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_latency_us:
+        type: number
+        format: double
+    title: ClusterStat
+    description: ClusterStat defines the statistics metric of a ceph cluster
+    example:
+      healthy_percent: 5.637376656633329
+      error_kbyte: 5
+      os_down_bandwidth_kbyte: 2.3021358869347655
+      os_down_iops: 7.061401241503109
+      total_kbyte: 7
+      degraded_percent: 1.4658129805029452
+      recovery_percent: 6.84685269835264
+      write_latency_us: 9.369310271410669
+      read_latency_us: 1.2315135367772556
+      unavailable_percent: 1.1730742509559433
+      data_kbyte: 6
+      read_iops: 7.386281948385884
+      actual_kbyte: 0
+      used_kbyte: 4
+      read_bandwidth_kbyte: 4.145608029883936
+      recovery_iops: 1.4894159098541704
+      write_bandwidth_kbyte: 5.025004791520295
+      create: '2000-01-23T04:56:07.000+00:00'
+      recovery_bandwidth_kbyte: 1.0246457001441578
+      write_iops: 9.965781217890562
+      os_up_iops: 2.027123023002322
+      os_merge_speed: 9
+      os_up_bandwidth_kbyte: 3.616076749251911
+  ObjectStorageInitReq:
+    type: object
+    required:
+    - object_storage
+    properties:
+      object_storage:
+        $ref: '#/definitions/ObjectStorageInitReq_Info'
+    title: ObjectStorageInitReq
+    example:
+      object_storage:
+        pool_id: 0
+  ClusterOverviewResp:
+    type: object
+    required:
+    - cluster_stats
+    properties:
+      cluster_stats:
+        description: cluster overview
+        $ref: '#/definitions/ClusterOverview'
+    title: ClusterOverviewResp
+    example:
+      cluster_stats:
+        fs_folder_active_num: 6
+        pool_num: 3
+        block_volume_num: 7
+        fs_gateway_group_active_num: 4
+        osd_offline_num: 4
+        access_path_num: 1
+        os_gateway_active_num: 6
+        partition_used_num: 0
+        nfs_gateway_num: 3
+        s3_load_balancer_num: 9
+        osd_error_num: 0
+        os_bucket_error_num: 0
+        fs_snapshot_num: 9
+        fs_snapshot_active_num: 6
+        os_policy_active_num: 7
+        service_xms_active_num: 7
+        os_policy_error_num: 3
+        s3_load_balancer_error_num: 1
+        pd_active_num: 9
+        nfs_gateway_stopped_num: 3
+        s3_load_balancer_group_warning_num: 8
+        osd_warning_num: 1
+        pool_recovering_num: 0
+        service_mon_stopped_num: 8
+        os_user_num: 3
+        partition_active_num: 4
+        cloud_platform_num: 7
+        snapshot_error_num: 7
+        host_active_num: 6
+        pool_full_num: 4
+        service_xms_num: 3
+        client_group_num: 2
+        pool_error_num: 8
+        access_path_active_num: 0
+        snapshot_active_num: 5
+        service_xdc_error_num: 5
+        fs_gateway_group_error_num: 5
+        service_xms_error_num: 3
+        os_gateway_num: 4
+        nfs_gateway_error_num: 6
+        block_volume_error_num: 2
+        host_error_num: 1
+        partition_error_num: 7
+        s3_load_balancer_active_num: 2
+        pd_error_num: 0
+        os_user_error_num: 5
+        client_group_error_num: 3
+        fs_folder_error_num: 7
+        os_policy_num: 3
+        s3_load_balancer_group_error_num: 6
+        service_xdc_active_num: 0
+        cloud_instance_num: 4
+        access_path_error_num: 6
+        os_gateway_stopped_num: 8
+        osd_active_num: 4
+        fs_snapshot_error_num: 8
+        service_xms_stopped_num: 9
+        access_path_warning_num: 5
+        nfs_gateway_active_num: 5
+        os_bucket_active_num: 7
+        block_volume_active_num: 5
+        fs_user_available_num: 6
+        fs_client_num: 1
+        partition_num: 9
+        fs_user_num: 3
+        os_gateway_error_num: 0
+        pd_warning_num: 5
+        host_warning_num: 6
+        cloud_volume_num: 1
+        pool_degraded_num: 6
+        client_group_active_num: 9
+        fs_client_group_num: 1
+        fs_folder_num: 1
+        fs_gateway_group_warning_num: 9
+        host_offline_num: 6
+        pool_active_num: 4
+        service_mon_error_num: 3
+        service_xdc_num: 5
+        snapshot_num: 0
+        host_num: 2
+        service_mon_num: 9
+        pd_num: 7
+        osd_num: 6
+        os_user_active_num: 7
+        fs_gateway_group_num: 9
+        s3_load_balancer_group_num: 4
+        os_bucket_num: 7
+        service_mon_active_num: 1
+        s3_load_balancer_group_active_num: 8
+        service_xdc_stopped_num: 8
+  ClusterInstallation:
+    type: object
+    properties:
+      finished:
+        type: boolean
+      steps:
+        $ref: '#/definitions/ClusterInstallation_Steps'
+    title: ClusterInstallation
+    description: ClusterInstallation returns installation status of the cluster
+    example:
+      finished: true
+      steps:
+        license: true
+        bootnode: true
+        user: true
+  ClusterSamplesResp:
+    type: object
+    required:
+    - cluster_samples
+    properties:
+      cluster_samples:
+        type: array
+        description: cluster samples
+        items:
+          $ref: '#/definitions/ClusterStat'
+    title: ClusterSamplesResp
+    example:
+      cluster_samples:
+      - healthy_percent: 5.637376656633329
+        error_kbyte: 5
+        os_down_bandwidth_kbyte: 2.3021358869347655
+        os_down_iops: 7.061401241503109
+        total_kbyte: 7
+        degraded_percent: 1.4658129805029452
+        recovery_percent: 6.84685269835264
+        write_latency_us: 9.369310271410669
+        read_latency_us: 1.2315135367772556
+        unavailable_percent: 1.1730742509559433
+        data_kbyte: 6
+        read_iops: 7.386281948385884
+        actual_kbyte: 0
+        used_kbyte: 4
+        read_bandwidth_kbyte: 4.145608029883936
+        recovery_iops: 1.4894159098541704
+        write_bandwidth_kbyte: 5.025004791520295
+        create: '2000-01-23T04:56:07.000+00:00'
+        recovery_bandwidth_kbyte: 1.0246457001441578
+        write_iops: 9.965781217890562
+        os_up_iops: 2.027123023002322
+        os_merge_speed: 9
+        os_up_bandwidth_kbyte: 3.616076749251911
+      - healthy_percent: 5.637376656633329
+        error_kbyte: 5
+        os_down_bandwidth_kbyte: 2.3021358869347655
+        os_down_iops: 7.061401241503109
+        total_kbyte: 7
+        degraded_percent: 1.4658129805029452
+        recovery_percent: 6.84685269835264
+        write_latency_us: 9.369310271410669
+        read_latency_us: 1.2315135367772556
+        unavailable_percent: 1.1730742509559433
+        data_kbyte: 6
+        read_iops: 7.386281948385884
+        actual_kbyte: 0
+        used_kbyte: 4
+        read_bandwidth_kbyte: 4.145608029883936
+        recovery_iops: 1.4894159098541704
+        write_bandwidth_kbyte: 5.025004791520295
+        create: '2000-01-23T04:56:07.000+00:00'
+        recovery_bandwidth_kbyte: 1.0246457001441578
+        write_iops: 9.965781217890562
+        os_up_iops: 2.027123023002322
+        os_merge_speed: 9
+        os_up_bandwidth_kbyte: 3.616076749251911
+  ClusterMaintainReq:
+    type: object
+    required:
+    - cluster
+    properties:
+      cluster:
+        $ref: '#/definitions/ClusterMaintainReq_Cluster'
+    title: ClusterMaintainReq
+    example:
+      cluster:
+        maintained: true
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  BootNodeReq:
+    type: object
+    required:
+    - bootnode
+    properties:
+      bootnode:
+        $ref: '#/definitions/BootNodeReq_BootNode'
+    title: BootNodeReq
+    example:
+      bootnode:
+        gateway_network: gateway_network
+        private_network: private_network
+        public_network: public_network
+        admin_network: admin_network
+  ObjectStorageSetReq:
+    type: object
+    required:
+    - object_storage
+    properties:
+      object_storage:
+        $ref: '#/definitions/ObjectStorageSetReq_Info'
+    title: ObjectStorageSetReq
+    example:
+      object_storage:
+        lifecycle_start_on: lifecycle_start_on
+        second_mergence_enabled: true
+        second_mergence_end_on: second_mergence_end_on
+        second_mergence_start_on: second_mergence_start_on
+        lifecycle_end_on: lifecycle_end_on
+  ObjectStorageResp:
+    type: object
+    properties:
+      object_storage:
+        description: object storage
+        $ref: '#/definitions/ObjectStorage'
+    title: ObjectStorageResp
+    example:
+      object_storage:
+        second_mergence_enabled: true
+        search_enabled: true
+        update: '2000-01-23T04:56:07.000+00:00'
+        index_pool:
+          name: name
+          id: 5
+        lifecycle_start_on: lifecycle_start_on
+        second_mergence_end_on: second_mergence_end_on
+        second_mergence_start_on: second_mergence_start_on
+        multi_zone_enabled: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        lifecycle_end_on: lifecycle_end_on
+        action_status: action_status
+        status: status
+  BootNodeResp:
+    type: object
+    required:
+    - bootnode
+    properties:
+      bootnode:
+        description: boot node
+        $ref: '#/definitions/BootNode'
+    title: BootNodeResp
+    example:
+      bootnode:
+        gateway_network: gateway_network
+        private_network: private_network
+        public_network: public_network
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        admin_network: admin_network
+        status: status
+  ClusterSetAccessInfoReq_Cluster:
+    type: object
+    required:
+    - access_token_id
+    - access_url
+    properties:
+      access_token_id:
+        type: integer
+        format: int64
+        description: access token
+      access_url:
+        type: string
+        description: access url
+    title: ClusterSetAccessInfoReq_Cluster
+    example:
+      access_token_id: 0
+      access_url: access_url
+  User_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of user
+      name:
+        type: string
+        description: name of user
+    title: User_Nestview
+    example:
+      name: name
+      id: 6
+  ClusterSetAccessInfoReq:
+    type: object
+    required:
+    - cluster
+    properties:
+      cluster:
+        $ref: '#/definitions/ClusterSetAccessInfoReq_Cluster'
+    title: ClusterSetAccessInfoReq
+    example:
+      cluster:
+        access_token_id: 0
+        access_url: access_url
+  ClusterOverview:
+    type: object
+    properties:
+      access_path_active_num:
+        type: integer
+        format: int64
+      access_path_error_num:
+        type: integer
+        format: int64
+      access_path_num:
+        type: integer
+        format: int64
+      access_path_warning_num:
+        type: integer
+        format: int64
+      block_volume_active_num:
+        type: integer
+        format: int64
+      block_volume_error_num:
+        type: integer
+        format: int64
+      block_volume_num:
+        type: integer
+        format: int64
+      client_group_active_num:
+        type: integer
+        format: int64
+      client_group_error_num:
+        type: integer
+        format: int64
+      client_group_num:
+        type: integer
+        format: int64
+      cloud_instance_num:
+        type: integer
+        format: int64
+      cloud_platform_num:
+        type: integer
+        format: int64
+      cloud_volume_num:
+        type: integer
+        format: int64
+      fs_client_group_num:
+        type: integer
+        format: int64
+      fs_client_num:
+        type: integer
+        format: int64
+      fs_folder_active_num:
+        type: integer
+        format: int64
+      fs_folder_error_num:
+        type: integer
+        format: int64
+      fs_folder_num:
+        type: integer
+        format: int64
+      fs_gateway_group_active_num:
+        type: integer
+        format: int64
+      fs_gateway_group_error_num:
+        type: integer
+        format: int64
+      fs_gateway_group_num:
+        type: integer
+        format: int64
+      fs_gateway_group_warning_num:
+        type: integer
+        format: int64
+      fs_snapshot_active_num:
+        type: integer
+        format: int64
+      fs_snapshot_error_num:
+        type: integer
+        format: int64
+      fs_snapshot_num:
+        type: integer
+        format: int64
+      fs_user_available_num:
+        type: integer
+        format: int64
+      fs_user_num:
+        type: integer
+        format: int64
+      host_active_num:
+        type: integer
+        format: int64
+      host_error_num:
+        type: integer
+        format: int64
+      host_num:
+        type: integer
+        format: int64
+      host_offline_num:
+        type: integer
+        format: int64
+      host_warning_num:
+        type: integer
+        format: int64
+      nfs_gateway_active_num:
+        type: integer
+        format: int64
+      nfs_gateway_error_num:
+        type: integer
+        format: int64
+      nfs_gateway_num:
+        type: integer
+        format: int64
+      nfs_gateway_stopped_num:
+        type: integer
+        format: int64
+      os_bucket_active_num:
+        type: integer
+        format: int64
+      os_bucket_error_num:
+        type: integer
+        format: int64
+      os_bucket_num:
+        type: integer
+        format: int64
+      os_gateway_active_num:
+        type: integer
+        format: int64
+      os_gateway_error_num:
+        type: integer
+        format: int64
+      os_gateway_num:
+        type: integer
+        format: int64
+      os_gateway_stopped_num:
+        type: integer
+        format: int64
+      os_policy_active_num:
+        type: integer
+        format: int64
+      os_policy_error_num:
+        type: integer
+        format: int64
+      os_policy_num:
+        type: integer
+        format: int64
+      os_user_active_num:
+        type: integer
+        format: int64
+      os_user_error_num:
+        type: integer
+        format: int64
+      os_user_num:
+        type: integer
+        format: int64
+      osd_active_num:
+        type: integer
+        format: int64
+      osd_error_num:
+        type: integer
+        format: int64
+      osd_num:
+        type: integer
+        format: int64
+      osd_offline_num:
+        type: integer
+        format: int64
+      osd_warning_num:
+        type: integer
+        format: int64
+      partition_active_num:
+        type: integer
+        format: int64
+      partition_error_num:
+        type: integer
+        format: int64
+      partition_num:
+        type: integer
+        format: int64
+      partition_used_num:
+        type: integer
+        format: int64
+      pd_active_num:
+        type: integer
+        format: int64
+      pd_error_num:
+        type: integer
+        format: int64
+      pd_num:
+        type: integer
+        format: int64
+      pd_warning_num:
+        type: integer
+        format: int64
+      pool_active_num:
+        type: integer
+        format: int64
+      pool_degraded_num:
+        type: integer
+        format: int64
+      pool_error_num:
+        type: integer
+        format: int64
+      pool_full_num:
+        type: integer
+        format: int64
+      pool_num:
+        type: integer
+        format: int64
+      pool_recovering_num:
+        type: integer
+        format: int64
+      s3_load_balancer_active_num:
+        type: integer
+        format: int64
+      s3_load_balancer_error_num:
+        type: integer
+        format: int64
+      s3_load_balancer_group_active_num:
+        type: integer
+        format: int64
+      s3_load_balancer_group_error_num:
+        type: integer
+        format: int64
+      s3_load_balancer_group_num:
+        type: integer
+        format: int64
+      s3_load_balancer_group_warning_num:
+        type: integer
+        format: int64
+      s3_load_balancer_num:
+        type: integer
+        format: int64
+      service_mon_active_num:
+        type: integer
+        format: int64
+      service_mon_error_num:
+        type: integer
+        format: int64
+      service_mon_num:
+        type: integer
+        format: int64
+      service_mon_stopped_num:
+        type: integer
+        format: int64
+      service_xdc_active_num:
+        type: integer
+        format: int64
+      service_xdc_error_num:
+        type: integer
+        format: int64
+      service_xdc_num:
+        type: integer
+        format: int64
+      service_xdc_stopped_num:
+        type: integer
+        format: int64
+      service_xms_active_num:
+        type: integer
+        format: int64
+      service_xms_error_num:
+        type: integer
+        format: int64
+      service_xms_num:
+        type: integer
+        format: int64
+      service_xms_stopped_num:
+        type: integer
+        format: int64
+      snapshot_active_num:
+        type: integer
+        format: int64
+      snapshot_error_num:
+        type: integer
+        format: int64
+      snapshot_num:
+        type: integer
+        format: int64
+    title: ClusterOverview
+    description: ClusterOverview contains overview data of a cluster
+    example:
+      fs_folder_active_num: 6
+      pool_num: 3
+      block_volume_num: 7
+      fs_gateway_group_active_num: 4
+      osd_offline_num: 4
+      access_path_num: 1
+      os_gateway_active_num: 6
+      partition_used_num: 0
+      nfs_gateway_num: 3
+      s3_load_balancer_num: 9
+      osd_error_num: 0
+      os_bucket_error_num: 0
+      fs_snapshot_num: 9
+      fs_snapshot_active_num: 6
+      os_policy_active_num: 7
+      service_xms_active_num: 7
+      os_policy_error_num: 3
+      s3_load_balancer_error_num: 1
+      pd_active_num: 9
+      nfs_gateway_stopped_num: 3
+      s3_load_balancer_group_warning_num: 8
+      osd_warning_num: 1
+      pool_recovering_num: 0
+      service_mon_stopped_num: 8
+      os_user_num: 3
+      partition_active_num: 4
+      cloud_platform_num: 7
+      snapshot_error_num: 7
+      host_active_num: 6
+      pool_full_num: 4
+      service_xms_num: 3
+      client_group_num: 2
+      pool_error_num: 8
+      access_path_active_num: 0
+      snapshot_active_num: 5
+      service_xdc_error_num: 5
+      fs_gateway_group_error_num: 5
+      service_xms_error_num: 3
+      os_gateway_num: 4
+      nfs_gateway_error_num: 6
+      block_volume_error_num: 2
+      host_error_num: 1
+      partition_error_num: 7
+      s3_load_balancer_active_num: 2
+      pd_error_num: 0
+      os_user_error_num: 5
+      client_group_error_num: 3
+      fs_folder_error_num: 7
+      os_policy_num: 3
+      s3_load_balancer_group_error_num: 6
+      service_xdc_active_num: 0
+      cloud_instance_num: 4
+      access_path_error_num: 6
+      os_gateway_stopped_num: 8
+      osd_active_num: 4
+      fs_snapshot_error_num: 8
+      service_xms_stopped_num: 9
+      access_path_warning_num: 5
+      nfs_gateway_active_num: 5
+      os_bucket_active_num: 7
+      block_volume_active_num: 5
+      fs_user_available_num: 6
+      fs_client_num: 1
+      partition_num: 9
+      fs_user_num: 3
+      os_gateway_error_num: 0
+      pd_warning_num: 5
+      host_warning_num: 6
+      cloud_volume_num: 1
+      pool_degraded_num: 6
+      client_group_active_num: 9
+      fs_client_group_num: 1
+      fs_folder_num: 1
+      fs_gateway_group_warning_num: 9
+      host_offline_num: 6
+      pool_active_num: 4
+      service_mon_error_num: 3
+      service_xdc_num: 5
+      snapshot_num: 0
+      host_num: 2
+      service_mon_num: 9
+      pd_num: 7
+      osd_num: 6
+      os_user_active_num: 7
+      fs_gateway_group_num: 9
+      s3_load_balancer_group_num: 4
+      os_bucket_num: 7
+      service_mon_active_num: 1
+      s3_load_balancer_group_active_num: 8
+      service_xdc_stopped_num: 8
+  BootNode:
+    type: object
+    required:
+    - admin_network
+    - gateway_network
+    - private_network
+    - public_network
+    properties:
+      admin_network:
+        type: string
+      gateway_network:
+        type: string
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      private_network:
+        type: string
+      public_network:
+        type: string
+      status:
+        type: string
+    title: BootNode
+    description: BootNode defines the status of boot node
+    example:
+      gateway_network: gateway_network
+      private_network: private_network
+      public_network: public_network
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      admin_network: admin_network
+      status: status
+  ClusterResp:
+    type: object
+    required:
+    - cluster
+    properties:
+      cluster:
+        description: cluster
+        $ref: '#/definitions/Cluster'
+    title: ClusterResp
+    example:
+      cluster:
+        access_url: access_url
+        snmp_enabled: true
+        update: '2000-01-23T04:56:07.000+00:00'
+        stats_reserved_days: 1
+        version: version
+        down_out_interval: 0
+        os_gateway_oplog_switch: true
+        access_token:
+          roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
+        elasticsearch_enabled: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        maintained: true
+        fs_id: fs_id
+        disk_lighting_mode: disk_lighting_mode
+        status: status
+  ClusterInstallation_Steps:
+    type: object
+    properties:
+      bootnode:
+        type: boolean
+        description: step of setting boot node
+      license:
+        type: boolean
+        description: step of registering license
+      user:
+        type: boolean
+        description: step of creating user
+    title: ClusterInstallation_Steps
+    example:
+      license: true
+      bootnode: true
+      user: true
+  ClusterRecord:
+    title: ClusterRecord
+    allOf:
+    - $ref: '#/definitions/Cluster'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/ClusterStat'
+    description: ClusterRecord defines the response content of cluster related API
+  ClusterMaintainReq_Cluster:
+    type: object
+    required:
+    - maintained
+    properties:
+      maintained:
+        type: boolean
+    title: ClusterMaintainReq_Cluster
+    example:
+      maintained: true
+  BootNodeReq_BootNode:
+    type: object
+    required:
+    - private_network
+    - public_network
+    properties:
+      admin_network:
+        type: string
+        description: 'admin network: 10.0.0.0/24'
+      gateway_network:
+        type: string
+        description: 'gateway networks, multiple networks splited by comma: 10.0.3.0/24,10.0.4.0/24'
+      private_network:
+        type: string
+        description: 'private network : 10.0.2.0/24'
+      public_network:
+        type: string
+        description: 'public network: 10.0.1.0/24'
+    title: BootNodeReq_BootNode
+    example:
+      gateway_network: gateway_network
+      private_network: private_network
+      public_network: public_network
+      admin_network: admin_network
+  ClusterStatsPredictionResp:
+    type: object
+    properties:
+      stats_usage_bytes_per_day:
+        type: integer
+        format: int64
+    title: ClusterStatsPredictionResp
+    example:
+      stats_usage_bytes_per_day: 0
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  ClusterServerTimeResp:
+    type: object
+    properties:
+      server_time:
+        type: string
+        format: date-time
+        description: current server time
+    title: ClusterServerTimeResp
+    example:
+      server_time: '2000-01-23T04:56:07.000+00:00'
+  ClusterUpdateReq:
+    type: object
+    required:
+    - cluster
+    properties:
+      cluster:
+        description: cluster
+        $ref: '#/definitions/ClusterUpdateReq_Cluster'
+    title: ClusterUpdateReq
+    example:
+      cluster:
+        elasticsearch_enabled: true
+        name: name
+        stats_reserved_days: 6
+        down_out_interval: 0
+        disk_lighting_mode: disk_lighting_mode
+        os_gateway_oplog_switch: true
+  ClusterInstallationResp:
+    type: object
+    properties:
+      installation:
+        description: installation status
+        $ref: '#/definitions/ClusterInstallation'
+    title: ClusterInstallationResp
+    example:
+      installation:
+        finished: true
+        steps:
+          license: true
+          bootnode: true
+          user: true
+  ClusterUpdateReq_Cluster:
+    type: object
+    properties:
+      disk_lighting_mode:
+        type: string
+        description: disk lighting mode
+      down_out_interval:
+        type: integer
+        format: int64
+        description: down out interval
+      elasticsearch_enabled:
+        type: boolean
+        description: enabled or disable elasticsearch
+      name:
+        type: string
+        description: disk lighting mode
+      os_gateway_oplog_switch:
+        type: boolean
+        description: os gateway oplog switch
+      stats_reserved_days:
+        type: integer
+        format: int64
+        description: stats reserve days
+    title: ClusterUpdateReq_Cluster
+    example:
+      elasticsearch_enabled: true
+      name: name
+      stats_reserved_days: 6
+      down_out_interval: 0
+      disk_lighting_mode: disk_lighting_mode
+      os_gateway_oplog_switch: true
+  ClusterRecordResp:
+    type: object
+    required:
+    - cluster
+    properties:
+      cluster:
+        description: cluster info
+        $ref: '#/definitions/ClusterRecord'
+    title: ClusterRecordResp
+    example:
+      cluster: ''
+  AccessToken:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+      update:
+        type: string
+        format: date-time
+      used:
+        type: boolean
+      user:
+        $ref: '#/definitions/User_Nestview'
+    title: AccessToken
+    description: AccessToken used for authentication and authorization
+    example:
+      roles:
+      - roles
+      - roles
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      used: true
+      user:
+        name: name
+        id: 6
+  ObjectStorage:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      index_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      lifecycle_end_on:
+        type: string
+      lifecycle_start_on:
+        type: string
+      multi_zone_enabled:
+        type: boolean
+      name:
+        type: string
+      search_enabled:
+        type: boolean
+      second_mergence_enabled:
+        type: boolean
+      second_mergence_end_on:
+        type: string
+      second_mergence_start_on:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: ObjectStorage
+    description: ObjectStorage is the model of object_storage
+    example:
+      second_mergence_enabled: true
+      search_enabled: true
+      update: '2000-01-23T04:56:07.000+00:00'
+      index_pool:
+        name: name
+        id: 5
+      lifecycle_start_on: lifecycle_start_on
+      second_mergence_end_on: second_mergence_end_on
+      second_mergence_start_on: second_mergence_start_on
+      multi_zone_enabled: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      lifecycle_end_on: lifecycle_end_on
+      action_status: action_status
+      status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,650 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-gateway-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-gateway-groups
+  description: 'FSGatewayGroupController provides APIs for file storage gateway group
+
+    '
+paths:
+  /fs-gateway-groups/:
+    get:
+      tags:
+      - fs-gateway-groups
+      description: List file storage gateway groups
+      operationId: ListFSGatewayGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: type
+        in: query
+        description: type of file storage gateway group
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: security
+        in: query
+        description: security of file storage gateway group
+        required: false
+        type: string
+        x-exportParamName: Security
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSGatewayGroupsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-gateway-groups
+      description: Create file storage gateway group
+      operationId: CreateFSGatewayGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: gateway group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSGatewayGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-gateway-groups/{fs_gateway_group_id}:
+    get:
+      tags:
+      - fs-gateway-groups
+      description: Get file storage gateway group
+      operationId: GetFSGatewayGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_group_id
+        in: path
+        description: gateway group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-gateway-groups
+      description: delete file storage gateway group
+      operationId: DeleteFSGatewayGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_group_id
+        in: path
+        description: gateway group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-gateway-groups
+      description: Update file storage gateway group
+      operationId: UpdateFSGatewayGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_group_id
+        in: path
+        description: gateway group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - in: body
+        name: body
+        description: gateway group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSGatewayGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-gateway-groups/{fs_gateway_group_id}:add-gateways:
+    post:
+      tags:
+      - fs-gateway-groups
+      description: add file storage gateways
+      operationId: AddFSGateways
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_group_id
+        in: path
+        description: gateway group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - in: body
+        name: body
+        description: gateways info
+        required: true
+        schema:
+          $ref: '#/definitions/FSGatewayGroupAddGatewaysReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-gateway-groups/{fs_gateway_group_id}:remove-gateways:
+    post:
+      tags:
+      - fs-gateway-groups
+      description: remove gateways from gateway group
+      operationId: RemoveFSGateways
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_group_id
+        in: path
+        description: gateway group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - in: body
+        name: body
+        description: gateways info
+        required: true
+        schema:
+          $ref: '#/definitions/FSGatewayGroupRemoveGatewaysReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSGatewayGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSGatewayGroupUpdateReq:
+    type: object
+    required:
+    - fs_gateway_group
+    properties:
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroupUpdateReq_GatewayGroup'
+    title: FSGatewayGroupUpdateReq
+  FSGatewayGroupCreateReq_GatewayGroup:
+    type: object
+    required:
+    - fs_gateways
+    - name
+    - types
+    - vip
+    properties:
+      description:
+        type: string
+        description: description of gateway group
+      encoding:
+        type: string
+        description: ftp encoding format, default is utf8
+      fs_gateways:
+        type: array
+        description: file storage gateways list
+        items:
+          $ref: '#/definitions/FSGatewayReq'
+      name:
+        type: string
+        description: name of gateway group
+      nfs_versions:
+        type: array
+        description: nfs versions of nfs supported
+        items:
+          type: string
+      security:
+        type: string
+        description: smb security type
+      smb1_enabled:
+        type: boolean
+        description: smb version 1.0 enabled
+      smb_ports:
+        type: array
+        description: smb ports
+        items:
+          type: integer
+          format: int64
+      types:
+        type: array
+        description: types of supported (smb, nfs, ftp)
+        items:
+          type: string
+      vip:
+        type: string
+        description: virtual ip of gateway group
+    title: FSGatewayGroupCreateReq_GatewayGroup
+  FSGatewayGroupRemoveGatewaysReq_GatewayGroup:
+    type: object
+    required:
+    - fs_gateway_ids
+    properties:
+      fs_gateway_ids:
+        type: array
+        description: file storage gateway ids
+        items:
+          type: integer
+          format: int64
+    title: FSGatewayGroupRemoveGatewaysReq_GatewayGroup
+  FSGatewayGroupsResp:
+    type: object
+    required:
+    - fs_gateway_groups
+    properties:
+      fs_gateway_groups:
+        type: array
+        description: file storage gateway groups
+        items:
+          $ref: '#/definitions/FSGatewayGroup'
+    title: FSGatewayGroupsResp
+    example:
+      fs_gateway_groups:
+      - smb_ports:
+        - 5
+        - 5
+        types:
+        - types
+        - types
+        smb1_enabled: true
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        vip_mask: 2
+        encoding: encoding
+        security: security
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        nfs_versions:
+        - nfs_versions
+        - nfs_versions
+        user_group_num: 5
+        id: 6
+        vip: vip
+        action_status: action_status
+        folder_num: 0
+        status: status
+      - smb_ports:
+        - 5
+        - 5
+        types:
+        - types
+        - types
+        smb1_enabled: true
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        vip_mask: 2
+        encoding: encoding
+        security: security
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        nfs_versions:
+        - nfs_versions
+        - nfs_versions
+        user_group_num: 5
+        id: 6
+        vip: vip
+        action_status: action_status
+        folder_num: 0
+        status: status
+  FSGatewayGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      encoding:
+        type: string
+      folder_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      nfs_versions:
+        type: array
+        description: NFS attributes
+        items:
+          type: string
+      port:
+        type: integer
+        format: int64
+        description: FTP attributes
+      security:
+        type: string
+        description: SMB attributes
+      smb1_enabled:
+        type: boolean
+      smb_ports:
+        type: array
+        items:
+          type: integer
+          format: int64
+      status:
+        type: string
+      types:
+        type: array
+        items:
+          type: string
+      update:
+        type: string
+        format: date-time
+      user_group_num:
+        type: integer
+        format: int64
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup
+    description: FSGatewayGroup defines model of file storage gateway group @grpc-models-proto
+    example:
+      smb_ports:
+      - 5
+      - 5
+      types:
+      - types
+      - types
+      smb1_enabled: true
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      vip_mask: 2
+      encoding: encoding
+      security: security
+      port: 1
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      nfs_versions:
+      - nfs_versions
+      - nfs_versions
+      user_group_num: 5
+      id: 6
+      vip: vip
+      action_status: action_status
+      folder_num: 0
+      status: status
+  FSGatewayGroupResp:
+    type: object
+    required:
+    - fs_gateway_group
+    properties:
+      fs_gateway_group:
+        description: file storage gateway group
+        $ref: '#/definitions/FSGatewayGroup'
+    title: FSGatewayGroupResp
+    example:
+      fs_gateway_group:
+        smb_ports:
+        - 5
+        - 5
+        types:
+        - types
+        - types
+        smb1_enabled: true
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        vip_mask: 2
+        encoding: encoding
+        security: security
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        nfs_versions:
+        - nfs_versions
+        - nfs_versions
+        user_group_num: 5
+        id: 6
+        vip: vip
+        action_status: action_status
+        folder_num: 0
+        status: status
+  FSGatewayReq:
+    type: object
+    required:
+    - host_id
+    properties:
+      host_id:
+        type: integer
+        format: int64
+        description: host id
+      network_address_id:
+        type: integer
+        format: int64
+        description: network address id
+    title: FSGatewayReq
+  FSGatewayGroupUpdateReq_GatewayGroup:
+    type: object
+    properties:
+      description:
+        type: string
+        description: description of gateway group
+      encoding:
+        type: string
+        description: ftp encoding format, default is utf8
+      name:
+        type: string
+        description: name of gateway group
+      nfs_versions:
+        type: array
+        description: nfs versions supported
+        items:
+          type: string
+      security:
+        type: string
+        description: smb security type
+      smb1_enabled:
+        type: boolean
+        description: smb version 1.0 enabled
+      smb_ports:
+        type: array
+        description: smb ports
+        items:
+          type: integer
+          format: int64
+      types:
+        type: array
+        description: types of supported
+        items:
+          type: string
+      vip:
+        type: string
+        description: virtual ip of gateway group
+    title: FSGatewayGroupUpdateReq_GatewayGroup
+  FSGatewayGroupAddGatewaysReq:
+    type: object
+    required:
+    - fs_gateway_group
+    properties:
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroupAddGatewaysReq_GatewayGroup'
+    title: FSGatewayGroupAddGatewaysReq
+  FSGatewayGroupCreateReq:
+    type: object
+    required:
+    - fs_gateway_group
+    properties:
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroupCreateReq_GatewayGroup'
+    title: FSGatewayGroupCreateReq
+  FSGatewayGroupAddGatewaysReq_GatewayGroup:
+    type: object
+    required:
+    - fs_gateways
+    properties:
+      fs_gateways:
+        type: array
+        description: file storage gateways list
+        items:
+          $ref: '#/definitions/FSGatewayReq'
+    title: FSGatewayGroupAddGatewaysReq_GatewayGroup
+  FSGatewayGroupRemoveGatewaysReq:
+    type: object
+    required:
+    - fs_gateway_group
+    properties:
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroupRemoveGatewaysReq_GatewayGroup'
+    title: FSGatewayGroupRemoveGatewaysReq
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

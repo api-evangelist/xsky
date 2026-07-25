@@ -1,0 +1,346 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths luns API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: luns
+  description: 'LunController Operations on luns
+
+    '
+paths:
+  /luns/:
+    get:
+      tags:
+      - luns
+      description: List luns
+      operationId: ListLuns
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: mapping_group_id
+        in: query
+        description: mapping group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LunsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /luns/{lun_id}:
+    get:
+      tags:
+      - luns
+      description: get a lun
+      operationId: GetLun
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: lun_id
+        in: path
+        description: lun id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: LunId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LunResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AccessPath:
+    type: object
+    properties:
+      action_status:
+        type: string
+      block_volume_num:
+        type: integer
+        format: int64
+      chap:
+        type: boolean
+      client_group_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      hidden:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      iqn:
+        type: string
+      name:
+        type: string
+      protection_domain:
+        $ref: '#/definitions/ProtectionDomain_Nestview'
+      status:
+        type: string
+      tname:
+        type: string
+      tsecret:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      vip_group_num:
+        type: integer
+        format: int64
+    title: AccessPath
+    description: AccessPath defines access path
+    example:
+      hidden: true
+      block_volume_num: 0
+      iqn: iqn
+      client_group_num: 6
+      description: description
+      tname: tname
+      update: '2000-01-23T04:56:07.000+00:00'
+      tsecret: tsecret
+      type: type
+      protection_domain:
+        name: name
+        id: 5
+      vip_group_num: 5
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      chap: true
+      id: 1
+      action_status: action_status
+      status: status
+  LunsResp:
+    type: object
+    required:
+    - luns
+    properties:
+      luns:
+        type: array
+        description: luns
+        items:
+          $ref: '#/definitions/Lun'
+    title: LunsResp
+    example:
+      luns:
+      - nestview:
+          hidden: true
+          block_volume_num: 0
+          iqn: iqn
+          client_group_num: 6
+          description: description
+          tname: tname
+          update: '2000-01-23T04:56:07.000+00:00'
+          tsecret: tsecret
+          type: type
+          protection_domain:
+            name: name
+            id: 5
+          vip_group_num: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 1
+          action_status: action_status
+          status: status
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        create: '2000-01-23T04:56:07.000+00:00'
+        lun_id: 6
+        id: 0
+      - nestview:
+          hidden: true
+          block_volume_num: 0
+          iqn: iqn
+          client_group_num: 6
+          description: description
+          tname: tname
+          update: '2000-01-23T04:56:07.000+00:00'
+          tsecret: tsecret
+          type: type
+          protection_domain:
+            name: name
+            id: 5
+          vip_group_num: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 1
+          action_status: action_status
+          status: status
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        create: '2000-01-23T04:56:07.000+00:00'
+        lun_id: 6
+        id: 0
+  LunResp:
+    type: object
+    required:
+    - lun
+    properties:
+      lun:
+        description: lun
+        $ref: '#/definitions/Lun'
+    title: LunResp
+    example:
+      lun:
+        nestview:
+          hidden: true
+          block_volume_num: 0
+          iqn: iqn
+          client_group_num: 6
+          description: description
+          tname: tname
+          update: '2000-01-23T04:56:07.000+00:00'
+          tsecret: tsecret
+          type: type
+          protection_domain:
+            name: name
+            id: 5
+          vip_group_num: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 1
+          action_status: action_status
+          status: status
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        create: '2000-01-23T04:56:07.000+00:00'
+        lun_id: 6
+        id: 0
+  Lun:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      lun_id:
+        type: integer
+        format: int64
+      nestview:
+        $ref: '#/definitions/AccessPath'
+      volume:
+        $ref: '#/definitions/Volume_Nestview'
+    title: Lun
+    description: Lun defines lun id
+    example:
+      nestview:
+        hidden: true
+        block_volume_num: 0
+        iqn: iqn
+        client_group_num: 6
+        description: description
+        tname: tname
+        update: '2000-01-23T04:56:07.000+00:00'
+        tsecret: tsecret
+        type: type
+        protection_domain:
+          name: name
+          id: 5
+        vip_group_num: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 1
+        action_status: action_status
+        status: status
+      volume:
+        original_name: original_name
+        name: name
+        id: 9
+      create: '2000-01-23T04:56:07.000+00:00'
+      lun_id: 6
+      id: 0
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+  ProtectionDomain_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of protection domain
+      name:
+        type: string
+        description: name of protection domain
+    title: ProtectionDomain_Nestview
+    example:
+      name: name
+      id: 5
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

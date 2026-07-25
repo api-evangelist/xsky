@@ -1,0 +1,133 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-bucket-loggings API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-bucket-loggings
+  description: 'OSBucketLoggingController API /os-bucket-loggings.
+
+    '
+paths:
+  /os-bucket-loggings/:
+    get:
+      tags:
+      - os-bucket-loggings
+      description: List os bucket loggings
+      operationId: ListOSBucketLoggings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: source_bucket_name
+        in: query
+        description: source bucket name
+        required: false
+        type: string
+        x-exportParamName: SourceBucketName
+      - name: target_bucket_name
+        in: query
+        description: target bucket name
+        required: false
+        type: string
+        x-exportParamName: TargetBucketName
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSBucketLoggingsResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSBucketLoggingsResp:
+    type: object
+    properties:
+      os_bucket_loggings:
+        type: array
+        items:
+          $ref: '#/definitions/OSBucketLogging'
+    title: OSBucketLoggingsResp
+    example:
+      os_bucket_loggings:
+      - target_bucket_name: target_bucket_name
+        prefix: prefix
+        source_bucket_name: source_bucket_name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+      - target_bucket_name: target_bucket_name
+        prefix: prefix
+        source_bucket_name: source_bucket_name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+  OSBucketLogging:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      prefix:
+        type: string
+      source_bucket_name:
+        type: string
+      target_bucket_name:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: OSBucketLogging
+    description: OSBucketLogging defines models of os bucket logging.
+    example:
+      target_bucket_name: target_bucket_name
+      prefix: prefix
+      source_bucket_name: source_bucket_name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

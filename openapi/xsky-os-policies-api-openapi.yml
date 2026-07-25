@@ -1,0 +1,519 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-policies API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-policies
+  description: 'ObjectStoragePolicyController provides API for object storage policy
+
+    '
+paths:
+  /os-policies/:
+    get:
+      tags:
+      - os-policies
+      description: List object storage policies
+      operationId: ListPolicies
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStoragePoliciesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    post:
+      tags:
+      - os-policies
+      description: Create object storage policy
+      operationId: CreatePolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStoragePolicyCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStoragePolicyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-policies/{policy_id}:
+    get:
+      tags:
+      - os-policies
+      description: Get object storage policy
+      operationId: GetPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: policy id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStoragePolicyResp'
+        404:
+          description: NotFound
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-policies
+      description: Delete object storage policy
+      operationId: DeletePolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: policy id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStoragePolicyResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-policies
+      description: Update object storage policy
+      operationId: UpdatePolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: policy id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStoragePolicyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStoragePolicyResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStoragePolicyResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  ObjectStoragePolicyResp:
+    type: object
+    required:
+    - os_policy
+    properties:
+      os_policy:
+        description: object storage policy
+        $ref: '#/definitions/ObjectStoragePolicy'
+    title: ObjectStoragePolicyResp
+    example:
+      os_policy:
+        shared: true
+        cache_pool:
+          name: name
+          id: 5
+        compress: true
+        description: description
+        policy_name: policy_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        bucket_num: 0
+        crypto: true
+        index_pool:
+          name: name
+          id: 5
+        object_size_threshold: 1
+        default: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+  ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt:
+    type: object
+    required:
+    - active_pool_ids
+    - class
+    - name
+    properties:
+      active_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      class:
+        type: integer
+        format: int32
+      description:
+        type: string
+      inactive_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+    title: ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt
+    example:
+      active_pool_ids:
+      - 1
+      - 1
+      name: name
+      description: description
+      class: 5
+      inactive_pool_ids:
+      - 5
+      - 5
+  ObjectStoragePolicyCreateReq_Policy:
+    type: object
+    required:
+    - index_pool_id
+    - name
+    - storage_classes
+    properties:
+      cache_pool_id:
+        type: integer
+        format: int64
+      compress:
+        type: boolean
+      crypto:
+        type: boolean
+      description:
+        type: string
+      index_pool_id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      shared:
+        type: boolean
+      storage_classes:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt'
+    title: ObjectStoragePolicyCreateReq_Policy
+    example:
+      shared: true
+      storage_classes:
+      - active_pool_ids:
+        - 1
+        - 1
+        name: name
+        description: description
+        class: 5
+        inactive_pool_ids:
+        - 5
+        - 5
+      - active_pool_ids:
+        - 1
+        - 1
+        name: name
+        description: description
+        class: 5
+        inactive_pool_ids:
+        - 5
+        - 5
+      cache_pool_id: 0
+      compress: true
+      name: name
+      description: description
+      index_pool_id: 6
+      crypto: true
+  ObjectStoragePolicyUpdateReq_Policy:
+    type: object
+    properties:
+      cache_pool_id:
+        type: integer
+        format: int64
+      compress:
+        type: boolean
+      crypto:
+        type: boolean
+      default:
+        type: boolean
+      description:
+        type: string
+      shared:
+        type: boolean
+    title: ObjectStoragePolicyUpdateReq_Policy
+    example:
+      shared: true
+      default: true
+      cache_pool_id: 0
+      compress: true
+      description: description
+      crypto: true
+  ObjectStoragePoliciesResp:
+    type: object
+    required:
+    - os_policies
+    properties:
+      os_policies:
+        type: array
+        description: object storage policies
+        items:
+          $ref: '#/definitions/ObjectStoragePolicy'
+    title: ObjectStoragePoliciesResp
+    example:
+      os_policies:
+      - shared: true
+        cache_pool:
+          name: name
+          id: 5
+        compress: true
+        description: description
+        policy_name: policy_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        bucket_num: 0
+        crypto: true
+        index_pool:
+          name: name
+          id: 5
+        object_size_threshold: 1
+        default: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+      - shared: true
+        cache_pool:
+          name: name
+          id: 5
+        compress: true
+        description: description
+        policy_name: policy_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        bucket_num: 0
+        crypto: true
+        index_pool:
+          name: name
+          id: 5
+        object_size_threshold: 1
+        default: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+  ObjectStoragePolicy:
+    type: object
+    properties:
+      bucket_num:
+        type: integer
+        format: int64
+      cache_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      compress:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      crypto:
+        type: boolean
+      default:
+        type: boolean
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      index_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      name:
+        type: string
+      object_size_threshold:
+        type: integer
+        format: int64
+      policy_name:
+        type: string
+      shared:
+        type: boolean
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: ObjectStoragePolicy
+    description: ObjectStoragePolicy is the model of object_storage_policy
+    example:
+      shared: true
+      cache_pool:
+        name: name
+        id: 5
+      compress: true
+      description: description
+      policy_name: policy_name
+      update: '2000-01-23T04:56:07.000+00:00'
+      bucket_num: 0
+      crypto: true
+      index_pool:
+        name: name
+        id: 5
+      object_size_threshold: 1
+      default: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      status: status
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  ObjectStoragePolicyUpdateReq:
+    type: object
+    properties:
+      os_policy:
+        $ref: '#/definitions/ObjectStoragePolicyUpdateReq_Policy'
+    title: ObjectStoragePolicyUpdateReq
+    example:
+      os_policy:
+        shared: true
+        default: true
+        cache_pool_id: 0
+        compress: true
+        description: description
+        crypto: true
+  ObjectStoragePolicyCreateReq:
+    type: object
+    properties:
+      os_policy:
+        $ref: '#/definitions/ObjectStoragePolicyCreateReq_Policy'
+    title: ObjectStoragePolicyCreateReq
+    example:
+      os_policy:
+        shared: true
+        storage_classes:
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        cache_pool_id: 0
+        compress: true
+        name: name
+        description: description
+        index_pool_id: 6
+        crypto: true
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

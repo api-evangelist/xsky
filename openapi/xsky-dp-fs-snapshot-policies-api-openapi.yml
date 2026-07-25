@@ -1,0 +1,365 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-fs-snapshot-policies API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-fs-snapshot-policies
+  description: 'DpFSSnapshotPolicyController API /dp-fs-snapshot-policies
+
+    '
+paths:
+  /dp-fs-snapshot-policies/:
+    get:
+      tags:
+      - dp-fs-snapshot-policies
+      description: List dp fs snapshot policies
+      operationId: ListDpFSSnapshotPolicies
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpFSSnapshotPoliciesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-fs-snapshot-policies
+      description: Create dp fs snapshot policy
+      operationId: CreateDpFSSnapshotPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpFSSnapshotPolicyCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpFSSnapshotPolicyResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-fs-snapshot-policies/{policy_id}:
+    get:
+      tags:
+      - dp-fs-snapshot-policies
+      description: Get dp fs snapshot policy
+      operationId: GetDpFSSnapshotPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpFSSnapshotPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - dp-fs-snapshot-policies
+      description: Delete dp fs snapshot policy
+      operationId: DeleteDpFSSnapshotPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpFSSnapshotPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - dp-fs-snapshot-policies
+      description: Update dp fs snapshot policy
+      operationId: UpdateDpFSSnapshotPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpFSSnapshotPolicyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpFSSnapshotPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpFSSnapshotPolicyUpdateReq:
+    type: object
+    required:
+    - dp_fs_snapshot_policy
+    properties:
+      dp_fs_snapshot_policy:
+        $ref: '#/definitions/DpFSSnapshotPolicyUpdateReq_Policy'
+    title: DpFSSnapshotPolicyUpdateReq
+  DpFSSnapshotPolicyUpdateReq_Policy:
+    type: object
+    properties:
+      cron_expr:
+        type: string
+      name:
+        type: string
+      retained_max:
+        type: integer
+        format: int64
+    title: DpFSSnapshotPolicyUpdateReq_Policy
+  DpFSSnapshotPolicy:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      cron_expr:
+        type: string
+      dp_gateway:
+        $ref: '#/definitions/DpGateway_Nestview'
+      fs_folder_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      retained_max:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: DpFSSnapshotPolicy
+    description: DpFSSnapshotPolicy protects a fs folder by snapshot
+    example:
+      retained_max: 1
+      cron_expr: cron_expr
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      dp_gateway:
+        name: name
+        id: 6
+      id: 6
+      fs_folder_num: 0
+      status: status
+  DpFSSnapshotPolicyResp:
+    type: object
+    properties:
+      dp_fs_snapshot_policy:
+        $ref: '#/definitions/DpFSSnapshotPolicy'
+    title: DpFSSnapshotPolicyResp
+    example:
+      dp_fs_snapshot_policy:
+        retained_max: 1
+        cron_expr: cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 6
+        fs_folder_num: 0
+        status: status
+  DpFSSnapshotPolicyCreateReq:
+    type: object
+    required:
+    - dp_fs_snapshot_policy
+    properties:
+      dp_fs_snapshot_policy:
+        $ref: '#/definitions/DpFSSnapshotPolicyCreateReq_Policy'
+    title: DpFSSnapshotPolicyCreateReq
+  DpFSSnapshotPoliciesResp:
+    type: object
+    properties:
+      dp_fs_snapshot_policies:
+        type: array
+        items:
+          $ref: '#/definitions/DpFSSnapshotPolicy'
+    title: DpFSSnapshotPoliciesResp
+    example:
+      dp_fs_snapshot_policies:
+      - retained_max: 1
+        cron_expr: cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 6
+        fs_folder_num: 0
+        status: status
+      - retained_max: 1
+        cron_expr: cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 6
+        fs_folder_num: 0
+        status: status
+  DpGateway_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpGateway_Nestview
+    example:
+      name: name
+      id: 6
+  DpFSSnapshotPolicyCreateReq_Policy:
+    type: object
+    required:
+    - cron_expr
+    - dp_gateway_id
+    - name
+    - retained_max
+    properties:
+      cron_expr:
+        type: string
+      dp_gateway_id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      retained_max:
+        type: integer
+        format: int64
+    title: DpFSSnapshotPolicyCreateReq_Policy
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

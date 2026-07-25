@@ -1,0 +1,161 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths host-initializations API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: host-initializations
+  description: 'HostInitializationController provides API for host initialization
+
+    '
+paths:
+  /host-initializations/:
+    post:
+      tags:
+      - host-initializations
+      description: Create host initialization
+      operationId: HostInitialization
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: host initialization info
+        required: true
+        schema:
+          $ref: '#/definitions/HostInitializationReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/HostInitializationResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  HostInitialization:
+    type: object
+    properties:
+      admin_ips:
+        type: array
+        items:
+          type: string
+      create:
+        type: string
+        format: date-time
+      disable_firewalld:
+        type: boolean
+      hostname_prefix:
+        type: string
+      id:
+        type: integer
+        format: int64
+      message:
+        type: string
+      set_hostname:
+        type: boolean
+      ssh_user:
+        type: string
+      status:
+        type: string
+    title: HostInitialization
+    description: HostInitialization is the model of host initialization
+    example:
+      hostname_prefix: hostname_prefix
+      disable_firewalld: true
+      set_hostname: true
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      message: message
+      admin_ips:
+      - admin_ips
+      - admin_ips
+      ssh_user: ssh_user
+      status: status
+  HostInitializationResp:
+    type: object
+    properties:
+      host_initialization:
+        $ref: '#/definitions/HostInitialization'
+    title: HostInitializationResp
+    example:
+      host_initialization:
+        hostname_prefix: hostname_prefix
+        disable_firewalld: true
+        set_hostname: true
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        message: message
+        admin_ips:
+        - admin_ips
+        - admin_ips
+        ssh_user: ssh_user
+        status: status
+  HostInitializationReq:
+    type: object
+    properties:
+      host_initialization:
+        $ref: '#/definitions/HostInitializationReq_Initialization'
+    title: HostInitializationReq
+    example:
+      host_initialization:
+        hostname_prefix: hostname_prefix
+        disable_firewalld: true
+        set_hostname: true
+        ssh_password: ssh_password
+        admin_ips:
+        - admin_ips
+        - admin_ips
+        ssh_user: ssh_user
+  HostInitializationReq_Initialization:
+    type: object
+    required:
+    - admin_ips
+    - ssh_user
+    properties:
+      admin_ips:
+        type: array
+        items:
+          type: string
+      disable_firewalld:
+        type: boolean
+      hostname_prefix:
+        type: string
+      set_hostname:
+        type: boolean
+      ssh_password:
+        type: string
+      ssh_user:
+        type: string
+    title: HostInitializationReq_Initialization
+    example:
+      hostname_prefix: hostname_prefix
+      disable_firewalld: true
+      set_hostname: true
+      ssh_password: ssh_password
+      admin_ips:
+      - admin_ips
+      - admin_ips
+      ssh_user: ssh_user
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

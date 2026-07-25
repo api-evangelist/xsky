@@ -1,0 +1,54 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths chunks API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: chunks
+  description: 'ChunkController Chunk Management
+
+    '
+paths:
+  /chunks/{chunk_id}:
+    get:
+      tags:
+      - chunks
+      description: get an chunk
+      operationId: GetChunk
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: chunk_id
+        in: path
+        description: The id of the chunk
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ChunkId
+      responses:
+        200:
+          description: '{models.PlacementGroup}'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

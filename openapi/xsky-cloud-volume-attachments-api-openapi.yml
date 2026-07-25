@@ -1,0 +1,186 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths cloud-volume-attachments API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: cloud-volume-attachments
+  description: 'CloudVolumeAttachmentController Cloud Volume Attachment Management
+
+    '
+paths:
+  /cloud-volume-attachments/:
+    get:
+      tags:
+      - cloud-volume-attachments
+      description: List cloud volume attachments
+      operationId: ListCloudVolumeAttachments
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: cloud_instance_id
+        in: query
+        description: cloud instance id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: CloudInstanceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudVolumeAttachmentsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  CloudInstance_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: CloudInstance_Nestview
+    example:
+      name: name
+      id: 0
+  CloudVolume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: CloudVolume_Nestview
+    example:
+      name: name
+      id: 6
+  CloudVolumeAttachmentsResp:
+    type: object
+    properties:
+      cloud_volume_attachments:
+        type: array
+        description: cloud volume attachments
+        items:
+          $ref: '#/definitions/CloudVolumeAttachment'
+    title: CloudVolumeAttachmentsResp
+    example:
+      cloud_volume_attachments:
+      - block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        cloud_volume:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance:
+          name: name
+          id: 0
+        id: 1
+        device: device
+      - block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        cloud_volume:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance:
+          name: name
+          id: 0
+        id: 1
+        device: device
+  CloudVolumeAttachment:
+    type: object
+    properties:
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      cloud_instance:
+        $ref: '#/definitions/CloudInstance_Nestview'
+      cloud_volume:
+        $ref: '#/definitions/CloudVolume_Nestview'
+      create:
+        type: string
+        format: date-time
+      device:
+        type: string
+      id:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+    title: CloudVolumeAttachment
+    description: 'CloudVolumeAttachment defines volume attachment relationship with cloud
+
+      instances'
+    example:
+      block_volume:
+        original_name: original_name
+        name: name
+        id: 9
+      cloud_volume:
+        name: name
+        id: 6
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      cloud_instance:
+        name: name
+        id: 0
+      id: 1
+      device: device
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

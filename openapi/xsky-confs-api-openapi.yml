@@ -1,0 +1,305 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths confs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: confs
+  description: 'ConfController Operations about Config
+
+    '
+paths:
+  /confs/:
+    put:
+      tags:
+      - confs
+      description: set conf item
+      operationId: SetConfItem
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: conf item
+        required: true
+        schema:
+          $ref: '#/definitions/ConfItemSetReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ConfItem'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /confs/{type}:
+    get:
+      tags:
+      - confs
+      description: List conf items
+      operationId: ListConfItems
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: type
+        in: path
+        description: filter the type of conf
+        required: true
+        type: string
+        x-exportParamName: Type_
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ConfItemsResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - confs
+      description: set conf items
+      operationId: SetConfItems
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: type
+        in: path
+        description: filter the type of conf
+        required: true
+        type: string
+        x-exportParamName: Type_
+      - in: body
+        name: body
+        description: conf items
+        required: true
+        schema:
+          $ref: '#/definitions/ConfItemsSetReq'
+        x-exportParamName: Body
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /confs/{type}/{key}:
+    get:
+      tags:
+      - confs
+      description: get conf item
+      operationId: GetConfItem
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: type
+        in: path
+        description: filter the type of conf
+        required: true
+        type: string
+        x-exportParamName: Type_
+      - name: key
+        in: path
+        description: filter the key of conf item
+        required: true
+        type: string
+        x-exportParamName: Key
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ConfItemResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - confs
+      description: delete conf item
+      operationId: DeleteConfItem
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: type
+        in: path
+        description: filter the type of conf item
+        required: true
+        type: string
+        x-exportParamName: Type_
+      - name: key
+        in: path
+        description: filter the key of conf item
+        required: true
+        type: string
+        x-exportParamName: Key
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ConfItemsResp:
+    type: object
+    required:
+    - confs
+    properties:
+      confs:
+        type: array
+        description: conf items
+        items:
+          $ref: '#/definitions/ConfItem'
+    title: ConfItemsResp
+    example:
+      confs:
+      - id: 0
+        type: type
+        value: value
+        key: key
+      - id: 0
+        type: type
+        value: value
+        key: key
+  ConfItem:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      key:
+        type: string
+      type:
+        type: string
+      value:
+        type: string
+    title: ConfItem
+    description: ConfItem is a ceph config pair
+    example:
+      id: 0
+      type: type
+      value: value
+      key: key
+  ConfItemResp:
+    type: object
+    required:
+    - conf
+    properties:
+      conf:
+        description: conf item
+        $ref: '#/definitions/ConfItem'
+    title: ConfItemResp
+    example:
+      conf:
+        id: 0
+        type: type
+        value: value
+        key: key
+  ConfItemSetReq:
+    type: object
+    required:
+    - conf
+    properties:
+      conf:
+        $ref: '#/definitions/ConfItemSetReq_ConfItem'
+    title: ConfItemSetReq
+    example:
+      conf:
+        type: type
+        value: value
+        key: key
+  ConfItemSetReq_ConfItem:
+    type: object
+    required:
+    - key
+    - type
+    - value
+    properties:
+      key:
+        type: string
+      type:
+        type: string
+      value:
+        type: string
+    title: ConfItemSetReq_ConfItem
+    example:
+      type: type
+      value: value
+      key: key
+  ConfItemsSetReq:
+    type: object
+    required:
+    - confs
+    properties:
+      confs:
+        type: object
+        additionalProperties:
+          type: string
+    title: ConfItemsSetReq
+    example:
+      confs:
+        key: confs
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

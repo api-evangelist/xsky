@@ -1,0 +1,344 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths network-interfaces API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: network-interfaces
+  description: 'NetworkInterfaceController Network Interface Management
+
+    '
+paths:
+  /network-interfaces/:
+    get:
+      tags:
+      - network-interfaces
+      description: List network interfaces
+      operationId: ListNetworkInterfaces
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: master_network_interface_id
+        in: query
+        description: master network interface id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: MasterNetworkInterfaceId
+      - name: host_id
+        in: query
+        description: host id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: role
+        in: query
+        description: network interface role
+        required: false
+        type: string
+        x-exportParamName: Role
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkInterfacesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /network-interfaces/{network_interface_id}:
+    get:
+      tags:
+      - network-interfaces
+      description: Get a network interface
+      operationId: GetNetworkInterface
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: network_interface_id
+        in: path
+        description: network interface id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: NetworkInterfaceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkInterfaceResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /network-interfaces/{network_interface_id}/samples:
+    get:
+      tags:
+      - network-interfaces
+      description: get a network interface's Samples
+      operationId: GetNetworkInterfaceSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: network_interface_id
+        in: path
+        description: network interface id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: NetworkInterfaceId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkInterfaceSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  NetworkInterfaceSamplesResp:
+    type: object
+    properties:
+      network_interface_samples:
+        type: array
+        items:
+          $ref: '#/definitions/NetworkInterfaceStat'
+    title: NetworkInterfaceSamplesResp
+    example:
+      network_interface_samples:
+      - tx_pps: 2.027123023002322
+        tx_bandwidth_kbyte: 7.061401241503109
+        error_pps: 6.027456183070403
+        rx_bandwidth_kbyte: 1.4658129805029452
+        create: '2000-01-23T04:56:07.000+00:00'
+        rx_drop_pps: 5.962133916683182
+        rx_error_pps: 5.637376656633329
+        rx_pps: 2.3021358869347655
+        tx_error_pps: 3.616076749251911
+        drop_pps: 0.8008281904610115
+        tx_drop_pps: 9.301444243932576
+      - tx_pps: 2.027123023002322
+        tx_bandwidth_kbyte: 7.061401241503109
+        error_pps: 6.027456183070403
+        rx_bandwidth_kbyte: 1.4658129805029452
+        create: '2000-01-23T04:56:07.000+00:00'
+        rx_drop_pps: 5.962133916683182
+        rx_error_pps: 5.637376656633329
+        rx_pps: 2.3021358869347655
+        tx_error_pps: 3.616076749251911
+        drop_pps: 0.8008281904610115
+        tx_drop_pps: 9.301444243932576
+  NetworkInterface_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      mac_address:
+        type: string
+      name:
+        type: string
+    title: NetworkInterface_Nestview
+    example:
+      mac_address: mac_address
+      name: name
+      id: 1
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  NetworkInterface:
+    type: object
+    properties:
+      bonding_mode:
+        type: string
+      create:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      link_detected:
+        type: boolean
+      mac_address:
+        type: string
+      master_network_interface:
+        $ref: '#/definitions/NetworkInterface_Nestview'
+      megabits:
+        type: integer
+        format: int64
+      name:
+        type: string
+      operstate:
+        type: string
+      type:
+        type: string
+        description: ethernet or bond
+      update:
+        type: string
+        format: date-time
+    title: NetworkInterface
+    description: NetworkInterface defines model of network interface @grpc-models-proto
+  NetworkInterfacesResp:
+    type: object
+    properties:
+      network_interfaces:
+        type: array
+        description: network interface records
+        items:
+          $ref: '#/definitions/NetworkInterfaceRecord'
+    title: NetworkInterfacesResp
+    example:
+      network_interfaces:
+      - ''
+      - ''
+  NetworkInterfaceRecord:
+    title: NetworkInterfaceRecord
+    allOf:
+    - $ref: '#/definitions/NetworkInterface'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/NetworkInterfaceStat'
+    description: 'NetworkInterfaceRecord combine NetworkInterface and NetworkInterfaceStat as API
+
+      response'
+  NetworkInterfaceStat:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      drop_pps:
+        type: number
+        format: double
+      error_pps:
+        type: number
+        format: double
+      rx_bandwidth_kbyte:
+        type: number
+        format: double
+      rx_drop_pps:
+        type: number
+        format: double
+      rx_error_pps:
+        type: number
+        format: double
+      rx_pps:
+        type: number
+        format: double
+      tx_bandwidth_kbyte:
+        type: number
+        format: double
+      tx_drop_pps:
+        type: number
+        format: double
+      tx_error_pps:
+        type: number
+        format: double
+      tx_pps:
+        type: number
+        format: double
+    title: NetworkInterfaceStat
+    description: NetworkInterfaceStat define the statistics of network interface
+    example:
+      tx_pps: 2.027123023002322
+      tx_bandwidth_kbyte: 7.061401241503109
+      error_pps: 6.027456183070403
+      rx_bandwidth_kbyte: 1.4658129805029452
+      create: '2000-01-23T04:56:07.000+00:00'
+      rx_drop_pps: 5.962133916683182
+      rx_error_pps: 5.637376656633329
+      rx_pps: 2.3021358869347655
+      tx_error_pps: 3.616076749251911
+      drop_pps: 0.8008281904610115
+      tx_drop_pps: 9.301444243932576
+  NetworkInterfaceResp:
+    type: object
+    properties:
+      network_interface:
+        description: network interface record
+        $ref: '#/definitions/NetworkInterfaceRecord'
+    title: NetworkInterfaceResp
+    example:
+      network_interface: ''
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

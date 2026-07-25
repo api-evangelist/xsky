@@ -1,0 +1,379 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths host-enc-specs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: host-enc-specs
+  description: 'HostEncSpecController API /host-enc-specs/
+
+    '
+paths:
+  /host-enc-specs/:
+    get:
+      tags:
+      - host-enc-specs
+      description: List host enclosure specs
+      operationId: ListHostEncSpecs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: model
+        in: query
+        description: host model
+        required: false
+        type: string
+        x-exportParamName: Model
+      - name: vendor
+        in: query
+        description: host vendor
+        required: false
+        type: string
+        x-exportParamName: Vendor
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostEncSpecsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - host-enc-specs
+      description: Create a host enclosure spec
+      operationId: CreateHostEncSpec
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: host enclosure spec info
+        required: true
+        schema:
+          $ref: '#/definitions/HostEncSpecCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/HostEncSpecResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /host-enc-specs/{spec_id}:
+    get:
+      tags:
+      - host-enc-specs
+      description: Get host enclosure spec
+      operationId: GetHostEncSpec
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: spec_id
+        in: path
+        description: host enclosure spec id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SpecId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostEncSpecResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - host-enc-specs
+      description: Delete a host enclosure spec
+      operationId: DeleteHostEncSpec
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: spec_id
+        in: path
+        description: host enclosure spec id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SpecId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  HostEncSpecsResp:
+    type: object
+    required:
+    - host_enc_specs
+    properties:
+      host_enc_specs:
+        type: array
+        description: host enclosure specs
+        items:
+          $ref: '#/definitions/HostEncSpec'
+    title: HostEncSpecsResp
+    example:
+      host_enc_specs:
+      - vendor: vendor
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        model: model
+        id: 5
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+      - vendor: vendor
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        model: model
+        id: 5
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+  Enclosure:
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      order:
+        type: string
+      position:
+        type: string
+      slot_num:
+        type: integer
+        format: int64
+      start_slot:
+        type: integer
+        format: int64
+    title: Enclosure
+    description: Enclosure defines enclosure specification
+    example:
+      start_slot: 1
+      slot_num: 6
+      ids:
+      - 0
+      - 0
+      position: position
+      order: order
+  HostEncSpec:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      enclosures:
+        type: array
+        items:
+          $ref: '#/definitions/Enclosure'
+      id:
+        type: integer
+        format: int64
+      model:
+        type: string
+      update:
+        type: string
+        format: date-time
+      vendor:
+        type: string
+    title: HostEncSpec
+    description: HostEncSpec defines host enclosure specification
+    example:
+      vendor: vendor
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      model: model
+      id: 5
+      enclosures:
+      - start_slot: 1
+        slot_num: 6
+        ids:
+        - 0
+        - 0
+        position: position
+        order: order
+      - start_slot: 1
+        slot_num: 6
+        ids:
+        - 0
+        - 0
+        position: position
+        order: order
+  HostEncSpecCreateReq_HostEncSpec:
+    type: object
+    required:
+    - enclosures
+    - model
+    - vendor
+    properties:
+      enclosures:
+        type: array
+        description: host enclosures
+        items:
+          $ref: '#/definitions/Enclosure'
+      model:
+        type: string
+        description: host model
+      vendor:
+        type: string
+        description: host vendor
+    title: HostEncSpecCreateReq_HostEncSpec
+    example:
+      vendor: vendor
+      model: model
+      enclosures:
+      - start_slot: 1
+        slot_num: 6
+        ids:
+        - 0
+        - 0
+        position: position
+        order: order
+      - start_slot: 1
+        slot_num: 6
+        ids:
+        - 0
+        - 0
+        position: position
+        order: order
+  HostEncSpecResp:
+    type: object
+    required:
+    - host_enc_spec
+    properties:
+      host_enc_spec:
+        description: host enclosure spec
+        $ref: '#/definitions/HostEncSpec'
+    title: HostEncSpecResp
+    example:
+      host_enc_spec:
+        vendor: vendor
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        model: model
+        id: 5
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+  HostEncSpecCreateReq:
+    type: object
+    properties:
+      host_enc_spec:
+        $ref: '#/definitions/HostEncSpecCreateReq_HostEncSpec'
+    title: HostEncSpecCreateReq
+    example:
+      host_enc_spec:
+        vendor: vendor
+        model: model
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

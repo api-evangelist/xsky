@@ -1,0 +1,543 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths auth API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: auth
+  description: 'AuthController Manage authentication and authorization
+
+    '
+paths:
+  /auth/rsa-keys:
+    post:
+      tags:
+      - auth
+      description: Create RSA key
+      operationId: CreateRSAKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AuthRSAKeyResp'
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+        500:
+          description: InternalServerError
+  /auth/security-policy:
+    get:
+      tags:
+      - auth
+      description: setup auth security policy
+      operationId: GetAuthSecurityPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AuthSecurityPolicyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - auth
+      description: update auth security policy
+      operationId: UpdateAuthSecurityPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: auth security policy info
+        required: true
+        schema:
+          $ref: '#/definitions/AuthSecurityPolicyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AuthSecurityPolicyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /auth/tokens:
+    post:
+      tags:
+      - auth
+      description: creates temporary token for credentials
+      operationId: CreateToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: the identity credential
+        required: true
+        schema:
+          $ref: '#/definitions/TokenCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: OK
+          schema:
+            $ref: '#/definitions/TokenResp'
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+        500:
+          description: InternalServerError
+  /auth/tokens:login:
+    post:
+      tags:
+      - auth
+      description: logs in
+      operationId: Login
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: the identity credential
+        required: true
+        schema:
+          $ref: '#/definitions/AuthLoginReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/TokenResp'
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+        500:
+          description: InternalServerError
+  /auth/tokens:logout:
+    post:
+      tags:
+      - auth
+      description: logs out
+      operationId: Logout
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AuthLoginReq_Auth:
+    type: object
+    properties:
+      encrypted_password:
+        type: string
+        description: encrypted password for auth
+      name:
+        type: string
+        description: user name or email for auth
+      password:
+        type: string
+        description: password for auth
+      platform:
+        type: string
+        description: uuid of the identity platform
+      rsa_key_id:
+        type: string
+        description: rsa key id
+      sign:
+        type: string
+        description: signature of login request
+      timestamp:
+        type: string
+        description: timestamp of platform token
+      token:
+        type: string
+        description: token of the identity platform
+    title: AuthLoginReq_Auth
+    example:
+      password: password
+      name: name
+      rsa_key_id: rsa_key_id
+      sign: sign
+      platform: platform
+      encrypted_password: encrypted_password
+      timestamp: timestamp
+      token: token
+  User:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: time of creating user
+      email:
+        type: string
+        description: email of user
+      enabled:
+        type: boolean
+        description: enable the user or not
+      external_id:
+        type: string
+        description: external id of user
+      id:
+        type: integer
+        format: int64
+        description: id of user
+      identity_platform:
+        description: identity platform of user
+        $ref: '#/definitions/IdentityPlatform_Nestview'
+      name:
+        type: string
+        description: name of user
+      password_last_update:
+        type: string
+        format: date-time
+        description: time of last password update
+      roles:
+        type: array
+        description: roles of user
+        items:
+          type: string
+    title: User
+  AuthPasswordReq:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        $ref: '#/definitions/AuthPasswordReq_User'
+    title: AuthPasswordReq
+    example:
+      user:
+        password: password
+        name: name
+        id: 0
+        email: email
+  AuthSecurityPolicyResp:
+    type: object
+    properties:
+      auth_security_policy:
+        $ref: '#/definitions/AuthSecurityPolicy'
+    title: AuthSecurityPolicyResp
+    example:
+      auth_security_policy:
+        freeze_duration: 0
+        max_attempts: 6
+        password_expiration_warning: true
+        password_lifetime: 1
+        enabled: true
+  IdentityPlatform_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of identity platform
+      name:
+        type: string
+        description: name of identity platform
+    title: IdentityPlatform_Nestview
+    example:
+      name: name
+      id: 6
+  Token:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      expires:
+        type: string
+        format: date-time
+      user:
+        $ref: '#/definitions/User'
+      uuid:
+        type: string
+      valid:
+        type: boolean
+    title: Token
+    description: 'An access token contains the security information for a logon session. The
+
+      system creates an access token when a user logs on, and every process executed
+
+      on behalf of the user has a copy of the token. The token identifies the user,
+
+      the user''s groups, and the user''s privileges. The system uses the token to
+
+      control access to securable objects and to control the ability of the user to
+
+      perform various system-related operations on the local computer.'
+  AuthTokenReq:
+    type: object
+    required:
+    - uuid
+    properties:
+      uuid:
+        type: string
+        description: uuid of authorized token
+    title: AuthTokenReq
+    example:
+      uuid: uuid
+  AuthRSAKeyResp:
+    type: object
+    properties:
+      rsa_key:
+        $ref: '#/definitions/AuthRSAKey'
+    title: AuthRSAKeyResp
+    example:
+      rsa_key:
+        public_key: public_key
+        expiration: '2000-01-23T04:56:07.000+00:00'
+        id: id
+  TokenCreateReq:
+    type: object
+    required:
+    - auth
+    properties:
+      auth:
+        $ref: '#/definitions/TokenCreateReq_Auth'
+    title: TokenCreateReq
+    example:
+      auth:
+        identity:
+          password:
+            user:
+              password: password
+              name: name
+              id: 0
+              email: email
+          token:
+            uuid: uuid
+  AuthLoginReq:
+    type: object
+    required:
+    - auth
+    properties:
+      auth:
+        $ref: '#/definitions/AuthLoginReq_Auth'
+    title: AuthLoginReq
+    example:
+      auth:
+        password: password
+        name: name
+        rsa_key_id: rsa_key_id
+        sign: sign
+        platform: platform
+        encrypted_password: encrypted_password
+        timestamp: timestamp
+        token: token
+  TokenRecord:
+    title: TokenRecord
+    allOf:
+    - $ref: '#/definitions/Token'
+    - properties:
+        roles:
+          type: array
+          items:
+            type: string
+    description: TokenRecord defines token record for api response
+  AuthRSAKey:
+    type: object
+    properties:
+      expiration:
+        type: string
+        format: date-time
+      id:
+        type: string
+      public_key:
+        type: string
+    title: AuthRSAKey
+    example:
+      public_key: public_key
+      expiration: '2000-01-23T04:56:07.000+00:00'
+      id: id
+  AuthPasswordReq_User:
+    type: object
+    required:
+    - password
+    properties:
+      email:
+        type: string
+        description: user email for auth
+      id:
+        type: integer
+        format: int64
+        description: user id for auth
+      name:
+        type: string
+        description: user name or email for auth
+      password:
+        type: string
+        description: password for auth
+    title: AuthPasswordReq_User
+    example:
+      password: password
+      name: name
+      id: 0
+      email: email
+  AuthSecurityPolicy:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      freeze_duration:
+        type: integer
+        format: int64
+        description: 'unit: second'
+      max_attempts:
+        type: integer
+        format: int64
+      password_expiration_warning:
+        type: boolean
+      password_lifetime:
+        type: integer
+        format: int64
+        description: 'unit: second'
+    title: AuthSecurityPolicy
+    description: AuthSecurityPolicy defines auth security policy
+    example:
+      freeze_duration: 0
+      max_attempts: 6
+      password_expiration_warning: true
+      password_lifetime: 1
+      enabled: true
+  AuthSecurityPolicyUpdateReq:
+    type: object
+    properties:
+      auth_security_policy:
+        $ref: '#/definitions/AuthSecurityPolicyUpdateReq_AuthSecurityPolicy'
+    title: AuthSecurityPolicyUpdateReq
+    example:
+      auth_security_policy:
+        freeze_duration: 0
+        max_attempts: 6
+        password_expiration_warning: true
+        password_lifetime: 1
+        enabled: true
+  TokenCreateReq_Auth:
+    type: object
+    required:
+    - identity
+    properties:
+      identity:
+        $ref: '#/definitions/TokenCreateReq_Auth_Identity'
+    title: TokenCreateReq_Auth
+    example:
+      identity:
+        password:
+          user:
+            password: password
+            name: name
+            id: 0
+            email: email
+        token:
+          uuid: uuid
+  TokenCreateReq_Auth_Identity:
+    type: object
+    properties:
+      password:
+        description: password for auth
+        $ref: '#/definitions/AuthPasswordReq'
+      token:
+        description: token for auth
+        $ref: '#/definitions/AuthTokenReq'
+    title: TokenCreateReq_Auth_Identity
+    example:
+      password:
+        user:
+          password: password
+          name: name
+          id: 0
+          email: email
+      token:
+        uuid: uuid
+  AuthSecurityPolicyUpdateReq_AuthSecurityPolicy:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      freeze_duration:
+        type: integer
+        format: int64
+      max_attempts:
+        type: integer
+        format: int64
+      password_expiration_warning:
+        type: boolean
+      password_lifetime:
+        type: integer
+        format: int64
+    title: AuthSecurityPolicyUpdateReq_AuthSecurityPolicy
+    example:
+      freeze_duration: 0
+      max_attempts: 6
+      password_expiration_warning: true
+      password_lifetime: 1
+      enabled: true
+  TokenResp:
+    type: object
+    required:
+    - token
+    properties:
+      token:
+        description: token
+        $ref: '#/definitions/TokenRecord'
+    title: TokenResp
+    example:
+      token: ''
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

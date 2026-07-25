@@ -1,0 +1,1028 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-folders API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-folders
+  description: 'FSFolderController provides API for file storage folder
+
+    '
+paths:
+  /fs-folders/:
+    get:
+      tags:
+      - fs-folders
+      description: List file storage folders
+      operationId: ListFolders
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_user_id
+        in: query
+        description: file storage user id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsUserId
+      - name: fs_user_group_id
+        in: query
+        description: file storage user group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      - name: fs_gateway_group_id
+        in: query
+        description: file storage gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: fs_snapshot_id
+        in: query
+        description: file storage snapshot id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsSnapshotId
+      - name: fs_client_id
+        in: query
+        description: file storage client id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsClientId
+      - name: fs_client_group_id
+        in: query
+        description: file storage client group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      - name: pool_id
+        in: query
+        description: pool id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: PoolId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFoldersResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-folders
+      description: Create file storage folder
+      operationId: CreateFolder
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: folder info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}:
+    get:
+      tags:
+      - fs-folders
+      description: Get file storage folder
+      operationId: GetFolder
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-folders
+      description: delete file storage folder
+      operationId: DeleteFolder
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: force
+        in: query
+        description: force delete
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - name: fs_folder_id
+        in: path
+        description: folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-folders
+      description: Update file storage folder
+      operationId: UpdateFolder
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - in: body
+        name: body
+        description: folder info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}/fs-quota-trees:
+    put:
+      tags:
+      - fs-folders
+      description: add file storage quota trees
+      operationId: AddFSQuotaTrees
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: fs folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - in: body
+        name: body
+        description: quota trees info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderAddQuotaTreesReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-folders
+      description: delete fs quota trees from fs folder
+      operationId: RemoveFSQuotaTrees
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: fs folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - in: body
+        name: body
+        description: quota trees info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderRemoveQuotaTreesReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}/samples:
+    get:
+      tags:
+      - fs-folders
+      description: get a file storage folder's samples
+      operationId: GetFSFolderSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: file storage folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFolderSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}:roll-back:
+    post:
+      tags:
+      - fs-folders
+      description: roll back file storage folder
+      operationId: RollBackFolder
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: folder id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - in: body
+        name: body
+        description: folder info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderRollBackReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}:set-snapshot-protection:
+    post:
+      tags:
+      - fs-folders
+      description: Set snapshot protection for a fs folder
+      operationId: SetFSSnapshotProtection
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: fs folder id in db
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - in: body
+        name: body
+        description: request info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFolderSnapshotProtectionReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-folders/{fs_folder_id}:unset-snapshot-protection:
+    post:
+      tags:
+      - fs-folders
+      description: Unset snapshot protection for a fs folder
+      operationId: UnsetFSSnapshotProtection
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_folder_id
+        in: path
+        description: fs_folder id in db
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: force
+        in: query
+        description: force unset or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFolderResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSFolderUpdateReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderUpdateReq_Folder'
+    title: FSFolderUpdateReq
+  FSFolderCreateReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderCreateReq_Folder'
+    title: FSFolderCreateReq
+  FSFolderAddQuotaTreesReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderAddQuotaTreesReq_Folder'
+    title: FSFolderAddQuotaTreesReq
+  FSFolder:
+    type: object
+    properties:
+      access_path:
+        $ref: '#/definitions/AccessPath_Nestview'
+      action_status:
+        type: string
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      block_volume_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      dp_fs_snapshot_policy:
+        $ref: '#/definitions/DpFSSnapshotPolicy_Nestview'
+      flattened:
+        type: boolean
+      formatted:
+        type: boolean
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroup'
+      fs_quota_tree_num:
+        type: integer
+        format: int64
+      fs_snapshot:
+        $ref: '#/definitions/FSSnapshot_Nestview'
+      fs_snapshot_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      latest_snapshot_time:
+        type: string
+        format: date-time
+      name:
+        type: string
+      pool:
+        $ref: '#/definitions/Pool_Nestview'
+      progress:
+        type: number
+        format: double
+      qos:
+        $ref: '#/definitions/VolumeQosSpec'
+      qos_enabled:
+        type: boolean
+      quota_tree_share_types:
+        type: array
+        items:
+          type: string
+      quota_tree_shared:
+        type: boolean
+      share_types:
+        type: array
+        items:
+          type: string
+      shared:
+        type: boolean
+        description: 'before version 3.2.14, these fields was calculated by wizard, but there is quota
+
+          trees in new verion, calculations is too complicated, so add the fields to
+
+          folder struct'
+      size:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSFolder
+    description: FSFolder defines model of file storage folder
+  FSFolderRollBackReq_Folder:
+    type: object
+    properties:
+      fs_snapshot_id:
+        type: integer
+        format: int64
+        description: file storage snapshot id
+    title: FSFolderRollBackReq_Folder
+  FSFolderStat:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_latency_us:
+        type: number
+        format: double
+      total_bandwidth_kbyte:
+        type: number
+        format: double
+      total_iops:
+        type: number
+        format: double
+      used_kbyte:
+        type: number
+        format: double
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_latency_us:
+        type: number
+        format: double
+    title: FSFolderStat
+    description: FSFolderStat records file storage folder stat info
+    example:
+      used_kbyte: 2.3021358869347655
+      read_bandwidth_kbyte: 0.8008281904610115
+      write_bandwidth_kbyte: 7.061401241503109
+      create: '2000-01-23T04:56:07.000+00:00'
+      total_bandwidth_kbyte: 5.962133916683182
+      write_iops: 9.301444243932576
+      write_latency_us: 3.616076749251911
+      total_iops: 5.637376656633329
+      read_latency_us: 1.4658129805029452
+      read_iops: 6.027456183070403
+  FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: name of quota tree
+      size:
+        type: integer
+        format: int64
+        description: size of quota tree
+      soft_quota_size:
+        type: integer
+        format: int64
+        description: soft quota size of quota tree
+    title: FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt
+  FSFolderUpdateReq_Folder:
+    type: object
+    properties:
+      description:
+        type: string
+        description: description of folder
+      name:
+        type: string
+        description: name of folder
+      qos:
+        description: qos of volume
+        $ref: '#/definitions/VolumeQosSpec'
+      qos_enabled:
+        type: boolean
+        description: enable or disable the qos
+      size:
+        type: integer
+        format: int64
+        description: size of folder
+    title: FSFolderUpdateReq_Folder
+  AccessPath_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: AccessPath_Nestview
+    example:
+      name: name
+      id: 0
+  FSFolderSamplesResp:
+    type: object
+    properties:
+      fs_folder_samples:
+        type: array
+        items:
+          $ref: '#/definitions/FSFolderStat'
+    title: FSFolderSamplesResp
+    example:
+      fs_folder_samples:
+      - used_kbyte: 2.3021358869347655
+        read_bandwidth_kbyte: 0.8008281904610115
+        write_bandwidth_kbyte: 7.061401241503109
+        create: '2000-01-23T04:56:07.000+00:00'
+        total_bandwidth_kbyte: 5.962133916683182
+        write_iops: 9.301444243932576
+        write_latency_us: 3.616076749251911
+        total_iops: 5.637376656633329
+        read_latency_us: 1.4658129805029452
+        read_iops: 6.027456183070403
+      - used_kbyte: 2.3021358869347655
+        read_bandwidth_kbyte: 0.8008281904610115
+        write_bandwidth_kbyte: 7.061401241503109
+        create: '2000-01-23T04:56:07.000+00:00'
+        total_bandwidth_kbyte: 5.962133916683182
+        write_iops: 9.301444243932576
+        write_latency_us: 3.616076749251911
+        total_iops: 5.637376656633329
+        read_latency_us: 1.4658129805029452
+        read_iops: 6.027456183070403
+  FSFolderRemoveQuotaTreesReq_Folder:
+    type: object
+    properties:
+      fs_quota_tree_ids:
+        type: array
+        description: id array of quota trees
+        items:
+          type: integer
+          format: int64
+    title: FSFolderRemoveQuotaTreesReq_Folder
+  FSSnapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSSnapshot_Nestview
+    example:
+      name: name
+      id: 1
+  FSFolderCreateReq_Folder:
+    type: object
+    required:
+    - name
+    properties:
+      description:
+        type: string
+        description: description of folder
+      flattened:
+        type: boolean
+        description: flatten or not flatten
+      fs_snapshot_id:
+        type: integer
+        format: int64
+        description: file storage snapshot id
+      name:
+        type: string
+        description: name of folder
+      pool_id:
+        type: integer
+        format: int64
+        description: id of pool
+      qos:
+        description: qos of volume
+        $ref: '#/definitions/VolumeQosSpec'
+      qos_enabled:
+        type: boolean
+        description: enable or disable the qos
+      size:
+        type: integer
+        format: int64
+        description: size of folder
+    title: FSFolderCreateReq_Folder
+  FSFolderRemoveQuotaTreesReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderRemoveQuotaTreesReq_Folder'
+    title: FSFolderRemoveQuotaTreesReq
+  FSGatewayGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      encoding:
+        type: string
+      folder_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      nfs_versions:
+        type: array
+        description: NFS attributes
+        items:
+          type: string
+      port:
+        type: integer
+        format: int64
+        description: FTP attributes
+      security:
+        type: string
+        description: SMB attributes
+      smb1_enabled:
+        type: boolean
+      smb_ports:
+        type: array
+        items:
+          type: integer
+          format: int64
+      status:
+        type: string
+      types:
+        type: array
+        items:
+          type: string
+      update:
+        type: string
+        format: date-time
+      user_group_num:
+        type: integer
+        format: int64
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup
+    description: FSGatewayGroup defines model of file storage gateway group @grpc-models-proto
+    example:
+      smb_ports:
+      - 5
+      - 5
+      types:
+      - types
+      - types
+      smb1_enabled: true
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      vip_mask: 2
+      encoding: encoding
+      security: security
+      port: 1
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      nfs_versions:
+      - nfs_versions
+      - nfs_versions
+      user_group_num: 5
+      id: 6
+      vip: vip
+      action_status: action_status
+      folder_num: 0
+      status: status
+  FSFolderAddQuotaTreesReq_Folder:
+    type: object
+    required:
+    - fs_quota_trees
+    properties:
+      fs_quota_trees:
+        type: array
+        items:
+          $ref: '#/definitions/FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt'
+    title: FSFolderAddQuotaTreesReq_Folder
+  FSFolderSnapshotProtectionReq_Folder:
+    type: object
+    required:
+    - dp_fs_snapshot_policy_id
+    properties:
+      dp_fs_snapshot_policy_id:
+        type: integer
+        format: int64
+        description: id of dp fs snapshot policy
+    title: FSFolderSnapshotProtectionReq_Folder
+  FSFolderRollBackReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderRollBackReq_Folder'
+    title: FSFolderRollBackReq
+  FSFolderSnapshotProtectionReq:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        $ref: '#/definitions/FSFolderSnapshotProtectionReq_Folder'
+    title: FSFolderSnapshotProtectionReq
+  VolumeQosSpec:
+    type: object
+    properties:
+      burst_total_bw:
+        type: integer
+        format: int64
+      burst_total_iops:
+        type: integer
+        format: int64
+      max_total_bw:
+        type: integer
+        format: int64
+      max_total_iops:
+        type: integer
+        format: int64
+    title: VolumeQosSpec
+    description: VolumeQosSpec is a collection of all qos field
+    example:
+      burst_total_iops: 2
+      max_total_iops: 9
+      burst_total_bw: 5
+      max_total_bw: 7
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  FSFoldersResp:
+    type: object
+    required:
+    - fs_folders
+    properties:
+      fs_folders:
+        type: array
+        description: file storage folder records
+        items:
+          $ref: '#/definitions/FSFolderRecord'
+    title: FSFoldersResp
+    example:
+      fs_folders:
+      - ''
+      - ''
+  FSFolderResp:
+    type: object
+    required:
+    - fs_folder
+    properties:
+      fs_folder:
+        description: file storage folder records
+        $ref: '#/definitions/FSFolderRecord'
+    title: FSFolderResp
+    example:
+      fs_folder: ''
+  FSFolderRecord:
+    title: FSFolderRecord
+    allOf:
+    - $ref: '#/definitions/FSFolder'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/FSFolderStat'
+    description: FSFolderRecord combine FSFolder and FSFolderStat as API response
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+  DpFSSnapshotPolicy_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpFSSnapshotPolicy_Nestview
+    example:
+      name: name
+      id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,566 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths users API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: users
+  description: 'UserController Manage users
+
+    '
+paths:
+  /users/:
+    get:
+      tags:
+      - users
+      description: List users
+      operationId: ListUsers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: name
+        in: query
+        description: user name
+        required: false
+        type: string
+        x-exportParamName: Name
+      - name: email
+        in: query
+        description: user email
+        required: false
+        type: string
+        x-exportParamName: Email
+      - name: all
+        in: query
+        description: show all users
+        required: false
+        type: boolean
+        x-exportParamName: All
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/UsersResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - users
+      description: create user
+      operationId: CreateUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: user info
+        required: true
+        schema:
+          $ref: '#/definitions/UserCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/UserResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /users/{user_id}:
+    get:
+      tags:
+      - users
+      description: get a user
+      operationId: GetUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/UserResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - users
+      description: delete user
+      operationId: DeleteUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - users
+      description: update user info
+      operationId: UpdateUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - in: body
+        name: body
+        description: user info
+        required: true
+        schema:
+          $ref: '#/definitions/UserUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/UserResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /users/{user_id}/password:
+    put:
+      tags:
+      - users
+      description: change user password
+      operationId: ChangePassword
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - in: body
+        name: body
+        description: update info
+        required: true
+        schema:
+          $ref: '#/definitions/ChangePasswordReq'
+        x-exportParamName: Body
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /users/{user_id}/settings:
+    get:
+      tags:
+      - users
+      description: update user info
+      operationId: GetUserSettings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSettings'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - users
+      description: update user info
+      operationId: UpdateUserSettings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - in: body
+        name: body
+        description: user settings
+        required: true
+        schema:
+          $ref: '#/definitions/UserSettings'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/UserSettings'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  UserCreateReq_User:
+    type: object
+    required:
+    - email
+    - enabled
+    - name
+    - password
+    properties:
+      email:
+        type: string
+        description: email of user
+      enabled:
+        type: boolean
+        description: enable or disable the user
+      name:
+        type: string
+        description: name of user
+      password:
+        type: string
+        description: password of user
+      roles:
+        type: array
+        description: roles of user
+        items:
+          type: string
+    title: UserCreateReq_User
+    example:
+      password: password
+      roles:
+      - roles
+      - roles
+      name: name
+      email: email
+      enabled: true
+  UserSettings:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        $ref: '#/definitions/UserSettings_User'
+    title: UserSettings
+    example:
+      user:
+        settings:
+          dashboard: dashboard
+  ChangePasswordReq_Req:
+    type: object
+    required:
+    - original_password
+    - password
+    properties:
+      encrypted_original_password:
+        type: string
+        description: encrypted original password for auth
+      encrypted_password:
+        type: string
+        description: encrypted password for auth
+      original_password:
+        type: string
+        description: original password of user
+      password:
+        type: string
+        description: new password of user
+      rsa_key_id:
+        type: string
+        description: rsa key id
+    title: ChangePasswordReq_Req
+    example:
+      original_password: original_password
+      password: password
+      rsa_key_id: rsa_key_id
+      encrypted_original_password: encrypted_original_password
+      encrypted_password: encrypted_password
+  UserSettings_User_Settings:
+    type: object
+    properties:
+      dashboard:
+        type: string
+        description: dashboard setting
+    title: UserSettings_User_Settings
+    example:
+      dashboard: dashboard
+  User:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: time of creating user
+      email:
+        type: string
+        description: email of user
+      enabled:
+        type: boolean
+        description: enable the user or not
+      external_id:
+        type: string
+        description: external id of user
+      id:
+        type: integer
+        format: int64
+        description: id of user
+      identity_platform:
+        description: identity platform of user
+        $ref: '#/definitions/IdentityPlatform_Nestview'
+      name:
+        type: string
+        description: name of user
+      password_last_update:
+        type: string
+        format: date-time
+        description: time of last password update
+      roles:
+        type: array
+        description: roles of user
+        items:
+          type: string
+    title: User
+  UserResp:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        description: user
+        $ref: '#/definitions/UserRecord'
+    title: UserResp
+    example:
+      user: ''
+  UserUpdateReq:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        $ref: '#/definitions/UserUpdateReq_User'
+    title: UserUpdateReq
+    example:
+      user:
+        roles:
+        - roles
+        - roles
+        name: name
+        email: email
+        enabled: true
+  UserSettings_User:
+    type: object
+    required:
+    - settings
+    properties:
+      settings:
+        $ref: '#/definitions/UserSettings_User_Settings'
+    title: UserSettings_User
+    example:
+      settings:
+        dashboard: dashboard
+  UsersResp:
+    type: object
+    required:
+    - users
+    properties:
+      users:
+        type: array
+        description: users
+        items:
+          $ref: '#/definitions/UserRecord'
+    title: UsersResp
+    example:
+      users:
+      - ''
+      - ''
+  UserUpdateReq_User:
+    type: object
+    required:
+    - email
+    - enabled
+    - name
+    properties:
+      email:
+        type: string
+        description: email of user
+      enabled:
+        type: boolean
+        description: enable or disable the user
+      name:
+        type: string
+        description: name of user
+      roles:
+        type: array
+        description: roles of user
+        items:
+          type: string
+    title: UserUpdateReq_User
+    example:
+      roles:
+      - roles
+      - roles
+      name: name
+      email: email
+      enabled: true
+  IdentityPlatform_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of identity platform
+      name:
+        type: string
+        description: name of identity platform
+    title: IdentityPlatform_Nestview
+    example:
+      name: name
+      id: 6
+  UserCreateReq:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        $ref: '#/definitions/UserCreateReq_User'
+    title: UserCreateReq
+    example:
+      user:
+        password: password
+        roles:
+        - roles
+        - roles
+        name: name
+        email: email
+        enabled: true
+  UserRecord:
+    title: UserRecord
+    allOf:
+    - $ref: '#/definitions/User'
+    description: UserRecord defines user record for api response
+  ChangePasswordReq:
+    type: object
+    required:
+    - user
+    properties:
+      user:
+        description: user
+        $ref: '#/definitions/ChangePasswordReq_Req'
+    title: ChangePasswordReq
+    example:
+      user:
+        original_password: original_password
+        password: password
+        rsa_key_id: rsa_key_id
+        encrypted_original_password: encrypted_original_password
+        encrypted_password: encrypted_password
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,512 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: access-paths
+  description: 'AccessPathController Operations able access paths
+
+    '
+paths:
+  /access-paths/:
+    get:
+      tags:
+      - access-paths
+      description: List access paths
+      operationId: ListAccessPaths
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: client_group_id
+        in: query
+        description: related client group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ClientGroupId
+      - name: all
+        in: query
+        description: show all access targets
+        required: false
+        type: boolean
+        x-exportParamName: All
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessPathsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - access-paths
+      description: Create an access path
+      operationId: CreateAccessPath
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: access_path
+        description: access path info
+        required: true
+        schema:
+          $ref: '#/definitions/AccessPathCreateReq'
+        x-exportParamName: AccessPath
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /access-paths/{access_path_id}:
+    get:
+      tags:
+      - access-paths
+      description: Get access path by id
+      operationId: GetAccessPath
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_path_id
+        in: path
+        description: access path id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessPathId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - access-paths
+      description: Delete access path
+      operationId: DeleteAccessPath
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_path_id
+        in: path
+        description: access path id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessPathId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - access-paths
+      description: update access path
+      operationId: UpdateAccessPath
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_path_id
+        in: path
+        description: access path id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessPathId
+      - in: body
+        name: access_path
+        description: access path info
+        required: true
+        schema:
+          $ref: '#/definitions/AccessPathUpdateReq'
+        x-exportParamName: AccessPath
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/AccessPathResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AccessPathCreateReq_AccessPath:
+    type: object
+    properties:
+      chap:
+        type: boolean
+      description:
+        type: string
+      host_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      mapping_groups:
+        type: array
+        items:
+          $ref: '#/definitions/MappingGroupReq'
+      name:
+        type: string
+      protection_domain_id:
+        type: integer
+        format: int64
+      tname:
+        type: string
+      tsecret:
+        type: string
+      type:
+        type: string
+    title: AccessPathCreateReq_AccessPath
+    example:
+      name: name
+      description: description
+      tname: tname
+      chap: true
+      tsecret: tsecret
+      host_ids:
+      - 0
+      - 0
+      type: type
+      mapping_groups:
+      - client_group_id: 5
+        block_volume_ids:
+        - 1
+        - 1
+        access_path_id: 6
+      - client_group_id: 5
+        block_volume_ids:
+        - 1
+        - 1
+        access_path_id: 6
+      protection_domain_id: 5
+  MappingGroupReq:
+    type: object
+    properties:
+      access_path_id:
+        type: integer
+        format: int64
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      client_group_id:
+        type: integer
+        format: int64
+    title: MappingGroupReq
+    example:
+      client_group_id: 5
+      block_volume_ids:
+      - 1
+      - 1
+      access_path_id: 6
+  AccessPath:
+    type: object
+    properties:
+      action_status:
+        type: string
+      block_volume_num:
+        type: integer
+        format: int64
+      chap:
+        type: boolean
+      client_group_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      hidden:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      iqn:
+        type: string
+      name:
+        type: string
+      protection_domain:
+        $ref: '#/definitions/ProtectionDomain_Nestview'
+      status:
+        type: string
+      tname:
+        type: string
+      tsecret:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      vip_group_num:
+        type: integer
+        format: int64
+    title: AccessPath
+    description: AccessPath defines access path
+    example:
+      hidden: true
+      block_volume_num: 0
+      iqn: iqn
+      client_group_num: 6
+      description: description
+      tname: tname
+      update: '2000-01-23T04:56:07.000+00:00'
+      tsecret: tsecret
+      type: type
+      protection_domain:
+        name: name
+        id: 5
+      vip_group_num: 5
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      chap: true
+      id: 1
+      action_status: action_status
+      status: status
+  AccessPathsResp:
+    type: object
+    required:
+    - access_paths
+    properties:
+      access_paths:
+        type: array
+        items:
+          $ref: '#/definitions/AccessPath'
+    title: AccessPathsResp
+    example:
+      access_paths:
+      - hidden: true
+        block_volume_num: 0
+        iqn: iqn
+        client_group_num: 6
+        description: description
+        tname: tname
+        update: '2000-01-23T04:56:07.000+00:00'
+        tsecret: tsecret
+        type: type
+        protection_domain:
+          name: name
+          id: 5
+        vip_group_num: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 1
+        action_status: action_status
+        status: status
+      - hidden: true
+        block_volume_num: 0
+        iqn: iqn
+        client_group_num: 6
+        description: description
+        tname: tname
+        update: '2000-01-23T04:56:07.000+00:00'
+        tsecret: tsecret
+        type: type
+        protection_domain:
+          name: name
+          id: 5
+        vip_group_num: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 1
+        action_status: action_status
+        status: status
+  AccessPathCreateReq:
+    type: object
+    properties:
+      access_path:
+        $ref: '#/definitions/AccessPathCreateReq_AccessPath'
+    title: AccessPathCreateReq
+    example:
+      access_path:
+        name: name
+        description: description
+        tname: tname
+        chap: true
+        tsecret: tsecret
+        host_ids:
+        - 0
+        - 0
+        type: type
+        mapping_groups:
+        - client_group_id: 5
+          block_volume_ids:
+          - 1
+          - 1
+          access_path_id: 6
+        - client_group_id: 5
+          block_volume_ids:
+          - 1
+          - 1
+          access_path_id: 6
+        protection_domain_id: 5
+  AccessPathUpdateReq:
+    type: object
+    required:
+    - access_path
+    properties:
+      access_path:
+        $ref: '#/definitions/AccessPathUpdateReq_AccessPath'
+    title: AccessPathUpdateReq
+    example:
+      access_path:
+        name: name
+        description: description
+        tname: tname
+        chap: true
+        tsecret: tsecret
+  AccessPathUpdateReq_AccessPath:
+    type: object
+    properties:
+      chap:
+        type: boolean
+      description:
+        type: string
+      name:
+        type: string
+      tname:
+        type: string
+      tsecret:
+        type: string
+    title: AccessPathUpdateReq_AccessPath
+    example:
+      name: name
+      description: description
+      tname: tname
+      chap: true
+      tsecret: tsecret
+  AccessPathResp:
+    type: object
+    required:
+    - access_path
+    properties:
+      access_path:
+        $ref: '#/definitions/AccessPath'
+    title: AccessPathResp
+    example:
+      access_path:
+        hidden: true
+        block_volume_num: 0
+        iqn: iqn
+        client_group_num: 6
+        description: description
+        tname: tname
+        update: '2000-01-23T04:56:07.000+00:00'
+        tsecret: tsecret
+        type: type
+        protection_domain:
+          name: name
+          id: 5
+        vip_group_num: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 1
+        action_status: action_status
+        status: status
+  ProtectionDomain_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of protection domain
+      name:
+        type: string
+        description: name of protection domain
+    title: ProtectionDomain_Nestview
+    example:
+      name: name
+      id: 5
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,620 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-nfs-shares API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-nfs-shares
+  description: 'FSNFSShareController provides API for fs nfs shares
+
+    '
+paths:
+  /fs-nfs-shares/:
+    get:
+      tags:
+      - fs-nfs-shares
+      description: List fs nfs sharess
+      operationId: ListFSNFSShares
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: fs_folder_id
+        in: query
+        description: fs nfs id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: fs_gateway_group_id
+        in: query
+        description: file storage gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSNFSSharesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-nfs-shares
+      description: Create fs nfs shares
+      operationId: CreateFSNFSShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: share info
+        required: true
+        schema:
+          $ref: '#/definitions/FSNFSShareCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-nfs-shares/{fs_nfs_share_id}:
+    get:
+      tags:
+      - fs-nfs-shares
+      description: Get fs nfs shares
+      operationId: GetFSNFSShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_nfs_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-nfs-shares
+      description: delete fs nfs shares
+      operationId: DeleteFSNFSShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_nfs_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /fs-nfs-shares/{fs_nfs_share_id}:add-acls:
+    post:
+      tags:
+      - fs-nfs-shares
+      description: Add fs nfs shares acls
+      operationId: AddFSNFSShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_nfs_share_id
+        in: path
+        description: fs nfs shares id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSNFSShareAddACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-nfs-shares/{fs_nfs_share_id}:remove-acls:
+    post:
+      tags:
+      - fs-nfs-shares
+      description: remove fs nfs shares acls
+      operationId: RemoveFSNFSShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_nfs_share_id
+        in: path
+        description: fs nfs shares id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSNFSShareRemoveACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /fs-nfs-shares/{fs_nfs_share_id}:update-acls:
+    post:
+      tags:
+      - fs-nfs-shares
+      description: Update fs nfs share acls
+      operationId: UpdateFSNFSShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_nfs_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      - in: body
+        name: body
+        description: share info
+        required: true
+        schema:
+          $ref: '#/definitions/FSNFSShareUpdateACLsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSNFSShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSGatewayGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup_Nestview
+    example:
+      name: name
+      id: 6
+      vip_mask: 1
+      vip: vip
+  FSNFSShareResp:
+    type: object
+    required:
+    - fs_nfs_share
+    properties:
+      fs_nfs_share:
+        description: folder share
+        $ref: '#/definitions/FSNFSShare'
+    title: FSNFSShareResp
+    example:
+      fs_nfs_share:
+        mapping_num: 1
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+  FSNFSSharesResp:
+    type: object
+    required:
+    - fs_nfs_shares
+    properties:
+      fs_nfs_shares:
+        type: array
+        description: share
+        items:
+          $ref: '#/definitions/FSNFSShare'
+    title: FSNFSSharesResp
+    example:
+      fs_nfs_shares:
+      - mapping_num: 1
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+      - mapping_num: 1
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+  FSNFSShareUpdateACLsReq:
+    type: object
+    required:
+    - fs_nfs_share
+    properties:
+      fs_nfs_share:
+        $ref: '#/definitions/FSNFSShareUpdateACLsReq_Share'
+    title: FSNFSShareUpdateACLsReq
+  FSNFSShareAddACLsReq:
+    type: object
+    required:
+    - fs_nfs_share
+    properties:
+      fs_nfs_share:
+        $ref: '#/definitions/FSNFSShareAddACLsReq_Share'
+    title: FSNFSShareAddACLsReq
+  FSNFSShareCreateReq:
+    type: object
+    required:
+    - fs_nfs_share
+    properties:
+      fs_nfs_share:
+        $ref: '#/definitions/FSNFSShareCreateReq_Share'
+    title: FSNFSShareCreateReq
+  FSNFSShareRemoveACLsReq:
+    type: object
+    required:
+    - fs_nfs_share
+    properties:
+      fs_nfs_share:
+        $ref: '#/definitions/FSNFSShareRemoveACLsReq_Share'
+    title: FSNFSShareRemoveACLsReq
+  FSNFSShareRemoveACLsReq_Share:
+    type: object
+    required:
+    - fs_nfs_share_acl_ids
+    properties:
+      fs_nfs_share_acl_ids:
+        type: array
+        description: access control array
+        items:
+          type: integer
+          format: int64
+    title: FSNFSShareRemoveACLsReq_Share
+  FSNFSShareCreateReq_Share:
+    type: object
+    required:
+    - fs_folder_id
+    - fs_gateway_group_id
+    properties:
+      fs_folder_id:
+        type: integer
+        format: int64
+        description: folder id
+      fs_gateway_group_id:
+        type: integer
+        format: int64
+        description: gateway group id
+      fs_nfs_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSNFSShareACLReq'
+      fs_quota_tree_id:
+        type: integer
+        format: int64
+        description: quota tree id
+    title: FSNFSShareCreateReq_Share
+  FSNFSShareUpdateACLReq:
+    type: object
+    properties:
+      all_squash:
+        type: boolean
+        description: all squash
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      permission:
+        type: string
+        description: readonly or readwrite access
+      root_squash:
+        type: boolean
+        description: root squash
+      sync:
+        type: boolean
+        description: write to disk by sync or async
+    title: FSNFSShareUpdateACLReq
+  FSNFSShareUpdateACLsReq_Share:
+    type: object
+    properties:
+      fs_nfs_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSNFSShareUpdateACLReq'
+    title: FSNFSShareUpdateACLsReq_Share
+  FSNFSShareACLReq:
+    type: object
+    properties:
+      all_squash:
+        type: boolean
+        description: all squash
+      fs_client_group_id:
+        type: integer
+        format: int64
+        description: id of cilent group
+      fs_client_id:
+        type: integer
+        format: int64
+        description: id of cilent
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      permission:
+        type: string
+        description: readonly or readwrite access
+      root_squash:
+        type: boolean
+        description: root squash
+      sync:
+        type: boolean
+        description: write to disk by sync or async
+      type:
+        type: string
+        description: type of share acl
+    title: FSNFSShareACLReq
+  FSNFSShare:
+    type: object
+    properties:
+      acl_num:
+        type: integer
+        format: int64
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroup_Nestview'
+      fs_quota_tree:
+        $ref: '#/definitions/FSQuotaTree_Nestview'
+      id:
+        type: integer
+        format: int64
+      mapping_num:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSNFSShare
+    description: FSNFSShare defines model of fs nfs share
+    example:
+      mapping_num: 1
+      fs_folder:
+        name: name
+        id: 6
+      create: '2000-01-23T04:56:07.000+00:00'
+      fs_quota_tree:
+        name: name
+        id: 5
+      update: '2000-01-23T04:56:07.000+00:00'
+      acl_num: 0
+      id: 6
+      fs_gateway_group:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+      action_status: action_status
+      status: status
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  FSNFSShareAddACLsReq_Share:
+    type: object
+    required:
+    - fs_nfs_share_acls
+    properties:
+      fs_nfs_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSNFSShareACLReq'
+    title: FSNFSShareAddACLsReq_Share
+  FSQuotaTree_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSQuotaTree_Nestview
+    example:
+      name: name
+      id: 5
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

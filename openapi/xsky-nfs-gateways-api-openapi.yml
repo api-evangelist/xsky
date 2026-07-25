@@ -1,0 +1,940 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths nfs-gateways API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: nfs-gateways
+  description: 'NFSGatewayController provides API for object storage nfs gateway
+
+    '
+paths:
+  /nfs-gateways/:
+    get:
+      tags:
+      - nfs-gateways
+      description: List all nfs gateways
+      operationId: ListNFSGateways
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewaysResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - nfs-gateways
+      description: create nfs gateway
+      operationId: CreateNFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: nfs gateway info
+        required: true
+        schema:
+          $ref: '#/definitions/NFSGatewayCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /nfs-gateways/{gateway_id}:
+    get:
+      tags:
+      - nfs-gateways
+      description: show nfs gateway
+      operationId: GetNFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - nfs-gateways
+      description: start/stop nfs gateway
+      operationId: DoNFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: force
+        in: query
+        description: force stop or no
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - in: body
+        name: body
+        description: nfs gateway action info
+        required: true
+        schema:
+          $ref: '#/definitions/NFSGatewayActionReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    delete:
+      tags:
+      - nfs-gateways
+      description: delete nfs gateway
+      operationId: DeleteNFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - nfs-gateways
+      description: update nfs gateway
+      operationId: UpdateNFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - in: body
+        name: body
+        description: nfs gateway info
+        required: true
+        schema:
+          $ref: '#/definitions/NFSGatewayUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /nfs-gateways/{gateway_id}/buckets:
+    get:
+      tags:
+      - nfs-gateways
+      description: List nfs gateway bucket maps
+      operationId: ListNFSGatewayBucketMaps
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /nfs-gateways/{gateway_id}/buckets/{bucket_id}:
+    get:
+      tags:
+      - nfs-gateways
+      description: get nfs gateway bucket map
+      operationId: GetNFSGatewayBucketMap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - nfs-gateways
+      description: add bucket to nfs gateway
+      operationId: CreateNFSGatewayBucketMap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    delete:
+      tags:
+      - nfs-gateways
+      description: remove bucket from nfs gateway
+      operationId: DeleteNFSGatewayBucketMap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: force
+        in: query
+        description: force delete or no
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - nfs-gateways
+      description: update nfs gateway bucket
+      operationId: UpdateNFSGatewayBucketMap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: nfs gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: nfs gateway bucket update info
+        required: true
+        schema:
+          $ref: '#/definitions/NFSGatewayBucketMapUpdateReq'
+        x-exportParamName: Body
+      - name: force
+        in: query
+        description: force update bucket map
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /nfs-gateways/{gateway_id}/samples:
+    get:
+      tags:
+      - nfs-gateways
+      description: Get nfs gateway's samples
+      operationId: GetNFSGatewaySamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewaySamplesResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  NFSGatewayCreateReq:
+    type: object
+    required:
+    - nfs_gateway
+    properties:
+      nfs_gateway:
+        $ref: '#/definitions/NFSGatewayCreateReq_NFSGateway'
+    title: NFSGatewayCreateReq
+  ObjectStorageBucket_Nestview_lifecycle:
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  NFSGatewayBucketMapUpdateReq:
+    type: object
+    required:
+    - nfs_gateway_bucket_map
+    properties:
+      nfs_gateway_bucket_map:
+        $ref: '#/definitions/NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap'
+    title: NFSGatewayBucketMapUpdateReq
+  NFSGatewayActionReq_NFSGateway:
+    type: object
+    required:
+    - action
+    properties:
+      action:
+        type: string
+    title: NFSGatewayActionReq_NFSGateway
+  NFSGatewaySamplesResp:
+    type: object
+    required:
+    - nfs_gateway_samples
+    properties:
+      nfs_gateway_samples:
+        type: array
+        description: nfs gateway samples
+        items:
+          $ref: '#/definitions/NFSGatewayStat'
+    title: NFSGatewaySamplesResp
+    example:
+      nfs_gateway_samples:
+      - up_bandwidth_kbyte: 2.3021358869347655
+        up_ops: 9.301444243932576
+        down_bandwidth_kbyte: 6.027456183070403
+        down_ops: 5.962133916683182
+        up_latency_us: 7.061401241503109
+        mem_usage_percent: 5.637376656633329
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 0.8008281904610115
+        down_latency_us: 1.4658129805029452
+      - up_bandwidth_kbyte: 2.3021358869347655
+        up_ops: 9.301444243932576
+        down_bandwidth_kbyte: 6.027456183070403
+        down_ops: 5.962133916683182
+        up_latency_us: 7.061401241503109
+        mem_usage_percent: 5.637376656633329
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 0.8008281904610115
+        down_latency_us: 1.4658129805029452
+  NFSGatewayRecord:
+    title: NFSGatewayRecord
+    allOf:
+    - $ref: '#/definitions/NFSGateway'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/NFSGatewayStat'
+    description: NFSGatewayRecord combine NFSGateway and NFSGatewayStat as API response
+  ObjectStorageKey_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: ObjectStorageKey_Nestview
+    example:
+      id: 5
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  NFSGatewayBucketMapResp:
+    type: object
+    required:
+    - nfs_gateway_bucket_map
+    properties:
+      nfs_gateway_bucket_map:
+        description: map of nfs gateway and bucket
+        $ref: '#/definitions/NFSGatewayBucketMap'
+    title: NFSGatewayBucketMapResp
+    example:
+      nfs_gateway_bucket_map:
+        bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+  NFSGateway:
+    type: object
+    properties:
+      bucket_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      gateway_ip:
+        type: string
+      gateway_name:
+        type: string
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      mount_clients:
+        type: string
+      mount_num:
+        type: integer
+        format: int64
+      name:
+        type: string
+      port:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: NFSGateway
+    description: NFSGateway defines nfs gateway @grpc-models-proto
+  NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap:
+    type: object
+    properties:
+      key_id:
+        type: integer
+        format: int64
+    title: NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap
+  NFSGatewayActionReq:
+    type: object
+    required:
+    - nfs_gateway
+    properties:
+      nfs_gateway:
+        $ref: '#/definitions/NFSGatewayActionReq_NFSGateway'
+    title: NFSGatewayActionReq
+  NFSGatewayResp:
+    type: object
+    required:
+    - nfs_gateway
+    properties:
+      nfs_gateway:
+        description: nfs gateway
+        $ref: '#/definitions/NFSGatewayRecord'
+    title: NFSGatewayResp
+    example:
+      nfs_gateway: ''
+  NFSGatewayBucketMap:
+    type: object
+    properties:
+      action_status:
+        type: string
+      bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      key:
+        $ref: '#/definitions/ObjectStorageKey_Nestview'
+      mount_clients:
+        type: string
+      mount_num:
+        type: integer
+        format: int64
+      nfs_gateway:
+        $ref: '#/definitions/NFSGateway_Nestview'
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: NFSGatewayBucketMap
+    description: NFSGatewayBucketMap defines nfs gateway bucket map @grpc-models-proto
+    example:
+      bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      mount_clients: mount_clients
+      mount_num: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 1
+      key:
+        id: 5
+      action_status: action_status
+      nfs_gateway:
+        name: name
+        id: 2
+      status: status
+  NFSGatewayCreateReq_NFSGateway:
+    type: object
+    required:
+    - description
+    - host_id
+    - name
+    - port
+    properties:
+      description:
+        type: string
+      gateway_ip:
+        type: string
+      host_id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      port:
+        type: integer
+        format: int64
+    title: NFSGatewayCreateReq_NFSGateway
+  NFSGatewayUpdateReq_NFSGateway:
+    type: object
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    title: NFSGatewayUpdateReq_NFSGateway
+  NFSGatewayStat:
+    type: object
+    properties:
+      cpu_util:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      down_bandwidth_kbyte:
+        type: number
+        format: double
+      down_latency_us:
+        type: number
+        format: double
+      down_ops:
+        type: number
+        format: double
+      mem_usage_percent:
+        type: number
+        format: double
+      up_bandwidth_kbyte:
+        type: number
+        format: double
+      up_latency_us:
+        type: number
+        format: double
+      up_ops:
+        type: number
+        format: double
+    title: NFSGatewayStat
+    description: NFSGatewayStat defines nfs gateway stat
+    example:
+      up_bandwidth_kbyte: 2.3021358869347655
+      up_ops: 9.301444243932576
+      down_bandwidth_kbyte: 6.027456183070403
+      down_ops: 5.962133916683182
+      up_latency_us: 7.061401241503109
+      mem_usage_percent: 5.637376656633329
+      create: '2000-01-23T04:56:07.000+00:00'
+      cpu_util: 0.8008281904610115
+      down_latency_us: 1.4658129805029452
+  NFSGatewayBucketMapsResp:
+    type: object
+    required:
+    - nfs_gateway_bucket_maps
+    properties:
+      nfs_gateway_bucket_maps:
+        type: array
+        description: maps of nfs gateway and bucket
+        items:
+          $ref: '#/definitions/NFSGatewayBucketMap'
+    title: NFSGatewayBucketMapsResp
+    example:
+      nfs_gateway_bucket_maps:
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+  ObjectStorageBucket_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview_lifecycle'
+      name:
+        type: string
+    title: ObjectStorageBucket_Nestview
+    example:
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      name: name
+      id: 0
+  NFSGatewaysResp:
+    type: object
+    required:
+    - nfs_gateways
+    properties:
+      nfs_gateways:
+        type: array
+        description: nfs gateways
+        items:
+          $ref: '#/definitions/NFSGatewayRecord'
+    title: NFSGatewaysResp
+    example:
+      nfs_gateways:
+      - ''
+      - ''
+  NFSGateway_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: NFSGateway_Nestview
+    example:
+      name: name
+      id: 2
+  NFSGatewayUpdateReq:
+    type: object
+    required:
+    - nfs_gateway
+    properties:
+      nfs_gateway:
+        $ref: '#/definitions/NFSGatewayUpdateReq_NFSGateway'
+    title: NFSGatewayUpdateReq
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,331 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths network-diagnosis-items API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: network-diagnosis-items
+  description: 'NetworkDiagnosisItemController provides API for network diagnosis item
+
+    '
+paths:
+  /network-diagnosis-items/:
+    get:
+      tags:
+      - network-diagnosis-items
+      description: List network diagnosis items
+      operationId: ListNetworkDiagnosisItems
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: networks
+        in: query
+        description: network type
+        required: false
+        type: string
+        x-exportParamName: Networks
+      - name: finished
+        in: query
+        description: diagnosis item finished or not
+        required: false
+        type: boolean
+        x-exportParamName: Finished
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkDiagnosisItemsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  NetworkDiagnosisItemsResp:
+    type: object
+    required:
+    - network_diagnosis_items
+    properties:
+      network_diagnosis_items:
+        type: array
+        description: network diagnosis items
+        items:
+          $ref: '#/definitions/NetworkDiagnosisItem'
+    title: NetworkDiagnosisItemsResp
+    example:
+      network_diagnosis_items:
+      - src_interface: src_interface
+        stat:
+          recv_bytes: 3
+          recv_pkgs: 2
+          tcp_conn_errs: 1
+          bandwidth: 5
+          err_pkg_ratio: 7.061401241503109
+          send_pkgs: 7
+          tcp_segment_retrans: 1
+          lost_pkg_ratio: 9.301444243932576
+          send_bytes: 4
+          coll_pkgs: 2
+        update: '2000-01-23T04:56:07.000+00:00'
+        network_diagnosis:
+          id: 1
+        src_host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        dst_interface: dst_interface
+        message: message
+        networks:
+        - networks
+        - networks
+        execute: '2000-01-23T04:56:07.000+00:00'
+        dst_ip: dst_ip
+        src_ip: src_ip
+        dst_type: dst_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        dst_megabits: 0
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        src_type: src_type
+        dst_host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        src_megabits: 5
+        status: status
+      - src_interface: src_interface
+        stat:
+          recv_bytes: 3
+          recv_pkgs: 2
+          tcp_conn_errs: 1
+          bandwidth: 5
+          err_pkg_ratio: 7.061401241503109
+          send_pkgs: 7
+          tcp_segment_retrans: 1
+          lost_pkg_ratio: 9.301444243932576
+          send_bytes: 4
+          coll_pkgs: 2
+        update: '2000-01-23T04:56:07.000+00:00'
+        network_diagnosis:
+          id: 1
+        src_host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        dst_interface: dst_interface
+        message: message
+        networks:
+        - networks
+        - networks
+        execute: '2000-01-23T04:56:07.000+00:00'
+        dst_ip: dst_ip
+        src_ip: src_ip
+        dst_type: dst_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        dst_megabits: 0
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        src_type: src_type
+        dst_host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        src_megabits: 5
+        status: status
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  NetworkDiagnosis_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: NetworkDiagnosis_Nestview
+    example:
+      id: 1
+  NetworkDiagnosisItem:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      dst_host:
+        $ref: '#/definitions/Host_Nestview'
+      dst_interface:
+        type: string
+      dst_ip:
+        type: string
+      dst_megabits:
+        type: integer
+        format: int64
+      dst_type:
+        type: string
+      execute:
+        type: string
+        format: date-time
+      finish:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      message:
+        type: string
+      network_diagnosis:
+        $ref: '#/definitions/NetworkDiagnosis_Nestview'
+      networks:
+        type: array
+        items:
+          type: string
+      src_host:
+        $ref: '#/definitions/Host_Nestview'
+      src_interface:
+        type: string
+      src_ip:
+        type: string
+      src_megabits:
+        type: integer
+        format: int64
+      src_type:
+        type: string
+      stat:
+        $ref: '#/definitions/NetworkDiagnosisStat'
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: NetworkDiagnosisItem
+    description: NetworkDiagnosisItem defines model of network diagnosis item
+    example:
+      src_interface: src_interface
+      stat:
+        recv_bytes: 3
+        recv_pkgs: 2
+        tcp_conn_errs: 1
+        bandwidth: 5
+        err_pkg_ratio: 7.061401241503109
+        send_pkgs: 7
+        tcp_segment_retrans: 1
+        lost_pkg_ratio: 9.301444243932576
+        send_bytes: 4
+        coll_pkgs: 2
+      update: '2000-01-23T04:56:07.000+00:00'
+      network_diagnosis:
+        id: 1
+      src_host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      dst_interface: dst_interface
+      message: message
+      networks:
+      - networks
+      - networks
+      execute: '2000-01-23T04:56:07.000+00:00'
+      dst_ip: dst_ip
+      src_ip: src_ip
+      dst_type: dst_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      dst_megabits: 0
+      finish: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      src_type: src_type
+      dst_host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      src_megabits: 5
+      status: status
+  NetworkDiagnosisStat:
+    type: object
+    properties:
+      bandwidth:
+        type: integer
+        format: int64
+      coll_pkgs:
+        type: integer
+        format: int64
+      err_pkg_ratio:
+        type: number
+        format: double
+      lost_pkg_ratio:
+        type: number
+        format: double
+      recv_bytes:
+        type: integer
+        format: int64
+      recv_pkgs:
+        type: integer
+        format: int64
+      send_bytes:
+        type: integer
+        format: int64
+      send_pkgs:
+        type: integer
+        format: int64
+      tcp_conn_errs:
+        type: integer
+        format: int64
+      tcp_segment_retrans:
+        type: integer
+        format: int64
+    title: NetworkDiagnosisStat
+    description: NetworkDiagnosisStat defines model of network diagnosis stat
+    example:
+      recv_bytes: 3
+      recv_pkgs: 2
+      tcp_conn_errs: 1
+      bandwidth: 5
+      err_pkg_ratio: 7.061401241503109
+      send_pkgs: 7
+      tcp_segment_retrans: 1
+      lost_pkg_ratio: 9.301444243932576
+      send_bytes: 4
+      coll_pkgs: 2
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

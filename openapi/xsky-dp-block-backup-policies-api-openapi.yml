@@ -1,0 +1,464 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-block-backup-policies API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-block-backup-policies
+  description: 'DpBlockBackupPolicyController API /dp-block-backup-policies
+
+    '
+paths:
+  /dp-block-backup-policies/:
+    get:
+      tags:
+      - dp-block-backup-policies
+      description: List dp block backup policies
+      operationId: ListDpBlockBackupPolicies
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: block_volume_id
+        in: query
+        description: show dp block backup policies of specific block volume
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockBackupPoliciesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-block-backup-policies
+      description: Create dp block backup policy
+      operationId: CreateDpBlockBackupPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpBlockBackupPolicyCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpBlockBackupPolicyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /dp-block-backup-policies/{policy_id}:
+    get:
+      tags:
+      - dp-block-backup-policies
+      description: Get dp block backup policy
+      operationId: GetDpBlockBackupPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockBackupPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - dp-block-backup-policies
+      description: Delete dp block backup policy
+      operationId: DeleteDpBlockBackupPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpBlockBackupPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - dp-block-backup-policies
+      description: Update dp block backup policy
+      operationId: UpdateDpBlockBackupPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpBlockBackupPolicyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockBackupPolicyResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpBlockBackupPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpBlockBackupPoliciesResp:
+    type: object
+    properties:
+      dp_block_backup_policies:
+        type: array
+        items:
+          $ref: '#/definitions/DpBlockBackupPolicy'
+    title: DpBlockBackupPoliciesResp
+    example:
+      dp_block_backup_policies:
+      - inc_cron_expr: inc_cron_expr
+        retained_max: 5
+        dp_site:
+          name: name
+          id: 1
+        encrypted: true
+        block_volume_num: 0
+        full_cron_expr: full_cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        status: status
+      - inc_cron_expr: inc_cron_expr
+        retained_max: 5
+        dp_site:
+          name: name
+          id: 1
+        encrypted: true
+        block_volume_num: 0
+        full_cron_expr: full_cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        status: status
+  DpBlockBackupPolicyUpdateReq_Policy:
+    type: object
+    properties:
+      encrypted:
+        type: boolean
+        description: encrypted or not
+      full_cron_expr:
+        type: string
+        description: cron expression for full backup
+      inc_cron_expr:
+        type: string
+        description: cron expression for increment backup
+      name:
+        type: string
+        description: name
+      retained_max:
+        type: integer
+        format: int64
+        description: retained max number of backups
+    title: DpBlockBackupPolicyUpdateReq_Policy
+    example:
+      inc_cron_expr: inc_cron_expr
+      retained_max: 0
+      encrypted: true
+      full_cron_expr: full_cron_expr
+      name: name
+  DpBlockBackupPolicyCreateReq:
+    type: object
+    required:
+    - dp_block_backup_policy
+    properties:
+      dp_block_backup_policy:
+        $ref: '#/definitions/DpBlockBackupPolicyCreateReq_Policy'
+    title: DpBlockBackupPolicyCreateReq
+    example:
+      dp_block_backup_policy:
+        inc_cron_expr: inc_cron_expr
+        retained_max: 1
+        dp_gateway_id: 0
+        encrypted: true
+        full_cron_expr: full_cron_expr
+        name: name
+        dp_site_id: 6
+  DpBlockBackupPolicyResp:
+    type: object
+    properties:
+      dp_block_backup_policy:
+        $ref: '#/definitions/DpBlockBackupPolicy'
+    title: DpBlockBackupPolicyResp
+    example:
+      dp_block_backup_policy:
+        inc_cron_expr: inc_cron_expr
+        retained_max: 5
+        dp_site:
+          name: name
+          id: 1
+        encrypted: true
+        block_volume_num: 0
+        full_cron_expr: full_cron_expr
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        status: status
+  DpBlockBackupPolicyCreateReq_Policy:
+    type: object
+    required:
+    - dp_gateway_id
+    - dp_site_id
+    - full_cron_expr
+    - name
+    - retained_max
+    properties:
+      dp_gateway_id:
+        type: integer
+        format: int64
+        description: dp gateway
+      dp_site_id:
+        type: integer
+        format: int64
+        description: dp site
+      encrypted:
+        type: boolean
+        description: encrypted or not
+      full_cron_expr:
+        type: string
+        description: cron expression for full backup
+      inc_cron_expr:
+        type: string
+        description: cron expression for increment backup
+      name:
+        type: string
+        description: name
+      retained_max:
+        type: integer
+        format: int64
+        description: retained max number of backups
+    title: DpBlockBackupPolicyCreateReq_Policy
+    example:
+      inc_cron_expr: inc_cron_expr
+      retained_max: 1
+      dp_gateway_id: 0
+      encrypted: true
+      full_cron_expr: full_cron_expr
+      name: name
+      dp_site_id: 6
+  DpBlockBackupPolicyUpdateReq:
+    type: object
+    required:
+    - dp_block_backup_policy
+    properties:
+      dp_block_backup_policy:
+        $ref: '#/definitions/DpBlockBackupPolicyUpdateReq_Policy'
+    title: DpBlockBackupPolicyUpdateReq
+    example:
+      dp_block_backup_policy:
+        inc_cron_expr: inc_cron_expr
+        retained_max: 0
+        encrypted: true
+        full_cron_expr: full_cron_expr
+        name: name
+  DpSite_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpSite_Nestview
+    example:
+      name: name
+      id: 1
+  DpBlockBackupPolicy:
+    type: object
+    properties:
+      block_volume_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      dp_gateway:
+        $ref: '#/definitions/DpGateway_Nestview'
+      dp_site:
+        $ref: '#/definitions/DpSite_Nestview'
+      encrypted:
+        type: boolean
+      full_cron_expr:
+        type: string
+      id:
+        type: integer
+        format: int64
+      inc_cron_expr:
+        type: string
+      name:
+        type: string
+      retained_max:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: DpBlockBackupPolicy
+    description: DpBlockBackupPolicy protects a block volume by backup snapshot to remote site
+    example:
+      inc_cron_expr: inc_cron_expr
+      retained_max: 5
+      dp_site:
+        name: name
+        id: 1
+      encrypted: true
+      block_volume_num: 0
+      full_cron_expr: full_cron_expr
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      dp_gateway:
+        name: name
+        id: 6
+      id: 5
+      status: status
+  DpGateway_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpGateway_Nestview
+    example:
+      name: name
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

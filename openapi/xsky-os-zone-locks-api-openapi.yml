@@ -1,0 +1,283 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-zone-locks API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-zone-locks
+  description: 'OSZoneLockController API /os-zone-locks
+
+    '
+paths:
+  /os-zone-locks/:
+    get:
+      tags:
+      - os-zone-locks
+      description: List os zone locks.
+      operationId: ListOSZoneLocks
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: all
+        in: query
+        description: show all zone locks
+        required: false
+        type: boolean
+        x-exportParamName: All
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneLocksResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-zone-locks
+      description: Create a os zone lock.
+      operationId: CreateOSZoneLock
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: os zone lock info
+        required: true
+        schema:
+          $ref: '#/definitions/OSZoneLockCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneLockResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-zone-locks/{lock_uuid}:
+    get:
+      tags:
+      - os-zone-locks
+      description: Get a os zone lock.
+      operationId: GetOSZoneLock
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: lock_uuid
+        in: path
+        description: os zone lock uuid
+        required: true
+        type: string
+        x-exportParamName: LockUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneLockResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-zone-locks
+      description: Delete a os zone lock.
+      operationId: DeleteOSZoneLock
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: lock_uuid
+        in: path
+        description: os zone lock uuid
+        required: true
+        type: string
+        x-exportParamName: LockUuid
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-zone-locks/{lock_uuid}:refresh:
+    post:
+      tags:
+      - os-zone-locks
+      description: Refresh a os zone lock.
+      operationId: RefreshOSZoneLock
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: lock_uuid
+        in: path
+        description: os zone lock uuid
+        required: true
+        type: string
+        x-exportParamName: LockUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneLockResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSZoneLockResp:
+    type: object
+    required:
+    - os_zone_lock
+    properties:
+      os_zone_lock:
+        $ref: '#/definitions/OSZoneLock'
+    title: OSZoneLockResp
+    example:
+      os_zone_lock:
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        value: value
+        key: key
+  OSZoneLockCreateReq:
+    type: object
+    properties:
+      os_zone_lock:
+        $ref: '#/definitions/OSZoneLockCreateReq_Lock'
+    title: OSZoneLockCreateReq
+  OSZoneLockCreateReq_Lock:
+    type: object
+    required:
+    - key
+    - resource_type
+    - value
+    properties:
+      key:
+        type: string
+        description: key of lock, for example name of os bucket
+      resource_type:
+        type: string
+        description: resource type of lock, including os_bucket
+      value:
+        type: string
+        description: value of lock, for example action of os bucket
+    title: OSZoneLockCreateReq_Lock
+  OSZoneLock:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      expired_time:
+        type: string
+        format: date-time
+      key:
+        type: string
+      resource_type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      uuid:
+        type: string
+      value:
+        type: string
+    title: OSZoneLock
+    description: OSZoneLock defines model of os zone lock.
+    example:
+      resource_type: resource_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      expired_time: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      uuid: uuid
+      value: value
+      key: key
+  OSZoneLocksResp:
+    type: object
+    required:
+    - os_zone_locks
+    properties:
+      os_zone_locks:
+        type: array
+        items:
+          $ref: '#/definitions/OSZoneLock'
+    title: OSZoneLocksResp
+    example:
+      os_zone_locks:
+      - resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        value: value
+        key: key
+      - resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        value: value
+        key: key
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,243 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths nfs-gateway-bucket-maps API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: nfs-gateway-bucket-maps
+  description: 'NFSGatewayBucketMapController provides API for object storage nfs gateway s3 bucket map
+
+    '
+paths:
+  /nfs-gateway-bucket-maps/:
+    get:
+      tags:
+      - nfs-gateway-bucket-maps
+      description: List nfs gateway s3 bucket maps
+      operationId: ListNFSGatewayS3BucketMaps
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: nfs_gateway_id
+        in: query
+        description: nfs gateway id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: NfsGatewayId
+      - name: os_bucket_id
+        in: query
+        description: s3 bucket id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: OsBucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NFSGatewayBucketMapsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ObjectStorageKey_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: ObjectStorageKey_Nestview
+    example:
+      id: 5
+  NFSGatewayBucketMapsResp:
+    type: object
+    required:
+    - nfs_gateway_bucket_maps
+    properties:
+      nfs_gateway_bucket_maps:
+        type: array
+        description: maps of nfs gateway and bucket
+        items:
+          $ref: '#/definitions/NFSGatewayBucketMap'
+    title: NFSGatewayBucketMapsResp
+    example:
+      nfs_gateway_bucket_maps:
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+  ObjectStorageBucket_Nestview_lifecycle:
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  ObjectStorageBucket_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview_lifecycle'
+      name:
+        type: string
+    title: ObjectStorageBucket_Nestview
+    example:
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      name: name
+      id: 0
+  NFSGatewayBucketMap:
+    type: object
+    properties:
+      action_status:
+        type: string
+      bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      key:
+        $ref: '#/definitions/ObjectStorageKey_Nestview'
+      mount_clients:
+        type: string
+      mount_num:
+        type: integer
+        format: int64
+      nfs_gateway:
+        $ref: '#/definitions/NFSGateway_Nestview'
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: NFSGatewayBucketMap
+    description: NFSGatewayBucketMap defines nfs gateway bucket map @grpc-models-proto
+    example:
+      bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      mount_clients: mount_clients
+      mount_num: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 1
+      key:
+        id: 5
+      action_status: action_status
+      nfs_gateway:
+        name: name
+        id: 2
+      status: status
+  NFSGateway_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: NFSGateway_Nestview
+    example:
+      name: name
+      id: 2
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,397 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-active-directories API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-active-directories
+  description: 'FSActiveDirectoryController File Storage Active Directory Management
+
+    '
+paths:
+  /fs-active-directories/:
+    get:
+      tags:
+      - fs-active-directories
+      description: List file storage active directories
+      operationId: ListFSActiveDirectories
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSActiveDirectoriesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-active-directories
+      description: create file storage active directory
+      operationId: CreateFSActiveDirectory
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: file storage active directory info
+        required: true
+        schema:
+          $ref: '#/definitions/FSActiveDirectoryCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSActiveDirectoryResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-active-directories/{fs_active_directory_id}:
+    get:
+      tags:
+      - fs-active-directories
+      description: Get a file storage active directory
+      operationId: GetFSActiveDirectory
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_active_directory_id
+        in: path
+        description: file storage active directory id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsActiveDirectoryId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSActiveDirectoryResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-active-directories
+      description: Delete file storage active directory
+      operationId: DeleteFSActiveDirectory
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_active_directory_id
+        in: path
+        description: file storage active directory id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsActiveDirectoryId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSActiveDirectoryResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-active-directories
+      description: Update a file storage active directory
+      operationId: UpdateFSActiveDirectory
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_active_directory_id
+        in: path
+        description: file storage active directory id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsActiveDirectoryId
+      - in: body
+        name: body
+        description: file storage active directory info
+        required: true
+        schema:
+          $ref: '#/definitions/FSActiveDirectoryUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSActiveDirectoryResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-active-directories/{fs_active_directory_id}:verify:
+    post:
+      tags:
+      - fs-active-directories
+      description: Verify a fs active directory or user/group info
+      operationId: VerifyFSActiveDirectory
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_active_directory_id
+        in: path
+        description: file storage active directory id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsActiveDirectoryId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSActiveDirectoryResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSActiveDirectoryUpdateReq_Info:
+    type: object
+    properties:
+      ip:
+        type: string
+        description: ip of dns server
+      name:
+        type: string
+        description: name of active directory
+      password:
+        type: string
+        description: password of active directory
+      realm:
+        type: string
+        description: realm of active directory
+      username:
+        type: string
+        description: username of active directory
+      workgroup:
+        type: string
+        description: workgroup of active directory
+    title: FSActiveDirectoryUpdateReq_Info
+  FSActiveDirectory:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_gateway_group_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      ip:
+        type: string
+      name:
+        type: string
+      realm:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      username:
+        type: string
+      verify_time:
+        type: string
+        format: date-time
+      workgroup:
+        type: string
+    title: FSActiveDirectory
+    description: FSActiveDirectory defines file storage active directory
+    example:
+      workgroup: workgroup
+      ip: ip
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      fs_gateway_group_num: 0
+      realm: realm
+      id: 6
+      verify_time: '2000-01-23T04:56:07.000+00:00'
+      action_status: action_status
+      status: status
+      username: username
+  FSActiveDirectoryCreateReq:
+    type: object
+    required:
+    - fs_active_directory
+    properties:
+      fs_active_directory:
+        $ref: '#/definitions/FSActiveDirectoryCreateReq_Info'
+    title: FSActiveDirectoryCreateReq
+  FSActiveDirectoriesResp:
+    type: object
+    required:
+    - fs_active_directories
+    properties:
+      fs_active_directories:
+        type: array
+        description: file storage active directories
+        items:
+          $ref: '#/definitions/FSActiveDirectory'
+    title: FSActiveDirectoriesResp
+    example:
+      fs_active_directories:
+      - workgroup: workgroup
+        ip: ip
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 0
+        realm: realm
+        id: 6
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        action_status: action_status
+        status: status
+        username: username
+      - workgroup: workgroup
+        ip: ip
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 0
+        realm: realm
+        id: 6
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        action_status: action_status
+        status: status
+        username: username
+  FSActiveDirectoryResp:
+    type: object
+    required:
+    - fs_active_directory
+    properties:
+      fs_active_directory:
+        description: file storage active directory
+        $ref: '#/definitions/FSActiveDirectory'
+    title: FSActiveDirectoryResp
+    example:
+      fs_active_directory:
+        workgroup: workgroup
+        ip: ip
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 0
+        realm: realm
+        id: 6
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        action_status: action_status
+        status: status
+        username: username
+  FSActiveDirectoryUpdateReq:
+    type: object
+    required:
+    - fs_active_directory
+    properties:
+      fs_active_directory:
+        $ref: '#/definitions/FSActiveDirectoryUpdateReq_Info'
+    title: FSActiveDirectoryUpdateReq
+  FSActiveDirectoryCreateReq_Info:
+    type: object
+    required:
+    - name
+    - password
+    - realm
+    - username
+    - workgroup
+    properties:
+      ip:
+        type: string
+        description: ip of dns server
+      name:
+        type: string
+        description: name of active directory
+      password:
+        type: string
+        description: password of active directory
+      realm:
+        type: string
+        description: realm of active directory
+      username:
+        type: string
+        description: username of active directory
+      workgroup:
+        type: string
+        description: workgroup of active directory
+    title: FSActiveDirectoryCreateReq_Info
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

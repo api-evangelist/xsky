@@ -1,0 +1,545 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths block-volume-migration-jobs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: block-volume-migration-jobs
+  description: 'BlockVolumeMigrationJobController Operations about block volume migration job
+
+    '
+paths:
+  /block-volume-migration-jobs/:
+    get:
+      tags:
+      - block-volume-migration-jobs
+      description: List volume migration jobs
+      operationId: ListBlockVolumeMigrationJobs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: status
+        in: query
+        description: the status of volume migration job
+        required: false
+        type: string
+        x-exportParamName: Status
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /block-volume-migration-jobs/{block_volume_migration_job_id}:
+    get:
+      tags:
+      - block-volume-migration-jobs
+      description: get a volume migration job
+      operationId: GetBlockVolumeMigrationJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_migration_job_id
+        in: path
+        description: volume migration job id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeMigrationJobId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /block-volume-migration-jobs/{block_volume_migration_job_id}:cancel:
+    post:
+      tags:
+      - block-volume-migration-jobs
+      operationId: CancelBlockVolumeMigrationJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_migration_job_id
+        in: path
+        description: block volume migration job id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeMigrationJobId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /block-volume-migration-jobs/{block_volume_migration_job_id}:update:
+    post:
+      tags:
+      - block-volume-migration-jobs
+      operationId: UpdateMigration
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_migration_job_id
+        in: path
+        description: block volume migration job id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeMigrationJobId
+      - in: body
+        name: body
+        description: volume migration udpate info
+        required: true
+        schema:
+          $ref: '#/definitions/BlockVolumeUpdateMigrationReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/BlockVolumeMigrationJobResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  BlockVolumeUpdateMigrationReq_VolumeMigrationJob:
+    type: object
+    required:
+    - stripes
+    properties:
+      stripes:
+        type: integer
+        format: int64
+    title: BlockVolumeUpdateMigrationReq_VolumeMigrationJob
+    example:
+      stripes: 0
+  Task:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      data:
+        type: string
+      error_msg:
+        type: string
+      execute:
+        type: string
+        format: date-time
+      finish:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      host_role:
+        type: string
+      id:
+        type: integer
+        format: int64
+      priority:
+        type: integer
+        format: int64
+      retried:
+        type: boolean
+      retry:
+        type: integer
+        format: int64
+      retry_type:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: Task
+    description: Task defines a task will be run on a host @grpc-models-proto
+    example:
+      retried: true
+      error_msg: error_msg
+      data: data
+      update: '2000-01-23T04:56:07.000+00:00'
+      priority: 5
+      type: type
+      execute: '2000-01-23T04:56:07.000+00:00'
+      host_role: host_role
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      finish: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      retry: 2
+      retry_type: retry_type
+      status: status
+  BlockVolumeUpdateMigrationReq:
+    type: object
+    properties:
+      volume_migration_job:
+        $ref: '#/definitions/BlockVolumeUpdateMigrationReq_VolumeMigrationJob'
+    title: BlockVolumeUpdateMigrationReq
+    example:
+      volume_migration_job:
+        stripes: 0
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  VolumeMigrationJob:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      dest_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      finished_at:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      remaining_time:
+        type: integer
+        format: int64
+      source_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      started_at:
+        type: string
+        format: date-time
+      status:
+        type: string
+      stripes:
+        type: integer
+        format: int64
+      task:
+        $ref: '#/definitions/Task'
+      update:
+        type: string
+        format: date-time
+      volume:
+        $ref: '#/definitions/Volume_Nestview'
+    title: VolumeMigrationJob
+    description: VolumeMigrationJob defines the volume migration job record
+    example:
+      finished_at: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      stripes: 1
+      volume:
+        original_name: original_name
+        name: name
+        id: 9
+      remaining_time: 6
+      source_pool:
+        name: name
+        id: 5
+      task:
+        retried: true
+        error_msg: error_msg
+        data: data
+        update: '2000-01-23T04:56:07.000+00:00'
+        priority: 5
+        type: type
+        execute: '2000-01-23T04:56:07.000+00:00'
+        host_role: host_role
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        retry: 2
+        retry_type: retry_type
+        status: status
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      dest_pool:
+        name: name
+        id: 5
+      started_at: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      status: status
+  BlockVolumeMigrationJobsResp:
+    type: object
+    required:
+    - block_volume_migration_jobs
+    properties:
+      block_volume_migration_jobs:
+        type: array
+        description: volume migration jobs
+        items:
+          $ref: '#/definitions/VolumeMigrationJob'
+    title: BlockVolumeMigrationJobsResp
+    example:
+      block_volume_migration_jobs:
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        stripes: 1
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        remaining_time: 6
+        source_pool:
+          name: name
+          id: 5
+        task:
+          retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        dest_pool:
+          name: name
+          id: 5
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        status: status
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        stripes: 1
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        remaining_time: 6
+        source_pool:
+          name: name
+          id: 5
+        task:
+          retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        dest_pool:
+          name: name
+          id: 5
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        status: status
+  BlockVolumeMigrationJobResp:
+    type: object
+    required:
+    - block_volume_migration_job
+    properties:
+      block_volume_migration_job:
+        description: volume migration job
+        $ref: '#/definitions/VolumeMigrationJob'
+    title: BlockVolumeMigrationJobResp
+    example:
+      block_volume_migration_job:
+        finished_at: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        stripes: 1
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        remaining_time: 6
+        source_pool:
+          name: name
+          id: 5
+        task:
+          retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        dest_pool:
+          name: name
+          id: 5
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        status: status
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

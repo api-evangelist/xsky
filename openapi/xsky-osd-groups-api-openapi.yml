@@ -1,0 +1,647 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths osd-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: osd-groups
+  description: 'OsdGroupController API /osd-groups
+
+    '
+paths:
+  /osd-groups/:
+    get:
+      tags:
+      - osd-groups
+      description: List osd groups
+      operationId: ListOsdGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdGroupsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:
+    get:
+      tags:
+      - osd-groups
+      description: Get osd group
+      operationId: GetOsdGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /osd-groups/{group_id}/samples:
+    get:
+      tags:
+      - osd-groups
+      description: get a osd group's samples
+      operationId: GetOsdGroupSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdGroupSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:add-osds:
+    post:
+      tags:
+      - osd-groups
+      description: Add osds to osd grouop
+      operationId: AddOsdsToOsdGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: osd ids
+        required: true
+        schema:
+          $ref: '#/definitions/OsdGroupOsdsUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:disable-device-type-check:
+    post:
+      tags:
+      - osd-groups
+      description: Disable device type check when add osd
+      operationId: DisableDeviceTypeCheck
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:enable-device-type-check:
+    post:
+      tags:
+      - osd-groups
+      description: Enable device type check when add osd
+      operationId: EnableDeviceTypeCheck
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:remove-osds:
+    post:
+      tags:
+      - osd-groups
+      description: Remove multiple osds from a osd group
+      operationId: RemoveOsdsFromOsdGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: remove osd ids
+        required: true
+        schema:
+          $ref: '#/definitions/OsdGroupOsdsUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:reweight:
+    post:
+      tags:
+      - osd-groups
+      description: Reweight pools of osd group
+      operationId: ReweightOsdGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:set-osd-full-ratio:
+    post:
+      tags:
+      - osd-groups
+      description: Set osd full ratio of osd group
+      operationId: SetOsdFullRatio
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: osds full ratio
+        required: true
+        schema:
+          $ref: '#/definitions/SetOsdFullRatioReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osd-groups/{group_id}:set-qos:
+    post:
+      tags:
+      - osd-groups
+      description: Set osd group's qos
+      operationId: SetOsdGroupQos
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: osd group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: qos info
+        required: true
+        schema:
+          $ref: '#/definitions/OsdGroupSetQosReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OsdQos:
+    type: object
+    properties:
+      bandwidth:
+        type: integer
+        format: int64
+      bandwidth_max:
+        type: integer
+        format: int64
+      client_threshold:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      mode:
+        type: integer
+        format: int64
+      recovery_rate_type:
+        type: string
+    title: OsdQos
+    description: OsdQos defines qos for osd
+    example:
+      mode: 5
+      bandwidth: 0
+      bandwidth_max: 6
+      id: 5
+      client_threshold: 1
+      recovery_rate_type: recovery_rate_type
+  OsdGroupRecord:
+    title: OsdGroupRecord
+    allOf:
+    - $ref: '#/definitions/OsdGroup'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/OsdGroupStat'
+    description: OsdGroupRecord combine OsdGroup and OsdGroupStat as API response
+  OsdGroupSetQosReq:
+    type: object
+    required:
+    - osd_group
+    properties:
+      osd_group:
+        $ref: '#/definitions/OsdGroupSetQosReq_OsdGroup'
+    title: OsdGroupSetQosReq
+    example:
+      osd_group:
+        qos:
+          mode: 5
+          bandwidth: 0
+          bandwidth_max: 6
+          id: 5
+          client_threshold: 1
+          recovery_rate_type: recovery_rate_type
+  OsdGroupOsdsUpdateReq_OsdGroup:
+    type: object
+    required:
+    - osd_ids
+    properties:
+      osd_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: OsdGroupOsdsUpdateReq_OsdGroup
+    example:
+      osd_ids:
+      - 0
+      - 0
+  OsdGroupStat:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      total_kbyte:
+        type: integer
+        format: int64
+      used_kbyte:
+        type: integer
+        format: int64
+    title: OsdGroupStat
+    description: OsdGroupStat defines stat of a osd group
+    example:
+      used_kbyte: 6
+      total_kbyte: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+  SetOsdFullRatioReq_OsdGroup:
+    type: object
+    required:
+    - osd_full_ratio
+    properties:
+      osd_full_ratio:
+        type: number
+        format: double
+    title: SetOsdFullRatioReq_OsdGroup
+    example:
+      osd_full_ratio: 0.8008281904610115
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  OsdGroupSetQosReq_OsdGroup:
+    type: object
+    required:
+    - qos
+    properties:
+      qos:
+        $ref: '#/definitions/OsdQos'
+    title: OsdGroupSetQosReq_OsdGroup
+    example:
+      qos:
+        mode: 5
+        bandwidth: 0
+        bandwidth_max: 6
+        id: 5
+        client_threshold: 1
+        recovery_rate_type: recovery_rate_type
+  OsdGroupSamplesResp:
+    type: object
+    required:
+    - osd_group_samples
+    properties:
+      osd_group_samples:
+        type: array
+        items:
+          $ref: '#/definitions/OsdGroupStat'
+    title: OsdGroupSamplesResp
+    example:
+      osd_group_samples:
+      - used_kbyte: 6
+        total_kbyte: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+      - used_kbyte: 6
+        total_kbyte: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+  SetOsdFullRatioReq:
+    type: object
+    required:
+    - osd_group
+    properties:
+      osd_group:
+        $ref: '#/definitions/SetOsdFullRatioReq_OsdGroup'
+    title: SetOsdFullRatioReq
+    example:
+      osd_group:
+        osd_full_ratio: 0.8008281904610115
+  OsdGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      device_type:
+        type: string
+      device_type_check_disabled:
+        type: boolean
+      failure_domain_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+      osd_async_recovery_max_updates:
+        type: integer
+        format: int64
+      osd_full_ratio:
+        type: number
+        format: double
+      osd_num:
+        type: integer
+        format: int64
+      pools:
+        type: array
+        items:
+          $ref: '#/definitions/Pool_Nestview'
+      qos:
+        $ref: '#/definitions/OsdQos'
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: OsdGroup
+    description: OsdGroup defines model of osd group
+  OsdGroupsResp:
+    type: object
+    properties:
+      osd_groups:
+        type: array
+        items:
+          $ref: '#/definitions/OsdGroupRecord'
+    title: OsdGroupsResp
+    example:
+      osd_groups:
+      - ''
+      - ''
+  OsdGroupResp:
+    type: object
+    properties:
+      osd_group:
+        $ref: '#/definitions/OsdGroupRecord'
+    title: OsdGroupResp
+    example:
+      osd_group: ''
+  OsdGroupOsdsUpdateReq:
+    type: object
+    required:
+    - osd_group
+    properties:
+      osd_group:
+        $ref: '#/definitions/OsdGroupOsdsUpdateReq_OsdGroup'
+    title: OsdGroupOsdsUpdateReq
+    example:
+      osd_group:
+        osd_ids:
+        - 0
+        - 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

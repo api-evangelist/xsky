@@ -1,0 +1,783 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-users API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-users
+  description: 'ObjectStorageUserController provides API for object storage user
+
+    '
+paths:
+  /os-users/:
+    get:
+      tags:
+      - os-users
+      description: List object storage users
+      operationId: ListObjectStorageUsers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageUsersResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-users
+      description: create object storage user
+      operationId: CreateObjectStorageUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: user info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageUserCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageUserResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-users/{user_id}:
+    get:
+      tags:
+      - os-users
+      description: get object storage user
+      operationId: GetObjectStorageUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageUserResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-users
+      description: delete object storage user
+      operationId: DeleteObjectStorageUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageUserResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-users
+      description: update object storage user
+      operationId: UpdateObjectStorageUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - in: body
+        name: body
+        description: user info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageUserUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageUserResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageUserResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-users/{user_id}/samples:
+    get:
+      tags:
+      - os-users
+      description: get an object storage user's Samples
+      operationId: GetObjectStorageUserSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageUserSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ObjectStorageUserStat:
+    type: object
+    properties:
+      allocated_objects:
+        type: integer
+        format: int64
+      allocated_size:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      del_ops_pm:
+        type: number
+        format: double
+      rx_bandwidth_kbyte:
+        type: number
+        format: double
+      rx_ops_pm:
+        type: number
+        format: double
+      total_del_ops:
+        type: integer
+        format: int64
+      total_del_success_ops:
+        type: integer
+        format: int64
+      total_rx_bytes:
+        type: integer
+        format: int64
+      total_rx_ops:
+        type: integer
+        format: int64
+      total_rx_success_ops:
+        type: integer
+        format: int64
+      total_tx_bytes:
+        type: integer
+        format: int64
+      total_tx_ops:
+        type: integer
+        format: int64
+      total_tx_success_ops:
+        type: integer
+        format: int64
+      tx_bandwidth_kbyte:
+        type: number
+        format: double
+      tx_ops_pm:
+        type: number
+        format: double
+    title: ObjectStorageUserStat
+    description: ObjectStorageUserStat define the object storage user statistics
+    example:
+      rx_ops_pm: 5.637376656633329
+      total_rx_ops: 3
+      allocated_objects: 0
+      allocated_size: 6
+      tx_ops_pm: 1.4894159098541704
+      total_tx_bytes: 4
+      total_rx_bytes: 9
+      total_tx_success_ops: 1
+      total_del_success_ops: 7
+      total_rx_success_ops: 2
+      total_del_ops: 2
+      total_tx_ops: 7
+      tx_bandwidth_kbyte: 1.0246457001441578
+      del_ops_pm: 1.4658129805029452
+      rx_bandwidth_kbyte: 5.962133916683182
+      create: '2000-01-23T04:56:07.000+00:00'
+  ObjectStorageUserRecord:
+    title: ObjectStorageUserRecord
+    allOf:
+    - $ref: '#/definitions/ObjectStorageUser'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/ObjectStorageUserStat'
+    description: 'ObjectStorageUserRecord is used to combine ObjectStorageUser and
+
+      ObjectStorageUserStat'
+  ObjectStorageUserResp:
+    type: object
+    required:
+    - os_user
+    properties:
+      os_user:
+        description: object storage user
+        $ref: '#/definitions/ObjectStorageUserRecord'
+    title: ObjectStorageUserResp
+    example:
+      os_user: ''
+  ObjectStorageUsersResp:
+    type: object
+    required:
+    - os_users
+    properties:
+      os_users:
+        type: array
+        description: object storage users
+        items:
+          $ref: '#/definitions/ObjectStorageUserRecord'
+    title: ObjectStorageUsersResp
+    example:
+      os_users:
+      - ''
+      - ''
+  ObjectStorageUser:
+    type: object
+    properties:
+      bucket_num:
+        type: integer
+        format: int64
+      bucket_quota_max_objects:
+        type: integer
+        format: int64
+      bucket_quota_max_size:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      display_name:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+        format: int64
+      location_constraint_enabled:
+        type: boolean
+      max_buckets:
+        type: integer
+        format: int64
+      name:
+        type: string
+      op_mask:
+        type: string
+      parent:
+        $ref: '#/definitions/ObjectStorageUser_Nestview'
+      policy:
+        $ref: '#/definitions/ObjectStoragePolicy_Nestview'
+      policy_polling_enabled:
+        type: boolean
+      properties:
+        $ref: '#/definitions/OSUserProperties'
+      status:
+        type: string
+      suspended:
+        type: boolean
+      update:
+        type: string
+        format: date-time
+      user_quota_max_objects:
+        type: integer
+        format: int64
+      user_quota_max_size:
+        type: integer
+        format: int64
+    title: ObjectStorageUser
+    description: ObjectStorageUser is the model of object_storage_user
+  OSUserPropertiesReq:
+    type: object
+    properties:
+      area_code:
+        type: string
+      contact_person:
+        type: string
+      email:
+        type: string
+      mobile:
+        type: string
+      user_name:
+        type: string
+      user_type:
+        type: integer
+        format: int64
+    title: OSUserPropertiesReq
+    example:
+      user_type: 5
+      contact_person: contact_person
+      user_name: user_name
+      area_code: area_code
+      mobile: mobile
+      email: email
+  ObjectStorageUserCreateReq:
+    type: object
+    properties:
+      os_user:
+        $ref: '#/definitions/ObjectStorageUserCreateReq_Info'
+    title: ObjectStorageUserCreateReq
+    example:
+      os_user:
+        bucket_quota_max_objects: 0
+        policy_id: 5
+        keys:
+        - secret_key: secret_key
+          reserved: true
+          access_key: access_key
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+          user:
+            name: name
+            id: 1
+          status: status
+        - secret_key: secret_key
+          reserved: true
+          access_key: access_key
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+          user:
+            name: name
+            id: 1
+          status: status
+        max_buckets: 1
+        op_mask: op_mask
+        user_quota_max_objects: 2
+        display_name: display_name
+        policy_polling_enabled: true
+        location_constraint_enabled: true
+        name: name
+        email: email
+        properties:
+          user_type: 5
+          contact_person: contact_person
+          user_name: user_name
+          area_code: area_code
+          mobile: mobile
+          email: email
+        bucket_quota_max_size: 6
+        user_quota_max_size: 7
+  ObjectStorageUserSamplesResp:
+    type: object
+    required:
+    - os_user_samples
+    properties:
+      os_user_samples:
+        type: array
+        description: object storage user samples
+        items:
+          $ref: '#/definitions/ObjectStorageUserStat'
+    title: ObjectStorageUserSamplesResp
+    example:
+      os_user_samples:
+      - rx_ops_pm: 5.637376656633329
+        total_rx_ops: 3
+        allocated_objects: 0
+        allocated_size: 6
+        tx_ops_pm: 1.4894159098541704
+        total_tx_bytes: 4
+        total_rx_bytes: 9
+        total_tx_success_ops: 1
+        total_del_success_ops: 7
+        total_rx_success_ops: 2
+        total_del_ops: 2
+        total_tx_ops: 7
+        tx_bandwidth_kbyte: 1.0246457001441578
+        del_ops_pm: 1.4658129805029452
+        rx_bandwidth_kbyte: 5.962133916683182
+        create: '2000-01-23T04:56:07.000+00:00'
+      - rx_ops_pm: 5.637376656633329
+        total_rx_ops: 3
+        allocated_objects: 0
+        allocated_size: 6
+        tx_ops_pm: 1.4894159098541704
+        total_tx_bytes: 4
+        total_rx_bytes: 9
+        total_tx_success_ops: 1
+        total_del_success_ops: 7
+        total_rx_success_ops: 2
+        total_del_ops: 2
+        total_tx_ops: 7
+        tx_bandwidth_kbyte: 1.0246457001441578
+        del_ops_pm: 1.4658129805029452
+        rx_bandwidth_kbyte: 5.962133916683182
+        create: '2000-01-23T04:56:07.000+00:00'
+  ObjectStorageUserUpdateReq_Info:
+    type: object
+    properties:
+      bucket_quota_max_objects:
+        type: integer
+        format: int64
+      bucket_quota_max_size:
+        type: integer
+        format: int64
+      display_name:
+        type: string
+      email:
+        type: string
+      location_constraint_enabled:
+        type: boolean
+      max_buckets:
+        type: integer
+        format: int64
+      op_mask:
+        type: string
+      policy_id:
+        type: integer
+        format: int64
+      policy_polling_enabled:
+        type: boolean
+      properties:
+        $ref: '#/definitions/OSUserPropertiesReq'
+      suspended:
+        type: boolean
+      user_quota_max_objects:
+        type: integer
+        format: int64
+      user_quota_max_size:
+        type: integer
+        format: int64
+    title: ObjectStorageUserUpdateReq_Info
+    example:
+      bucket_quota_max_objects: 0
+      policy_id: 5
+      max_buckets: 1
+      op_mask: op_mask
+      user_quota_max_objects: 5
+      display_name: display_name
+      suspended: true
+      policy_polling_enabled: true
+      location_constraint_enabled: true
+      email: email
+      properties:
+        user_type: 5
+        contact_person: contact_person
+        user_name: user_name
+        area_code: area_code
+        mobile: mobile
+        email: email
+      bucket_quota_max_size: 6
+      user_quota_max_size: 2
+  ObjectStorageUserUpdateReq:
+    type: object
+    properties:
+      os_user:
+        $ref: '#/definitions/ObjectStorageUserUpdateReq_Info'
+    title: ObjectStorageUserUpdateReq
+    example:
+      os_user:
+        bucket_quota_max_objects: 0
+        policy_id: 5
+        max_buckets: 1
+        op_mask: op_mask
+        user_quota_max_objects: 5
+        display_name: display_name
+        suspended: true
+        policy_polling_enabled: true
+        location_constraint_enabled: true
+        email: email
+        properties:
+          user_type: 5
+          contact_person: contact_person
+          user_name: user_name
+          area_code: area_code
+          mobile: mobile
+          email: email
+        bucket_quota_max_size: 6
+        user_quota_max_size: 2
+  OSUserProperties:
+    type: object
+    properties:
+      area_code:
+        type: string
+      contact_person:
+        type: string
+      email:
+        type: string
+      mobile:
+        type: string
+      user_name:
+        type: string
+      user_type:
+        type: integer
+        format: int64
+    title: OSUserProperties
+    description: OSUserProperties contains properties for a os user.
+  ObjectStorageKey:
+    type: object
+    properties:
+      access_key:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      reserved:
+        type: boolean
+      secret_key:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      user:
+        $ref: '#/definitions/ObjectStorageUser_Nestview'
+    title: ObjectStorageKey
+    description: ObjectStorageKey defines access key and secret key for object storage
+    example:
+      secret_key: secret_key
+      reserved: true
+      access_key: access_key
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      type: type
+      user:
+        name: name
+        id: 1
+      status: status
+  ObjectStorageUser_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ObjectStorageUser_Nestview
+    example:
+      name: name
+      id: 1
+  ObjectStorageUserCreateReq_Info:
+    type: object
+    required:
+    - name
+    properties:
+      bucket_quota_max_objects:
+        type: integer
+        format: int64
+      bucket_quota_max_size:
+        type: integer
+        format: int64
+      display_name:
+        type: string
+      email:
+        type: string
+      keys:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStorageKey'
+      location_constraint_enabled:
+        type: boolean
+      max_buckets:
+        type: integer
+        format: int64
+      name:
+        type: string
+      op_mask:
+        type: string
+      policy_id:
+        type: integer
+        format: int64
+      policy_polling_enabled:
+        type: boolean
+      properties:
+        $ref: '#/definitions/OSUserPropertiesReq'
+      user_quota_max_objects:
+        type: integer
+        format: int64
+      user_quota_max_size:
+        type: integer
+        format: int64
+    title: ObjectStorageUserCreateReq_Info
+    example:
+      bucket_quota_max_objects: 0
+      policy_id: 5
+      keys:
+      - secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+      - secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+      max_buckets: 1
+      op_mask: op_mask
+      user_quota_max_objects: 2
+      display_name: display_name
+      policy_polling_enabled: true
+      location_constraint_enabled: true
+      name: name
+      email: email
+      properties:
+        user_type: 5
+        contact_person: contact_person
+        user_name: user_name
+        area_code: area_code
+        mobile: mobile
+        email: email
+      bucket_quota_max_size: 6
+      user_quota_max_size: 7
+  ObjectStoragePolicy_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ObjectStoragePolicy_Nestview
+    example:
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,361 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-gateways API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-gateways
+  description: 'DpGatewayController API /dp-gateways/
+
+    '
+paths:
+  /dp-gateways/:
+    get:
+      tags:
+      - dp-gateways
+      description: List dp gateways
+      operationId: ListDpGateways
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpGatewaysResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-gateways
+      description: Create a dp gateway
+      operationId: CreateDpGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: dp gateway info
+        required: true
+        schema:
+          $ref: '#/definitions/DpGatewayCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpGatewayResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-gateways/{gateway_id}:
+    get:
+      tags:
+      - dp-gateways
+      description: Get dp gateway
+      operationId: GetDpGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: dp gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpGatewayResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - dp-gateways
+      description: Delete dp gateway
+      operationId: DeleteDpGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: dp gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpGatewayResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - dp-gateways
+      description: Update a dp gateway
+      operationId: UpdateDpGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: gateway_id
+        in: path
+        description: dp gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GatewayId
+      - in: body
+        name: body
+        description: dp gateway info
+        required: true
+        schema:
+          $ref: '#/definitions/DpGatewayUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpGatewayResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpGatewayCreateReq_Gateway:
+    type: object
+    required:
+    - host_id
+    - name
+    properties:
+      host_id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpGatewayCreateReq_Gateway
+    example:
+      name: name
+      host_id: 0
+  DpGateway:
+    type: object
+    properties:
+      admin_port:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      gateway_port:
+        type: integer
+        format: int64
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: DpGateway
+    description: DpGateway is a process to execute data protection jobs
+    example:
+      admin_port: 0
+      gateway_port: 6
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 1
+      status: status
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  DpGatewayUpdateReq_Gateway:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: dp gateway name
+    title: DpGatewayUpdateReq_Gateway
+    example:
+      name: name
+  DpGatewayUpdateReq:
+    type: object
+    properties:
+      dp_gateway:
+        $ref: '#/definitions/DpGatewayUpdateReq_Gateway'
+    title: DpGatewayUpdateReq
+    example:
+      dp_gateway:
+        name: name
+  DpGatewayResp:
+    type: object
+    required:
+    - dp_gateway
+    properties:
+      dp_gateway:
+        description: dp gateway
+        $ref: '#/definitions/DpGateway'
+    title: DpGatewayResp
+    example:
+      dp_gateway:
+        admin_port: 0
+        gateway_port: 6
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+  DpGatewaysResp:
+    type: object
+    required:
+    - dp_gateways
+    properties:
+      dp_gateways:
+        type: array
+        description: dp gateways
+        items:
+          $ref: '#/definitions/DpGateway'
+    title: DpGatewaysResp
+    example:
+      dp_gateways:
+      - admin_port: 0
+        gateway_port: 6
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+      - admin_port: 0
+        gateway_port: 6
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+  DpGatewayCreateReq:
+    type: object
+    properties:
+      dp_gateway:
+        $ref: '#/definitions/DpGatewayCreateReq_Gateway'
+    title: DpGatewayCreateReq
+    example:
+      dp_gateway:
+        name: name
+        host_id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

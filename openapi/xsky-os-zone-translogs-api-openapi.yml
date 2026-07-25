@@ -1,0 +1,157 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-zone-translogs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-zone-translogs
+  description: 'OSZoneTranslogController API /os-zone-translogs
+
+    '
+paths:
+  /os-zone-translogs/:
+    get:
+      tags:
+      - os-zone-translogs
+      description: List os zone translogs
+      operationId: ListOSZoneTranslogs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: epoch_uuid
+        in: query
+        description: paging param
+        required: false
+        type: string
+        x-exportParamName: EpochUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneTranslogsResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-zone-translogs/{translog_uuid}:
+    get:
+      tags:
+      - os-zone-translogs
+      description: Get a os zone translog
+      operationId: GetOSZoneTranslog
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: translog_uuid
+        in: path
+        description: translog uuid
+        required: true
+        type: string
+        x-exportParamName: TranslogUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZoneTranslogResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSZoneTranslogsResp:
+    type: object
+    properties:
+      os_zone_translogs:
+        type: array
+        items:
+          $ref: '#/definitions/OSZoneTranslog'
+    title: OSZoneTranslogsResp
+    example:
+      os_zone_translogs:
+      - resource_type: resource_type
+        resource_uuid: resource_uuid
+        action: action
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+      - resource_type: resource_type
+        resource_uuid: resource_uuid
+        action: action
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+  OSZoneTranslog:
+    type: object
+    properties:
+      action:
+        type: string
+      create:
+        type: string
+        format: date-time
+      resource_type:
+        type: string
+      resource_uuid:
+        type: string
+      update:
+        type: string
+        format: date-time
+      uuid:
+        type: string
+    title: OSZoneTranslog
+    description: OSZoneTranslog defines model of os zone translog.
+    example:
+      resource_type: resource_type
+      resource_uuid: resource_uuid
+      action: action
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      uuid: uuid
+  OSZoneTranslogResp:
+    type: object
+    properties:
+      os_zone_translog:
+        $ref: '#/definitions/OSZoneTranslog'
+    title: OSZoneTranslogResp
+    example:
+      os_zone_translog:
+        resource_type: resource_type
+        resource_uuid: resource_uuid
+        action: action
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

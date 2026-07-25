@@ -1,0 +1,296 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-quota-trees API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-quota-trees
+  description: 'FSQuotaTreeController provides API for file storage quota tree
+
+    '
+paths:
+  /fs-quota-trees/:
+    get:
+      tags:
+      - fs-quota-trees
+      description: List file storage quota trees
+      operationId: ListQuotaTrees
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_folder_id
+        in: query
+        description: file storage folder id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSQuotaTreesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-quota-trees/{fs_quota_tree_id}:
+    get:
+      tags:
+      - fs-quota-trees
+      description: Get file storage quota tree
+      operationId: GetQuotaTree
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_quota_tree_id
+        in: path
+        description: quota tree id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsQuotaTreeId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSQuotaTreeResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-quota-trees
+      description: Update file storage quota tree
+      operationId: UpdateQuotaTree
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_quota_tree_id
+        in: path
+        description: quota tree id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsQuotaTreeId
+      - in: body
+        name: body
+        description: quota tree info
+        required: true
+        schema:
+          $ref: '#/definitions/FSQuotaTreeUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSQuotaTreeResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  FSQuotaTreeUpdateReq:
+    type: object
+    required:
+    - fs_quota_tree
+    properties:
+      fs_quota_tree:
+        $ref: '#/definitions/FSQuotaTreeUpdateReq_QuotaTree'
+    title: FSQuotaTreeUpdateReq
+  FSQuotaTreeResp:
+    type: object
+    required:
+    - fs_quota_tree
+    properties:
+      fs_quota_tree:
+        description: file storage quota tree
+        $ref: '#/definitions/FSQuotaTree'
+    title: FSQuotaTreeResp
+    example:
+      fs_quota_tree:
+        shared: true
+        used_kbyte: 5
+        size: 6
+        soft_quota_size: 1
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+  FSQuotaTreeUpdateReq_QuotaTree:
+    type: object
+    properties:
+      name:
+        type: string
+        description: name of quota tree
+      size:
+        type: integer
+        format: int64
+        description: size of quota tree
+      soft_quota_size:
+        type: integer
+        format: int64
+        description: soft quota size of quota tree
+    title: FSQuotaTreeUpdateReq_QuotaTree
+  FSQuotaTree:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      shared:
+        type: boolean
+      size:
+        type: integer
+        format: int64
+      soft_quota_size:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      used_kbyte:
+        type: integer
+        format: int64
+    title: FSQuotaTree
+    description: FSQuotaTree defines model of file storage quota tree
+    example:
+      shared: true
+      used_kbyte: 5
+      size: 6
+      soft_quota_size: 1
+      fs_folder:
+        name: name
+        id: 6
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      action_status: action_status
+      status: status
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  FSQuotaTreesResp:
+    type: object
+    required:
+    - fs_quota_trees
+    properties:
+      fs_quota_trees:
+        type: array
+        description: file storage quota trees
+        items:
+          $ref: '#/definitions/FSQuotaTree'
+    title: FSQuotaTreesResp
+    example:
+      fs_quota_trees:
+      - shared: true
+        used_kbyte: 5
+        size: 6
+        soft_quota_size: 1
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+      - shared: true
+        used_kbyte: 5
+        size: 6
+        soft_quota_size: 1
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

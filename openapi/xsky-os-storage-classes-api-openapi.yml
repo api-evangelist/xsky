@@ -1,0 +1,422 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-storage-classes API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-storage-classes
+  description: 'OSStorageClassController API /os-storage-classes.
+
+    '
+paths:
+  /os-storage-classes/:
+    get:
+      tags:
+      - os-storage-classes
+      description: List os storage classes
+      operationId: ListOSStorageClasses
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: os_policy_id
+        in: query
+        description: os policy id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: OsPolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSStorageClassesResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-storage-classes/{storage_class_id}:
+    get:
+      tags:
+      - os-storage-classes
+      description: Get a os storage class
+      operationId: GetOSStorageClass
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: storage_class_id
+        in: path
+        description: storage class id
+        required: true
+        type: string
+        x-exportParamName: StorageClassId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSStorageClassResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-storage-classes
+      description: update storage class
+      operationId: UpdateOSStorageClass
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: storage_class_id
+        in: path
+        description: storage class id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: StorageClassId
+      - in: body
+        name: body
+        description: storage class info
+        required: true
+        schema:
+          $ref: '#/definitions/OSStorageClassUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSStorageClassResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OSStorageClassResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSStorageClassResp:
+    type: object
+    properties:
+      os_storage_class:
+        $ref: '#/definitions/OSStorageClass'
+    title: OSStorageClassResp
+    example:
+      os_storage_class:
+        active_pool_ids:
+        - 0
+        - 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        class: 6
+        os_policy:
+          shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+        inactive_pool_ids:
+        - 5
+        - 5
+        status: status
+  OSStorageClassesResp:
+    type: object
+    properties:
+      os_storage_classes:
+        type: array
+        items:
+          $ref: '#/definitions/OSStorageClass'
+    title: OSStorageClassesResp
+    example:
+      os_storage_classes:
+      - active_pool_ids:
+        - 0
+        - 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        class: 6
+        os_policy:
+          shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+        inactive_pool_ids:
+        - 5
+        - 5
+        status: status
+      - active_pool_ids:
+        - 0
+        - 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        class: 6
+        os_policy:
+          shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+        inactive_pool_ids:
+        - 5
+        - 5
+        status: status
+  OSStorageClassUpdateReq_StorageClass:
+    type: object
+    properties:
+      active_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      description:
+        type: string
+      inactive_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+    title: OSStorageClassUpdateReq_StorageClass
+  ObjectStoragePolicy:
+    type: object
+    properties:
+      bucket_num:
+        type: integer
+        format: int64
+      cache_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      compress:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      crypto:
+        type: boolean
+      default:
+        type: boolean
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      index_pool:
+        $ref: '#/definitions/Pool_Nestview'
+      name:
+        type: string
+      object_size_threshold:
+        type: integer
+        format: int64
+      policy_name:
+        type: string
+      shared:
+        type: boolean
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: ObjectStoragePolicy
+    description: ObjectStoragePolicy is the model of object_storage_policy
+    example:
+      shared: true
+      cache_pool:
+        name: name
+        id: 5
+      compress: true
+      description: description
+      policy_name: policy_name
+      update: '2000-01-23T04:56:07.000+00:00'
+      bucket_num: 0
+      crypto: true
+      index_pool:
+        name: name
+        id: 5
+      object_size_threshold: 1
+      default: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      status: status
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  OSStorageClassUpdateReq:
+    type: object
+    properties:
+      os_storage_class:
+        $ref: '#/definitions/OSStorageClassUpdateReq_StorageClass'
+    title: OSStorageClassUpdateReq
+  OSStorageClass:
+    type: object
+    properties:
+      active_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      class:
+        type: integer
+        format: int32
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      inactive_pool_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+      os_policy:
+        $ref: '#/definitions/ObjectStoragePolicy'
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: OSStorageClass
+    description: OSStorageClass is the model of os_storage_class
+    example:
+      active_pool_ids:
+      - 0
+      - 0
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 1
+      class: 6
+      os_policy:
+        shared: true
+        cache_pool:
+          name: name
+          id: 5
+        compress: true
+        description: description
+        policy_name: policy_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        bucket_num: 0
+        crypto: true
+        index_pool:
+          name: name
+          id: 5
+        object_size_threshold: 1
+        default: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+      inactive_pool_ids:
+      - 5
+      - 5
+      status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

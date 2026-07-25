@@ -1,0 +1,482 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths licenses API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: licenses
+  description: 'LicenseController Operations about Install
+
+    '
+paths:
+  /licenses/:
+    get:
+      tags:
+      - licenses
+      description: List licenses
+      operationId: ListLicenses
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: active
+        in: query
+        description: filter license by active status
+        required: false
+        type: boolean
+        x-exportParamName: Active
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LicensesResp'
+        500:
+          description: InternalServerError
+    post:
+      tags:
+      - licenses
+      description: Activate product license
+      operationId: RegisterLicense
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: force
+        in: query
+        description: force activate
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - name: license
+        in: formData
+        description: license info
+        required: true
+        type: file
+        x-exportParamName: License
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LicenseResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /licenses/key:
+    get:
+      tags:
+      - licenses
+      description: get license key file
+      operationId: DownloadLicenseKey
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+  /licenses/license:
+    get:
+      tags:
+      - licenses
+      description: get current active license
+      operationId: GetActiveLicense
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LicenseResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /licenses/{license_id}:
+    get:
+      tags:
+      - licenses
+      description: get license
+      operationId: GetLicense
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: license_id
+        in: path
+        description: the license id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: LicenseId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/LicenseResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ProductFeature:
+    type: object
+    properties:
+      functions:
+        type: array
+        items:
+          type: string
+      limits:
+        type: object
+        description: for viewing only
+        additionalProperties:
+          type: string
+      name:
+        type: string
+      protocols:
+        type: array
+        items:
+          type: string
+    title: ProductFeature
+    description: ProductFeature defines product feature
+    example:
+      functions:
+      - functions
+      - functions
+      name: name
+      protocols:
+      - protocols
+      - protocols
+      limits:
+        key: limits
+  LicensesResp:
+    type: object
+    required:
+    - licenses
+    properties:
+      licenses:
+        type: array
+        description: licenses
+        items:
+          $ref: '#/definitions/License'
+    title: LicensesResp
+    example:
+      licenses:
+      - signed_time: '2000-01-23T04:56:07.000+00:00'
+        used_capacity: 6
+        used_host_num: 1
+        active: true
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        product_info:
+          series: series
+          model: model
+        services:
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        version: version
+        features:
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        limits: {}
+        customer: customer
+        status: status
+      - signed_time: '2000-01-23T04:56:07.000+00:00'
+        used_capacity: 6
+        used_host_num: 1
+        active: true
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        product_info:
+          series: series
+          model: model
+        services:
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        version: version
+        features:
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        limits: {}
+        customer: customer
+        status: status
+  ProductService:
+    type: object
+    properties:
+      expired_time:
+        type: string
+        format: date-time
+      name:
+        type: string
+      start_time:
+        type: string
+        format: date-time
+    title: ProductService
+    description: ProductService defines product service
+    example:
+      start_time: '2000-01-23T04:56:07.000+00:00'
+      name: name
+      expired_time: '2000-01-23T04:56:07.000+00:00'
+  ProductInfo:
+    type: object
+    properties:
+      model:
+        type: string
+      series:
+        type: string
+    title: ProductInfo
+    description: ProductInfo defines product info
+    example:
+      series: series
+      model: model
+  License:
+    type: object
+    properties:
+      active:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      customer:
+        type: string
+      expired_time:
+        type: string
+        format: date-time
+      features:
+        type: array
+        items:
+          $ref: '#/definitions/ProductFeature'
+      id:
+        type: integer
+        format: int64
+      limits:
+        $ref: '#/definitions/ProductLimits'
+      product_info:
+        $ref: '#/definitions/ProductInfo'
+      services:
+        type: array
+        items:
+          $ref: '#/definitions/ProductService'
+      signed_time:
+        type: string
+        format: date-time
+      status:
+        type: string
+      used_capacity:
+        type: integer
+        format: int64
+      used_host_num:
+        type: integer
+        format: int64
+      uuid:
+        type: string
+      version:
+        type: string
+        description: v2, load from license info
+    title: License
+    description: License is used to manage backend license @grpc-models-proto
+    example:
+      signed_time: '2000-01-23T04:56:07.000+00:00'
+      used_capacity: 6
+      used_host_num: 1
+      active: true
+      expired_time: '2000-01-23T04:56:07.000+00:00'
+      product_info:
+        series: series
+        model: model
+      services:
+      - start_time: '2000-01-23T04:56:07.000+00:00'
+        name: name
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+      - start_time: '2000-01-23T04:56:07.000+00:00'
+        name: name
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+      uuid: uuid
+      version: version
+      features:
+      - functions:
+        - functions
+        - functions
+        name: name
+        protocols:
+        - protocols
+        - protocols
+        limits:
+          key: limits
+      - functions:
+        - functions
+        - functions
+        name: name
+        protocols:
+        - protocols
+        - protocols
+        limits:
+          key: limits
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      limits: {}
+      customer: customer
+      status: status
+  LicenseResp:
+    type: object
+    required:
+    - license
+    properties:
+      license:
+        description: license
+        $ref: '#/definitions/License'
+    title: LicenseResp
+    example:
+      license:
+        signed_time: '2000-01-23T04:56:07.000+00:00'
+        used_capacity: 6
+        used_host_num: 1
+        active: true
+        expired_time: '2000-01-23T04:56:07.000+00:00'
+        product_info:
+          series: series
+          model: model
+        services:
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        version: version
+        features:
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        limits: {}
+        customer: customer
+        status: status
+  ProductLimits:
+    type: object
+    description: ProductLimits defines product limits
+    additionalProperties:
+      type: string
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

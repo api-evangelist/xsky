@@ -1,0 +1,325 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths cloud-instances API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: cloud-instances
+  description: 'CloudInstanceController Cloud Instance Management
+
+    '
+paths:
+  /cloud-instances/:
+    get:
+      tags:
+      - cloud-instances
+      description: List cloud instances
+      operationId: ListCloudInstances
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: cloud_platform_id
+        in: query
+        description: cloud platform id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: CloudPlatformId
+      - name: cloud_platform_type
+        in: query
+        description: cloud platform type
+        required: false
+        type: string
+        x-exportParamName: CloudPlatformType
+      - name: cloud_platform_name
+        in: query
+        description: cloud platform name
+        required: false
+        type: string
+        x-exportParamName: CloudPlatformName
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudInstancesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cloud-instances/{cloud_instance_id}:
+    get:
+      tags:
+      - cloud-instances
+      description: Get a cloud instance
+      operationId: GetCloudInstance
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_instance_id
+        in: path
+        description: cloud instance id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudInstanceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudInstanceResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cloud-instances/{cloud_instance_id}/samples:
+    get:
+      tags:
+      - cloud-instances
+      description: get a cloud instance's Samples
+      operationId: GetCloudInstanceSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_instance_id
+        in: path
+        description: cloud instance id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudInstanceId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudInstanceSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  CloudInstanceResp:
+    type: object
+    properties:
+      cloud_instance:
+        description: cloud instance record
+        $ref: '#/definitions/CloudInstanceRecord'
+    title: CloudInstanceResp
+    example:
+      cloud_instance: ''
+  CloudInstance:
+    type: object
+    properties:
+      cloud_datacenter:
+        $ref: '#/definitions/CloudDatacenter_Nestview'
+      cloud_instance_id:
+        type: string
+      cloud_platform:
+        $ref: '#/definitions/CloudPlatform_Nestview'
+      cloud_volume_num:
+        type: integer
+        format: int64
+      cores:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      hostname:
+        type: string
+      id:
+        type: integer
+        format: int64
+      memory_kbyte:
+        type: integer
+        format: int64
+      name:
+        type: string
+      root_device_type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: CloudInstance
+    description: CloudInstance defines instances of the cloud platform
+  CloudInstanceStat:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_latency_us:
+        type: number
+        format: double
+      total_bandwidth_kbyte:
+        type: number
+        format: double
+      total_iops:
+        type: number
+        format: double
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_latency_us:
+        type: number
+        format: double
+    title: CloudInstanceStat
+    description: CloudInstanceStat represents the monitoring metrics of a cloud instance
+    example:
+      read_bandwidth_kbyte: 0.8008281904610115
+      write_bandwidth_kbyte: 2.3021358869347655
+      create: '2000-01-23T04:56:07.000+00:00'
+      total_bandwidth_kbyte: 5.962133916683182
+      write_iops: 7.061401241503109
+      write_latency_us: 9.301444243932576
+      total_iops: 5.637376656633329
+      read_latency_us: 1.4658129805029452
+      read_iops: 6.027456183070403
+  CloudInstanceSamplesResp:
+    type: object
+    properties:
+      cloud_instance_samples:
+        type: array
+        items:
+          $ref: '#/definitions/CloudInstanceStat'
+    title: CloudInstanceSamplesResp
+    example:
+      cloud_instance_samples:
+      - read_bandwidth_kbyte: 0.8008281904610115
+        write_bandwidth_kbyte: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        total_bandwidth_kbyte: 5.962133916683182
+        write_iops: 7.061401241503109
+        write_latency_us: 9.301444243932576
+        total_iops: 5.637376656633329
+        read_latency_us: 1.4658129805029452
+        read_iops: 6.027456183070403
+      - read_bandwidth_kbyte: 0.8008281904610115
+        write_bandwidth_kbyte: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        total_bandwidth_kbyte: 5.962133916683182
+        write_iops: 7.061401241503109
+        write_latency_us: 9.301444243932576
+        total_iops: 5.637376656633329
+        read_latency_us: 1.4658129805029452
+        read_iops: 6.027456183070403
+  CloudInstancesResp:
+    type: object
+    properties:
+      cloud_instances:
+        type: array
+        description: cloud instance records
+        items:
+          $ref: '#/definitions/CloudInstanceRecord'
+    title: CloudInstancesResp
+    example:
+      cloud_instances:
+      - ''
+      - ''
+  CloudDatacenter_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: CloudDatacenter_Nestview
+    example:
+      name: name
+      id: 0
+  CloudPlatform_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      type:
+        type: string
+    title: CloudPlatform_Nestview
+    example:
+      name: name
+      id: 6
+      type: type
+  CloudInstanceRecord:
+    title: CloudInstanceRecord
+    allOf:
+    - $ref: '#/definitions/CloudInstance'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/CloudInstanceStat'
+    description: CloudInstanceRecord combine CloudInstance and CloudInstanceStat as API response
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

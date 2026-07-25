@@ -1,0 +1,214 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths host-validators API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: host-validators
+  description: 'HostValidatorController Host Validator Management
+
+    '
+paths:
+  /host-validators/:
+    post:
+      tags:
+      - host-validators
+      description: Create host validator
+      operationId: CreateHostValidator
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: host validator info
+        required: true
+        schema:
+          $ref: '#/definitions/HostValidatorCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/HostValidatorResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /host-validators/{host_validator_id}:
+    get:
+      tags:
+      - host-validators
+      description: Get host validator
+      operationId: GetHostValidator
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: host_validator_id
+        in: path
+        description: host validator id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostValidatorId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostValidatorResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  HostValidatorCreateReq:
+    type: object
+    properties:
+      host_validator:
+        $ref: '#/definitions/HostValidatorCreateReq_Validator'
+    title: HostValidatorCreateReq
+    example:
+      host_validator:
+        gateway_ips:
+        - gateway_ips
+        - gateway_ips
+        public_ip: public_ip
+        host_roles:
+        - host_roles
+        - host_roles
+        admin_ip: admin_ip
+        host_type: host_type
+        private_ip: private_ip
+  HostValidatorCreateReq_Validator:
+    type: object
+    required:
+    - admin_ip
+    - host_roles
+    - host_type
+    properties:
+      admin_ip:
+        type: string
+      gateway_ips:
+        type: array
+        items:
+          type: string
+      host_roles:
+        type: array
+        items:
+          type: string
+      host_type:
+        type: string
+      private_ip:
+        type: string
+      public_ip:
+        type: string
+    title: HostValidatorCreateReq_Validator
+    example:
+      gateway_ips:
+      - gateway_ips
+      - gateway_ips
+      public_ip: public_ip
+      host_roles:
+      - host_roles
+      - host_roles
+      admin_ip: admin_ip
+      host_type: host_type
+      private_ip: private_ip
+  HostValidator:
+    type: object
+    properties:
+      admin_ip:
+        type: string
+      create:
+        type: string
+        format: date-time
+      gateway_ips:
+        type: array
+        items:
+          type: string
+      host_roles:
+        type: array
+        items:
+          type: string
+      host_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+      private_ip:
+        type: string
+      public_ip:
+        type: string
+      report:
+        type: object
+        properties: {}
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: HostValidator
+    description: HostValidator defines the validator for host
+    example:
+      gateway_ips:
+      - gateway_ips
+      - gateway_ips
+      public_ip: public_ip
+      host_roles:
+      - host_roles
+      - host_roles
+      report: '{}'
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      admin_ip: admin_ip
+      id: 0
+      host_type: host_type
+      private_ip: private_ip
+      status: status
+  HostValidatorResp:
+    type: object
+    properties:
+      host_validator:
+        $ref: '#/definitions/HostValidator'
+    title: HostValidatorResp
+    example:
+      host_validator:
+        gateway_ips:
+        - gateway_ips
+        - gateway_ips
+        public_ip: public_ip
+        host_roles:
+        - host_roles
+        - host_roles
+        report: '{}'
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        admin_ip: admin_ip
+        id: 0
+        host_type: host_type
+        private_ip: private_ip
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

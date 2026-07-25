@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-zone-pairs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-zone-pairs
+  description: 'OSZonePairsController API /os-zone-pairs
+
+    '
+paths:
+  /os-zone-pairs/:
+    get:
+      tags:
+      - os-zone-pairs
+      description: list os zone pairs
+      operationId: ListOSZonePairs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: min_clock_diff_abs
+        in: query
+        description: min clock diff absolute value for zone pairs
+        required: false
+        type: string
+        x-exportParamName: MinClockDiffAbs
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSZonePairsResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSZonePair:
+    type: object
+    properties:
+      ID:
+        type: integer
+        format: int64
+      clock_diff:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      source_zone_uuid:
+        type: string
+      target_zone_uuid:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: OSZonePair
+    description: OSZonePair contains relation info from source zone to target zone
+    example:
+      clock_diff: 6
+      target_zone_uuid: target_zone_uuid
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      ID: 0
+      source_zone_uuid: source_zone_uuid
+  OSZonePairsResp:
+    type: object
+    required:
+    - os_zone_pairs
+    properties:
+      os_zone_pairs:
+        type: array
+        items:
+          $ref: '#/definitions/OSZonePair'
+    title: OSZonePairsResp
+    example:
+      os_zone_pairs:
+      - clock_diff: 6
+        target_zone_uuid: target_zone_uuid
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        ID: 0
+        source_zone_uuid: source_zone_uuid
+      - clock_diff: 6
+        target_zone_uuid: target_zone_uuid
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        ID: 0
+        source_zone_uuid: source_zone_uuid
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

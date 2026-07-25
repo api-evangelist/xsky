@@ -1,0 +1,387 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths remote-clusters API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: remote-clusters
+  description: 'RemoteClusterController API /remote-clusters
+
+    '
+paths:
+  /remote-clusters/:
+    get:
+      tags:
+      - remote-clusters
+      description: List remote clusters
+      operationId: ListRemoteClusters
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_id
+        in: query
+        description: fsid of cluster
+        required: false
+        type: string
+        x-exportParamName: FsId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RemoteClustersResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - remote-clusters
+      description: Create a remote cluster
+      operationId: CreateRemoteCluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: remote cluster info
+        required: true
+        schema:
+          $ref: '#/definitions/RemoteClusterCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RemoteClusterResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /remote-clusters/{cluster_id}:
+    get:
+      tags:
+      - remote-clusters
+      description: Get remote cluster
+      operationId: GetRemoteCluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cluster_id
+        in: path
+        description: remote cluster id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClusterId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RemoteClusterResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - remote-clusters
+      description: Delete a remote cluster
+      operationId: DeleteRemoteCluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cluster_id
+        in: path
+        description: remote cluster id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClusterId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/RemoteClusterResp'
+        204:
+          description: NoContent
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - remote-clusters
+      description: Update a remote cluster
+      operationId: UpdateRemoteCluster
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cluster_id
+        in: path
+        description: remote cluster id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClusterId
+      - in: body
+        name: body
+        description: remote cluster info
+        required: true
+        schema:
+          $ref: '#/definitions/RemoteClusterUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RemoteClusterResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  RemoteClusterResp:
+    type: object
+    properties:
+      remote_cluster:
+        $ref: '#/definitions/RemoteCluster'
+    title: RemoteClusterResp
+    example:
+      remote_cluster:
+        dp_site_num: 1
+        block_volume_num: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        version: version
+        os_zone_num: 5
+        url: url
+        access_token: access_token
+        block_snapshot_num: 0
+        connected: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        fs_id: fs_id
+        status: status
+  RemoteClustersResp:
+    type: object
+    properties:
+      remote_clusters:
+        type: array
+        items:
+          $ref: '#/definitions/RemoteCluster'
+    title: RemoteClustersResp
+    example:
+      remote_clusters:
+      - dp_site_num: 1
+        block_volume_num: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        version: version
+        os_zone_num: 5
+        url: url
+        access_token: access_token
+        block_snapshot_num: 0
+        connected: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        fs_id: fs_id
+        status: status
+      - dp_site_num: 1
+        block_volume_num: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        version: version
+        os_zone_num: 5
+        url: url
+        access_token: access_token
+        block_snapshot_num: 0
+        connected: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        fs_id: fs_id
+        status: status
+  RemoteClusterCreateReq_RemoteCluster:
+    type: object
+    required:
+    - access_token
+    - url
+    properties:
+      access_token:
+        type: string
+        description: access token of remote cluster
+      url:
+        type: string
+        description: URL of remote cluster
+    title: RemoteClusterCreateReq_RemoteCluster
+    example:
+      access_token: access_token
+      url: url
+  RemoteCluster:
+    type: object
+    properties:
+      access_token:
+        type: string
+      block_snapshot_num:
+        type: integer
+        format: int64
+      block_volume_num:
+        type: integer
+        format: int64
+      connected:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      dp_site_num:
+        type: integer
+        format: int64
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      os_zone_num:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      url:
+        type: string
+      version:
+        type: string
+    title: RemoteCluster
+    description: RemoteCluster remote clusters communicated via public API
+    example:
+      dp_site_num: 1
+      block_volume_num: 6
+      update: '2000-01-23T04:56:07.000+00:00'
+      version: version
+      os_zone_num: 5
+      url: url
+      access_token: access_token
+      block_snapshot_num: 0
+      connected: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      fs_id: fs_id
+      status: status
+  RemoteClusterUpdateReq_RemoteCluster:
+    type: object
+    required:
+    - access_token
+    - url
+    properties:
+      access_token:
+        type: string
+        description: access token of remote cluster
+      url:
+        type: string
+        description: URL of remote cluster
+    title: RemoteClusterUpdateReq_RemoteCluster
+    example:
+      access_token: access_token
+      url: url
+  RemoteClusterCreateReq:
+    type: object
+    properties:
+      remote_cluster:
+        $ref: '#/definitions/RemoteClusterCreateReq_RemoteCluster'
+    title: RemoteClusterCreateReq
+    example:
+      remote_cluster:
+        access_token: access_token
+        url: url
+  RemoteClusterUpdateReq:
+    type: object
+    properties:
+      remote_cluster:
+        $ref: '#/definitions/RemoteClusterUpdateReq_RemoteCluster'
+    title: RemoteClusterUpdateReq
+    example:
+      remote_cluster:
+        access_token: access_token
+        url: url
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

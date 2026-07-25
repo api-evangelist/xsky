@@ -1,0 +1,348 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-keys API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-keys
+  description: 'ObjectStorageKeyController provides API for object storage key
+
+    '
+paths:
+  /os-keys/:
+    get:
+      tags:
+      - os-keys
+      description: List object storage keys
+      operationId: ListKeys
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: user_id
+        in: query
+        description: object storage user id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageKeysResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-keys
+      description: Create new object storage key
+      operationId: CreateKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: key info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageKeyCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageKeyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-keys/{key_id}:
+    get:
+      tags:
+      - os-keys
+      description: get object storage key
+      operationId: GetKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: key_id
+        in: path
+        description: user id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: KeyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageKeyResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-keys
+      description: Delete object storage key
+      operationId: DeleteKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: key_id
+        in: path
+        description: key id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: KeyId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageKeyResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-keys
+      description: Update object storage key
+      operationId: UpdateKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: key_id
+        in: path
+        description: key id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: KeyId
+      - in: body
+        name: body
+        description: key info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageKeyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageKeyResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  ObjectStorageKeyUpdateReq_Key:
+    type: object
+    properties:
+      secret_key:
+        type: string
+    title: ObjectStorageKeyUpdateReq_Key
+    example:
+      secret_key: secret_key
+  ObjectStorageKeyCreateReq:
+    type: object
+    properties:
+      os_key:
+        $ref: '#/definitions/ObjectStorageKeyCreateReq_Key'
+    title: ObjectStorageKeyCreateReq
+    example:
+      os_key:
+        secret_key: secret_key
+        user_id: 0
+        access_key: access_key
+  ObjectStorageKeyCreateReq_Key:
+    type: object
+    required:
+    - access_key
+    - user_id
+    properties:
+      access_key:
+        type: string
+      secret_key:
+        type: string
+      user_id:
+        type: integer
+        format: int64
+    title: ObjectStorageKeyCreateReq_Key
+    example:
+      secret_key: secret_key
+      user_id: 0
+      access_key: access_key
+  ObjectStorageKeysResp:
+    type: object
+    required:
+    - os_keys
+    properties:
+      os_keys:
+        type: array
+        description: object storage keys
+        items:
+          $ref: '#/definitions/ObjectStorageKey'
+    title: ObjectStorageKeysResp
+    example:
+      os_keys:
+      - secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+      - secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+  ObjectStorageKeyUpdateReq:
+    type: object
+    properties:
+      os_key:
+        $ref: '#/definitions/ObjectStorageKeyUpdateReq_Key'
+    title: ObjectStorageKeyUpdateReq
+    example:
+      os_key:
+        secret_key: secret_key
+  ObjectStorageKeyResp:
+    type: object
+    required:
+    - os_key
+    properties:
+      os_key:
+        description: object storage key
+        $ref: '#/definitions/ObjectStorageKey'
+    title: ObjectStorageKeyResp
+    example:
+      os_key:
+        secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+  ObjectStorageKey:
+    type: object
+    properties:
+      access_key:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      reserved:
+        type: boolean
+      secret_key:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      user:
+        $ref: '#/definitions/ObjectStorageUser_Nestview'
+    title: ObjectStorageKey
+    description: ObjectStorageKey defines access key and secret key for object storage
+    example:
+      secret_key: secret_key
+      reserved: true
+      access_key: access_key
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      type: type
+      user:
+        name: name
+        id: 1
+      status: status
+  ObjectStorageUser_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ObjectStorageUser_Nestview
+    example:
+      name: name
+      id: 1
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

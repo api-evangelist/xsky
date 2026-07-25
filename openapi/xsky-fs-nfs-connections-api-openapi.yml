@@ -1,0 +1,142 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-nfs-connections API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-nfs-connections
+  description: 'FSNFSConnectionController provides API for fs NFS connection
+
+    '
+paths:
+  /fs-nfs-connections/:
+    get:
+      tags:
+      - fs-nfs-connections
+      description: List fs nfs connections
+      operationId: ListFSNFSConnections
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: fs_nfs_share_id
+        in: query
+        description: fs nfs id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsNfsShareId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSNFSConnectionsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSNFSShare_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: FSNFSShare_Nestview
+    example:
+      id: 0
+  FSNFSConnectionsResp:
+    type: object
+    required:
+    - fs_nfs_connections
+    properties:
+      fs_nfs_connections:
+        type: array
+        description: fs nfs connections
+        items:
+          $ref: '#/definitions/FSNFSConnection'
+    title: FSNFSConnectionsResp
+    example:
+      fs_nfs_connections:
+      - create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        client_ip: client_ip
+        fs_nfs_share:
+          id: 0
+        id: 6
+      - create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        client_ip: client_ip
+        fs_nfs_share:
+          id: 0
+        id: 6
+  FSNFSConnection:
+    type: object
+    properties:
+      client_ip:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_nfs_share:
+        $ref: '#/definitions/FSNFSShare_Nestview'
+      id:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+    title: FSNFSConnection
+    description: FSNFSConnection defines model of FS NFS connection
+    example:
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      client_ip: client_ip
+      fs_nfs_share:
+        id: 0
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

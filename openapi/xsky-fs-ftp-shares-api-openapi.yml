@@ -1,0 +1,653 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-ftp-shares API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-ftp-shares
+  description: 'FSFTPShareController provides API for fs ftp share
+
+    '
+paths:
+  /fs-ftp-shares/:
+    get:
+      tags:
+      - fs-ftp-shares
+      description: List fs ftp shares
+      operationId: ListFSFTPShares
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: fs_folder_id
+        in: query
+        description: fs smb id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: fs_gateway_group_id
+        in: query
+        description: fs gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFTPSharesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-ftp-shares
+      description: Create fs ftp share
+      operationId: CreateFSFTPShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: share info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFTPShareCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-ftp-shares/{fs_ftp_share_id}:
+    get:
+      tags:
+      - fs-ftp-shares
+      description: Get fs ftp share
+      operationId: GetFSFTPShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ftp_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-ftp-shares
+      description: delete fs ftp share
+      operationId: DeleteFSFTPShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ftp_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-ftp-shares/{fs_ftp_share_id}:add-acls:
+    post:
+      tags:
+      - fs-ftp-shares
+      description: Add fs ftp share acls
+      operationId: AddFSFTPShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ftp_share_id
+        in: path
+        description: fs ftp share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      - in: body
+        name: body
+        description: ftp share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFTPShareAddACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-ftp-shares/{fs_ftp_share_id}:remove-acls:
+    post:
+      tags:
+      - fs-ftp-shares
+      description: remove fs ftp share acls
+      operationId: RemoveFSFTPShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ftp_share_id
+        in: path
+        description: fs ftp share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFTPShareRemoveACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-ftp-shares/{fs_ftp_share_id}:update-acls:
+    post:
+      tags:
+      - fs-ftp-shares
+      description: Update fs ftp share acls
+      operationId: UpdateFSFTPShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ftp_share_id
+        in: path
+        description: ftp share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      - in: body
+        name: body
+        description: ftp share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSFTPShareUpdateACLsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSFTPShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSGatewayGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup_Nestview
+    example:
+      name: name
+      id: 6
+      vip_mask: 1
+      vip: vip
+  FSFTPShareUpdateACLReq:
+    type: object
+    properties:
+      create_enabled:
+        type: boolean
+        description: enable creating files
+      delete_enabled:
+        type: boolean
+        description: enable deleting files
+      download_bandwidth:
+        type: integer
+        format: int64
+        description: max bandwidth of downloading
+      download_enabled:
+        type: boolean
+        description: enable downloading files
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      list_enabled:
+        type: boolean
+        description: enable listing files
+      rename_enabled:
+        type: boolean
+        description: enable renaming files
+      upload_bandwidth:
+        type: integer
+        format: int64
+        description: max bandwidth of uploading
+      upload_enabled:
+        type: boolean
+        description: enable uploading files
+    title: FSFTPShareUpdateACLReq
+  FSFTPShareCreateReq:
+    type: object
+    required:
+    - fs_ftp_share
+    properties:
+      fs_ftp_share:
+        $ref: '#/definitions/FSFTPShareCreateReq_Share'
+    title: FSFTPShareCreateReq
+  FSFTPShareUpdateACLsReq:
+    type: object
+    required:
+    - fs_ftp_share
+    properties:
+      fs_ftp_share:
+        $ref: '#/definitions/FSFTPShareUpdateACLsReq_Share'
+    title: FSFTPShareUpdateACLsReq
+  FSFTPShareRemoveACLsReq:
+    type: object
+    required:
+    - fs_ftp_share
+    properties:
+      fs_ftp_share:
+        $ref: '#/definitions/FSFTPShareRemoveACLsReq_Share'
+    title: FSFTPShareRemoveACLsReq
+  FSFTPShareACLReq:
+    type: object
+    properties:
+      create_enabled:
+        type: boolean
+        description: enable creating files
+      delete_enabled:
+        type: boolean
+        description: enable deleting files
+      download_bandwidth:
+        type: integer
+        format: int64
+        description: max bandwidth of downloading
+      download_enabled:
+        type: boolean
+        description: enable downloading files
+      fs_user_group_id:
+        type: integer
+        format: int64
+        description: id of user group
+      fs_user_id:
+        type: integer
+        format: int64
+        description: id of user
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      list_enabled:
+        type: boolean
+        description: enable listing files
+      rename_enabled:
+        type: boolean
+        description: enable renaming files
+      type:
+        type: string
+        description: type of share acl
+      upload_bandwidth:
+        type: integer
+        format: int64
+        description: max bandwidth of uploading
+      upload_enabled:
+        type: boolean
+        description: enable uploading files
+    title: FSFTPShareACLReq
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  FSFTPShareAddACLsReq_Share:
+    type: object
+    required:
+    - fs_ftp_share_acls
+    properties:
+      fs_ftp_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSFTPShareACLReq'
+    title: FSFTPShareAddACLsReq_Share
+  FSFTPShareUpdateACLsReq_Share:
+    type: object
+    properties:
+      fs_ftp_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSFTPShareUpdateACLReq'
+    title: FSFTPShareUpdateACLsReq_Share
+  FSFTPShare:
+    type: object
+    properties:
+      acl_num:
+        type: integer
+        format: int64
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroup_Nestview'
+      fs_quota_tree:
+        $ref: '#/definitions/FSQuotaTree_Nestview'
+      id:
+        type: integer
+        format: int64
+      mapping_num:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSFTPShare
+    description: FSFTPShare defines model of fs ftp share
+    example:
+      mapping_num: 2
+      fs_folder:
+        name: name
+        id: 6
+      create: '2000-01-23T04:56:07.000+00:00'
+      fs_quota_tree:
+        name: name
+        id: 5
+      update: '2000-01-23T04:56:07.000+00:00'
+      acl_num: 0
+      id: 5
+      fs_gateway_group:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+      action_status: action_status
+      status: status
+  FSFTPShareAddACLsReq:
+    type: object
+    required:
+    - fs_ftp_share
+    properties:
+      fs_ftp_share:
+        $ref: '#/definitions/FSFTPShareAddACLsReq_Share'
+    title: FSFTPShareAddACLsReq
+  FSFTPShareCreateReq_Share:
+    type: object
+    required:
+    - fs_folder_id
+    - fs_gateway_group_id
+    properties:
+      fs_folder_id:
+        type: integer
+        format: int64
+        description: folder id
+      fs_ftp_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSFTPShareACLReq'
+      fs_gateway_group_id:
+        type: integer
+        format: int64
+        description: gateway group id
+      fs_quota_tree_id:
+        type: integer
+        format: int64
+        description: quota tree id
+      name:
+        type: string
+        description: name of share
+    title: FSFTPShareCreateReq_Share
+  FSQuotaTree_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSQuotaTree_Nestview
+    example:
+      name: name
+      id: 5
+  FSFTPShareRemoveACLsReq_Share:
+    type: object
+    required:
+    - fs_ftp_share_acl_ids
+    properties:
+      fs_ftp_share_acl_ids:
+        type: array
+        description: access control array
+        items:
+          type: integer
+          format: int64
+    title: FSFTPShareRemoveACLsReq_Share
+  FSFTPSharesResp:
+    type: object
+    required:
+    - fs_ftp_shares
+    properties:
+      fs_ftp_shares:
+        type: array
+        description: fs ftp share
+        items:
+          $ref: '#/definitions/FSFTPShare'
+    title: FSFTPSharesResp
+    example:
+      fs_ftp_shares:
+      - mapping_num: 2
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 5
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+      - mapping_num: 2
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 5
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+  FSFTPShareResp:
+    type: object
+    required:
+    - fs_ftp_share
+    properties:
+      fs_ftp_share:
+        description: fs ftp share
+        $ref: '#/definitions/FSFTPShare'
+    title: FSFTPShareResp
+    example:
+      fs_ftp_share:
+        mapping_num: 2
+        fs_folder:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 5
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

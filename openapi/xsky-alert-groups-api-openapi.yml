@@ -1,0 +1,331 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths alert-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: alert-groups
+  description: 'AlertGroupController Operations about alert group
+
+    '
+paths:
+  /alert-groups/:
+    get:
+      tags:
+      - alert-groups
+      description: List all alert groups
+      operationId: ListAlertGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertGroupsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    post:
+      tags:
+      - alert-groups
+      description: create alert group
+      operationId: CreateAlertGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: alert group
+        required: true
+        schema:
+          $ref: '#/definitions/AlertGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alert-groups/{group_id}:
+    get:
+      tags:
+      - alert-groups
+      description: get alert group
+      operationId: GetAlertGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of alert group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - alert-groups
+      description: delete alert group
+      operationId: DeleteAlertGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of alert group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - alert-groups
+      description: update alert group
+      operationId: UpdateAlertGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of alert group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: alert group
+        required: true
+        schema:
+          $ref: '#/definitions/AlertGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AlertGroupCreateReq:
+    type: object
+    required:
+    - alert_group
+    properties:
+      alert_group:
+        $ref: '#/definitions/AlertGroupCreateReq_AlertGroup'
+    title: AlertGroupCreateReq
+    example:
+      alert_group:
+        alert_rule_ids:
+        - 0
+        - 0
+        name: name
+        email_group_ids:
+        - 6
+        - 6
+  AlertGroupUpdateReq_AlertGroup:
+    type: object
+    properties:
+      alert_rule_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      email_group_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+    title: AlertGroupUpdateReq_AlertGroup
+    example:
+      alert_rule_ids:
+      - 0
+      - 0
+      name: name
+      email_group_ids:
+      - 6
+      - 6
+  AlertGroupUpdateReq:
+    type: object
+    required:
+    - alert_group
+    properties:
+      alert_group:
+        $ref: '#/definitions/AlertGroupUpdateReq_AlertGroup'
+    title: AlertGroupUpdateReq
+    example:
+      alert_group:
+        alert_rule_ids:
+        - 0
+        - 0
+        name: name
+        email_group_ids:
+        - 6
+        - 6
+  AlertGroupCreateReq_AlertGroup:
+    type: object
+    required:
+    - alert_rule_ids
+    - email_group_ids
+    - name
+    properties:
+      alert_rule_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      email_group_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+    title: AlertGroupCreateReq_AlertGroup
+    example:
+      alert_rule_ids:
+      - 0
+      - 0
+      name: name
+      email_group_ids:
+      - 6
+      - 6
+  AlertGroup:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: AlertGroup
+    description: AlertGroup defines the alert group
+    example:
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+  AlertGroupsResp:
+    type: object
+    required:
+    - alert_groups
+    properties:
+      alert_groups:
+        type: array
+        description: alert groups
+        items:
+          $ref: '#/definitions/AlertGroup'
+    title: AlertGroupsResp
+    example:
+      alert_groups:
+      - name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+      - name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+  AlertGroupResp:
+    type: object
+    required:
+    - alert_group
+    properties:
+      alert_group:
+        description: alert group
+        $ref: '#/definitions/AlertGroup'
+    title: AlertGroupResp
+    example:
+      alert_group:
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

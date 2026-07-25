@@ -1,0 +1,465 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths access-tokens API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: access-tokens
+  description: 'AccessTokenController Manage users
+
+    '
+paths:
+  /access-tokens/:
+    get:
+      tags:
+      - access-tokens
+      description: List access tokens
+      operationId: ListAccessTokens
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: user_id
+        in: query
+        description: The id of user access tokens belong to
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: UserId
+      - name: role
+        in: query
+        description: filter access tokens by role
+        required: false
+        type: string
+        x-exportParamName: Role
+      - name: all
+        in: query
+        description: show all access tokens
+        required: false
+        type: boolean
+        x-exportParamName: All
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessTokensResp'
+        403:
+          description: Forbidden
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    post:
+      tags:
+      - access-tokens
+      description: Create an access token
+      operationId: CreateAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: access token info
+        required: true
+        schema:
+          $ref: '#/definitions/AccessTokenCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/AccessTokenCreateResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /access-tokens/{access_token_id}:
+    get:
+      tags:
+      - access-tokens
+      description: get an access Token
+      operationId: GetAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_token_id
+        in: path
+        description: access token id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessTokenId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessTokenResp'
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - access-tokens
+      description: delete an access token
+      operationId: DeleteAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_token_id
+        in: path
+        description: access token id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessTokenId
+      responses:
+        204:
+          description: No Content
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - access-tokens
+      description: update an access token
+      operationId: UpdateAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_token_id
+        in: path
+        description: access token id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessTokenId
+      - in: body
+        name: body
+        description: access token info
+        required: true
+        schema:
+          $ref: '#/definitions/AccessTokenUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessTokenResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /access-tokens/{access_token_id}:regenerate:
+    post:
+      tags:
+      - access-tokens
+      description: regenereate an access token UUID
+      operationId: RegenerateAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: access_token_id
+        in: path
+        description: access token id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AccessTokenId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessTokenCreateResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /access-tokens:validate:
+    post:
+      tags:
+      - access-tokens
+      description: validate an access token
+      operationId: ValidateAccessToken
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: subject_access_token
+        in: query
+        description: access token to be validated
+        required: true
+        type: string
+        x-exportParamName: SubjectAccessToken
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AccessTokenResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AccessTokenCreateResp:
+    type: object
+    required:
+    - access_token
+    properties:
+      access_token:
+        description: access token
+        $ref: '#/definitions/AccessTokenCreateRecord'
+    title: AccessTokenCreateResp
+    example:
+      access_token: ''
+  AccessTokenCreateRecord:
+    title: AccessTokenCreateRecord
+    allOf:
+    - $ref: '#/definitions/AccessToken'
+    - properties:
+        uuid:
+          type: string
+    description: AccessTokenCreateRecord defines access token record for creating api response
+  AccessTokenCreateReq_AccessToken:
+    type: object
+    required:
+    - name
+    - roles
+    properties:
+      description:
+        type: string
+        description: description of access token
+      name:
+        type: string
+        description: name of access token
+      roles:
+        type: array
+        description: roles of access token
+        items:
+          type: string
+    title: AccessTokenCreateReq_AccessToken
+    example:
+      roles:
+      - roles
+      - roles
+      name: name
+      description: description
+  AccessTokenUpdateReq_AccessToken:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: name of access token
+    title: AccessTokenUpdateReq_AccessToken
+    example:
+      name: name
+  AccessTokenCreateReq:
+    type: object
+    properties:
+      access_token:
+        $ref: '#/definitions/AccessTokenCreateReq_AccessToken'
+    title: AccessTokenCreateReq
+    example:
+      access_token:
+        roles:
+        - roles
+        - roles
+        name: name
+        description: description
+  AccessTokensResp:
+    type: object
+    required:
+    - access_tokens
+    properties:
+      access_tokens:
+        type: array
+        description: access tokens
+        items:
+          $ref: '#/definitions/AccessToken'
+    title: AccessTokensResp
+    example:
+      access_tokens:
+      - roles:
+        - roles
+        - roles
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        used: true
+        user:
+          name: name
+          id: 6
+      - roles:
+        - roles
+        - roles
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        used: true
+        user:
+          name: name
+          id: 6
+  User_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of user
+      name:
+        type: string
+        description: name of user
+    title: User_Nestview
+    example:
+      name: name
+      id: 6
+  AccessTokenResp:
+    type: object
+    properties:
+      access_token:
+        description: access token
+        $ref: '#/definitions/AccessToken'
+    title: AccessTokenResp
+    example:
+      access_token:
+        roles:
+        - roles
+        - roles
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        used: true
+        user:
+          name: name
+          id: 6
+  AccessTokenUpdateReq:
+    type: object
+    properties:
+      access_token:
+        $ref: '#/definitions/AccessTokenUpdateReq_AccessToken'
+    title: AccessTokenUpdateReq
+    example:
+      access_token:
+        name: name
+  AccessToken:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+      update:
+        type: string
+        format: date-time
+      used:
+        type: boolean
+      user:
+        $ref: '#/definitions/User_Nestview'
+    title: AccessToken
+    description: AccessToken used for authentication and authorization
+    example:
+      roles:
+      - roles
+      - roles
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      used: true
+      user:
+        name: name
+        id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

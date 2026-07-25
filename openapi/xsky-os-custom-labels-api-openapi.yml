@@ -1,0 +1,258 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-custom-labels API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-custom-labels
+  description: 'OSCustomLabelController provides API for object storage custom label
+
+    '
+paths:
+  /os-custom-labels/:
+    get:
+      tags:
+      - os-custom-labels
+      description: List object storage custom labels
+      operationId: ListOSCustomLabels
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: query
+        description: bucket id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: category
+        in: query
+        description: 'label category: meta, default, tagging'
+        required: false
+        type: string
+        x-exportParamName: Category
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSCustomLabelsResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-custom-labels/{os_custom_label_id}:
+    get:
+      tags:
+      - os-custom-labels
+      description: Get object storage custom label
+      operationId: GetOSCustomLabel
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: os_custom_label_id
+        in: path
+        description: os custom label id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsCustomLabelId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSCustomLabelResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  ObjectStorageBucket_Nestview_lifecycle:
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  OSCustomLabelsResp:
+    type: object
+    required:
+    - os_custom_labels
+    properties:
+      os_custom_labels:
+        type: array
+        description: object storage custom labels
+        items:
+          $ref: '#/definitions/OSCustomLabel'
+    title: OSCustomLabelsResp
+    example:
+      os_custom_labels:
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        category: category
+        type: type
+        status: status
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        category: category
+        type: type
+        status: status
+  ObjectStorageBucket_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview_lifecycle'
+      name:
+        type: string
+    title: ObjectStorageBucket_Nestview
+    example:
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      name: name
+      id: 0
+  OSCustomLabel:
+    type: object
+    properties:
+      bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      category:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: OSCustomLabel
+    description: OSCustomLabel the struct of object storage custom label
+    example:
+      bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      category: category
+      type: type
+      status: status
+  OSCustomLabelResp:
+    type: object
+    required:
+    - os_custom_label
+    properties:
+      os_custom_label:
+        description: object storage custom label
+        $ref: '#/definitions/OSCustomLabel'
+    title: OSCustomLabelResp
+    example:
+      os_custom_label:
+        bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        category: category
+        type: type
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

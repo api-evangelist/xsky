@@ -1,0 +1,284 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths email-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: email-groups
+  description: 'EmailGroupController Operations about Email
+
+    '
+paths:
+  /email-groups/:
+    get:
+      tags:
+      - email-groups
+      description: List all email groups
+      operationId: ListEmailGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: alert_group_id
+        in: query
+        description: alert group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: AlertGroupId
+      - name: name
+        in: query
+        description: name of email groups
+        required: false
+        type: string
+        x-exportParamName: Name
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailGroupsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - email-groups
+      description: create email group
+      operationId: CreateEmailGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: email group
+        required: true
+        schema:
+          $ref: '#/definitions/EmailGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /email-groups/{group_id}:
+    get:
+      tags:
+      - email-groups
+      description: get email group
+      operationId: GetEmailGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of email group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - email-groups
+      description: update email group
+      operationId: UpdateEmailGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of email group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: email group
+        required: true
+        schema:
+          $ref: '#/definitions/EmailGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - email-groups
+      description: delete email group
+      operationId: DeleteEmailGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: the id of email group
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  EmailGroupUpdateReq_EmailGroup:
+    type: object
+    required:
+    - emails
+    - name
+    properties:
+      emails:
+        type: array
+        items:
+          type: string
+      name:
+        type: string
+    title: EmailGroupUpdateReq_EmailGroup
+    example:
+      emails:
+      - emails
+      - emails
+      name: name
+  EmailGroupUpdateReq:
+    type: object
+    required:
+    - email_group
+    properties:
+      email_group:
+        $ref: '#/definitions/EmailGroupUpdateReq_EmailGroup'
+    title: EmailGroupUpdateReq
+    example:
+      email_group:
+        emails:
+        - emails
+        - emails
+        name: name
+  EmailGroupsResp:
+    type: object
+    required:
+    - email_groups
+    properties:
+      email_groups:
+        type: array
+        description: email groups
+        items:
+          $ref: '#/definitions/EmailGroupRecord'
+    title: EmailGroupsResp
+    example:
+      email_groups:
+      - ''
+      - ''
+  EmailGroupRecord:
+    title: EmailGroupRecord
+    allOf:
+    - $ref: '#/definitions/EmailGroup'
+    description: EmailGroupRecord defines email group record
+  EmailGroupResp:
+    type: object
+    required:
+    - email_group
+    properties:
+      email_group:
+        description: email group
+        $ref: '#/definitions/EmailGroupRecord'
+    title: EmailGroupResp
+    example:
+      email_group: ''
+  EmailGroup:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      emails:
+        type: array
+        items:
+          type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: EmailGroup
+    description: EmailGroup defines the email group
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,2683 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-buckets API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-buckets
+  description: 'ObjectStorageBucketController provides API for object storage bucket
+
+    '
+paths:
+  /os-buckets/:
+    get:
+      tags:
+      - os-buckets
+      description: List object storage buckets
+      operationId: ListBuckets
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: name
+        in: query
+        description: name of object storage buckets
+        required: false
+        type: string
+        x-exportParamName: Name
+      - name: os_policy_id
+        in: query
+        description: The id of policy object storage buckets belong to
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: OsPolicyId
+      - name: os_user_id
+        in: query
+        description: The id of user object storage buckets belong to
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: OsUserId
+      - name: replication_uuid
+        in: query
+        description: The uuid of replication os buckets belong to
+        required: false
+        type: string
+        x-exportParamName: ReplicationUuid
+      - name: virtual
+        in: query
+        description: Virtual bucket or not
+        required: false
+        type: boolean
+        x-exportParamName: Virtual
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-buckets
+      description: Create os bucket
+      operationId: CreateBucket
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: bucket info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageBucketCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/samples:
+    get:
+      tags:
+      - os-buckets
+      description: Get samples of multiple object storage buckets
+      operationId: BatchGetObjectStorageSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: ids
+        in: query
+        description: bucket ids
+        required: true
+        type: string
+        x-exportParamName: Ids
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MultiObjectStorageBucketsSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:
+    get:
+      tags:
+      - os-buckets
+      description: Get object storage bucket
+      operationId: GetBucket
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-buckets
+      description: delete object storage bucket
+      operationId: DeleteBucket
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-buckets
+      description: Update object storage bucket
+      operationId: UpdateBucket
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: bucket info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageBucketUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}/lifecycle:
+    put:
+      tags:
+      - os-buckets
+      description: Set object storage lifecycle rules
+      operationId: SetObjectStorageLifecycleRules
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: lifecyce rules info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageLifecycleSetReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-buckets
+      description: delete object storage lifecycle
+      operationId: DeleteObjectStorageLifecycle
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}/nfs-clients:
+    get:
+      tags:
+      - os-buckets
+      description: List nfs clients
+      operationId: ListObjectStorageBucketNFSClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketNFSClientsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-buckets
+      description: create nfs client
+      operationId: CreateObjectStorageBucketNFSClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: nfs client info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageBucketNFSClientsCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RawObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/RawObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-buckets
+      description: delete nfs clients
+      operationId: DeleteObjectStorageBucketNFSClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: nfs client info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageBucketNFSClientsDeleteReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RawObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/RawObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}/nfs-clients/{client_id}:
+    get:
+      tags:
+      - os-buckets
+      description: show nfs client
+      operationId: GetObjectStorageBucketNFSClient
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: client_id
+        in: path
+        description: nfs client id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClientId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketNFSClientResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - os-buckets
+      description: update nfs client
+      operationId: UpdateObjectStorageBucketNFSClient
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: client_id
+        in: path
+        description: nfs client id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClientId
+      - in: body
+        name: body
+        description: nfs client info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageBucketNFSClientUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketNFSClientResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketNFSClientResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}/samples:
+    get:
+      tags:
+      - os-buckets
+      description: get an object storage bucket's Samples
+      operationId: GetObjectStorageBucketSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:add-custom-labels:
+    post:
+      tags:
+      - os-buckets
+      description: add object storage bucket custom labels
+      operationId: AddCustomLabels
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: bucket custom labels info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketCustomLabelsAddReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:add-os-replication-paths:
+    post:
+      tags:
+      - os-buckets
+      description: add os replication paths for os bucket
+      operationId: AddOSReplicationPaths
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: replication paths info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketAddReplicationPathsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:add-os-replication-zones:
+    post:
+      tags:
+      - os-buckets
+      description: add os replication zones for os bucket
+      operationId: AddOSReplicationZones
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: replication zones info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketAddReplicationZonesReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:remove-custom-labels:
+    post:
+      tags:
+      - os-buckets
+      description: remove object storage bucket custom labels
+      operationId: RemoveCustomLabels
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: object storage bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: custom labels info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketCustomLabelsRemoveReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:remove-os-bucket-loggings:
+    post:
+      tags:
+      - os-buckets
+      description: Remove os bucket loggings of os bucket
+      operationId: RemoveOSBucketLoggings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: os bucket loggings info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketRemoveLoggingsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:remove-os-replication-paths:
+    post:
+      tags:
+      - os-buckets
+      description: remove os replication paths for os bucket
+      operationId: RemoveOSReplicationPaths
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: replication paths info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketRemoveReplicationPathsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:remove-os-replication-zones:
+    post:
+      tags:
+      - os-buckets
+      description: remove os replication zones for os bucket
+      operationId: RemoveOSReplicationZones
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: force
+        in: query
+        description: force delete os replication zone even if target zone is dead
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - in: body
+        name: body
+        description: replication zones info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketRemoveReplicationZonesReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:set-access-logging:
+    post:
+      tags:
+      - os-buckets
+      description: Set access logging of os bucket
+      operationId: SetAccessLogging
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: access logging info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketSetAccessLoggingReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:set-bucket-policy:
+    post:
+      tags:
+      - os-buckets
+      description: set object storage bucket policy
+      operationId: SetOSBucketPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: bucket policy info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketPolicySetReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /os-buckets/{bucket_id}:set-metadata-search:
+    post:
+      tags:
+      - os-buckets
+      description: set object storage bucket metadata search
+      operationId: SetMetadataSearch
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: object storage bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: bucket metadata search info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketMetadataSearchSetReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketsResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:suspend-access-logging:
+    post:
+      tags:
+      - os-buckets
+      description: suspend access logging for os bucket
+      operationId: SuspendAccessLoggings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:suspend-os-replication-paths:
+    post:
+      tags:
+      - os-buckets
+      description: suspend os replication paths for os bucket
+      operationId: SuspendOSReplicationPaths
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: replication paths info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketUpdateReplicationPathsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:switch-owner-os-zone:
+    post:
+      tags:
+      - os-buckets
+      description: Switch owner zone of os bucket
+      operationId: SwitchOwnerOSZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - name: force
+        in: query
+        description: force to switch even if old owner zone is dead
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - in: body
+        name: body
+        description: new owner os zone info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketSwitchOwnerOSZoneReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:unset-access-logging:
+    post:
+      tags:
+      - os-buckets
+      description: Unset access logging of os bucket
+      operationId: UnsetAccessLogging
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:unset-bucket-policy:
+    post:
+      tags:
+      - os-buckets
+      description: unset object storage bucket policy
+      operationId: UnsetOSBucketPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:unsuspend-access-logging:
+    post:
+      tags:
+      - os-buckets
+      description: unsuspend access logging for os bucket
+      operationId: UnsuspendAccessLogging
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:unsuspend-os-replication-paths:
+    post:
+      tags:
+      - os-buckets
+      description: unsuspend os replication paths for os bucket
+      operationId: UnsuspendOSReplicationPaths
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: replication paths info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketUpdateReplicationPathsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-buckets/{bucket_id}:update-custom-labels:
+    post:
+      tags:
+      - os-buckets
+      description: update object storage bucket custom labels
+      operationId: UpdateCustomLabels
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: bucket_id
+        in: path
+        description: object storage bucket id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BucketId
+      - in: body
+        name: body
+        description: custom labels info
+        required: true
+        schema:
+          $ref: '#/definitions/OSBucketCustomLabelsUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageBucketResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSBucketPolicySetReq_Bucket:
+    type: object
+    required:
+    - bucket_policy
+    properties:
+      bucket_policy:
+        type: string
+    title: OSBucketPolicySetReq_Bucket
+  ObjectStorageBucket_Nestview_lifecycle:
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  ObjectStorageBucketCreateReq_Bucket:
+    type: object
+    required:
+    - name
+    - owner_id
+    - policy_id
+    properties:
+      all_user_permission:
+        type: string
+        description: permission setting of all users
+      auth_user_permission:
+        type: string
+        description: permission setting of authenticated users
+      flag:
+        description: bucket options
+        $ref: '#/definitions/BucketFlag'
+      log_delivery_permission:
+        type: string
+        description: permission setting of log delivery group
+      name:
+        type: string
+        description: bucket name
+      owner_id:
+        type: integer
+        format: int64
+        description: bucket owner
+      owner_permission:
+        type: string
+        description: permission setting of owner
+      policy_id:
+        type: integer
+        format: int64
+        description: storage policy
+      quota_max_objects:
+        type: integer
+        format: int64
+        description: max number of objects
+      quota_max_size:
+        type: integer
+        format: int64
+        description: max size of all objects
+    title: ObjectStorageBucketCreateReq_Bucket
+    example:
+      owner_permission: owner_permission
+      flag:
+        versions_suspended: true
+        worm: true
+        versioned: true
+      policy_id: 6
+      auth_user_permission: auth_user_permission
+      owner_id: 0
+      quota_max_objects: 1
+      name: name
+      quota_max_size: 5
+      all_user_permission: all_user_permission
+      log_delivery_permission: log_delivery_permission
+  ObjectStorageBucketsResp:
+    type: object
+    required:
+    - os_buckets
+    properties:
+      os_buckets:
+        type: array
+        description: records of object storage bucket
+        items:
+          $ref: '#/definitions/ObjectStorageBucketRecord'
+    title: ObjectStorageBucketsResp
+    example:
+      os_buckets:
+      - ''
+      - ''
+  OSBucketUpdateReplicationPathsReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketUpdateReplicationPathsReq_Bucket'
+    title: OSBucketUpdateReplicationPathsReq
+  ObjectStorageBucket:
+    type: object
+    properties:
+      action_status:
+        type: string
+      all_user_permission:
+        type: string
+      auth_user_permission:
+        type: string
+      bucket_policy:
+        type: string
+      create:
+        type: string
+        format: date-time
+      flag:
+        type: object
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageLifecycle'
+      log_delivery_permission:
+        type: string
+      logging_enabled:
+        type: boolean
+      logging_grants:
+        type: array
+        items:
+          $ref: '#/definitions/OSBucketLoggingGrant'
+      logging_owner:
+        $ref: '#/definitions/ObjectStorageUser_Nestview'
+      logging_prefix:
+        type: string
+      logging_suspended:
+        type: boolean
+      logging_target_bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      metadata_search_enabled:
+        type: boolean
+      name:
+        type: string
+      nfs_client_num:
+        type: integer
+        format: int64
+      os_replication_path_num:
+        type: integer
+        format: int64
+      os_replication_zone_num:
+        type: integer
+        format: int64
+      os_zone:
+        $ref: '#/definitions/ObjectStorageZone_Nestview'
+      os_zone_uuid:
+        type: string
+      owner:
+        $ref: '#/definitions/ObjectStorageUser_Nestview'
+      owner_permission:
+        type: string
+      policy:
+        $ref: '#/definitions/ObjectStoragePolicy_Nestview'
+      policy_enabled:
+        type: boolean
+      quota_max_objects:
+        type: integer
+        format: int64
+      quota_max_size:
+        type: integer
+        format: int64
+      remote_cluster:
+        $ref: '#/definitions/RemoteCluster_Nestview'
+      replication_uuid:
+        type: string
+        description: 'NOTE: Use name of bucket as replication uuid for simplicity'
+      shards:
+        type: integer
+        format: int64
+      specification_objects:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      virtual:
+        type: boolean
+    title: ObjectStorageBucket
+    description: ObjectStorageBucket is the model of object_storage_bucket
+    example:
+      owner_permission: owner_permission
+      replication_uuid: replication_uuid
+      policy_enabled: true
+      logging_suspended: true
+      virtual: true
+      flag: '{}'
+      os_replication_zone_num: 2
+      auth_user_permission: auth_user_permission
+      bucket_policy: bucket_policy
+      update: '2000-01-23T04:56:07.000+00:00'
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      logging_enabled: true
+      logging_owner:
+        name: name
+        id: 1
+      specification_objects: 7
+      logging_grants:
+      - os_user_email: os_user_email
+        os_user_name: os_user_name
+        permission: permission
+        uri: uri
+      - os_user_email: os_user_email
+        os_user_name: os_user_name
+        permission: permission
+        uri: uri
+      remote_cluster:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+      quota_max_size: 2
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      action_status: action_status
+      policy:
+        name: name
+        id: 9
+      owner:
+        name: name
+        id: 1
+      os_zone:
+        id: 7
+        uuid: uuid
+      os_zone_uuid: os_zone_uuid
+      log_delivery_permission: log_delivery_permission
+      logging_prefix: logging_prefix
+      nfs_client_num: 5
+      shards: 4
+      metadata_search_enabled: true
+      quota_max_objects: 3
+      name: name
+      all_user_permission: all_user_permission
+      os_replication_path_num: 5
+      logging_target_bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      status: status
+  LifecycleTransition:
+    type: object
+    required:
+    - storage_class
+    - type
+    properties:
+      storage_class:
+        type: string
+      type:
+        type: string
+    title: LifecycleTransition
+    description: LifecycleTransition is the details of transition of LifecycleRule
+    example:
+      storage_class: storage_class
+      type: type
+  Paging:
+    type: object
+    properties:
+      count:
+        type: integer
+        format: int64
+      duration:
+        type: integer
+        format: int64
+      duration_begin:
+        type: string
+        format: date-time
+      duration_end:
+        type: string
+        format: date-time
+      limit:
+        type: integer
+        format: int64
+      next:
+        type: string
+      offset:
+        type: integer
+        format: int64
+      period:
+        type: string
+      total_count:
+        type: integer
+        format: int64
+      truncated:
+        type: boolean
+    title: Paging
+    description: Paging defines paging object
+    example:
+      duration: 1
+      next: next
+      period: period
+      offset: 5
+      total_count: 2
+      count: 6
+      duration_end: '2000-01-23T04:56:07.000+00:00'
+      limit: 5
+      truncated: true
+      duration_begin: '2000-01-23T04:56:07.000+00:00'
+  OSReplicationZoneReq:
+    type: object
+    required:
+    - os_remote_policy_uuid
+    properties:
+      os_remote_policy_uuid:
+        type: string
+    title: OSReplicationZoneReq
+  OSBucketCustomLabelsAddReq_Bucket:
+    type: object
+    required:
+    - labels
+    properties:
+      labels:
+        type: array
+        items:
+          $ref: '#/definitions/OSBucketCustomLabelsAddReq_Bucket_Labels_Elt'
+    title: OSBucketCustomLabelsAddReq_Bucket
+  OSBucketMetadataSearchSetReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketMetadataSearchSetReq_Bucket'
+    title: OSBucketMetadataSearchSetReq
+  OSBucketRemoveReplicationPathsReq_Bucket:
+    type: object
+    required:
+    - os_replication_path_uuids
+    properties:
+      os_replication_path_uuids:
+        type: array
+        items:
+          type: string
+    title: OSBucketRemoveReplicationPathsReq_Bucket
+  OSBucketAddReplicationZonesReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketAddReplicationZonesReq_Bucket'
+    title: OSBucketAddReplicationZonesReq
+  OSBucketCustomLabelsAddReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketCustomLabelsAddReq_Bucket'
+    title: OSBucketCustomLabelsAddReq
+  RawObjectStorageBucketResp:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        description: object storage bucket
+        $ref: '#/definitions/ObjectStorageBucket'
+    title: RawObjectStorageBucketResp
+    example:
+      os_bucket:
+        owner_permission: owner_permission
+        replication_uuid: replication_uuid
+        policy_enabled: true
+        logging_suspended: true
+        virtual: true
+        flag: '{}'
+        os_replication_zone_num: 2
+        auth_user_permission: auth_user_permission
+        bucket_policy: bucket_policy
+        update: '2000-01-23T04:56:07.000+00:00'
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        logging_enabled: true
+        logging_owner:
+          name: name
+          id: 1
+        specification_objects: 7
+        logging_grants:
+        - os_user_email: os_user_email
+          os_user_name: os_user_name
+          permission: permission
+          uri: uri
+        - os_user_email: os_user_email
+          os_user_name: os_user_name
+          permission: permission
+          uri: uri
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        quota_max_size: 2
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        policy:
+          name: name
+          id: 9
+        owner:
+          name: name
+          id: 1
+        os_zone:
+          id: 7
+          uuid: uuid
+        os_zone_uuid: os_zone_uuid
+        log_delivery_permission: log_delivery_permission
+        logging_prefix: logging_prefix
+        nfs_client_num: 5
+        shards: 4
+        metadata_search_enabled: true
+        quota_max_objects: 3
+        name: name
+        all_user_permission: all_user_permission
+        os_replication_path_num: 5
+        logging_target_bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        status: status
+  OSBucketUpdateReplicationPathsReq_Bucket:
+    type: object
+    required:
+    - os_replication_path_uuids
+    properties:
+      os_replication_path_uuids:
+        type: array
+        items:
+          type: string
+    title: OSBucketUpdateReplicationPathsReq_Bucket
+  OSReplicationPathReq:
+    type: object
+    required:
+    - os_zone_uuids
+    properties:
+      os_zone_uuids:
+        type: array
+        items:
+          type: string
+    title: OSReplicationPathReq
+  OSBucketUsageCategory:
+    type: object
+    properties:
+      download_bytes:
+        type: integer
+        format: int64
+      ops:
+        type: integer
+        format: int64
+      upload_bytes:
+        type: integer
+        format: int64
+    title: OSBucketUsageCategory
+    description: OSBucketUsageCategory contain usage info
+    example:
+      ops: 6
+      download_bytes: 0
+      upload_bytes: 1
+  ObjectStorageBucketStat:
+    title: ObjectStorageBucketStat
+    allOf:
+    - $ref: '#/definitions/OSSample'
+    - properties:
+        allocated_objects:
+          type: integer
+          format: int64
+        allocated_size:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        del_ops_pm:
+          type: number
+          format: double
+        down_latency_us:
+          type: number
+          format: double
+        latency_down:
+          type: integer
+          format: int64
+        latency_up:
+          type: integer
+          format: int64
+        num_down:
+          type: integer
+          format: int64
+        num_up:
+          type: integer
+          format: int64
+        rx_bandwidth_kbyte:
+          type: number
+          format: double
+        rx_ops_pm:
+          type: number
+          format: double
+        total_del_ops:
+          type: integer
+          format: int64
+        total_del_success_ops:
+          type: integer
+          format: int64
+        total_rx_bytes:
+          type: integer
+          format: int64
+        total_rx_ops:
+          type: integer
+          format: int64
+        total_rx_success_ops:
+          type: integer
+          format: int64
+        total_tx_bytes:
+          type: integer
+          format: int64
+        total_tx_ops:
+          type: integer
+          format: int64
+        total_tx_success_ops:
+          type: integer
+          format: int64
+        tx_bandwidth_kbyte:
+          type: number
+          format: double
+        tx_ops_pm:
+          type: number
+          format: double
+        up_latency_us:
+          type: number
+          format: double
+    description: ObjectStorageBucketStat define the object storage bucket statistics
+  ObjectStorageBucketUpdateReq:
+    type: object
+    properties:
+      os_bucket:
+        $ref: '#/definitions/ObjectStorageBucketUpdateReq_Bucket'
+    title: ObjectStorageBucketUpdateReq
+    example:
+      os_bucket:
+        owner_permission: owner_permission
+        flag:
+          versions_suspended: true
+          worm: true
+          versioned: true
+        auth_user_permission: auth_user_permission
+        owner_id: 0
+        quota_max_objects: 6
+        quota_max_size: 1
+        all_user_permission: all_user_permission
+        log_delivery_permission: log_delivery_permission
+  OSBucketAddReplicationPathsReq_Bucket:
+    type: object
+    properties:
+      os_replication_path_uuids:
+        type: array
+        items:
+          type: string
+      os_replication_paths:
+        type: array
+        items:
+          $ref: '#/definitions/OSReplicationPathReq'
+    title: OSBucketAddReplicationPathsReq_Bucket
+  ObjectStorageBucketSamplesResp:
+    type: object
+    required:
+    - os_bucket_samples
+    properties:
+      os_bucket_samples:
+        type: array
+        description: object storage bucket samples
+        items:
+          $ref: '#/definitions/ObjectStorageBucketStat'
+    title: ObjectStorageBucketSamplesResp
+    example:
+      os_bucket_samples:
+      - ''
+      - ''
+  ObjectStorageBucketUpdateReq_Bucket:
+    type: object
+    properties:
+      all_user_permission:
+        type: string
+      auth_user_permission:
+        type: string
+      flag:
+        $ref: '#/definitions/BucketFlagReq'
+      log_delivery_permission:
+        type: string
+      owner_id:
+        type: integer
+        format: int64
+      owner_permission:
+        type: string
+      quota_max_objects:
+        type: integer
+        format: int64
+      quota_max_size:
+        type: integer
+        format: int64
+    title: ObjectStorageBucketUpdateReq_Bucket
+    example:
+      owner_permission: owner_permission
+      flag:
+        versions_suspended: true
+        worm: true
+        versioned: true
+      auth_user_permission: auth_user_permission
+      owner_id: 0
+      quota_max_objects: 6
+      quota_max_size: 1
+      all_user_permission: all_user_permission
+      log_delivery_permission: log_delivery_permission
+  OSBucketSetAccessLoggingReq_Bucket:
+    type: object
+    properties:
+      logging_grants:
+        type: array
+        items:
+          type: object
+          properties: {}
+      logging_owner_id:
+        type: integer
+        format: int64
+      logging_prefix:
+        type: string
+      logging_target_bucket_id:
+        type: integer
+        format: int64
+    title: OSBucketSetAccessLoggingReq_Bucket
+  ObjectStorageBucketSamplesElem:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      paging:
+        $ref: '#/definitions/Paging'
+      samples:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStorageBucketStat'
+    title: ObjectStorageBucketSamplesElem
+    example:
+      paging:
+        duration: 1
+        next: next
+        period: period
+        offset: 5
+        total_count: 2
+        count: 6
+        duration_end: '2000-01-23T04:56:07.000+00:00'
+        limit: 5
+        truncated: true
+        duration_begin: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      samples:
+      - ''
+      - ''
+  OSBucketSwitchOwnerOSZoneReq_Bucket:
+    type: object
+    properties:
+      os_zone_uuid:
+        type: string
+    title: OSBucketSwitchOwnerOSZoneReq_Bucket
+  OSBucketAddReplicationPathsReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketAddReplicationPathsReq_Bucket'
+    title: OSBucketAddReplicationPathsReq
+  ObjectStoragePolicy_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ObjectStoragePolicy_Nestview
+    example:
+      name: name
+      id: 9
+  ObjectStorageLifecycle:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    title: ObjectStorageLifecycle
+    description: ObjectStorageLifecycle is the model of object_storage_lifecycle
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  RemoteCluster_Nestview:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      url:
+        type: string
+    title: RemoteCluster_Nestview
+    example:
+      name: name
+      id: 2
+      fs_id: fs_id
+      url: url
+  ObjectStorageBucketRecord:
+    title: ObjectStorageBucketRecord
+    allOf:
+    - $ref: '#/definitions/ObjectStorageBucket'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/ObjectStorageBucketStat'
+    description: 'ObjectStorageBucketRecord is used to combine ObjectStorageBucket and
+
+      ObjectStorageBucketStat'
+  ObjectStorageBucketNFSClientResp:
+    type: object
+    required:
+    - os_bucket_nfs_client
+    properties:
+      os_bucket_nfs_client:
+        description: nfs client of object storage bucket
+        $ref: '#/definitions/ObjectStorageBucketNFSClient'
+    title: ObjectStorageBucketNFSClientResp
+    example:
+      os_bucket_nfs_client:
+        bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        client: client
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        permission: permission
+        id: 0
+        status: status
+  OSBucketLoggingGrant:
+    type: object
+    properties:
+      os_user_email:
+        type: string
+      os_user_name:
+        type: string
+      permission:
+        type: string
+      uri:
+        type: string
+    title: OSBucketLoggingGrant
+    description: OSBucketLoggingGrant defines logging permissions of os bucket
+    example:
+      os_user_email: os_user_email
+      os_user_name: os_user_name
+      permission: permission
+      uri: uri
+  OSBucketCustomLabelsAddReq_Bucket_Labels_Elt:
+    type: object
+    required:
+    - category
+    - name
+    - type
+    properties:
+      category:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    title: OSBucketCustomLabelsAddReq_Bucket_Labels_Elt
+  OSBucketAddReplicationZonesReq_Bucket:
+    type: object
+    properties:
+      os_replication_zone_uuids:
+        type: array
+        items:
+          type: string
+      os_replication_zones:
+        type: array
+        items:
+          $ref: '#/definitions/OSReplicationZoneReq'
+    title: OSBucketAddReplicationZonesReq_Bucket
+  OSBucketRemoveLoggingsReq_Bucket:
+    type: object
+    required:
+    - os_bucket_logging_ids
+    properties:
+      os_bucket_logging_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: OSBucketRemoveLoggingsReq_Bucket
+  ObjectStorageBucketNFSClientUpdateReq_Client:
+    type: object
+    properties:
+      permission:
+        type: string
+    title: ObjectStorageBucketNFSClientUpdateReq_Client
+  ObjectStorageBucketNFSClient:
+    type: object
+    properties:
+      bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      client:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      permission:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: ObjectStorageBucketNFSClient
+    description: ObjectStorageBucketNFSClient defines nfs client
+    example:
+      bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      client: client
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      permission: permission
+      id: 0
+      status: status
+  LifecycleRule:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      expiration:
+        $ref: '#/definitions/LifecycleExpiration'
+      name:
+        type: string
+      prefix:
+        type: string
+      transitions:
+        type: array
+        items:
+          $ref: '#/definitions/LifecycleTransition'
+    title: LifecycleRule
+    description: LifecycleRule is the details of object storage lifecycle rule
+    example:
+      prefix: prefix
+      name: name
+      expiration: {}
+      transitions:
+      - storage_class: storage_class
+        type: type
+      - storage_class: storage_class
+        type: type
+      enabled: true
+  BucketFlag:
+    type: object
+    properties:
+      versioned:
+        type: boolean
+      versions_suspended:
+        type: boolean
+      worm:
+        type: boolean
+    title: BucketFlag
+    description: BucketFlag is the struct of bucket flag
+    example:
+      versions_suspended: true
+      worm: true
+      versioned: true
+  ObjectStorageZone_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      uuid:
+        type: string
+    title: ObjectStorageZone_Nestview
+    example:
+      id: 7
+      uuid: uuid
+  ObjectStorageBucketNFSClientsCreateReq:
+    type: object
+    required:
+    - os_bucket_nfs_clients
+    properties:
+      os_bucket_nfs_clients:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStorageBucketNFSClientsCreateReq_Clients_Elt'
+    title: ObjectStorageBucketNFSClientsCreateReq
+  ObjectStorageBucketResp:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        description: record of object storage bucket
+        $ref: '#/definitions/ObjectStorageBucketRecord'
+    title: ObjectStorageBucketResp
+    example:
+      os_bucket: ''
+  ObjectStorageLifecycleSetReq:
+    type: object
+    properties:
+      lifecycle_rules:
+        type: array
+        items:
+          $ref: '#/definitions/LifecycleRule'
+    title: ObjectStorageLifecycleSetReq
+    example:
+      lifecycle_rules:
+      - prefix: prefix
+        name: name
+        expiration: {}
+        transitions:
+        - storage_class: storage_class
+          type: type
+        - storage_class: storage_class
+          type: type
+        enabled: true
+      - prefix: prefix
+        name: name
+        expiration: {}
+        transitions:
+        - storage_class: storage_class
+          type: type
+        - storage_class: storage_class
+          type: type
+        enabled: true
+  BucketFlagReq:
+    type: object
+    properties:
+      versioned:
+        type: boolean
+        description: set versioned flag
+      versions_suspended:
+        type: boolean
+        description: set versioned suspended flag
+      worm:
+        type: boolean
+        description: set worm flag
+    title: BucketFlagReq
+    example:
+      versions_suspended: true
+      worm: true
+      versioned: true
+  OSBucketRemoveReplicationPathsReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketRemoveReplicationPathsReq_Bucket'
+    title: OSBucketRemoveReplicationPathsReq
+  OSBucketCustomLabelsUpdateReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketCustomLabelsUpdateReq_Bucket'
+    title: OSBucketCustomLabelsUpdateReq
+  ObjectStorageBucketNFSClientUpdateReq:
+    type: object
+    required:
+    - os_bucket_nfs_client
+    properties:
+      os_bucket_nfs_client:
+        $ref: '#/definitions/ObjectStorageBucketNFSClientUpdateReq_Client'
+    title: ObjectStorageBucketNFSClientUpdateReq
+  OSBucketRemoveReplicationZonesReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketRemoveReplicationZonesReq_Bucket'
+    title: OSBucketRemoveReplicationZonesReq
+  OSBucketRemoveReplicationZonesReq_Bucket:
+    type: object
+    required:
+    - os_replication_zone_uuids
+    properties:
+      os_replication_zone_uuids:
+        type: array
+        items:
+          type: string
+    title: OSBucketRemoveReplicationZonesReq_Bucket
+  OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt:
+    type: object
+    required:
+    - id
+    - type
+    properties:
+      id:
+        type: integer
+        format: int64
+      type:
+        type: string
+    title: OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt
+  ObjectStorageBucket_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview_lifecycle'
+      name:
+        type: string
+    title: ObjectStorageBucket_Nestview
+    example:
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      name: name
+      id: 0
+  OSBucketCustomLabelsUpdateReq_Bucket:
+    type: object
+    required:
+    - labels
+    properties:
+      labels:
+        type: array
+        items:
+          $ref: '#/definitions/OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt'
+    title: OSBucketCustomLabelsUpdateReq_Bucket
+  OSSample:
+    type: object
+    properties:
+      delete_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      get_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      list_bucket_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      objects:
+        type: integer
+        format: int64
+      post_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      put_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      used_capacity_bytes:
+        type: object
+        additionalProperties:
+          type: integer
+          format: int64
+    title: OSSample
+    description: OSSample contains os samples
+    example:
+      used_capacity_bytes:
+        key: 5
+      post_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      objects: 5
+      delete_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      get_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      put_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      list_bucket_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+  OSBucketSwitchOwnerOSZoneReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketSwitchOwnerOSZoneReq_Bucket'
+    title: OSBucketSwitchOwnerOSZoneReq
+  ObjectStorageBucketNFSClientsResp:
+    type: object
+    required:
+    - os_bucket_nfs_clients
+    properties:
+      os_bucket_nfs_clients:
+        type: array
+        description: nfs clients of object storage bucket
+        items:
+          $ref: '#/definitions/ObjectStorageBucketNFSClient'
+    title: ObjectStorageBucketNFSClientsResp
+    example:
+      os_bucket_nfs_clients:
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        client: client
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        permission: permission
+        id: 0
+        status: status
+      - bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        client: client
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        permission: permission
+        id: 0
+        status: status
+  LifecycleExpiration:
+    type: object
+    title: LifecycleExpiration
+    description: LifecycleExpiration is the details of expiration of LifecycleRule
+  OSBucketMetadataSearchSetReq_Bucket:
+    type: object
+    required:
+    - metadata_search_enabled
+    properties:
+      metadata_search_enabled:
+        type: boolean
+    title: OSBucketMetadataSearchSetReq_Bucket
+  OSBucketRemoveLoggingsReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketRemoveLoggingsReq_Bucket'
+    title: OSBucketRemoveLoggingsReq
+  MultiObjectStorageBucketsSamplesResp:
+    type: object
+    properties:
+      os_buckets_samples:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStorageBucketSamplesElem'
+    title: MultiObjectStorageBucketsSamplesResp
+    example:
+      os_buckets_samples:
+      - paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - ''
+        - ''
+      - paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - ''
+        - ''
+  OSBucketCustomLabelsRemoveReq_Bucket:
+    type: object
+    required:
+    - label_ids
+    properties:
+      label_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: OSBucketCustomLabelsRemoveReq_Bucket
+  ObjectStorageBucketNFSClientsCreateReq_Clients_Elt:
+    type: object
+    required:
+    - client
+    - permission
+    properties:
+      client:
+        type: string
+      permission:
+        type: string
+    title: ObjectStorageBucketNFSClientsCreateReq_Clients_Elt
+  ObjectStorageBucketCreateReq:
+    type: object
+    properties:
+      os_bucket:
+        $ref: '#/definitions/ObjectStorageBucketCreateReq_Bucket'
+    title: ObjectStorageBucketCreateReq
+    example:
+      os_bucket:
+        owner_permission: owner_permission
+        flag:
+          versions_suspended: true
+          worm: true
+          versioned: true
+        policy_id: 6
+        auth_user_permission: auth_user_permission
+        owner_id: 0
+        quota_max_objects: 1
+        name: name
+        quota_max_size: 5
+        all_user_permission: all_user_permission
+        log_delivery_permission: log_delivery_permission
+  ObjectStorageBucketNFSClientsDeleteReq:
+    type: object
+    required:
+    - client_ids
+    properties:
+      client_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: ObjectStorageBucketNFSClientsDeleteReq
+  OSBucketCustomLabelsRemoveReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketCustomLabelsRemoveReq_Bucket'
+    title: OSBucketCustomLabelsRemoveReq
+  ObjectStorageUser_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ObjectStorageUser_Nestview
+    example:
+      name: name
+      id: 1
+  OSBucketPolicySetReq:
+    type: object
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketPolicySetReq_Bucket'
+    title: OSBucketPolicySetReq
+  OSBucketSetAccessLoggingReq:
+    type: object
+    required:
+    - os_bucket
+    properties:
+      os_bucket:
+        $ref: '#/definitions/OSBucketSetAccessLoggingReq_Bucket'
+    title: OSBucketSetAccessLoggingReq
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

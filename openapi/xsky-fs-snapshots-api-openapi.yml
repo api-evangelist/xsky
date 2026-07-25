@@ -1,0 +1,444 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-snapshots API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-snapshots
+  description: 'FSSnapshotController provides APIs for file storage snapshot
+
+    '
+paths:
+  /fs-snapshots/:
+    get:
+      tags:
+      - fs-snapshots
+      description: List file storage snapshots
+      operationId: ListFSSnapshots
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_folder_id
+        in: query
+        description: file storage folder id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSnapshotsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-snapshots
+      description: Create file storage snapshot
+      operationId: CreateFSSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: snapshot info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSnapshotCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSnapshotResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-snapshots/{fs_snapshot_id}:
+    get:
+      tags:
+      - fs-snapshots
+      description: Get file storage snapshot
+      operationId: GetFSSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_snapshot_id
+        in: path
+        description: file storage snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSnapshotId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSnapshotResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-snapshots
+      description: delete file storage snapshot
+      operationId: DeleteFSSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_snapshot_id
+        in: path
+        description: snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSnapshotId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSnapshotResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-snapshots
+      description: Update file storage snapshot
+      operationId: UpdateFSSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_snapshot_id
+        in: path
+        description: snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSnapshotId
+      - in: body
+        name: body
+        description: snapshot info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSnapshotUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSnapshotResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSSnapshotsResp:
+    type: object
+    required:
+    - fs_snapshots
+    properties:
+      fs_snapshots:
+        type: array
+        description: file storage snapshots
+        items:
+          $ref: '#/definitions/FSSnapshot'
+    title: FSSnapshotsResp
+    example:
+      fs_snapshots:
+      - creator: creator
+        formatted: true
+        pool:
+          name: name
+          id: 5
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        allocated_size: 0
+        block_snapshot:
+          name: name
+          id: 0
+        size: 5
+        clone_folder_num: 6
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+      - creator: creator
+        formatted: true
+        pool:
+          name: name
+          id: 5
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        allocated_size: 0
+        block_snapshot:
+          name: name
+          id: 0
+        size: 5
+        clone_folder_num: 6
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+  FSSnapshotResp:
+    type: object
+    required:
+    - fs_snapshot
+    properties:
+      fs_snapshot:
+        description: file storage snapshot
+        $ref: '#/definitions/FSSnapshot'
+    title: FSSnapshotResp
+    example:
+      fs_snapshot:
+        creator: creator
+        formatted: true
+        pool:
+          name: name
+          id: 5
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        allocated_size: 0
+        block_snapshot:
+          name: name
+          id: 0
+        size: 5
+        clone_folder_num: 6
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        status: status
+  FSSnapshotUpdateReq_Snapshot:
+    type: object
+    properties:
+      description:
+        type: string
+        description: description of file storage snapshot
+      name:
+        type: string
+        description: name of snapshot
+    title: FSSnapshotUpdateReq_Snapshot
+  Snapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Snapshot_Nestview
+    example:
+      name: name
+      id: 0
+  FSSnapshotCreateReq:
+    type: object
+    required:
+    - fs_snapshot
+    properties:
+      fs_snapshot:
+        $ref: '#/definitions/FSSnapshotCreateReq_Snapshot'
+    title: FSSnapshotCreateReq
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  FSSnapshotUpdateReq:
+    type: object
+    required:
+    - fs_snapshot
+    properties:
+      fs_snapshot:
+        $ref: '#/definitions/FSSnapshotUpdateReq_Snapshot'
+    title: FSSnapshotUpdateReq
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  FSSnapshotCreateReq_Snapshot:
+    type: object
+    required:
+    - fs_folder_id
+    - name
+    properties:
+      description:
+        type: string
+        description: description of file storage snapshot
+      fs_folder_id:
+        type: integer
+        format: int64
+        description: file storage folder id
+      name:
+        type: string
+        description: name of snapshot
+    title: FSSnapshotCreateReq_Snapshot
+  FSSnapshot:
+    type: object
+    properties:
+      allocated_size:
+        type: integer
+        format: int64
+      block_snapshot:
+        $ref: '#/definitions/Snapshot_Nestview'
+      clone_folder_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      creator:
+        type: string
+      description:
+        type: string
+      formatted:
+        type: boolean
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      pool:
+        $ref: '#/definitions/Pool_Nestview'
+      size:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSSnapshot
+    description: FSSnapshot defines model of file storage snapshot
+    example:
+      creator: creator
+      formatted: true
+      pool:
+        name: name
+        id: 5
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      allocated_size: 0
+      block_snapshot:
+        name: name
+        id: 0
+      size: 5
+      clone_folder_num: 6
+      fs_folder:
+        name: name
+        id: 6
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 1
+      status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

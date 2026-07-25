@@ -1,0 +1,590 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-block-snapshot-recovery-jobs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-block-snapshot-recovery-jobs
+  description: 'DpBlockSnapshotRecoveryJobController API /dp-block-snapshot-recovery-jobs
+
+    '
+paths:
+  /dp-block-snapshot-recovery-jobs/:
+    get:
+      tags:
+      - dp-block-snapshot-recovery-jobs
+      description: List dp block snapshot recovery jobs
+      operationId: ListDpBlockSnapshotRecoveryJobs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockSnapshotRecoveryJobsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-block-snapshot-recovery-jobs
+      description: Create a dp block snapshot recovery job
+      operationId: CreateDpBlockSnapshotRecoveryJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: resource info
+        required: true
+        schema:
+          $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DpBlockSnapshotRecoveryJobResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /dp-block-snapshot-recovery-jobs/{job_id}:
+    get:
+      tags:
+      - dp-block-snapshot-recovery-jobs
+      description: Get a dp block snapshot recovery job
+      operationId: GetDpBlockSnapshotRecoveryJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: JobId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockSnapshotRecoveryJobResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    delete:
+      tags:
+      - dp-block-snapshot-recovery-jobs
+      description: Delete a dp block snapshot recovery job
+      operationId: DeleteDpBlockSnapshotRecoveryJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: JobId
+      responses:
+        204:
+          description: NoContent
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpBlockSnapshotRecoveryJobCreateReq_Job_BackupCluster:
+    type: object
+    required:
+    - fs_id
+    - name
+    properties:
+      fs_id:
+        type: string
+      name:
+        type: string
+    title: DpBlockSnapshotRecoveryJobCreateReq_Job_BackupCluster
+    example:
+      name: name
+      fs_id: fs_id
+  DpBlockSnapshotRecoveryJobsResp:
+    type: object
+    properties:
+      dp_block_snapshot_recovery_jobs:
+        type: array
+        items:
+          $ref: '#/definitions/DpBlockSnapshotRecoveryJob'
+    title: DpBlockSnapshotRecoveryJobsResp
+    example:
+      dp_block_snapshot_recovery_jobs:
+      - dp_site:
+          name: name
+          id: 1
+        finished_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_snapshot:
+          size: 0
+          backup_type: backup_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 6
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        resource_type: resource_type
+        update: '2000-01-23T04:56:07.000+00:00'
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_volume:
+          size: 5
+          format: 1
+          name: name
+          volume_name: volume_name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 7.061401241503109
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        max_retry_times: 2
+        backup_cluster:
+          name: name
+          fs_id: fs_id
+        status: status
+      - dp_site:
+          name: name
+          id: 1
+        finished_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_snapshot:
+          size: 0
+          backup_type: backup_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 6
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        resource_type: resource_type
+        update: '2000-01-23T04:56:07.000+00:00'
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_volume:
+          size: 5
+          format: 1
+          name: name
+          volume_name: volume_name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 7.061401241503109
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        max_retry_times: 2
+        backup_cluster:
+          name: name
+          fs_id: fs_id
+        status: status
+  DpBlockSnapshotRecoveryJob:
+    type: object
+    properties:
+      backup_block_snapshot:
+        $ref: '#/definitions/DpBackupBlockSnapshot'
+      backup_block_volume:
+        $ref: '#/definitions/DpBackupBlockVolume'
+      backup_cluster:
+        $ref: '#/definitions/DpBackupCluster'
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      create:
+        type: string
+        format: date-time
+      dp_gateway:
+        $ref: '#/definitions/DpGateway_Nestview'
+      dp_site:
+        $ref: '#/definitions/DpSite_Nestview'
+      finished_at:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      max_retry_times:
+        type: integer
+        format: int64
+      progress:
+        type: number
+        format: double
+      resource_type:
+        type: string
+      started_at:
+        type: string
+        format: date-time
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+    title: DpBlockSnapshotRecoveryJob
+    description: DpBlockSnapshotRecoveryJob recovery a block resource
+    example:
+      dp_site:
+        name: name
+        id: 1
+      finished_at: '2000-01-23T04:56:07.000+00:00'
+      backup_block_snapshot:
+        size: 0
+        backup_type: backup_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        volume_size: 6
+      block_volume:
+        original_name: original_name
+        name: name
+        id: 9
+      resource_type: resource_type
+      update: '2000-01-23T04:56:07.000+00:00'
+      updated_at: '2000-01-23T04:56:07.000+00:00'
+      backup_block_volume:
+        size: 5
+        format: 1
+        name: name
+        volume_name: volume_name
+      create: '2000-01-23T04:56:07.000+00:00'
+      progress: 7.061401241503109
+      started_at: '2000-01-23T04:56:07.000+00:00'
+      dp_gateway:
+        name: name
+        id: 6
+      id: 5
+      max_retry_times: 2
+      backup_cluster:
+        name: name
+        fs_id: fs_id
+      status: status
+  DpBlockSnapshotRecoveryJobCreateReq:
+    type: object
+    required:
+    - dp_block_snapshot_recovery_job
+    properties:
+      dp_block_snapshot_recovery_job:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq_Job'
+    title: DpBlockSnapshotRecoveryJobCreateReq
+    example:
+      dp_block_snapshot_recovery_job:
+        dp_gateway_id: 5
+        backup_block_volume:
+          name: name
+          volume_name: volume_name
+        backup_block_snapshot:
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 0
+        block_volume:
+          format: 6
+          name: name
+          pool_id: 1
+        resource_type: resource_type
+        dp_site_id: 5
+        backup_cluster:
+          name: name
+          fs_id: fs_id
+  DpBlockSnapshotRecoveryJobCreateReq_Job:
+    type: object
+    required:
+    - backup_block_snapshot
+    - backup_block_volume
+    - backup_cluster
+    - block_volume
+    - dp_gateway_id
+    - dp_site_id
+    - resource_type
+    properties:
+      backup_block_snapshot:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq_Job_BackupSnapshot'
+      backup_block_volume:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq_Job_BackupVolume'
+      backup_cluster:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq_Job_BackupCluster'
+      block_volume:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJobCreateReq_Job_Volume'
+      dp_gateway_id:
+        type: integer
+        format: int64
+      dp_site_id:
+        type: integer
+        format: int64
+      resource_type:
+        type: string
+    title: DpBlockSnapshotRecoveryJobCreateReq_Job
+    example:
+      dp_gateway_id: 5
+      backup_block_volume:
+        name: name
+        volume_name: volume_name
+      backup_block_snapshot:
+        create: '2000-01-23T04:56:07.000+00:00'
+        volume_size: 0
+      block_volume:
+        format: 6
+        name: name
+        pool_id: 1
+      resource_type: resource_type
+      dp_site_id: 5
+      backup_cluster:
+        name: name
+        fs_id: fs_id
+  DpBlockSnapshotRecoveryJobCreateReq_Job_Volume:
+    type: object
+    required:
+    - name
+    - pool_id
+    properties:
+      format:
+        type: integer
+        format: int64
+      name:
+        type: string
+      pool_id:
+        type: integer
+        format: int64
+    title: DpBlockSnapshotRecoveryJobCreateReq_Job_Volume
+    example:
+      format: 6
+      name: name
+      pool_id: 1
+  DpBackupCluster:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      name:
+        type: string
+    title: DpBackupCluster
+    description: DpBackupCluster is a cluster stored on a site
+    example:
+      name: name
+      fs_id: fs_id
+  DpBlockSnapshotRecoveryJobCreateReq_Job_BackupSnapshot:
+    type: object
+    required:
+    - create
+    - volume_size
+    properties:
+      create:
+        type: string
+        format: date-time
+      volume_size:
+        type: integer
+        format: int64
+    title: DpBlockSnapshotRecoveryJobCreateReq_Job_BackupSnapshot
+    example:
+      create: '2000-01-23T04:56:07.000+00:00'
+      volume_size: 0
+  DpBackupBlockSnapshot:
+    type: object
+    properties:
+      backup_type:
+        type: string
+      create:
+        type: string
+        format: date-time
+      size:
+        type: integer
+        format: int64
+      volume_size:
+        type: integer
+        format: int64
+    title: DpBackupBlockSnapshot
+    description: DpBackupBlockSnapshot is a block snapshot stored on a site
+    example:
+      size: 0
+      backup_type: backup_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      volume_size: 6
+  DpBackupBlockVolume:
+    type: object
+    properties:
+      format:
+        type: integer
+        format: int64
+      name:
+        type: string
+      size:
+        type: integer
+        format: int64
+      volume_name:
+        type: string
+    title: DpBackupBlockVolume
+    description: DpBackupBlockVolume is a block volume stored on a site
+    example:
+      size: 5
+      format: 1
+      name: name
+      volume_name: volume_name
+  DpBlockSnapshotRecoveryJobResp:
+    type: object
+    properties:
+      dp_block_snapshot_recovery_job:
+        $ref: '#/definitions/DpBlockSnapshotRecoveryJob'
+    title: DpBlockSnapshotRecoveryJobResp
+    example:
+      dp_block_snapshot_recovery_job:
+        dp_site:
+          name: name
+          id: 1
+        finished_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_snapshot:
+          size: 0
+          backup_type: backup_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 6
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        resource_type: resource_type
+        update: '2000-01-23T04:56:07.000+00:00'
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        backup_block_volume:
+          size: 5
+          format: 1
+          name: name
+          volume_name: volume_name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 7.061401241503109
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        dp_gateway:
+          name: name
+          id: 6
+        id: 5
+        max_retry_times: 2
+        backup_cluster:
+          name: name
+          fs_id: fs_id
+        status: status
+  DpBlockSnapshotRecoveryJobCreateReq_Job_BackupVolume:
+    type: object
+    required:
+    - name
+    - volume_name
+    properties:
+      name:
+        type: string
+      volume_name:
+        type: string
+    title: DpBlockSnapshotRecoveryJobCreateReq_Job_BackupVolume
+    example:
+      name: name
+      volume_name: volume_name
+  DpSite_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpSite_Nestview
+    example:
+      name: name
+      id: 1
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+  DpGateway_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpGateway_Nestview
+    example:
+      name: name
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

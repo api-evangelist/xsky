@@ -1,0 +1,356 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-block-replication-policies API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-block-replication-policies
+  description: 'DpBlockReplicationPolicyController API /dp-block-replication-policies
+
+    '
+paths:
+  /dp-block-replication-policies/:
+    get:
+      tags:
+      - dp-block-replication-policies
+      description: List dp block replication policies
+      operationId: ListDpBlockReplicationPolicies
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockReplicationPoliciesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-block-replication-policies
+      description: Create dp block replication policy
+      operationId: CreateDpBlockReplicationPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpBlockReplicationPolicyCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockReplicationPolicyResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-block-replication-policies/{policy_id}:
+    get:
+      tags:
+      - dp-block-replication-policies
+      description: Get dp block replication policy
+      operationId: GetDpBlockReplicationPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockReplicationPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - dp-block-replication-policies
+      description: Delete dp block replication policy
+      operationId: DeleteDpBlockReplicationPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: policy id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      responses:
+        204:
+          description: NoContent
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - dp-block-replication-policies
+      description: Update dp block replication policy
+      operationId: UpdateDpBlockReplicationPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: policy_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PolicyId
+      - in: body
+        name: body
+        description: policy info
+        required: true
+        schema:
+          $ref: '#/definitions/DpBlockReplicationPolicyUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockReplicationPolicyResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpBlockReplicationPolicyResp:
+    type: object
+    properties:
+      dp_block_replication_policy:
+        $ref: '#/definitions/DpBlockReplicationPolicy'
+    title: DpBlockReplicationPolicyResp
+    example:
+      dp_block_replication_policy:
+        dp_site:
+          name: name
+          id: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        timeout_seconds: 6
+        status: status
+  DpBlockReplicationPolicyCreateReq_Policy:
+    type: object
+    required:
+    - dp_site_id
+    - name
+    - timeout_seconds
+    properties:
+      dp_site_id:
+        type: integer
+        format: int64
+        description: protection site id
+      name:
+        type: string
+        description: name
+      timeout_seconds:
+        type: integer
+        format: int64
+        description: replication timeout seconds
+    title: DpBlockReplicationPolicyCreateReq_Policy
+    example:
+      name: name
+      dp_site_id: 0
+      timeout_seconds: 6
+  DpBlockReplicationPolicy:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      dp_site:
+        $ref: '#/definitions/DpSite_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      timeout_seconds:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+    title: DpBlockReplicationPolicy
+    description: DpBlockReplicationPolicy protects a block volume by sync replication
+    example:
+      dp_site:
+        name: name
+        id: 1
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      timeout_seconds: 6
+      status: status
+  DpBlockReplicationPoliciesResp:
+    type: object
+    properties:
+      dp_block_replication_policies:
+        type: array
+        items:
+          $ref: '#/definitions/DpBlockReplicationPolicy'
+    title: DpBlockReplicationPoliciesResp
+    example:
+      dp_block_replication_policies:
+      - dp_site:
+          name: name
+          id: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        timeout_seconds: 6
+        status: status
+      - dp_site:
+          name: name
+          id: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        timeout_seconds: 6
+        status: status
+  DpBlockReplicationPolicyUpdateReq_Policy:
+    type: object
+    properties:
+      name:
+        type: string
+        description: name
+      timeout_seconds:
+        type: integer
+        format: int64
+        description: replication timeout seconds
+    title: DpBlockReplicationPolicyUpdateReq_Policy
+    example:
+      name: name
+      timeout_seconds: 0
+  DpBlockReplicationPolicyUpdateReq:
+    type: object
+    required:
+    - dp_block_replication_policy
+    properties:
+      dp_block_replication_policy:
+        $ref: '#/definitions/DpBlockReplicationPolicyUpdateReq_Policy'
+    title: DpBlockReplicationPolicyUpdateReq
+    example:
+      dp_block_replication_policy:
+        name: name
+        timeout_seconds: 0
+  DpSite_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpSite_Nestview
+    example:
+      name: name
+      id: 1
+  DpBlockReplicationPolicyCreateReq:
+    type: object
+    required:
+    - dp_block_replication_policy
+    properties:
+      dp_block_replication_policy:
+        $ref: '#/definitions/DpBlockReplicationPolicyCreateReq_Policy'
+    title: DpBlockReplicationPolicyCreateReq
+    example:
+      dp_block_replication_policy:
+        name: name
+        dp_site_id: 0
+        timeout_seconds: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

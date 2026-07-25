@@ -1,0 +1,480 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-user-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-user-groups
+  description: 'FSUserGroupController provides APIs for file storage user group
+
+    '
+paths:
+  /fs-user-groups/:
+    get:
+      tags:
+      - fs-user-groups
+      description: List file storage user groups
+      operationId: ListFSUserGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: type
+        in: query
+        description: security type of file storage user group
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: fs_user_id
+        in: query
+        description: file storage user id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsUserId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSUserGroupsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-user-groups
+      description: Create file storage user group
+      operationId: CreateFSUserGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: user group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSUserGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/FSUserGroupResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-user-groups/{fs_user_group_id}:
+    get:
+      tags:
+      - fs-user-groups
+      description: Get file storage user group
+      operationId: GetFSUserGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_user_group_id
+        in: path
+        description: user group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSUserGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-user-groups
+      description: delete file storage user group
+      operationId: DeleteFSUserGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_user_group_id
+        in: path
+        description: user group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      responses:
+        204:
+          description: Not Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-user-groups
+      description: Update file storage user group
+      operationId: UpdateFSUserGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_user_group_id
+        in: path
+        description: user group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      - in: body
+        name: body
+        description: user group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSUserGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSUserGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-user-groups/{fs_user_group_id}/fs-users:
+    put:
+      tags:
+      - fs-user-groups
+      description: add users to file storage user group
+      operationId: AddFSUsers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_user_group_id
+        in: path
+        description: user group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      - in: body
+        name: body
+        description: users info
+        required: true
+        schema:
+          $ref: '#/definitions/FSUserGroupAddUsersReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSUserGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-user-groups
+      description: remove users from file storage user group
+      operationId: RemoveFSUsers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_user_group_id
+        in: path
+        description: user group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsUserGroupId
+      - in: body
+        name: body
+        description: users info
+        required: true
+        schema:
+          $ref: '#/definitions/FSUserGroupRemoveUsersReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSUserGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSUserGroupCreateReq_UserGroup:
+    type: object
+    required:
+    - name
+    properties:
+      fs_user_ids:
+        type: array
+        description: ids of users, which are required when type is smb or ftp
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+        description: name of user group
+    title: FSUserGroupCreateReq_UserGroup
+  FSUserGroupCreateReq:
+    type: object
+    required:
+    - fs_user_group
+    properties:
+      fs_user_group:
+        $ref: '#/definitions/FSUserGroupCreateReq_UserGroup'
+    title: FSUserGroupCreateReq
+  FSUserGroupRemoveUsersReq_UserGroup:
+    type: object
+    properties:
+      fs_user_ids:
+        type: array
+        description: ids of users, which are required when type is smb or ftp
+        items:
+          type: integer
+          format: int64
+    title: FSUserGroupRemoveUsersReq_UserGroup
+  FSUserGroupAddUsersReq_UserGroup:
+    type: object
+    properties:
+      fs_user_ids:
+        type: array
+        description: ids of users, which are required when type is smb or ftp
+        items:
+          type: integer
+          format: int64
+    title: FSUserGroupAddUsersReq_UserGroup
+  FSUserGroupUpdateReq_UserGroup:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: name of user group
+    title: FSUserGroupUpdateReq_UserGroup
+  FSUserGroupAddUsersReq:
+    type: object
+    required:
+    - fs_user_group
+    properties:
+      fs_user_group:
+        $ref: '#/definitions/FSUserGroupAddUsersReq_UserGroup'
+    title: FSUserGroupAddUsersReq
+  FSUserGroupResp:
+    type: object
+    required:
+    - fs_user_group
+    properties:
+      fs_user_group:
+        description: file storage user group
+        $ref: '#/definitions/FSUserGroup'
+    title: FSUserGroupResp
+    example:
+      fs_user_group:
+        user_num: 6
+        fs_users:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+  FSUserGroupRemoveUsersReq:
+    type: object
+    required:
+    - fs_user_group
+    properties:
+      fs_user_group:
+        $ref: '#/definitions/FSUserGroupRemoveUsersReq_UserGroup'
+    title: FSUserGroupRemoveUsersReq
+  FSUserGroupsResp:
+    type: object
+    required:
+    - fs_user_groups
+    properties:
+      fs_user_groups:
+        type: array
+        description: file storage user groups
+        items:
+          $ref: '#/definitions/FSUserGroup'
+    title: FSUserGroupsResp
+    example:
+      fs_user_groups:
+      - user_num: 6
+        fs_users:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+      - user_num: 6
+        fs_users:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+  FSUserGroupUpdateReq:
+    type: object
+    required:
+    - fs_user_group
+    properties:
+      fs_user_group:
+        $ref: '#/definitions/FSUserGroupUpdateReq_UserGroup'
+    title: FSUserGroupUpdateReq
+  FSUserGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      fs_users:
+        type: array
+        items:
+          $ref: '#/definitions/FSUser_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      update:
+        type: string
+        format: date-time
+      user_num:
+        type: integer
+        format: int64
+    title: FSUserGroup
+    description: FSUserGroup defines model of file storage user group
+    example:
+      user_num: 6
+      fs_users:
+      - name: name
+        id: 6
+      - name: name
+        id: 6
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      action_status: action_status
+  FSUser_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSUser_Nestview
+    example:
+      name: name
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

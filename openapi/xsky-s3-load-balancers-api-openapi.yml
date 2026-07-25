@@ -1,0 +1,558 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths s3-load-balancers API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: s3-load-balancers
+  description: 'S3LoadBalancerController API
+
+    '
+paths:
+  /s3-load-balancers/:
+    get:
+      tags:
+      - s3-load-balancers
+      description: List s3 load balancers
+      operationId: ListS3LoadBalancers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: group_id
+        in: query
+        description: s3 load balancer group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/S3LoadBalancersResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /s3-load-balancers/samples:
+    get:
+      tags:
+      - s3-load-balancers
+      description: Get samples of multiple s3 load balancers
+      operationId: BatchGetS3LoadBalancerSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MultiS3LoadBalancersSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /s3-load-balancers/{load_balancer_id}:
+    get:
+      tags:
+      - s3-load-balancers
+      description: Get s3 load balancer
+      operationId: GetS3LoadBalancer
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: load_balancer_id
+        in: path
+        description: s3 load balancer id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: LoadBalancerId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/S3LoadBalancerResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /s3-load-balancers/{s3_load_balancer_id}/samples:
+    get:
+      tags:
+      - s3-load-balancers
+      description: get a s3 load balancer's samples
+      operationId: GetS3LoadBalancerSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: s3_load_balancer_id
+        in: path
+        description: s3 load balancer id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: S3LoadBalancerId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/S3LoadBalancerSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  S3LoadBalancerResp:
+    type: object
+    required:
+    - s3_load_balancer
+    properties:
+      s3_load_balancer:
+        description: s3 load balancer
+        $ref: '#/definitions/S3LoadBalancerRecord'
+    title: S3LoadBalancerResp
+    example:
+      s3_load_balancer: ''
+  S3LoadBalancerGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+    title: S3LoadBalancerGroup_Nestview
+    example:
+      name: name
+      id: 6
+      status: status
+  SSLCertificate_Nestview:
+    type: object
+    properties:
+      force_https:
+        type: boolean
+        description: redirect http request to https
+      id:
+        type: integer
+        format: int64
+        description: certificate id
+      name:
+        type: string
+        description: certificate name
+    title: SSLCertificate_Nestview
+    example:
+      force_https: true
+      name: name
+      id: 2
+  S3LoadBalancerSamplesElem:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      paging:
+        $ref: '#/definitions/Paging'
+      samples:
+        type: array
+        items:
+          $ref: '#/definitions/S3LoadBalancerStat'
+    title: S3LoadBalancerSamplesElem
+    example:
+      paging:
+        duration: 1
+        next: next
+        period: period
+        offset: 5
+        total_count: 2
+        count: 6
+        duration_end: '2000-01-23T04:56:07.000+00:00'
+        limit: 5
+        truncated: true
+        duration_begin: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      samples:
+      - up_bandwidth_kbyte: 9.301444243932576
+        down_bandwidth_kbyte: 5.962133916683182
+        success_requests: 7.061401241503109
+        mem_usage_percent: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        active_connections: 6.027456183070403
+        cpu_util: 1.4658129805029452
+        failure_requests: 5.637376656633329
+      - up_bandwidth_kbyte: 9.301444243932576
+        down_bandwidth_kbyte: 5.962133916683182
+        success_requests: 7.061401241503109
+        mem_usage_percent: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        active_connections: 6.027456183070403
+        cpu_util: 1.4658129805029452
+        failure_requests: 5.637376656633329
+  S3LoadBalancerStat:
+    type: object
+    properties:
+      active_connections:
+        type: number
+        format: double
+      cpu_util:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      down_bandwidth_kbyte:
+        type: number
+        format: double
+      failure_requests:
+        type: number
+        format: double
+      mem_usage_percent:
+        type: number
+        format: double
+      success_requests:
+        type: number
+        format: double
+      up_bandwidth_kbyte:
+        type: number
+        format: double
+    title: S3LoadBalancerStat
+    description: S3LoadBalancerStat define s3 load balancer stat info
+    example:
+      up_bandwidth_kbyte: 9.301444243932576
+      down_bandwidth_kbyte: 5.962133916683182
+      success_requests: 7.061401241503109
+      mem_usage_percent: 2.3021358869347655
+      create: '2000-01-23T04:56:07.000+00:00'
+      active_connections: 6.027456183070403
+      cpu_util: 1.4658129805029452
+      failure_requests: 5.637376656633329
+  S3LoadBalancersResp:
+    type: object
+    required:
+    - s3_load_balancers
+    properties:
+      s3_load_balancers:
+        type: array
+        description: s3 load balancers
+        items:
+          $ref: '#/definitions/S3LoadBalancerRecord'
+    title: S3LoadBalancersResp
+    example:
+      s3_load_balancers:
+      - ''
+      - ''
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  S3LoadBalancerSamplesResp:
+    type: object
+    required:
+    - s3_load_balancer_samples
+    properties:
+      s3_load_balancer_samples:
+        type: array
+        description: s3 load balancer samples
+        items:
+          $ref: '#/definitions/S3LoadBalancerStat'
+    title: S3LoadBalancerSamplesResp
+    example:
+      s3_load_balancer_samples:
+      - up_bandwidth_kbyte: 9.301444243932576
+        down_bandwidth_kbyte: 5.962133916683182
+        success_requests: 7.061401241503109
+        mem_usage_percent: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        active_connections: 6.027456183070403
+        cpu_util: 1.4658129805029452
+        failure_requests: 5.637376656633329
+      - up_bandwidth_kbyte: 9.301444243932576
+        down_bandwidth_kbyte: 5.962133916683182
+        success_requests: 7.061401241503109
+        mem_usage_percent: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        active_connections: 6.027456183070403
+        cpu_util: 1.4658129805029452
+        failure_requests: 5.637376656633329
+  Paging:
+    type: object
+    properties:
+      count:
+        type: integer
+        format: int64
+      duration:
+        type: integer
+        format: int64
+      duration_begin:
+        type: string
+        format: date-time
+      duration_end:
+        type: string
+        format: date-time
+      limit:
+        type: integer
+        format: int64
+      next:
+        type: string
+      offset:
+        type: integer
+        format: int64
+      period:
+        type: string
+      total_count:
+        type: integer
+        format: int64
+      truncated:
+        type: boolean
+    title: Paging
+    description: Paging defines paging object
+    example:
+      duration: 1
+      next: next
+      period: period
+      offset: 5
+      total_count: 2
+      count: 6
+      duration_end: '2000-01-23T04:56:07.000+00:00'
+      limit: 5
+      truncated: true
+      duration_begin: '2000-01-23T04:56:07.000+00:00'
+  S3LoadBalancer:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      group:
+        $ref: '#/definitions/S3LoadBalancerGroup_Nestview'
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      https_port:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      interface_name:
+        type: string
+        description: the interface where vip is bound, exclusive to ip
+      ip:
+        type: string
+        description: the interface of ip where vip is bound, exclusive to interface_name
+      name:
+        type: string
+      port:
+        type: integer
+        format: int64
+      roles:
+        type: array
+        items:
+          type: string
+      search_https_port:
+        type: integer
+        format: int64
+      search_port:
+        type: integer
+        format: int64
+      ssl_certificate:
+        $ref: '#/definitions/SSLCertificate_Nestview'
+      status:
+        type: string
+      sync_port:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+      vip:
+        type: string
+        description: designated(master) vip
+      vip_mask:
+        type: integer
+        format: int64
+        description: 'mask of vip, default: 32'
+      vips:
+        type: string
+        description: current effective vips
+      web_console_endpoint:
+        type: string
+    title: S3LoadBalancer
+    description: S3LoadBalancer is a load balancer for rados loadBalancers @grpc-models-proto
+  S3LoadBalancerRecord:
+    title: S3LoadBalancerRecord
+    allOf:
+    - $ref: '#/definitions/S3LoadBalancer'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/S3LoadBalancerStat'
+    description: S3LoadBalancerRecord defines s3 load balancer with samples
+  MultiS3LoadBalancersSamplesResp:
+    type: object
+    properties:
+      s3_load_balancers_samples:
+        type: array
+        items:
+          $ref: '#/definitions/S3LoadBalancerSamplesElem'
+    title: MultiS3LoadBalancersSamplesResp
+    example:
+      s3_load_balancers_samples:
+      - paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+      - paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

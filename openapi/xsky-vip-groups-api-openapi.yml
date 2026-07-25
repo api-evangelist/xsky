@@ -1,0 +1,388 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths vip-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: vip-groups
+  description: 'VIPGroupController API /vip-groups
+
+    '
+paths:
+  /vip-groups/:
+    get:
+      tags:
+      - vip-groups
+      description: List vip groups
+      operationId: ListVIPGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: resource_type
+        in: query
+        description: resource type
+        required: false
+        type: string
+        x-exportParamName: ResourceType
+      - name: resource_id
+        in: query
+        description: resource id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ResourceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VIPGroupResps'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - vip-groups
+      description: Create a vip group
+      operationId: CreateVIPGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: vip_group
+        description: vip group info
+        required: true
+        schema:
+          $ref: '#/definitions/VIPGroupCreateReq'
+        x-exportParamName: VipGroup
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VIPGroupResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /vip-groups/{vip_group_id}:
+    get:
+      tags:
+      - vip-groups
+      description: Get a vip group
+      operationId: GetVIPGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vip_group_id
+        in: path
+        description: vip group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VipGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VIPGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - vip-groups
+      description: Delete a vip group
+      operationId: DeleteVIPGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vip_group_id
+        in: path
+        description: vip group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VipGroupId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VIPGroupResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - vip-groups
+      description: Update a vip group
+      operationId: UpdateVIPGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vip_group_id
+        in: path
+        description: vip group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VipGroupId
+      - in: body
+        name: vip_group
+        description: vip group info
+        required: true
+        schema:
+          $ref: '#/definitions/VIPGroupUpdateReq'
+        x-exportParamName: VipGroup
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VIPGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /vip-groups/{vip_group_id}:redeploy:
+    post:
+      tags:
+      - vip-groups
+      description: Redeploy a vip group
+      operationId: RedeployVIPGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vip_group_id
+        in: path
+        description: vip group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VipGroupId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VIPGroupResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  VIPGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      network:
+        type: string
+      preempt:
+        type: boolean
+      resource_id:
+        type: integer
+        format: int64
+      resource_type:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: VIPGroup
+    description: VIPGroup contains many vips and associated to a resource.
+    example:
+      name: name
+      resource_type: resource_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      resource_id: 6
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      preempt: true
+      action_status: action_status
+      network: network
+      status: status
+  VIPGroupUpdateReq_VIPGroup:
+    type: object
+    properties:
+      preempt:
+        type: boolean
+    title: VIPGroupUpdateReq_VIPGroup
+  VIPGroupCreateReq_VIPGroup:
+    type: object
+    required:
+    - network
+    - resource_id
+    - resource_type
+    - vips
+    properties:
+      network:
+        type: string
+      preempt:
+        type: boolean
+      resource_id:
+        type: integer
+        format: int64
+      resource_type:
+        type: string
+      vips:
+        type: array
+        items:
+          $ref: '#/definitions/VIPGroupCreateReq_VIPGroup_VIPs_Elt'
+    title: VIPGroupCreateReq_VIPGroup
+  VIPGroupCreateReq_VIPGroup_VIPs_Elt:
+    type: object
+    required:
+    - ip
+    - network_address_id
+    properties:
+      ip:
+        type: string
+      mask:
+        type: integer
+        format: int64
+      network_address_id:
+        type: integer
+        format: int64
+    title: VIPGroupCreateReq_VIPGroup_VIPs_Elt
+  VIPGroupCreateReq:
+    type: object
+    required:
+    - vip_group
+    properties:
+      vip_group:
+        $ref: '#/definitions/VIPGroupCreateReq_VIPGroup'
+    title: VIPGroupCreateReq
+  VIPGroupResps:
+    type: object
+    required:
+    - vip_groups
+    properties:
+      vip_groups:
+        type: array
+        items:
+          $ref: '#/definitions/VIPGroup'
+    title: VIPGroupResps
+    example:
+      vip_groups:
+      - name: name
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        preempt: true
+        action_status: action_status
+        network: network
+        status: status
+      - name: name
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        preempt: true
+        action_status: action_status
+        network: network
+        status: status
+  VIPGroupUpdateReq:
+    type: object
+    required:
+    - vip_group
+    properties:
+      vip_group:
+        $ref: '#/definitions/VIPGroupUpdateReq_VIPGroup'
+    title: VIPGroupUpdateReq
+  VIPGroupResp:
+    type: object
+    required:
+    - vip_group
+    properties:
+      vip_group:
+        $ref: '#/definitions/VIPGroup'
+    title: VIPGroupResp
+    example:
+      vip_group:
+        name: name
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        preempt: true
+        action_status: action_status
+        network: network
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

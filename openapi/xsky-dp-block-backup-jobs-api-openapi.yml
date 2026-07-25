@@ -1,0 +1,246 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-block-backup-jobs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-block-backup-jobs
+  description: 'DpBlockBackupJobController API /dp-block-backup-jobs/
+
+    '
+paths:
+  /dp-block-backup-jobs/:
+    get:
+      tags:
+      - dp-block-backup-jobs
+      description: List dp block backup jobs
+      operationId: ListDpBlockBackupJobs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: block_volume_id
+        in: query
+        description: block volume
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeId
+      - name: block_snapshot_id
+        in: query
+        description: object storage bucket
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: BlockSnapshotId
+      - name: dp_block_backup_policy_id
+        in: query
+        description: dp block backup policy
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: DpBlockBackupPolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBlockBackupJobsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpBlockBackupJob:
+    type: object
+    properties:
+      block_snapshot:
+        $ref: '#/definitions/Snapshot_Nestview'
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      block_volume_size:
+        type: integer
+        format: int64
+      diff_type:
+        type: string
+      dp_block_backup_policy:
+        $ref: '#/definitions/DpBlockBackupPolicy_Nestview'
+      finished_at:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      max_retry_times:
+        type: integer
+        format: int64
+      progress:
+        type: number
+        format: double
+      size:
+        type: integer
+        format: int64
+      started_at:
+        type: string
+        format: date-time
+      status:
+        type: string
+      updated_at:
+        type: string
+        format: date-time
+    title: DpBlockBackupJob
+    description: DpBlockBackupJob is one execution of a dp block backup protection
+    example:
+      finished_at: '2000-01-23T04:56:07.000+00:00'
+      diff_type: diff_type
+      block_volume:
+        original_name: original_name
+        name: name
+        id: 9
+      block_snapshot:
+        name: name
+        id: 0
+      block_volume_size: 6
+      size: 7
+      updated_at: '2000-01-23T04:56:07.000+00:00'
+      dp_block_backup_policy:
+        name: name
+        id: 1
+      progress: 2.3021358869347655
+      started_at: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      max_retry_times: 5
+      status: status
+  Snapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Snapshot_Nestview
+    example:
+      name: name
+      id: 0
+  DpBlockBackupPolicy_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpBlockBackupPolicy_Nestview
+    example:
+      name: name
+      id: 1
+  DpBlockBackupJobsResp:
+    type: object
+    required:
+    - dp_block_backup_jobs
+    properties:
+      dp_block_backup_jobs:
+        type: array
+        items:
+          $ref: '#/definitions/DpBlockBackupJob'
+    title: DpBlockBackupJobsResp
+    example:
+      dp_block_backup_jobs:
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        diff_type: diff_type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        block_snapshot:
+          name: name
+          id: 0
+        block_volume_size: 6
+        size: 7
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        dp_block_backup_policy:
+          name: name
+          id: 1
+        progress: 2.3021358869347655
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        max_retry_times: 5
+        status: status
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        diff_type: diff_type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        block_snapshot:
+          name: name
+          id: 0
+        block_volume_size: 6
+        size: 7
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        dp_block_backup_policy:
+          name: name
+          id: 1
+        progress: 2.3021358869347655
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        max_retry_times: 5
+        status: status
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

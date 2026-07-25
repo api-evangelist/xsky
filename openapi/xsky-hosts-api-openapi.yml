@@ -1,0 +1,828 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths hosts API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: hosts
+  description: 'HostController Host Management
+
+    '
+paths:
+  /hosts/:
+    get:
+      tags:
+      - hosts
+      description: List hosts by fileter
+      operationId: ListHosts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: protection_domain_id
+        in: query
+        description: protection domain id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ProtectionDomainId
+      - name: hostname
+        in: query
+        description: host name
+        required: false
+        type: string
+        x-exportParamName: Hostname
+      - name: type
+        in: query
+        description: if it existed, value should be xdcactive
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: role
+        in: query
+        description: filter by host role
+        required: false
+        type: string
+        x-exportParamName: Role
+      - name: fc_available
+        in: query
+        description: available host with fc port
+        required: false
+        type: boolean
+        x-exportParamName: FcAvailable
+      - name: replication_gateway_available
+        in: query
+        description: available host for replication gateway
+        required: false
+        type: boolean
+        x-exportParamName: ReplicationGatewayAvailable
+      - name: fs_gateway_group_id
+        in: query
+        description: file storage gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: fs_gateway_group_used
+        in: query
+        description: used in file storage gateway group
+        required: false
+        type: boolean
+        x-exportParamName: FsGatewayGroupUsed
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - hosts
+      description: check env and install packages
+      operationId: CreateHost
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: host info
+        required: true
+        schema:
+          $ref: '#/definitions/HostCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/HostResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /hosts/{host_id}:
+    get:
+      tags:
+      - hosts
+      description: get a host info
+      operationId: GetHost
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: host_id
+        in: path
+        description: the host id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - hosts
+      description: delete host
+      operationId: DeleteHost
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: host_id
+        in: path
+        description: host id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/HostResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - hosts
+      description: update host info
+      operationId: UpdateHost
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: host_id
+        in: path
+        description: host id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - in: body
+        name: body
+        description: host info
+        required: true
+        schema:
+          $ref: '#/definitions/HostUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /hosts/{host_id}/samples:
+    get:
+      tags:
+      - hosts
+      description: get a host's samples
+      operationId: GetHostSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: host_id
+        in: path
+        description: host id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/HostSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  HostCreateReq:
+    type: object
+    properties:
+      host:
+        $ref: '#/definitions/HostCreateReq_Host'
+    title: HostCreateReq
+    example:
+      host:
+        gateway_ips:
+        - gateway_ips
+        - gateway_ips
+        public_ip: public_ip
+        roles:
+        - roles
+        - roles
+        description: description
+        meta_device: meta_device
+        admin_ip: admin_ip
+        type: type
+        protection_domain_id: 0
+        private_ip: private_ip
+  HostCreateReq_Host:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+        description: admin ip
+      description:
+        type: string
+        description: host description
+      gateway_ips:
+        type: array
+        description: gateway ips for s3
+        items:
+          type: string
+      meta_device:
+        type: string
+        description: meta device for docker
+      private_ip:
+        type: string
+        description: cluster private ip for internal data access
+      protection_domain_id:
+        type: integer
+        format: int64
+        description: deprecated
+      public_ip:
+        type: string
+        description: public ip for outside data access
+      roles:
+        type: array
+        description: 'host roles:
+
+          admin,monitor,block_storage_gateway,file_storage_gateway,s3_gateway,nfs_gateway'
+        items:
+          type: string
+      type:
+        type: string
+        description: storage server or storage client
+    title: HostCreateReq_Host
+    example:
+      gateway_ips:
+      - gateway_ips
+      - gateway_ips
+      public_ip: public_ip
+      roles:
+      - roles
+      - roles
+      description: description
+      meta_device: meta_device
+      admin_ip: admin_ip
+      type: type
+      protection_domain_id: 0
+      private_ip: private_ip
+  HostFcPort:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      wwn:
+        type: string
+    title: HostFcPort
+    description: HostFcPort defines fc port on the host
+    example:
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      wwn: wwn
+  HostsResp:
+    type: object
+    required:
+    - hosts
+    properties:
+      hosts:
+        type: array
+        description: hosts
+        items:
+          $ref: '#/definitions/HostRecord'
+    title: HostsResp
+    example:
+      hosts:
+      - ''
+      - ''
+  Host:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      action_status:
+        type: string
+      admin_ip:
+        type: string
+      clock_diff:
+        type: integer
+        format: int64
+        description: clock diff in milliseconds with primary host
+      cores:
+        type: integer
+        format: int64
+      cpu_model:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      disk_num:
+        type: integer
+        format: int64
+      enclosures:
+        type: array
+        items:
+          type: object
+          properties: {}
+      fcports:
+        type: array
+        description: fc ports of host
+        items:
+          $ref: '#/definitions/HostFcPort'
+      gateway_ips:
+        type: string
+      id:
+        type: integer
+        format: int64
+      is_master_db:
+        type: boolean
+      memory_kbyte:
+        type: integer
+        format: int64
+      model:
+        type: string
+      name:
+        type: string
+      os:
+        type: string
+      private_ip:
+        type: string
+      protection_domain:
+        description: protection domain of host
+        $ref: '#/definitions/ProtectionDomain_Nestview'
+      public_ips:
+        type: string
+      rack:
+        type: string
+      roles:
+        type: string
+      root_disk:
+        $ref: '#/definitions/Disk_Nestview'
+      status:
+        type: string
+      type:
+        type: string
+      up:
+        type: boolean
+      update:
+        type: string
+        format: date-time
+      vendor:
+        type: string
+    title: Host
+    description: Host defines the installed hosts @grpc-models-proto
+    example:
+      roles: roles
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      type: type
+      enclosures:
+      - '{}'
+      - '{}'
+      private_ip: private_ip
+      root_disk:
+        disk_type: disk_type
+        id: 0
+        device: device
+      cores: 6
+      is_master_db: true
+      disk_num: 1
+      cpu_model: cpu_model
+      vendor: vendor
+      create: '2000-01-23T04:56:07.000+00:00'
+      model: model
+      id: 5
+      up: true
+      action_status: action_status
+      public_ips: public_ips
+      memory_kbyte: 2
+      rack: rack
+      gateway_ips: gateway_ips
+      os: os
+      clock_diff: 0
+      admin_ip: admin_ip
+      protection_domain:
+        name: name
+        id: 5
+      name: name
+      fcports:
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        wwn: wwn
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        wwn: wwn
+      status: status
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  HostSamplesResp:
+    type: object
+    required:
+    - host_samples
+    properties:
+      host_samples:
+        type: array
+        description: host samples
+        items:
+          $ref: '#/definitions/HostStat'
+    title: HostSamplesResp
+    example:
+      host_samples:
+      - network_tx_error_pps: 6.683562403749608
+        meta_mon_used_kbyte: 7.386281948385884
+        meta_postgres_used_kbyte: 1.2315135367772556
+        network_drop_pps: 1.4894159098541704
+        network_tx_pps: 8.762042012749001
+        load5min: 2.3021358869347655
+        meta_docker_used_kbyte: 9.301444243932576
+        network_error_pps: 6.84685269835264
+        network_rx_pps: 5.025004791520295
+        page_paging_ps: 9.018348186070783
+        load1min: 5.637376656633329
+        network_rx_bandwidth_kbyte: 7.457744773683766
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 6.027456183070403
+        context_switch_ps: 0.8008281904610115
+        network_rx_error_pps: 4.965218492984954
+        network_rx_drop_pps: 1.1730742509559433
+        load15min: 5.962133916683182
+        mem_usage_percent: 7.061401241503109
+        meta_elasticsearch_used_kbyte: 3.616076749251911
+        interrupts_ps: 1.4658129805029452
+        meta_prometheus_used_kbyte: 1.0246457001441578
+        network_tx_bandwidth_kbyte: 9.965781217890562
+        meta_log_used_kbyte: 4.145608029883936
+        meta_etcd_used_kbyte: 2.027123023002322
+        network_tx_drop_pps: 9.369310271410669
+      - network_tx_error_pps: 6.683562403749608
+        meta_mon_used_kbyte: 7.386281948385884
+        meta_postgres_used_kbyte: 1.2315135367772556
+        network_drop_pps: 1.4894159098541704
+        network_tx_pps: 8.762042012749001
+        load5min: 2.3021358869347655
+        meta_docker_used_kbyte: 9.301444243932576
+        network_error_pps: 6.84685269835264
+        network_rx_pps: 5.025004791520295
+        page_paging_ps: 9.018348186070783
+        load1min: 5.637376656633329
+        network_rx_bandwidth_kbyte: 7.457744773683766
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 6.027456183070403
+        context_switch_ps: 0.8008281904610115
+        network_rx_error_pps: 4.965218492984954
+        network_rx_drop_pps: 1.1730742509559433
+        load15min: 5.962133916683182
+        mem_usage_percent: 7.061401241503109
+        meta_elasticsearch_used_kbyte: 3.616076749251911
+        interrupts_ps: 1.4658129805029452
+        meta_prometheus_used_kbyte: 1.0246457001441578
+        network_tx_bandwidth_kbyte: 9.965781217890562
+        meta_log_used_kbyte: 4.145608029883936
+        meta_etcd_used_kbyte: 2.027123023002322
+        network_tx_drop_pps: 9.369310271410669
+  HostUpdateReq:
+    type: object
+    required:
+    - host
+    properties:
+      host:
+        $ref: '#/definitions/HostUpdateReq_Host'
+    title: HostUpdateReq
+    example:
+      host:
+        roles:
+        - roles
+        - roles
+        description: description
+  HostUpdateReq_Host:
+    type: object
+    properties:
+      description:
+        type: string
+      roles:
+        type: array
+        items:
+          type: string
+    title: HostUpdateReq_Host
+    example:
+      roles:
+      - roles
+      - roles
+      description: description
+  HostResp:
+    type: object
+    required:
+    - host
+    properties:
+      host:
+        description: host
+        $ref: '#/definitions/HostRecord'
+    title: HostResp
+    example:
+      host: ''
+  Disk_Nestview:
+    type: object
+    properties:
+      device:
+        type: string
+      disk_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Disk_Nestview
+    example:
+      disk_type: disk_type
+      id: 0
+      device: device
+  HostRecord:
+    title: HostRecord
+    allOf:
+    - $ref: '#/definitions/Host'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/HostStat'
+    description: HostRecord combine Host and HostStatus to let API comfortable
+  HostStat:
+    type: object
+    properties:
+      context_switch_ps:
+        type: number
+        format: double
+      cpu_util:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      interrupts_ps:
+        type: number
+        format: double
+      load15min:
+        type: number
+        format: double
+      load1min:
+        type: number
+        format: double
+      load5min:
+        type: number
+        format: double
+      mem_usage_percent:
+        type: number
+        format: double
+      meta_docker_used_kbyte:
+        type: number
+        format: double
+      meta_elasticsearch_used_kbyte:
+        type: number
+        format: double
+      meta_etcd_used_kbyte:
+        type: number
+        format: double
+      meta_log_used_kbyte:
+        type: number
+        format: double
+      meta_mon_used_kbyte:
+        type: number
+        format: double
+      meta_postgres_used_kbyte:
+        type: number
+        format: double
+      meta_prometheus_used_kbyte:
+        type: number
+        format: double
+      network_drop_pps:
+        type: number
+        format: double
+      network_error_pps:
+        type: number
+        format: double
+      network_rx_bandwidth_kbyte:
+        type: number
+        format: double
+      network_rx_drop_pps:
+        type: number
+        format: double
+      network_rx_error_pps:
+        type: number
+        format: double
+      network_rx_pps:
+        type: number
+        format: double
+      network_tx_bandwidth_kbyte:
+        type: number
+        format: double
+      network_tx_drop_pps:
+        type: number
+        format: double
+      network_tx_error_pps:
+        type: number
+        format: double
+      network_tx_pps:
+        type: number
+        format: double
+      page_paging_ps:
+        type: number
+        format: double
+    title: HostStat
+    description: HostStat define the host statistics
+    example:
+      network_tx_error_pps: 6.683562403749608
+      meta_mon_used_kbyte: 7.386281948385884
+      meta_postgres_used_kbyte: 1.2315135367772556
+      network_drop_pps: 1.4894159098541704
+      network_tx_pps: 8.762042012749001
+      load5min: 2.3021358869347655
+      meta_docker_used_kbyte: 9.301444243932576
+      network_error_pps: 6.84685269835264
+      network_rx_pps: 5.025004791520295
+      page_paging_ps: 9.018348186070783
+      load1min: 5.637376656633329
+      network_rx_bandwidth_kbyte: 7.457744773683766
+      create: '2000-01-23T04:56:07.000+00:00'
+      cpu_util: 6.027456183070403
+      context_switch_ps: 0.8008281904610115
+      network_rx_error_pps: 4.965218492984954
+      network_rx_drop_pps: 1.1730742509559433
+      load15min: 5.962133916683182
+      mem_usage_percent: 7.061401241503109
+      meta_elasticsearch_used_kbyte: 3.616076749251911
+      interrupts_ps: 1.4658129805029452
+      meta_prometheus_used_kbyte: 1.0246457001441578
+      network_tx_bandwidth_kbyte: 9.965781217890562
+      meta_log_used_kbyte: 4.145608029883936
+      meta_etcd_used_kbyte: 2.027123023002322
+      network_tx_drop_pps: 9.369310271410669
+  ProtectionDomain_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of protection domain
+      name:
+        type: string
+        description: name of protection domain
+    title: ProtectionDomain_Nestview
+    example:
+      name: name
+      id: 5
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

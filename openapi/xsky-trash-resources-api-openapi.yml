@@ -1,0 +1,258 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths trash-resources API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: trash-resources
+  description: 'TrashResourceController Operations about Trash
+
+    '
+paths:
+  /trash-resources/:
+    get:
+      tags:
+      - trash-resources
+      description: List trash resources
+      operationId: ListTrashResources
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: type
+        in: query
+        description: the type of trash resources
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashResourcesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /trash-resources/{trash_resource_id}:
+    get:
+      tags:
+      - trash-resources
+      description: get a trash resource
+      operationId: GetTrashResource
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_resource_id
+        in: path
+        description: trash resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashResourceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashResourceResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - trash-resources
+      description: Delete trash resource
+      operationId: DeleteTrashResource
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_resource_id
+        in: path
+        description: trash resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashResourceId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TrashResourceResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /trash-resources/{trash_resource_id}:restore:
+    post:
+      tags:
+      - trash-resources
+      description: Restore trash resource
+      operationId: RestoreTrashResource
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_resource_id
+        in: path
+        description: trash resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashResourceId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TrashResourceResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  TrashResourcesResp:
+    type: object
+    required:
+    - trash_resources
+    properties:
+      trash_resources:
+        type: array
+        description: trash resources
+        items:
+          $ref: '#/definitions/TrashResource'
+    title: TrashResourcesResp
+    example:
+      trash_resources:
+      - resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expire_time: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+      - resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expire_time: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+  TrashResource:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      expire_time:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      resource_id:
+        type: integer
+        format: int64
+      resource_type:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: TrashResource
+    description: TrashResource is the corresponding trash record.
+    example:
+      resource_type: resource_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      expire_time: '2000-01-23T04:56:07.000+00:00'
+      resource_id: 6
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      action_status: action_status
+      status: status
+  TrashResourceResp:
+    type: object
+    required:
+    - trash_resource
+    properties:
+      trash_resource:
+        description: trash resource
+        $ref: '#/definitions/TrashResource'
+    title: TrashResourceResp
+    example:
+      trash_resource:
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        expire_time: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 6
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        action_status: action_status
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

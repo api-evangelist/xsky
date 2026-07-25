@@ -1,0 +1,974 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-sites API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-sites
+  description: 'DpSiteController API /dp-sites/
+
+    '
+paths:
+  /dp-sites/:
+    get:
+      tags:
+      - dp-sites
+      description: List data protection sites
+      operationId: ListDpSites
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: protection_type
+        in: query
+        description: protection type
+        required: false
+        type: string
+        x-exportParamName: ProtectionType
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpSitesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - dp-sites
+      description: Create a data protection site
+      operationId: CreateDpSite
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: dp site info
+        required: true
+        schema:
+          $ref: '#/definitions/DpSiteCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/DpSiteResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-sites/{site_id}:
+    get:
+      tags:
+      - dp-sites
+      description: Get data protection site
+      operationId: GetDpSite
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: protection site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpSiteResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - dp-sites
+      description: Delete data protection site
+      operationId: DeleteDpSite
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: dp site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - dp-sites
+      description: Update a data protection site
+      operationId: UpdateDpSite
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: dp site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      - in: body
+        name: body
+        description: dp site info
+        required: true
+        schema:
+          $ref: '#/definitions/DpSiteUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpSiteResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-sites/{site_id}/backup-block-snapshots:
+    get:
+      tags:
+      - dp-sites
+      description: List snapshots of a volume stored on a dp site
+      operationId: GetBackupBlockSnapshots
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: dp site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      - name: dp_gateway_id
+        in: query
+        description: the dp gateway to execute the query
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: DpGatewayId
+      - name: cluster_fs_id
+        in: query
+        description: cluster fs id
+        required: true
+        type: string
+        x-exportParamName: ClusterFsId
+      - name: block_volume_name
+        in: query
+        description: block volume name
+        required: true
+        type: string
+        x-exportParamName: BlockVolumeName
+      - name: after
+        in: query
+        description: continuation token
+        required: false
+        type: string
+        x-exportParamName: After
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBackupBlockSnapshotsResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-sites/{site_id}/backup-block-volumes:
+    get:
+      tags:
+      - dp-sites
+      description: List volumes of a cluster stored on a dp site
+      operationId: GetBackupBlockVolumes
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: dp site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      - name: dp_gateway_id
+        in: query
+        description: the dp gateway to execute the query
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: DpGatewayId
+      - name: cluster_fs_id
+        in: query
+        description: cluster fs id
+        required: true
+        type: string
+        x-exportParamName: ClusterFsId
+      - name: after
+        in: query
+        description: continuation token
+        required: false
+        type: string
+        x-exportParamName: After
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBackupBlockVolumesResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /dp-sites/{site_id}/backup-clusters:
+    get:
+      tags:
+      - dp-sites
+      description: List clusters stored on a dp site
+      operationId: GetBackupClusters
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: site_id
+        in: path
+        description: dp site id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: SiteId
+      - name: dp_gateway_id
+        in: query
+        description: the dp gateway to execute the query
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: DpGatewayId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpBackupClustersResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DpBackupBlockSnapshotsResp:
+    type: object
+    required:
+    - backup_block_snapshots
+    properties:
+      backup_block_snapshots:
+        type: array
+        description: block snapshots
+        items:
+          $ref: '#/definitions/DpBackupBlockSnapshot'
+    title: DpBackupBlockSnapshotsResp
+    example:
+      backup_block_snapshots:
+      - size: 0
+        backup_type: backup_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        volume_size: 6
+      - size: 0
+        backup_type: backup_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        volume_size: 6
+  DpBackupCluster:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      name:
+        type: string
+    title: DpBackupCluster
+    description: DpBackupCluster is a cluster stored on a site
+    example:
+      name: name
+      fs_id: fs_id
+  DpBackupBlockSnapshot:
+    type: object
+    properties:
+      backup_type:
+        type: string
+      create:
+        type: string
+        format: date-time
+      size:
+        type: integer
+        format: int64
+      volume_size:
+        type: integer
+        format: int64
+    title: DpBackupBlockSnapshot
+    description: DpBackupBlockSnapshot is a block snapshot stored on a site
+    example:
+      size: 0
+      backup_type: backup_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      volume_size: 6
+  CryptoKey_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: CryptoKey_Nestview
+    example:
+      name: name
+      id: 6
+  DpSiteConfig:
+    type: object
+    properties:
+      block_snapshot_backup:
+        $ref: '#/definitions/SnapshotBackupConfig'
+      block_snapshot_replication:
+        $ref: '#/definitions/SnapshotReplicationConfig'
+      block_volume_replication:
+        $ref: '#/definitions/BlockReplicationConfig'
+    title: DpSiteConfig
+    description: DpSiteConfig contains config of different sites in dpg
+    example:
+      block_snapshot_replication:
+        remote_gateway: remote_gateway
+      block_snapshot_backup:
+        bucket: bucket
+        secret_key: secret_key
+        mount_path: mount_path
+        password: password
+        port: 0
+        access_key: access_key
+        region: region
+        app_id: app_id
+        username: username
+      block_volume_replication:
+        destination: destination
+        local_gateways:
+        - local_gateways
+        - local_gateways
+        remote_gateways:
+        - remote_gateways
+        - remote_gateways
+  DpBackupClustersResp:
+    type: object
+    required:
+    - backup_clusters
+    properties:
+      backup_clusters:
+        type: array
+        description: clusters
+        items:
+          $ref: '#/definitions/DpBackupCluster'
+    title: DpBackupClustersResp
+    example:
+      backup_clusters:
+      - name: name
+        fs_id: fs_id
+      - name: name
+        fs_id: fs_id
+  DpSiteCreateReq_Site:
+    type: object
+    required:
+    - config
+    - name
+    - platform
+    - protection_type
+    - service
+    properties:
+      address:
+        type: string
+        description: site address
+      config:
+        description: extra config
+        $ref: '#/definitions/DpSiteConfig'
+      crypto_key_id:
+        type: integer
+        format: int64
+        description: crypto key
+      name:
+        type: string
+        description: site name
+      platform:
+        type: string
+        description: platform of site
+      protection_type:
+        type: string
+        description: protection type
+      remote_cluster_id:
+        type: integer
+        format: int64
+        description: remote cluster
+      service:
+        type: string
+        description: service of site
+    title: DpSiteCreateReq_Site
+    example:
+      address: address
+      remote_cluster_id: 6
+      service: service
+      name: name
+      protection_type: protection_type
+      config:
+        block_snapshot_replication:
+          remote_gateway: remote_gateway
+        block_snapshot_backup:
+          bucket: bucket
+          secret_key: secret_key
+          mount_path: mount_path
+          password: password
+          port: 0
+          access_key: access_key
+          region: region
+          app_id: app_id
+          username: username
+        block_volume_replication:
+          destination: destination
+          local_gateways:
+          - local_gateways
+          - local_gateways
+          remote_gateways:
+          - remote_gateways
+          - remote_gateways
+      crypto_key_id: 0
+      platform: platform
+  SnapshotBackupConfig:
+    type: object
+    properties:
+      access_key:
+        type: string
+      app_id:
+        type: string
+      bucket:
+        type: string
+      mount_path:
+        type: string
+      password:
+        type: string
+      port:
+        type: integer
+        format: int64
+      region:
+        type: string
+      secret_key:
+        type: string
+      username:
+        type: string
+    title: SnapshotBackupConfig
+    description: SnapshotBackupConfig contains config for snapshot backup
+    example:
+      bucket: bucket
+      secret_key: secret_key
+      mount_path: mount_path
+      password: password
+      port: 0
+      access_key: access_key
+      region: region
+      app_id: app_id
+      username: username
+  RemoteCluster_Nestview:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      url:
+        type: string
+    title: RemoteCluster_Nestview
+    example:
+      name: name
+      id: 2
+      fs_id: fs_id
+      url: url
+  DpSiteUpdateReq_Site:
+    type: object
+    properties:
+      config:
+        description: dp site config
+        $ref: '#/definitions/DpSiteConfig'
+      name:
+        type: string
+        description: dp site name
+    title: DpSiteUpdateReq_Site
+    example:
+      name: name
+      config:
+        block_snapshot_replication:
+          remote_gateway: remote_gateway
+        block_snapshot_backup:
+          bucket: bucket
+          secret_key: secret_key
+          mount_path: mount_path
+          password: password
+          port: 0
+          access_key: access_key
+          region: region
+          app_id: app_id
+          username: username
+        block_volume_replication:
+          destination: destination
+          local_gateways:
+          - local_gateways
+          - local_gateways
+          remote_gateways:
+          - remote_gateways
+          - remote_gateways
+  DpSitesResp:
+    type: object
+    required:
+    - dp_sites
+    properties:
+      dp_sites:
+        type: array
+        description: data protection sites
+        items:
+          $ref: '#/definitions/DpSite'
+    title: DpSitesResp
+    example:
+      dp_sites:
+      - crypto_key:
+          name: name
+          id: 6
+        address: address
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        service: service
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        protection_type: protection_type
+        id: 1
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+        platform: platform
+        status: status
+      - crypto_key:
+          name: name
+          id: 6
+        address: address
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        service: service
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        protection_type: protection_type
+        id: 1
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+        platform: platform
+        status: status
+  BlockReplicationConfig:
+    type: object
+    properties:
+      destination:
+        type: string
+      local_gateways:
+        type: array
+        items:
+          type: string
+      remote_gateways:
+        type: array
+        items:
+          type: string
+    title: BlockReplicationConfig
+    description: BlockReplicationConfig contains config for block replication
+    example:
+      destination: destination
+      local_gateways:
+      - local_gateways
+      - local_gateways
+      remote_gateways:
+      - remote_gateways
+      - remote_gateways
+  SnapshotReplicationConfig:
+    type: object
+    properties:
+      remote_gateway:
+        type: string
+    title: SnapshotReplicationConfig
+    description: SnapshotReplicationConfig contains config for snapshot replication
+    example:
+      remote_gateway: remote_gateway
+  DpSiteCreateReq:
+    type: object
+    properties:
+      dp_site:
+        $ref: '#/definitions/DpSiteCreateReq_Site'
+    title: DpSiteCreateReq
+    example:
+      dp_site:
+        address: address
+        remote_cluster_id: 6
+        service: service
+        name: name
+        protection_type: protection_type
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+        crypto_key_id: 0
+        platform: platform
+  DpBackupBlockVolumesResp:
+    type: object
+    required:
+    - backup_block_volumes
+    properties:
+      backup_block_volumes:
+        type: array
+        description: block volumes
+        items:
+          $ref: '#/definitions/DpBackupBlockVolume'
+    title: DpBackupBlockVolumesResp
+    example:
+      backup_block_volumes:
+      - size: 5
+        format: 1
+        name: name
+        volume_name: volume_name
+      - size: 5
+        format: 1
+        name: name
+        volume_name: volume_name
+  DpSiteResp:
+    type: object
+    required:
+    - dp_site
+    properties:
+      dp_site:
+        description: data protection site
+        $ref: '#/definitions/DpSite'
+    title: DpSiteResp
+    example:
+      dp_site:
+        crypto_key:
+          name: name
+          id: 6
+        address: address
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        service: service
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        protection_type: protection_type
+        id: 1
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+        platform: platform
+        status: status
+  DpBackupBlockVolume:
+    type: object
+    properties:
+      format:
+        type: integer
+        format: int64
+      name:
+        type: string
+      size:
+        type: integer
+        format: int64
+      volume_name:
+        type: string
+    title: DpBackupBlockVolume
+    description: DpBackupBlockVolume is a block volume stored on a site
+    example:
+      size: 5
+      format: 1
+      name: name
+      volume_name: volume_name
+  DpSite:
+    type: object
+    properties:
+      address:
+        type: string
+      config:
+        $ref: '#/definitions/DpSiteConfig'
+      create:
+        type: string
+        format: date-time
+      crypto_key:
+        $ref: '#/definitions/CryptoKey_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      platform:
+        type: string
+      protection_type:
+        type: string
+      remote_cluster:
+        $ref: '#/definitions/RemoteCluster_Nestview'
+      service:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: DpSite
+    description: DpSite is a site to storage data protection data
+    example:
+      crypto_key:
+        name: name
+        id: 6
+      address: address
+      remote_cluster:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+      service: service
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      protection_type: protection_type
+      id: 1
+      config:
+        block_snapshot_replication:
+          remote_gateway: remote_gateway
+        block_snapshot_backup:
+          bucket: bucket
+          secret_key: secret_key
+          mount_path: mount_path
+          password: password
+          port: 0
+          access_key: access_key
+          region: region
+          app_id: app_id
+          username: username
+        block_volume_replication:
+          destination: destination
+          local_gateways:
+          - local_gateways
+          - local_gateways
+          remote_gateways:
+          - remote_gateways
+          - remote_gateways
+      platform: platform
+      status: status
+  DpSiteUpdateReq:
+    type: object
+    properties:
+      dp_site:
+        $ref: '#/definitions/DpSiteUpdateReq_Site'
+    title: DpSiteUpdateReq
+    example:
+      dp_site:
+        name: name
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

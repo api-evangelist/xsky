@@ -1,0 +1,437 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths ssl-certificates API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: ssl-certificates
+  description: 'SSLCertificateController API
+
+    '
+paths:
+  /ssl-certificates/:
+    get:
+      tags:
+      - ssl-certificates
+      description: List certificates
+      operationId: ListSSLCertificates
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SSLCertificatesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - ssl-certificates
+      description: Create ssl certificate
+      operationId: CreateSSLCertificate
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: ssl certificate info
+        required: true
+        schema:
+          $ref: '#/definitions/SSLCertificateCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SSLCertificateResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /ssl-certificates/{certificate_id}:
+    get:
+      tags:
+      - ssl-certificates
+      description: Get certificates
+      operationId: GetSSLCertificate
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: certificate_id
+        in: path
+        description: certificate id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CertificateId
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SSLCertificateResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - ssl-certificates
+      description: Delete ssl certificate
+      operationId: DeleteSSLCertificate
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: certificate_id
+        in: path
+        description: certificate id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CertificateId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SSLCertificateResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - ssl-certificates
+      description: Update ssl certificate
+      operationId: UpdateSSLCertificate
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: certificate_id
+        in: path
+        description: certificate id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CertificateId
+      - in: body
+        name: body
+        description: ssl certificate info
+        required: true
+        schema:
+          $ref: '#/definitions/SSLCertificateUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SSLCertificateResp'
+        202:
+          description: Accept
+          schema:
+            $ref: '#/definitions/SSLCertificateResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  SSLCertificateCreateReq_Certificate:
+    type: object
+    required:
+    - certificate
+    - name
+    - private_key
+    properties:
+      certificate:
+        type: string
+        description: certificate in pem
+      description:
+        type: string
+        description: certificate description
+      name:
+        type: string
+        description: certificate name
+      private_key:
+        type: string
+        description: private key in pem
+    title: SSLCertificateCreateReq_Certificate
+  SSLCertificateUpdateReq_Certificate:
+    type: object
+    properties:
+      description:
+        type: string
+        description: certificate description
+      enabled:
+        type: boolean
+        description: enabled or not
+      force_https:
+        type: boolean
+        description: redirect http request to https
+      name:
+        type: string
+        description: certificate name
+      type:
+        type: string
+        description: 'applied type: admin, s3'
+    title: SSLCertificateUpdateReq_Certificate
+  SSLCertificateUpdateReq:
+    type: object
+    required:
+    - ssl_certificate
+    properties:
+      ssl_certificate:
+        $ref: '#/definitions/SSLCertificateUpdateReq_Certificate'
+    title: SSLCertificateUpdateReq
+  SSLCertificateCreateReq:
+    type: object
+    required:
+    - ssl_certificate
+    properties:
+      ssl_certificate:
+        $ref: '#/definitions/SSLCertificateCreateReq_Certificate'
+    title: SSLCertificateCreateReq
+  SSLCertificateResp:
+    type: object
+    required:
+    - ssl_certificate
+    properties:
+      ssl_certificate:
+        description: ssl certificate
+        $ref: '#/definitions/SSLCertificate'
+    title: SSLCertificateResp
+    example:
+      ssl_certificate:
+        not_before: '2000-01-23T04:56:07.000+00:00'
+        subject: '{}'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        version: 6
+        enabled: true
+        issuer: '{}'
+        not_after: '2000-01-23T04:56:07.000+00:00'
+        force_https: true
+        raw_certificate: raw_certificate
+        permitted_dns_domains:
+        - '{}'
+        - '{}'
+        public_key_algorithm: public_key_algorithm
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        signature_algorithm: signature_algorithm
+        id: 0
+        status: status
+  SSLCertificate:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: created time of certificate
+      description:
+        type: string
+        description: certificate description
+      enabled:
+        type: boolean
+        description: enabled or not
+      force_https:
+        type: boolean
+        description: redirect http request to https
+      id:
+        type: integer
+        format: int64
+        description: certificate id
+      issuer:
+        type: object
+        description: issuer info
+        properties: {}
+      name:
+        type: string
+        description: certificate name
+      not_after:
+        type: string
+        format: date-time
+        description: validity is not after the time
+      not_before:
+        type: string
+        format: date-time
+        description: validity is not before the time
+      permitted_dns_domains:
+        type: array
+        description: permitted dns domains
+        items:
+          type: object
+          properties: {}
+      public_key_algorithm:
+        type: string
+        description: public key algorithm
+      raw_certificate:
+        type: string
+        description: public certificate
+      signature_algorithm:
+        type: string
+        description: signature algorithm
+      status:
+        type: string
+      subject:
+        type: object
+        description: subject info
+        properties: {}
+      type:
+        type: string
+        description: 'applied type: admin, s3'
+      update:
+        type: string
+        format: date-time
+        description: updated time of certificate
+      version:
+        type: integer
+        format: int64
+        description: certificate version
+    title: SSLCertificate
+    description: SSLCertificate ssl certificate model @grpc-models-proto
+    example:
+      not_before: '2000-01-23T04:56:07.000+00:00'
+      subject: '{}'
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      type: type
+      version: 6
+      enabled: true
+      issuer: '{}'
+      not_after: '2000-01-23T04:56:07.000+00:00'
+      force_https: true
+      raw_certificate: raw_certificate
+      permitted_dns_domains:
+      - '{}'
+      - '{}'
+      public_key_algorithm: public_key_algorithm
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      signature_algorithm: signature_algorithm
+      id: 0
+      status: status
+  SSLCertificatesResp:
+    type: object
+    required:
+    - ssl_certificates
+    properties:
+      ssl_certificates:
+        type: array
+        description: ssl certificates
+        items:
+          $ref: '#/definitions/SSLCertificate'
+    title: SSLCertificatesResp
+    example:
+      ssl_certificates:
+      - not_before: '2000-01-23T04:56:07.000+00:00'
+        subject: '{}'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        version: 6
+        enabled: true
+        issuer: '{}'
+        not_after: '2000-01-23T04:56:07.000+00:00'
+        force_https: true
+        raw_certificate: raw_certificate
+        permitted_dns_domains:
+        - '{}'
+        - '{}'
+        public_key_algorithm: public_key_algorithm
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        signature_algorithm: signature_algorithm
+        id: 0
+        status: status
+      - not_before: '2000-01-23T04:56:07.000+00:00'
+        subject: '{}'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        version: 6
+        enabled: true
+        issuer: '{}'
+        not_after: '2000-01-23T04:56:07.000+00:00'
+        force_https: true
+        raw_certificate: raw_certificate
+        permitted_dns_domains:
+        - '{}'
+        - '{}'
+        public_key_algorithm: public_key_algorithm
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        signature_algorithm: signature_algorithm
+        id: 0
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

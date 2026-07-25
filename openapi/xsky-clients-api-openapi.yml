@@ -1,0 +1,201 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths clients API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: clients
+  description: 'ClientController API /clients
+
+    '
+paths:
+  /clients/:
+    get:
+      tags:
+      - clients
+      description: List clients
+      operationId: ListClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: client_group_id
+        in: query
+        description: client group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ClientGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClientsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /clients/{client_id}:
+    get:
+      tags:
+      - clients
+      description: Get client
+      operationId: GetClient
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: client_id
+        in: path
+        description: client id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClientId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClientResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ClientGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ClientGroup_Nestview
+    example:
+      name: name
+      id: 5
+  Client:
+    type: object
+    properties:
+      client_group:
+        $ref: '#/definitions/ClientGroup_Nestview'
+      code:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: Client
+    example:
+      code: code
+      client_group:
+        name: name
+        id: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      status: status
+  ClientsResp:
+    type: object
+    required:
+    - clients
+    properties:
+      clients:
+        type: array
+        items:
+          $ref: '#/definitions/Client'
+    title: ClientsResp
+    example:
+      clients:
+      - code: code
+        client_group:
+          name: name
+          id: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+      - code: code
+        client_group:
+          name: name
+          id: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+  ClientResp:
+    type: object
+    required:
+    - client
+    properties:
+      client:
+        $ref: '#/definitions/Client'
+    title: ClientResp
+    example:
+      client:
+        code: code
+        client_group:
+          name: name
+          id: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

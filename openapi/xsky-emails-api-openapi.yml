@@ -1,0 +1,289 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths emails API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: emails
+  description: 'EmailController Operations about Email
+
+    '
+paths:
+  /emails/:
+    post:
+      tags:
+      - emails
+      description: send email
+      operationId: SendEmail
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: email info
+        required: true
+        schema:
+          $ref: '#/definitions/EmailSendReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /emails/config:
+    get:
+      tags:
+      - emails
+      description: setup email configs
+      operationId: GetEmailConfig
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailConfigResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - emails
+      description: setup email configs
+      operationId: UpdateEmailConfig
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: email config info
+        required: true
+        schema:
+          $ref: '#/definitions/EmailConfigUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailConfigResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  EmailSendReq:
+    type: object
+    properties:
+      email:
+        $ref: '#/definitions/EmailSendReq_Email'
+      email_config:
+        $ref: '#/definitions/EmailConfig'
+    title: EmailSendReq
+    description: EmailSendReq defines the data of email sending
+    example:
+      email:
+        content_type: content_type
+        to:
+        - to
+        - to
+        body: body
+      email_config:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
+  EmailSendReq_Email:
+    type: object
+    required:
+    - body
+    - to
+    properties:
+      body:
+        type: string
+      content_type:
+        type: string
+        description: content type, 'text/plain' or 'text/html'
+      to:
+        type: array
+        items:
+          type: string
+    title: EmailSendReq_Email
+    example:
+      content_type: content_type
+      to:
+      - to
+      - to
+      body: body
+  EmailResp:
+    type: object
+    properties:
+      email:
+        $ref: '#/definitions/Email'
+    title: EmailResp
+    example:
+      email:
+        content_type: content_type
+        subject: subject
+        from: from
+        to:
+        - to
+        - to
+        body: body
+  EmailConfigResp:
+    type: object
+    properties:
+      email_config:
+        $ref: '#/definitions/EmailConfig'
+    title: EmailConfigResp
+    example:
+      email_config:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
+  EmailConfig:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      smtp_enable_ssl:
+        type: boolean
+      smtp_host:
+        type: string
+      smtp_password:
+        type: string
+      smtp_port:
+        type: integer
+        format: int64
+      smtp_skip_tls_cert_verify:
+        type: boolean
+      smtp_user:
+        type: string
+      subject:
+        type: string
+    title: EmailConfig
+    description: EmailConfig define email config
+    example:
+      smtp_password: smtp_password
+      smtp_port: 0
+      smtp_user: smtp_user
+      smtp_skip_tls_cert_verify: true
+      subject: subject
+      smtp_host: smtp_host
+      smtp_enable_ssl: true
+      enabled: true
+  Email:
+    type: object
+    properties:
+      body:
+        type: string
+      content_type:
+        type: string
+      from:
+        type: string
+      subject:
+        type: string
+      to:
+        type: array
+        items:
+          type: string
+    title: Email
+    description: Email defines email model
+    example:
+      content_type: content_type
+      subject: subject
+      from: from
+      to:
+      - to
+      - to
+      body: body
+  EmailConfigUpdateReq_EmailConfig:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      smtp_enable_ssl:
+        type: boolean
+      smtp_host:
+        type: string
+      smtp_password:
+        type: string
+      smtp_port:
+        type: integer
+        format: int64
+      smtp_skip_tls_cert_verify:
+        type: boolean
+      smtp_user:
+        type: string
+      subject:
+        type: string
+    title: EmailConfigUpdateReq_EmailConfig
+    example:
+      smtp_password: smtp_password
+      smtp_port: 0
+      smtp_user: smtp_user
+      smtp_skip_tls_cert_verify: true
+      subject: subject
+      smtp_host: smtp_host
+      smtp_enable_ssl: true
+      enabled: true
+  EmailConfigUpdateReq:
+    type: object
+    properties:
+      email_config:
+        $ref: '#/definitions/EmailConfigUpdateReq_EmailConfig'
+    title: EmailConfigUpdateReq
+    example:
+      email_config:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

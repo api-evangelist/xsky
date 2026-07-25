@@ -1,0 +1,290 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-gateways API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-gateways
+  description: 'FSGatewayController provides APIs for file storage gateway
+
+    '
+paths:
+  /fs-gateways/:
+    get:
+      tags:
+      - fs-gateways
+      description: List file storage gateways
+      operationId: ListFSGateways
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_gateway_group_id
+        in: query
+        description: file storage gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSGatewaysResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-gateways/{fs_gateway_id}:
+    get:
+      tags:
+      - fs-gateways
+      description: Get file storage gateway
+      operationId: GetFSGateway
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_gateway_id
+        in: path
+        description: gateway id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSGatewayResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  FSGatewayGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup_Nestview
+    example:
+      name: name
+      id: 6
+      vip_mask: 1
+      vip: vip
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  FSGatewaysResp:
+    type: object
+    required:
+    - fs_gateways
+    properties:
+      fs_gateways:
+        type: array
+        description: file storage gateways
+        items:
+          $ref: '#/definitions/FSGateway'
+    title: FSGatewaysResp
+    example:
+      fs_gateways:
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        vip: vip
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        nic_name: nic_name
+        status: status
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        vip: vip
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        nic_name: nic_name
+        status: status
+  FSGatewayResp:
+    type: object
+    required:
+    - fs_gateway
+    properties:
+      fs_gateway:
+        description: file storage gateway
+        $ref: '#/definitions/FSGateway'
+    title: FSGatewayResp
+    example:
+      fs_gateway:
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        vip: vip
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        nic_name: nic_name
+        status: status
+  FSGateway:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroup_Nestview'
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      network_address:
+        $ref: '#/definitions/NetworkAddress_Nestview'
+      nic_name:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      vip:
+        type: string
+    title: FSGateway
+    description: FSGateway defines model of file storage gateway @grpc-models-proto
+    example:
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      network_address:
+        ip: ip
+        id: 6
+        mask: 1
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      vip: vip
+      fs_gateway_group:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+      nic_name: nic_name
+      status: status
+  NetworkAddress_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      ip:
+        type: string
+      mask:
+        type: integer
+        format: int64
+    title: NetworkAddress_Nestview
+    example:
+      ip: ip
+      id: 6
+      mask: 1
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

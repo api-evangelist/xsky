@@ -1,0 +1,250 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths partitions API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: partitions
+  description: 'PartitionController API /partitions.
+
+    '
+paths:
+  /partitions/:
+    get:
+      tags:
+      - partitions
+      description: List partitions
+      operationId: ListPartitions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: host_id
+        in: query
+        description: host id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: disk_id
+        in: query
+        description: disk id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: DiskId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/PartitionsResp'
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /partitions/{partition_id}:
+    get:
+      tags:
+      - partitions
+      description: Get a partition info
+      operationId: GetPartition
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: partition_id
+        in: path
+        description: partition id
+        required: true
+        type: string
+        x-exportParamName: PartitionId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/PartitionResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  Disk_Nestview:
+    type: object
+    properties:
+      device:
+        type: string
+      disk_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Disk_Nestview
+    example:
+      disk_type: disk_type
+      id: 0
+      device: device
+  PartitionResp:
+    type: object
+    properties:
+      partition:
+        $ref: '#/definitions/Partition'
+    title: PartitionResp
+    example:
+      partition:
+        omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        action_status: action_status
+        status: status
+  Partition:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      disk:
+        $ref: '#/definitions/Disk_Nestview'
+      id:
+        type: integer
+        format: int64
+      omap_byte:
+        type: integer
+        format: int64
+      omap_device_path:
+        type: string
+      path:
+        type: string
+      size:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      used:
+        type: boolean
+      uuid:
+        type: string
+      version:
+        type: integer
+        format: int64
+    title: Partition
+    description: Partition defines cache partition of disk
+    example:
+      omap_device_path: omap_device_path
+      update: '2000-01-23T04:56:07.000+00:00'
+      omap_byte: 1
+      used: true
+      uuid: uuid
+      version: 5
+      path: path
+      disk:
+        disk_type: disk_type
+        id: 0
+        device: device
+      size: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      action_status: action_status
+      status: status
+  PartitionsResp:
+    type: object
+    properties:
+      partitions:
+        type: array
+        items:
+          $ref: '#/definitions/Partition'
+    title: PartitionsResp
+    example:
+      partitions:
+      - omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        action_status: action_status
+        status: status
+      - omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        action_status: action_status
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

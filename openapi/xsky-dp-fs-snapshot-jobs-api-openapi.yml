@@ -1,0 +1,279 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths dp-fs-snapshot-jobs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: dp-fs-snapshot-jobs
+  description: 'DpFSSnapshotJobController API /dp-fs-snapshot-jobs/
+
+    '
+paths:
+  /dp-fs-snapshot-jobs/:
+    get:
+      tags:
+      - dp-fs-snapshot-jobs
+      description: List dp fs snapshot jobs
+      operationId: ListDpFSSnapshotJobs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_folder_id
+        in: query
+        description: fs folder
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: fs_snapshot_id
+        in: query
+        description: fs snapshot
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsSnapshotId
+      - name: dp_fs_snapshot_policy_id
+        in: query
+        description: dp fs snapshot policy
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: DpFsSnapshotPolicyId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpFSSnapshotJobsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /dp-fs-snapshot-jobs/{job_id}:
+    get:
+      tags:
+      - dp-fs-snapshot-jobs
+      description: Get dp fs snapshot job
+      operationId: GetDpFSSnapshotJob
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: path
+        description: resource id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: JobId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DpFSSnapshotJobResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSSnapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSSnapshot_Nestview
+    example:
+      name: name
+      id: 1
+  DpFSSnapshotJob:
+    type: object
+    properties:
+      dp_fs_snapshot_policy:
+        $ref: '#/definitions/DpFSSnapshotPolicy_Nestview'
+      finished_at:
+        type: string
+        format: date-time
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      fs_snapshot:
+        $ref: '#/definitions/FSSnapshot_Nestview'
+      id:
+        type: integer
+        format: int64
+      progress:
+        type: number
+        format: double
+      size:
+        type: integer
+        format: int64
+      started_at:
+        type: string
+        format: date-time
+      status:
+        type: string
+      updated_at:
+        type: string
+        format: date-time
+    title: DpFSSnapshotJob
+    description: DpFSSnapshotJob is one execution of a running dp fs snapshot policy
+    example:
+      finished_at: '2000-01-23T04:56:07.000+00:00'
+      size: 2
+      updated_at: '2000-01-23T04:56:07.000+00:00'
+      fs_folder:
+        name: name
+        id: 6
+      dp_fs_snapshot_policy:
+        name: name
+        id: 0
+      progress: 5.637376656633329
+      started_at: '2000-01-23T04:56:07.000+00:00'
+      fs_snapshot:
+        name: name
+        id: 1
+      id: 5
+      status: status
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  DpFSSnapshotJobsResp:
+    type: object
+    properties:
+      dp_fs_snapshot_jobs:
+        type: array
+        items:
+          $ref: '#/definitions/DpFSSnapshotJob'
+    title: DpFSSnapshotJobsResp
+    example:
+      dp_fs_snapshot_jobs:
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        size: 2
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        fs_folder:
+          name: name
+          id: 6
+        dp_fs_snapshot_policy:
+          name: name
+          id: 0
+        progress: 5.637376656633329
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        fs_snapshot:
+          name: name
+          id: 1
+        id: 5
+        status: status
+      - finished_at: '2000-01-23T04:56:07.000+00:00'
+        size: 2
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        fs_folder:
+          name: name
+          id: 6
+        dp_fs_snapshot_policy:
+          name: name
+          id: 0
+        progress: 5.637376656633329
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        fs_snapshot:
+          name: name
+          id: 1
+        id: 5
+        status: status
+  DpFSSnapshotJobResp:
+    type: object
+    properties:
+      dp_fs_snapshot_job:
+        $ref: '#/definitions/DpFSSnapshotJob'
+    title: DpFSSnapshotJobResp
+    example:
+      dp_fs_snapshot_job:
+        finished_at: '2000-01-23T04:56:07.000+00:00'
+        size: 2
+        updated_at: '2000-01-23T04:56:07.000+00:00'
+        fs_folder:
+          name: name
+          id: 6
+        dp_fs_snapshot_policy:
+          name: name
+          id: 0
+        progress: 5.637376656633329
+        started_at: '2000-01-23T04:56:07.000+00:00'
+        fs_snapshot:
+          name: name
+          id: 1
+        id: 5
+        status: status
+  DpFSSnapshotPolicy_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: DpFSSnapshotPolicy_Nestview
+    example:
+      name: name
+      id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

@@ -1,0 +1,176 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths domain-user-validators API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: domain-user-validators
+  description: 'DomainUserValidatorController Domain User Validator Management
+
+    '
+paths:
+  /domain-user-validators/:
+    post:
+      tags:
+      - domain-user-validators
+      description: Create domain user validator
+      operationId: CreateDomainUserValidator
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: domain user validator info
+        required: true
+        schema:
+          $ref: '#/definitions/DomainUserValidatorCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/DomainUserValidatorResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /domain-user-validators/{domain_user_validator_id}:
+    get:
+      tags:
+      - domain-user-validators
+      description: Get domain_user validator
+      operationId: GetDomainUserValidator
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: domain_user_validator_id
+        in: path
+        description: domain user validator id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: DomainUserValidatorId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DomainUserValidatorResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DomainUserValidator:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      members:
+        type: object
+        properties: {}
+      report:
+        type: object
+        properties: {}
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: DomainUserValidator
+    description: DomainUserValidator defines the validator for domain users
+    example:
+      members: '{}'
+      report: '{}'
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      type: type
+      status: status
+  DomainUserValidatorResp:
+    type: object
+    properties:
+      domain_user_validator:
+        $ref: '#/definitions/DomainUserValidator'
+    title: DomainUserValidatorResp
+    example:
+      domain_user_validator:
+        members: '{}'
+        report: '{}'
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        status: status
+  DomainUserValidatorCreateReq_Validator:
+    type: object
+    required:
+    - type
+    properties:
+      groups:
+        type: array
+        description: Domain groups
+        items:
+          type: string
+      type:
+        type: string
+        description: Domain type
+      users:
+        type: array
+        description: Domain users
+        items:
+          type: string
+    title: DomainUserValidatorCreateReq_Validator
+    example:
+      groups:
+      - groups
+      - groups
+      type: type
+      users:
+      - users
+      - users
+  DomainUserValidatorCreateReq:
+    type: object
+    properties:
+      domain_user_validator:
+        $ref: '#/definitions/DomainUserValidatorCreateReq_Validator'
+    title: DomainUserValidatorCreateReq
+    example:
+      domain_user_validator:
+        groups:
+        - groups
+        - groups
+        type: type
+        users:
+        - users
+        - users
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

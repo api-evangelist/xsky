@@ -1,0 +1,482 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-ldaps API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-ldaps
+  description: 'FSLdapController File Storage LDAP Management
+
+    '
+paths:
+  /fs-ldaps/:
+    get:
+      tags:
+      - fs-ldaps
+      description: List file storage ldaps
+      operationId: ListFSLdaps
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSLdapsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-ldaps
+      description: create file storage ldap
+      operationId: CreateFSLdap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: file storage ldap info
+        required: true
+        schema:
+          $ref: '#/definitions/FSLdapCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSLdapResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /fs-ldaps/{fs_ldap_id}:
+    get:
+      tags:
+      - fs-ldaps
+      description: Get a file storage ldap
+      operationId: GetFSLdap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ldap_id
+        in: path
+        description: file storage ldap id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsLdapId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSLdapResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-ldaps
+      description: Delete file storage ldap
+      operationId: DeleteFSLdap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ldap_id
+        in: path
+        description: file storage ldap id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsLdapId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-ldaps
+      description: Update a file storage ldap
+      operationId: UpdateFSLdap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ldap_id
+        in: path
+        description: file storage ldap id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsLdapId
+      - in: body
+        name: body
+        description: file storage ldap info
+        required: true
+        schema:
+          $ref: '#/definitions/FSLdapUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSLdapResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-ldaps/{fs_ldap_id}:verify:
+    post:
+      tags:
+      - fs-ldaps
+      description: Verify a file storage ldap
+      operationId: VerifyFSLdap
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_ldap_id
+        in: path
+        description: file storage ldap id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsLdapId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSLdapResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  FSLdapUpdateReq_Info:
+    type: object
+    required:
+    - ip
+    - name
+    - port
+    - suffix
+    properties:
+      admin_dn:
+        type: string
+        description: ldap admin dn
+      connection_timeout:
+        type: integer
+        format: int64
+        description: timeout for connection
+      group_suffix:
+        type: string
+        description: group suffix
+      ip:
+        type: string
+        description: ip of server
+      ips:
+        type: array
+        description: ips of standby servers
+        items:
+          type: string
+      name:
+        type: string
+        description: name of ldap
+      password:
+        type: string
+        description: bind password
+      port:
+        type: integer
+        format: int64
+        description: ldap service port
+      suffix:
+        type: string
+        description: ldap suffix
+      timeout:
+        type: integer
+        format: int64
+        description: timeout for searching
+      user_suffix:
+        type: string
+        description: user suffix
+    title: FSLdapUpdateReq_Info
+  FSLdapUpdateReq:
+    type: object
+    required:
+    - fs_ldap
+    properties:
+      fs_ldap:
+        $ref: '#/definitions/FSLdapUpdateReq_Info'
+    title: FSLdapUpdateReq
+  FSLdapCreateReq_Info:
+    type: object
+    required:
+    - ip
+    - name
+    - port
+    - suffix
+    properties:
+      admin_dn:
+        type: string
+        description: ldap admin dn
+      connection_timeout:
+        type: integer
+        format: int64
+        description: timeout for connection
+      group_suffix:
+        type: string
+        description: group suffix
+      ip:
+        type: string
+        description: ip of server
+      ips:
+        type: array
+        description: ips of standby servers
+        items:
+          type: string
+      name:
+        type: string
+        description: name of ldap
+      password:
+        type: string
+        description: bind password
+      port:
+        type: integer
+        format: int64
+        description: ldap service port
+      suffix:
+        type: string
+        description: ldap suffix
+      timeout:
+        type: integer
+        format: int64
+        description: timeout for searching
+      user_suffix:
+        type: string
+        description: user suffix
+    title: FSLdapCreateReq_Info
+  FSLdapResp:
+    type: object
+    required:
+    - fs_ldap
+    properties:
+      fs_ldap:
+        description: file storage ldap
+        $ref: '#/definitions/FSLdap'
+    title: FSLdapResp
+    example:
+      fs_ldap:
+        admin_dn: admin_dn
+        ip: ip
+        update: '2000-01-23T04:56:07.000+00:00'
+        suffix: suffix
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        ips:
+        - ips
+        - ips
+        timeout: 5
+        group_suffix: group_suffix
+        user_suffix: user_suffix
+        port: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 6
+        id: 1
+        connection_timeout: 0
+        action_status: action_status
+        status: status
+  FSLdap:
+    type: object
+    properties:
+      action_status:
+        type: string
+      admin_dn:
+        type: string
+      connection_timeout:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      fs_gateway_group_num:
+        type: integer
+        format: int64
+      group_suffix:
+        type: string
+      id:
+        type: integer
+        format: int64
+      ip:
+        type: string
+      ips:
+        type: array
+        items:
+          type: string
+      name:
+        type: string
+      port:
+        type: integer
+        format: int64
+      status:
+        type: string
+      suffix:
+        type: string
+      timeout:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+      user_suffix:
+        type: string
+      verify_time:
+        type: string
+        format: date-time
+    title: FSLdap
+    description: FSLdap defines model of file storage ldap
+    example:
+      admin_dn: admin_dn
+      ip: ip
+      update: '2000-01-23T04:56:07.000+00:00'
+      suffix: suffix
+      verify_time: '2000-01-23T04:56:07.000+00:00'
+      ips:
+      - ips
+      - ips
+      timeout: 5
+      group_suffix: group_suffix
+      user_suffix: user_suffix
+      port: 5
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      fs_gateway_group_num: 6
+      id: 1
+      connection_timeout: 0
+      action_status: action_status
+      status: status
+  FSLdapCreateReq:
+    type: object
+    required:
+    - fs_ldap
+    properties:
+      fs_ldap:
+        $ref: '#/definitions/FSLdapCreateReq_Info'
+    title: FSLdapCreateReq
+  FSLdapsResp:
+    type: object
+    required:
+    - fs_ldaps
+    properties:
+      fs_ldaps:
+        type: array
+        description: file storage ldaps
+        items:
+          $ref: '#/definitions/FSLdap'
+    title: FSLdapsResp
+    example:
+      fs_ldaps:
+      - admin_dn: admin_dn
+        ip: ip
+        update: '2000-01-23T04:56:07.000+00:00'
+        suffix: suffix
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        ips:
+        - ips
+        - ips
+        timeout: 5
+        group_suffix: group_suffix
+        user_suffix: user_suffix
+        port: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 6
+        id: 1
+        connection_timeout: 0
+        action_status: action_status
+        status: status
+      - admin_dn: admin_dn
+        ip: ip
+        update: '2000-01-23T04:56:07.000+00:00'
+        suffix: suffix
+        verify_time: '2000-01-23T04:56:07.000+00:00'
+        ips:
+        - ips
+        - ips
+        timeout: 5
+        group_suffix: group_suffix
+        user_suffix: user_suffix
+        port: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        fs_gateway_group_num: 6
+        id: 1
+        connection_timeout: 0
+        action_status: action_status
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

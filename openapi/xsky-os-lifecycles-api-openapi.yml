@@ -1,0 +1,154 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-lifecycles API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-lifecycles
+  description: 'ObjectStorageLifecycleController provides API for object storage lifecycle
+
+    '
+paths:
+  /os-lifecycles/:
+    get:
+      tags:
+      - os-lifecycles
+      description: List object storage lifecycles
+      operationId: ListLifecycles
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageLifecyclesResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-lifecycles/{lifecycle_id}:
+    get:
+      tags:
+      - os-lifecycles
+      description: Get object storage lifecycle
+      operationId: GetLifecycle
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: lifecycle_id
+        in: path
+        description: lifecycle id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: LifecycleId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageLifecycleResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ObjectStorageLifecycle:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    title: ObjectStorageLifecycle
+    description: ObjectStorageLifecycle is the model of object_storage_lifecycle
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  ObjectStorageLifecyclesResp:
+    type: object
+    required:
+    - os_lifecycles
+    properties:
+      os_lifecycles:
+        type: array
+        description: object storage lifecycles
+        items:
+          $ref: '#/definitions/ObjectStorageLifecycle'
+    title: ObjectStorageLifecyclesResp
+    example:
+      os_lifecycles:
+      - rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      - rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+  ObjectStorageLifecycleResp:
+    type: object
+    required:
+    - os_lifecycle
+    properties:
+      os_lifecycle:
+        description: object storage lifecycle
+        $ref: '#/definitions/ObjectStorageLifecycle'
+    title: ObjectStorageLifecycleResp
+    example:
+      os_lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

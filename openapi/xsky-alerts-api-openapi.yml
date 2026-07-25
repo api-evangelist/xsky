@@ -1,0 +1,609 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths alerts API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: alerts
+  description: 'AlertController Operations about alert
+
+    '
+paths:
+  /alerts/:
+    get:
+      tags:
+      - alerts
+      description: List all alerts
+      operationId: ListAlerts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: resource_type
+        in: query
+        description: resource type of alert
+        required: false
+        type: string
+        x-exportParamName: ResourceType
+      - name: resource_id
+        in: query
+        description: resource id of alert
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ResourceId
+      - name: alert_type
+        in: query
+        description: type of alert
+        required: false
+        type: string
+        x-exportParamName: AlertType
+      - name: acked
+        in: query
+        description: acked of alert
+        required: false
+        type: boolean
+        x-exportParamName: Acked
+      - name: resolved
+        in: query
+        description: resolved or not of alert
+        required: false
+        type: boolean
+        x-exportParamName: Resolved
+      - name: resolve_type
+        in: query
+        description: resolve type of alert
+        required: false
+        type: string
+        x-exportParamName: ResolveType
+      - name: level
+        in: query
+        description: level of alert
+        required: false
+        type: string
+        x-exportParamName: Level
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - alerts
+      description: delete alerts
+      operationId: DeleteAlerts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: before
+        in: query
+        description: create time of last alert
+        required: false
+        type: string
+        x-exportParamName: Before
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - alerts
+      description: set the ack status of alerts
+      operationId: DoAlerts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: alert
+        description: the alerts action info
+        required: true
+        schema:
+          $ref: '#/definitions/AlertsActionReq'
+        x-exportParamName: Alert
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alerts/stats:
+    get:
+      tags:
+      - alerts
+      description: count all alert
+      operationId: CountAlerts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: acked
+        in: query
+        description: acked of alert
+        required: false
+        type: boolean
+        x-exportParamName: Acked
+      - name: resolved
+        in: query
+        description: resolved or not of alert
+        required: false
+        type: boolean
+        x-exportParamName: Resolved
+      - name: resource_type
+        in: query
+        description: resource type of alert
+        required: false
+        type: string
+        x-exportParamName: ResourceType
+      - name: resource_id
+        in: query
+        description: resource id of alert
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ResourceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertStatsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alerts/{alert_id}:
+    put:
+      tags:
+      - alerts
+      description: set the ack status of alert
+      operationId: DoAlert
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: alert_id
+        in: path
+        description: the id of alert
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AlertId
+      - in: body
+        name: alert
+        description: the alert action info
+        required: true
+        schema:
+          $ref: '#/definitions/AlertActionReq'
+        x-exportParamName: Alert
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - alerts
+      description: Delete alert
+      operationId: DeleteAlert
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: alert_id
+        in: path
+        description: alert id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AlertId
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /alerts/{alert_id}:resolve:
+    post:
+      tags:
+      - alerts
+      description: set the resolved status of alert
+      operationId: ResolveAlert
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: alert_id
+        in: path
+        description: the id of alert
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: AlertId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  Alert_Nestview:
+    type: object
+    properties:
+      alarm_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Alert_Nestview
+  AlertsActionReq:
+    type: object
+    required:
+    - alerts
+    properties:
+      alerts:
+        $ref: '#/definitions/AlertsActionReq_Alerts'
+    title: AlertsActionReq
+    example:
+      alerts:
+        action: action
+  AlertActionReq:
+    type: object
+    required:
+    - alert
+    properties:
+      alert:
+        $ref: '#/definitions/AlertActionReq_Alert'
+    title: AlertActionReq
+    example:
+      alert:
+        action: action
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  ErrorRecord:
+    type: object
+    properties:
+      action_log:
+        $ref: '#/definitions/ActionLog_Nestview'
+      alert:
+        $ref: '#/definitions/Alert_Nestview'
+      code:
+        type: string
+      create:
+        type: string
+        format: date-time
+      details:
+        type: string
+      extra_data:
+        type: object
+        properties: {}
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      message:
+        type: string
+    title: ErrorRecord
+    description: ErrorRecord defines the error record attributes.
+  AlertsActionReq_Alerts:
+    type: object
+    required:
+    - action
+    properties:
+      action:
+        type: string
+    title: AlertsActionReq_Alerts
+    example:
+      action: action
+  AlertResp:
+    type: object
+    required:
+    - alert
+    properties:
+      alert:
+        description: alert
+        $ref: '#/definitions/Alert'
+    title: AlertResp
+    example:
+      alert:
+        ack_time: '2000-01-23T04:56:07.000+00:00'
+        data: '{}'
+        resolve_type: resolve_type
+        level: level
+        resolve_time: '2000-01-23T04:56:07.000+00:00'
+        resource_type: resource_type
+        trigger_mode: trigger_mode
+        trigger_value: trigger_value
+        alert_value: alert_value
+        type: type
+        acked: true
+        extra_data: extra_data
+        related_resources:
+        - '{}'
+        - '{}'
+        trigger_period: 5
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        resource_id: 1
+        alarm_id: alarm_id
+        id: 6
+        resource_name: resource_name
+        group: group
+        resolved: true
+        status: status
+  AlertStatsResp:
+    type: object
+    required:
+    - alert_stats
+    properties:
+      alert_stats:
+        description: alert stats
+        $ref: '#/definitions/AlertStats'
+    title: AlertStatsResp
+    example:
+      alert_stats:
+        critical_num: 0
+        info_num: 1
+        error_num: 6
+        warning_num: 5
+  AlertsResp:
+    type: object
+    required:
+    - alerts
+    properties:
+      alerts:
+        type: array
+        description: alerts
+        items:
+          $ref: '#/definitions/AlertRecord'
+    title: AlertsResp
+    example:
+      alerts:
+      - ''
+      - ''
+  AlertRecord:
+    title: AlertRecord
+    allOf:
+    - $ref: '#/definitions/Alert'
+    - properties:
+        error_records:
+          type: array
+          items:
+            $ref: '#/definitions/ErrorRecord'
+    description: AlertRecord defines the response errors of alert
+  Alert:
+    type: object
+    properties:
+      ack_time:
+        type: string
+        format: date-time
+      acked:
+        type: boolean
+      alarm_id:
+        type: string
+      alert_value:
+        type: string
+      create:
+        type: string
+        format: date-time
+      data:
+        type: object
+        properties: {}
+      extra_data:
+        type: string
+      group:
+        type: string
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      level:
+        type: string
+      related_resources:
+        type: array
+        items:
+          type: object
+          properties: {}
+      resolve_time:
+        type: string
+        format: date-time
+      resolve_type:
+        type: string
+      resolved:
+        type: boolean
+      resource_id:
+        type: integer
+        format: int64
+      resource_name:
+        type: string
+      resource_type:
+        type: string
+      status:
+        type: string
+      trigger_mode:
+        type: string
+      trigger_period:
+        type: integer
+        format: int64
+      trigger_value:
+        type: string
+      type:
+        type: string
+    title: Alert
+    description: Alert is a generic representation of an alert in the Prometheus eco-system.
+    example:
+      ack_time: '2000-01-23T04:56:07.000+00:00'
+      data: '{}'
+      resolve_type: resolve_type
+      level: level
+      resolve_time: '2000-01-23T04:56:07.000+00:00'
+      resource_type: resource_type
+      trigger_mode: trigger_mode
+      trigger_value: trigger_value
+      alert_value: alert_value
+      type: type
+      acked: true
+      extra_data: extra_data
+      related_resources:
+      - '{}'
+      - '{}'
+      trigger_period: 5
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      resource_id: 1
+      alarm_id: alarm_id
+      id: 6
+      resource_name: resource_name
+      group: group
+      resolved: true
+      status: status
+  AlertStats:
+    type: object
+    properties:
+      critical_num:
+        type: integer
+        format: int64
+      error_num:
+        type: integer
+        format: int64
+      info_num:
+        type: integer
+        format: int64
+      warning_num:
+        type: integer
+        format: int64
+    title: AlertStats
+    example:
+      critical_num: 0
+      info_num: 1
+      error_num: 6
+      warning_num: 5
+  AlertActionReq_Alert:
+    type: object
+    required:
+    - action
+    properties:
+      action:
+        type: string
+    title: AlertActionReq_Alert
+    example:
+      action: action
+  ActionLog_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: ActionLog_Nestview
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

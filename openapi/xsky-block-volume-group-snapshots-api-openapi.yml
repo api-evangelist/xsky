@@ -1,0 +1,551 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths block-volume-group-snapshots API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: block-volume-group-snapshots
+  description: 'VolumeGroupSnapshotController Operations about volume group snapshot
+
+    '
+paths:
+  /block-volume-group-snapshots/:
+    get:
+      tags:
+      - block-volume-group-snapshots
+      description: List block volume group snapshots
+      operationId: ListBlockVolumeGroupSnapshots
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupSnapshotsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - block-volume-group-snapshots
+      description: Create block volume group snapshot
+      operationId: CreateBlockVolumeGroupSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: volume group snapshot info
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupSnapshotCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupSnapshotResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VolumeGroupSnapshotResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /block-volume-group-snapshots/{block_volume_group_snapshot_id}:
+    get:
+      tags:
+      - block-volume-group-snapshots
+      description: get block volume group snapshot
+      operationId: GetBlockVolumeGroupSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_snapshot_id
+        in: path
+        description: the block volume group snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupSnapshotId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SnapshotResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - block-volume-group-snapshots
+      description: Delete a block volume group snapshot
+      operationId: DeleteBlockVolumeGroupSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_snapshot_id
+        in: path
+        description: block volume group snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupSnapshotId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VolumeGroupSnapshotResp'
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - block-volume-group-snapshots
+      description: Update block volume group snapshot
+      operationId: UpdateBlockVolumeGroupSnapshot
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_snapshot_id
+        in: path
+        description: the block volume group snapshot id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupSnapshotId
+      - in: body
+        name: body
+        description: volume group snapshot info
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupSnapshotUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupSnapshotResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  VolumeGroupSnapshot:
+    type: object
+    properties:
+      block_snapshot_num:
+        type: integer
+        format: int64
+      block_volume_group:
+        $ref: '#/definitions/VolumeGroup_Nestview'
+      cloned_block_volume_group_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: VolumeGroupSnapshot
+    description: VolumeGroupSnapshot defines the model of volume group snapshot
+    example:
+      block_snapshot_num: 0
+      cloned_block_volume_group_num: 1
+      block_volume_group:
+        name: name
+        id: 6
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      status: status
+  RemoteCluster_Nestview:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      url:
+        type: string
+    title: RemoteCluster_Nestview
+    example:
+      name: name
+      id: 2
+      fs_id: fs_id
+      url: url
+  VolumeGroupSnapshotUpdateReq_VolumeGroupSnapshot:
+    type: object
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    title: VolumeGroupSnapshotUpdateReq_VolumeGroupSnapshot
+    example:
+      name: name
+      description: description
+  VolumeGroupSnapshotCreateReq:
+    type: object
+    required:
+    - block_volume_group_snapshot
+    properties:
+      block_volume_group_snapshot:
+        $ref: '#/definitions/VolumeGroupSnapshotCreateReq_VolumeGroupSnapshot'
+    title: VolumeGroupSnapshotCreateReq
+    example:
+      block_volume_group_snapshot:
+        name: name
+        description: description
+        block_volume_group_id: 0
+  VolumeGroupSnapshotUpdateReq:
+    type: object
+    required:
+    - block_volume_group_snapshot
+    properties:
+      block_volume_group_snapshot:
+        $ref: '#/definitions/VolumeGroupSnapshotUpdateReq_VolumeGroupSnapshot'
+    title: VolumeGroupSnapshotUpdateReq
+    example:
+      block_volume_group_snapshot:
+        name: name
+        description: description
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  VolumeGroupSnapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: VolumeGroupSnapshot_Nestview
+    example:
+      name: name
+      id: 6
+  Snapshot:
+    type: object
+    properties:
+      action_status:
+        type: string
+      allocated_size:
+        type: integer
+        format: int64
+      block_volume_group_snapshot:
+        $ref: '#/definitions/VolumeGroupSnapshot_Nestview'
+      cloned_block_volume_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      creator:
+        type: string
+      description:
+        type: string
+      hidden:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      passive:
+        type: boolean
+      pool:
+        $ref: '#/definitions/Pool_Nestview'
+      protected:
+        type: boolean
+      remote_cluster:
+        description: the snapshot is replicated from a remote cluster
+        $ref: '#/definitions/RemoteCluster_Nestview'
+      reserved:
+        type: boolean
+      size:
+        type: integer
+        format: int64
+      snap_name:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      volume:
+        $ref: '#/definitions/Volume_Nestview'
+    title: Snapshot
+    description: Snapshot is the corresponding rbd snapshot
+    example:
+      cloned_block_volume_num: 1
+      creator: creator
+      hidden: true
+      pool:
+        name: name
+        id: 5
+      snap_name: snap_name
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      allocated_size: 0
+      passive: true
+      volume:
+        original_name: original_name
+        name: name
+        id: 9
+      protected: true
+      size: 7
+      remote_cluster:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+      reserved: true
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      action_status: action_status
+      block_volume_group_snapshot:
+        name: name
+        id: 6
+      status: status
+  VolumeGroupSnapshotResp:
+    type: object
+    required:
+    - block_volume_group_snapshot
+    properties:
+      block_volume_group_snapshot:
+        $ref: '#/definitions/VolumeGroupSnapshot'
+    title: VolumeGroupSnapshotResp
+    example:
+      block_volume_group_snapshot:
+        block_snapshot_num: 0
+        cloned_block_volume_group_num: 1
+        block_volume_group:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+  VolumeGroupSnapshotCreateReq_VolumeGroupSnapshot:
+    type: object
+    required:
+    - block_volume_group_id
+    - description
+    - name
+    properties:
+      block_volume_group_id:
+        type: integer
+        format: int64
+      description:
+        type: string
+      name:
+        type: string
+    title: VolumeGroupSnapshotCreateReq_VolumeGroupSnapshot
+    example:
+      name: name
+      description: description
+      block_volume_group_id: 0
+  SnapshotResp:
+    type: object
+    required:
+    - block_snapshot
+    properties:
+      block_snapshot:
+        description: snapshot
+        $ref: '#/definitions/Snapshot'
+    title: SnapshotResp
+    example:
+      block_snapshot:
+        cloned_block_volume_num: 1
+        creator: creator
+        hidden: true
+        pool:
+          name: name
+          id: 5
+        snap_name: snap_name
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        allocated_size: 0
+        passive: true
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        protected: true
+        size: 7
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        reserved: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        block_volume_group_snapshot:
+          name: name
+          id: 6
+        status: status
+  VolumeGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: VolumeGroup_Nestview
+    example:
+      name: name
+      id: 6
+  VolumeGroupSnapshotsResp:
+    type: object
+    required:
+    - block_volume_group_snapshots
+    properties:
+      block_volume_group_snapshots:
+        type: array
+        items:
+          $ref: '#/definitions/VolumeGroupSnapshot'
+    title: VolumeGroupSnapshotsResp
+    example:
+      block_volume_group_snapshots:
+      - block_snapshot_num: 0
+        cloned_block_volume_group_num: 1
+        block_volume_group:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+      - block_snapshot_num: 0
+        cloned_block_volume_group_num: 1
+        block_volume_group:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        status: status
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

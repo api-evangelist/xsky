@@ -1,0 +1,562 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths mapping-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: mapping-groups
+  description: 'MappingGroupController Operations able mapping groups
+
+    '
+paths:
+  /mapping-groups/:
+    get:
+      tags:
+      - mapping-groups
+      description: List mapping groups
+      operationId: ListMappingGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: access_path_id
+        in: query
+        description: access path id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: AccessPathId
+      - name: client_group_id
+        in: query
+        description: client group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: ClientGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - mapping-groups
+      description: create a mapping group in access path
+      operationId: CreateMappingGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: mapping_group
+        description: mapping info
+        required: true
+        schema:
+          $ref: '#/definitions/MappingGroupCreateReq'
+        x-exportParamName: MappingGroup
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /mapping-groups/{mapping_group_id}:
+    get:
+      tags:
+      - mapping-groups
+      description: Get mapping group by id
+      operationId: GetMappingGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - mapping-groups
+      description: Delete mapping group
+      operationId: DeleteMappingGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - mapping-groups
+      description: update mapping group
+      operationId: UpdateMappingGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      - in: body
+        name: mapping_group
+        description: mapping info
+        required: true
+        schema:
+          $ref: '#/definitions/MappingGroupUpdateReq'
+        x-exportParamName: MappingGroup
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /mapping-groups/{mapping_group_id}/block-volumes:
+    post:
+      tags:
+      - mapping-groups
+      description: add volumes to mapping group
+      operationId: AddVolumes
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      - in: body
+        name: block_volume_ids
+        description: block volume ids
+        required: true
+        schema:
+          $ref: '#/definitions/MappingGroupAddVolumesReq'
+        x-exportParamName: BlockVolumeIds
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - mapping-groups
+      description: remove volumes from mapping group
+      operationId: RemoveVolumes
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      - in: body
+        name: block_volume_ids
+        description: block volume ids
+        required: true
+        schema:
+          $ref: '#/definitions/MappingGroupRemoveVolumesReq'
+        x-exportParamName: BlockVolumeIds
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /mapping-groups/{mapping_group_id}/client-group:
+    patch:
+      tags:
+      - mapping-groups
+      description: update client group in mapping group
+      operationId: UpdateMappingGroupClientGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: mapping_group_id
+        in: path
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      - in: body
+        name: client_group_id
+        description: client group id
+        required: true
+        schema:
+          $ref: '#/definitions/MappingGroupUpdateClientGroupReq'
+        x-exportParamName: ClientGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/MappingGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  MappingGroupResp:
+    type: object
+    required:
+    - mapping_group
+    properties:
+      mapping_group:
+        $ref: '#/definitions/MappingGroup'
+    title: MappingGroupResp
+    example:
+      mapping_group:
+        client_group:
+          name: name
+          id: 5
+        access_path:
+          name: name
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+  MappingGroupReq:
+    type: object
+    properties:
+      access_path_id:
+        type: integer
+        format: int64
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      client_group_id:
+        type: integer
+        format: int64
+    title: MappingGroupReq
+    example:
+      client_group_id: 5
+      block_volume_ids:
+      - 1
+      - 1
+      access_path_id: 6
+  MappingGroupsResp:
+    type: object
+    required:
+    - mapping_groups
+    properties:
+      mapping_groups:
+        type: array
+        items:
+          $ref: '#/definitions/MappingGroup'
+    title: MappingGroupsResp
+    example:
+      mapping_groups:
+      - client_group:
+          name: name
+          id: 5
+        access_path:
+          name: name
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+      - client_group:
+          name: name
+          id: 5
+        access_path:
+          name: name
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
+  MappingGroup:
+    type: object
+    properties:
+      access_path:
+        $ref: '#/definitions/AccessPath_Nestview'
+      client_group:
+        $ref: '#/definitions/ClientGroup_Nestview'
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: MappingGroup
+    description: MappingGroup defines the mapping group of volumes and client groups
+    example:
+      client_group:
+        name: name
+        id: 5
+      access_path:
+        name: name
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      status: status
+  MappingGroupAddVolumesReq:
+    type: object
+    required:
+    - block_volume_ids
+    properties:
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: MappingGroupAddVolumesReq
+    example:
+      block_volume_ids:
+      - 0
+      - 0
+  MappingGroupRemoveVolumesReq:
+    type: object
+    required:
+    - block_volume_ids
+    properties:
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: MappingGroupRemoveVolumesReq
+    example:
+      block_volume_ids:
+      - 0
+      - 0
+  AccessPath_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: AccessPath_Nestview
+    example:
+      name: name
+      id: 0
+  MappingGroupUpdateReq_MappingGroup:
+    type: object
+    properties:
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: MappingGroupUpdateReq_MappingGroup
+    example:
+      block_volume_ids:
+      - 0
+      - 0
+  MappingGroupCreateReq:
+    type: object
+    required:
+    - mapping_group
+    properties:
+      mapping_group:
+        $ref: '#/definitions/MappingGroupReq'
+    title: MappingGroupCreateReq
+    example:
+      mapping_group:
+        client_group_id: 5
+        block_volume_ids:
+        - 1
+        - 1
+        access_path_id: 6
+  ClientGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: ClientGroup_Nestview
+    example:
+      name: name
+      id: 5
+  MappingGroupUpdateReq:
+    type: object
+    required:
+    - mapping_group
+    properties:
+      mapping_group:
+        $ref: '#/definitions/MappingGroupUpdateReq_MappingGroup'
+    title: MappingGroupUpdateReq
+    example:
+      mapping_group:
+        block_volume_ids:
+        - 0
+        - 0
+  MappingGroupUpdateClientGroupReq:
+    type: object
+    required:
+    - client_group_id
+    properties:
+      client_group_id:
+        type: integer
+        format: int64
+    title: MappingGroupUpdateClientGroupReq
+    example:
+      client_group_id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

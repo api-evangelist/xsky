@@ -1,0 +1,479 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-client-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-client-groups
+  description: 'FSClientGroupController provides APIs for file storage client group
+
+    '
+paths:
+  /fs-client-groups/:
+    get:
+      tags:
+      - fs-client-groups
+      description: List file storage client groups
+      operationId: ListFSClientGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: fs_client_id
+        in: query
+        description: file storage client id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsClientId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSClientGroupsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-client-groups
+      description: Create file storage client group
+      operationId: CreateFSClientGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: client group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSClientGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/FSClientGroupResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-client-groups/{fs_client_group_id}:
+    get:
+      tags:
+      - fs-client-groups
+      description: Get file storage client group
+      operationId: GetFSClientGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_client_group_id
+        in: path
+        description: client group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSClientGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-client-groups
+      description: delete file storage client group
+      operationId: DeleteFSClientGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_client_group_id
+        in: path
+        description: client group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      responses:
+        204:
+          description: Not Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - fs-client-groups
+      description: Update file storage client group
+      operationId: UpdateFSClientGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_client_group_id
+        in: path
+        description: client group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      - in: body
+        name: body
+        description: client group info
+        required: true
+        schema:
+          $ref: '#/definitions/FSClientGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSClientGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-client-groups/{fs_client_group_id}/fs-clients:
+    put:
+      tags:
+      - fs-client-groups
+      description: add clients to file storage client group
+      operationId: AddFSClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_client_group_id
+        in: path
+        description: client group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      - in: body
+        name: body
+        description: clients info
+        required: true
+        schema:
+          $ref: '#/definitions/FSClientGroupAddClientsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSClientGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-client-groups
+      description: remove clients from file storage client group
+      operationId: RemoveFSClients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_client_group_id
+        in: path
+        description: client group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsClientGroupId
+      - in: body
+        name: body
+        description: clients info
+        required: true
+        schema:
+          $ref: '#/definitions/FSClientGroupRemoveClientsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSClientGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSClientGroupAddClientsReq:
+    type: object
+    required:
+    - fs_client_group
+    properties:
+      fs_client_group:
+        $ref: '#/definitions/FSClientGroupAddClientsReq_ClientGroup'
+    title: FSClientGroupAddClientsReq
+  FSClientGroupAddClientsReq_ClientGroup:
+    type: object
+    required:
+    - fs_client_ids
+    properties:
+      fs_client_ids:
+        type: array
+        description: ids of clients
+        items:
+          type: integer
+          format: int64
+    title: FSClientGroupAddClientsReq_ClientGroup
+  FSClientGroupUpdateReq:
+    type: object
+    required:
+    - fs_client_group
+    properties:
+      fs_client_group:
+        $ref: '#/definitions/FSClientGroupUpdateReq_ClientGroup'
+    title: FSClientGroupUpdateReq
+  FSClientGroupUpdateReq_ClientGroup:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: name of client group
+    title: FSClientGroupUpdateReq_ClientGroup
+  FSClientGroupCreateReq_ClientGroup:
+    type: object
+    required:
+    - fs_client_ids
+    - name
+    properties:
+      fs_client_ids:
+        type: array
+        description: ids of clients
+        items:
+          type: integer
+          format: int64
+      name:
+        type: string
+        description: name of client group
+    title: FSClientGroupCreateReq_ClientGroup
+  FSClientGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      client_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      fs_clients:
+        type: array
+        items:
+          $ref: '#/definitions/FSClient_Nestview'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSClientGroup
+    description: FSClientGroup defines model of file storage client group
+    example:
+      client_num: 0
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      fs_clients:
+      - name: name
+        id: 6
+      - name: name
+        id: 6
+      id: 1
+      action_status: action_status
+  FSClientGroupCreateReq:
+    type: object
+    required:
+    - fs_client_group
+    properties:
+      fs_client_group:
+        $ref: '#/definitions/FSClientGroupCreateReq_ClientGroup'
+    title: FSClientGroupCreateReq
+  FSClientGroupRemoveClientsReq:
+    type: object
+    required:
+    - fs_client_group
+    properties:
+      fs_client_group:
+        $ref: '#/definitions/FSClientGroupRemoveClientsReq_ClientGroup'
+    title: FSClientGroupRemoveClientsReq
+  FSClientGroupsResp:
+    type: object
+    required:
+    - fs_client_groups
+    properties:
+      fs_client_groups:
+        type: array
+        description: file storage client groups
+        items:
+          $ref: '#/definitions/FSClientGroup'
+    title: FSClientGroupsResp
+    example:
+      fs_client_groups:
+      - client_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_clients:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        id: 1
+        action_status: action_status
+      - client_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_clients:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        id: 1
+        action_status: action_status
+  FSClientGroupRemoveClientsReq_ClientGroup:
+    type: object
+    required:
+    - fs_client_ids
+    properties:
+      fs_client_ids:
+        type: array
+        description: ids of clients
+        items:
+          type: integer
+          format: int64
+    title: FSClientGroupRemoveClientsReq_ClientGroup
+  FSClient_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSClient_Nestview
+    example:
+      name: name
+      id: 6
+  FSClientGroupResp:
+    type: object
+    required:
+    - fs_client_group
+    properties:
+      fs_client_group:
+        description: file storage client group
+        $ref: '#/definitions/FSClientGroup'
+    title: FSClientGroupResp
+    example:
+      fs_client_group:
+        client_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_clients:
+        - name: name
+          id: 6
+        - name: name
+          id: 6
+        id: 1
+        action_status: action_status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

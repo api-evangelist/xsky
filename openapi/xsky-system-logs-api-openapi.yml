@@ -1,0 +1,495 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths system-logs API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: system-logs
+  description: 'SystemLogController provides API for system logs
+
+    '
+paths:
+  /system-logs/:
+    get:
+      tags:
+      - system-logs
+      description: List system logs
+      operationId: ListSystemLogs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: host_id
+        in: query
+        description: The id of host system logs belong to
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: catalog
+        in: query
+        description: The name of catalog system logs belong to
+        required: true
+        type: string
+        x-exportParamName: Catalog
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/SystemLogsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /system-logs/archive:
+    get:
+      tags:
+      - system-logs
+      description: download system logs
+      operationId: DownloadSystemLogs
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        204:
+          description: No Content
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  HostFcPort:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      wwn:
+        type: string
+    title: HostFcPort
+    description: HostFcPort defines fc port on the host
+    example:
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      wwn: wwn
+  Host:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      action_status:
+        type: string
+      admin_ip:
+        type: string
+      clock_diff:
+        type: integer
+        format: int64
+        description: clock diff in milliseconds with primary host
+      cores:
+        type: integer
+        format: int64
+      cpu_model:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      disk_num:
+        type: integer
+        format: int64
+      enclosures:
+        type: array
+        items:
+          type: object
+          properties: {}
+      fcports:
+        type: array
+        description: fc ports of host
+        items:
+          $ref: '#/definitions/HostFcPort'
+      gateway_ips:
+        type: string
+      id:
+        type: integer
+        format: int64
+      is_master_db:
+        type: boolean
+      memory_kbyte:
+        type: integer
+        format: int64
+      model:
+        type: string
+      name:
+        type: string
+      os:
+        type: string
+      private_ip:
+        type: string
+      protection_domain:
+        description: protection domain of host
+        $ref: '#/definitions/ProtectionDomain_Nestview'
+      public_ips:
+        type: string
+      rack:
+        type: string
+      roles:
+        type: string
+      root_disk:
+        $ref: '#/definitions/Disk_Nestview'
+      status:
+        type: string
+      type:
+        type: string
+      up:
+        type: boolean
+      update:
+        type: string
+        format: date-time
+      vendor:
+        type: string
+    title: Host
+    description: Host defines the installed hosts @grpc-models-proto
+    example:
+      roles: roles
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      type: type
+      enclosures:
+      - '{}'
+      - '{}'
+      private_ip: private_ip
+      root_disk:
+        disk_type: disk_type
+        id: 0
+        device: device
+      cores: 6
+      is_master_db: true
+      disk_num: 1
+      cpu_model: cpu_model
+      vendor: vendor
+      create: '2000-01-23T04:56:07.000+00:00'
+      model: model
+      id: 5
+      up: true
+      action_status: action_status
+      public_ips: public_ips
+      memory_kbyte: 2
+      rack: rack
+      gateway_ips: gateway_ips
+      os: os
+      clock_diff: 0
+      admin_ip: admin_ip
+      protection_domain:
+        name: name
+        id: 5
+      name: name
+      fcports:
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        wwn: wwn
+      - host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        wwn: wwn
+      status: status
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  SystemLog:
+    type: object
+    properties:
+      catalog:
+        type: string
+      host:
+        $ref: '#/definitions/Host'
+      id:
+        type: integer
+        format: int64
+      last_updated_time:
+        type: string
+        format: date-time
+      name:
+        type: string
+      size:
+        type: integer
+        format: int64
+    title: SystemLog
+    description: SystemLog defines the system log
+    example:
+      last_updated_time: '2000-01-23T04:56:07.000+00:00'
+      size: 9
+      catalog: catalog
+      host:
+        roles: roles
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        enclosures:
+        - '{}'
+        - '{}'
+        private_ip: private_ip
+        root_disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        cores: 6
+        is_master_db: true
+        disk_num: 1
+        cpu_model: cpu_model
+        vendor: vendor
+        create: '2000-01-23T04:56:07.000+00:00'
+        model: model
+        id: 5
+        up: true
+        action_status: action_status
+        public_ips: public_ips
+        memory_kbyte: 2
+        rack: rack
+        gateway_ips: gateway_ips
+        os: os
+        clock_diff: 0
+        admin_ip: admin_ip
+        protection_domain:
+          name: name
+          id: 5
+        name: name
+        fcports:
+        - host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          wwn: wwn
+        - host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          wwn: wwn
+        status: status
+      name: name
+      id: 7
+  SystemLogsResp:
+    type: object
+    required:
+    - system_logs
+    properties:
+      system_logs:
+        type: array
+        description: system logs
+        items:
+          $ref: '#/definitions/SystemLog'
+    title: SystemLogsResp
+    example:
+      system_logs:
+      - last_updated_time: '2000-01-23T04:56:07.000+00:00'
+        size: 9
+        catalog: catalog
+        host:
+          roles: roles
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enclosures:
+          - '{}'
+          - '{}'
+          private_ip: private_ip
+          root_disk:
+            disk_type: disk_type
+            id: 0
+            device: device
+          cores: 6
+          is_master_db: true
+          disk_num: 1
+          cpu_model: cpu_model
+          vendor: vendor
+          create: '2000-01-23T04:56:07.000+00:00'
+          model: model
+          id: 5
+          up: true
+          action_status: action_status
+          public_ips: public_ips
+          memory_kbyte: 2
+          rack: rack
+          gateway_ips: gateway_ips
+          os: os
+          clock_diff: 0
+          admin_ip: admin_ip
+          protection_domain:
+            name: name
+            id: 5
+          name: name
+          fcports:
+          - host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            wwn: wwn
+          - host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            wwn: wwn
+          status: status
+        name: name
+        id: 7
+      - last_updated_time: '2000-01-23T04:56:07.000+00:00'
+        size: 9
+        catalog: catalog
+        host:
+          roles: roles
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enclosures:
+          - '{}'
+          - '{}'
+          private_ip: private_ip
+          root_disk:
+            disk_type: disk_type
+            id: 0
+            device: device
+          cores: 6
+          is_master_db: true
+          disk_num: 1
+          cpu_model: cpu_model
+          vendor: vendor
+          create: '2000-01-23T04:56:07.000+00:00'
+          model: model
+          id: 5
+          up: true
+          action_status: action_status
+          public_ips: public_ips
+          memory_kbyte: 2
+          rack: rack
+          gateway_ips: gateway_ips
+          os: os
+          clock_diff: 0
+          admin_ip: admin_ip
+          protection_domain:
+            name: name
+            id: 5
+          name: name
+          fcports:
+          - host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            wwn: wwn
+          - host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            wwn: wwn
+          status: status
+        name: name
+        id: 7
+  Disk_Nestview:
+    type: object
+    properties:
+      device:
+        type: string
+      disk_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Disk_Nestview
+    example:
+      disk_type: disk_type
+      id: 0
+      device: device
+  ProtectionDomain_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of protection domain
+      name:
+        type: string
+        description: name of protection domain
+    title: ProtectionDomain_Nestview
+    example:
+      name: name
+      id: 5
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

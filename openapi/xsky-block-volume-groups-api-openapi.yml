@@ -1,0 +1,508 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths block-volume-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: block-volume-groups
+  description: 'VolumeGroupController Operations about volume group
+
+    '
+paths:
+  /block-volume-groups/:
+    get:
+      tags:
+      - block-volume-groups
+      description: List block volume groups
+      operationId: ListBlockVolumeGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - block-volume-groups
+      description: Create block volume group
+      operationId: CreateBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: volume group info
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /block-volume-groups/{block_volume_group_id}:
+    get:
+      tags:
+      - block-volume-groups
+      description: get a block volume group
+      operationId: GetBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_id
+        in: path
+        description: block volume group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - block-volume-groups
+      description: Delete a block volume group
+      operationId: DeleteBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_id
+        in: path
+        description: block volume group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - block-volume-groups
+      description: Update block volume group
+      operationId: UpdateBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_id
+        in: path
+        description: block volume group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupId
+      - in: body
+        name: body
+        description: volume group info
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /block-volume-groups/{block_volume_group_id}/block-volumes:
+    put:
+      tags:
+      - block-volume-groups
+      description: Add block volume to block volume group
+      operationId: AddBlockVolumeToBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_id
+        in: path
+        description: block volume group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupId
+      - in: body
+        name: body
+        description: volume ids
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupAddVolumeReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - block-volume-groups
+      description: Remove block volume from block volume group
+      operationId: RemoveBlockVolumeFromBlockVolumeGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: block_volume_group_id
+        in: path
+        description: block volume group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: BlockVolumeGroupId
+      - in: body
+        name: body
+        description: volume ids
+        required: true
+        schema:
+          $ref: '#/definitions/VolumeGroupRemoveVolumeReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VolumeGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  VolumeGroupCreateReq:
+    type: object
+    required:
+    - block_volume_group
+    properties:
+      block_volume_group:
+        $ref: '#/definitions/VolumeGroupCreateReq_VolumeGroup'
+    title: VolumeGroupCreateReq
+    example:
+      block_volume_group:
+        flattened: true
+        block_volume_ids:
+        - 6
+        - 6
+        name: name
+        description: description
+        block_volume_group_snapshot_id: 0
+  VolumeGroupUpdateReq_VolumeGroup:
+    type: object
+    required:
+    - name
+    properties:
+      description:
+        type: string
+      flattened:
+        type: boolean
+      name:
+        type: string
+    title: VolumeGroupUpdateReq_VolumeGroup
+    example:
+      flattened: true
+      name: name
+      description: description
+  VolumeGroupRemoveVolumeReq:
+    type: object
+    required:
+    - block_volume_ids
+    properties:
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: VolumeGroupRemoveVolumeReq
+    example:
+      block_volume_ids:
+      - 0
+      - 0
+  VolumeGroupAddVolumeReq:
+    type: object
+    required:
+    - block_volume_ids
+    properties:
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: VolumeGroupAddVolumeReq
+    example:
+      block_volume_ids:
+      - 0
+      - 0
+  VolumeGroupSnapshot_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: VolumeGroupSnapshot_Nestview
+    example:
+      name: name
+      id: 6
+  VolumeGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      block_volume_group_snapshot:
+        $ref: '#/definitions/VolumeGroupSnapshot_Nestview'
+      block_volume_group_snapshot_num:
+        type: integer
+        format: int64
+      block_volume_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      flattened:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      latest_snapshot_time:
+        type: string
+        format: date-time
+      name:
+        type: string
+      progress:
+        type: number
+        format: double
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: VolumeGroup
+    description: VolumeGroup defines the model of volume group
+    example:
+      flattened: true
+      block_volume_num: 6
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+      block_volume_group_snapshot_num: 0
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      progress: 5.962133916683182
+      id: 1
+      action_status: action_status
+      block_volume_group_snapshot:
+        name: name
+        id: 6
+      status: status
+  VolumeGroupsResp:
+    type: object
+    properties:
+      block_volume_groups:
+        type: array
+        items:
+          $ref: '#/definitions/VolumeGroup'
+    title: VolumeGroupsResp
+    example:
+      block_volume_groups:
+      - flattened: true
+        block_volume_num: 6
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+        block_volume_group_snapshot_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 5.962133916683182
+        id: 1
+        action_status: action_status
+        block_volume_group_snapshot:
+          name: name
+          id: 6
+        status: status
+      - flattened: true
+        block_volume_num: 6
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+        block_volume_group_snapshot_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 5.962133916683182
+        id: 1
+        action_status: action_status
+        block_volume_group_snapshot:
+          name: name
+          id: 6
+        status: status
+  VolumeGroupUpdateReq:
+    type: object
+    required:
+    - block_volume_group
+    properties:
+      block_volume_group:
+        $ref: '#/definitions/VolumeGroupUpdateReq_VolumeGroup'
+    title: VolumeGroupUpdateReq
+    example:
+      block_volume_group:
+        flattened: true
+        name: name
+        description: description
+  VolumeGroupResp:
+    type: object
+    properties:
+      block_volume_group:
+        $ref: '#/definitions/VolumeGroup'
+    title: VolumeGroupResp
+    example:
+      block_volume_group:
+        flattened: true
+        block_volume_num: 6
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+        block_volume_group_snapshot_num: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        progress: 5.962133916683182
+        id: 1
+        action_status: action_status
+        block_volume_group_snapshot:
+          name: name
+          id: 6
+        status: status
+  VolumeGroupCreateReq_VolumeGroup:
+    type: object
+    required:
+    - name
+    properties:
+      block_volume_group_snapshot_id:
+        type: integer
+        format: int64
+      block_volume_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      description:
+        type: string
+      flattened:
+        type: boolean
+      name:
+        type: string
+    title: VolumeGroupCreateReq_VolumeGroup
+    example:
+      flattened: true
+      block_volume_ids:
+      - 6
+      - 6
+      name: name
+      description: description
+      block_volume_group_snapshot_id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

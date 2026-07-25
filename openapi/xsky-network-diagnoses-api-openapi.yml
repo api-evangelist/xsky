@@ -1,0 +1,366 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths network-diagnoses API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: network-diagnoses
+  description: 'NetworkDiagnosisController provides API for network diagnosis
+
+    '
+paths:
+  /network-diagnoses/:
+    get:
+      tags:
+      - network-diagnoses
+      description: List network diagnoses
+      operationId: ListNetworkDiagnoses
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkDiagnosesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    post:
+      tags:
+      - network-diagnoses
+      description: Create network diagnosis
+      operationId: CreateNetworkDiagnosis
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: network diagnosis info
+        required: true
+        schema:
+          $ref: '#/definitions/NetworkDiagnosisCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkDiagnosisResp'
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/NetworkDiagnosisResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /network-diagnoses/{network_diagnosis_id}:
+    get:
+      tags:
+      - network-diagnoses
+      description: Get network diagnosis
+      operationId: GetNetworkDiagnosis
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: network_diagnosis_id
+        in: path
+        description: network diagnosis id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: NetworkDiagnosisId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/NetworkDiagnosisResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - network-diagnoses
+      description: delete network diagnosis
+      operationId: DeleteNetworkDiagnosis
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: network_diagnosis_id
+        in: path
+        description: network diagnosis id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: NetworkDiagnosisId
+      responses:
+        204:
+          description: Not Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /network-diagnoses/{network_diagnosis_id}:stop:
+    post:
+      tags:
+      - network-diagnoses
+      description: stop network diagnosis
+      operationId: StopNetworkDiagnosis
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: network_diagnosis_id
+        in: path
+        description: network diagnosis id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: NetworkDiagnosisId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/NetworkDiagnosisResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  NetworkDiagnosisCreateReq_Diagnosis:
+    type: object
+    required:
+    - host_ids
+    - host_scope
+    - networks
+    properties:
+      host_ids:
+        type: array
+        description: ids of host
+        items:
+          type: integer
+          format: int64
+      host_scope:
+        type: string
+        description: host scope
+      networks:
+        type: array
+        description: network types
+        items:
+          type: string
+    title: NetworkDiagnosisCreateReq_Diagnosis
+    example:
+      host_scope: host_scope
+      host_ids:
+      - 0
+      - 0
+      networks:
+      - networks
+      - networks
+  NetworkDiagnosis:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      diagnose_active_num:
+        type: integer
+        format: int64
+      diagnose_error_num:
+        type: integer
+        format: int64
+      diagnose_num:
+        type: integer
+        format: int64
+      diagnose_warning_num:
+        type: integer
+        format: int64
+      diagnosing_num:
+        type: integer
+        format: int64
+      host_num:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      networks:
+        type: array
+        items:
+          type: string
+      not_diagnose_num:
+        type: integer
+        format: int64
+      progress:
+        type: number
+        format: double
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: NetworkDiagnosis
+    description: NetworkDiagnosis defines model of network diagnosis
+    example:
+      diagnose_warning_num: 5
+      diagnose_active_num: 0
+      update: '2000-01-23T04:56:07.000+00:00'
+      networks:
+      - networks
+      - networks
+      diagnose_error_num: 6
+      diagnosing_num: 5
+      host_num: 2
+      create: '2000-01-23T04:56:07.000+00:00'
+      diagnose_num: 1
+      progress: 3.616076749251911
+      id: 7
+      not_diagnose_num: 9
+      status: status
+  NetworkDiagnosesResp:
+    type: object
+    required:
+    - network_diagnoses
+    properties:
+      network_diagnoses:
+        type: array
+        description: network diagnoses
+        items:
+          $ref: '#/definitions/NetworkDiagnosis'
+    title: NetworkDiagnosesResp
+    example:
+      network_diagnoses:
+      - diagnose_warning_num: 5
+        diagnose_active_num: 0
+        update: '2000-01-23T04:56:07.000+00:00'
+        networks:
+        - networks
+        - networks
+        diagnose_error_num: 6
+        diagnosing_num: 5
+        host_num: 2
+        create: '2000-01-23T04:56:07.000+00:00'
+        diagnose_num: 1
+        progress: 3.616076749251911
+        id: 7
+        not_diagnose_num: 9
+        status: status
+      - diagnose_warning_num: 5
+        diagnose_active_num: 0
+        update: '2000-01-23T04:56:07.000+00:00'
+        networks:
+        - networks
+        - networks
+        diagnose_error_num: 6
+        diagnosing_num: 5
+        host_num: 2
+        create: '2000-01-23T04:56:07.000+00:00'
+        diagnose_num: 1
+        progress: 3.616076749251911
+        id: 7
+        not_diagnose_num: 9
+        status: status
+  NetworkDiagnosisCreateReq:
+    type: object
+    required:
+    - network_diagnosis
+    properties:
+      network_diagnosis:
+        $ref: '#/definitions/NetworkDiagnosisCreateReq_Diagnosis'
+    title: NetworkDiagnosisCreateReq
+    example:
+      network_diagnosis:
+        host_scope: host_scope
+        host_ids:
+        - 0
+        - 0
+        networks:
+        - networks
+        - networks
+  NetworkDiagnosisResp:
+    type: object
+    required:
+    - network_diagnosis
+    properties:
+      network_diagnosis:
+        description: network diagnosis
+        $ref: '#/definitions/NetworkDiagnosis'
+    title: NetworkDiagnosisResp
+    example:
+      network_diagnosis:
+        diagnose_warning_num: 5
+        diagnose_active_num: 0
+        update: '2000-01-23T04:56:07.000+00:00'
+        networks:
+        - networks
+        - networks
+        diagnose_error_num: 6
+        diagnosing_num: 5
+        host_num: 2
+        create: '2000-01-23T04:56:07.000+00:00'
+        diagnose_num: 1
+        progress: 3.616076749251911
+        id: 7
+        not_diagnose_num: 9
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

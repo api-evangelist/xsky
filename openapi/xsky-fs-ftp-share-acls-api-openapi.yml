@@ -1,0 +1,230 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-ftp-share-acls API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-ftp-share-acls
+  description: 'FSFTPShareACLController provides API for fs ftp share acl
+
+    '
+paths:
+  /fs-ftp-share-acls/:
+    get:
+      tags:
+      - fs-ftp-share-acls
+      description: List fs ftp share acls
+      operationId: ListFSFTPShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: fs_ftp_share_id
+        in: query
+        description: fs ftp share id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFtpShareId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSFTPShareACLsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSFTPShareACLsResp:
+    type: object
+    required:
+    - fs_ftp_share_acls
+    properties:
+      fs_ftp_share_acls:
+        type: array
+        description: fs ftp share acls
+        items:
+          $ref: '#/definitions/FSFTPShareACL'
+    title: FSFTPShareACLsResp
+    example:
+      fs_ftp_share_acls:
+      - download_enabled: true
+        update: '2000-01-23T04:56:07.000+00:00'
+        delete_enabled: true
+        type: type
+        download_bandwidth: 0
+        fs_user_group:
+          name: name
+          id: 1
+        rename_enabled: true
+        fs_user:
+          name: name
+          id: 6
+        upload_bandwidth: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        upload_enabled: true
+        id: 5
+        create_enabled: true
+        fs_ftp_share:
+          id: 6
+        list_enabled: true
+      - download_enabled: true
+        update: '2000-01-23T04:56:07.000+00:00'
+        delete_enabled: true
+        type: type
+        download_bandwidth: 0
+        fs_user_group:
+          name: name
+          id: 1
+        rename_enabled: true
+        fs_user:
+          name: name
+          id: 6
+        upload_bandwidth: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        upload_enabled: true
+        id: 5
+        create_enabled: true
+        fs_ftp_share:
+          id: 6
+        list_enabled: true
+  FSUserGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSUserGroup_Nestview
+    example:
+      name: name
+      id: 1
+  FSFTPShareACL:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      create_enabled:
+        type: boolean
+      delete_enabled:
+        type: boolean
+      download_bandwidth:
+        type: integer
+        format: int64
+      download_enabled:
+        type: boolean
+      fs_ftp_share:
+        $ref: '#/definitions/FSFTPShare_Nestview'
+      fs_user:
+        $ref: '#/definitions/FSUser_Nestview'
+      fs_user_group:
+        $ref: '#/definitions/FSUserGroup_Nestview'
+      id:
+        type: integer
+        format: int64
+      list_enabled:
+        type: boolean
+      rename_enabled:
+        type: boolean
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      upload_bandwidth:
+        type: integer
+        format: int64
+      upload_enabled:
+        type: boolean
+    title: FSFTPShareACL
+    description: FSFTPShareACL defines model of fs ftp share ACL
+    example:
+      download_enabled: true
+      update: '2000-01-23T04:56:07.000+00:00'
+      delete_enabled: true
+      type: type
+      download_bandwidth: 0
+      fs_user_group:
+        name: name
+        id: 1
+      rename_enabled: true
+      fs_user:
+        name: name
+        id: 6
+      upload_bandwidth: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      upload_enabled: true
+      id: 5
+      create_enabled: true
+      fs_ftp_share:
+        id: 6
+      list_enabled: true
+  FSFTPShare_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: FSFTPShare_Nestview
+    example:
+      id: 6
+  FSUser_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSUser_Nestview
+    example:
+      name: name
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

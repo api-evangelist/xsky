@@ -1,0 +1,262 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths cloud-volumes API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: cloud-volumes
+  description: 'CloudVolumeController Cloud Volume Management
+
+    '
+paths:
+  /cloud-volumes/:
+    get:
+      tags:
+      - cloud-volumes
+      description: List cloud volumes
+      operationId: ListCloudVolumes
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: cloud_instance_id
+        in: query
+        description: cloud instance id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: CloudInstanceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudVolumesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cloud-volumes/{cloud_volume_id}:
+    get:
+      tags:
+      - cloud-volumes
+      description: Get a cloud volume
+      operationId: GetCloudVolume
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_volume_id
+        in: path
+        description: cloud volume id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudVolumeId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudVolumeResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  CloudVolumeResp:
+    type: object
+    properties:
+      cloud_volume:
+        description: cloud volume
+        $ref: '#/definitions/CloudVolume'
+    title: CloudVolumeResp
+    example:
+      cloud_volume:
+        cloud_volume_id: cloud_volume_id
+        cloud_datacenter:
+          name: name
+          id: 0
+        cloud_platform:
+          name: name
+          id: 6
+          type: type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        multi_attach: true
+        id: 1
+        type: type
+  CloudVolume:
+    type: object
+    properties:
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      cloud_datacenter:
+        $ref: '#/definitions/CloudDatacenter_Nestview'
+      cloud_platform:
+        $ref: '#/definitions/CloudPlatform_Nestview'
+      cloud_volume_id:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      multi_attach:
+        type: boolean
+      name:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: CloudVolume
+    description: CloudVolume defines volumes of the cloud platform
+    example:
+      cloud_volume_id: cloud_volume_id
+      cloud_datacenter:
+        name: name
+        id: 0
+      cloud_platform:
+        name: name
+        id: 6
+        type: type
+      block_volume:
+        original_name: original_name
+        name: name
+        id: 9
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      multi_attach: true
+      id: 1
+      type: type
+  CloudVolumesResp:
+    type: object
+    properties:
+      cloud_volumes:
+        type: array
+        description: cloud volumes
+        items:
+          $ref: '#/definitions/CloudVolume'
+    title: CloudVolumesResp
+    example:
+      cloud_volumes:
+      - cloud_volume_id: cloud_volume_id
+        cloud_datacenter:
+          name: name
+          id: 0
+        cloud_platform:
+          name: name
+          id: 6
+          type: type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        multi_attach: true
+        id: 1
+        type: type
+      - cloud_volume_id: cloud_volume_id
+        cloud_datacenter:
+          name: name
+          id: 0
+        cloud_platform:
+          name: name
+          id: 6
+          type: type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        multi_attach: true
+        id: 1
+        type: type
+  CloudDatacenter_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: CloudDatacenter_Nestview
+    example:
+      name: name
+      id: 0
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+  CloudPlatform_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      type:
+        type: string
+    title: CloudPlatform_Nestview
+    example:
+      name: name
+      id: 6
+      type: type
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

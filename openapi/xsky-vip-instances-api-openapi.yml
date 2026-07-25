@@ -1,0 +1,229 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths vip-instances API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: vip-instances
+  description: 'VIPInstanceController API /vip-instances
+
+    '
+paths:
+  /vip-instances/:
+    get:
+      tags:
+      - vip-instances
+      description: List vip instances
+      operationId: ListVIPInstances
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: vip_id
+        in: query
+        description: vip id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: VipId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VIPInstancesResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /vip-instances/{vip_instance_id}:
+    get:
+      tags:
+      - vip-instances
+      description: Get a vip group
+      operationId: GetVIPInstance
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vip_instance_id
+        in: path
+        description: vip group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VipInstanceId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VIPInstanceResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  VIPInstancesResp:
+    type: object
+    properties:
+      vip_instances:
+        type: array
+        items:
+          $ref: '#/definitions/VIPInstance'
+    title: VIPInstancesResp
+    example:
+      vip_instances:
+      - create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        priority: 6
+        vip:
+          ip: ip
+          id: 1
+          mask: 5
+        action_status: action_status
+        status: status
+      - create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        priority: 6
+        vip:
+          ip: ip
+          id: 1
+          mask: 5
+        action_status: action_status
+        status: status
+  VIPInstanceResp:
+    type: object
+    properties:
+      vip_instance:
+        $ref: '#/definitions/VIPInstance'
+    title: VIPInstanceResp
+    example:
+      vip_instance:
+        create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        priority: 6
+        vip:
+          ip: ip
+          id: 1
+          mask: 5
+        action_status: action_status
+        status: status
+  NetworkAddress_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      ip:
+        type: string
+      mask:
+        type: integer
+        format: int64
+    title: NetworkAddress_Nestview
+    example:
+      ip: ip
+      id: 6
+      mask: 1
+  VIP_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      ip:
+        type: string
+      mask:
+        type: integer
+        format: int64
+    title: VIP_Nestview
+    example:
+      ip: ip
+      id: 1
+      mask: 5
+  VIPInstance:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      network_address:
+        $ref: '#/definitions/NetworkAddress_Nestview'
+      priority:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      vip:
+        $ref: '#/definitions/VIP_Nestview'
+    title: VIPInstance
+    description: VIPInstance is an instance of a VIP.
+    example:
+      create: '2000-01-23T04:56:07.000+00:00'
+      network_address:
+        ip: ip
+        id: 6
+        mask: 1
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      priority: 6
+      vip:
+        ip: ip
+        id: 1
+        mask: 5
+      action_status: action_status
+      status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

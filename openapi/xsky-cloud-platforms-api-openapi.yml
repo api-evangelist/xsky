@@ -1,0 +1,490 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths cloud-platforms API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: cloud-platforms
+  description: 'CloudPlatformController Cloud Platform Management
+
+    '
+paths:
+  /cloud-platforms/:
+    get:
+      tags:
+      - cloud-platforms
+      description: List cloud platforms
+      operationId: ListCloudPlatforms
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudPlatformsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - cloud-platforms
+      description: Create cloud platform
+      operationId: CreateCloudPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: cloud platform info
+        required: true
+        schema:
+          $ref: '#/definitions/CloudPlatformCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/CloudPlatformResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /cloud-platforms/{cloud_platform_id}:
+    get:
+      tags:
+      - cloud-platforms
+      description: Get a cloud platform
+      operationId: GetCloudPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_platform_id
+        in: path
+        description: cloud platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudPlatformId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudPlatformResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - cloud-platforms
+      description: Delete cloud platform
+      operationId: DeleteCloudPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_platform_id
+        in: path
+        description: cloud platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudPlatformId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - cloud-platforms
+      description: Update a cloud platform
+      operationId: UpdateCloudPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_platform_id
+        in: path
+        description: cloud platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudPlatformId
+      - in: body
+        name: body
+        description: cloud platform info
+        required: true
+        schema:
+          $ref: '#/definitions/CloudPlatformUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CloudPlatformResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /cloud-platforms/{cloud_platform_id}:sync:
+    post:
+      tags:
+      - cloud-platforms
+      description: Sync a cloud platform
+      operationId: SyncCloudPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: cloud_platform_id
+        in: path
+        description: cloud platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: CloudPlatformId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/CloudPlatformResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+definitions:
+  CloudPlatform:
+    type: object
+    properties:
+      action_status:
+        type: string
+      attached_cloud_volume_num:
+        type: integer
+        format: int64
+      cloud_instance_num:
+        type: integer
+        format: int64
+      cloud_volume_num:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      extra_properties:
+        $ref: '#/definitions/CloudExtraProperties'
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+      sync_time:
+        type: string
+        format: date-time
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      url:
+        type: string
+      username:
+        type: string
+    title: CloudPlatform
+    description: CloudPlatform defines different cloud platforms
+    example:
+      attached_cloud_volume_num: 0
+      cloud_volume_num: 1
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      sync_time: '2000-01-23T04:56:07.000+00:00'
+      cloud_instance_num: 6
+      type: type
+      url: url
+      extra_properties:
+        domain_id: domain_id
+        tenant_id: tenant_id
+        domain_name: domain_name
+        tenant_name: tenant_name
+        regions:
+        - regions
+        - regions
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      action_status: action_status
+      status: status
+      username: username
+  CloudPlatformUpdateReq_Platform:
+    type: object
+    properties:
+      name:
+        type: string
+        description: name of cloud platform
+      password:
+        type: string
+        description: password of cloud platform user
+      url:
+        type: string
+      username:
+        type: string
+    title: CloudPlatformUpdateReq_Platform
+    example:
+      password: password
+      name: name
+      url: url
+      username: username
+  CloudPlatformCreateReq_Platform:
+    type: object
+    properties:
+      description:
+        type: string
+        description: description of cloud platform
+      extra_properties:
+        description: extra properties of cloud platform
+        $ref: '#/definitions/CloudExtraProperties'
+      name:
+        type: string
+        description: name of cloud platform
+      password:
+        type: string
+        description: password of cloud platform user
+      type:
+        type: string
+        description: type of cloud platform
+      url:
+        type: string
+      username:
+        type: string
+    title: CloudPlatformCreateReq_Platform
+    example:
+      password: password
+      extra_properties:
+        domain_id: domain_id
+        tenant_id: tenant_id
+        domain_name: domain_name
+        tenant_name: tenant_name
+        regions:
+        - regions
+        - regions
+      name: name
+      description: description
+      type: type
+      url: url
+      username: username
+  CloudPlatformUpdateReq:
+    type: object
+    properties:
+      cloud_platform:
+        $ref: '#/definitions/CloudPlatformUpdateReq_Platform'
+    title: CloudPlatformUpdateReq
+    example:
+      cloud_platform:
+        password: password
+        name: name
+        url: url
+        username: username
+  CloudPlatformResp:
+    type: object
+    properties:
+      cloud_platform:
+        description: cloud platform
+        $ref: '#/definitions/CloudPlatform'
+    title: CloudPlatformResp
+    example:
+      cloud_platform:
+        attached_cloud_volume_num: 0
+        cloud_volume_num: 1
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        sync_time: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance_num: 6
+        type: type
+        url: url
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        status: status
+        username: username
+  CloudExtraProperties:
+    type: object
+    properties:
+      domain_id:
+        type: string
+        description: domain id for openstack
+      domain_name:
+        type: string
+        description: domain name for openstack
+      regions:
+        type: array
+        description: regions for openstack
+        items:
+          type: string
+      tenant_id:
+        type: string
+        description: tenant id for openstack
+      tenant_name:
+        type: string
+        description: tenant name for openstack
+    title: CloudExtraProperties
+    description: CloudExtraProperties contains extra properties
+    example:
+      domain_id: domain_id
+      tenant_id: tenant_id
+      domain_name: domain_name
+      tenant_name: tenant_name
+      regions:
+      - regions
+      - regions
+  CloudPlatformsResp:
+    type: object
+    properties:
+      cloud_platforms:
+        type: array
+        description: cloud platforms
+        items:
+          $ref: '#/definitions/CloudPlatform'
+    title: CloudPlatformsResp
+    example:
+      cloud_platforms:
+      - attached_cloud_volume_num: 0
+        cloud_volume_num: 1
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        sync_time: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance_num: 6
+        type: type
+        url: url
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        status: status
+        username: username
+      - attached_cloud_volume_num: 0
+        cloud_volume_num: 1
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        sync_time: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance_num: 6
+        type: type
+        url: url
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        status: status
+        username: username
+  CloudPlatformCreateReq:
+    type: object
+    properties:
+      cloud_platform:
+        $ref: '#/definitions/CloudPlatformCreateReq_Platform'
+    title: CloudPlatformCreateReq
+    example:
+      cloud_platform:
+        password: password
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        description: description
+        type: type
+        url: url
+        username: username
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

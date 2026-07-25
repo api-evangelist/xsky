@@ -1,0 +1,717 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths fs-smb-shares API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: fs-smb-shares
+  description: 'FSSMBShareController provides API for fs smb share
+
+    '
+paths:
+  /fs-smb-shares/:
+    get:
+      tags:
+      - fs-smb-shares
+      description: List fs smb shares
+      operationId: ListFSSMBShares
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: fs_folder_id
+        in: query
+        description: fs folder id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsFolderId
+      - name: fs_gateway_group_id
+        in: query
+        description: fs gateway group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: FsGatewayGroupId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSMBSharesResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - fs-smb-shares
+      description: Create fs smb share
+      operationId: CreateFSSMBShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: share info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSMBShareCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-smb-shares/{fs_smb_share_id}:
+    get:
+      tags:
+      - fs-smb-shares
+      description: Get fs smb share
+      operationId: GetFSSMBShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - fs-smb-shares
+      description: delete fs smb share
+      operationId: DeleteFSSMBShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      - name: force
+        in: query
+        description: force delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - fs-smb-shares
+      description: Update fs smb share
+      operationId: UpdateFSSMBShare
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      - in: body
+        name: body
+        description: share info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSMBShareUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-smb-shares/{fs_smb_share_id}:add-acls:
+    post:
+      tags:
+      - fs-smb-shares
+      description: Add fs smb share acls
+      operationId: AddFSSMBShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: fs smb share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSMBShareAddACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /fs-smb-shares/{fs_smb_share_id}:remove-acls:
+    post:
+      tags:
+      - fs-smb-shares
+      description: remove fs smb share acls
+      operationId: RemoveFSSMBShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: fs smb share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSMBShareRemoveACLsReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /fs-smb-shares/{fs_smb_share_id}:update-acls:
+    post:
+      tags:
+      - fs-smb-shares
+      description: Update fs smb share ACL
+      operationId: UpdateFSSMBShareACLs
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: fs_smb_share_id
+        in: path
+        description: share id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: FsSmbShareId
+      - in: body
+        name: body
+        description: share acls info
+        required: true
+        schema:
+          $ref: '#/definitions/FSSMBShareUpdateACLsReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/FSSMBShareResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  FSGatewayGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      vip:
+        type: string
+      vip_mask:
+        type: integer
+        format: int64
+    title: FSGatewayGroup_Nestview
+    example:
+      name: name
+      id: 6
+      vip_mask: 1
+      vip: vip
+  FSSMBShareACLReq:
+    type: object
+    properties:
+      fs_user_group_id:
+        type: integer
+        format: int64
+        description: id of user group
+      fs_user_group_name:
+        type: string
+        description: id of user group
+      fs_user_id:
+        type: integer
+        format: int64
+        description: id of user
+      fs_user_name:
+        type: string
+        description: id of user
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      permission:
+        type: string
+        description: readonly or readwrite access
+      type:
+        type: string
+        description: type of share acl
+    title: FSSMBShareACLReq
+  FSSMBShareResp:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        description: fs smb share
+        $ref: '#/definitions/FSSMBShare'
+    title: FSSMBShareResp
+    example:
+      fs_smb_share:
+        acl_inherited: true
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        security: security
+        recycled: true
+        mapping_num: 1
+        case_sensitive: true
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+  FSSMBShareUpdateACLsReq_Share:
+    type: object
+    properties:
+      fs_smb_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSSMBShareUpdateACLReq'
+    title: FSSMBShareUpdateACLsReq_Share
+  FSSMBShareUpdateACLsReq:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        $ref: '#/definitions/FSSMBShareUpdateACLsReq_Share'
+    title: FSSMBShareUpdateACLsReq
+  FSQuotaTree_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSQuotaTree_Nestview
+    example:
+      name: name
+      id: 5
+  FSSMBShareUpdateACLReq:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of user group
+      permission:
+        type: string
+        description: readonly or readwrite access
+    title: FSSMBShareUpdateACLReq
+  FSSMBShareCreateReq_Share:
+    type: object
+    required:
+    - fs_folder_id
+    - fs_gateway_group_id
+    properties:
+      acl_inherited:
+        type: boolean
+        description: default acl status
+      case_sensitive:
+        type: boolean
+        description: case sensitive
+      fs_folder_id:
+        type: integer
+        format: int64
+        description: folder id
+      fs_gateway_group_id:
+        type: integer
+        format: int64
+        description: gateway group id
+      fs_quota_tree_id:
+        type: integer
+        format: int64
+        description: quota tree id
+      fs_smb_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSSMBShareACLReq'
+      name:
+        type: string
+        description: name of share
+      recycled:
+        type: boolean
+        description: recycle status
+    title: FSSMBShareCreateReq_Share
+  FSFolder_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: FSFolder_Nestview
+    example:
+      name: name
+      id: 6
+  FSSMBShareRemoveACLsReq_Share:
+    type: object
+    required:
+    - fs_smb_share_acl_ids
+    properties:
+      fs_smb_share_acl_ids:
+        type: array
+        description: access control array
+        items:
+          type: integer
+          format: int64
+    title: FSSMBShareRemoveACLsReq_Share
+  FSSMBShareAddACLsReq:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        $ref: '#/definitions/FSSMBShareAddACLsReq_Share'
+    title: FSSMBShareAddACLsReq
+  FSSMBShareAddACLsReq_Share:
+    type: object
+    required:
+    - fs_smb_share_acls
+    properties:
+      fs_smb_share_acls:
+        type: array
+        description: access control array
+        items:
+          $ref: '#/definitions/FSSMBShareACLReq'
+    title: FSSMBShareAddACLsReq_Share
+  FSSMBShare:
+    type: object
+    properties:
+      acl_inherited:
+        type: boolean
+      acl_num:
+        type: integer
+        format: int64
+      action_status:
+        type: string
+      case_sensitive:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      fs_folder:
+        $ref: '#/definitions/FSFolder_Nestview'
+      fs_gateway_group:
+        $ref: '#/definitions/FSGatewayGroup_Nestview'
+      fs_quota_tree:
+        $ref: '#/definitions/FSQuotaTree_Nestview'
+      id:
+        type: integer
+        format: int64
+      mapping_num:
+        type: integer
+        format: int64
+      name:
+        type: string
+      recycled:
+        type: boolean
+      security:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: FSSMBShare
+    description: FSSMBShare defines model of fs smb share
+    example:
+      acl_inherited: true
+      fs_quota_tree:
+        name: name
+        id: 5
+      update: '2000-01-23T04:56:07.000+00:00'
+      security: security
+      recycled: true
+      mapping_num: 1
+      case_sensitive: true
+      fs_folder:
+        name: name
+        id: 6
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      acl_num: 0
+      id: 6
+      fs_gateway_group:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+      action_status: action_status
+      status: status
+  FSSMBSharesResp:
+    type: object
+    required:
+    - fs_smb_shares
+    properties:
+      fs_smb_shares:
+        type: array
+        description: fs smb shares
+        items:
+          $ref: '#/definitions/FSSMBShare'
+    title: FSSMBSharesResp
+    example:
+      fs_smb_shares:
+      - acl_inherited: true
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        security: security
+        recycled: true
+        mapping_num: 1
+        case_sensitive: true
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+      - acl_inherited: true
+        fs_quota_tree:
+          name: name
+          id: 5
+        update: '2000-01-23T04:56:07.000+00:00'
+        security: security
+        recycled: true
+        mapping_num: 1
+        case_sensitive: true
+        fs_folder:
+          name: name
+          id: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        acl_num: 0
+        id: 6
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        action_status: action_status
+        status: status
+  FSSMBShareUpdateReq:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        $ref: '#/definitions/FSSMBShareUpdateReq_Share'
+    title: FSSMBShareUpdateReq
+  FSSMBShareRemoveACLsReq:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        $ref: '#/definitions/FSSMBShareRemoveACLsReq_Share'
+    title: FSSMBShareRemoveACLsReq
+  FSSMBShareCreateReq:
+    type: object
+    required:
+    - fs_smb_share
+    properties:
+      fs_smb_share:
+        $ref: '#/definitions/FSSMBShareCreateReq_Share'
+    title: FSSMBShareCreateReq
+  FSSMBShareUpdateReq_Share:
+    type: object
+    properties:
+      acl_inherited:
+        type: boolean
+        description: default acl status
+      case_sensitive:
+        type: boolean
+        description: case sensitive
+      recycled:
+        type: boolean
+        description: recycle status
+    title: FSSMBShareUpdateReq_Share
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

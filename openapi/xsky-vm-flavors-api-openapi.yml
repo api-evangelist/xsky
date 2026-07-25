@@ -1,0 +1,166 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths vm-flavors API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: vm-flavors
+  description: 'VMFlavorController API /vm-flavors
+
+    '
+paths:
+  /vm-flavors/:
+    get:
+      tags:
+      - vm-flavors
+      description: List vm flavors
+      operationId: ListVMFlavors
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VMFlavorsResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /vm-flavors/{vm_flavor_id}:
+    get:
+      tags:
+      - vm-flavors
+      description: Get vm flavor
+      operationId: GetVMFlavor
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: vm_flavor_id
+        in: path
+        description: vm flavor id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: VmFlavorId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VMFlavorResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  VMFlavorResp:
+    type: object
+    properties:
+      vm_flavor:
+        $ref: '#/definitions/VMFlavor'
+    title: VMFlavorResp
+    example:
+      vm_flavor:
+        memory_kbyte: 1
+        root_disk_size: 5
+        name: name
+        cpu: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+  VMFlavorsResp:
+    type: object
+    properties:
+      vm_flavors:
+        type: array
+        items:
+          $ref: '#/definitions/VMFlavor'
+    title: VMFlavorsResp
+    example:
+      vm_flavors:
+      - memory_kbyte: 1
+        root_disk_size: 5
+        name: name
+        cpu: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+      - memory_kbyte: 1
+        root_disk_size: 5
+        name: name
+        cpu: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+  VMFlavor:
+    type: object
+    properties:
+      cpu:
+        type: integer
+        format: int64
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      memory_kbyte:
+        type: integer
+        format: int64
+      name:
+        type: string
+      root_disk_size:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+    title: VMFlavor
+    description: VMFlavor defines flavor of vm
+    example:
+      memory_kbyte: 1
+      root_disk_size: 5
+      name: name
+      cpu: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

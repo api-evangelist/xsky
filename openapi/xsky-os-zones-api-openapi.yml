@@ -1,0 +1,590 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-zones API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-zones
+  description: 'ObjectStorageZoneController API /os-zones
+
+    '
+paths:
+  /os-zones/:
+    get:
+      tags:
+      - os-zones
+      description: List object storage zones
+      operationId: ListObjectStorageZones
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      - name: local
+        in: query
+        description: local or non-local zones
+        required: false
+        type: boolean
+        x-exportParamName: Local
+      - name: master
+        in: query
+        description: master or non-master zones
+        required: false
+        type: boolean
+        x-exportParamName: Master
+      - name: name
+        in: query
+        description: name of zone
+        required: false
+        type: string
+        x-exportParamName: Name
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageZonesRecordResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-zones
+      description: Create a object storage zone
+      operationId: CreateObjectStorageZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: zone info
+        required: true
+        schema:
+          $ref: '#/definitions/ObjectStorageZoneCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageZoneResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-zones/{zone_uuid}:
+    get:
+      tags:
+      - os-zones
+      description: Get object storage zone
+      operationId: GetObjectStorageZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: object storage zone uuid
+        required: true
+        type: string
+        x-exportParamName: ZoneUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageZoneRecordResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-zones
+      description: update os zone pairs
+      operationId: UpdateOSZonesClockDiff
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: os zone uuid
+        required: true
+        type: string
+        x-exportParamName: ZoneUuid
+      - in: body
+        name: body
+        description: zone pairs info
+        required: true
+        schema:
+          $ref: '#/definitions/OSZonePairsUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageZoneResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - os-zones
+      description: Delete a object storage zone
+      operationId: DeleteObjectStorageZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: os zone uuid
+        required: true
+        type: string
+        x-exportParamName: ZoneUuid
+      - name: force
+        in: query
+        description: delete os zone forcefully or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/ObjectStorageZoneResp'
+        400:
+          description: BadRequest
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-zones/{zone_uuid}/samples:
+    get:
+      tags:
+      - os-zones
+      description: get an object storage zone's Samples
+      operationId: GetObjectStorageZoneSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: object storage zone uuid
+        required: true
+        type: string
+        default: 'true'
+        x-exportParamName: ZoneUuid
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ObjectStorageZoneSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  ObjectStorageZoneCreateReq:
+    type: object
+    properties:
+      os_zone:
+        $ref: '#/definitions/ObjectStorageZoneCreateReq_Zone'
+    title: ObjectStorageZoneCreateReq
+    example:
+      os_zone:
+        remote_cluster_id: 0
+        alias: alias
+        master: true
+  RemoteCluster_Nestview:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      url:
+        type: string
+    title: RemoteCluster_Nestview
+    example:
+      name: name
+      id: 2
+      fs_id: fs_id
+      url: url
+  S3LoadBalancerGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      status:
+        type: string
+    title: S3LoadBalancerGroup_Nestview
+    example:
+      name: name
+      id: 6
+      status: status
+  ObjectStorageZoneResp:
+    type: object
+    properties:
+      os_zone:
+        $ref: '#/definitions/ObjectStorageZone'
+    title: ObjectStorageZoneResp
+    example:
+      os_zone:
+        endpoints:
+        - endpoints
+        - endpoints
+        system_access_key: system_access_key
+        system_secret_key: system_secret_key
+        zonegroup_name: zonegroup_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        epoch_uuid: epoch_uuid
+        local: true
+        realm_name: realm_name
+        switch_status: switch_status
+        master: true
+        connected: true
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        s3_load_balancer_group:
+          name: name
+          id: 6
+          status: status
+        name: name
+        alias: alias
+        create: '2000-01-23T04:56:07.000+00:00'
+        search_zone_uuid: search_zone_uuid
+        id: 0
+        system_user: system_user
+        tier_type: tier_type
+        status: status
+  ObjectStorageZonesRecordResp:
+    type: object
+    properties:
+      os_zones:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectStorageZoneRecord'
+    title: ObjectStorageZonesRecordResp
+    example:
+      os_zones:
+      - ''
+      - ''
+  ObjectStorageZoneCreateReq_Zone:
+    type: object
+    required:
+    - master
+    - remote_cluster_id
+    properties:
+      alias:
+        type: string
+        description: os zone alias
+      master:
+        type: boolean
+        description: is a master zone
+      remote_cluster_id:
+        type: integer
+        format: int64
+        description: remote cluster id
+    title: ObjectStorageZoneCreateReq_Zone
+    example:
+      remote_cluster_id: 0
+      alias: alias
+      master: true
+  OSZonePairsUpdateReq:
+    type: object
+    properties:
+      os_zone:
+        $ref: '#/definitions/OSZonePairsUpdateReq_Zone'
+    title: OSZonePairsUpdateReq
+  ObjectStorageZoneRecordResp:
+    type: object
+    properties:
+      os_zone:
+        $ref: '#/definitions/ObjectStorageZoneRecord'
+    title: ObjectStorageZoneRecordResp
+    example:
+      os_zone: ''
+  ObjectStorageZone:
+    type: object
+    properties:
+      alias:
+        type: string
+      connected:
+        type: boolean
+      create:
+        type: string
+        format: date-time
+      endpoints:
+        type: array
+        items:
+          type: string
+      epoch_uuid:
+        type: string
+      id:
+        type: integer
+        format: int64
+      local:
+        type: boolean
+      master:
+        type: boolean
+      name:
+        type: string
+      realm_name:
+        type: string
+      remote_cluster:
+        $ref: '#/definitions/RemoteCluster_Nestview'
+      s3_load_balancer_group:
+        $ref: '#/definitions/S3LoadBalancerGroup_Nestview'
+      search_zone_uuid:
+        type: string
+      status:
+        type: string
+      switch_status:
+        type: string
+      system_access_key:
+        type: string
+      system_secret_key:
+        type: string
+      system_user:
+        type: string
+      tier_type:
+        type: string
+      update:
+        type: string
+        format: date-time
+      uuid:
+        type: string
+      zonegroup_name:
+        type: string
+    title: ObjectStorageZone
+    description: ObjectStorageZone is the model of object_storage_zone
+    example:
+      endpoints:
+      - endpoints
+      - endpoints
+      system_access_key: system_access_key
+      system_secret_key: system_secret_key
+      zonegroup_name: zonegroup_name
+      update: '2000-01-23T04:56:07.000+00:00'
+      uuid: uuid
+      epoch_uuid: epoch_uuid
+      local: true
+      realm_name: realm_name
+      switch_status: switch_status
+      master: true
+      connected: true
+      remote_cluster:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+      s3_load_balancer_group:
+        name: name
+        id: 6
+        status: status
+      name: name
+      alias: alias
+      create: '2000-01-23T04:56:07.000+00:00'
+      search_zone_uuid: search_zone_uuid
+      id: 0
+      system_user: system_user
+      tier_type: tier_type
+      status: status
+  ObjectStorageZoneSamplesResp:
+    type: object
+    required:
+    - os_zone_samples
+    properties:
+      os_zone_samples:
+        type: array
+        description: object storage zone samples
+        items:
+          $ref: '#/definitions/ObjectStorageZoneStat'
+    title: ObjectStorageZoneSamplesResp
+    example:
+      os_zone_samples:
+      - object_kbytes_ps: 6.027456183070403
+        total_objects: 2
+        bandwidth_kbyte: 0.8008281904610115
+        total_bytes: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        objects_pm: 1.4658129805029452
+        total_object_bytes: 5
+      - object_kbytes_ps: 6.027456183070403
+        total_objects: 2
+        bandwidth_kbyte: 0.8008281904610115
+        total_bytes: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        objects_pm: 1.4658129805029452
+        total_object_bytes: 5
+  ObjectStorageZoneStat:
+    type: object
+    properties:
+      bandwidth_kbyte:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      object_kbytes_ps:
+        type: number
+        format: double
+      objects_pm:
+        type: number
+        format: double
+      total_bytes:
+        type: integer
+        format: int64
+      total_object_bytes:
+        type: integer
+        format: int64
+      total_objects:
+        type: integer
+        format: int64
+    title: ObjectStorageZoneStat
+    description: ObjectStorageZoneStat contains info of os zone
+    example:
+      object_kbytes_ps: 6.027456183070403
+      total_objects: 2
+      bandwidth_kbyte: 0.8008281904610115
+      total_bytes: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      objects_pm: 1.4658129805029452
+      total_object_bytes: 5
+  OSZonePairsUpdateReq_Zone_TargetZones_Elt:
+    type: object
+    required:
+    - clock_diff
+    - zone_uuid
+    properties:
+      clock_diff:
+        type: integer
+        format: int64
+      zone_uuid:
+        type: string
+    title: OSZonePairsUpdateReq_Zone_TargetZones_Elt
+  OSZonePairsUpdateReq_Zone:
+    type: object
+    properties:
+      target_zones:
+        type: array
+        items:
+          $ref: '#/definitions/OSZonePairsUpdateReq_Zone_TargetZones_Elt'
+    title: OSZonePairsUpdateReq_Zone
+  ObjectStorageZoneRecord:
+    title: ObjectStorageZoneRecord
+    allOf:
+    - $ref: '#/definitions/ObjectStorageZone'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/ObjectStorageZoneStat'
+    description: 'ObjectStorageZoneRecord combine ObjectStorageZone and ObjectStorageZoneStat as
+
+      API response'
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

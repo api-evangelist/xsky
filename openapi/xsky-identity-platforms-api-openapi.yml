@@ -1,0 +1,382 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths identity-platforms API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: identity-platforms
+  description: 'IdentityPlatformController Identity Platform Management
+
+    '
+paths:
+  /identity-platforms/:
+    get:
+      tags:
+      - identity-platforms
+      description: List identity platforms
+      operationId: ListIdentityPlatforms
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/IdentityPlatformsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - identity-platforms
+      description: Create identity platform
+      operationId: CreateIdentityPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: identity platform info
+        required: true
+        schema:
+          $ref: '#/definitions/IdentityPlatformCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/IdentityPlatformResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /identity-platforms/{identity_platform_id}:
+    get:
+      tags:
+      - identity-platforms
+      description: Get a identity platform
+      operationId: GetIdentityPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: identity_platform_id
+        in: path
+        description: identity platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: IdentityPlatformId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/IdentityPlatformResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - identity-platforms
+      description: Delete identity platform
+      operationId: DeleteIdentityPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: identity_platform_id
+        in: path
+        description: identity platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: IdentityPlatformId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - identity-platforms
+      description: Update a identity platform
+      operationId: UpdateIdentityPlatform
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: identity_platform_id
+        in: path
+        description: identity platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: IdentityPlatformId
+      - in: body
+        name: body
+        description: identity platform info
+        required: true
+        schema:
+          $ref: '#/definitions/IdentityPlatformUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/IdentityPlatformResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /identity-platforms/{identity_platform_id}:regenerate:
+    post:
+      tags:
+      - identity-platforms
+      description: regenereate a identity platform key
+      operationId: RegenerateIdentityKey
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: identity_platform_id
+        in: path
+        description: identity platform id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: IdentityPlatformId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/IdentityPlatformResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  IdentityPlatformUpdateReq_Platform:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      name:
+        type: string
+        description: name of identity platform
+      url:
+        type: string
+    title: IdentityPlatformUpdateReq_Platform
+    example:
+      name: name
+      enabled: true
+      url: url
+  IdentityPlatformUpdateReq:
+    type: object
+    properties:
+      identity_platform:
+        $ref: '#/definitions/IdentityPlatformUpdateReq_Platform'
+    title: IdentityPlatformUpdateReq
+    example:
+      identity_platform:
+        name: name
+        enabled: true
+        url: url
+  IdentityPlatformCreateReq:
+    type: object
+    properties:
+      identity_platform:
+        $ref: '#/definitions/IdentityPlatformCreateReq_Platform'
+    title: IdentityPlatformCreateReq
+    example:
+      identity_platform:
+        name: name
+        type: type
+        enabled: true
+        url: url
+  IdentityPlatformCreateReq_Platform:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      name:
+        type: string
+        description: name of identity platform
+      type:
+        type: string
+        description: type of identity platform
+      url:
+        type: string
+    title: IdentityPlatformCreateReq_Platform
+    example:
+      name: name
+      type: type
+      enabled: true
+      url: url
+  IdentityPlatformsResp:
+    type: object
+    properties:
+      identity_platforms:
+        type: array
+        description: identity platforms
+        items:
+          $ref: '#/definitions/IdentityPlatform'
+    title: IdentityPlatformsResp
+    example:
+      identity_platforms:
+      - failure_num: 0
+        success_num: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        type: type
+        uuid: uuid
+        enabled: true
+        key: key
+        url: url
+      - failure_num: 0
+        success_num: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        type: type
+        uuid: uuid
+        enabled: true
+        key: key
+        url: url
+  IdentityPlatformResp:
+    type: object
+    properties:
+      identity_platform:
+        description: identity platform
+        $ref: '#/definitions/IdentityPlatform'
+    title: IdentityPlatformResp
+    example:
+      identity_platform:
+        failure_num: 0
+        success_num: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        type: type
+        uuid: uuid
+        enabled: true
+        key: key
+        url: url
+  IdentityPlatform:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: time of creating identity platform
+      enabled:
+        type: boolean
+        description: enable the identity platform or not
+      failure_num:
+        type: integer
+        format: int64
+        description: num of failed authorization
+      id:
+        type: integer
+        format: int64
+        description: id of identity platform
+      key:
+        type: string
+        description: secret key of identity platform
+      name:
+        type: string
+        description: name of identity platform
+      success_num:
+        type: integer
+        format: int64
+        description: num of successful authorization
+      type:
+        type: string
+        description: type of identity platform
+      update:
+        type: string
+        format: date-time
+        description: time of updating identity platform
+      url:
+        type: string
+        description: url of identity platform
+      uuid:
+        type: string
+    title: IdentityPlatform
+    description: IdentityPlatform defines different platforms for auth
+    example:
+      failure_num: 0
+      success_num: 1
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      type: type
+      uuid: uuid
+      enabled: true
+      key: key
+      url: url
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

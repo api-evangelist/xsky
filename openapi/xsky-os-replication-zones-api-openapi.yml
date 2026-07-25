@@ -1,0 +1,521 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-replication-zones API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-replication-zones
+  description: 'OSReplicationZoneController API /os-replication-zones.
+
+    '
+paths:
+  /os-replication-zones/:
+    get:
+      tags:
+      - os-replication-zones
+      description: List os replication zones
+      operationId: ListOSReplicationZones
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: marker
+        in: query
+        description: paging param
+        required: false
+        type: string
+        x-exportParamName: Marker
+      - name: replication_uuid
+        in: query
+        description: os replication uuid
+        required: false
+        type: string
+        x-exportParamName: ReplicationUuid
+      - name: os_zone_uuid
+        in: query
+        description: os zone uuid
+        required: false
+        type: string
+        x-exportParamName: OsZoneUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSReplicationZoneRecordsResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-replication-zones
+      description: Create a os replication zone
+      operationId: CreateOSReplicationZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: os replication zone info
+        required: true
+        schema:
+          $ref: '#/definitions/OSReplicationZoneCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OSReplicationZoneResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-replication-zones/{zone_uuid}:
+    get:
+      tags:
+      - os-replication-zones
+      description: Get a os replication zone
+      operationId: GetOSReplicationZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: os replication zone uuid
+        required: true
+        type: string
+        x-exportParamName: ZoneUuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSReplicationZoneRecordResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    delete:
+      tags:
+      - os-replication-zones
+      description: Delete a os replication zone
+      operationId: DeleteOSReplicationZone
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: os replication zone uuid
+        required: true
+        type: string
+        x-exportParamName: ZoneUuid
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OSReplicationZoneResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-replication-zones/{zone_uuid}/samples:
+    get:
+      tags:
+      - os-replication-zones
+      description: get an os replication zone's samples
+      operationId: GetOSReplicationZoneSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: zone_uuid
+        in: path
+        description: os replication zone uuid
+        required: true
+        type: string
+        default: 'true'
+        x-exportParamName: ZoneUuid
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSReplicationZoneSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSReplicationZone:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      dirty:
+        type: boolean
+      os_bucket:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview'
+      os_bucket_owner_cluster:
+        $ref: '#/definitions/RemoteCluster_Nestview'
+      os_bucket_owner_zone:
+        $ref: '#/definitions/ObjectStorageZone_Nestview'
+      os_remote_policy:
+        $ref: '#/definitions/OSRemotePolicy_Nestview'
+      os_remote_policy_uuid:
+        type: string
+      os_replication_path_num:
+        type: integer
+        format: int64
+      os_zone:
+        $ref: '#/definitions/ObjectStorageZone_Nestview'
+      os_zone_uuid:
+        type: string
+      replication_uuid:
+        type: string
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      uuid:
+        type: string
+    title: OSReplicationZone
+    description: OSReplicationZone defines models of os replication zone.
+    example:
+      dirty: true
+      replication_uuid: replication_uuid
+      os_zone:
+        id: 7
+        uuid: uuid
+      os_remote_policy_uuid: os_remote_policy_uuid
+      os_zone_uuid: os_zone_uuid
+      update: '2000-01-23T04:56:07.000+00:00'
+      os_remote_policy:
+        name: name
+        uuid: uuid
+      uuid: uuid
+      os_bucket_owner_zone:
+        id: 7
+        uuid: uuid
+      os_bucket_owner_cluster:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+      os_bucket:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      os_replication_path_num: 0
+      status: status
+  OSReplicationZoneSamplesResp:
+    type: object
+    required:
+    - os_replication_zone_samples
+    properties:
+      os_replication_zone_samples:
+        type: array
+        description: os replication zone samples
+        items:
+          $ref: '#/definitions/OSReplicationZoneStat'
+    title: OSReplicationZoneSamplesResp
+    example:
+      os_replication_zone_samples:
+      - object_kbytes_ps: 6.027456183070403
+        total_objects: 2
+        bandwidth_kbyte: 0.8008281904610115
+        total_bytes: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        objects_pm: 1.4658129805029452
+        total_object_bytes: 5
+      - object_kbytes_ps: 6.027456183070403
+        total_objects: 2
+        bandwidth_kbyte: 0.8008281904610115
+        total_bytes: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        objects_pm: 1.4658129805029452
+        total_object_bytes: 5
+  RemoteCluster_Nestview:
+    type: object
+    properties:
+      fs_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      url:
+        type: string
+    title: RemoteCluster_Nestview
+    example:
+      name: name
+      id: 2
+      fs_id: fs_id
+      url: url
+  ObjectStorageBucket_Nestview_lifecycle:
+    properties:
+      id:
+        type: integer
+        format: int64
+      rules:
+        type: array
+        items:
+          type: object
+          properties: {}
+      status:
+        type: string
+    example:
+      rules:
+      - '{}'
+      - '{}'
+      id: 6
+      status: status
+  ObjectStorageBucket_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lifecycle:
+        $ref: '#/definitions/ObjectStorageBucket_Nestview_lifecycle'
+      name:
+        type: string
+    title: ObjectStorageBucket_Nestview
+    example:
+      lifecycle:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+      name: name
+      id: 0
+  OSReplicationZoneResp:
+    type: object
+    properties:
+      os_replication_zone:
+        $ref: '#/definitions/OSReplicationZone'
+    title: OSReplicationZoneResp
+    example:
+      os_replication_zone:
+        dirty: true
+        replication_uuid: replication_uuid
+        os_zone:
+          id: 7
+          uuid: uuid
+        os_remote_policy_uuid: os_remote_policy_uuid
+        os_zone_uuid: os_zone_uuid
+        update: '2000-01-23T04:56:07.000+00:00'
+        os_remote_policy:
+          name: name
+          uuid: uuid
+        uuid: uuid
+        os_bucket_owner_zone:
+          id: 7
+          uuid: uuid
+        os_bucket_owner_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        os_bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        os_replication_path_num: 0
+        status: status
+  OSReplicationZoneRecordResp:
+    type: object
+    properties:
+      os_replication_zone:
+        $ref: '#/definitions/OSReplicationZoneRecord'
+    title: OSReplicationZoneRecordResp
+    example:
+      os_replication_zone: ''
+  OSReplicationZoneCreateReq:
+    type: object
+    required:
+    - os_replication_zone
+    properties:
+      os_replication_zone:
+        $ref: '#/definitions/OSReplicationZoneCreateReq_OSReplicationZone'
+    title: OSReplicationZoneCreateReq
+  OSReplicationZoneStat:
+    type: object
+    properties:
+      bandwidth_kbyte:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      object_kbytes_ps:
+        type: number
+        format: double
+      objects_pm:
+        type: number
+        format: double
+      total_bytes:
+        type: integer
+        format: int64
+      total_object_bytes:
+        type: integer
+        format: int64
+      total_objects:
+        type: integer
+        format: int64
+    title: OSReplicationZoneStat
+    description: OSReplicationZoneStat contains sync stat info of os replication zone
+    example:
+      object_kbytes_ps: 6.027456183070403
+      total_objects: 2
+      bandwidth_kbyte: 0.8008281904610115
+      total_bytes: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      objects_pm: 1.4658129805029452
+      total_object_bytes: 5
+  OSReplicationZoneCreateReq_OSReplicationZone:
+    type: object
+    required:
+    - os_bucket_id
+    - uuid
+    properties:
+      os_bucket_id:
+        type: integer
+        format: int64
+      uuid:
+        type: string
+    title: OSReplicationZoneCreateReq_OSReplicationZone
+  OSReplicationZoneRecordsResp:
+    type: object
+    properties:
+      os_replication_zones:
+        type: array
+        items:
+          $ref: '#/definitions/OSReplicationZoneRecord'
+    title: OSReplicationZoneRecordsResp
+    example:
+      os_replication_zones:
+      - ''
+      - ''
+  ObjectStorageZone_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      uuid:
+        type: string
+    title: ObjectStorageZone_Nestview
+    example:
+      id: 7
+      uuid: uuid
+  OSReplicationZoneRecord:
+    title: OSReplicationZoneRecord
+    allOf:
+    - $ref: '#/definitions/OSReplicationZone'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/OSReplicationZoneStat'
+    description: 'OSReplicationZoneRecord is used to combine OSReplicationZone and
+
+      OSReplicationZoneStat'
+  OSRemotePolicy_Nestview:
+    type: object
+    properties:
+      name:
+        type: string
+      uuid:
+        type: string
+    title: OSRemotePolicy_Nestview
+    example:
+      name: name
+      uuid: uuid
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

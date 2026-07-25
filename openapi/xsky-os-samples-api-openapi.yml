@@ -1,0 +1,317 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-samples API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-samples
+  description: 'OSSampleController API /os-samples
+
+    '
+paths:
+  /os-samples/:
+    get:
+      tags:
+      - os-samples
+      description: Get os samples
+      operationId: GetOSSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: time
+        in: query
+        description: query time(url encode RFC3339)
+        required: false
+        type: string
+        x-exportParamName: Time
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSSampleResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-samples/{user_name}:
+    get:
+      tags:
+      - os-samples
+      description: Get os samples by user name
+      operationId: GetOSSamplesByUserName
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_name
+        in: path
+        description: os user name
+        required: true
+        type: string
+        x-exportParamName: UserName
+      - name: time
+        in: query
+        description: query time(url encode RFC3339)
+        required: false
+        type: string
+        x-exportParamName: Time
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSSampleResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-samples/{user_name}/{bucket_name}:
+    get:
+      tags:
+      - os-samples
+      description: get os samples by os bucket name
+      operationId: GetOSSamplesByBucketName
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: user_name
+        in: path
+        description: os user name
+        required: true
+        type: string
+        default: 'true'
+        x-exportParamName: UserName
+      - name: bucket_name
+        in: path
+        description: os bucket name
+        required: true
+        type: string
+        default: 'true'
+        x-exportParamName: BucketName
+      - name: time
+        in: query
+        description: query time(url encode RFC3339)
+        required: false
+        type: string
+        x-exportParamName: Time
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OSSampleResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  OSBucketUsageCategory:
+    type: object
+    properties:
+      download_bytes:
+        type: integer
+        format: int64
+      ops:
+        type: integer
+        format: int64
+      upload_bytes:
+        type: integer
+        format: int64
+    title: OSBucketUsageCategory
+    description: OSBucketUsageCategory contain usage info
+    example:
+      ops: 6
+      download_bytes: 0
+      upload_bytes: 1
+  OSSample:
+    type: object
+    properties:
+      delete_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      get_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      list_bucket_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      objects:
+        type: integer
+        format: int64
+      post_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      put_obj_category:
+        $ref: '#/definitions/OSBucketUsageCategory'
+      used_capacity_bytes:
+        type: object
+        additionalProperties:
+          type: integer
+          format: int64
+    title: OSSample
+    description: OSSample contains os samples
+    example:
+      used_capacity_bytes:
+        key: 5
+      post_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      objects: 5
+      delete_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      get_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      put_obj_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+      list_bucket_category:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+  OSSampleResp:
+    type: object
+    properties:
+      os_samples:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              additionalProperties:
+                $ref: '#/definitions/OSSample'
+    title: OSSampleResp
+    example:
+      os_samples:
+      - key:
+        - key:
+            used_capacity_bytes:
+              key: 5
+            post_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            objects: 5
+            delete_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            get_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            put_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            list_bucket_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+        - key:
+            used_capacity_bytes:
+              key: 5
+            post_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            objects: 5
+            delete_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            get_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            put_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            list_bucket_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+      - key:
+        - key:
+            used_capacity_bytes:
+              key: 5
+            post_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            objects: 5
+            delete_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            get_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            put_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            list_bucket_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+        - key:
+            used_capacity_bytes:
+              key: 5
+            post_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            objects: 5
+            delete_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            get_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            put_obj_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+            list_bucket_category:
+              ops: 6
+              download_bytes: 0
+              upload_bytes: 1
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

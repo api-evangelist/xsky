@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths version API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: version
+  description: 'VersionController Operations about Version
+
+    '
+paths:
+  /version/:
+    get:
+      tags:
+      - version
+      description: show version
+      operationId: GetVersion
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/VersionResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  VersionResp:
+    type: object
+    required:
+    - version
+    properties:
+      version:
+        type: string
+        description: version
+    title: VersionResp
+    example:
+      version: version
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

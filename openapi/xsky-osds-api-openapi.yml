@@ -1,0 +1,1145 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths osds API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: osds
+  description: 'OsdController Osd Management
+
+    '
+paths:
+  /osds/:
+    get:
+      tags:
+      - osds
+      description: List all osds in the cluster
+      operationId: ListOsds
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: host_id
+        in: query
+        description: host id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      - name: pool_id
+        in: query
+        description: pool id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: PoolId
+      - name: osd_group_id
+        in: query
+        description: osd group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: OsdGroupId
+      - name: type
+        in: query
+        description: 'osd type: HDD, SSD, Hybrid'
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: role
+        in: query
+        description: 'osd role: index or data'
+        required: false
+        type: string
+        x-exportParamName: Role
+      - name: with_compound
+        in: query
+        description: with compound osd
+        required: false
+        type: boolean
+        x-exportParamName: WithCompound
+      - name: with_hybrid
+        in: query
+        description: with hybrid osd
+        required: false
+        type: boolean
+        x-exportParamName: WithHybrid
+      - name: cache_disk_id
+        in: query
+        description: cache disk id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: CacheDiskId
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - osds
+      description: Create osd service on specific disk
+      operationId: CreateOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: osd info
+        required: true
+        schema:
+          $ref: '#/definitions/OsdCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}:
+    get:
+      tags:
+      - osds
+      description: get an osd
+      operationId: GetOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - osds
+      description: remove an osd from cluster
+      operationId: DeleteOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - osds
+      description: update osd info
+      operationId: UpdateOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      - in: body
+        name: osd
+        description: osd info
+        required: true
+        schema:
+          $ref: '#/definitions/OsdUpdateReq'
+        x-exportParamName: Osd
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}/chunks:
+    get:
+      tags:
+      - osds
+      description: get chunks of and osd
+      operationId: GetChunks
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: The id of the osd
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ChunksResp'
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}/predictions:
+    get:
+      tags:
+      - osds
+      description: get a osd's prediction
+      operationId: GetOsdPredictions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdPredictionsResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}/samples:
+    get:
+      tags:
+      - osds
+      description: get a osd's samples
+      operationId: GetOsdSamples
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      - name: duration_begin
+        in: query
+        description: duration begin timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationBegin
+      - name: duration_end
+        in: query
+        description: duration end timestamp
+        required: false
+        type: string
+        x-exportParamName: DurationEnd
+      - name: period
+        in: query
+        description: samples period
+        required: false
+        type: string
+        x-exportParamName: Period
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdSamplesResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}:maintain:
+    post:
+      tags:
+      - osds
+      description: Put osd in maintained status
+      operationId: MaintainOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}:rebuild:
+    post:
+      tags:
+      - osds
+      description: rebuild an osd from cluster pool
+      operationId: RebuildOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      - in: body
+        name: body
+        description: osd info
+        required: true
+        schema:
+          $ref: '#/definitions/OsdRebuildReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}:switch-role:
+    post:
+      tags:
+      - osds
+      description: Switch osd role to compound
+      operationId: SwitchOsdRole
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OsdResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /osds/{osd_id}:unmaintain:
+    post:
+      tags:
+      - osds
+      description: Put osd out of maintained status
+      operationId: UnmaintainOsd
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: osd_id
+        in: path
+        description: osd id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: OsdId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/OsdResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  DiskPrediction:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      id:
+        type: integer
+        format: int64
+      used_kbyte_1day:
+        type: integer
+        format: int64
+      used_kbyte_30days:
+        type: integer
+        format: int64
+      used_kbyte_7days:
+        type: integer
+        format: int64
+      used_kbyte_points:
+        type: array
+        items:
+          $ref: '#/definitions/PredictionPoint'
+    title: DiskPrediction
+    description: DiskPrediction contains disk prediction data
+    example:
+      used_kbyte_30days: 1
+      used_kbyte_7days: 5
+      used_kbyte_points:
+      - used_kbyte: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+      - used_kbyte: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+      used_kbyte_1day: 6
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+  PartitionStat:
+    type: object
+    properties:
+      avg_queue_len:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      io_util:
+        type: number
+        format: double
+      kbyte_per_io:
+        type: number
+        format: double
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_merged_ps:
+        type: number
+        format: double
+      read_wait_us:
+        type: number
+        format: double
+      total_bandwidth_kbyte:
+        type: number
+        format: double
+      total_io_wait_us:
+        type: number
+        format: double
+      total_iops:
+        type: number
+        format: double
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_merged_ps:
+        type: number
+        format: double
+      write_wait_us:
+        type: number
+        format: double
+    title: PartitionStat
+    description: PartitionStat defines the basic info of a PartitionStat
+  Disk_Nestview:
+    type: object
+    properties:
+      device:
+        type: string
+      disk_type:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Disk_Nestview
+    example:
+      disk_type: disk_type
+      id: 0
+      device: device
+  ChunkRecord:
+    title: ChunkRecord
+    allOf:
+    - $ref: '#/definitions/PlacementGroup'
+    - properties:
+        scrubs:
+          type: array
+          items:
+            $ref: '#/definitions/PlacementGroupScrub'
+    description: ChunkRecord defines chunks api response
+  Osd:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      data_dir:
+        type: string
+      disk:
+        $ref: '#/definitions/Disk_Nestview'
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      in:
+        type: boolean
+      init_time:
+        type: string
+        format: date-time
+      last_scrub_time:
+        type: string
+        format: date-time
+      meta_bytes:
+        type: integer
+        format: int64
+      name:
+        type: string
+      omap_byte:
+        type: integer
+        format: int64
+      osd_group:
+        $ref: '#/definitions/OsdGroup_Nestview'
+      osd_id:
+        type: integer
+        format: int64
+      partition:
+        $ref: '#/definitions/Partition'
+      pool:
+        $ref: '#/definitions/Pool_Nestview'
+      read_cache_size:
+        type: integer
+        format: int64
+      role:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      up:
+        type: boolean
+      update:
+        type: string
+        format: date-time
+      uuid:
+        type: string
+    title: Osd
+    description: Osd defines the Ceph Osd @grpc-models-proto
+  OsdStat:
+    title: OsdStat
+    allOf:
+    - $ref: '#/definitions/DiskStat'
+    - properties:
+        create:
+          type: string
+          format: date-time
+        partition:
+          $ref: '#/definitions/PartitionStat'
+    description: OsdStat defines the basic info of a OsdStat
+  PredictionPoint:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      used_kbyte:
+        type: integer
+        format: int64
+    title: PredictionPoint
+    description: PredictionPoint is a point in a prediction graph
+    example:
+      used_kbyte: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+  PlacementGroup:
+    type: object
+    properties:
+      chunk_id:
+        type: string
+      id:
+        type: integer
+        format: int64
+      osd_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: PlacementGroup
+    description: 'PlacementGroup defines the statistics metric of a placement group PG is not
+
+      exposed to user, rename it as chunk'
+  OsdRecord:
+    title: OsdRecord
+    allOf:
+    - $ref: '#/definitions/Osd'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/OsdStat'
+    description: OsdRecord contains information of a osd
+  PlacementGroupScrub:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      repair_status:
+        type: string
+      repair_time:
+        type: string
+        format: date-time
+      scrub_status:
+        type: string
+      scrub_time:
+        type: string
+        format: date-time
+    title: PlacementGroupScrub
+    description: PlacementGroupScrub defines the statistics info of placement group
+  OsdCreateReq_Osd:
+    type: object
+    properties:
+      disk_id:
+        type: integer
+        format: int64
+        description: data disk id
+      omap_byte:
+        type: integer
+        format: int64
+        description: size of omap partition
+      partition_id:
+        type: integer
+        format: int64
+        description: cache partition id
+      read_cache_size:
+        type: integer
+        format: int64
+        description: read cache size in bytes
+      role:
+        type: string
+        description: 'osd role: "data" or "index", default is "data"'
+    title: OsdCreateReq_Osd
+    example:
+      partition_id: 1
+      role: role
+      omap_byte: 6
+      read_cache_size: 5
+      disk_id: 0
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  OsdRebuildReq:
+    type: object
+    properties:
+      osd:
+        $ref: '#/definitions/OsdRebuildReq_Osd'
+    title: OsdRebuildReq
+    example:
+      osd:
+        new_omap_byte: 6
+        new_partition_id: 1
+        new_read_cache_size: 5
+        new_disk_id: 0
+  OsdCreateReq:
+    type: object
+    properties:
+      osd:
+        $ref: '#/definitions/OsdCreateReq_Osd'
+    title: OsdCreateReq
+    example:
+      osd:
+        partition_id: 1
+        role: role
+        omap_byte: 6
+        read_cache_size: 5
+        disk_id: 0
+  OsdUpdateReq:
+    type: object
+    properties:
+      osd:
+        $ref: '#/definitions/OsdUpdateReq_Osd'
+    title: OsdUpdateReq
+    example:
+      osd:
+        action_status: action_status
+        status: status
+  DiskStat:
+    type: object
+    properties:
+      avg_queue_len:
+        type: number
+        format: double
+      create:
+        type: string
+        format: date-time
+      degraded_percent:
+        type: number
+        format: double
+      healthy_percent:
+        type: number
+        format: double
+      io_util:
+        type: number
+        format: double
+      kbyte_per_io:
+        type: number
+        format: double
+      omap_total_kbyte:
+        type: number
+        format: double
+      omap_used_kbyte:
+        type: number
+        format: double
+      omap_used_percent:
+        type: number
+        format: double
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_merged_ps:
+        type: number
+        format: double
+      read_wait_us:
+        type: number
+        format: double
+      recovery_percent:
+        type: number
+        format: double
+      total_bandwidth_kbyte:
+        type: number
+        format: double
+      total_io_wait_us:
+        type: number
+        format: double
+      total_iops:
+        type: number
+        format: double
+      total_kbyte:
+        type: integer
+        format: int64
+      unavailable_percent:
+        type: number
+        format: double
+      used_kbyte:
+        type: integer
+        format: int64
+      used_percent:
+        type: number
+        format: double
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_merged_ps:
+        type: number
+        format: double
+      write_wait_us:
+        type: number
+        format: double
+    title: DiskStat
+    description: DiskStat defines the basic info of a DiskStat
+    example:
+      healthy_percent: 1.4658129805029452
+      read_wait_us: 7.386281948385884
+      recovery_percent: 1.2315135367772556
+      total_bandwidth_kbyte: 1.0246457001441578
+      read_merged_ps: 4.145608029883936
+      read_bandwidth_kbyte: 3.616076749251911
+      omap_total_kbyte: 2.3021358869347655
+      avg_queue_len: 0.8008281904610115
+      create: '2000-01-23T04:56:07.000+00:00'
+      write_iops: 9.369310271410669
+      total_kbyte: 7
+      degraded_percent: 6.027456183070403
+      total_iops: 6.84685269835264
+      write_merged_ps: 6.683562403749608
+      unavailable_percent: 1.1730742509559433
+      read_iops: 2.027123023002322
+      io_util: 5.962133916683182
+      omap_used_kbyte: 7.061401241503109
+      omap_used_percent: 9.301444243932576
+      used_kbyte: 4
+      write_bandwidth_kbyte: 9.965781217890562
+      write_wait_us: 8.762042012749001
+      used_percent: 5.025004791520295
+      kbyte_per_io: 5.637376656633329
+      total_io_wait_us: 1.4894159098541704
+  ChunksResp:
+    type: object
+    required:
+    - chunks
+    properties:
+      chunks:
+        type: array
+        description: chunks
+        items:
+          $ref: '#/definitions/ChunkRecord'
+    title: ChunksResp
+    example:
+      chunks:
+      - ''
+      - ''
+  OsdPredictionsResp:
+    type: object
+    required:
+    - osd_predictions
+    properties:
+      osd_predictions:
+        type: array
+        description: osd predictions
+        items:
+          $ref: '#/definitions/DiskPrediction'
+    title: OsdPredictionsResp
+    example:
+      osd_predictions:
+      - used_kbyte_30days: 1
+        used_kbyte_7days: 5
+        used_kbyte_points:
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        used_kbyte_1day: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+      - used_kbyte_30days: 1
+        used_kbyte_7days: 5
+        used_kbyte_points:
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        used_kbyte_1day: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+  Partition:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      disk:
+        $ref: '#/definitions/Disk_Nestview'
+      id:
+        type: integer
+        format: int64
+      omap_byte:
+        type: integer
+        format: int64
+      omap_device_path:
+        type: string
+      path:
+        type: string
+      size:
+        type: integer
+        format: int64
+      status:
+        type: string
+      update:
+        type: string
+        format: date-time
+      used:
+        type: boolean
+      uuid:
+        type: string
+      version:
+        type: integer
+        format: int64
+    title: Partition
+    description: Partition defines cache partition of disk
+    example:
+      omap_device_path: omap_device_path
+      update: '2000-01-23T04:56:07.000+00:00'
+      omap_byte: 1
+      used: true
+      uuid: uuid
+      version: 5
+      path: path
+      disk:
+        disk_type: disk_type
+        id: 0
+        device: device
+      size: 5
+      create: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      action_status: action_status
+      status: status
+  OsdRebuildReq_Osd:
+    type: object
+    properties:
+      new_disk_id:
+        type: integer
+        format: int64
+        description: new data disk id
+      new_omap_byte:
+        type: integer
+        format: int64
+        description: new size of omap partition
+      new_partition_id:
+        type: integer
+        format: int64
+        description: new cache partition id
+      new_read_cache_size:
+        type: integer
+        format: int64
+        description: new read cache size in bytes
+    title: OsdRebuildReq_Osd
+    example:
+      new_omap_byte: 6
+      new_partition_id: 1
+      new_read_cache_size: 5
+      new_disk_id: 0
+  OsdUpdateReq_Osd:
+    type: object
+    properties:
+      action_status:
+        type: string
+      status:
+        type: string
+    title: OsdUpdateReq_Osd
+    example:
+      action_status: action_status
+      status: status
+  OsdsResp:
+    type: object
+    required:
+    - osds
+    properties:
+      osds:
+        type: array
+        description: osds
+        items:
+          $ref: '#/definitions/OsdRecord'
+    title: OsdsResp
+    example:
+      osds:
+      - ''
+      - ''
+  Pool_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Pool_Nestview
+    example:
+      name: name
+      id: 5
+  OsdGroup_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: OsdGroup_Nestview
+  OsdSamplesResp:
+    type: object
+    required:
+    - osd_samples
+    properties:
+      osd_samples:
+        type: array
+        description: osd samples
+        items:
+          $ref: '#/definitions/OsdStat'
+    title: OsdSamplesResp
+    example:
+      osd_samples:
+      - ''
+      - ''
+  OsdResp:
+    type: object
+    required:
+    - osd
+    properties:
+      osd:
+        description: osd
+        $ref: '#/definitions/OsdRecord'
+    title: OsdResp
+    example:
+      osd: ''
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

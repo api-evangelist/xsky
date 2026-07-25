@@ -1,0 +1,355 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths placement-nodes API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: placement-nodes
+  description: 'PlacementNodeController provides API for placement node
+
+    '
+paths:
+  /placement-nodes/:
+    post:
+      tags:
+      - placement-nodes
+      description: Create placement node
+      operationId: CreatePlacementNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: placement node info
+        required: true
+        schema:
+          $ref: '#/definitions/PlacementNodeCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/PlacementNodeResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /placement-nodes/{placement_node_id}:
+    get:
+      tags:
+      - placement-nodes
+      description: Get placement node
+      operationId: GetPlacementNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: placement_node_id
+        in: path
+        description: placement node id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PlacementNodeId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/PlacementNodeResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - placement-nodes
+      description: delete placement node
+      operationId: DeletePlacementNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: placement_node_id
+        in: path
+        description: placement node id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PlacementNodeId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - placement-nodes
+      description: update placement node
+      operationId: UpdatePlacementNode
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: placement_node_id
+        in: path
+        description: the placement node id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PlacementNodeId
+      - in: body
+        name: body
+        description: the placement node info
+        required: true
+        schema:
+          $ref: '#/definitions/PlacementNodeUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/PlacementNodeResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /placement-nodes/{placement_node_id}/topology:
+    get:
+      tags:
+      - placement-nodes
+      description: Get subtree topology of placement node
+      operationId: GetPlacementNodeTopology
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: placement_node_id
+        in: path
+        description: placement node id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: PlacementNodeId
+      - name: osd_type
+        in: query
+        description: osd type
+        required: false
+        type: string
+        x-exportParamName: OsdType
+      - name: osd_role
+        in: query
+        description: osd role
+        required: false
+        type: string
+        x-exportParamName: OsdRole
+      - name: with_compound
+        in: query
+        description: with compound osd
+        required: false
+        type: boolean
+        x-exportParamName: WithCompound
+      - name: with_hybrid
+        in: query
+        description: with hybrid osd
+        required: false
+        type: boolean
+        x-exportParamName: WithHybrid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/PlacementNodeTopologyResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  PlacementNodeCreateReq_PlacementNode:
+    type: object
+    required:
+    - name
+    - parent_id
+    - type
+    properties:
+      is_witness:
+        type: boolean
+      name:
+        type: string
+      parent_id:
+        type: integer
+        format: int64
+      type:
+        type: string
+    title: PlacementNodeCreateReq_PlacementNode
+    example:
+      is_witness: true
+      parent_id: 0
+      name: name
+      type: type
+  PlacementNodeUpdateReq:
+    type: object
+    properties:
+      placement_node:
+        $ref: '#/definitions/PlacementNodeUpdateReq_PlacementNode'
+    title: PlacementNodeUpdateReq
+    example:
+      placement_node:
+        parent_id: 0
+        name: name
+  PlacementNodeResp:
+    type: object
+    required:
+    - placement_node
+    properties:
+      placement_node:
+        description: placement node
+        $ref: '#/definitions/PlacementNodeRecord'
+    title: PlacementNodeResp
+    example:
+      placement_node: ''
+  PlacementNodeProperties:
+    type: object
+    properties:
+      is_witness:
+        type: boolean
+        description: whether this is a witness node
+    title: PlacementNodeProperties
+    description: PlacementNodeProperties contains properties for a placement node.
+    example:
+      is_witness: true
+  PlacementNodeRecord:
+    title: PlacementNodeRecord
+    allOf:
+    - $ref: '#/definitions/PlacementNode'
+    - {}
+  PlacementNodeTopology:
+    title: PlacementNodeTopology
+    allOf:
+    - $ref: '#/definitions/PlacementNode'
+    - properties:
+        available_osd_num:
+          type: integer
+          format: int64
+        children:
+          type: array
+          items:
+            $ref: '#/definitions/PlacementNodeTopology'
+    description: PlacementNodeTopology defines the response content of placement node topology
+  PlacementNodeTopologyResp:
+    type: object
+    required:
+    - topology
+    properties:
+      topology:
+        description: topology of placement nodes
+        $ref: '#/definitions/PlacementNodeTopology'
+    title: PlacementNodeTopologyResp
+    example:
+      topology: ''
+  PlacementNodeCreateReq:
+    type: object
+    properties:
+      placement_node:
+        $ref: '#/definitions/PlacementNodeCreateReq_PlacementNode'
+    title: PlacementNodeCreateReq
+    example:
+      placement_node:
+        is_witness: true
+        parent_id: 0
+        name: name
+        type: type
+  PlacementNode:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: time of creating placement node
+      id:
+        type: integer
+        format: int64
+        description: id of placement node
+      name:
+        type: string
+        description: name of placement node
+      parent:
+        description: parent of placement node
+        $ref: '#/definitions/PlacementNode'
+      properties:
+        description: properties for this placement node like is_witness
+        $ref: '#/definitions/PlacementNodeProperties'
+      type:
+        type: string
+        description: type of placement node
+      update:
+        type: string
+        format: date-time
+        description: time of updating placement node
+    title: PlacementNode
+    description: PlacementNode defines a placement node managing a range of hosts
+    example:
+      parent: null
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 6
+      type: type
+      properties:
+        is_witness: true
+  PlacementNodeUpdateReq_PlacementNode:
+    type: object
+    required:
+    - name
+    - parent_id
+    properties:
+      name:
+        type: string
+      parent_id:
+        type: integer
+        format: int64
+    title: PlacementNodeUpdateReq_PlacementNode
+    example:
+      parent_id: 0
+      name: name
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

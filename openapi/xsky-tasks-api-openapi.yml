@@ -1,0 +1,257 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths tasks API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: tasks
+  description: 'TaskController Task Management
+
+    '
+paths:
+  /tasks/:
+    get:
+      tags:
+      - tasks
+      description: List tasks by fileter
+      operationId: ListTasks
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: status
+        in: query
+        description: task status
+        required: false
+        type: string
+        x-exportParamName: Status
+      - name: type
+        in: query
+        description: task type
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: host_id
+        in: query
+        description: host running the task
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: HostId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TasksResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /tasks/{task_id}:
+    get:
+      tags:
+      - tasks
+      description: get a task info
+      operationId: GetTask
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: task_id
+        in: path
+        description: the task id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TaskId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  TaskResp:
+    type: object
+    required:
+    - task
+    properties:
+      task:
+        description: task
+        $ref: '#/definitions/Task'
+    title: TaskResp
+    example:
+      task:
+        retried: true
+        error_msg: error_msg
+        data: data
+        update: '2000-01-23T04:56:07.000+00:00'
+        priority: 5
+        type: type
+        execute: '2000-01-23T04:56:07.000+00:00'
+        host_role: host_role
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        retry: 2
+        retry_type: retry_type
+        status: status
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  Task:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      data:
+        type: string
+      error_msg:
+        type: string
+      execute:
+        type: string
+        format: date-time
+      finish:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      host_role:
+        type: string
+      id:
+        type: integer
+        format: int64
+      priority:
+        type: integer
+        format: int64
+      retried:
+        type: boolean
+      retry:
+        type: integer
+        format: int64
+      retry_type:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: Task
+    description: Task defines a task will be run on a host @grpc-models-proto
+    example:
+      retried: true
+      error_msg: error_msg
+      data: data
+      update: '2000-01-23T04:56:07.000+00:00'
+      priority: 5
+      type: type
+      execute: '2000-01-23T04:56:07.000+00:00'
+      host_role: host_role
+      host:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+      create: '2000-01-23T04:56:07.000+00:00'
+      finish: '2000-01-23T04:56:07.000+00:00'
+      id: 5
+      retry: 2
+      retry_type: retry_type
+      status: status
+  TasksResp:
+    type: object
+    required:
+    - tasks
+    properties:
+      tasks:
+        type: array
+        description: tasks
+        items:
+          $ref: '#/definitions/Task'
+    title: TasksResp
+    example:
+      tasks:
+      - retried: true
+        error_msg: error_msg
+        data: data
+        update: '2000-01-23T04:56:07.000+00:00'
+        priority: 5
+        type: type
+        execute: '2000-01-23T04:56:07.000+00:00'
+        host_role: host_role
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        retry: 2
+        retry_type: retry_type
+        status: status
+      - retried: true
+        error_msg: error_msg
+        data: data
+        update: '2000-01-23T04:56:07.000+00:00'
+        priority: 5
+        type: type
+        execute: '2000-01-23T04:56:07.000+00:00'
+        host_role: host_role
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        retry: 2
+        retry_type: retry_type
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

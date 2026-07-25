@@ -1,0 +1,333 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths role-mappings API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: role-mappings
+  description: 'RoleMappingController Role Mapping Management
+
+    '
+paths:
+  /role-mappings/:
+    get:
+      tags:
+      - role-mappings
+      description: List role mappings
+      operationId: ListRoleMappings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: identity_platform_id
+        in: query
+        description: identity platform id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: IdentityPlatformId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RoleMappingsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - role-mappings
+      description: Create role mapping
+      operationId: CreateRoleMapping
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: role mapping info
+        required: true
+        schema:
+          $ref: '#/definitions/RoleMappingCreateReq'
+        x-exportParamName: Body
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/RoleMappingResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /role-mappings/{role_mapping_id}:
+    get:
+      tags:
+      - role-mappings
+      description: Get a role mapping
+      operationId: GetRoleMapping
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: role_mapping_id
+        in: path
+        description: role mapping id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RoleMappingId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RoleMappingResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - role-mappings
+      description: Delete role mapping
+      operationId: DeleteRoleMapping
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: role_mapping_id
+        in: path
+        description: role mapping id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RoleMappingId
+      responses:
+        204:
+          description: No Content
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - role-mappings
+      description: Update a role mapping
+      operationId: UpdateRoleMapping
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: role_mapping_id
+        in: path
+        description: role mapping id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RoleMappingId
+      - in: body
+        name: body
+        description: role mapping info
+        required: true
+        schema:
+          $ref: '#/definitions/RoleMappingUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/RoleMappingResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  RoleMappingCreateReq_Mapping:
+    type: object
+    properties:
+      identity_platform_id:
+        type: integer
+        format: int64
+        description: id of identity platform
+      role:
+        type: string
+        description: mapped role of sds platform
+      value:
+        type: string
+        description: roles of identity platform
+    title: RoleMappingCreateReq_Mapping
+    example:
+      role: role
+      identity_platform_id: 0
+      value: value
+  RoleMappingCreateReq:
+    type: object
+    properties:
+      role_mapping:
+        $ref: '#/definitions/RoleMappingCreateReq_Mapping'
+    title: RoleMappingCreateReq
+    example:
+      role_mapping:
+        role: role
+        identity_platform_id: 0
+        value: value
+  RoleMappingResp:
+    type: object
+    properties:
+      role_mapping:
+        description: role mapping
+        $ref: '#/definitions/RoleMapping'
+    title: RoleMappingResp
+    example:
+      role_mapping:
+        role: role
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        value: value
+        identity_platform:
+          name: name
+          id: 6
+  IdentityPlatform_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: id of identity platform
+      name:
+        type: string
+        description: name of identity platform
+    title: IdentityPlatform_Nestview
+    example:
+      name: name
+      id: 6
+  RoleMappingUpdateReq:
+    type: object
+    properties:
+      role_mapping:
+        $ref: '#/definitions/RoleMappingUpdateReq_Mapping'
+    title: RoleMappingUpdateReq
+    example:
+      role_mapping:
+        value: value
+  RoleMappingUpdateReq_Mapping:
+    type: object
+    properties:
+      value:
+        type: string
+        description: roles of identity platform
+    title: RoleMappingUpdateReq_Mapping
+    example:
+      value: value
+  RoleMapping:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+        description: time of creating identity platform
+      id:
+        type: integer
+        format: int64
+        description: id of role mapping
+      identity_platform:
+        description: identity platform of role mapping
+        $ref: '#/definitions/IdentityPlatform_Nestview'
+      role:
+        type: string
+        description: mapped role of sds platform
+      update:
+        type: string
+        format: date-time
+        description: time of updating identity platform
+      value:
+        type: string
+        description: roles of external identity platform
+    title: RoleMapping
+    description: RoleMapping defines role mappings for auth
+    example:
+      role: role
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      value: value
+      identity_platform:
+        name: name
+        id: 6
+  RoleMappingsResp:
+    type: object
+    properties:
+      role_mappings:
+        type: array
+        description: role mappings
+        items:
+          $ref: '#/definitions/RoleMapping'
+    title: RoleMappingsResp
+    example:
+      role_mappings:
+      - role: role
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        value: value
+        identity_platform:
+          name: name
+          id: 6
+      - role: role
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        value: value
+        identity_platform:
+          name: name
+          id: 6
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

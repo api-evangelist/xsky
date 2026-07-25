@@ -1,0 +1,742 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths s3-load-balancer-groups API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: s3-load-balancer-groups
+  description: 'S3LoadBalancerGroupController API
+
+    '
+paths:
+  /s3-load-balancer-groups/:
+    get:
+      tags:
+      - s3-load-balancer-groups
+      description: List s3 load balancer groups
+      operationId: ListS3LoadBalancerGroups
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupsResp'
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - s3-load-balancer-groups
+      description: Create a s3 load balancer group
+      operationId: CreateS3LoadBalancerGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: s3 load balancer group info
+        required: true
+        schema:
+          $ref: '#/definitions/S3LoadBalancerGroupCreateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /s3-load-balancer-groups/{group_id}:
+    get:
+      tags:
+      - s3-load-balancer-groups
+      description: Get s3 load balancer group
+      operationId: GetS3LoadBalancerGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: s3 load balancer group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - s3-load-balancer-groups
+      description: Delete s3 load balancer group
+      operationId: DeleteS3LoadBalancerGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: s3 load balancer group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - name: force
+        in: query
+        description: forcedly delete or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    patch:
+      tags:
+      - s3-load-balancer-groups
+      description: Update a s3 load balancer group
+      operationId: UpdateS3LoadBalancerGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: s3 load balancer group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: s3 load balancer group info
+        required: true
+        schema:
+          $ref: '#/definitions/S3LoadBalancerGroupUpdateReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /s3-load-balancer-groups/{group_id}/s3-load-balancers:
+    put:
+      tags:
+      - s3-load-balancer-groups
+      description: add load balancers to group
+      operationId: AddS3LoadBalancersToGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - in: body
+        name: body
+        description: load balancer ids to add
+        required: true
+        schema:
+          $ref: '#/definitions/S3LoadBalancersAddReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - s3-load-balancer-groups
+      description: remove load balancers from group
+      operationId: RemoveS3LoadBalancersFromGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      - name: force
+        in: query
+        description: forcedly remove or not
+        required: false
+        type: boolean
+        x-exportParamName: Force
+      - in: body
+        name: body
+        description: load balancer ids to remove
+        required: true
+        schema:
+          $ref: '#/definitions/S3LoadBalancersRemoveReq'
+        x-exportParamName: Body
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /s3-load-balancer-groups/{group_id}:redeploy:
+    post:
+      tags:
+      - s3-load-balancer-groups
+      description: Redeploy a s3 load balancer group
+      operationId: RedeployS3LoadBalancerGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: group_id
+        in: path
+        description: s3 load balancer group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: GroupId
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/S3LoadBalancerGroupResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  S3LoadBalancerGroupCreateReq:
+    type: object
+    required:
+    - s3_load_balancer_group
+    properties:
+      s3_load_balancer_group:
+        $ref: '#/definitions/S3LoadBalancerGroupCreateReq_Group'
+    title: S3LoadBalancerGroupCreateReq
+    example:
+      s3_load_balancer_group:
+        https_port: 0
+        search_https_port: 5
+        search_port: 5
+        port: 6
+        roles:
+        - roles
+        - roles
+        name: name
+        description: description
+        web_console_endpoint: web_console_endpoint
+        s3_load_balancers:
+        - ip: ip
+          interface_name: interface_name
+          vip: vip
+          host_id: 1
+        - ip: ip
+          interface_name: interface_name
+          vip: vip
+          host_id: 1
+        sync_port: 2
+  S3LoadBalancerGroup:
+    type: object
+    properties:
+      action_status:
+        type: string
+      create:
+        type: string
+        format: date-time
+      description:
+        type: string
+      https_port:
+        type: integer
+        format: int64
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      port:
+        type: integer
+        format: int64
+      roles:
+        type: array
+        items:
+          type: string
+      search_https_port:
+        type: integer
+        format: int64
+      search_port:
+        type: integer
+        format: int64
+      ssl_certificate:
+        $ref: '#/definitions/SSLCertificate_Nestview'
+      status:
+        type: string
+      sync_port:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+      web_console_endpoint:
+        type: string
+    title: S3LoadBalancerGroup
+    description: S3LoadBalancerGroup groups s3 load balancer with vips
+    example:
+      ssl_certificate:
+        force_https: true
+        name: name
+        id: 2
+      search_port: 5
+      roles:
+      - roles
+      - roles
+      description: description
+      update: '2000-01-23T04:56:07.000+00:00'
+      https_port: 0
+      search_https_port: 5
+      port: 1
+      name: name
+      create: '2000-01-23T04:56:07.000+00:00'
+      web_console_endpoint: web_console_endpoint
+      id: 6
+      sync_port: 7
+      action_status: action_status
+      status: status
+  SSLCertificate_Nestview:
+    type: object
+    properties:
+      force_https:
+        type: boolean
+        description: redirect http request to https
+      id:
+        type: integer
+        format: int64
+        description: certificate id
+      name:
+        type: string
+        description: certificate name
+    title: SSLCertificate_Nestview
+    example:
+      force_https: true
+      name: name
+      id: 2
+  S3LoadBalancerGroupUpdateReq_Group:
+    type: object
+    properties:
+      description:
+        type: string
+        description: group description
+      https_port:
+        type: integer
+        format: int64
+        description: group access https port
+      name:
+        type: string
+        description: group name
+      port:
+        type: integer
+        format: int64
+        description: group access http port
+      roles:
+        type: array
+        description: group roles
+        items:
+          type: string
+      search_https_port:
+        type: integer
+        format: int64
+        description: group search https port
+      search_port:
+        type: integer
+        format: int64
+        description: group search http port
+      sync_port:
+        type: integer
+        format: int64
+        description: group sync http port
+      web_console_endpoint:
+        type: string
+    title: S3LoadBalancerGroupUpdateReq_Group
+    example:
+      https_port: 0
+      search_https_port: 1
+      search_port: 5
+      port: 6
+      roles:
+      - roles
+      - roles
+      name: name
+      description: description
+      web_console_endpoint: web_console_endpoint
+      sync_port: 5
+  S3LoadBalancerGroupCreateReq_Group:
+    type: object
+    required:
+    - name
+    - s3_load_balancers
+    properties:
+      description:
+        type: string
+        description: group description
+      https_port:
+        type: integer
+        format: int64
+        description: group access https port
+      name:
+        type: string
+        description: group name
+      port:
+        type: integer
+        format: int64
+        description: group access http port
+      roles:
+        type: array
+        description: group roles
+        items:
+          type: string
+      s3_load_balancers:
+        type: array
+        description: s3 load balancers
+        items:
+          $ref: '#/definitions/S3LoadBalancerGroupCreateReq_Group_LoadBalancers_Elt'
+      search_https_port:
+        type: integer
+        format: int64
+        description: group search https port
+      search_port:
+        type: integer
+        format: int64
+        description: group search http port
+      sync_port:
+        type: integer
+        format: int64
+        description: group sync http port
+      web_console_endpoint:
+        type: string
+    title: S3LoadBalancerGroupCreateReq_Group
+    example:
+      https_port: 0
+      search_https_port: 5
+      search_port: 5
+      port: 6
+      roles:
+      - roles
+      - roles
+      name: name
+      description: description
+      web_console_endpoint: web_console_endpoint
+      s3_load_balancers:
+      - ip: ip
+        interface_name: interface_name
+        vip: vip
+        host_id: 1
+      - ip: ip
+        interface_name: interface_name
+        vip: vip
+        host_id: 1
+      sync_port: 2
+  S3LoadBalancerGroupUpdateReq:
+    type: object
+    required:
+    - s3_load_balancer_group
+    properties:
+      s3_load_balancer_group:
+        $ref: '#/definitions/S3LoadBalancerGroupUpdateReq_Group'
+    title: S3LoadBalancerGroupUpdateReq
+    example:
+      s3_load_balancer_group:
+        https_port: 0
+        search_https_port: 1
+        search_port: 5
+        port: 6
+        roles:
+        - roles
+        - roles
+        name: name
+        description: description
+        web_console_endpoint: web_console_endpoint
+        sync_port: 5
+  S3LoadBalancersAddReq_LoadBalancers_Elt:
+    type: object
+    required:
+    - host_id
+    - vip
+    properties:
+      host_id:
+        type: integer
+        format: int64
+        description: host of load balancer
+      interface_name:
+        type: string
+        description: vip will be bound to interface, exclusive to ip
+      ip:
+        type: string
+        description: vip will be bound to interface of the gateway ip, exclusive to interface_name
+      vip:
+        type: string
+        description: vip of load balancer
+    title: S3LoadBalancersAddReq_LoadBalancers_Elt
+    example:
+      ip: ip
+      interface_name: interface_name
+      vip: vip
+      host_id: 0
+  S3LoadBalancersRemoveReq:
+    type: object
+    required:
+    - s3_load_balancer_ids
+    properties:
+      s3_load_balancer_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+    title: S3LoadBalancersRemoveReq
+    example:
+      s3_load_balancer_ids:
+      - 0
+      - 0
+  S3LoadBalancerGroupsResp:
+    type: object
+    required:
+    - s3_load_balancer_groups
+    properties:
+      s3_load_balancer_groups:
+        type: array
+        description: s3 load balancer groups
+        items:
+          $ref: '#/definitions/S3LoadBalancerGroup'
+    title: S3LoadBalancerGroupsResp
+    example:
+      s3_load_balancer_groups:
+      - ssl_certificate:
+          force_https: true
+          name: name
+          id: 2
+        search_port: 5
+        roles:
+        - roles
+        - roles
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        https_port: 0
+        search_https_port: 5
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        web_console_endpoint: web_console_endpoint
+        id: 6
+        sync_port: 7
+        action_status: action_status
+        status: status
+      - ssl_certificate:
+          force_https: true
+          name: name
+          id: 2
+        search_port: 5
+        roles:
+        - roles
+        - roles
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        https_port: 0
+        search_https_port: 5
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        web_console_endpoint: web_console_endpoint
+        id: 6
+        sync_port: 7
+        action_status: action_status
+        status: status
+  S3LoadBalancerGroupCreateReq_Group_LoadBalancers_Elt:
+    type: object
+    required:
+    - host_id
+    - vip
+    properties:
+      host_id:
+        type: integer
+        format: int64
+        description: host id of load balancer
+      interface_name:
+        type: string
+        description: vip will be bounded to interface, exclusive to ip
+      ip:
+        type: string
+        description: vip will be bounded to interface of the gateway ip, exclusive to interface name
+      vip:
+        type: string
+        description: vip of load balancer
+    title: S3LoadBalancerGroupCreateReq_Group_LoadBalancers_Elt
+    example:
+      ip: ip
+      interface_name: interface_name
+      vip: vip
+      host_id: 1
+  S3LoadBalancerGroupResp:
+    type: object
+    required:
+    - s3_load_balancer_group
+    properties:
+      s3_load_balancer_group:
+        description: s3 load balancer group
+        $ref: '#/definitions/S3LoadBalancerGroup'
+    title: S3LoadBalancerGroupResp
+    example:
+      s3_load_balancer_group:
+        ssl_certificate:
+          force_https: true
+          name: name
+          id: 2
+        search_port: 5
+        roles:
+        - roles
+        - roles
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        https_port: 0
+        search_https_port: 5
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        web_console_endpoint: web_console_endpoint
+        id: 6
+        sync_port: 7
+        action_status: action_status
+        status: status
+  S3LoadBalancersAddReq:
+    type: object
+    required:
+    - s3_load_balancers
+    properties:
+      s3_load_balancers:
+        type: array
+        items:
+          $ref: '#/definitions/S3LoadBalancersAddReq_LoadBalancers_Elt'
+    title: S3LoadBalancersAddReq
+    example:
+      s3_load_balancers:
+      - ip: ip
+        interface_name: interface_name
+        vip: vip
+        host_id: 0
+      - ip: ip
+        interface_name: interface_name
+        vip: vip
+        host_id: 0
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

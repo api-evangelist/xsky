@@ -1,0 +1,295 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths trashes API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: trashes
+  description: 'TrashController Operations about Trash
+
+    '
+paths:
+  /trashes/:
+    get:
+      tags:
+      - trashes
+      description: List trashes
+      operationId: ListTrashes
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: type
+        in: query
+        description: the type of trash
+        required: false
+        type: string
+        x-exportParamName: Type_
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /trashes/{trash_id}:
+    get:
+      tags:
+      - trashes
+      description: get a trash
+      operationId: GetTrash
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_id
+        in: path
+        description: trash id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - trashes
+      description: Update trash info
+      operationId: UpdateTrash
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_id
+        in: path
+        description: trash id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashId
+      - in: body
+        name: body
+        description: trash info
+        required: true
+        schema:
+          $ref: '#/definitions/TrashUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TrashResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /trashes/{trash_id}:cleanup:
+    post:
+      tags:
+      - trashes
+      description: Cleanup trash
+      operationId: CleanupTrash
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: trash_id
+        in: path
+        description: trash id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: TrashId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/TrashResp'
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TrashResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  TrashUpdateReq_Trash:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      retention:
+        type: string
+    title: TrashUpdateReq_Trash
+    example:
+      enabled: true
+      retention: retention
+  Trash:
+    type: object
+    properties:
+      create:
+        type: string
+        format: date-time
+      enabled:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      resource_type:
+        type: string
+      retention:
+        type: string
+      status:
+        type: string
+      trash_resource_num:
+        type: integer
+        format: int64
+      update:
+        type: string
+        format: date-time
+    title: Trash
+    description: Trash defines the trash attributes.
+    example:
+      trash_resource_num: 6
+      resource_type: resource_type
+      create: '2000-01-23T04:56:07.000+00:00'
+      update: '2000-01-23T04:56:07.000+00:00'
+      id: 0
+      enabled: true
+      retention: retention
+      status: status
+  TrashUpdateReq:
+    type: object
+    required:
+    - trash
+    properties:
+      trash:
+        $ref: '#/definitions/TrashUpdateReq_Trash'
+    title: TrashUpdateReq
+    example:
+      trash:
+        enabled: true
+        retention: retention
+  TrashesResp:
+    type: object
+    required:
+    - trashes
+    properties:
+      trashes:
+        type: array
+        description: trashes
+        items:
+          $ref: '#/definitions/Trash'
+    title: TrashesResp
+    example:
+      trashes:
+      - trash_resource_num: 6
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        enabled: true
+        retention: retention
+        status: status
+      - trash_resource_num: 6
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        enabled: true
+        retention: retention
+        status: status
+  TrashResp:
+    type: object
+    required:
+    - trash
+    properties:
+      trash:
+        description: trash
+        $ref: '#/definitions/Trash'
+    title: TrashResp
+    example:
+      trash:
+        trash_resource_num: 6
+        resource_type: resource_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        enabled: true
+        retention: retention
+        status: status
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

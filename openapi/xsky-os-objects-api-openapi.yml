@@ -1,0 +1,191 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths os-objects API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: os-objects
+  description: 'OSObjectController Object Storage Object Management
+
+    '
+paths:
+  /os-objects/_search:
+    get:
+      tags:
+      - os-objects
+      description: List object storage objects by search
+      operationId: ListOSObjectsBySearch
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-objects
+      description: List object storage objects by search
+      operationId: ListOSObjectsBySearch
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-objects/_sql:
+    get:
+      tags:
+      - os-objects
+      description: List object storage objects by sql
+      operationId: ListOSObjectsBySQL
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-objects
+      description: List object storage objects by sql
+      operationId: ListOSObjectsBySQL
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /os-objects/report/_sql:
+    get:
+      tags:
+      - os-objects
+      description: Download object storage objects report by sql
+      operationId: ReportOSObjectsBySQL
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: sql
+        in: query
+        description: select statement
+        required: false
+        type: string
+        x-exportParamName: Sql
+      - name: os_buckets
+        in: query
+        description: name of buckets joined by colon
+        required: false
+        type: string
+        x-exportParamName: OsBuckets
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - os-objects
+      description: Download object storage objects report by sql
+      operationId: ReportOSObjectsBySQL
+      consumes:
+      - application/octet-stream
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: sql
+        in: query
+        description: select statement
+        required: false
+        type: string
+        x-exportParamName: Sql
+      - name: os_buckets
+        in: query
+        description: name of buckets joined by colon
+        required: false
+        type: string
+        x-exportParamName: OsBuckets
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+            format: binary
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

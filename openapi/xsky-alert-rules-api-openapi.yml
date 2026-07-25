@@ -1,0 +1,674 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths alert-rules API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: alert-rules
+  description: 'AlertRuleController Operations about alert rule
+
+    '
+paths:
+  /alert-rules/:
+    get:
+      tags:
+      - alert-rules
+      description: List all alert rules
+      operationId: ListAlertRules
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: alert_group_id
+        in: query
+        description: alert group id
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: AlertGroupId
+      - name: resource_type
+        in: query
+        description: resource type of alert rule
+        required: false
+        type: string
+        x-exportParamName: ResourceType
+      - name: level
+        in: query
+        description: level of alert rule
+        required: false
+        type: string
+        x-exportParamName: Level
+      - name: enabled
+        in: query
+        description: enabled or not
+        required: false
+        type: boolean
+        x-exportParamName: Enabled
+      - name: q
+        in: query
+        description: query param of search
+        required: false
+        type: string
+        x-exportParamName: Q
+      - name: sort
+        in: query
+        description: sort param of search
+        required: false
+        type: string
+        x-exportParamName: Sort
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRulesResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+    post:
+      tags:
+      - alert-rules
+      description: create alert rule
+      operationId: CreateAlertRule
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: alert rule
+        required: true
+        schema:
+          $ref: '#/definitions/AlertRuleCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    put:
+      tags:
+      - alert-rules
+      description: create alert rule
+      operationId: CreateAlertRule
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: alert rule
+        required: true
+        schema:
+          $ref: '#/definitions/AlertRuleCreateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResp'
+        400:
+          description: BadRequest
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alert-rules/schema:
+    get:
+      tags:
+      - alert-rules
+      description: get alert rule schema
+      operationId: GetAlertRuleSchema
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleSchemaResp'
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alert-rules/{rule_id}:
+    get:
+      tags:
+      - alert-rules
+      description: get alert rule
+      operationId: GetAlertRule
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - alert-rules
+      description: delete alert rule
+      operationId: DeleteAlertRule
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    patch:
+      tags:
+      - alert-rules
+      description: set alert rule
+      operationId: UpdateAlertRule
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      - in: body
+        name: body
+        description: alert rule
+        required: true
+        schema:
+          $ref: '#/definitions/AlertRuleUpdateReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+  /alert-rules/{rule_id}/blacklist:
+    get:
+      tags:
+      - alert-rules
+      description: List all blacklist of alert rule
+      operationId: ListAlertRuleResourceBlacklist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: blacklist
+        in: query
+        description: filter resource in blacklist or not
+        required: true
+        type: string
+        x-exportParamName: Blacklist
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResourceBlacklistResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    post:
+      tags:
+      - alert-rules
+      description: create resource blacklist of alert rule
+      operationId: CreateAlertRuleResourceBlacklist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      - in: body
+        name: body
+        description: resource blacklist
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateAlertRuleResourceBlacklistReq'
+        x-exportParamName: Body
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/AlertRuleResourceBlacklistResp'
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        409:
+          description: Conflict
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+    delete:
+      tags:
+      - alert-rules
+      description: delete resource blacklist of alert rule
+      operationId: DeleteAlertRuleResourceBlacklist
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: rule_id
+        in: path
+        description: the id of alert rule
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: RuleId
+      - in: body
+        name: body
+        description: resource blacklist
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateAlertRuleResourceBlacklistReq'
+        x-exportParamName: Body
+      responses:
+        204:
+          description: No Content
+        400:
+          description: BadRequest
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  AlertRuleSchema:
+    type: object
+    properties:
+      events:
+        type: array
+        items:
+          type: string
+      types:
+        type: array
+        items:
+          type: string
+    title: AlertRuleSchema
+    description: AlertRuleSchema defines alert rule schema
+    example:
+      types:
+      - types
+      - types
+      events:
+      - events
+      - events
+  UpdateAlertRuleResourceBlacklistReq:
+    type: object
+    required:
+    - alert_rule_resource_blacklist
+    properties:
+      alert_rule_resource_blacklist:
+        description: create resource blacklist request
+        $ref: '#/definitions/UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist'
+    title: UpdateAlertRuleResourceBlacklistReq
+    example:
+      alert_rule_resource_blacklist:
+        resource_ids:
+        - 0
+        - 0
+  AlertRuleUpdateReq:
+    type: object
+    required:
+    - alert_rule
+    properties:
+      alert_rule:
+        $ref: '#/definitions/AlertRuleUpdateReq_Rule'
+    title: AlertRuleUpdateReq
+    example:
+      alert_rule:
+        trigger_period: 0
+        trigger_value: trigger_value
+        enabled: true
+  AlertRuleResp:
+    type: object
+    required:
+    - alert_rule
+    properties:
+      alert_rule:
+        description: alert rule
+        $ref: '#/definitions/AlertRule'
+    title: AlertRuleResp
+    example:
+      alert_rule:
+        has_resource_blacklist: true
+        level: level
+        resource_type: resource_type
+        trigger_mode: trigger_mode
+        trigger_value: trigger_value
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        enabled: true
+        trigger_period: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        alarm_id: alarm_id
+        id: 0
+        group: group
+  AlertRuleUpdateReq_Rule:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+        description: enable the alert rule or not
+      trigger_period:
+        type: integer
+        format: int64
+        description: trigger period of alert rule
+      trigger_value:
+        type: string
+        description: trigger value of alert rule
+    title: AlertRuleUpdateReq_Rule
+    example:
+      trigger_period: 0
+      trigger_value: trigger_value
+      enabled: true
+  AlertRuleResourceBlacklistResp:
+    type: object
+    title: AlertRuleResourceBlacklistResp
+  AlertRulesResp:
+    type: object
+    required:
+    - alert_rules
+    properties:
+      alert_rules:
+        type: array
+        description: alert rules
+        items:
+          $ref: '#/definitions/AlertRule'
+    title: AlertRulesResp
+    example:
+      alert_rules:
+      - has_resource_blacklist: true
+        level: level
+        resource_type: resource_type
+        trigger_mode: trigger_mode
+        trigger_value: trigger_value
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        enabled: true
+        trigger_period: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        alarm_id: alarm_id
+        id: 0
+        group: group
+      - has_resource_blacklist: true
+        level: level
+        resource_type: resource_type
+        trigger_mode: trigger_mode
+        trigger_value: trigger_value
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        enabled: true
+        trigger_period: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        alarm_id: alarm_id
+        id: 0
+        group: group
+  AlertRule:
+    type: object
+    properties:
+      alarm_id:
+        type: string
+      create:
+        type: string
+        format: date-time
+      enabled:
+        type: boolean
+      group:
+        type: string
+      has_resource_blacklist:
+        type: boolean
+      id:
+        type: integer
+        format: int64
+      level:
+        type: string
+      resource_type:
+        type: string
+      trigger_mode:
+        type: string
+      trigger_period:
+        type: integer
+        format: int64
+      trigger_value:
+        type: string
+      type:
+        type: string
+      update:
+        type: string
+        format: date-time
+    title: AlertRule
+    description: AlertRule defines the alert rule
+    example:
+      has_resource_blacklist: true
+      level: level
+      resource_type: resource_type
+      trigger_mode: trigger_mode
+      trigger_value: trigger_value
+      update: '2000-01-23T04:56:07.000+00:00'
+      type: type
+      enabled: true
+      trigger_period: 6
+      create: '2000-01-23T04:56:07.000+00:00'
+      alarm_id: alarm_id
+      id: 0
+      group: group
+  UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist:
+    type: object
+    properties:
+      resource_ids:
+        type: array
+        description: 'resource blacklist id must array, ex: [1, 2, 3]'
+        items:
+          type: integer
+          format: int64
+    title: UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist
+    example:
+      resource_ids:
+      - 0
+      - 0
+  AlertRuleCreateReq:
+    type: object
+    required:
+    - alert_rule
+    properties:
+      alert_rule:
+        $ref: '#/definitions/AlertRuleCreateReq_Rule'
+    title: AlertRuleCreateReq
+    example:
+      alert_rule:
+        level: level
+        trigger_period: 0
+        resource_type: resource_type
+        trigger_mode: trigger_mode
+        trigger_value: trigger_value
+        type: type
+        enabled: true
+  AlertRuleSchemaResp:
+    type: object
+    required:
+    - rule_schema_map
+    - trigger_modes
+    properties:
+      rule_schema_map:
+        type: object
+        description: rule schemas
+        additionalProperties:
+          $ref: '#/definitions/AlertRuleSchema'
+      trigger_modes:
+        type: array
+        description: trigger modes
+        items:
+          type: string
+    title: AlertRuleSchemaResp
+    example:
+      trigger_modes:
+      - trigger_modes
+      - trigger_modes
+      rule_schema_map:
+        key:
+          types:
+          - types
+          - types
+          events:
+          - events
+          - events
+  AlertRuleCreateReq_Rule:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      level:
+        type: string
+      resource_type:
+        type: string
+      trigger_mode:
+        type: string
+      trigger_period:
+        type: integer
+        format: int64
+      trigger_value:
+        type: string
+      type:
+        type: string
+    title: AlertRuleCreateReq_Rule
+    example:
+      level: level
+      trigger_period: 0
+      resource_type: resource_type
+      trigger_mode: trigger_mode
+      trigger_value: trigger_value
+      type: type
+      enabled: true
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query

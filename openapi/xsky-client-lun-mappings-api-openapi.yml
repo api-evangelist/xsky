@@ -1,0 +1,377 @@
+swagger: '2.0'
+info:
+  description: XMS is the controller of distributed storage system
+  version: SDS_4.2.000.0.200302
+  title: XMS access-paths client-lun-mappings API
+  contact: {}
+  license:
+    name: Commercial
+basePath: /v1
+tags:
+- name: client-lun-mappings
+  description: 'ClientLunMappingController API /client-lun-mappings
+
+    '
+paths:
+  /client-lun-mappings/:
+    get:
+      tags:
+      - client-lun-mappings
+      description: List client lun mappings
+      operationId: ListClientLunMappings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Limit
+      - name: offset
+        in: query
+        description: paging param
+        required: false
+        type: integer
+        format: int64
+        x-exportParamName: Offset
+      - name: mapping_group_id
+        in: query
+        description: mapping group id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: MappingGroupId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClientLunMappingsResp'
+        400:
+          description: BadRequest
+        500:
+          description: InternalServerError
+      security:
+      - tokenInHeader: []
+      - tokenInQuery: []
+  /client-lun-mappings/{client_lun_mapping_id}:
+    get:
+      tags:
+      - client-lun-mappings
+      description: get a client lun mapping
+      operationId: GetClientLunMapping
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: client_lun_mapping_id
+        in: path
+        description: client lun mapping id
+        required: true
+        type: integer
+        format: int64
+        x-exportParamName: ClientLunMappingId
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ClientLunMappingResp'
+        404:
+          description: NotFound
+        500:
+          description: InternalServerError
+      security:
+      - tokenInQuery: []
+      - tokenInHeader: []
+definitions:
+  Target_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+    title: Target_Nestview
+  ClientLunMappingResp:
+    type: object
+    required:
+    - client_lun_mapping
+    properties:
+      client_lun_mapping:
+        $ref: '#/definitions/ClientLunMappingRecord'
+    title: ClientLunMappingResp
+    example:
+      client_lun_mapping: ''
+  VolumeFailedTask:
+    type: object
+    properties:
+      abort:
+        type: number
+        format: double
+      busy:
+        type: number
+        format: double
+      check_cond:
+        type: number
+        format: double
+      resv_conflict:
+        type: number
+        format: double
+    title: VolumeFailedTask
+    example:
+      abort: 7.061401241503109
+      busy: 9.301444243932576
+      check_cond: 3.616076749251911
+      resv_conflict: 2.027123023002322
+  Host_Nestview:
+    type: object
+    required:
+    - admin_ip
+    properties:
+      admin_ip:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    title: Host_Nestview
+    example:
+      name: name
+      admin_ip: admin_ip
+      id: 0
+  ClientLunMappingsResp:
+    type: object
+    required:
+    - client_lun_mappings
+    properties:
+      client_lun_mappings:
+        type: array
+        items:
+          $ref: '#/definitions/ClientLunMappingRecord'
+    title: ClientLunMappingsResp
+    example:
+      client_lun_mappings:
+      - ''
+      - ''
+  Client_Nestview:
+    type: object
+    properties:
+      code:
+        type: string
+      id:
+        type: integer
+        format: int64
+    title: Client_Nestview
+  Lun_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      lun_id:
+        type: integer
+        format: int64
+    title: Lun_Nestview
+  ClientLunMapping:
+    type: object
+    properties:
+      block_volume:
+        $ref: '#/definitions/Volume_Nestview'
+      client:
+        $ref: '#/definitions/Client_Nestview'
+      create:
+        type: string
+        format: date-time
+      host:
+        $ref: '#/definitions/Host_Nestview'
+      id:
+        type: integer
+        format: int64
+      lun:
+        $ref: '#/definitions/Lun_Nestview'
+      status:
+        type: string
+      target:
+        $ref: '#/definitions/Target_Nestview'
+      update:
+        type: string
+        format: date-time
+    title: ClientLunMapping
+    description: ClientLunMapping defines a mapping relation with lun and client group
+  VolumeNonIOTask:
+    type: object
+    properties:
+      ats:
+        type: number
+        format: double
+      other:
+        type: number
+        format: double
+      unmap:
+        type: number
+        format: double
+      write_same:
+        type: number
+        format: double
+      xcopy:
+        type: number
+        format: double
+    title: VolumeNonIOTask
+    example:
+      ats: 5.025004791520295
+      other: 9.965781217890562
+      write_same: 6.683562403749608
+      xcopy: 8.762042012749001
+      unmap: 9.369310271410669
+  VolumeIOSize:
+    type: object
+    properties:
+      0_4kbyte:
+        type: number
+        format: double
+      32_64kbyte:
+        type: number
+        format: double
+      4_8kbyte:
+        type: number
+        format: double
+      64_512kbyte:
+        type: number
+        format: double
+      8_32kbyte:
+        type: number
+        format: double
+      above_512kbyte:
+        type: number
+        format: double
+    title: VolumeIOSize
+    example:
+      8_32kbyte: 1.4894159098541704
+      0_4kbyte: 4.145608029883936
+      32_64kbyte: 7.386281948385884
+      4_8kbyte: 1.2315135367772556
+      above_512kbyte: 6.84685269835264
+      64_512kbyte: 1.0246457001441578
+  VolumeStat:
+    type: object
+    properties:
+      FailedTask:
+        $ref: '#/definitions/VolumeFailedTask'
+      create:
+        type: string
+        format: date-time
+      io_size:
+        $ref: '#/definitions/VolumeIOSize'
+      migrate_write_bandwidth_kbyte:
+        type: number
+        format: double
+      migrate_write_iops:
+        type: number
+        format: double
+      migrate_write_latency_us:
+        type: number
+        format: double
+      non_io_task:
+        $ref: '#/definitions/VolumeNonIOTask'
+      queue_depth:
+        type: number
+        format: double
+      read_bandwidth_kbyte:
+        type: number
+        format: double
+      read_iops:
+        type: number
+        format: double
+      read_latency_us:
+        type: number
+        format: double
+      total_bandwidth_kbyte:
+        type: number
+        format: double
+      total_iops:
+        type: number
+        format: double
+      write_bandwidth_kbyte:
+        type: number
+        format: double
+      write_iops:
+        type: number
+        format: double
+      write_latency_us:
+        type: number
+        format: double
+    title: VolumeStat
+    description: VolumeStat records volume stat info
+    example:
+      migrate_write_iops: 1.1730742509559433
+      FailedTask:
+        abort: 7.061401241503109
+        busy: 9.301444243932576
+        check_cond: 3.616076749251911
+        resv_conflict: 2.027123023002322
+      total_bandwidth_kbyte: 1.284659006116532
+      write_latency_us: 5.944895607614016
+      total_iops: 2.8841621266687802
+      read_latency_us: 6.965117697638846
+      read_iops: 3.5571952270680973
+      migrate_write_latency_us: 4.965218492984954
+      non_io_task:
+        ats: 5.025004791520295
+        other: 9.965781217890562
+        write_same: 6.683562403749608
+        xcopy: 8.762042012749001
+        unmap: 9.369310271410669
+      io_size:
+        8_32kbyte: 1.4894159098541704
+        0_4kbyte: 4.145608029883936
+        32_64kbyte: 7.386281948385884
+        4_8kbyte: 1.2315135367772556
+        above_512kbyte: 6.84685269835264
+        64_512kbyte: 1.0246457001441578
+      read_bandwidth_kbyte: 6.438423552598547
+      write_bandwidth_kbyte: 6.778324963048013
+      migrate_write_bandwidth_kbyte: 7.457744773683766
+      create: '2000-01-23T04:56:07.000+00:00'
+      write_iops: 6.878052220127876
+      queue_depth: 9.018348186070783
+  ClientLunMappingRecord:
+    title: ClientLunMappingRecord
+    allOf:
+    - $ref: '#/definitions/ClientLunMapping'
+    - properties:
+        samples:
+          type: array
+          items:
+            $ref: '#/definitions/VolumeStat'
+        session_status:
+          type: string
+  Volume_Nestview:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      original_name:
+        type: string
+    title: Volume_Nestview
+    example:
+      original_name: original_name
+      name: name
+      id: 9
+securityDefinitions:
+  tokenInHeader:
+    description: auth by token
+    type: apiKey
+    name: Xms-Auth-Token
+    in: header
+  tokenInQuery:
+    description: auth by token
+    type: apiKey
+    name: token
+    in: query
