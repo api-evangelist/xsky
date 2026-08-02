@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  Searched npm, PyPI, pkg.go.dev, and the xsky-storage GitHub org for
+  first-party client libraries. XSKY publishes an official Go client
+  (swagger-codegen generated from the XMS Swagger 2.0 contract), an official
+  Python client on PyPI (xms-client, author xsky / haihao@xsky.com), a
+  CloudFormation-style provisioning tool (sds-formation), Zabbix monitoring
+  templates, and a Kubernetes CSI driver.
+packages:
+- language: go
+  registry: github
+  name: github.com/xsky-storage/go-sdk
+  url: https://github.com/xsky-storage/go-sdk
+  install: go get github.com/xsky-storage/go-sdk
+  official: true
+  notes: >-
+    Go API client for xmsclient (XMS is the controller of the distributed
+    storage system); generated with swagger-codegen from api/swagger.yaml,
+    API version SDS_4.2.000.0.200302. Also indexed at
+    https://pkg.go.dev/github.com/xsky-storage/go-sdk.
+- language: python
+  registry: pypi
+  name: xms-client
+  url: https://pypi.org/project/xms-client/
+  install: pip install xms-client
+  official: true
+  notes: >-
+    XMS API Python client, version 3.2.14, published by XSKY
+    (author xsky, haihao@xsky.com).
+- language: go
+  registry: github
+  name: sds-formation
+  url: https://github.com/xsky-storage/sds-formation
+  install: 'make binary  # builds bundles/latest/binary/sds-formation'
+  official: true
+  notes: >-
+    Template-driven provisioning tool for XSKY storage resources
+    (CloudFormation-style JSON templates against the XMS API). Command
+    surface captured in cli/xsky-cli.yml.
+- language: none
+  registry: github
+  name: xsky-zabbix
+  url: https://github.com/xsky-storage/xsky-zabbix
+  install: null
+  official: true
+  notes: Zabbix monitoring templates for XSKY SDS.
+- language: go
+  registry: github
+  name: xsky-csi-driver
+  url: https://github.com/xsky-storage/xsky-csi-driver
+  install: null
+  official: true
+  notes: Documentation and assets for the XSKY Kubernetes CSI driver.

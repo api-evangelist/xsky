@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the XSKY XMS API
+  version: 1.0.0
+extends: openapi/xsky-xms-swagger-original.yaml
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: xsky
+      profile: https://raw.githubusercontent.com/api-evangelist/xsky/refs/heads/main/apis.yml
+      artifacts:
+        authentication: authentication/xsky-authentication.yml
+        conventions: conventions/xsky-conventions.yml
+        errors: errors/xsky-problem-types.yml
+        data-model: data-model/xsky-data-model.yml
+        mcp: mcp/xsky-mcp.yml
+        skills: skills/_index.yml
+- target: $.info
+  update:
+    description: >-
+      XMS is the controller of XSKY's distributed storage system. The REST API
+      manages the full software-defined storage estate - clusters, hosts,
+      disks, OSDs, pools, block volumes and snapshots, object-storage users
+      and buckets, file systems and quotas, NFS/iSCSI/S3 gateways, alerts, and
+      access tokens. Deployed on-premises; authenticate with the
+      Xms-Auth-Token header obtained from POST /auth/tokens:login.
+- target: $
+  update:
+    externalDocs:
+      description: Official Go SDK with per-endpoint documentation
+      url: https://github.com/xsky-storage/go-sdk/tree/master/docs

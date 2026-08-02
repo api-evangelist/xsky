@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/xsky-xms-swagger-original.yaml (securityDefinitions,
+  parameters, responses) and the XSKY product pages
+  (https://www.xsky.com/en/products/xeos protocol-compatibility claims).
+standards:
+- id: amazon-s3
+  conforms: true
+  evidence: >-
+    XEOS object storage is S3-compatible - the product page states
+    interoperability of S3, NFS and HDFS protocols, S3 Batch interface
+    compatibility, and an S3 Console graphical tool
+    (https://www.xsky.com/en/products/xeos).
+- id: swagger-2.0
+  conforms: true
+  evidence: 'The published XMS contract is Swagger 2.0 (swagger "2.0", API version SDS_4.2.000.0.200302).'
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityDefinitions - the XMS API uses apiKey token auth (Xms-Auth-Token header or token query parameter).
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration published on xsky.com; no openIdConnect security scheme in the spec.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 4xx/5xx responses declare plain HTTP statuses; no application/problem+json media type appears in the spec.
+- id: pagination
+  conforms: true
+  evidence: Collection operations take limit and offset query parameters (109 operations each), with q full-text and sort parameters on list endpoints.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key (or equivalent) request header is declared anywhere in the 585-operation contract.
+- id: csi
+  conforms: true
+  evidence: XSKY publishes a Kubernetes CSI driver (https://github.com/xsky-storage/xsky-csi-driver).
+- id: json-api
+  conforms: false
+  evidence: Responses are plain JSON resource envelopes (e.g. AccessPathResp), not JSON:API documents.

@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+host: https://www.xsky.com
+notes: >-
+  The XMS API itself is deployed on-premises (no public API host to probe), so
+  the well-known surface was probed on the corporate website. www.xsky.com
+  302-redirects every unknown path to /404.html, so each probe below records
+  an effective 404 (document not present). No security.txt, OIDC discovery,
+  OAuth authorization-server metadata, api-catalog, ai-plugin.json, or
+  llms.txt is published.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+  note: 302 redirect to /404.html
+- path: /.well-known/openid-configuration
+  status: 404
+  note: 302 redirect to /404.html
+- path: /.well-known/oauth-authorization-server
+  status: 404
+  note: 302 redirect to /404.html
+- path: /.well-known/api-catalog
+  status: 404
+  note: 302 redirect to /404.html
+- path: /.well-known/ai-plugin.json
+  status: 404
+  note: 302 redirect to /404.html
+- path: /llms.txt
+  status: 404
+  note: 302 redirect to the homepage

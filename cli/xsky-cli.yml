@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/xsky-storage/sds-formation
+name: sds-formation
+description: >-
+  sds-formation is XSKY's first-party, CloudFormation-style provisioning tool
+  for SDS storage resources. A JSON template (Description, Parameters,
+  Resources) declares the desired cluster state - tokens, hosts, pools, OSDs,
+  gateways, volumes - and the tool creates and updates those resources in
+  order against the XMS API (e.g. ClusterURL http://<xms-host>:8056/v1).
+install:
+- method: source
+  command: 'make binary  # builds bundles/latest/binary/sds-formation'
+  source: https://github.com/xsky-storage/sds-formation
+language: go
+surface:
+  input: JSON template file
+  template_sections:
+  - Description: optional template description
+  - Parameters: variable parameter list (typed, with values referenced via Ref)
+  - Resources: ordered resources to create/update, each with Name, Type,
+      Action, Properties, and optional WaitInterval/CheckInterval polling
+  resource_types_examples:
+  - Token
+  - Host
+key_flows:
+- Bootstrap a cluster - mint an admin Token then create Hosts by admin IP from
+  one template
+- Reproducible environment provisioning - parameterized templates applied
+  against different XMS endpoints
+notes: >-
+  The binary is catalogued in packages/xsky-packages.yml; unit tests run with
+  make unit-test. Repository README is in Chinese.

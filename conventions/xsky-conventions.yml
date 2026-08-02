@@ -1,0 +1,73 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/xsky-xms-swagger-original.yaml - the cross-cutting
+  request/response semantics of the XMS controller API (585 operations, 378
+  paths, 124 resource groups).
+description: >-
+  How the XSKY XMS API behaves across every operation: token authentication,
+  limit/offset pagination, q/sort collection filtering, colon-suffixed action
+  endpoints, async 202 job responses, and plain HTTP-status error signaling.
+
+base_url: https://{xms-controller}/v1
+api_style: REST over HTTPS, JSON requests and responses
+
+authentication:
+  scheme: >-
+    API token in the Xms-Auth-Token request header (tokenInHeader) or a token
+    query parameter (tokenInQuery). Tokens are minted by POST /auth/tokens:login
+    (Login) or POST /auth/tokens (CreateToken); long-lived access tokens are
+    managed through the /access-tokens/ resource.
+  detail: authentication/xsky-authentication.yml
+
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key or equivalent replay-protection header is declared in
+    the contract. GET/HEAD reads are inherently idempotent; PATCH updates and
+    DELETE removals are idempotent by resource semantics only.
+
+pagination:
+  style: offset
+  request_params:
+    limit: page size (declared on 109 list operations)
+    offset: number of records to skip (declared on 109 list operations)
+  filtering:
+    q: full-text query across the collection (62 operations)
+    sort: sort expression (61 operations)
+
+versioning:
+  scheme: uri-path
+  current: v1
+  api_release: SDS_4.2.000.0.200302 (info.version - tied to the SDS product release train)
+
+actions:
+  style: colon-suffixed action endpoints on resources
+  examples:
+  - POST /auth/tokens:login
+  - POST /auth/tokens:logout
+  - POST /access-tokens:validate
+  - POST /access-tokens/{access_token_id}:regenerate
+  - POST /alerts/{alert_id}:resolve
+
+async_operations:
+  supported: true
+  notes: >-
+    190 operations declare a 202 Accepted response - provisioning and other
+    long-running changes are asynchronous jobs whose resources are polled for
+    status (e.g. block-volume migration jobs, recovery jobs).
+
+error_envelope:
+  format: plain HTTP statuses (400, 401, 403, 404, 409, 500); no
+    application/problem+json
+  detail: errors/xsky-problem-types.yml
+
+rate_limits:
+  documented: false
+  notes: No rate-limit headers or policies are declared in the contract or public docs.
+
+related:
+- authentication/xsky-authentication.yml
+- errors/xsky-problem-types.yml
+- lifecycle/xsky-lifecycle.yml
+- data-model/xsky-data-model.yml

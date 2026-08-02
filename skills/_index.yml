@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the XMS Swagger 2.0 contract
+  (openapi/xsky-xms-swagger-original.yaml). Every operation named in a skill
+  exists verbatim as an operationId in the spec; cross-cutting rules cite
+  ../conventions/, ../errors/, and ../authentication/.
+skills:
+- file: xsky-authenticate-and-manage-tokens.md
+  name: Authenticate to XMS and manage access tokens
+  api: openapi/xsky-xms-swagger-original.yaml
+  operations: [Login, CreateAccessToken, ValidateAccessToken, RegenerateAccessToken, Logout]
+- file: xsky-provision-block-storage.md
+  name: Provision a block volume and export it
+  api: openapi/xsky-xms-swagger-original.yaml
+  operations: [Login, ListPools, CreateBlockVolume, GetBlockVolume, CreateAccessPath, CreateBlockSnapshot]
+- file: xsky-manage-object-storage.md
+  name: Create an object-storage user and bucket
+  api: openapi/xsky-xms-swagger-original.yaml
+  operations: [Login, CreateObjectStorageUser, ListObjectStorageUsers, CreateBucket, ListBuckets]

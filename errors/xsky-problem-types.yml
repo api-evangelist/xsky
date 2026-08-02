@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/xsky-xms-swagger-original.yaml (4xx/5xx responses across 585 operations)
+format: http-status
+notes: The XMS API declares plain HTTP status responses; no application/problem+json (RFC 9457) media
+  type is used in the spec. Descriptions aggregated from the most common response descriptions per status
+  code.
+problems:
+- status: 400
+  title: Bad request - the request body or parameters are invalid
+  description: BadRequest
+  operations_declaring: 365
+  example_operation: GET /access-paths/ (ListAccessPaths)
+- status: 401
+  title: Unauthorized - missing or invalid Xms-Auth-Token
+  description: Unauthorized
+  operations_declaring: 4
+  example_operation: POST /auth/rsa-keys (CreateRSAKey)
+- status: 403
+  title: Forbidden - the authenticated user lacks permission
+  description: Forbidden
+  operations_declaring: 14
+  example_operation: GET /access-tokens/ (ListAccessTokens)
+- status: 404
+  title: Resource not found
+  description: NotFound
+  operations_declaring: 334
+  example_operation: DELETE /access-paths/{access_path_id} (DeleteAccessPath)
+- status: 409
+  title: Conflict - the resource state prevents the operation
+  description: Conflict
+  operations_declaring: 171
+  example_operation: POST /access-tokens/ (CreateAccessToken)
+- status: 500
+  title: Internal server error
+  description: InternalServerError
+  operations_declaring: 568
+  example_operation: GET /access-paths/ (ListAccessPaths)

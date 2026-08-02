@@ -1,20 +1,1539 @@
 aid: xsky
-name: xsky
-description: xsky is a company surfaced as a portfolio company of qiming and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/xsky.png
+name: XSKY
+description: XSKY (XSKY Data Technology, 星辰天合) is a Beijing-based software-defined
+  storage vendor serving nearly 2,000 large government and enterprise institutions,
+  ranked first in China's object-storage software market. Its distributed storage
+  products — XEUS unified storage, XEBS block storage, XEOS object storage, XGFS
+  file storage, and the XEDP unified data platform — are all managed through XMS,
+  the platform's REST controller API, which XSKY publishes as a Swagger 2.0 contract
+  with official Go and Python clients plus a CloudFormation-style provisioning
+  tool (sds-formation) and a Kubernetes CSI driver.
 url: https://raw.githubusercontent.com/api-evangelist/xsky/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - qiming
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: full
+x-tier-reason: enriched-from-portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Storage
+- Software-Defined Storage
+- Object Storage
+- Block Storage
+- File Storage
+- Data Infrastructure
+- Enterprise
+- China
+apis:
+- aid: xsky:xsky-access-paths-api
+  name: XSKY access-paths API
+  description: AccessPathController Operations able access paths
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - access-paths
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-access-paths-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-access-tokens-api
+  name: XSKY access-tokens API
+  description: AccessTokenController Manage users
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - access-tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-access-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-action-logs-api
+  name: XSKY action-logs API
+  description: ActionLogController Operations about ActionLog
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - action-logs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-action-logs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-alert-groups-api
+  name: XSKY alert-groups API
+  description: AlertGroupController Operations about alert group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - alert-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-alert-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-alert-rules-api
+  name: XSKY alert-rules API
+  description: AlertRuleController Operations about alert rule
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - alert-rules
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-alert-rules-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-alerts-api
+  name: XSKY alerts API
+  description: AlertController Operations about alert
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-auth-api
+  name: XSKY auth API
+  description: AuthController Manage authentication and authorization
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - auth
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-auth-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-block-snapshots-api
+  name: XSKY block-snapshots API
+  description: BlockSnapshotController Operations about Block Snapshot
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - block-snapshots
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-block-snapshots-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-block-volume-group-snapshots-api
+  name: XSKY block-volume-group-snapshots API
+  description: VolumeGroupSnapshotController Operations about volume group snapshot
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - block-volume-group-snapshots
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-block-volume-group-snapshots-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-block-volume-groups-api
+  name: XSKY block-volume-groups API
+  description: VolumeGroupController Operations about volume group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - block-volume-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-block-volume-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-block-volume-migration-jobs-api
+  name: XSKY block-volume-migration-jobs API
+  description: BlockVolumeMigrationJobController Operations about block volume migration job
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - block-volume-migration-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-block-volume-migration-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-block-volumes-api
+  name: XSKY block-volumes API
+  description: BlockVolumeController Operations about Block
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - block-volumes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-block-volumes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-chunks-api
+  name: XSKY chunks API
+  description: ChunkController Chunk Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - chunks
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-chunks-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-client-codes-api
+  name: XSKY client-codes API
+  description: ClientCodeController Operations about client code
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - client-codes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-client-codes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-client-groups-api
+  name: XSKY client-groups API
+  description: ClientGroupController Operations about client group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - client-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-client-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-client-lun-mappings-api
+  name: XSKY client-lun-mappings API
+  description: ClientLunMappingController API /client-lun-mappings
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - client-lun-mappings
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-client-lun-mappings-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-clients-api
+  name: XSKY clients API
+  description: ClientController API /clients
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - clients
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-clients-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-cloud-instances-api
+  name: XSKY cloud-instances API
+  description: CloudInstanceController Cloud Instance Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - cloud-instances
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-cloud-instances-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-cloud-platforms-api
+  name: XSKY cloud-platforms API
+  description: CloudPlatformController Cloud Platform Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - cloud-platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-cloud-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-cloud-volume-attachments-api
+  name: XSKY cloud-volume-attachments API
+  description: CloudVolumeAttachmentController Cloud Volume Attachment Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - cloud-volume-attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-cloud-volume-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-cloud-volumes-api
+  name: XSKY cloud-volumes API
+  description: CloudVolumeController Cloud Volume Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - cloud-volumes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-cloud-volumes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-cluster-api
+  name: XSKY cluster API
+  description: ClusterController API /cluster
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - cluster
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-cluster-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-confs-api
+  name: XSKY confs API
+  description: ConfController Operations about Config
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - confs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-confs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-crypto-keys-api
+  name: XSKY crypto-keys API
+  description: CryptoKeyController API /crypto-keys/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - crypto-keys
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-crypto-keys-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-disks-api
+  name: XSKY disks API
+  description: DiskController Disk Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - disks
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-disks-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-domain-user-validators-api
+  name: XSKY domain-user-validators API
+  description: DomainUserValidatorController Domain User Validator Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - domain-user-validators
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-domain-user-validators-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-backup-jobs-api
+  name: XSKY dp-block-backup-jobs API
+  description: DpBlockBackupJobController API /dp-block-backup-jobs/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-backup-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-backup-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-backup-policies-api
+  name: XSKY dp-block-backup-policies API
+  description: DpBlockBackupPolicyController API /dp-block-backup-policies
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-backup-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-backup-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-replication-policies-api
+  name: XSKY dp-block-replication-policies API
+  description: DpBlockReplicationPolicyController API /dp-block-replication-policies
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-replication-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-replication-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-snapshot-jobs-api
+  name: XSKY dp-block-snapshot-jobs API
+  description: DpBlockSnapshotJobController API /dp-block-snapshot-jobs/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-snapshot-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-snapshot-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-snapshot-policies-api
+  name: XSKY dp-block-snapshot-policies API
+  description: DpBlockSnapshotPolicyController API /dp-block-snapshot-policies
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-snapshot-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-snapshot-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-block-snapshot-recovery-jobs-api
+  name: XSKY dp-block-snapshot-recovery-jobs API
+  description: DpBlockSnapshotRecoveryJobController API /dp-block-snapshot-recovery-jobs
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-block-snapshot-recovery-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-block-snapshot-recovery-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-fs-snapshot-jobs-api
+  name: XSKY dp-fs-snapshot-jobs API
+  description: DpFSSnapshotJobController API /dp-fs-snapshot-jobs/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-fs-snapshot-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-fs-snapshot-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-fs-snapshot-policies-api
+  name: XSKY dp-fs-snapshot-policies API
+  description: DpFSSnapshotPolicyController API /dp-fs-snapshot-policies
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-fs-snapshot-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-fs-snapshot-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-gateways-api
+  name: XSKY dp-gateways API
+  description: DpGatewayController API /dp-gateways/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-dp-sites-api
+  name: XSKY dp-sites API
+  description: DpSiteController API /dp-sites/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - dp-sites
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-dp-sites-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-email-groups-api
+  name: XSKY email-groups API
+  description: EmailGroupController Operations about Email
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - email-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-email-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-emails-api
+  name: XSKY emails API
+  description: EmailController Operations about Email
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - emails
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-emails-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-event-logs-api
+  name: XSKY event-logs API
+  description: EventLogController Operations about EventLog
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - event-logs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-event-logs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-active-directories-api
+  name: XSKY fs-active-directories API
+  description: FSActiveDirectoryController File Storage Active Directory Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-active-directories
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-active-directories-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-arbitration-pools-api
+  name: XSKY fs-arbitration-pools API
+  description: FSArbitrationPoolController File Storage Arbitration Pool Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-arbitration-pools
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-arbitration-pools-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-client-groups-api
+  name: XSKY fs-client-groups API
+  description: FSClientGroupController provides APIs for file storage client group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-client-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-client-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-clients-api
+  name: XSKY fs-clients API
+  description: FSClientController provides APIs for file storage client
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-clients
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-clients-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-folders-api
+  name: XSKY fs-folders API
+  description: FSFolderController provides API for file storage folder
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-folders
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-folders-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-ftp-sessions-api
+  name: XSKY fs-ftp-sessions API
+  description: FSFTPSessionController provides API for fs FTP session
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-ftp-sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-ftp-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-ftp-share-acls-api
+  name: XSKY fs-ftp-share-acls API
+  description: FSFTPShareACLController provides API for fs ftp share acl
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-ftp-share-acls
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-ftp-share-acls-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-ftp-shares-api
+  name: XSKY fs-ftp-shares API
+  description: FSFTPShareController provides API for fs ftp share
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-ftp-shares
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-ftp-shares-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-gateway-groups-api
+  name: XSKY fs-gateway-groups API
+  description: FSGatewayGroupController provides APIs for file storage gateway group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-gateway-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-gateway-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-gateways-api
+  name: XSKY fs-gateways API
+  description: FSGatewayController provides APIs for file storage gateway
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-ldaps-api
+  name: XSKY fs-ldaps API
+  description: FSLdapController File Storage LDAP Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-ldaps
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-ldaps-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-nfs-connections-api
+  name: XSKY fs-nfs-connections API
+  description: FSNFSConnectionController provides API for fs NFS connection
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-nfs-connections
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-nfs-connections-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-nfs-share-acls-api
+  name: XSKY fs-nfs-share-acls API
+  description: FSNFSShareACLController provides API for fs nfs shares acl
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-nfs-share-acls
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-nfs-share-acls-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-nfs-shares-api
+  name: XSKY fs-nfs-shares API
+  description: FSNFSShareController provides API for fs nfs shares
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-nfs-shares
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-nfs-shares-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-quota-trees-api
+  name: XSKY fs-quota-trees API
+  description: FSQuotaTreeController provides API for file storage quota tree
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-quota-trees
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-quota-trees-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-smb-sessions-api
+  name: XSKY fs-smb-sessions API
+  description: FSSMBSessionController provides API for fs SMB session
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-smb-sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-smb-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-smb-share-acls-api
+  name: XSKY fs-smb-share-acls API
+  description: FSSMBShareACLController provides API for fs smb share acl
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-smb-share-acls
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-smb-share-acls-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-smb-shares-api
+  name: XSKY fs-smb-shares API
+  description: FSSMBShareController provides API for fs smb share
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-smb-shares
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-smb-shares-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-snapshots-api
+  name: XSKY fs-snapshots API
+  description: FSSnapshotController provides APIs for file storage snapshot
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-snapshots
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-snapshots-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-user-groups-api
+  name: XSKY fs-user-groups API
+  description: FSUserGroupController provides APIs for file storage user group
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-user-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-fs-users-api
+  name: XSKY fs-users API
+  description: FSUserController provides API for file storage user
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - fs-users
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-fs-users-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-host-enc-specs-api
+  name: XSKY host-enc-specs API
+  description: HostEncSpecController API /host-enc-specs/
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - host-enc-specs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-host-enc-specs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-host-info-api
+  name: XSKY host-info API
+  description: HostInfoController Host Info Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - host-info
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-host-info-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-host-initializations-api
+  name: XSKY host-initializations API
+  description: HostInitializationController provides API for host initialization
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - host-initializations
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-host-initializations-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-host-validators-api
+  name: XSKY host-validators API
+  description: HostValidatorController Host Validator Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - host-validators
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-host-validators-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-hosts-api
+  name: XSKY hosts API
+  description: HostController Host Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-hosts-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-identity-platforms-api
+  name: XSKY identity-platforms API
+  description: IdentityPlatformController Identity Platform Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - identity-platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-identity-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-licenses-api
+  name: XSKY licenses API
+  description: LicenseController Operations about Install
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - licenses
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-licenses-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-luns-api
+  name: XSKY luns API
+  description: LunController Operations on luns
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - luns
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-luns-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-mapping-groups-api
+  name: XSKY mapping-groups API
+  description: MappingGroupController Operations able mapping groups
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - mapping-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-mapping-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-network-addresses-api
+  name: XSKY network-addresses API
+  description: NetworkAddressController Network Address Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - network-addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-network-addresses-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-network-diagnoses-api
+  name: XSKY network-diagnoses API
+  description: NetworkDiagnosisController provides API for network diagnosis
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - network-diagnoses
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-network-diagnoses-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-network-diagnosis-items-api
+  name: XSKY network-diagnosis-items API
+  description: NetworkDiagnosisItemController provides API for network diagnosis item
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - network-diagnosis-items
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-network-diagnosis-items-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-network-interfaces-api
+  name: XSKY network-interfaces API
+  description: NetworkInterfaceController Network Interface Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - network-interfaces
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-network-interfaces-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-nfs-gateway-bucket-maps-api
+  name: XSKY nfs-gateway-bucket-maps API
+  description: NFSGatewayBucketMapController provides API for object storage nfs gateway s3 bucket map
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - nfs-gateway-bucket-maps
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-nfs-gateway-bucket-maps-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-nfs-gateways-api
+  name: XSKY nfs-gateways API
+  description: NFSGatewayController provides API for object storage nfs gateway
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - nfs-gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-nfs-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-bucket-loggings-api
+  name: XSKY os-bucket-loggings API
+  description: OSBucketLoggingController API /os-bucket-loggings.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-bucket-loggings
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-bucket-loggings-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-buckets-api
+  name: XSKY os-buckets API
+  description: ObjectStorageBucketController provides API for object storage bucket
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-buckets
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-buckets-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-custom-labels-api
+  name: XSKY os-custom-labels API
+  description: OSCustomLabelController provides API for object storage custom label
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-custom-labels
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-custom-labels-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-external-storage-classes-api
+  name: XSKY os-external-storage-classes API
+  description: OSExternalStorageClassController API /os-extertal-storage-classes.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-external-storage-classes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-external-storage-classes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-gateways-api
+  name: XSKY os-gateways API
+  description: ObjectStorageGatewayController provides API for s3 gateway
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-keys-api
+  name: XSKY os-keys API
+  description: ObjectStorageKeyController provides API for object storage key
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-keys
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-keys-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-lifecycles-api
+  name: XSKY os-lifecycles API
+  description: ObjectStorageLifecycleController provides API for object storage lifecycle
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-lifecycles
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-lifecycles-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-objects-api
+  name: XSKY os-objects API
+  description: OSObjectController Object Storage Object Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-objects
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-objects-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-policies-api
+  name: XSKY os-policies API
+  description: ObjectStoragePolicyController provides API for object storage policy
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-remote-policies-api
+  name: XSKY os-remote-policies API
+  description: OSRemotePolicyController API /os-remote-policies
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-remote-policies
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-remote-policies-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-replication-paths-api
+  name: XSKY os-replication-paths API
+  description: OSReplicationPathController API /os-replication-paths.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-replication-paths
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-replication-paths-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-replication-zones-api
+  name: XSKY os-replication-zones API
+  description: OSReplicationZoneController API /os-replication-zones.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-replication-zones
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-replication-zones-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-samples-api
+  name: XSKY os-samples API
+  description: OSSampleController API /os-samples
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-samples
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-samples-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-search-engines-api
+  name: XSKY os-search-engines API
+  description: OSSearchEngineController provides APIs for OS search engine
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-search-engines
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-search-engines-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-search-gateways-api
+  name: XSKY os-search-gateways API
+  description: OSSearchGatewayController provides API for os search gateways
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-search-gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-search-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-storage-classes-api
+  name: XSKY os-storage-classes API
+  description: OSStorageClassController API /os-storage-classes.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-storage-classes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-storage-classes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-users-api
+  name: XSKY os-users API
+  description: ObjectStorageUserController provides API for object storage user
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-users
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-users-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-zone-locks-api
+  name: XSKY os-zone-locks API
+  description: OSZoneLockController API /os-zone-locks
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-zone-locks
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-zone-locks-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-zone-pairs-api
+  name: XSKY os-zone-pairs API
+  description: OSZonePairsController API /os-zone-pairs
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-zone-pairs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-zone-pairs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-zone-periods-api
+  name: XSKY os-zone-periods API
+  description: OSZonePeriodController API /os-zone-periods
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-zone-periods
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-zone-periods-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-zone-translogs-api
+  name: XSKY os-zone-translogs API
+  description: OSZoneTranslogController API /os-zone-translogs
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-zone-translogs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-zone-translogs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-os-zones-api
+  name: XSKY os-zones API
+  description: ObjectStorageZoneController API /os-zones
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - os-zones
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-os-zones-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-osd-groups-api
+  name: XSKY osd-groups API
+  description: OsdGroupController API /osd-groups
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - osd-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-osd-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-osds-api
+  name: XSKY osds API
+  description: OsdController Osd Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - osds
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-osds-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-partitions-api
+  name: XSKY partitions API
+  description: PartitionController API /partitions.
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - partitions
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-partitions-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-placement-nodes-api
+  name: XSKY placement-nodes API
+  description: PlacementNodeController provides API for placement node
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - placement-nodes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-placement-nodes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-pools-api
+  name: XSKY pools API
+  description: PoolController Operations about Pools
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - pools
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-pools-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-protection-domains-api
+  name: XSKY protection-domains API
+  description: ProtectionDomainController Protection Domain Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - protection-domains
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-protection-domains-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-remote-clusters-api
+  name: XSKY remote-clusters API
+  description: RemoteClusterController API /remote-clusters
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - remote-clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-remote-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-role-mappings-api
+  name: XSKY role-mappings API
+  description: RoleMappingController Role Mapping Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - role-mappings
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-role-mappings-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-s3-load-balancer-groups-api
+  name: XSKY s3-load-balancer-groups API
+  description: S3LoadBalancerGroupController API
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - s3-load-balancer-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-s3-load-balancer-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-s3-load-balancers-api
+  name: XSKY s3-load-balancers API
+  description: S3LoadBalancerController API
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - s3-load-balancers
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-s3-load-balancers-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-search-api
+  name: XSKY search API
+  description: SearchController defines search apis
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-search-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-search-capabilities-api
+  name: XSKY search-capabilities API
+  description: SearchCapabilityController defines search capability apis
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - search-capabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-search-capabilities-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-services-api
+  name: XSKY services API
+  description: ServiceController Disk Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - services
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-services-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-snmp-api
+  name: XSKY snmp API
+  description: SnmpController Operations able snmp
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - snmp
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-snmp-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-ssl-certificates-api
+  name: XSKY ssl-certificates API
+  description: SSLCertificateController API
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - ssl-certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-ssl-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-system-logs-api
+  name: XSKY system-logs API
+  description: SystemLogController provides API for system logs
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - system-logs
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-system-logs-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-targets-api
+  name: XSKY targets API
+  description: TargetController Operations able targets
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - targets
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-targets-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-tasks-api
+  name: XSKY tasks API
+  description: TaskController Task Management
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-trash-resources-api
+  name: XSKY trash-resources API
+  description: TrashResourceController Operations about Trash
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - trash-resources
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-trash-resources-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-trashes-api
+  name: XSKY trashes API
+  description: TrashController Operations about Trash
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - trashes
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-trashes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-users-api
+  name: XSKY users API
+  description: UserController Manage users
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-users-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-version-api
+  name: XSKY version API
+  description: VersionController Operations about Version
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - version
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-version-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-vip-groups-api
+  name: XSKY vip-groups API
+  description: VIPGroupController API /vip-groups
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - vip-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-vip-groups-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-vip-instances-api
+  name: XSKY vip-instances API
+  description: VIPInstanceController API /vip-instances
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - vip-instances
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-vip-instances-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-vips-api
+  name: XSKY vips API
+  description: VIPController API /vips
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - vips
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-vips-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-vm-flavors-api
+  name: XSKY vm-flavors API
+  description: VMFlavorController API /vm-flavors
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - vm-flavors
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-vm-flavors-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
+- aid: xsky:xsky-volume-dp-block-backup-policy-mappings-api
+  name: XSKY volume-dp-block-backup-policy-mappings API
+  description: VolumeDpBlockBackupPolicyMappingController API /volume-dp-block-backup-policy-mappings
+  humanURL: https://github.com/xsky-storage/go-sdk
+  baseURL: https://{xms-controller}/v1
+  tags:
+  - volume-dp-block-backup-policy-mappings
+  properties:
+  - type: OpenAPI
+    url: openapi/xsky-volume-dp-block-backup-policy-mappings-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/xsky-storage/go-sdk/tree/master/docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +1542,43 @@ maintainers:
 common:
 - type: Website
   url: https://xsky.com
+- type: Blog
+  url: https://www.xsky.com/en/about/news/
+- type: PrivacyPolicy
+  url: https://www.xsky.com/en/privacy/
+- type: Support
+  url: https://www.xsky.com/supports/
+- type: SignUp
+  url: https://www.xsky.com/en/evaluate/
+- type: GitHubOrganization
+  url: https://github.com/xsky-storage
+- type: Packages
+  url: packages/xsky-packages.yml
+- type: SDKs
+  url: packages/xsky-packages.yml
+- type: WellKnown
+  url: well-known/xsky-well-known.yml
+- type: MCPServer
+  url: mcp/xsky-mcp.yml
+- type: LLMsTxt
+  url: llms/xsky-llms.txt
+- type: Conformance
+  url: conformance/xsky-conformance.yml
+- type: ErrorCatalog
+  url: errors/xsky-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/xsky-lifecycle.yml
+- type: Deprecation
+  url: https://www.xsky.com/supports/product-lifecycle
+- type: Authentication
+  url: authentication/xsky-authentication.yml
+- type: DomainSecurity
+  url: security/xsky-domain-security.yml
+- type: Conventions
+  url: conventions/xsky-conventions.yml
+- type: CLI
+  url: cli/xsky-cli.yml
+- type: DataModel
+  url: data-model/xsky-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
