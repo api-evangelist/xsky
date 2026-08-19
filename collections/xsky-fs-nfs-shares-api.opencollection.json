@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-nfs-shares API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-nfs-shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSNFSShares",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-nfs-shares/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "fs nfs id"
+              },
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage gateway group id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List fs nfs sharess"
+        },
+        {
+          "info": {
+            "name": "CreateFSNFSShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-nfs-shares/"
+          },
+          "docs": "Create fs nfs shares"
+        },
+        {
+          "info": {
+            "name": "GetFSNFSShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-nfs-shares/:fs_nfs_share_id",
+            "params": [
+              {
+                "name": "fs_nfs_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Get fs nfs shares"
+        },
+        {
+          "info": {
+            "name": "DeleteFSNFSShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-nfs-shares/:fs_nfs_share_id",
+            "params": [
+              {
+                "name": "fs_nfs_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete fs nfs shares"
+        },
+        {
+          "info": {
+            "name": "AddFSNFSShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-nfs-shares/:fs_nfs_share_id:add-acls",
+            "params": [
+              {
+                "name": "fs_nfs_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs nfs shares id"
+              }
+            ]
+          },
+          "docs": "Add fs nfs shares acls"
+        },
+        {
+          "info": {
+            "name": "RemoveFSNFSShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-nfs-shares/:fs_nfs_share_id:remove-acls",
+            "params": [
+              {
+                "name": "fs_nfs_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs nfs shares id"
+              }
+            ]
+          },
+          "docs": "remove fs nfs shares acls"
+        },
+        {
+          "info": {
+            "name": "UpdateFSNFSShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-nfs-shares/:fs_nfs_share_id:update-acls",
+            "params": [
+              {
+                "name": "fs_nfs_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Update fs nfs share acls"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

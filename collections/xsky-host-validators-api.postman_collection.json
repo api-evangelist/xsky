@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "e63ec851-0aa0-427c-874d-db40f6e07737",
+      "name": "host-validators",
+      "description": {
+        "content": "HostValidatorController Host Validator Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e0e30240-34b9-4673-b3a7-ae82bcc87d3c",
+          "name": "Create Host Validator",
+          "request": {
+            "name": "Create Host Validator",
+            "description": {
+              "content": "Create host validator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "host-validators",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host_validator\": {\n    \"admin_ip\": \"<string>\",\n    \"host_roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"host_type\": \"<string>\",\n    \"gateway_ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"private_ip\": \"<string>\",\n    \"public_ip\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eda101b6-0e06-44bf-be2a-83b2cdf97549",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_validator\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"host_roles\": [\n      \"host_roles\",\n      \"host_roles\"\n    ],\n    \"admin_ip\": \"admin_ip\",\n    \"host_type\": \"host_type\",\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host_validator\": {\n    \"admin_ip\": \"string\",\n    \"create\": \"1993-08-07T13:19:03.093Z\",\n    \"gateway_ips\": [\n      \"string\",\n      \"string\"\n    ],\n    \"host_roles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"host_type\": \"string\",\n    \"id\": 8713,\n    \"private_ip\": \"string\",\n    \"public_ip\": \"string\",\n    \"report\": {},\n    \"status\": \"string\",\n    \"update\": \"1963-08-12T13:01:53.409Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25a50589-2f89-475c-a15c-67347773bca2",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_validator\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"host_roles\": [\n      \"host_roles\",\n      \"host_roles\"\n    ],\n    \"admin_ip\": \"admin_ip\",\n    \"host_type\": \"host_type\",\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0c3f3a8-a9d8-487f-bfbe-1e47fd70c590",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_validator\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"host_roles\": [\n      \"host_roles\",\n      \"host_roles\"\n    ],\n    \"admin_ip\": \"admin_ip\",\n    \"host_type\": \"host_type\",\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "045f53cb-294c-411a-bdb8-702978dea1e3",
+          "name": "Get Host Validator",
+          "request": {
+            "name": "Get Host Validator",
+            "description": {
+              "content": "Get host validator",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "host-validators",
+                ":host_validator_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "host_validator_id",
+                  "description": "(Required) host validator id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7fdf09bc-a4dc-44d4-b5b1-0f25f82b7783",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ":host_validator_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_validator_id",
+                      "description": "(Required) host validator id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host_validator\": {\n    \"admin_ip\": \"string\",\n    \"create\": \"1983-06-26T01:26:38.410Z\",\n    \"gateway_ips\": [\n      \"string\",\n      \"string\"\n    ],\n    \"host_roles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"host_type\": \"string\",\n    \"id\": 6556,\n    \"private_ip\": \"string\",\n    \"public_ip\": \"string\",\n    \"report\": {},\n    \"status\": \"string\",\n    \"update\": \"2007-11-26T14:31:41.116Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16b970a6-26a6-4c84-b3b7-a223179c0a17",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ":host_validator_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_validator_id",
+                      "description": "(Required) host validator id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d97d271-d848-426a-989c-f45b0918249c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-validators",
+                    ":host_validator_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_validator_id",
+                      "description": "(Required) host validator id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6e67ba32-1702-492b-9056-3928d031a9eb",
+    "name": "XMS access-paths host-validators API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

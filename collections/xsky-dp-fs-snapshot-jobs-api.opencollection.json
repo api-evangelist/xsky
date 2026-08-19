@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths dp-fs-snapshot-jobs API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dp-fs-snapshot-jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListDpFSSnapshotJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-fs-snapshot-jobs/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "fs folder"
+              },
+              {
+                "name": "fs_snapshot_id",
+                "value": "",
+                "type": "query",
+                "description": "fs snapshot"
+              },
+              {
+                "name": "dp_fs_snapshot_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "dp fs snapshot policy"
+              }
+            ]
+          },
+          "docs": "List dp fs snapshot jobs"
+        },
+        {
+          "info": {
+            "name": "GetDpFSSnapshotJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-fs-snapshot-jobs/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "Get dp fs snapshot job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

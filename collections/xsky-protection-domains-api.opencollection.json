@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths protection-domains API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "protection-domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListProtectionDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/protection-domains/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List protection domains"
+        },
+        {
+          "info": {
+            "name": "GetProtectionDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/protection-domains/:protection_domain_id",
+            "params": [
+              {
+                "name": "protection_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "protection domain id"
+              }
+            ]
+          },
+          "docs": "get protection domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

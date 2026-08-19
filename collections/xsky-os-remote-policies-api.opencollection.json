@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-remote-policies API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-remote-policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSRemotePolicies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-remote-policies/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "marker",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "query",
+                "description": "zone uuid"
+              }
+            ]
+          },
+          "docs": "List os remote policies"
+        },
+        {
+          "info": {
+            "name": "GetOSRemotePolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-remote-policies/:policy_uuid",
+            "params": [
+              {
+                "name": "policy_uuid",
+                "value": "",
+                "type": "path",
+                "description": "policy uuid"
+              }
+            ]
+          },
+          "docs": "Get a os remote policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

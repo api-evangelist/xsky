@@ -1,0 +1,1182 @@
+{
+  "item": [
+    {
+      "id": "35ade253-1a53-4c6a-9086-b31e3c09f5a5",
+      "name": "block-volume-group-snapshots",
+      "description": {
+        "content": "VolumeGroupSnapshotController Operations about volume group snapshot\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aedfd0cb-e8cf-471a-92ec-512cbba52857",
+          "name": "List Block Volume Group Snapshots",
+          "request": {
+            "name": "List Block Volume Group Snapshots",
+            "description": {
+              "content": "List block volume group snapshots",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-group-snapshots",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3262306-5394-4eff-ab32-4aabfe717f4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_group_snapshots\": [\n    {\n      \"block_snapshot_num\": 0,\n      \"cloned_block_volume_group_num\": 1,\n      \"block_volume_group\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"status\": \"status\"\n    },\n    {\n      \"block_snapshot_num\": 0,\n      \"cloned_block_volume_group_num\": 1,\n      \"block_volume_group\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "759bf577-a59a-4050-81ef-4e424d3f6c7b",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8b33f04-3b96-454d-b0ae-5f5cd7c4d8ab",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9efb9fbd-4191-4c84-a2d8-88da85c33dea",
+          "name": "Create Block Volume Group Snapshot",
+          "request": {
+            "name": "Create Block Volume Group Snapshot",
+            "description": {
+              "content": "Create block volume group snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-group-snapshots",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"block_volume_group_id\": \"<long>\",\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9023c18-0511-425d-bc42-b31db1a4426e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"block_volume_group_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_group_snapshot\": {\n    \"block_snapshot_num\": 0,\n    \"cloned_block_volume_group_num\": 1,\n    \"block_volume_group\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "189264d6-92d7-408f-af92-61975a5b2f72",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"block_volume_group_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_group_snapshot\": {\n    \"block_snapshot_num\": 0,\n    \"cloned_block_volume_group_num\": 1,\n    \"block_volume_group\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2adfc45-441d-458c-8254-bdc7ce7a11f5",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"block_volume_group_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5995e11d-8d1d-4ee8-ba68-83b3f1d2f9d6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"block_volume_group_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7554c053-5b90-4981-be0e-f45c54f9a474",
+          "name": "Get Block Volume Group Snapshot",
+          "request": {
+            "name": "Get Block Volume Group Snapshot",
+            "description": {
+              "content": "get block volume group snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-group-snapshots",
+                ":block_volume_group_snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "block_volume_group_snapshot_id",
+                  "description": "(Required) the block volume group snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7149dd6a-bb04-47c9-bdb6-e9758ef3e31e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshot\": {\n    \"cloned_block_volume_num\": 1,\n    \"creator\": \"creator\",\n    \"hidden\": true,\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"snap_name\": \"snap_name\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"allocated_size\": 0,\n    \"passive\": true,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"protected\": true,\n    \"size\": 7,\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"reserved\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"action_status\": \"action_status\",\n    \"block_volume_group_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3e1f271-2b23-4bf2-a25b-66e266b1a60e",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2782e9e1-cfb3-45b1-b52a-664b0e102a00",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07f25e85-de10-45e1-9be3-6154e94a7d6e",
+          "name": "Delete Block Volume Group Snapshot",
+          "request": {
+            "name": "Delete Block Volume Group Snapshot",
+            "description": {
+              "content": "Delete a block volume group snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-group-snapshots",
+                ":block_volume_group_snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "block_volume_group_snapshot_id",
+                  "description": "(Required) block volume group snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37aae72b-b19e-476e-8cf0-865dce44c632",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) block volume group snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_group_snapshot\": {\n    \"block_snapshot_num\": 0,\n    \"cloned_block_volume_group_num\": 1,\n    \"block_volume_group\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8e43dca-c446-4d17-afbc-beeb5de8cc10",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1b962a4-467a-4a49-bd54-a3729c594f0c",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c880295-ed9d-4e22-8e31-af7627f1b449",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbe0379e-3d8c-4c56-8d83-758ca3fce72b",
+          "name": "Update Block Volume Group Snapshot",
+          "request": {
+            "name": "Update Block Volume Group Snapshot",
+            "description": {
+              "content": "Update block volume group snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-group-snapshots",
+                ":block_volume_group_snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "block_volume_group_snapshot_id",
+                  "description": "(Required) the block volume group snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30aad644-7d99-4fc7-8b9e-90a6d212a283",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_group_snapshot\": {\n    \"block_snapshot_num\": 0,\n    \"cloned_block_volume_group_num\": 1,\n    \"block_volume_group\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09e4b95b-e5e7-4f48-83fc-011bf91abfab",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32dd7627-a54f-4471-aa6b-ee3660739714",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-group-snapshots",
+                    ":block_volume_group_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_group_snapshot_id",
+                      "description": "(Required) the block volume group snapshot id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_volume_group_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "588b5393-89a4-4cca-bfd4-dd33de5f09a8",
+    "name": "XMS access-paths block-volume-group-snapshots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

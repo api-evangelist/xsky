@@ -1,0 +1,1457 @@
+{
+  "item": [
+    {
+      "id": "00895957-31b8-48fb-800d-9e8ace124dcd",
+      "name": "os-users",
+      "description": {
+        "content": "ObjectStorageUserController provides API for object storage user\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b1bd2dd-d693-40f7-9d2a-a96298f1fab1",
+          "name": "List Object Storage Users",
+          "request": {
+            "name": "List Object Storage Users",
+            "description": {
+              "content": "List object storage users",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1991c5b-394f-41a1-934a-d77690abd4a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_users\": [\n    {\n      \"bucket_num\": 1157,\n      \"bucket_quota_max_objects\": 874,\n      \"bucket_quota_max_size\": 5196,\n      \"create\": \"1975-09-20T22:25:36.924Z\",\n      \"display_name\": \"string\",\n      \"email\": \"string\",\n      \"id\": 566,\n      \"location_constraint_enabled\": true,\n      \"max_buckets\": 8423,\n      \"name\": \"string\",\n      \"op_mask\": \"string\",\n      \"parent\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"policy\": {\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"policy_polling_enabled\": true,\n      \"properties\": {\n        \"area_code\": \"string\",\n        \"contact_person\": \"string\",\n        \"email\": \"string\",\n        \"mobile\": \"string\",\n        \"user_name\": \"string\",\n        \"user_type\": 6707\n      },\n      \"status\": \"string\",\n      \"suspended\": true,\n      \"update\": \"1948-06-19T07:14:52.499Z\",\n      \"user_quota_max_objects\": 3247,\n      \"user_quota_max_size\": 4682,\n      \"samples\": [\n        {\n          \"rx_ops_pm\": 5.637376656633329,\n          \"total_rx_ops\": 3,\n          \"allocated_objects\": 0,\n          \"allocated_size\": 6,\n          \"tx_ops_pm\": 1.4894159098541704,\n          \"total_tx_bytes\": 4,\n          \"total_rx_bytes\": 9,\n          \"total_tx_success_ops\": 1,\n          \"total_del_success_ops\": 7,\n          \"total_rx_success_ops\": 2,\n          \"total_del_ops\": 2,\n          \"total_tx_ops\": 7,\n          \"tx_bandwidth_kbyte\": 1.0246457001441578,\n          \"del_ops_pm\": 1.4658129805029452,\n          \"rx_bandwidth_kbyte\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"rx_ops_pm\": 5.637376656633329,\n          \"total_rx_ops\": 3,\n          \"allocated_objects\": 0,\n          \"allocated_size\": 6,\n          \"tx_ops_pm\": 1.4894159098541704,\n          \"total_tx_bytes\": 4,\n          \"total_rx_bytes\": 9,\n          \"total_tx_success_ops\": 1,\n          \"total_del_success_ops\": 7,\n          \"total_rx_success_ops\": 2,\n          \"total_del_ops\": 2,\n          \"total_tx_ops\": 7,\n          \"tx_bandwidth_kbyte\": 1.0246457001441578,\n          \"del_ops_pm\": 1.4658129805029452,\n          \"rx_bandwidth_kbyte\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ]\n    },\n    {\n      \"bucket_num\": 7095,\n      \"bucket_quota_max_objects\": 7583,\n      \"bucket_quota_max_size\": 7884,\n      \"create\": \"1979-04-02T19:36:02.136Z\",\n      \"display_name\": \"string\",\n      \"email\": \"string\",\n      \"id\": 2982,\n      \"location_constraint_enabled\": false,\n      \"max_buckets\": 5189,\n      \"name\": \"string\",\n      \"op_mask\": \"string\",\n      \"parent\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"policy\": {\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"policy_polling_enabled\": true,\n      \"properties\": {\n        \"area_code\": \"string\",\n        \"contact_person\": \"string\",\n        \"email\": \"string\",\n        \"mobile\": \"string\",\n        \"user_name\": \"string\",\n        \"user_type\": 1734\n      },\n      \"status\": \"string\",\n      \"suspended\": true,\n      \"update\": \"1961-07-17T00:59:22.699Z\",\n      \"user_quota_max_objects\": 5777,\n      \"user_quota_max_size\": 7291,\n      \"samples\": [\n        {\n          \"rx_ops_pm\": 5.637376656633329,\n          \"total_rx_ops\": 3,\n          \"allocated_objects\": 0,\n          \"allocated_size\": 6,\n          \"tx_ops_pm\": 1.4894159098541704,\n          \"total_tx_bytes\": 4,\n          \"total_rx_bytes\": 9,\n          \"total_tx_success_ops\": 1,\n          \"total_del_success_ops\": 7,\n          \"total_rx_success_ops\": 2,\n          \"total_del_ops\": 2,\n          \"total_tx_ops\": 7,\n          \"tx_bandwidth_kbyte\": 1.0246457001441578,\n          \"del_ops_pm\": 1.4658129805029452,\n          \"rx_bandwidth_kbyte\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"rx_ops_pm\": 5.637376656633329,\n          \"total_rx_ops\": 3,\n          \"allocated_objects\": 0,\n          \"allocated_size\": 6,\n          \"tx_ops_pm\": 1.4894159098541704,\n          \"total_tx_bytes\": 4,\n          \"total_rx_bytes\": 9,\n          \"total_tx_success_ops\": 1,\n          \"total_del_success_ops\": 7,\n          \"total_rx_success_ops\": 2,\n          \"total_del_ops\": 2,\n          \"total_tx_ops\": 7,\n          \"tx_bandwidth_kbyte\": 1.0246457001441578,\n          \"del_ops_pm\": 1.4658129805029452,\n          \"rx_bandwidth_kbyte\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fa660f6-294c-4daa-a0f1-807379fa3109",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d793c8b2-d0e6-4dbd-9559-f226d6c06949",
+          "name": "Create Object Storage User",
+          "request": {
+            "name": "Create Object Storage User",
+            "description": {
+              "content": "create object storage user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"os_user\": {\n    \"name\": \"<string>\",\n    \"bucket_quota_max_objects\": \"<long>\",\n    \"bucket_quota_max_size\": \"<long>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"keys\": [\n      {\n        \"access_key\": \"<string>\",\n        \"create\": \"<dateTime>\",\n        \"id\": \"<long>\",\n        \"reserved\": \"<boolean>\",\n        \"secret_key\": \"<string>\",\n        \"status\": \"<string>\",\n        \"type\": \"<string>\",\n        \"update\": \"<dateTime>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      },\n      {\n        \"access_key\": \"<string>\",\n        \"create\": \"<dateTime>\",\n        \"id\": \"<long>\",\n        \"reserved\": \"<boolean>\",\n        \"secret_key\": \"<string>\",\n        \"status\": \"<string>\",\n        \"type\": \"<string>\",\n        \"update\": \"<dateTime>\",\n        \"user\": {\n          \"id\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      }\n    ],\n    \"location_constraint_enabled\": \"<boolean>\",\n    \"max_buckets\": \"<long>\",\n    \"op_mask\": \"<string>\",\n    \"policy_id\": \"<long>\",\n    \"policy_polling_enabled\": \"<boolean>\",\n    \"properties\": {\n      \"area_code\": \"<string>\",\n      \"contact_person\": \"<string>\",\n      \"email\": \"<string>\",\n      \"mobile\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"user_type\": \"<long>\"\n    },\n    \"user_quota_max_objects\": \"<long>\",\n    \"user_quota_max_size\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b15b9bcb-1e2e-41a4-ac1c-cd8db2fa4386",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"keys\": [\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      },\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      }\n    ],\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 2,\n    \"display_name\": \"display_name\",\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 7\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user\": {\n    \"bucket_num\": 6733,\n    \"bucket_quota_max_objects\": 2963,\n    \"bucket_quota_max_size\": 8028,\n    \"create\": \"1993-09-20T01:22:55.272Z\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"id\": 4425,\n    \"location_constraint_enabled\": false,\n    \"max_buckets\": 8884,\n    \"name\": \"string\",\n    \"op_mask\": \"string\",\n    \"parent\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"policy\": {\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"policy_polling_enabled\": false,\n    \"properties\": {\n      \"area_code\": \"string\",\n      \"contact_person\": \"string\",\n      \"email\": \"string\",\n      \"mobile\": \"string\",\n      \"user_name\": \"string\",\n      \"user_type\": 9576\n    },\n    \"status\": \"string\",\n    \"suspended\": true,\n    \"update\": \"1959-12-02T22:41:26.013Z\",\n    \"user_quota_max_objects\": 5078,\n    \"user_quota_max_size\": 8862,\n    \"samples\": [\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f34a72c5-d879-4d53-9058-f980a607a2f6",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"keys\": [\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      },\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      }\n    ],\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 2,\n    \"display_name\": \"display_name\",\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 7\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18f45da1-8477-475d-a274-a0d00b13eb23",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"keys\": [\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      },\n      {\n        \"secret_key\": \"secret_key\",\n        \"reserved\": true,\n        \"access_key\": \"access_key\",\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 0,\n        \"type\": \"type\",\n        \"user\": {\n          \"name\": \"name\",\n          \"id\": 1\n        },\n        \"status\": \"status\"\n      }\n    ],\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 2,\n    \"display_name\": \"display_name\",\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"name\": \"name\",\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 7\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a614fc2-e9d3-4b6f-81e3-5174f6985755",
+          "name": "Get Object Storage User",
+          "request": {
+            "name": "Get Object Storage User",
+            "description": {
+              "content": "get object storage user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) user id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dbd671fb-04c0-40d9-b42f-7514cec9c151",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user\": {\n    \"bucket_num\": 6733,\n    \"bucket_quota_max_objects\": 2963,\n    \"bucket_quota_max_size\": 8028,\n    \"create\": \"1993-09-20T01:22:55.272Z\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"id\": 4425,\n    \"location_constraint_enabled\": false,\n    \"max_buckets\": 8884,\n    \"name\": \"string\",\n    \"op_mask\": \"string\",\n    \"parent\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"policy\": {\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"policy_polling_enabled\": false,\n    \"properties\": {\n      \"area_code\": \"string\",\n      \"contact_person\": \"string\",\n      \"email\": \"string\",\n      \"mobile\": \"string\",\n      \"user_name\": \"string\",\n      \"user_type\": 9576\n    },\n    \"status\": \"string\",\n    \"suspended\": true,\n    \"update\": \"1959-12-02T22:41:26.013Z\",\n    \"user_quota_max_objects\": 5078,\n    \"user_quota_max_size\": 8862,\n    \"samples\": [\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bc22524-40a6-4fe5-8de7-c7b0e2d43c1f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c6f3013-7f2e-40cf-aede-9e813cbe46b0",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9eafe5d-7c87-4d39-a96d-476adb5c89a7",
+          "name": "Delete Object Storage User",
+          "request": {
+            "name": "Delete Object Storage User",
+            "description": {
+              "content": "delete object storage user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) user id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e0120ca-e6b8-422c-ac4b-a4e1aa819d70",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user\": {\n    \"bucket_num\": 6733,\n    \"bucket_quota_max_objects\": 2963,\n    \"bucket_quota_max_size\": 8028,\n    \"create\": \"1993-09-20T01:22:55.272Z\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"id\": 4425,\n    \"location_constraint_enabled\": false,\n    \"max_buckets\": 8884,\n    \"name\": \"string\",\n    \"op_mask\": \"string\",\n    \"parent\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"policy\": {\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"policy_polling_enabled\": false,\n    \"properties\": {\n      \"area_code\": \"string\",\n      \"contact_person\": \"string\",\n      \"email\": \"string\",\n      \"mobile\": \"string\",\n      \"user_name\": \"string\",\n      \"user_type\": 9576\n    },\n    \"status\": \"string\",\n    \"suspended\": true,\n    \"update\": \"1959-12-02T22:41:26.013Z\",\n    \"user_quota_max_objects\": 5078,\n    \"user_quota_max_size\": 8862,\n    \"samples\": [\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ded2b310-710d-4cac-a5f6-b34ee68fe0b5",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d36451c-bfbf-4630-9ce7-8ee52fd78654",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2bd15a4-78ec-4821-ab5b-7dfa39f858a3",
+          "name": "Update Object Storage User",
+          "request": {
+            "name": "Update Object Storage User",
+            "description": {
+              "content": "update object storage user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) user id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": \"<long>\",\n    \"bucket_quota_max_size\": \"<long>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"location_constraint_enabled\": \"<boolean>\",\n    \"max_buckets\": \"<long>\",\n    \"op_mask\": \"<string>\",\n    \"policy_id\": \"<long>\",\n    \"policy_polling_enabled\": \"<boolean>\",\n    \"properties\": {\n      \"area_code\": \"<string>\",\n      \"contact_person\": \"<string>\",\n      \"email\": \"<string>\",\n      \"mobile\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"user_type\": \"<long>\"\n    },\n    \"suspended\": \"<boolean>\",\n    \"user_quota_max_objects\": \"<long>\",\n    \"user_quota_max_size\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9afb5bff-e7e6-433b-9431-47ec6ef7a288",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 5,\n    \"display_name\": \"display_name\",\n    \"suspended\": true,\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user\": {\n    \"bucket_num\": 6733,\n    \"bucket_quota_max_objects\": 2963,\n    \"bucket_quota_max_size\": 8028,\n    \"create\": \"1993-09-20T01:22:55.272Z\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"id\": 4425,\n    \"location_constraint_enabled\": false,\n    \"max_buckets\": 8884,\n    \"name\": \"string\",\n    \"op_mask\": \"string\",\n    \"parent\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"policy\": {\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"policy_polling_enabled\": false,\n    \"properties\": {\n      \"area_code\": \"string\",\n      \"contact_person\": \"string\",\n      \"email\": \"string\",\n      \"mobile\": \"string\",\n      \"user_name\": \"string\",\n      \"user_type\": 9576\n    },\n    \"status\": \"string\",\n    \"suspended\": true,\n    \"update\": \"1959-12-02T22:41:26.013Z\",\n    \"user_quota_max_objects\": 5078,\n    \"user_quota_max_size\": 8862,\n    \"samples\": [\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1b6242e-6a45-403c-923e-c010f3aa0413",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 5,\n    \"display_name\": \"display_name\",\n    \"suspended\": true,\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user\": {\n    \"bucket_num\": 6733,\n    \"bucket_quota_max_objects\": 2963,\n    \"bucket_quota_max_size\": 8028,\n    \"create\": \"1993-09-20T01:22:55.272Z\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"id\": 4425,\n    \"location_constraint_enabled\": false,\n    \"max_buckets\": 8884,\n    \"name\": \"string\",\n    \"op_mask\": \"string\",\n    \"parent\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"policy\": {\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"policy_polling_enabled\": false,\n    \"properties\": {\n      \"area_code\": \"string\",\n      \"contact_person\": \"string\",\n      \"email\": \"string\",\n      \"mobile\": \"string\",\n      \"user_name\": \"string\",\n      \"user_type\": 9576\n    },\n    \"status\": \"string\",\n    \"suspended\": true,\n    \"update\": \"1959-12-02T22:41:26.013Z\",\n    \"user_quota_max_objects\": 5078,\n    \"user_quota_max_size\": 8862,\n    \"samples\": [\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      {\n        \"rx_ops_pm\": 5.637376656633329,\n        \"total_rx_ops\": 3,\n        \"allocated_objects\": 0,\n        \"allocated_size\": 6,\n        \"tx_ops_pm\": 1.4894159098541704,\n        \"total_tx_bytes\": 4,\n        \"total_rx_bytes\": 9,\n        \"total_tx_success_ops\": 1,\n        \"total_del_success_ops\": 7,\n        \"total_rx_success_ops\": 2,\n        \"total_del_ops\": 2,\n        \"total_tx_ops\": 7,\n        \"tx_bandwidth_kbyte\": 1.0246457001441578,\n        \"del_ops_pm\": 1.4658129805029452,\n        \"rx_bandwidth_kbyte\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e243bc77-9941-4709-a796-8ad0a21f01b7",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 5,\n    \"display_name\": \"display_name\",\n    \"suspended\": true,\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75604804-6139-4cac-a4b2-5161bbfafbb0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 5,\n    \"display_name\": \"display_name\",\n    \"suspended\": true,\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18be7b22-2cbe-4a41-8e4f-ce4309ca0570",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_user\": {\n    \"bucket_quota_max_objects\": 0,\n    \"policy_id\": 5,\n    \"max_buckets\": 1,\n    \"op_mask\": \"op_mask\",\n    \"user_quota_max_objects\": 5,\n    \"display_name\": \"display_name\",\n    \"suspended\": true,\n    \"policy_polling_enabled\": true,\n    \"location_constraint_enabled\": true,\n    \"email\": \"email\",\n    \"properties\": {\n      \"user_type\": 5,\n      \"contact_person\": \"contact_person\",\n      \"user_name\": \"user_name\",\n      \"area_code\": \"area_code\",\n      \"mobile\": \"mobile\",\n      \"email\": \"email\"\n    },\n    \"bucket_quota_max_size\": 6,\n    \"user_quota_max_size\": 2\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eaa54d89-7416-46d5-ace1-676afa0aa405",
+          "name": "Get Object Storage User Samples",
+          "request": {
+            "name": "Get Object Storage User Samples",
+            "description": {
+              "content": "get an object storage user's Samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-users",
+                ":user_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "user_id",
+                  "description": "(Required) user id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "caff1814-7310-49cc-a346-2848d63abb89",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_user_samples\": [\n    {\n      \"rx_ops_pm\": 5.637376656633329,\n      \"total_rx_ops\": 3,\n      \"allocated_objects\": 0,\n      \"allocated_size\": 6,\n      \"tx_ops_pm\": 1.4894159098541704,\n      \"total_tx_bytes\": 4,\n      \"total_rx_bytes\": 9,\n      \"total_tx_success_ops\": 1,\n      \"total_del_success_ops\": 7,\n      \"total_rx_success_ops\": 2,\n      \"total_del_ops\": 2,\n      \"total_tx_ops\": 7,\n      \"tx_bandwidth_kbyte\": 1.0246457001441578,\n      \"del_ops_pm\": 1.4658129805029452,\n      \"rx_bandwidth_kbyte\": 5.962133916683182,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\"\n    },\n    {\n      \"rx_ops_pm\": 5.637376656633329,\n      \"total_rx_ops\": 3,\n      \"allocated_objects\": 0,\n      \"allocated_size\": 6,\n      \"tx_ops_pm\": 1.4894159098541704,\n      \"total_tx_bytes\": 4,\n      \"total_rx_bytes\": 9,\n      \"total_tx_success_ops\": 1,\n      \"total_del_success_ops\": 7,\n      \"total_rx_success_ops\": 2,\n      \"total_del_ops\": 2,\n      \"total_tx_ops\": 7,\n      \"tx_bandwidth_kbyte\": 1.0246457001441578,\n      \"del_ops_pm\": 1.4658129805029452,\n      \"rx_bandwidth_kbyte\": 5.962133916683182,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0444fe46-b8d2-4b42-b991-4af7d6f22932",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "363ecdd0-b8a4-47ec-b390-d099b66ad9e0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49ae3a09-8e63-44ac-94a0-0556616827ed",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-users",
+                    ":user_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "user_id",
+                      "description": "(Required) user id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "79f86505-edb5-4586-b1a2-78d705668782",
+    "name": "XMS access-paths os-users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

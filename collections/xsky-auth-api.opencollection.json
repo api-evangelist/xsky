@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths auth API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateRSAKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/rsa-keys"
+          },
+          "docs": "Create RSA key"
+        },
+        {
+          "info": {
+            "name": "GetAuthSecurityPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/security-policy"
+          },
+          "docs": "setup auth security policy"
+        },
+        {
+          "info": {
+            "name": "UpdateAuthSecurityPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/auth/security-policy"
+          },
+          "docs": "update auth security policy"
+        },
+        {
+          "info": {
+            "name": "CreateToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/tokens"
+          },
+          "docs": "creates temporary token for credentials"
+        },
+        {
+          "info": {
+            "name": "Login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/tokens:login"
+          },
+          "docs": "logs in"
+        },
+        {
+          "info": {
+            "name": "Logout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/tokens:logout"
+          },
+          "docs": "logs out"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

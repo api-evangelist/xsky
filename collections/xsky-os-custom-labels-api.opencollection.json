@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-custom-labels API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-custom-labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSCustomLabels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-custom-labels/",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "query",
+                "description": "bucket id"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "label category: meta, default, tagging"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List object storage custom labels"
+        },
+        {
+          "info": {
+            "name": "GetOSCustomLabel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-custom-labels/:os_custom_label_id",
+            "params": [
+              {
+                "name": "os_custom_label_id",
+                "value": "",
+                "type": "path",
+                "description": "os custom label id"
+              }
+            ]
+          },
+          "docs": "Get object storage custom label"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

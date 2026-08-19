@@ -1,0 +1,1794 @@
+{
+  "item": [
+    {
+      "id": "4b4bf3b4-7856-4916-bd35-509ad0244b93",
+      "name": "hosts",
+      "description": {
+        "content": "HostController Host Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ef8b86f-8de9-41f7-93e9-f683ae805ae3",
+          "name": "List Hosts",
+          "request": {
+            "name": "List Hosts",
+            "description": {
+              "content": "List hosts by fileter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "protection_domain_id",
+                  "value": "<long>",
+                  "description": "protection domain id"
+                },
+                {
+                  "disabled": false,
+                  "key": "hostname",
+                  "value": "<string>",
+                  "description": "host name"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "if it existed, value should be xdcactive"
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "filter by host role"
+                },
+                {
+                  "disabled": false,
+                  "key": "fc_available",
+                  "value": "<boolean>",
+                  "description": "available host with fc port"
+                },
+                {
+                  "disabled": false,
+                  "key": "replication_gateway_available",
+                  "value": "<boolean>",
+                  "description": "available host for replication gateway"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_gateway_group_id",
+                  "value": "<long>",
+                  "description": "file storage gateway group id"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_gateway_group_used",
+                  "value": "<boolean>",
+                  "description": "used in file storage gateway group"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed004ee0-3776-45b1-85fe-2ac690e2f392",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fc_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "replication_gateway_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fs_gateway_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_gateway_group_used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hosts\": [\n    {\n      \"admin_ip\": \"string\",\n      \"action_status\": \"string\",\n      \"clock_diff\": 7101,\n      \"cores\": 6262,\n      \"cpu_model\": \"string\",\n      \"create\": \"1963-10-04T12:49:05.383Z\",\n      \"description\": \"string\",\n      \"disk_num\": 7963,\n      \"fcports\": [\n        {\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 5,\n          \"wwn\": \"wwn\"\n        },\n        {\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 5,\n          \"wwn\": \"wwn\"\n        }\n      ],\n      \"gateway_ips\": \"string\",\n      \"id\": 5379,\n      \"is_master_db\": true,\n      \"memory_kbyte\": 4421,\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"os\": \"string\",\n      \"private_ip\": \"string\",\n      \"protection_domain\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"public_ips\": \"string\",\n      \"rack\": \"string\",\n      \"roles\": \"string\",\n      \"root_disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"up\": false,\n      \"update\": \"1955-04-24T18:20:16.661Z\",\n      \"vendor\": \"string\",\n      \"samples\": [\n        {\n          \"network_tx_error_pps\": 6.683562403749608,\n          \"meta_mon_used_kbyte\": 7.386281948385884,\n          \"meta_postgres_used_kbyte\": 1.2315135367772556,\n          \"network_drop_pps\": 1.4894159098541704,\n          \"network_tx_pps\": 8.762042012749001,\n          \"load5min\": 2.3021358869347655,\n          \"meta_docker_used_kbyte\": 9.301444243932576,\n          \"network_error_pps\": 6.84685269835264,\n          \"network_rx_pps\": 5.025004791520295,\n          \"page_paging_ps\": 9.018348186070783,\n          \"load1min\": 5.637376656633329,\n          \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"cpu_util\": 6.027456183070403,\n          \"context_switch_ps\": 0.8008281904610115,\n          \"network_rx_error_pps\": 4.965218492984954,\n          \"network_rx_drop_pps\": 1.1730742509559433,\n          \"load15min\": 5.962133916683182,\n          \"mem_usage_percent\": 7.061401241503109,\n          \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n          \"interrupts_ps\": 1.4658129805029452,\n          \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n          \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n          \"meta_log_used_kbyte\": 4.145608029883936,\n          \"meta_etcd_used_kbyte\": 2.027123023002322,\n          \"network_tx_drop_pps\": 9.369310271410669\n        },\n        {\n          \"network_tx_error_pps\": 6.683562403749608,\n          \"meta_mon_used_kbyte\": 7.386281948385884,\n          \"meta_postgres_used_kbyte\": 1.2315135367772556,\n          \"network_drop_pps\": 1.4894159098541704,\n          \"network_tx_pps\": 8.762042012749001,\n          \"load5min\": 2.3021358869347655,\n          \"meta_docker_used_kbyte\": 9.301444243932576,\n          \"network_error_pps\": 6.84685269835264,\n          \"network_rx_pps\": 5.025004791520295,\n          \"page_paging_ps\": 9.018348186070783,\n          \"load1min\": 5.637376656633329,\n          \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"cpu_util\": 6.027456183070403,\n          \"context_switch_ps\": 0.8008281904610115,\n          \"network_rx_error_pps\": 4.965218492984954,\n          \"network_rx_drop_pps\": 1.1730742509559433,\n          \"load15min\": 5.962133916683182,\n          \"mem_usage_percent\": 7.061401241503109,\n          \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n          \"interrupts_ps\": 1.4658129805029452,\n          \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n          \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n          \"meta_log_used_kbyte\": 4.145608029883936,\n          \"meta_etcd_used_kbyte\": 2.027123023002322,\n          \"network_tx_drop_pps\": 9.369310271410669\n        }\n      ]\n    },\n    {\n      \"admin_ip\": \"string\",\n      \"action_status\": \"string\",\n      \"clock_diff\": 5098,\n      \"cores\": 6741,\n      \"cpu_model\": \"string\",\n      \"create\": \"2016-01-02T16:52:18.562Z\",\n      \"description\": \"string\",\n      \"disk_num\": 9935,\n      \"fcports\": [\n        {\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 5,\n          \"wwn\": \"wwn\"\n        },\n        {\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 5,\n          \"wwn\": \"wwn\"\n        }\n      ],\n      \"gateway_ips\": \"string\",\n      \"id\": 663,\n      \"is_master_db\": false,\n      \"memory_kbyte\": 4584,\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"os\": \"string\",\n      \"private_ip\": \"string\",\n      \"protection_domain\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"public_ips\": \"string\",\n      \"rack\": \"string\",\n      \"roles\": \"string\",\n      \"root_disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"up\": false,\n      \"update\": \"2016-04-29T08:22:03.806Z\",\n      \"vendor\": \"string\",\n      \"samples\": [\n        {\n          \"network_tx_error_pps\": 6.683562403749608,\n          \"meta_mon_used_kbyte\": 7.386281948385884,\n          \"meta_postgres_used_kbyte\": 1.2315135367772556,\n          \"network_drop_pps\": 1.4894159098541704,\n          \"network_tx_pps\": 8.762042012749001,\n          \"load5min\": 2.3021358869347655,\n          \"meta_docker_used_kbyte\": 9.301444243932576,\n          \"network_error_pps\": 6.84685269835264,\n          \"network_rx_pps\": 5.025004791520295,\n          \"page_paging_ps\": 9.018348186070783,\n          \"load1min\": 5.637376656633329,\n          \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"cpu_util\": 6.027456183070403,\n          \"context_switch_ps\": 0.8008281904610115,\n          \"network_rx_error_pps\": 4.965218492984954,\n          \"network_rx_drop_pps\": 1.1730742509559433,\n          \"load15min\": 5.962133916683182,\n          \"mem_usage_percent\": 7.061401241503109,\n          \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n          \"interrupts_ps\": 1.4658129805029452,\n          \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n          \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n          \"meta_log_used_kbyte\": 4.145608029883936,\n          \"meta_etcd_used_kbyte\": 2.027123023002322,\n          \"network_tx_drop_pps\": 9.369310271410669\n        },\n        {\n          \"network_tx_error_pps\": 6.683562403749608,\n          \"meta_mon_used_kbyte\": 7.386281948385884,\n          \"meta_postgres_used_kbyte\": 1.2315135367772556,\n          \"network_drop_pps\": 1.4894159098541704,\n          \"network_tx_pps\": 8.762042012749001,\n          \"load5min\": 2.3021358869347655,\n          \"meta_docker_used_kbyte\": 9.301444243932576,\n          \"network_error_pps\": 6.84685269835264,\n          \"network_rx_pps\": 5.025004791520295,\n          \"page_paging_ps\": 9.018348186070783,\n          \"load1min\": 5.637376656633329,\n          \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"cpu_util\": 6.027456183070403,\n          \"context_switch_ps\": 0.8008281904610115,\n          \"network_rx_error_pps\": 4.965218492984954,\n          \"network_rx_drop_pps\": 1.1730742509559433,\n          \"load15min\": 5.962133916683182,\n          \"mem_usage_percent\": 7.061401241503109,\n          \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n          \"interrupts_ps\": 1.4658129805029452,\n          \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n          \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n          \"meta_log_used_kbyte\": 4.145608029883936,\n          \"meta_etcd_used_kbyte\": 2.027123023002322,\n          \"network_tx_drop_pps\": 9.369310271410669\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfee55d6-770f-4697-be43-84ce981243fe",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fc_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "replication_gateway_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fs_gateway_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_gateway_group_used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93928574-d631-431c-9882-fe567ed5b2b2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "hostname",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fc_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "replication_gateway_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fs_gateway_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_gateway_group_used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "180661c1-9c08-419d-9497-e95552f7238c",
+          "name": "Create Host",
+          "request": {
+            "name": "Create Host",
+            "description": {
+              "content": "check env and install packages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host\": {\n    \"admin_ip\": \"<string>\",\n    \"description\": \"<string>\",\n    \"gateway_ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"meta_device\": \"<string>\",\n    \"private_ip\": \"<string>\",\n    \"protection_domain_id\": \"<long>\",\n    \"public_ip\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09a8e3c5-5869-4dab-a3fa-da757ff892fc",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\",\n    \"meta_device\": \"meta_device\",\n    \"admin_ip\": \"admin_ip\",\n    \"type\": \"type\",\n    \"protection_domain_id\": 0,\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host\": {\n    \"admin_ip\": \"string\",\n    \"action_status\": \"string\",\n    \"clock_diff\": 6845,\n    \"cores\": 1954,\n    \"cpu_model\": \"string\",\n    \"create\": \"2011-05-20T11:08:06.236Z\",\n    \"description\": \"string\",\n    \"disk_num\": 9112,\n    \"fcports\": [\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      },\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      }\n    ],\n    \"gateway_ips\": \"string\",\n    \"id\": 8433,\n    \"is_master_db\": false,\n    \"memory_kbyte\": 5291,\n    \"model\": \"string\",\n    \"name\": \"string\",\n    \"os\": \"string\",\n    \"private_ip\": \"string\",\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"public_ips\": \"string\",\n    \"rack\": \"string\",\n    \"roles\": \"string\",\n    \"root_disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1960-10-30T09:08:22.464Z\",\n    \"vendor\": \"string\",\n    \"samples\": [\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      },\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "496747e1-eb61-43f0-957d-dca0be227451",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\",\n    \"meta_device\": \"meta_device\",\n    \"admin_ip\": \"admin_ip\",\n    \"type\": \"type\",\n    \"protection_domain_id\": 0,\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "843762ce-213b-493e-8507-5f1208bb8dc1",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\",\n    \"meta_device\": \"meta_device\",\n    \"admin_ip\": \"admin_ip\",\n    \"type\": \"type\",\n    \"protection_domain_id\": 0,\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4925295-2cc6-4a4f-9598-ffdab7604798",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"gateway_ips\": [\n      \"gateway_ips\",\n      \"gateway_ips\"\n    ],\n    \"public_ip\": \"public_ip\",\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\",\n    \"meta_device\": \"meta_device\",\n    \"admin_ip\": \"admin_ip\",\n    \"type\": \"type\",\n    \"protection_domain_id\": 0,\n    \"private_ip\": \"private_ip\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6abc2dc-3e53-4737-acb9-e072e3336278",
+          "name": "Get Host",
+          "request": {
+            "name": "Get Host",
+            "description": {
+              "content": "get a host info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ":host_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "host_id",
+                  "description": "(Required) the host id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9753c4ef-fd02-4894-9745-01478fd4af3f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) the host id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host\": {\n    \"admin_ip\": \"string\",\n    \"action_status\": \"string\",\n    \"clock_diff\": 6845,\n    \"cores\": 1954,\n    \"cpu_model\": \"string\",\n    \"create\": \"2011-05-20T11:08:06.236Z\",\n    \"description\": \"string\",\n    \"disk_num\": 9112,\n    \"fcports\": [\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      },\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      }\n    ],\n    \"gateway_ips\": \"string\",\n    \"id\": 8433,\n    \"is_master_db\": false,\n    \"memory_kbyte\": 5291,\n    \"model\": \"string\",\n    \"name\": \"string\",\n    \"os\": \"string\",\n    \"private_ip\": \"string\",\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"public_ips\": \"string\",\n    \"rack\": \"string\",\n    \"roles\": \"string\",\n    \"root_disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1960-10-30T09:08:22.464Z\",\n    \"vendor\": \"string\",\n    \"samples\": [\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      },\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1616a7cf-3252-492b-91b1-8997173448a7",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) the host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2859f742-4a04-4ba2-bc7a-e8a5583d03ca",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) the host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcd42a31-d5b5-4810-832a-2b94a760dc91",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) the host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a679f74-1ef9-4345-8865-c97e693a84ca",
+          "name": "Delete Host",
+          "request": {
+            "name": "Delete Host",
+            "description": {
+              "content": "delete host",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ":host_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "force delete or not"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "host_id",
+                  "description": "(Required) host id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2865ed4-a886-4844-965c-3797ea3b3981",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host\": {\n    \"admin_ip\": \"string\",\n    \"action_status\": \"string\",\n    \"clock_diff\": 6845,\n    \"cores\": 1954,\n    \"cpu_model\": \"string\",\n    \"create\": \"2011-05-20T11:08:06.236Z\",\n    \"description\": \"string\",\n    \"disk_num\": 9112,\n    \"fcports\": [\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      },\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      }\n    ],\n    \"gateway_ips\": \"string\",\n    \"id\": 8433,\n    \"is_master_db\": false,\n    \"memory_kbyte\": 5291,\n    \"model\": \"string\",\n    \"name\": \"string\",\n    \"os\": \"string\",\n    \"private_ip\": \"string\",\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"public_ips\": \"string\",\n    \"rack\": \"string\",\n    \"roles\": \"string\",\n    \"root_disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1960-10-30T09:08:22.464Z\",\n    \"vendor\": \"string\",\n    \"samples\": [\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      },\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc0d6f1c-269e-4980-8c90-2f4b0f379868",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74774ad3-3ef8-4892-9877-ffd7b2959fb1",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a24b2177-6c73-4604-ad96-9c907048ffe2",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd9eda03-45d2-4831-8606-454bca4966d2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e32f33f-2d8f-4528-8d07-8edec3f7d746",
+          "name": "Update Host",
+          "request": {
+            "name": "Update Host",
+            "description": {
+              "content": "update host info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ":host_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "host_id",
+                  "description": "(Required) host id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host\": {\n    \"description\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26020a3c-8275-4033-8e4c-2f20147673a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host\": {\n    \"admin_ip\": \"string\",\n    \"action_status\": \"string\",\n    \"clock_diff\": 6845,\n    \"cores\": 1954,\n    \"cpu_model\": \"string\",\n    \"create\": \"2011-05-20T11:08:06.236Z\",\n    \"description\": \"string\",\n    \"disk_num\": 9112,\n    \"fcports\": [\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      },\n      {\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"wwn\": \"wwn\"\n      }\n    ],\n    \"gateway_ips\": \"string\",\n    \"id\": 8433,\n    \"is_master_db\": false,\n    \"memory_kbyte\": 5291,\n    \"model\": \"string\",\n    \"name\": \"string\",\n    \"os\": \"string\",\n    \"private_ip\": \"string\",\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"public_ips\": \"string\",\n    \"rack\": \"string\",\n    \"roles\": \"string\",\n    \"root_disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1960-10-30T09:08:22.464Z\",\n    \"vendor\": \"string\",\n    \"samples\": [\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      },\n      {\n        \"network_tx_error_pps\": 6.683562403749608,\n        \"meta_mon_used_kbyte\": 7.386281948385884,\n        \"meta_postgres_used_kbyte\": 1.2315135367772556,\n        \"network_drop_pps\": 1.4894159098541704,\n        \"network_tx_pps\": 8.762042012749001,\n        \"load5min\": 2.3021358869347655,\n        \"meta_docker_used_kbyte\": 9.301444243932576,\n        \"network_error_pps\": 6.84685269835264,\n        \"network_rx_pps\": 5.025004791520295,\n        \"page_paging_ps\": 9.018348186070783,\n        \"load1min\": 5.637376656633329,\n        \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"cpu_util\": 6.027456183070403,\n        \"context_switch_ps\": 0.8008281904610115,\n        \"network_rx_error_pps\": 4.965218492984954,\n        \"network_rx_drop_pps\": 1.1730742509559433,\n        \"load15min\": 5.962133916683182,\n        \"mem_usage_percent\": 7.061401241503109,\n        \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n        \"interrupts_ps\": 1.4658129805029452,\n        \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n        \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n        \"meta_log_used_kbyte\": 4.145608029883936,\n        \"meta_etcd_used_kbyte\": 2.027123023002322,\n        \"network_tx_drop_pps\": 9.369310271410669\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6802890-6f36-4f93-bfd9-dd36c8b542d4",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "feade187-ebd3-495d-a698-91c7cc81e736",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dc560a7-0f63-467f-818a-0c7a4f9528b4",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host\": {\n    \"roles\": [\n      \"roles\",\n      \"roles\"\n    ],\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f982e1a-68c8-436d-a4af-763610c96af9",
+          "name": "Get Host Samples",
+          "request": {
+            "name": "Get Host Samples",
+            "description": {
+              "content": "get a host's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ":host_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "host_id",
+                  "description": "(Required) host id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bda38c2a-4d82-4170-9184-ca6d4988b6d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host_samples\": [\n    {\n      \"network_tx_error_pps\": 6.683562403749608,\n      \"meta_mon_used_kbyte\": 7.386281948385884,\n      \"meta_postgres_used_kbyte\": 1.2315135367772556,\n      \"network_drop_pps\": 1.4894159098541704,\n      \"network_tx_pps\": 8.762042012749001,\n      \"load5min\": 2.3021358869347655,\n      \"meta_docker_used_kbyte\": 9.301444243932576,\n      \"network_error_pps\": 6.84685269835264,\n      \"network_rx_pps\": 5.025004791520295,\n      \"page_paging_ps\": 9.018348186070783,\n      \"load1min\": 5.637376656633329,\n      \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"cpu_util\": 6.027456183070403,\n      \"context_switch_ps\": 0.8008281904610115,\n      \"network_rx_error_pps\": 4.965218492984954,\n      \"network_rx_drop_pps\": 1.1730742509559433,\n      \"load15min\": 5.962133916683182,\n      \"mem_usage_percent\": 7.061401241503109,\n      \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n      \"interrupts_ps\": 1.4658129805029452,\n      \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n      \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n      \"meta_log_used_kbyte\": 4.145608029883936,\n      \"meta_etcd_used_kbyte\": 2.027123023002322,\n      \"network_tx_drop_pps\": 9.369310271410669\n    },\n    {\n      \"network_tx_error_pps\": 6.683562403749608,\n      \"meta_mon_used_kbyte\": 7.386281948385884,\n      \"meta_postgres_used_kbyte\": 1.2315135367772556,\n      \"network_drop_pps\": 1.4894159098541704,\n      \"network_tx_pps\": 8.762042012749001,\n      \"load5min\": 2.3021358869347655,\n      \"meta_docker_used_kbyte\": 9.301444243932576,\n      \"network_error_pps\": 6.84685269835264,\n      \"network_rx_pps\": 5.025004791520295,\n      \"page_paging_ps\": 9.018348186070783,\n      \"load1min\": 5.637376656633329,\n      \"network_rx_bandwidth_kbyte\": 7.457744773683766,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"cpu_util\": 6.027456183070403,\n      \"context_switch_ps\": 0.8008281904610115,\n      \"network_rx_error_pps\": 4.965218492984954,\n      \"network_rx_drop_pps\": 1.1730742509559433,\n      \"load15min\": 5.962133916683182,\n      \"mem_usage_percent\": 7.061401241503109,\n      \"meta_elasticsearch_used_kbyte\": 3.616076749251911,\n      \"interrupts_ps\": 1.4658129805029452,\n      \"meta_prometheus_used_kbyte\": 1.0246457001441578,\n      \"network_tx_bandwidth_kbyte\": 9.965781217890562,\n      \"meta_log_used_kbyte\": 4.145608029883936,\n      \"meta_etcd_used_kbyte\": 2.027123023002322,\n      \"network_tx_drop_pps\": 9.369310271410669\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d69736f-25d0-4ade-ac45-cc67876c9302",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4ca9ffd-ff37-46e7-a10f-a5c143db236d",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93228803-711c-4007-af33-984ce5ffe8b2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":host_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "host_id",
+                      "description": "(Required) host id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc6f871a-0481-4210-b7bf-e866c62f8a1f",
+    "name": "XMS access-paths hosts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

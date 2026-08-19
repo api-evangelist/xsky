@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-quota-trees API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-quota-trees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListQuotaTrees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-quota-trees/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage folder id"
+              }
+            ]
+          },
+          "docs": "List file storage quota trees"
+        },
+        {
+          "info": {
+            "name": "GetQuotaTree",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-quota-trees/:fs_quota_tree_id",
+            "params": [
+              {
+                "name": "fs_quota_tree_id",
+                "value": "",
+                "type": "path",
+                "description": "quota tree id"
+              }
+            ]
+          },
+          "docs": "Get file storage quota tree"
+        },
+        {
+          "info": {
+            "name": "UpdateQuotaTree",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-quota-trees/:fs_quota_tree_id",
+            "params": [
+              {
+                "name": "fs_quota_tree_id",
+                "value": "",
+                "type": "path",
+                "description": "quota tree id"
+              }
+            ]
+          },
+          "docs": "Update file storage quota tree"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

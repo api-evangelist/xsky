@@ -1,0 +1,1199 @@
+{
+  "item": [
+    {
+      "id": "ff2e351a-7376-4c84-bd81-8b5c5762076a",
+      "name": "ssl-certificates",
+      "description": {
+        "content": "SSLCertificateController API\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca07ff4c-3c1e-4c36-88e1-f5c691adc742",
+          "name": "List SSL Certificates",
+          "request": {
+            "name": "List SSL Certificates",
+            "description": {
+              "content": "List certificates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl-certificates",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06e5e04b-a4af-4ee0-90fa-1a5e3da470f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificates\": [\n    {\n      \"create\": \"1979-10-16T21:25:52.939Z\",\n      \"description\": \"string\",\n      \"enabled\": true,\n      \"force_https\": true,\n      \"id\": 4549,\n      \"issuer\": {},\n      \"name\": \"string\",\n      \"not_after\": \"1959-07-30T16:43:54.052Z\",\n      \"not_before\": \"1984-09-11T01:49:34.802Z\",\n      \"public_key_algorithm\": \"string\",\n      \"raw_certificate\": \"string\",\n      \"signature_algorithm\": \"string\",\n      \"status\": \"string\",\n      \"subject\": {},\n      \"type\": \"string\",\n      \"update\": \"1997-07-24T07:15:55.623Z\",\n      \"version\": 7841\n    },\n    {\n      \"create\": \"1995-12-28T09:47:17.193Z\",\n      \"description\": \"string\",\n      \"enabled\": true,\n      \"force_https\": false,\n      \"id\": 4553,\n      \"issuer\": {},\n      \"name\": \"string\",\n      \"not_after\": \"1972-04-15T01:11:17.993Z\",\n      \"not_before\": \"1956-07-25T21:14:53.031Z\",\n      \"public_key_algorithm\": \"string\",\n      \"raw_certificate\": \"string\",\n      \"signature_algorithm\": \"string\",\n      \"status\": \"string\",\n      \"subject\": {},\n      \"type\": \"string\",\n      \"update\": \"2006-10-20T11:41:08.881Z\",\n      \"version\": 5437\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca006b9a-f124-4ab0-9dd3-a00cbb839033",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d91eb73c-40ec-4e57-85a3-406736e8dfa0",
+          "name": "Create SSL Certificate",
+          "request": {
+            "name": "Create SSL Certificate",
+            "description": {
+              "content": "Create ssl certificate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl-certificates",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ssl_certificate\": {\n    \"certificate\": \"<string>\",\n    \"name\": \"<string>\",\n    \"private_key\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b87c312-54e4-4a1d-baf8-faeace15e43a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"certificate\": \"<string>\",\n    \"name\": \"<string>\",\n    \"private_key\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificate\": {\n    \"create\": \"1953-01-03T20:50:16.924Z\",\n    \"description\": \"string\",\n    \"enabled\": true,\n    \"force_https\": false,\n    \"id\": 7351,\n    \"issuer\": {},\n    \"name\": \"string\",\n    \"not_after\": \"1984-04-20T22:41:57.654Z\",\n    \"not_before\": \"1949-12-22T22:58:50.494Z\",\n    \"public_key_algorithm\": \"string\",\n    \"raw_certificate\": \"string\",\n    \"signature_algorithm\": \"string\",\n    \"status\": \"string\",\n    \"subject\": {},\n    \"type\": \"string\",\n    \"update\": \"1961-10-29T20:57:27.343Z\",\n    \"version\": 1394\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "598bd28c-2240-4de7-824d-6dfe698dd636",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"certificate\": \"<string>\",\n    \"name\": \"<string>\",\n    \"private_key\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73a950cf-1098-4fd3-b32d-16b6c78ed6ce",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"certificate\": \"<string>\",\n    \"name\": \"<string>\",\n    \"private_key\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02a4b0c9-8b03-4422-88d2-e85bebfed004",
+          "name": "Get SSL Certificate",
+          "request": {
+            "name": "Get SSL Certificate",
+            "description": {
+              "content": "Get certificates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl-certificates",
+                ":certificate_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "certificate_id",
+                  "description": "(Required) certificate id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "380a5229-4efa-4fbe-bba8-ef63c5962a0b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificate\": {\n    \"create\": \"1953-01-03T20:50:16.924Z\",\n    \"description\": \"string\",\n    \"enabled\": true,\n    \"force_https\": false,\n    \"id\": 7351,\n    \"issuer\": {},\n    \"name\": \"string\",\n    \"not_after\": \"1984-04-20T22:41:57.654Z\",\n    \"not_before\": \"1949-12-22T22:58:50.494Z\",\n    \"public_key_algorithm\": \"string\",\n    \"raw_certificate\": \"string\",\n    \"signature_algorithm\": \"string\",\n    \"status\": \"string\",\n    \"subject\": {},\n    \"type\": \"string\",\n    \"update\": \"1961-10-29T20:57:27.343Z\",\n    \"version\": 1394\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78d02164-bf21-4e47-9317-331ac6c98340",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "771f0a12-acd8-4ea4-8ee2-51f5ea6f4ecb",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2003c5d1-ca19-4d98-abd8-9be89b6b8cd2",
+          "name": "Delete SSL Certificate",
+          "request": {
+            "name": "Delete SSL Certificate",
+            "description": {
+              "content": "Delete ssl certificate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl-certificates",
+                ":certificate_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "certificate_id",
+                  "description": "(Required) certificate id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "855c06a8-dca1-435c-acaf-dbec70c15fdd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificate\": {\n    \"create\": \"1953-01-03T20:50:16.924Z\",\n    \"description\": \"string\",\n    \"enabled\": true,\n    \"force_https\": false,\n    \"id\": 7351,\n    \"issuer\": {},\n    \"name\": \"string\",\n    \"not_after\": \"1984-04-20T22:41:57.654Z\",\n    \"not_before\": \"1949-12-22T22:58:50.494Z\",\n    \"public_key_algorithm\": \"string\",\n    \"raw_certificate\": \"string\",\n    \"signature_algorithm\": \"string\",\n    \"status\": \"string\",\n    \"subject\": {},\n    \"type\": \"string\",\n    \"update\": \"1961-10-29T20:57:27.343Z\",\n    \"version\": 1394\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8363fc81-8887-455d-9b2c-07278fa19dac",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f97a26c-2c0e-453b-b75f-79651a256f28",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c70deb16-d50c-40bf-a135-deab897c5ec6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b49cad14-b484-4b97-b823-7479a47cb3e7",
+          "name": "Update SSL Certificate",
+          "request": {
+            "name": "Update SSL Certificate",
+            "description": {
+              "content": "Update ssl certificate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssl-certificates",
+                ":certificate_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "certificate_id",
+                  "description": "(Required) certificate id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "229fad63-0c5d-4d98-9f76-5bb5dc1202ef",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificate\": {\n    \"create\": \"1953-01-03T20:50:16.924Z\",\n    \"description\": \"string\",\n    \"enabled\": true,\n    \"force_https\": false,\n    \"id\": 7351,\n    \"issuer\": {},\n    \"name\": \"string\",\n    \"not_after\": \"1984-04-20T22:41:57.654Z\",\n    \"not_before\": \"1949-12-22T22:58:50.494Z\",\n    \"public_key_algorithm\": \"string\",\n    \"raw_certificate\": \"string\",\n    \"signature_algorithm\": \"string\",\n    \"status\": \"string\",\n    \"subject\": {},\n    \"type\": \"string\",\n    \"update\": \"1961-10-29T20:57:27.343Z\",\n    \"version\": 1394\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "720ef777-2d21-42a3-81f4-edd392fa6d4a",
+              "name": "Accept",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssl_certificate\": {\n    \"create\": \"1953-01-03T20:50:16.924Z\",\n    \"description\": \"string\",\n    \"enabled\": true,\n    \"force_https\": false,\n    \"id\": 7351,\n    \"issuer\": {},\n    \"name\": \"string\",\n    \"not_after\": \"1984-04-20T22:41:57.654Z\",\n    \"not_before\": \"1949-12-22T22:58:50.494Z\",\n    \"public_key_algorithm\": \"string\",\n    \"raw_certificate\": \"string\",\n    \"signature_algorithm\": \"string\",\n    \"status\": \"string\",\n    \"subject\": {},\n    \"type\": \"string\",\n    \"update\": \"1961-10-29T20:57:27.343Z\",\n    \"version\": 1394\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b72ac9e2-a25b-4b69-9081-ca337d9c557b",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3febb9ee-f9c6-4066-86ef-baa436859f07",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a80b9170-6552-46a1-bbcb-b0df1d270fd8",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssl-certificates",
+                    ":certificate_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "certificate_id",
+                      "description": "(Required) certificate id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssl_certificate\": {\n    \"description\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"force_https\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d92e640c-13c3-4598-af67-aaeda6bb1074",
+    "name": "XMS access-paths ssl-certificates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths s3-load-balancer-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "s3-load-balancer-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListS3LoadBalancerGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List s3 load balancer groups"
+        },
+        {
+          "info": {
+            "name": "CreateS3LoadBalancerGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/"
+          },
+          "docs": "Create a s3 load balancer group"
+        },
+        {
+          "info": {
+            "name": "GetS3LoadBalancerGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer group id"
+              }
+            ]
+          },
+          "docs": "Get s3 load balancer group"
+        },
+        {
+          "info": {
+            "name": "UpdateS3LoadBalancerGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer group id"
+              }
+            ]
+          },
+          "docs": "Update a s3 load balancer group"
+        },
+        {
+          "info": {
+            "name": "DeleteS3LoadBalancerGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "forcedly delete or not"
+              }
+            ]
+          },
+          "docs": "Delete s3 load balancer group"
+        },
+        {
+          "info": {
+            "name": "AddS3LoadBalancersToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id/s3-load-balancers",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "group id"
+              }
+            ]
+          },
+          "docs": "add load balancers to group"
+        },
+        {
+          "info": {
+            "name": "RemoveS3LoadBalancersFromGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id/s3-load-balancers",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "forcedly remove or not"
+              }
+            ]
+          },
+          "docs": "remove load balancers from group"
+        },
+        {
+          "info": {
+            "name": "RedeployS3LoadBalancerGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/s3-load-balancer-groups/:group_id:redeploy",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer group id"
+              }
+            ]
+          },
+          "docs": "Redeploy a s3 load balancer group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

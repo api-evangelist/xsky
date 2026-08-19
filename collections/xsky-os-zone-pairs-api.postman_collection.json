@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "dad4e297-5e01-411d-9988-b777fe3e58ae",
+      "name": "os-zone-pairs",
+      "description": {
+        "content": "OSZonePairsController API /os-zone-pairs\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a62919df-cf40-463b-b597-3dffd4b8af67",
+          "name": "List OS Zone Pairs",
+          "request": {
+            "name": "List OS Zone Pairs",
+            "description": {
+              "content": "list os zone pairs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-zone-pairs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "min_clock_diff_abs",
+                  "value": "<string>",
+                  "description": "min clock diff absolute value for zone pairs"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed3c65c4-79e8-4748-b6cc-a7905e828a39",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-pairs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "min_clock_diff_abs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_zone_pairs\": [\n    {\n      \"clock_diff\": 6,\n      \"target_zone_uuid\": \"target_zone_uuid\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"ID\": 0,\n      \"source_zone_uuid\": \"source_zone_uuid\"\n    },\n    {\n      \"clock_diff\": 6,\n      \"target_zone_uuid\": \"target_zone_uuid\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"ID\": 0,\n      \"source_zone_uuid\": \"source_zone_uuid\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeaa8a8b-0520-4e48-a15c-20a60ceec05e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-pairs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "min_clock_diff_abs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc2d14a2-7113-41e5-879a-eb66b9a67838",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-pairs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "min_clock_diff_abs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "343729d2-a22e-4d63-a784-c38f75690bc9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-pairs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "min_clock_diff_abs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c2743e66-3b4c-4ab2-94a5-bbd023705fee",
+    "name": "XMS access-paths os-zone-pairs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

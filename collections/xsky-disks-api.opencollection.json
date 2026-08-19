@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths disks API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "disks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListDisks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disks/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "is_cache",
+                "value": "",
+                "type": "query",
+                "description": "filter cache disk"
+              },
+              {
+                "name": "used",
+                "value": "",
+                "type": "query",
+                "description": "filter used"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List all pyhsical disks in the system"
+        },
+        {
+          "info": {
+            "name": "GetDisk",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disks/:disk_id",
+            "params": [
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "path",
+                "description": "disk id"
+              }
+            ]
+          },
+          "docs": "Get a disk"
+        },
+        {
+          "info": {
+            "name": "UpdateDisk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/disks/:disk_id",
+            "params": [
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "path",
+                "description": "disk id"
+              }
+            ]
+          },
+          "docs": "update disk info"
+        },
+        {
+          "info": {
+            "name": "CreatePartitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/disks/:disk_id/partitions",
+            "params": [
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "path",
+                "description": "disk id"
+              },
+              {
+                "name": "num",
+                "value": "",
+                "type": "query",
+                "description": "num of partitions to create"
+              }
+            ]
+          },
+          "docs": "create cache partitions for disk"
+        },
+        {
+          "info": {
+            "name": "DeletePartitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/disks/:disk_id/partitions",
+            "params": [
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "path",
+                "description": "disk id"
+              }
+            ]
+          },
+          "docs": "delete cache partitions of disk"
+        },
+        {
+          "info": {
+            "name": "GetDiskSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/disks/:disk_id/samples",
+            "params": [
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "path",
+                "description": "disk id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a disk's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,322 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths osds API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "osds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOsds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osds/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "query",
+                "description": "pool id"
+              },
+              {
+                "name": "osd_group_id",
+                "value": "",
+                "type": "query",
+                "description": "osd group id"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "osd type: HDD, SSD, Hybrid"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "osd role: index or data"
+              },
+              {
+                "name": "with_compound",
+                "value": "",
+                "type": "query",
+                "description": "with compound osd"
+              },
+              {
+                "name": "with_hybrid",
+                "value": "",
+                "type": "query",
+                "description": "with hybrid osd"
+              },
+              {
+                "name": "cache_disk_id",
+                "value": "",
+                "type": "query",
+                "description": "cache disk id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List all osds in the cluster"
+        },
+        {
+          "info": {
+            "name": "CreateOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osds/"
+          },
+          "docs": "Create osd service on specific disk"
+        },
+        {
+          "info": {
+            "name": "GetOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osds/:osd_id",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "get an osd"
+        },
+        {
+          "info": {
+            "name": "UpdateOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/osds/:osd_id",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "update osd info"
+        },
+        {
+          "info": {
+            "name": "DeleteOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/osds/:osd_id",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "remove an osd from cluster"
+        },
+        {
+          "info": {
+            "name": "GetChunks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osds/:osd_id/chunks",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the osd"
+              }
+            ]
+          },
+          "docs": "get chunks of and osd"
+        },
+        {
+          "info": {
+            "name": "GetOsdPredictions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osds/:osd_id/predictions",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "get a osd's prediction"
+        },
+        {
+          "info": {
+            "name": "GetOsdSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osds/:osd_id/samples",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a osd's samples"
+        },
+        {
+          "info": {
+            "name": "MaintainOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osds/:osd_id:maintain",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "Put osd in maintained status"
+        },
+        {
+          "info": {
+            "name": "RebuildOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osds/:osd_id:rebuild",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "rebuild an osd from cluster pool"
+        },
+        {
+          "info": {
+            "name": "SwitchOsdRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osds/:osd_id:switch-role",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "Switch osd role to compound"
+        },
+        {
+          "info": {
+            "name": "UnmaintainOsd",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osds/:osd_id:unmaintain",
+            "params": [
+              {
+                "name": "osd_id",
+                "value": "",
+                "type": "path",
+                "description": "osd id"
+              }
+            ]
+          },
+          "docs": "Put osd out of maintained status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

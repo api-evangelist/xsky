@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-zones API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListObjectStorageZones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-zones/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "local",
+                "value": "",
+                "type": "query",
+                "description": "local or non-local zones"
+              },
+              {
+                "name": "master",
+                "value": "",
+                "type": "query",
+                "description": "master or non-master zones"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "name of zone"
+              }
+            ]
+          },
+          "docs": "List object storage zones"
+        },
+        {
+          "info": {
+            "name": "CreateObjectStorageZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-zones/"
+          },
+          "docs": "Create a object storage zone"
+        },
+        {
+          "info": {
+            "name": "GetObjectStorageZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-zones/:zone_uuid",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "object storage zone uuid"
+              }
+            ]
+          },
+          "docs": "Get object storage zone"
+        },
+        {
+          "info": {
+            "name": "UpdateOSZonesClockDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-zones/:zone_uuid",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os zone uuid"
+              }
+            ]
+          },
+          "docs": "update os zone pairs"
+        },
+        {
+          "info": {
+            "name": "DeleteObjectStorageZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-zones/:zone_uuid",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os zone uuid"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "delete os zone forcefully or not"
+              }
+            ]
+          },
+          "docs": "Delete a object storage zone"
+        },
+        {
+          "info": {
+            "name": "GetObjectStorageZoneSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-zones/:zone_uuid/samples",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "object storage zone uuid"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get an object storage zone's Samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-ftp-shares API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-ftp-shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSFTPShares",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-ftp-shares/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "fs smb id"
+              },
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "query",
+                "description": "fs gateway group id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List fs ftp shares"
+        },
+        {
+          "info": {
+            "name": "CreateFSFTPShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ftp-shares/"
+          },
+          "docs": "Create fs ftp share"
+        },
+        {
+          "info": {
+            "name": "GetFSFTPShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-ftp-shares/:fs_ftp_share_id",
+            "params": [
+              {
+                "name": "fs_ftp_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Get fs ftp share"
+        },
+        {
+          "info": {
+            "name": "DeleteFSFTPShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-ftp-shares/:fs_ftp_share_id",
+            "params": [
+              {
+                "name": "fs_ftp_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete fs ftp share"
+        },
+        {
+          "info": {
+            "name": "AddFSFTPShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ftp-shares/:fs_ftp_share_id:add-acls",
+            "params": [
+              {
+                "name": "fs_ftp_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs ftp share id"
+              }
+            ]
+          },
+          "docs": "Add fs ftp share acls"
+        },
+        {
+          "info": {
+            "name": "RemoveFSFTPShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ftp-shares/:fs_ftp_share_id:remove-acls",
+            "params": [
+              {
+                "name": "fs_ftp_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs ftp share id"
+              }
+            ]
+          },
+          "docs": "remove fs ftp share acls"
+        },
+        {
+          "info": {
+            "name": "UpdateFSFTPShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ftp-shares/:fs_ftp_share_id:update-acls",
+            "params": [
+              {
+                "name": "fs_ftp_share_id",
+                "value": "",
+                "type": "path",
+                "description": "ftp share id"
+              }
+            ]
+          },
+          "docs": "Update fs ftp share acls"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

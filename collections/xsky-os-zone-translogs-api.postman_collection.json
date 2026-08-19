@@ -1,0 +1,351 @@
+{
+  "item": [
+    {
+      "id": "54b0efc2-aceb-4163-9ef6-862f3183be9d",
+      "name": "os-zone-translogs",
+      "description": {
+        "content": "OSZoneTranslogController API /os-zone-translogs\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82807718-7001-4b25-a55e-1a420b240062",
+          "name": "List OS Zone Translogs",
+          "request": {
+            "name": "List OS Zone Translogs",
+            "description": {
+              "content": "List os zone translogs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-zone-translogs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "epoch_uuid",
+                  "value": "<string>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ef08df81-6380-4afd-9dde-043c5d701d56",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-translogs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "epoch_uuid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_zone_translogs\": [\n    {\n      \"resource_type\": \"resource_type\",\n      \"resource_uuid\": \"resource_uuid\",\n      \"action\": \"action\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"uuid\": \"uuid\"\n    },\n    {\n      \"resource_type\": \"resource_type\",\n      \"resource_uuid\": \"resource_uuid\",\n      \"action\": \"action\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"uuid\": \"uuid\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c36bdfb8-344c-4ed3-bf3d-bbe3297beb33",
+          "name": "Get OS Zone Translog",
+          "request": {
+            "name": "Get OS Zone Translog",
+            "description": {
+              "content": "Get a os zone translog",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-zone-translogs",
+                ":translog_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "translog_uuid",
+                  "description": "(Required) translog uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d7994e59-6db8-4f2c-ae92-9f7029a84dcc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-translogs",
+                    ":translog_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "translog_uuid",
+                      "description": "(Required) translog uuid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_zone_translog\": {\n    \"resource_type\": \"resource_type\",\n    \"resource_uuid\": \"resource_uuid\",\n    \"action\": \"action\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"uuid\": \"uuid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51d10515-54bf-4add-a63e-ddccf595a94b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-translogs",
+                    ":translog_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "translog_uuid",
+                      "description": "(Required) translog uuid"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdb4dff1-97ac-4c18-a480-a9256c5e6386",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-translogs",
+                    ":translog_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "translog_uuid",
+                      "description": "(Required) translog uuid"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "28fce553-10bd-496e-8c0d-57e011cada58",
+    "name": "XMS access-paths os-zone-translogs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

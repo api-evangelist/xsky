@@ -1,0 +1,2306 @@
+{
+  "item": [
+    {
+      "id": "ac74e665-42bd-4f0f-b9b4-771ea2066b3a",
+      "name": "dp-sites",
+      "description": {
+        "content": "DpSiteController API /dp-sites/\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12d0d784-c176-4257-9247-a2f85da8d68b",
+          "name": "List Dp Sites",
+          "request": {
+            "name": "List Dp Sites",
+            "description": {
+              "content": "List data protection sites",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "protection_type",
+                  "value": "<string>",
+                  "description": "protection type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a59ee9b8-7300-4027-9b0d-44f415c55f36",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protection_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_sites\": [\n    {\n      \"crypto_key\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"address\": \"address\",\n      \"remote_cluster\": {\n        \"name\": \"name\",\n        \"id\": 2,\n        \"fs_id\": \"fs_id\",\n        \"url\": \"url\"\n      },\n      \"service\": \"service\",\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"protection_type\": \"protection_type\",\n      \"id\": 1,\n      \"config\": {\n        \"block_snapshot_replication\": {\n          \"remote_gateway\": \"remote_gateway\"\n        },\n        \"block_snapshot_backup\": {\n          \"bucket\": \"bucket\",\n          \"secret_key\": \"secret_key\",\n          \"mount_path\": \"mount_path\",\n          \"password\": \"password\",\n          \"port\": 0,\n          \"access_key\": \"access_key\",\n          \"region\": \"region\",\n          \"app_id\": \"app_id\",\n          \"username\": \"username\"\n        },\n        \"block_volume_replication\": {\n          \"destination\": \"destination\",\n          \"local_gateways\": [\n            \"local_gateways\",\n            \"local_gateways\"\n          ],\n          \"remote_gateways\": [\n            \"remote_gateways\",\n            \"remote_gateways\"\n          ]\n        }\n      },\n      \"platform\": \"platform\",\n      \"status\": \"status\"\n    },\n    {\n      \"crypto_key\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"address\": \"address\",\n      \"remote_cluster\": {\n        \"name\": \"name\",\n        \"id\": 2,\n        \"fs_id\": \"fs_id\",\n        \"url\": \"url\"\n      },\n      \"service\": \"service\",\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"protection_type\": \"protection_type\",\n      \"id\": 1,\n      \"config\": {\n        \"block_snapshot_replication\": {\n          \"remote_gateway\": \"remote_gateway\"\n        },\n        \"block_snapshot_backup\": {\n          \"bucket\": \"bucket\",\n          \"secret_key\": \"secret_key\",\n          \"mount_path\": \"mount_path\",\n          \"password\": \"password\",\n          \"port\": 0,\n          \"access_key\": \"access_key\",\n          \"region\": \"region\",\n          \"app_id\": \"app_id\",\n          \"username\": \"username\"\n        },\n        \"block_volume_replication\": {\n          \"destination\": \"destination\",\n          \"local_gateways\": [\n            \"local_gateways\",\n            \"local_gateways\"\n          ],\n          \"remote_gateways\": [\n            \"remote_gateways\",\n            \"remote_gateways\"\n          ]\n        }\n      },\n      \"platform\": \"platform\",\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2cc71f3-77e8-4002-94e5-846f57ac935e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protection_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dc40a64-752e-4525-ae92-beb3c2bc9872",
+          "name": "Create Dp Site",
+          "request": {
+            "name": "Create Dp Site",
+            "description": {
+              "content": "Create a data protection site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dp_site\": {\n    \"config\": {\n      \"block_snapshot_backup\": {\n        \"access_key\": \"<string>\",\n        \"app_id\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"mount_path\": \"<string>\",\n        \"password\": \"<string>\",\n        \"port\": \"<long>\",\n        \"region\": \"<string>\",\n        \"secret_key\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"<string>\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"<string>\",\n        \"local_gateways\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"remote_gateways\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"name\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"protection_type\": \"<string>\",\n    \"service\": \"<string>\",\n    \"address\": \"<string>\",\n    \"crypto_key_id\": \"<long>\",\n    \"remote_cluster_id\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5024126c-5d24-4036-b732-bb81e986a7ed",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"address\": \"address\",\n    \"remote_cluster_id\": 6,\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"protection_type\": \"protection_type\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"crypto_key_id\": 0,\n    \"platform\": \"platform\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_site\": {\n    \"crypto_key\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"address\": \"address\",\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"protection_type\": \"protection_type\",\n    \"id\": 1,\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"platform\": \"platform\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b1dda50-c189-44a4-befe-e9b8b83edd5e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"address\": \"address\",\n    \"remote_cluster_id\": 6,\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"protection_type\": \"protection_type\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"crypto_key_id\": 0,\n    \"platform\": \"platform\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3865511d-a64d-4f1b-a6d1-43a50320aa80",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"address\": \"address\",\n    \"remote_cluster_id\": 6,\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"protection_type\": \"protection_type\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"crypto_key_id\": 0,\n    \"platform\": \"platform\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ef2248a-a94e-4ae5-9e47-bb6c91775d4b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"address\": \"address\",\n    \"remote_cluster_id\": 6,\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"protection_type\": \"protection_type\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"crypto_key_id\": 0,\n    \"platform\": \"platform\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e59d2b22-e9a8-4ecf-bad5-5e6ee4a51269",
+          "name": "Get Dp Site",
+          "request": {
+            "name": "Get Dp Site",
+            "description": {
+              "content": "Get data protection site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) protection site id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4d13939-36a2-4e0d-870c-b7c38710b542",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) protection site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_site\": {\n    \"crypto_key\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"address\": \"address\",\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"protection_type\": \"protection_type\",\n    \"id\": 1,\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"platform\": \"platform\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91db2aec-9246-4e6c-ba42-c139c5d78a58",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) protection site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97306420-e3f3-47be-b2b9-aac98e77076d",
+          "name": "Delete Dp Site",
+          "request": {
+            "name": "Delete Dp Site",
+            "description": {
+              "content": "Delete data protection site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) dp site id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb75045c-d321-4a6a-90b2-f9bc5262c9ee",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "91c4db88-fe9c-4048-aa51-77f5e9bb625c",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a417d83-9ade-4427-b620-032db6c4b1d4",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0102aa0c-9548-4db7-ac68-6eaa16ce0660",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f543a114-74ad-4f70-b564-7110eb541915",
+          "name": "Update Dp Site",
+          "request": {
+            "name": "Update Dp Site",
+            "description": {
+              "content": "Update a data protection site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) dp site id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dp_site\": {\n    \"config\": {\n      \"block_snapshot_backup\": {\n        \"access_key\": \"<string>\",\n        \"app_id\": \"<string>\",\n        \"bucket\": \"<string>\",\n        \"mount_path\": \"<string>\",\n        \"password\": \"<string>\",\n        \"port\": \"<long>\",\n        \"region\": \"<string>\",\n        \"secret_key\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"<string>\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"<string>\",\n        \"local_gateways\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"remote_gateways\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7794ec4d-9fc5-4bc2-8d3d-041a3fdf2e87",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"name\": \"name\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_site\": {\n    \"crypto_key\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"address\": \"address\",\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"service\": \"service\",\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"protection_type\": \"protection_type\",\n    \"id\": 1,\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    },\n    \"platform\": \"platform\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "618722c0-f9a3-4b29-a20d-1e4aa628a576",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"name\": \"name\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b33d206f-ee07-4ac0-918a-ee89d4aa561e",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"name\": \"name\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8bdbfb4-9248-4d01-a3d5-2fb0318221e1",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"name\": \"name\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eecd741c-6dc9-496e-b4e5-f4eecff70bdb",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dp_site\": {\n    \"name\": \"name\",\n    \"config\": {\n      \"block_snapshot_replication\": {\n        \"remote_gateway\": \"remote_gateway\"\n      },\n      \"block_snapshot_backup\": {\n        \"bucket\": \"bucket\",\n        \"secret_key\": \"secret_key\",\n        \"mount_path\": \"mount_path\",\n        \"password\": \"password\",\n        \"port\": 0,\n        \"access_key\": \"access_key\",\n        \"region\": \"region\",\n        \"app_id\": \"app_id\",\n        \"username\": \"username\"\n      },\n      \"block_volume_replication\": {\n        \"destination\": \"destination\",\n        \"local_gateways\": [\n          \"local_gateways\",\n          \"local_gateways\"\n        ],\n        \"remote_gateways\": [\n          \"remote_gateways\",\n          \"remote_gateways\"\n        ]\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e5298bd-f2b3-4575-9ce8-d6c3ae1fb46d",
+          "name": "Get Backup Block Snapshots",
+          "request": {
+            "name": "Get Backup Block Snapshots",
+            "description": {
+              "content": "List snapshots of a volume stored on a dp site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id",
+                "backup-block-snapshots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dp_gateway_id",
+                  "value": "<long>",
+                  "description": "(Required) the dp gateway to execute the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_fs_id",
+                  "value": "<string>",
+                  "description": "(Required) cluster fs id"
+                },
+                {
+                  "disabled": false,
+                  "key": "block_volume_name",
+                  "value": "<string>",
+                  "description": "(Required) block volume name"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "continuation token"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) dp site id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f38cdcdb-0ee8-4a4c-b476-cd8174219345",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "block_volume_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backup_block_snapshots\": [\n    {\n      \"size\": 0,\n      \"backup_type\": \"backup_type\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"volume_size\": 6\n    },\n    {\n      \"size\": 0,\n      \"backup_type\": \"backup_type\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"volume_size\": 6\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a739a3a6-9b1d-4656-ac14-87844fedc5fe",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "block_volume_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7a1c760-5b2f-4f87-9d3a-e5172812bd32",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "block_volume_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad4704dd-fd4d-4334-ad24-0eb1e9846885",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "block_volume_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0c5bc28-54a0-496a-bc0a-edb2090898b7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-snapshots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "block_volume_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bf701df-c882-494b-8c55-e2daa4f51c08",
+          "name": "Get Backup Block Volumes",
+          "request": {
+            "name": "Get Backup Block Volumes",
+            "description": {
+              "content": "List volumes of a cluster stored on a dp site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id",
+                "backup-block-volumes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dp_gateway_id",
+                  "value": "<long>",
+                  "description": "(Required) the dp gateway to execute the query"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_fs_id",
+                  "value": "<string>",
+                  "description": "(Required) cluster fs id"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "continuation token"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) dp site id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f07809f7-f841-4ebe-ae7e-9f4ac5bbad97",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backup_block_volumes\": [\n    {\n      \"size\": 5,\n      \"format\": 1,\n      \"name\": \"name\",\n      \"volume_name\": \"volume_name\"\n    },\n    {\n      \"size\": 5,\n      \"format\": 1,\n      \"name\": \"name\",\n      \"volume_name\": \"volume_name\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfed2dca-5b6d-4c32-9cbe-3b7635d6147c",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4626e8ed-53bd-405f-87d1-c1ba60fcc558",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ea53257-171e-463f-82f7-5535ca5f6c99",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b94fe1af-7b45-4e5b-af92-7f8e050a3706",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-block-volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_fs_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcf6afc8-296e-49c0-9379-d9005e648337",
+          "name": "Get Backup Clusters",
+          "request": {
+            "name": "Get Backup Clusters",
+            "description": {
+              "content": "List clusters stored on a dp site",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-sites",
+                ":site_id",
+                "backup-clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dp_gateway_id",
+                  "value": "<long>",
+                  "description": "(Required) the dp gateway to execute the query"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "site_id",
+                  "description": "(Required) dp site id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bf10b069-99f6-4541-a2d3-8f1b2665d842",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"backup_clusters\": [\n    {\n      \"name\": \"name\",\n      \"fs_id\": \"fs_id\"\n    },\n    {\n      \"name\": \"name\",\n      \"fs_id\": \"fs_id\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b04a0d8-f1c8-4355-b962-4a0552e0bcb8",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f98725db-5db5-4631-9ec0-a985422b52e9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffc3e87c-0c89-44c4-aad5-1a5c651265a5",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27be256b-1af3-4df9-ad2a-30c3e187c0a4",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-sites",
+                    ":site_id",
+                    "backup-clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dp_gateway_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "site_id",
+                      "description": "(Required) dp site id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "949df70b-b98a-4950-9771-ae754225c31c",
+    "name": "XMS access-paths dp-sites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

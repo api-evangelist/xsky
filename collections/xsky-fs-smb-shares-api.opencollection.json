@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-smb-shares API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-smb-shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSSMBShares",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-smb-shares/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "fs folder id"
+              },
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "query",
+                "description": "fs gateway group id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List fs smb shares"
+        },
+        {
+          "info": {
+            "name": "CreateFSSMBShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-smb-shares/"
+          },
+          "docs": "Create fs smb share"
+        },
+        {
+          "info": {
+            "name": "GetFSSMBShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Get fs smb share"
+        },
+        {
+          "info": {
+            "name": "UpdateFSSMBShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Update fs smb share"
+        },
+        {
+          "info": {
+            "name": "DeleteFSSMBShare",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete fs smb share"
+        },
+        {
+          "info": {
+            "name": "AddFSSMBShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id:add-acls",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs smb share id"
+              }
+            ]
+          },
+          "docs": "Add fs smb share acls"
+        },
+        {
+          "info": {
+            "name": "RemoveFSSMBShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id:remove-acls",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "fs smb share id"
+              }
+            ]
+          },
+          "docs": "remove fs smb share acls"
+        },
+        {
+          "info": {
+            "name": "UpdateFSSMBShareACLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-smb-shares/:fs_smb_share_id:update-acls",
+            "params": [
+              {
+                "name": "fs_smb_share_id",
+                "value": "",
+                "type": "path",
+                "description": "share id"
+              }
+            ]
+          },
+          "docs": "Update fs smb share ACL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

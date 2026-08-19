@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "dc1a3ff0-5871-4a16-a8e9-83f5d885df1f",
+      "name": "action-logs",
+      "description": {
+        "content": "ActionLogController Operations about ActionLog\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60bf057e-b9ce-42f0-8fd3-d9d57dc1e0b4",
+          "name": "List Action Logs",
+          "request": {
+            "name": "List Action Logs",
+            "description": {
+              "content": "List action logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "action-logs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_type",
+                  "value": "<string>",
+                  "description": "resource type of action logs"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "status of action logs"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<long>",
+                  "description": "user id of action logs"
+                },
+                {
+                  "disabled": false,
+                  "key": "create_begin",
+                  "value": "<string>",
+                  "description": "create begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "create_end",
+                  "value": "<string>",
+                  "description": "create end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "related_resource",
+                  "value": "<string>",
+                  "description": "related resource info of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad55e19a-a775-4a61-a9bd-29c9e76298a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "resource_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "create_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "create_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "related_resource",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"action_logs\": [\n    {\n      \"action\": \"string\",\n      \"client_ip\": \"string\",\n      \"create\": \"2022-10-07T19:58:00.082Z\",\n      \"finish\": \"1989-12-30T16:53:26.494Z\",\n      \"id\": 2309,\n      \"message\": \"string\",\n      \"new_data\": {},\n      \"old_data\": {},\n      \"parameter\": \"string\",\n      \"resource_id\": 2457,\n      \"resource_type\": \"string\",\n      \"start\": \"1964-11-14T13:14:13.638Z\",\n      \"status\": \"string\",\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"error_records\": [\n        {\n          \"action_log\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"alert\": {\n            \"alarm_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code\": \"string\",\n          \"create\": \"1968-09-08T00:33:25.740Z\",\n          \"details\": \"string\",\n          \"extra_data\": {},\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"id\": 5343,\n          \"message\": \"string\"\n        },\n        {\n          \"action_log\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"alert\": {\n            \"alarm_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code\": \"string\",\n          \"create\": \"1963-10-11T15:06:05.535Z\",\n          \"details\": \"string\",\n          \"extra_data\": {},\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"id\": 9847,\n          \"message\": \"string\"\n        }\n      ]\n    },\n    {\n      \"action\": \"string\",\n      \"client_ip\": \"string\",\n      \"create\": \"1987-08-09T00:37:46.044Z\",\n      \"finish\": \"1959-06-28T18:53:21.836Z\",\n      \"id\": 6740,\n      \"message\": \"string\",\n      \"new_data\": {},\n      \"old_data\": {},\n      \"parameter\": \"string\",\n      \"resource_id\": 1495,\n      \"resource_type\": \"string\",\n      \"start\": \"1999-03-19T15:13:58.828Z\",\n      \"status\": \"string\",\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"error_records\": [\n        {\n          \"action_log\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"alert\": {\n            \"alarm_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code\": \"string\",\n          \"create\": \"1979-05-01T07:47:14.210Z\",\n          \"details\": \"string\",\n          \"extra_data\": {},\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"id\": 3702,\n          \"message\": \"string\"\n        },\n        {\n          \"action_log\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"alert\": {\n            \"alarm_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code\": \"string\",\n          \"create\": \"1986-12-22T15:58:39.991Z\",\n          \"details\": \"string\",\n          \"extra_data\": {},\n          \"host\": {\n            \"name\": \"name\",\n            \"admin_ip\": \"admin_ip\",\n            \"id\": 0\n          },\n          \"id\": 3929,\n          \"message\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a634eeeb-46d6-4336-8473-b349e5385311",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "resource_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "create_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "create_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "related_resource",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66486956-a95d-4a0b-80e1-dc75ca825417",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "resource_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "create_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "create_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "related_resource",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0b58322e-31cd-4749-9085-79eb453d6304",
+    "name": "XMS access-paths action-logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

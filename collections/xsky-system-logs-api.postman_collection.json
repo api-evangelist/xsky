@@ -1,0 +1,380 @@
+{
+  "item": [
+    {
+      "id": "3c37b588-6d90-43e1-88d4-a2ba96906c5a",
+      "name": "system-logs",
+      "description": {
+        "content": "SystemLogController provides API for system logs\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11b33645-5e06-409b-b6b7-76afee070fa5",
+          "name": "List System Logs",
+          "request": {
+            "name": "List System Logs",
+            "description": {
+              "content": "List system logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system-logs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<long>",
+                  "description": "(Required) The id of host system logs belong to"
+                },
+                {
+                  "disabled": false,
+                  "key": "catalog",
+                  "value": "<string>",
+                  "description": "(Required) The name of catalog system logs belong to"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a034b30-4b5c-4170-884a-c9ab6363d678",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "catalog",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"system_logs\": [\n    {\n      \"catalog\": \"string\",\n      \"host\": {\n        \"admin_ip\": \"string\",\n        \"action_status\": \"string\",\n        \"clock_diff\": 1586,\n        \"cores\": 1237,\n        \"cpu_model\": \"string\",\n        \"create\": \"1963-07-01T00:11:09.898Z\",\n        \"description\": \"string\",\n        \"disk_num\": 3473,\n        \"fcports\": [\n          {\n            \"host\": {\n              \"name\": \"name\",\n              \"admin_ip\": \"admin_ip\",\n              \"id\": 0\n            },\n            \"create\": \"2000-01-23T04:56:07.000+00:00\",\n            \"id\": 5,\n            \"wwn\": \"wwn\"\n          },\n          {\n            \"host\": {\n              \"name\": \"name\",\n              \"admin_ip\": \"admin_ip\",\n              \"id\": 0\n            },\n            \"create\": \"2000-01-23T04:56:07.000+00:00\",\n            \"id\": 5,\n            \"wwn\": \"wwn\"\n          }\n        ],\n        \"gateway_ips\": \"string\",\n        \"id\": 9722,\n        \"is_master_db\": false,\n        \"memory_kbyte\": 2813,\n        \"model\": \"string\",\n        \"name\": \"string\",\n        \"os\": \"string\",\n        \"private_ip\": \"string\",\n        \"protection_domain\": {\n          \"name\": \"name\",\n          \"id\": 5\n        },\n        \"public_ips\": \"string\",\n        \"rack\": \"string\",\n        \"roles\": \"string\",\n        \"root_disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"up\": false,\n        \"update\": \"2025-10-16T13:25:05.948Z\",\n        \"vendor\": \"string\"\n      },\n      \"id\": 1626,\n      \"last_updated_time\": \"1995-04-17T02:31:35.178Z\",\n      \"name\": \"string\",\n      \"size\": 8399\n    },\n    {\n      \"catalog\": \"string\",\n      \"host\": {\n        \"admin_ip\": \"string\",\n        \"action_status\": \"string\",\n        \"clock_diff\": 9813,\n        \"cores\": 3433,\n        \"cpu_model\": \"string\",\n        \"create\": \"2006-10-17T04:53:07.354Z\",\n        \"description\": \"string\",\n        \"disk_num\": 5621,\n        \"fcports\": [\n          {\n            \"host\": {\n              \"name\": \"name\",\n              \"admin_ip\": \"admin_ip\",\n              \"id\": 0\n            },\n            \"create\": \"2000-01-23T04:56:07.000+00:00\",\n            \"id\": 5,\n            \"wwn\": \"wwn\"\n          },\n          {\n            \"host\": {\n              \"name\": \"name\",\n              \"admin_ip\": \"admin_ip\",\n              \"id\": 0\n            },\n            \"create\": \"2000-01-23T04:56:07.000+00:00\",\n            \"id\": 5,\n            \"wwn\": \"wwn\"\n          }\n        ],\n        \"gateway_ips\": \"string\",\n        \"id\": 2852,\n        \"is_master_db\": false,\n        \"memory_kbyte\": 3961,\n        \"model\": \"string\",\n        \"name\": \"string\",\n        \"os\": \"string\",\n        \"private_ip\": \"string\",\n        \"protection_domain\": {\n          \"name\": \"name\",\n          \"id\": 5\n        },\n        \"public_ips\": \"string\",\n        \"rack\": \"string\",\n        \"roles\": \"string\",\n        \"root_disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"status\": \"string\",\n        \"type\": \"string\",\n        \"up\": true,\n        \"update\": \"2025-05-08T04:22:22.607Z\",\n        \"vendor\": \"string\"\n      },\n      \"id\": 5125,\n      \"last_updated_time\": \"2017-03-18T04:49:37.683Z\",\n      \"name\": \"string\",\n      \"size\": 322\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f76ff0b7-54c7-4552-b363-142511330d51",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "catalog",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25535f06-2998-44d4-a6ba-ed43f797b336",
+          "name": "Download System Logs",
+          "request": {
+            "name": "Download System Logs",
+            "description": {
+              "content": "download system logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "system-logs",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1acc003-5908-4996-a9c8-5e38cf908c49",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system-logs",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec9fb7b5-2d5b-4239-8011-b519bd32b06c",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system-logs",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f3fc05b-a0aa-429e-95bf-7047e374d021",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "system-logs",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "253555f2-8881-4492-885c-2d8a5e9b81ee",
+    "name": "XMS access-paths system-logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths luns API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "luns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListLuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/luns/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "query",
+                "description": "mapping group id"
+              }
+            ]
+          },
+          "docs": "List luns"
+        },
+        {
+          "info": {
+            "name": "GetLun",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/luns/:lun_id",
+            "params": [
+              {
+                "name": "lun_id",
+                "value": "",
+                "type": "path",
+                "description": "lun id"
+              }
+            ]
+          },
+          "docs": "get a lun"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths placement-nodes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "placement-nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreatePlacementNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/placement-nodes/"
+          },
+          "docs": "Create placement node"
+        },
+        {
+          "info": {
+            "name": "GetPlacementNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/placement-nodes/:placement_node_id",
+            "params": [
+              {
+                "name": "placement_node_id",
+                "value": "",
+                "type": "path",
+                "description": "placement node id"
+              }
+            ]
+          },
+          "docs": "Get placement node"
+        },
+        {
+          "info": {
+            "name": "UpdatePlacementNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/placement-nodes/:placement_node_id",
+            "params": [
+              {
+                "name": "placement_node_id",
+                "value": "",
+                "type": "path",
+                "description": "the placement node id"
+              }
+            ]
+          },
+          "docs": "update placement node"
+        },
+        {
+          "info": {
+            "name": "DeletePlacementNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/placement-nodes/:placement_node_id",
+            "params": [
+              {
+                "name": "placement_node_id",
+                "value": "",
+                "type": "path",
+                "description": "placement node id"
+              }
+            ]
+          },
+          "docs": "delete placement node"
+        },
+        {
+          "info": {
+            "name": "GetPlacementNodeTopology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/placement-nodes/:placement_node_id/topology",
+            "params": [
+              {
+                "name": "placement_node_id",
+                "value": "",
+                "type": "path",
+                "description": "placement node id"
+              },
+              {
+                "name": "osd_type",
+                "value": "",
+                "type": "query",
+                "description": "osd type"
+              },
+              {
+                "name": "osd_role",
+                "value": "",
+                "type": "query",
+                "description": "osd role"
+              },
+              {
+                "name": "with_compound",
+                "value": "",
+                "type": "query",
+                "description": "with compound osd"
+              },
+              {
+                "name": "with_hybrid",
+                "value": "",
+                "type": "query",
+                "description": "with hybrid osd"
+              }
+            ]
+          },
+          "docs": "Get subtree topology of placement node"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1538 @@
+{
+  "item": [
+    {
+      "id": "b5678e76-1b12-4af9-a0ad-6f17ce1f84ac",
+      "name": "os-gateways",
+      "description": {
+        "content": "ObjectStorageGatewayController provides API for s3 gateway\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b25c0d3-751c-4643-8398-b93d4cbf532b",
+          "name": "List Gateways",
+          "request": {
+            "name": "List Gateways",
+            "description": {
+              "content": "List s3 gateways",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2354d43-aa7c-4ab3-b972-6567802700de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateways\": [\n    {\n      \"create\": \"2023-05-04T06:23:13.776Z\",\n      \"description\": \"string\",\n      \"gateway_ip\": \"string\",\n      \"gateway_name\": \"string\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 9868,\n      \"name\": \"string\",\n      \"os_zone\": {\n        \"id\": 7,\n        \"uuid\": \"uuid\"\n      },\n      \"port\": 2884,\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"update\": \"2021-09-10T23:43:58.148Z\",\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 3.616076749251911,\n          \"up_ops\": 2.027123023002322,\n          \"down_bandwidth_kbyte\": 6.027456183070403,\n          \"down_ops\": 1.4658129805029452,\n          \"sync_down_ops\": 9.301444243932576,\n          \"merge_speed\": 5,\n          \"mem_usage_percent\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"requests\": 2,\n          \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n          \"cpu_util\": 0.8008281904610115\n        },\n        {\n          \"up_bandwidth_kbyte\": 3.616076749251911,\n          \"up_ops\": 2.027123023002322,\n          \"down_bandwidth_kbyte\": 6.027456183070403,\n          \"down_ops\": 1.4658129805029452,\n          \"sync_down_ops\": 9.301444243932576,\n          \"merge_speed\": 5,\n          \"mem_usage_percent\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"requests\": 2,\n          \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n          \"cpu_util\": 0.8008281904610115\n        }\n      ]\n    },\n    {\n      \"create\": \"2000-02-26T14:21:19.945Z\",\n      \"description\": \"string\",\n      \"gateway_ip\": \"string\",\n      \"gateway_name\": \"string\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 2058,\n      \"name\": \"string\",\n      \"os_zone\": {\n        \"id\": 7,\n        \"uuid\": \"uuid\"\n      },\n      \"port\": 3051,\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"update\": \"2001-08-27T10:45:25.940Z\",\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 3.616076749251911,\n          \"up_ops\": 2.027123023002322,\n          \"down_bandwidth_kbyte\": 6.027456183070403,\n          \"down_ops\": 1.4658129805029452,\n          \"sync_down_ops\": 9.301444243932576,\n          \"merge_speed\": 5,\n          \"mem_usage_percent\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"requests\": 2,\n          \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n          \"cpu_util\": 0.8008281904610115\n        },\n        {\n          \"up_bandwidth_kbyte\": 3.616076749251911,\n          \"up_ops\": 2.027123023002322,\n          \"down_bandwidth_kbyte\": 6.027456183070403,\n          \"down_ops\": 1.4658129805029452,\n          \"sync_down_ops\": 9.301444243932576,\n          \"merge_speed\": 5,\n          \"mem_usage_percent\": 5.962133916683182,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"requests\": 2,\n          \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n          \"cpu_util\": 0.8008281904610115\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99f0ffaa-f283-4195-9399-7a0752152239",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b603bd2-b7bc-4635-b75a-f7fc435aef73",
+          "name": "Create Gateway",
+          "request": {
+            "name": "Create Gateway",
+            "description": {
+              "content": "Create s3 gateway",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"os_gateway\": {\n    \"host_id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"description\": \"<string>\",\n    \"gateway_ip\": \"<string>\",\n    \"role\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ccbf014a-c178-4515-b65b-eea3f69c3730",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"role\": \"role\",\n    \"port\": 6,\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"gateway_ip\": \"gateway_ip\",\n    \"host_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway\": {\n    \"create\": \"2024-08-27T05:51:16.854Z\",\n    \"description\": \"string\",\n    \"gateway_ip\": \"string\",\n    \"gateway_name\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4477,\n    \"name\": \"string\",\n    \"os_zone\": {\n      \"id\": 7,\n      \"uuid\": \"uuid\"\n    },\n    \"port\": 6766,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"update\": \"2007-12-10T07:37:47.003Z\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      },\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58652cba-ecd1-4eea-be56-8e406667e438",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"role\": \"role\",\n    \"port\": 6,\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"gateway_ip\": \"gateway_ip\",\n    \"host_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dface197-937f-4da2-8883-073a94e10c95",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"role\": \"role\",\n    \"port\": 6,\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"gateway_ip\": \"gateway_ip\",\n    \"host_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99b54117-7292-4044-9dfb-7a2c634667cc",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"role\": \"role\",\n    \"port\": 6,\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"gateway_ip\": \"gateway_ip\",\n    \"host_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1538687d-3ee3-44db-b8bd-a78279bd42e1",
+          "name": "Get Gateway",
+          "request": {
+            "name": "Get Gateway",
+            "description": {
+              "content": "Get s3 gateway",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ":gateway_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "gateway_id",
+                  "description": "(Required) gateway id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c2ab5ef8-56fb-42f5-946e-72307cec9c86",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway\": {\n    \"create\": \"2024-08-27T05:51:16.854Z\",\n    \"description\": \"string\",\n    \"gateway_ip\": \"string\",\n    \"gateway_name\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4477,\n    \"name\": \"string\",\n    \"os_zone\": {\n      \"id\": 7,\n      \"uuid\": \"uuid\"\n    },\n    \"port\": 6766,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"update\": \"2007-12-10T07:37:47.003Z\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      },\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87555a96-1e4e-4749-9ece-ce6f9bfc6e10",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6af8b5d5-a115-4b54-8a7d-0219473a9ab3",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a81d62-61df-4a03-b8b2-ab83757b05b3",
+          "name": "Update Gateway",
+          "request": {
+            "name": "Update Gateway",
+            "description": {
+              "content": "Update s3 gateway",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ":gateway_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "gateway_id",
+                  "description": "(Required) gateway id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"os_gateway\": {\n    \"action\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "105cffe5-54ab-4cc7-9837-5b53d23b51fb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway\": {\n    \"create\": \"2024-08-27T05:51:16.854Z\",\n    \"description\": \"string\",\n    \"gateway_ip\": \"string\",\n    \"gateway_name\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4477,\n    \"name\": \"string\",\n    \"os_zone\": {\n      \"id\": 7,\n      \"uuid\": \"uuid\"\n    },\n    \"port\": 6766,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"update\": \"2007-12-10T07:37:47.003Z\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      },\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "917e26d9-b2b4-4ed0-aab1-0719b9447072",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway\": {\n    \"create\": \"2024-08-27T05:51:16.854Z\",\n    \"description\": \"string\",\n    \"gateway_ip\": \"string\",\n    \"gateway_name\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4477,\n    \"name\": \"string\",\n    \"os_zone\": {\n      \"id\": 7,\n      \"uuid\": \"uuid\"\n    },\n    \"port\": 6766,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"update\": \"2007-12-10T07:37:47.003Z\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      },\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "002eb81c-7a8d-442e-9d35-3b2b7bcb2263",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76c1ecec-4528-4537-adaf-848548b04be0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d358f273-5127-4ed9-bba0-79bb61c908b6",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31d04408-11e1-4519-874e-a61a7ddbdfd7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"os_gateway\": {\n    \"action\": \"action\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d44bcc50-2c9f-4126-aa3a-93d652ea2130",
+          "name": "Delete Gateway",
+          "request": {
+            "name": "Delete Gateway",
+            "description": {
+              "content": "Delete s3 gateway",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ":gateway_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "gateway_id",
+                  "description": "(Required) gateway id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a1e0764-d95b-40f1-8b6f-023f2e4535cf",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway\": {\n    \"create\": \"2024-08-27T05:51:16.854Z\",\n    \"description\": \"string\",\n    \"gateway_ip\": \"string\",\n    \"gateway_name\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4477,\n    \"name\": \"string\",\n    \"os_zone\": {\n      \"id\": 7,\n      \"uuid\": \"uuid\"\n    },\n    \"port\": 6766,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"update\": \"2007-12-10T07:37:47.003Z\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      },\n      {\n        \"up_bandwidth_kbyte\": 3.616076749251911,\n        \"up_ops\": 2.027123023002322,\n        \"down_bandwidth_kbyte\": 6.027456183070403,\n        \"down_ops\": 1.4658129805029452,\n        \"sync_down_ops\": 9.301444243932576,\n        \"merge_speed\": 5,\n        \"mem_usage_percent\": 5.962133916683182,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"requests\": 2,\n        \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n        \"cpu_util\": 0.8008281904610115\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94393c43-2d89-4366-bc38-47fd1560e40e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e97250f4-e9d9-4b34-ac65-dc3cc1d0181a",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54f2e5e2-6195-4814-93d0-51e1b5956cfa",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2add4d05-20ca-482a-99aa-1bbdabaa3b8b",
+          "name": "Get Gateway Samples",
+          "request": {
+            "name": "Get Gateway Samples",
+            "description": {
+              "content": "Get s3 gateway's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-gateways",
+                ":gateway_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "gateway_id",
+                  "description": "(Required) gateway id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28d2c7b3-cb28-4a7f-917d-ff6b9b4fdb19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_gateway_samples\": [\n    {\n      \"up_bandwidth_kbyte\": 3.616076749251911,\n      \"up_ops\": 2.027123023002322,\n      \"down_bandwidth_kbyte\": 6.027456183070403,\n      \"down_ops\": 1.4658129805029452,\n      \"sync_down_ops\": 9.301444243932576,\n      \"merge_speed\": 5,\n      \"mem_usage_percent\": 5.962133916683182,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"requests\": 2,\n      \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n      \"cpu_util\": 0.8008281904610115\n    },\n    {\n      \"up_bandwidth_kbyte\": 3.616076749251911,\n      \"up_ops\": 2.027123023002322,\n      \"down_bandwidth_kbyte\": 6.027456183070403,\n      \"down_ops\": 1.4658129805029452,\n      \"sync_down_ops\": 9.301444243932576,\n      \"merge_speed\": 5,\n      \"mem_usage_percent\": 5.962133916683182,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"requests\": 2,\n      \"sync_down_bandwidth_kbyte\": 7.061401241503109,\n      \"cpu_util\": 0.8008281904610115\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30ad2b60-7a23-42de-95cc-1ddbbe4e8e24",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09f8e330-9668-4b7f-8c6b-2e6db7f1cd7a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-gateways",
+                    ":gateway_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "gateway_id",
+                      "description": "(Required) gateway id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7246de5a-c2e8-4e50-b8a9-280d0a4122ca",
+    "name": "XMS access-paths os-gateways API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths remote-clusters API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "remote-clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListRemoteClusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/remote-clusters/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_id",
+                "value": "",
+                "type": "query",
+                "description": "fsid of cluster"
+              }
+            ]
+          },
+          "docs": "List remote clusters"
+        },
+        {
+          "info": {
+            "name": "CreateRemoteCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/remote-clusters/"
+          },
+          "docs": "Create a remote cluster"
+        },
+        {
+          "info": {
+            "name": "GetRemoteCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/remote-clusters/:cluster_id",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path",
+                "description": "remote cluster id"
+              }
+            ]
+          },
+          "docs": "Get remote cluster"
+        },
+        {
+          "info": {
+            "name": "UpdateRemoteCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/remote-clusters/:cluster_id",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path",
+                "description": "remote cluster id"
+              }
+            ]
+          },
+          "docs": "Update a remote cluster"
+        },
+        {
+          "info": {
+            "name": "DeleteRemoteCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/remote-clusters/:cluster_id",
+            "params": [
+              {
+                "name": "cluster_id",
+                "value": "",
+                "type": "path",
+                "description": "remote cluster id"
+              }
+            ]
+          },
+          "docs": "Delete a remote cluster"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

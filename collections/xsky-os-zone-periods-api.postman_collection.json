@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "303c9bed-2893-4f71-8c75-33bdf8afb377",
+      "name": "os-zone-periods",
+      "description": {
+        "content": "OSZonePeriodController API /os-zone-periods\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fef9ec40-9ad1-4a81-8959-04bb2a41245c",
+          "name": "List OS Zone Periods",
+          "request": {
+            "name": "List OS Zone Periods",
+            "description": {
+              "content": "List os zone periods.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-zone-periods",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ab05406a-b190-4a0e-980b-0b4ee385b8ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-periods",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_zone_periods\": [\n    {\n      \"next_master_os_zone_uuid\": \"next_master_os_zone_uuid\",\n      \"action\": \"action\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"master_os_zone_uuid\": \"master_os_zone_uuid\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"period_id\": \"period_id\",\n      \"uuid\": \"uuid\",\n      \"status\": \"status\"\n    },\n    {\n      \"next_master_os_zone_uuid\": \"next_master_os_zone_uuid\",\n      \"action\": \"action\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"master_os_zone_uuid\": \"master_os_zone_uuid\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"period_id\": \"period_id\",\n      \"uuid\": \"uuid\",\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "171dc0ed-f3d0-4a0b-a085-5bdfb0871856",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-periods",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30227ece-fcd0-41de-9dbd-a092327d3883",
+          "name": "Get OS Zone Period",
+          "request": {
+            "name": "Get OS Zone Period",
+            "description": {
+              "content": "Get a os zone period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-zone-periods",
+                ":period_uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "period_uuid",
+                  "description": "(Required) os zone period uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47c04827-8593-4034-9486-22b9011a3357",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-periods",
+                    ":period_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period_uuid",
+                      "description": "(Required) os zone period uuid"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_zone_period\": {\n    \"next_master_os_zone_uuid\": \"next_master_os_zone_uuid\",\n    \"action\": \"action\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"master_os_zone_uuid\": \"master_os_zone_uuid\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"period_id\": \"period_id\",\n    \"uuid\": \"uuid\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1ebd6ef-dce7-4aa9-8e25-407ad6a5c5c0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-periods",
+                    ":period_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period_uuid",
+                      "description": "(Required) os zone period uuid"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a1dee1d-9c30-4271-a27f-8f47758a146a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-zone-periods",
+                    ":period_uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period_uuid",
+                      "description": "(Required) os zone period uuid"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a59a7c40-2805-4e53-857b-e0c2227d3b68",
+    "name": "XMS access-paths os-zone-periods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

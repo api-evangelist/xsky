@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-external-storage-classes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-external-storage-classes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSExternalStorageClasses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-external-storage-classes/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "os_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "os policy id"
+              },
+              {
+                "name": "general_status",
+                "value": "",
+                "type": "query",
+                "description": "query records with active or error status"
+              }
+            ]
+          },
+          "docs": "List os external storage classes"
+        },
+        {
+          "info": {
+            "name": "CreateExternalStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-external-storage-classes/"
+          },
+          "docs": "Create os external storage class"
+        },
+        {
+          "info": {
+            "name": "GetOSExternalStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-external-storage-classes/:external_storage_class_id",
+            "params": [
+              {
+                "name": "external_storage_class_id",
+                "value": "",
+                "type": "path",
+                "description": "external storage class id"
+              }
+            ]
+          },
+          "docs": "Get a os external storage class"
+        },
+        {
+          "info": {
+            "name": "UpdateOSExternalStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-external-storage-classes/:external_storage_class_id",
+            "params": [
+              {
+                "name": "external_storage_class_id",
+                "value": "",
+                "type": "path",
+                "description": "external storage class id"
+              }
+            ]
+          },
+          "docs": "update os external storage class"
+        },
+        {
+          "info": {
+            "name": "DeleteOSExternalStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-external-storage-classes/:external_storage_class_id",
+            "params": [
+              {
+                "name": "external_storage_class_id",
+                "value": "",
+                "type": "path",
+                "description": "external storage class id"
+              }
+            ]
+          },
+          "docs": "Delete an os external storage class"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,3132 @@
+{
+  "item": [
+    {
+      "id": "aa0fa0b1-dccb-48fc-b7b2-a9916e368d48",
+      "name": "osds",
+      "description": {
+        "content": "OsdController Osd Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "392b1649-03fd-4da2-9148-f3b69194f2a2",
+          "name": "List Osds",
+          "request": {
+            "name": "List Osds",
+            "description": {
+              "content": "List all osds in the cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<long>",
+                  "description": "host id"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool_id",
+                  "value": "<long>",
+                  "description": "pool id"
+                },
+                {
+                  "disabled": false,
+                  "key": "osd_group_id",
+                  "value": "<long>",
+                  "description": "osd group id"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "osd type: HDD, SSD, Hybrid"
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "osd role: index or data"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_compound",
+                  "value": "<boolean>",
+                  "description": "with compound osd"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_hybrid",
+                  "value": "<boolean>",
+                  "description": "with hybrid osd"
+                },
+                {
+                  "disabled": false,
+                  "key": "cache_disk_id",
+                  "value": "<long>",
+                  "description": "cache disk id"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "421376d3-5789-4885-a61b-a66a175cfc19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_hybrid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cache_disk_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osds\": [\n    {\n      \"action_status\": \"string\",\n      \"create\": \"1981-11-01T22:33:24.780Z\",\n      \"data_dir\": \"string\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 1543,\n      \"in\": false,\n      \"init_time\": \"1951-02-15T09:41:13.334Z\",\n      \"last_scrub_time\": \"2014-08-18T15:45:44.452Z\",\n      \"meta_bytes\": 964,\n      \"name\": \"string\",\n      \"omap_byte\": 7159,\n      \"osd_group\": {\n        \"id\": 739\n      },\n      \"osd_id\": 709,\n      \"partition\": {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      \"pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"read_cache_size\": 1237,\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"up\": true,\n      \"update\": \"1972-11-11T21:04:18.639Z\",\n      \"uuid\": \"string\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        },\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        }\n      ]\n    },\n    {\n      \"action_status\": \"string\",\n      \"create\": \"1960-10-01T10:58:51.518Z\",\n      \"data_dir\": \"string\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 163,\n      \"in\": true,\n      \"init_time\": \"2000-09-23T20:25:02.742Z\",\n      \"last_scrub_time\": \"2002-01-24T21:39:33.034Z\",\n      \"meta_bytes\": 582,\n      \"name\": \"string\",\n      \"omap_byte\": 8965,\n      \"osd_group\": {\n        \"id\": 4514\n      },\n      \"osd_id\": 8269,\n      \"partition\": {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      \"pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"read_cache_size\": 2014,\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"up\": true,\n      \"update\": \"1980-10-30T19:13:31.369Z\",\n      \"uuid\": \"string\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        },\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5655775-540a-46f3-beec-0d3b8f71284d",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_hybrid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cache_disk_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca328722-af64-4bec-9763-80063271557e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_hybrid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cache_disk_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b399d7c4-4c46-4947-b84e-f8b8e66cd322",
+          "name": "Create Osd",
+          "request": {
+            "name": "Create Osd",
+            "description": {
+              "content": "Create osd service on specific disk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"osd\": {\n    \"disk_id\": \"<long>\",\n    \"omap_byte\": \"<long>\",\n    \"partition_id\": \"<long>\",\n    \"read_cache_size\": \"<long>\",\n    \"role\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da44c762-8550-475a-a1bb-ea4826d72703",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"partition_id\": 1,\n    \"role\": \"role\",\n    \"omap_byte\": 6,\n    \"read_cache_size\": 5,\n    \"disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85f89dae-4c1c-4331-b62f-9cfd48f5ee21",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"partition_id\": 1,\n    \"role\": \"role\",\n    \"omap_byte\": 6,\n    \"read_cache_size\": 5,\n    \"disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8906d723-c9c9-498f-9075-affb8d1709b3",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"partition_id\": 1,\n    \"role\": \"role\",\n    \"omap_byte\": 6,\n    \"read_cache_size\": 5,\n    \"disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "578922e4-0ea2-4f6d-9b73-4952e3c2c0b9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"partition_id\": 1,\n    \"role\": \"role\",\n    \"omap_byte\": 6,\n    \"read_cache_size\": 5,\n    \"disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "604cabee-94e3-4a05-a65a-c2d07e1b70b6",
+          "name": "Get Osd",
+          "request": {
+            "name": "Get Osd",
+            "description": {
+              "content": "get an osd",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) osd id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2849445-5866-47ea-a714-a9815ff96d68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05d55656-2f78-44cb-b007-5a261d13cb29",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a3c2a48-8871-4bef-a84d-471172701cf5",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a187e23-a37e-4a2f-ad5e-341c4028e993",
+          "name": "Delete Osd",
+          "request": {
+            "name": "Delete Osd",
+            "description": {
+              "content": "remove an osd from cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) osd id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3079159a-a11e-44d1-b9f1-b87209a5f194",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fafe792-c96a-4294-b2ce-e73d54163152",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8756fd3-83b9-486f-bd4c-3e283851eb0e",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a596850-c2a7-4c5d-8c82-6dcd7e91321e",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "534204d6-cf9f-419d-a138-367473c0007d",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a44d01b1-5282-4250-bf73-83bf43d87df8",
+          "name": "Update Osd",
+          "request": {
+            "name": "Update Osd",
+            "description": {
+              "content": "update osd info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) osd id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"osd\": {\n    \"action_status\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee56fa6b-2257-4acf-9105-4e504745ea04",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10e5bf11-262c-4ba3-9c11-19b9d780cb36",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce6f3b27-3cd9-4120-ac6b-277792e1ac49",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c137e74-296f-424a-a47e-4fc6bd9e032b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eea782ca-bd00-4d3a-9dcb-58a75ab748af",
+          "name": "Get Chunks",
+          "request": {
+            "name": "Get Chunks",
+            "description": {
+              "content": "get chunks of and osd",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id",
+                "chunks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) The id of the osd"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "05072bb3-87ef-4b48-8836-b97a1540f569",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "chunks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) The id of the osd"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chunks\": [\n    {\n      \"chunk_id\": \"string\",\n      \"id\": 6843,\n      \"osd_ids\": [\n        1585,\n        3410\n      ],\n      \"status\": \"string\",\n      \"update\": \"1991-08-29T14:15:46.641Z\",\n      \"scrubs\": [\n        {\n          \"id\": 9770,\n          \"repair_status\": \"string\",\n          \"repair_time\": \"2022-10-19T11:30:43.300Z\",\n          \"scrub_status\": \"string\",\n          \"scrub_time\": \"1954-11-24T04:29:22.468Z\"\n        },\n        {\n          \"id\": 8109,\n          \"repair_status\": \"string\",\n          \"repair_time\": \"2024-01-16T11:31:15.748Z\",\n          \"scrub_status\": \"string\",\n          \"scrub_time\": \"2020-06-27T20:56:12.336Z\"\n        }\n      ]\n    },\n    {\n      \"chunk_id\": \"string\",\n      \"id\": 9074,\n      \"osd_ids\": [\n        4871,\n        5398\n      ],\n      \"status\": \"string\",\n      \"update\": \"1963-04-28T12:04:50.650Z\",\n      \"scrubs\": [\n        {\n          \"id\": 6534,\n          \"repair_status\": \"string\",\n          \"repair_time\": \"2002-04-12T09:06:20.770Z\",\n          \"scrub_status\": \"string\",\n          \"scrub_time\": \"1986-07-05T04:08:42.036Z\"\n        },\n        {\n          \"id\": 1786,\n          \"repair_status\": \"string\",\n          \"repair_time\": \"1949-07-31T12:00:49.972Z\",\n          \"scrub_status\": \"string\",\n          \"scrub_time\": \"1950-04-28T19:46:17.587Z\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eea2a401-7395-4247-b667-f09216d8aa87",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "chunks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) The id of the osd"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af76b271-c530-4a9d-877c-b6778dfdd19d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "chunks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) The id of the osd"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "240050a4-0597-4b1f-bbba-6f04856b2d96",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "chunks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) The id of the osd"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f53892d-80b0-41c4-8faf-f107701fdf3e",
+          "name": "Get Osd Predictions",
+          "request": {
+            "name": "Get Osd Predictions",
+            "description": {
+              "content": "get a osd's prediction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id",
+                "predictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) osd id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb6918ca-b07b-4b77-86c9-57e09790be7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd_predictions\": [\n    {\n      \"used_kbyte_30days\": 1,\n      \"used_kbyte_7days\": 5,\n      \"used_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"used_kbyte_1day\": 6,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0\n    },\n    {\n      \"used_kbyte_30days\": 1,\n      \"used_kbyte_7days\": 5,\n      \"used_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"used_kbyte_1day\": 6,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49887056-a61c-40d6-a886-41194b275f5b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cf31ffe-9102-49d0-a3ec-29fdd236d1c9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5da54a3-4958-4712-9bbe-46a1ee8c1b48",
+          "name": "Get Osd Samples",
+          "request": {
+            "name": "Get Osd Samples",
+            "description": {
+              "content": "get a osd's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                ":osd_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "osd_id",
+                  "description": "(Required) osd id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "635d96dd-10bb-4345-b354-6085afc464f8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd_samples\": [\n    {\n      \"healthy_percent\": 1.4658129805029452,\n      \"read_wait_us\": 7.386281948385884,\n      \"recovery_percent\": 1.2315135367772556,\n      \"total_bandwidth_kbyte\": 1.0246457001441578,\n      \"read_merged_ps\": 4.145608029883936,\n      \"read_bandwidth_kbyte\": 3.616076749251911,\n      \"omap_total_kbyte\": 2.3021358869347655,\n      \"avg_queue_len\": 0.8008281904610115,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"write_iops\": 9.369310271410669,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 6.027456183070403,\n      \"total_iops\": 6.84685269835264,\n      \"write_merged_ps\": 6.683562403749608,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"read_iops\": 2.027123023002322,\n      \"io_util\": 5.962133916683182,\n      \"omap_used_kbyte\": 7.061401241503109,\n      \"omap_used_percent\": 9.301444243932576,\n      \"used_kbyte\": 4,\n      \"write_bandwidth_kbyte\": 9.965781217890562,\n      \"write_wait_us\": 8.762042012749001,\n      \"used_percent\": 5.025004791520295,\n      \"kbyte_per_io\": 5.637376656633329,\n      \"total_io_wait_us\": 1.4894159098541704\n    },\n    {\n      \"healthy_percent\": 1.4658129805029452,\n      \"read_wait_us\": 7.386281948385884,\n      \"recovery_percent\": 1.2315135367772556,\n      \"total_bandwidth_kbyte\": 1.0246457001441578,\n      \"read_merged_ps\": 4.145608029883936,\n      \"read_bandwidth_kbyte\": 3.616076749251911,\n      \"omap_total_kbyte\": 2.3021358869347655,\n      \"avg_queue_len\": 0.8008281904610115,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"write_iops\": 9.369310271410669,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 6.027456183070403,\n      \"total_iops\": 6.84685269835264,\n      \"write_merged_ps\": 6.683562403749608,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"read_iops\": 2.027123023002322,\n      \"io_util\": 5.962133916683182,\n      \"omap_used_kbyte\": 7.061401241503109,\n      \"omap_used_percent\": 9.301444243932576,\n      \"used_kbyte\": 4,\n      \"write_bandwidth_kbyte\": 9.965781217890562,\n      \"write_wait_us\": 8.762042012749001,\n      \"used_percent\": 5.025004791520295,\n      \"kbyte_per_io\": 5.637376656633329,\n      \"total_io_wait_us\": 1.4894159098541704\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e29aa63-8961-4eb9-8ce0-69fc4c0c8a52",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b2a233bc-6cd6-44f3-b401-e52b01274a41",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d792e945-7e9d-43da-b573-517c875efd4e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    ":osd_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "osd_id",
+                      "description": "(Required) osd id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d98f5f4-ef61-4177-a691-0b7a5a80fb15",
+          "name": "Maintain Osd",
+          "request": {
+            "name": "Maintain Osd",
+            "description": {
+              "content": "Put osd in maintained status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                "{{osd_id}}:maintain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "635ce288-b231-4404-904e-00f730117ff2",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:maintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1b60f15-cfec-49e9-b03f-a8b4bff45793",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:maintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "851c6c59-8876-4f5f-a18a-3379e535dda0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:maintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b193430a-105a-49af-ace5-62fb112001eb",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:maintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2807f9e-63fe-4e89-87d6-c42eae517617",
+          "name": "Rebuild Osd",
+          "request": {
+            "name": "Rebuild Osd",
+            "description": {
+              "content": "rebuild an osd from cluster pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                "{{osd_id}}:rebuild"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"osd\": {\n    \"new_disk_id\": \"<long>\",\n    \"new_omap_byte\": \"<long>\",\n    \"new_partition_id\": \"<long>\",\n    \"new_read_cache_size\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b609f777-b4ec-4721-809e-4c3cc69bea27",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:rebuild"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"new_omap_byte\": 6,\n    \"new_partition_id\": 1,\n    \"new_read_cache_size\": 5,\n    \"new_disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efb8a580-07c1-422c-96da-fa44dfd7afe7",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:rebuild"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"new_omap_byte\": 6,\n    \"new_partition_id\": 1,\n    \"new_read_cache_size\": 5,\n    \"new_disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5b0225e-d8e7-4659-a357-321115d2ec7c",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:rebuild"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"new_omap_byte\": 6,\n    \"new_partition_id\": 1,\n    \"new_read_cache_size\": 5,\n    \"new_disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ba3bcde-e3fb-4ea8-b1dc-f5c3db3f0aad",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:rebuild"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"new_omap_byte\": 6,\n    \"new_partition_id\": 1,\n    \"new_read_cache_size\": 5,\n    \"new_disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43efbe10-4d4a-476a-a073-439e1d7788cc",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:rebuild"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd\": {\n    \"new_omap_byte\": 6,\n    \"new_partition_id\": 1,\n    \"new_read_cache_size\": 5,\n    \"new_disk_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8542937f-8b5f-46d7-a968-9eb3a07073f3",
+          "name": "Switch Osd Role",
+          "request": {
+            "name": "Switch Osd Role",
+            "description": {
+              "content": "Switch osd role to compound",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                "{{osd_id}}:switch-role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6175b86-9727-4e8e-886e-9d44c8390b13",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "006ec840-39f1-4355-8f92-b24797bb85ea",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "788ac18e-eb1e-4ded-a6f8-4fd6a62bb659",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fde5de64-8538-4047-aafe-46e84a782928",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "177fc27c-73f4-4a3d-bdd2-54713e0d0da4",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "56aa1995-1860-484e-9134-49f4fe7508db",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a2716ac-7905-4d37-9783-563e5d193379",
+          "name": "Unmaintain Osd",
+          "request": {
+            "name": "Unmaintain Osd",
+            "description": {
+              "content": "Put osd out of maintained status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "osds",
+                "{{osd_id}}:unmaintain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "256a406e-6cfd-4b6b-8bdb-521e6434647a",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:unmaintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"osd\": {\n    \"action_status\": \"string\",\n    \"create\": \"1949-08-25T04:43:10.999Z\",\n    \"data_dir\": \"string\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 6933,\n    \"in\": true,\n    \"init_time\": \"1979-03-16T14:54:19.563Z\",\n    \"last_scrub_time\": \"2012-05-31T10:23:59.457Z\",\n    \"meta_bytes\": 498,\n    \"name\": \"string\",\n    \"omap_byte\": 3483,\n    \"osd_group\": {\n      \"id\": 8616\n    },\n    \"osd_id\": 9897,\n    \"partition\": {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"read_cache_size\": 8384,\n    \"role\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"up\": false,\n    \"update\": \"1979-04-07T09:20:26.982Z\",\n    \"uuid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2ba55db-7714-4450-b227-7187d71bf2fd",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:unmaintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69f53b0b-965d-43db-a3c4-f7064cdf58c4",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:unmaintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "193e86c4-4e72-456f-ad64-9f50c1a4ffd7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "osds",
+                    "{{osd_id}}:unmaintain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) osd id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "osd_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "f4cc549a-d043-41a8-be68-9a6a5d811102",
+    "name": "XMS access-paths osds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

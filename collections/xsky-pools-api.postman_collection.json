@@ -1,0 +1,3851 @@
+{
+  "item": [
+    {
+      "id": "42680782-2b86-4793-9323-1fb863248265",
+      "name": "pools",
+      "description": {
+        "content": "PoolController Operations about Pools\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb0f3dac-4319-47da-84ec-4c7644479eb8",
+          "name": "List Pools",
+          "request": {
+            "name": "List Pools",
+            "description": {
+              "content": "List pools",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "all",
+                  "value": "<boolean>",
+                  "description": "show all pools"
+                },
+                {
+                  "disabled": false,
+                  "key": "protection_domain_id",
+                  "value": "<long>",
+                  "description": "protection domain id"
+                },
+                {
+                  "disabled": false,
+                  "key": "compound_osd_only",
+                  "value": "<boolean>",
+                  "description": "filter pool with only compound osds"
+                },
+                {
+                  "disabled": false,
+                  "key": "osd_group_id",
+                  "value": "<long>",
+                  "description": "osd group id"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool_type",
+                  "value": "<string>",
+                  "description": "filter pool by type"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool_role",
+                  "value": "<string>",
+                  "description": "filter pool by role"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool_mode",
+                  "value": "<string>",
+                  "description": "filter pool by pool_mode"
+                },
+                {
+                  "disabled": false,
+                  "key": "stretched",
+                  "value": "<boolean>",
+                  "description": "filter stretched pool"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_compound",
+                  "value": "<boolean>",
+                  "description": "with compound pool"
+                },
+                {
+                  "disabled": false,
+                  "key": "os_policy_id",
+                  "value": "<long>",
+                  "description": "filter data pool by object storage policy id"
+                },
+                {
+                  "disabled": false,
+                  "key": "storage_class_id",
+                  "value": "<long>",
+                  "description": "filter data pool by os storage class id"
+                },
+                {
+                  "disabled": false,
+                  "key": "storage_class_pool_type",
+                  "value": "<string>",
+                  "description": "storage class pool type(active inactive) to query"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b3638bb-d018-45dc-91a2-348f63fbd4d3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "compound_osd_only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stretched",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "os_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pools\": [\n    {\n      \"action_status\": \"string\",\n      \"block_volume_num\": 1588,\n      \"coding_chunk_num\": 1217,\n      \"create\": \"2004-12-03T23:49:48.929Z\",\n      \"data_chunk_num\": 8101,\n      \"default_managed_volume_format\": 2868,\n      \"device_type\": \"string\",\n      \"device_type_check_disabled\": false,\n      \"failure_domain_type\": \"string\",\n      \"hidden\": true,\n      \"id\": 2431,\n      \"io_bypass_enabled\": true,\n      \"io_bypass_threshold\": 5561,\n      \"name\": \"string\",\n      \"osd_group\": {\n        \"id\": 4358\n      },\n      \"osd_num\": 1539,\n      \"pool_id\": 4029,\n      \"pool_mode\": \"string\",\n      \"pool_name\": \"string\",\n      \"pool_role\": \"string\",\n      \"pool_type\": \"string\",\n      \"primary_placement_node\": {\n        \"id\": 8491,\n        \"parent\": {\n          \"create\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"properties\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"update\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"property\": {},\n      \"protection_domain\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"qos\": {\n        \"mode\": 5,\n        \"bandwidth\": 0,\n        \"bandwidth_max\": 6,\n        \"id\": 5,\n        \"client_threshold\": 1,\n        \"recovery_rate_type\": \"recovery_rate_type\"\n      },\n      \"replicate_size\": 1970,\n      \"status\": \"string\",\n      \"stretched\": false,\n      \"update\": \"2001-04-05T04:18:39.212Z\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 9.301444243932576,\n          \"error_kbyte\": 2,\n          \"recovery_percent\": 1.1730742509559433,\n          \"total_bandwidth_kbyte\": 4.965218492984954,\n          \"read_latency_us\": 1.0246457001441578,\n          \"data_kbyte\": 1,\n          \"read_bandwidth_kbyte\": 7.386281948385884,\n          \"healthy_num\": 7,\n          \"recovery_iops\": 6.84685269835264,\n          \"omap_total_kbyte\": 3.616076749251911,\n          \"degraded_num\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n          \"write_iops\": 3.5571952270680973,\n          \"total_kbyte\": 9,\n          \"degraded_percent\": 5.637376656633329,\n          \"unavailable_num\": 9,\n          \"write_latency_us\": 6.965117697638846,\n          \"total_iops\": 5.025004791520295,\n          \"unavailable_percent\": 6.683562403749608,\n          \"read_iops\": 1.2315135367772556,\n          \"actual_kbyte\": 0,\n          \"omap_used_kbyte\": 2.027123023002322,\n          \"omap_used_percent\": 4.145608029883936,\n          \"used_kbyte\": 8,\n          \"write_bandwidth_kbyte\": 6.438423552598547,\n          \"creating_num\": 6,\n          \"used_percent\": 9.018348186070783,\n          \"recovery_num\": 7\n        },\n        {\n          \"healthy_percent\": 9.301444243932576,\n          \"error_kbyte\": 2,\n          \"recovery_percent\": 1.1730742509559433,\n          \"total_bandwidth_kbyte\": 4.965218492984954,\n          \"read_latency_us\": 1.0246457001441578,\n          \"data_kbyte\": 1,\n          \"read_bandwidth_kbyte\": 7.386281948385884,\n          \"healthy_num\": 7,\n          \"recovery_iops\": 6.84685269835264,\n          \"omap_total_kbyte\": 3.616076749251911,\n          \"degraded_num\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n          \"write_iops\": 3.5571952270680973,\n          \"total_kbyte\": 9,\n          \"degraded_percent\": 5.637376656633329,\n          \"unavailable_num\": 9,\n          \"write_latency_us\": 6.965117697638846,\n          \"total_iops\": 5.025004791520295,\n          \"unavailable_percent\": 6.683562403749608,\n          \"read_iops\": 1.2315135367772556,\n          \"actual_kbyte\": 0,\n          \"omap_used_kbyte\": 2.027123023002322,\n          \"omap_used_percent\": 4.145608029883936,\n          \"used_kbyte\": 8,\n          \"write_bandwidth_kbyte\": 6.438423552598547,\n          \"creating_num\": 6,\n          \"used_percent\": 9.018348186070783,\n          \"recovery_num\": 7\n        }\n      ]\n    },\n    {\n      \"action_status\": \"string\",\n      \"block_volume_num\": 8813,\n      \"coding_chunk_num\": 1816,\n      \"create\": \"1947-10-01T16:03:09.658Z\",\n      \"data_chunk_num\": 9656,\n      \"default_managed_volume_format\": 9528,\n      \"device_type\": \"string\",\n      \"device_type_check_disabled\": false,\n      \"failure_domain_type\": \"string\",\n      \"hidden\": true,\n      \"id\": 8682,\n      \"io_bypass_enabled\": false,\n      \"io_bypass_threshold\": 3816,\n      \"name\": \"string\",\n      \"osd_group\": {\n        \"id\": 7123\n      },\n      \"osd_num\": 2867,\n      \"pool_id\": 5567,\n      \"pool_mode\": \"string\",\n      \"pool_name\": \"string\",\n      \"pool_role\": \"string\",\n      \"pool_type\": \"string\",\n      \"primary_placement_node\": {\n        \"id\": 4166,\n        \"parent\": {\n          \"create\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parent\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"properties\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"update\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"property\": {},\n      \"protection_domain\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"qos\": {\n        \"mode\": 5,\n        \"bandwidth\": 0,\n        \"bandwidth_max\": 6,\n        \"id\": 5,\n        \"client_threshold\": 1,\n        \"recovery_rate_type\": \"recovery_rate_type\"\n      },\n      \"replicate_size\": 6061,\n      \"status\": \"string\",\n      \"stretched\": true,\n      \"update\": \"1983-10-30T00:59:03.611Z\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 9.301444243932576,\n          \"error_kbyte\": 2,\n          \"recovery_percent\": 1.1730742509559433,\n          \"total_bandwidth_kbyte\": 4.965218492984954,\n          \"read_latency_us\": 1.0246457001441578,\n          \"data_kbyte\": 1,\n          \"read_bandwidth_kbyte\": 7.386281948385884,\n          \"healthy_num\": 7,\n          \"recovery_iops\": 6.84685269835264,\n          \"omap_total_kbyte\": 3.616076749251911,\n          \"degraded_num\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n          \"write_iops\": 3.5571952270680973,\n          \"total_kbyte\": 9,\n          \"degraded_percent\": 5.637376656633329,\n          \"unavailable_num\": 9,\n          \"write_latency_us\": 6.965117697638846,\n          \"total_iops\": 5.025004791520295,\n          \"unavailable_percent\": 6.683562403749608,\n          \"read_iops\": 1.2315135367772556,\n          \"actual_kbyte\": 0,\n          \"omap_used_kbyte\": 2.027123023002322,\n          \"omap_used_percent\": 4.145608029883936,\n          \"used_kbyte\": 8,\n          \"write_bandwidth_kbyte\": 6.438423552598547,\n          \"creating_num\": 6,\n          \"used_percent\": 9.018348186070783,\n          \"recovery_num\": 7\n        },\n        {\n          \"healthy_percent\": 9.301444243932576,\n          \"error_kbyte\": 2,\n          \"recovery_percent\": 1.1730742509559433,\n          \"total_bandwidth_kbyte\": 4.965218492984954,\n          \"read_latency_us\": 1.0246457001441578,\n          \"data_kbyte\": 1,\n          \"read_bandwidth_kbyte\": 7.386281948385884,\n          \"healthy_num\": 7,\n          \"recovery_iops\": 6.84685269835264,\n          \"omap_total_kbyte\": 3.616076749251911,\n          \"degraded_num\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n          \"write_iops\": 3.5571952270680973,\n          \"total_kbyte\": 9,\n          \"degraded_percent\": 5.637376656633329,\n          \"unavailable_num\": 9,\n          \"write_latency_us\": 6.965117697638846,\n          \"total_iops\": 5.025004791520295,\n          \"unavailable_percent\": 6.683562403749608,\n          \"read_iops\": 1.2315135367772556,\n          \"actual_kbyte\": 0,\n          \"omap_used_kbyte\": 2.027123023002322,\n          \"omap_used_percent\": 4.145608029883936,\n          \"used_kbyte\": 8,\n          \"write_bandwidth_kbyte\": 6.438423552598547,\n          \"creating_num\": 6,\n          \"used_percent\": 9.018348186070783,\n          \"recovery_num\": 7\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "114ef463-a1da-4cea-8d25-af00b4323a31",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "compound_osd_only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stretched",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "os_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "502e39e5-9c5f-46f8-a6f8-615ab8a9d462",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "protection_domain_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "compound_osd_only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "osd_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stretched",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_compound",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "os_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "storage_class_pool_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b83d2ea8-24cb-4c52-a25a-8fc34f743786",
+          "name": "Create Pool",
+          "request": {
+            "name": "Create Pool",
+            "description": {
+              "content": "Create pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pool\": {\n    \"coding_chunk_num\": \"<long>\",\n    \"data_chunk_num\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"osd_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"pool_role\": \"<string>\",\n    \"pool_type\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"protection_domain_id\": \"<long>\",\n    \"ruleset\": [\n      {\n        \"placement_node_id\": \"<long>\",\n        \"replicate_num\": \"<long>\"\n      },\n      {\n        \"placement_node_id\": \"<long>\",\n        \"replicate_num\": \"<long>\"\n      }\n    ],\n    \"shared_pool_id\": \"<long>\",\n    \"size\": \"<long>\",\n    \"stretched\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3635dcb-1def-4988-a8a8-1d49e78d2eac",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"data_chunk_num\": 6,\n    \"failure_domain_type\": \"failure_domain_type\",\n    \"osd_ids\": [\n      1,\n      1\n    ],\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"coding_chunk_num\": 0,\n    \"primary_placement_node_id\": 5,\n    \"protection_domain_id\": 5,\n    \"stretched\": true,\n    \"size\": 3,\n    \"name\": \"name\",\n    \"pool_role\": \"pool_role\",\n    \"pool_type\": \"pool_type\",\n    \"shared_pool_id\": 9\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 5524,\n    \"coding_chunk_num\": 7990,\n    \"create\": \"1984-08-31T10:03:42.646Z\",\n    \"data_chunk_num\": 4922,\n    \"default_managed_volume_format\": 814,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": false,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 7759,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 5792,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 8420\n    },\n    \"osd_num\": 6647,\n    \"pool_id\": 547,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 3467,\n      \"parent\": {\n        \"create\": \"1973-10-06T20:10:36.664Z\",\n        \"id\": 4089,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1954-10-04T12:01:33.899Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 3652,\n    \"status\": \"string\",\n    \"stretched\": true,\n    \"update\": \"1993-02-06T23:41:54.536Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06aad407-6ee1-4333-8281-afd6a708a1e2",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"data_chunk_num\": 6,\n    \"failure_domain_type\": \"failure_domain_type\",\n    \"osd_ids\": [\n      1,\n      1\n    ],\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"coding_chunk_num\": 0,\n    \"primary_placement_node_id\": 5,\n    \"protection_domain_id\": 5,\n    \"stretched\": true,\n    \"size\": 3,\n    \"name\": \"name\",\n    \"pool_role\": \"pool_role\",\n    \"pool_type\": \"pool_type\",\n    \"shared_pool_id\": 9\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b46effa-2e20-493a-ac03-1863d9f16788",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"data_chunk_num\": 6,\n    \"failure_domain_type\": \"failure_domain_type\",\n    \"osd_ids\": [\n      1,\n      1\n    ],\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"coding_chunk_num\": 0,\n    \"primary_placement_node_id\": 5,\n    \"protection_domain_id\": 5,\n    \"stretched\": true,\n    \"size\": 3,\n    \"name\": \"name\",\n    \"pool_role\": \"pool_role\",\n    \"pool_type\": \"pool_type\",\n    \"shared_pool_id\": 9\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad41fe75-b895-4a88-9159-3477a9785455",
+          "name": "Get Pool",
+          "request": {
+            "name": "Get Pool",
+            "description": {
+              "content": "get pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d640804e-aa46-4956-9139-08c37881a878",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 5524,\n    \"coding_chunk_num\": 7990,\n    \"create\": \"1984-08-31T10:03:42.646Z\",\n    \"data_chunk_num\": 4922,\n    \"default_managed_volume_format\": 814,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": false,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 7759,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 5792,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 8420\n    },\n    \"osd_num\": 6647,\n    \"pool_id\": 547,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 3467,\n      \"parent\": {\n        \"create\": \"1973-10-06T20:10:36.664Z\",\n        \"id\": 4089,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1954-10-04T12:01:33.899Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 3652,\n    \"status\": \"string\",\n    \"stretched\": true,\n    \"update\": \"1993-02-06T23:41:54.536Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49a28c00-cba0-44c2-bfb9-bde442f93abb",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1fb2d3b-cc28-4e6b-9f52-fb13f40e6e3d",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ba49209-aca4-43d3-bb60-453020287c70",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5551554-1883-4359-a493-cb6ac0fee7da",
+          "name": "Delete Pool",
+          "request": {
+            "name": "Delete Pool",
+            "description": {
+              "content": "Delete pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "force delete or not"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fad81836-a093-495a-95ad-8997e454db0f",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 5524,\n    \"coding_chunk_num\": 7990,\n    \"create\": \"1984-08-31T10:03:42.646Z\",\n    \"data_chunk_num\": 4922,\n    \"default_managed_volume_format\": 814,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": false,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 7759,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 5792,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 8420\n    },\n    \"osd_num\": 6647,\n    \"pool_id\": 547,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 3467,\n      \"parent\": {\n        \"create\": \"1973-10-06T20:10:36.664Z\",\n        \"id\": 4089,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1954-10-04T12:01:33.899Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 3652,\n    \"status\": \"string\",\n    \"stretched\": true,\n    \"update\": \"1993-02-06T23:41:54.536Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33bbb100-208b-4965-9ba8-8f887deacc02",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9d0c9a3-58ed-42be-ab79-1ebf7449f59e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92a8c550-1c90-4bd9-a48c-8d5df893b984",
+          "name": "Update Pool",
+          "request": {
+            "name": "Update Pool",
+            "description": {
+              "content": "update pool info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"bandwidth\": \"<long>\",\n      \"bandwidth_max\": \"<long>\",\n      \"client_threshold\": \"<long>\",\n      \"id\": \"<long>\",\n      \"mode\": \"<long>\",\n      \"recovery_rate_type\": \"<string>\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": \"<long>\",\n        \"replicate_num\": \"<long>\"\n      },\n      {\n        \"placement_node_id\": \"<long>\",\n        \"replicate_num\": \"<long>\"\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c62b23e0-b1f6-4b60-982a-7c214bc0db0e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_2\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_3\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_4\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "744f5f86-0df2-42ed-9fbb-5458af95edd8",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_2\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_3\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_4\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7a513ae-d271-409b-bbe5-9f69f0596efe",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_2\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_3\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_4\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c950fac-4470-4e14-b687-c4e9e1ca8354",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_2\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_3\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_4\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "732c8365-08bd-4aa3-96e0-46a03d9ecc32",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pool\": {\n    \"default_managed_volume_format\": \"<long>\",\n    \"failure_domain_type\": \"<string>\",\n    \"io_bypass_enabled\": \"<boolean>\",\n    \"io_bypass_threshold\": \"<long>\",\n    \"name\": \"<string>\",\n    \"primary_placement_node_id\": \"<long>\",\n    \"property\": {\n      \"key_0\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_1\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_2\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_3\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"key_4\": [\n        \"<byte>\",\n        \"<byte>\"\n      ]\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"ruleset\": [\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      },\n      {\n        \"placement_node_id\": 2,\n        \"replicate_num\": 7\n      }\n    ],\n    \"size\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dcf2f0c-e649-42d9-8f23-e6dd7060df50",
+          "name": "Add Osds To Pool",
+          "request": {
+            "name": "Add Osds To Pool",
+            "description": {
+              "content": "Add osds to pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id",
+                "osds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"osd_ids\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00425556-fcf1-4570-97d0-9eca234c0f5d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fff0dd71-db1d-49fb-8718-cb22a5036ceb",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea259ba2-94b5-4c82-93c7-ef707e0f8c8b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a95b2f10-6d0d-4755-9079-4d53ad698809",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b90ebb1-306c-4d51-8bc8-2a18b2d063b1",
+          "name": "Remove Osds From Pool",
+          "request": {
+            "name": "Remove Osds From Pool",
+            "description": {
+              "content": "Remove multiple osds from a pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id",
+                "osds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"osd_ids\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c7f4306-feb3-42e8-b6ef-4974df52bf55",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25b677ef-59ef-4e3a-a996-e355a4a5eca8",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25ca4e36-6942-4f3c-8833-2cba34f441ac",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7ea1ba8-e501-4ef4-b41c-73f31a5e2e03",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b9da905-d84c-4f21-ad3d-5d63c6d500dd",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "osds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"osd_ids\": [\n    0,\n    0\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ab98e9d-f624-4943-86b9-cb669fdf8b0b",
+          "name": "Get Pool Predictions",
+          "request": {
+            "name": "Get Pool Predictions",
+            "description": {
+              "content": "get a pool's prediction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id",
+                "predictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8022617-4564-4d27-9aeb-c70aa4440344",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool_predictions\": [\n    {\n      \"used_kbyte_30days\": 2,\n      \"data_kbyte_1day\": 0,\n      \"used_kbyte_7days\": 7,\n      \"used_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"data_kbyte_7days\": 1,\n      \"used_kbyte_1day\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"data_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"id\": 5,\n      \"data_kbyte_30days\": 6\n    },\n    {\n      \"used_kbyte_30days\": 2,\n      \"data_kbyte_1day\": 0,\n      \"used_kbyte_7days\": 7,\n      \"used_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"data_kbyte_7days\": 1,\n      \"used_kbyte_1day\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"data_kbyte_points\": [\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        },\n        {\n          \"used_kbyte\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\"\n        }\n      ],\n      \"id\": 5,\n      \"data_kbyte_30days\": 6\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8407139c-5c3f-40bb-8520-12f0ef97a9c1",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86daf64f-1317-44e8-8fa0-9fdd71c3937e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9868df6-31e1-4344-8dad-ff7b3301f9d1",
+          "name": "Get Pool Samples",
+          "request": {
+            "name": "Get Pool Samples",
+            "description": {
+              "content": "get pool's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a946127-a6f2-4b62-89d5-2d91a28159d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool_samples\": [\n    {\n      \"healthy_percent\": 9.301444243932576,\n      \"error_kbyte\": 2,\n      \"recovery_percent\": 1.1730742509559433,\n      \"total_bandwidth_kbyte\": 4.965218492984954,\n      \"read_latency_us\": 1.0246457001441578,\n      \"data_kbyte\": 1,\n      \"read_bandwidth_kbyte\": 7.386281948385884,\n      \"healthy_num\": 7,\n      \"recovery_iops\": 6.84685269835264,\n      \"omap_total_kbyte\": 3.616076749251911,\n      \"degraded_num\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n      \"write_iops\": 3.5571952270680973,\n      \"total_kbyte\": 9,\n      \"degraded_percent\": 5.637376656633329,\n      \"unavailable_num\": 9,\n      \"write_latency_us\": 6.965117697638846,\n      \"total_iops\": 5.025004791520295,\n      \"unavailable_percent\": 6.683562403749608,\n      \"read_iops\": 1.2315135367772556,\n      \"actual_kbyte\": 0,\n      \"omap_used_kbyte\": 2.027123023002322,\n      \"omap_used_percent\": 4.145608029883936,\n      \"used_kbyte\": 8,\n      \"write_bandwidth_kbyte\": 6.438423552598547,\n      \"creating_num\": 6,\n      \"used_percent\": 9.018348186070783,\n      \"recovery_num\": 7\n    },\n    {\n      \"healthy_percent\": 9.301444243932576,\n      \"error_kbyte\": 2,\n      \"recovery_percent\": 1.1730742509559433,\n      \"total_bandwidth_kbyte\": 4.965218492984954,\n      \"read_latency_us\": 1.0246457001441578,\n      \"data_kbyte\": 1,\n      \"read_bandwidth_kbyte\": 7.386281948385884,\n      \"healthy_num\": 7,\n      \"recovery_iops\": 6.84685269835264,\n      \"omap_total_kbyte\": 3.616076749251911,\n      \"degraded_num\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n      \"write_iops\": 3.5571952270680973,\n      \"total_kbyte\": 9,\n      \"degraded_percent\": 5.637376656633329,\n      \"unavailable_num\": 9,\n      \"write_latency_us\": 6.965117697638846,\n      \"total_iops\": 5.025004791520295,\n      \"unavailable_percent\": 6.683562403749608,\n      \"read_iops\": 1.2315135367772556,\n      \"actual_kbyte\": 0,\n      \"omap_used_kbyte\": 2.027123023002322,\n      \"omap_used_percent\": 4.145608029883936,\n      \"used_kbyte\": 8,\n      \"write_bandwidth_kbyte\": 6.438423552598547,\n      \"creating_num\": 6,\n      \"used_percent\": 9.018348186070783,\n      \"recovery_num\": 7\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c44940f-bf6d-4fd0-b9d1-2c61a8a6ef97",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4534b08-8830-4afa-a905-f2bbe1c842b0",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e981b27-1b3d-4451-b2b6-c60594caff4a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a836365-7e14-459a-a674-6ea8a1802fcc",
+          "name": "Get Pool Topology",
+          "request": {
+            "name": "Get Pool Topology",
+            "description": {
+              "content": "get pool topology",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                ":pool_id",
+                "topology"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "pool_id",
+                  "description": "(Required) pool id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51201363-ca1f-4eec-bd8b-68b1f895c379",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool_topology\": {\n    \"children\": [\n      null,\n      null\n    ],\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"replicate_num\": 1,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"placement_node\": {\n      \"parent\": null,\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"type\": \"type\",\n      \"properties\": {\n        \"is_witness\": true\n      }\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2edd9736-f9b3-4636-bea8-f58d3c236c9e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7a87c082-e3be-486a-be8c-6311975aae3e",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb2cc6b1-f332-4144-b5cb-bd4c4809b670",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    ":pool_id",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "pool_id",
+                      "description": "(Required) pool id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ba08439-65b7-4ab0-8d03-3d342623a373",
+          "name": "Disable Device Type Check",
+          "request": {
+            "name": "Disable Device Type Check",
+            "description": {
+              "content": "Disable device type check when add osd",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "{{pool_id}}:disable-device-type-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcbb1ec9-71d5-474f-851f-eaa222becec0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:disable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5adc5315-d015-4230-b044-dffdc6ae9865",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:disable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "60f5ea09-c1aa-4625-80a1-ec26f8138f73",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:disable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "124a1484-0515-4bc4-9c56-f920e384e51c",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:disable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3bebd53e-6727-44b2-85d1-8ab91ace6a98",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:disable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1b0954c-d41e-4d78-b305-4f7dbf8f27c6",
+          "name": "Enable Device Type Check",
+          "request": {
+            "name": "Enable Device Type Check",
+            "description": {
+              "content": "Enable device type check when add osd",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "{{pool_id}}:enable-device-type-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eab98a39-bcf0-493e-914a-bc0246f26e4d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:enable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22fb5824-cdfe-4e01-b713-68dabe0cb13b",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:enable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "faa272a0-8eeb-47d5-9e4a-d29b3134904b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:enable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fecad8c0-412a-4443-93d8-be799884a427",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:enable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d173309e-dca6-4a86-971d-677822a61f40",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:enable-device-type-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb6ca08b-622c-4ccc-8afd-db7d5ce18498",
+          "name": "Reweight Pool",
+          "request": {
+            "name": "Reweight Pool",
+            "description": {
+              "content": "Reweight a pool",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "{{pool_id}}:reweight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "967348b8-0ba0-4640-9294-3353e3d4af5a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:reweight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b260a6c-6b59-44f7-a622-b58424a18e62",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:reweight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7713cab0-ee66-4b8a-98c1-ef92edfae118",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:reweight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99e6c062-2761-4c37-8cba-8acebb53ac0e",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:reweight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c1ef092-b244-440a-8269-ff1dddf84856",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:reweight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10556157-8ea1-435d-9312-1a84999e40a6",
+          "name": "Switch Pool Role",
+          "request": {
+            "name": "Switch Pool Role",
+            "description": {
+              "content": "Switch pool role to compound",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pools",
+                "{{pool_id}}:switch-role"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "332bfdfd-c859-436f-ab72-1b671d1c33de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac30f4a5-772b-40d0-b278-a225c43a96c3",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pool\": {\n    \"action_status\": \"string\",\n    \"block_volume_num\": 3731,\n    \"coding_chunk_num\": 5686,\n    \"create\": \"1954-04-18T01:13:56.485Z\",\n    \"data_chunk_num\": 7964,\n    \"default_managed_volume_format\": 1358,\n    \"device_type\": \"string\",\n    \"device_type_check_disabled\": true,\n    \"failure_domain_type\": \"string\",\n    \"hidden\": false,\n    \"id\": 3744,\n    \"io_bypass_enabled\": false,\n    \"io_bypass_threshold\": 2665,\n    \"name\": \"string\",\n    \"osd_group\": {\n      \"id\": 7702\n    },\n    \"osd_num\": 3002,\n    \"pool_id\": 9942,\n    \"pool_mode\": \"string\",\n    \"pool_name\": \"string\",\n    \"pool_role\": \"string\",\n    \"pool_type\": \"string\",\n    \"primary_placement_node\": {\n      \"id\": 603,\n      \"parent\": {\n        \"create\": \"1950-09-21T20:34:28.316Z\",\n        \"id\": 4228,\n        \"name\": \"string\",\n        \"parent\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"properties\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"update\": \"1981-04-29T06:20:36.423Z\"\n      }\n    },\n    \"property\": {},\n    \"protection_domain\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"qos\": {\n      \"mode\": 5,\n      \"bandwidth\": 0,\n      \"bandwidth_max\": 6,\n      \"id\": 5,\n      \"client_threshold\": 1,\n      \"recovery_rate_type\": \"recovery_rate_type\"\n    },\n    \"replicate_size\": 4885,\n    \"status\": \"string\",\n    \"stretched\": false,\n    \"update\": \"2006-07-10T00:01:15.702Z\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      },\n      {\n        \"healthy_percent\": 9.301444243932576,\n        \"error_kbyte\": 2,\n        \"recovery_percent\": 1.1730742509559433,\n        \"total_bandwidth_kbyte\": 4.965218492984954,\n        \"read_latency_us\": 1.0246457001441578,\n        \"data_kbyte\": 1,\n        \"read_bandwidth_kbyte\": 7.386281948385884,\n        \"healthy_num\": 7,\n        \"recovery_iops\": 6.84685269835264,\n        \"omap_total_kbyte\": 3.616076749251911,\n        \"degraded_num\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"recovery_bandwidth_kbyte\": 1.4894159098541704,\n        \"write_iops\": 3.5571952270680973,\n        \"total_kbyte\": 9,\n        \"degraded_percent\": 5.637376656633329,\n        \"unavailable_num\": 9,\n        \"write_latency_us\": 6.965117697638846,\n        \"total_iops\": 5.025004791520295,\n        \"unavailable_percent\": 6.683562403749608,\n        \"read_iops\": 1.2315135367772556,\n        \"actual_kbyte\": 0,\n        \"omap_used_kbyte\": 2.027123023002322,\n        \"omap_used_percent\": 4.145608029883936,\n        \"used_kbyte\": 8,\n        \"write_bandwidth_kbyte\": 6.438423552598547,\n        \"creating_num\": 6,\n        \"used_percent\": 9.018348186070783,\n        \"recovery_num\": 7\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "384186ce-31f3-4094-b638-5be3c2e90406",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85eaae56-b6e9-41be-bc77-f80279b55722",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f764eb99-66a2-4cb6-9fbe-91fcae7df746",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7fc23f4-6836-4ffe-a968-f23022db7e18",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pools",
+                    "{{pool_id}}:switch-role"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) pool id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "pool_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4608909-efb4-4c07-87bf-a40ab6886116",
+    "name": "XMS access-paths pools API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths users API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "user name"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "user email"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all users"
+              }
+            ]
+          },
+          "docs": "List users"
+        },
+        {
+          "info": {
+            "name": "CreateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/users/"
+          },
+          "docs": "create user"
+        },
+        {
+          "info": {
+            "name": "GetUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "get a user"
+        },
+        {
+          "info": {
+            "name": "UpdateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "update user info"
+        },
+        {
+          "info": {
+            "name": "DeleteUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "delete user"
+        },
+        {
+          "info": {
+            "name": "ChangePassword",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/users/:user_id/password",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "change user password"
+        },
+        {
+          "info": {
+            "name": "GetUserSettings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/:user_id/settings",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "update user info"
+        },
+        {
+          "info": {
+            "name": "UpdateUserSettings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/users/:user_id/settings",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "update user info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

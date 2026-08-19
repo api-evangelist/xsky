@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths trashes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "trashes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTrashes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trashes/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "the type of trash"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List trashes"
+        },
+        {
+          "info": {
+            "name": "GetTrash",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trashes/:trash_id",
+            "params": [
+              {
+                "name": "trash_id",
+                "value": "",
+                "type": "path",
+                "description": "trash id"
+              }
+            ]
+          },
+          "docs": "get a trash"
+        },
+        {
+          "info": {
+            "name": "UpdateTrash",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/trashes/:trash_id",
+            "params": [
+              {
+                "name": "trash_id",
+                "value": "",
+                "type": "path",
+                "description": "trash id"
+              }
+            ]
+          },
+          "docs": "Update trash info"
+        },
+        {
+          "info": {
+            "name": "CleanupTrash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/trashes/:trash_id:cleanup",
+            "params": [
+              {
+                "name": "trash_id",
+                "value": "",
+                "type": "path",
+                "description": "trash id"
+              }
+            ]
+          },
+          "docs": "Cleanup trash"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

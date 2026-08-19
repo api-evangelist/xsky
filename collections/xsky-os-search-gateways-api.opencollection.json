@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-search-gateways API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-search-gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSSearchGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-gateways/",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "query",
+                "description": "os search engine id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List OS Search Gateways"
+        },
+        {
+          "info": {
+            "name": "GetOSSearchGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "os search gateway id"
+              }
+            ]
+          },
+          "docs": "Get OS Search Gateway"
+        },
+        {
+          "info": {
+            "name": "GetOSSearchGatewaySamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-gateways/:gateway_id/samples",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "os search gateway id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a os search gateway's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

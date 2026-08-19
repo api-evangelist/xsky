@@ -1,0 +1,476 @@
+{
+  "item": [
+    {
+      "id": "2cc00f3e-826a-4347-93be-b86bcf083f21",
+      "name": "os-custom-labels",
+      "description": {
+        "content": "OSCustomLabelController provides API for object storage custom label\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46a20929-e597-4897-bee1-aadcf3be3e07",
+          "name": "List OS Custom Labels",
+          "request": {
+            "name": "List OS Custom Labels",
+            "description": {
+              "content": "List object storage custom labels",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-custom-labels",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bucket_id",
+                  "value": "<long>",
+                  "description": "bucket id"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "label category: meta, default, tagging"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc47d79d-298d-41d8-8023-1b3a07968d14",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bucket_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_custom_labels\": [\n    {\n      \"bucket\": {\n        \"id\": 6923,\n        \"lifecycle\": {\n          \"id\": 2764,\n          \"status\": \"string\"\n        },\n        \"name\": \"string\"\n      },\n      \"category\": \"string\",\n      \"create\": \"2008-04-03T01:00:03.789Z\",\n      \"id\": 4653,\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"update\": \"1967-06-10T03:43:53.225Z\"\n    },\n    {\n      \"bucket\": {\n        \"id\": 6951,\n        \"lifecycle\": {\n          \"id\": 6411,\n          \"status\": \"string\"\n        },\n        \"name\": \"string\"\n      },\n      \"category\": \"string\",\n      \"create\": \"1950-11-13T10:19:44.036Z\",\n      \"id\": 6647,\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"update\": \"1957-03-08T17:10:26.271Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "583026b3-3669-4b71-860d-e94bf4a7856f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bucket_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b663239d-eefa-4b24-bfec-e553e7ee9a4e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bucket_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71894dd5-59c0-4137-b17c-c68d32825247",
+          "name": "Get OS Custom Label",
+          "request": {
+            "name": "Get OS Custom Label",
+            "description": {
+              "content": "Get object storage custom label",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-custom-labels",
+                ":os_custom_label_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "os_custom_label_id",
+                  "description": "(Required) os custom label id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "29493a65-9f74-40dd-bfd3-5d97f9cbbf2e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ":os_custom_label_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "os_custom_label_id",
+                      "description": "(Required) os custom label id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_custom_label\": {\n    \"bucket\": {\n      \"id\": 8019,\n      \"lifecycle\": {\n        \"id\": 7286,\n        \"status\": \"string\"\n      },\n      \"name\": \"string\"\n    },\n    \"category\": \"string\",\n    \"create\": \"1997-08-31T09:11:40.977Z\",\n    \"id\": 1696,\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"update\": \"2009-09-22T09:44:58.863Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e777b02a-372c-42d4-b437-4fbb65443f46",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ":os_custom_label_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "os_custom_label_id",
+                      "description": "(Required) os custom label id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c341bf2c-99ac-4bf6-93a0-9371b2155b5c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-custom-labels",
+                    ":os_custom_label_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "os_custom_label_id",
+                      "description": "(Required) os custom label id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "230aaa2d-ad27-41a7-be97-c22a8fe7b6ee",
+    "name": "XMS access-paths os-custom-labels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

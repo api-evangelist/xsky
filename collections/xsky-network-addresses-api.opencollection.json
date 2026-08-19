@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths network-addresses API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "network-addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNetworkAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-addresses/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "network_interface_id",
+                "value": "",
+                "type": "query",
+                "description": "network interface id"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "network address role"
+              },
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "query",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "List network addresses"
+        },
+        {
+          "info": {
+            "name": "GetNetworkAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-addresses/:network_address_id",
+            "params": [
+              {
+                "name": "network_address_id",
+                "value": "",
+                "type": "path",
+                "description": "network address id"
+              }
+            ]
+          },
+          "docs": "Get a network address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

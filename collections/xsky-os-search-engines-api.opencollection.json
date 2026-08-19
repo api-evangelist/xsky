@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-search-engines API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-search-engines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSSearchEngines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-engines/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List OS search engine"
+        },
+        {
+          "info": {
+            "name": "CreateOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-search-engines/"
+          },
+          "docs": "Create OS search engine"
+        },
+        {
+          "info": {
+            "name": "GetOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "Get a OS search engine"
+        },
+        {
+          "info": {
+            "name": "ChangeOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "change OS search engine falvor or data size"
+        },
+        {
+          "info": {
+            "name": "DeleteOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "delete OS search engine"
+        },
+        {
+          "info": {
+            "name": "GetOSSearchEngineSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id/samples",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get an object storage search engine's samples"
+        },
+        {
+          "info": {
+            "name": "AddOSSearchGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id:add-os-search-gateways",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "Create new OS Search gateways on OS search engine"
+        },
+        {
+          "info": {
+            "name": "RemoveOSSearchGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id:remove-os-search-gateways",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "remove OS search gateways from OS search engine"
+        },
+        {
+          "info": {
+            "name": "StartOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id:start",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "start OS search gateways from OS search engine"
+        },
+        {
+          "info": {
+            "name": "StopOSSearchEngine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-search-engines/:os_search_engine_id:stop",
+            "params": [
+              {
+                "name": "os_search_engine_id",
+                "value": "",
+                "type": "path",
+                "description": "OS search engine id"
+              }
+            ]
+          },
+          "docs": "stop OS search gateways from OS search engine"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths mapping-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "mapping-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListMappingGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/mapping-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "query",
+                "description": "access path id"
+              },
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "query",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "List mapping groups"
+        },
+        {
+          "info": {
+            "name": "CreateMappingGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mapping-groups/"
+          },
+          "docs": "create a mapping group in access path"
+        },
+        {
+          "info": {
+            "name": "GetMappingGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              }
+            ]
+          },
+          "docs": "Get mapping group by id"
+        },
+        {
+          "info": {
+            "name": "UpdateMappingGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              }
+            ]
+          },
+          "docs": "update mapping group"
+        },
+        {
+          "info": {
+            "name": "DeleteMappingGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "Delete mapping group"
+        },
+        {
+          "info": {
+            "name": "AddVolumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id/block-volumes",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              }
+            ]
+          },
+          "docs": "add volumes to mapping group"
+        },
+        {
+          "info": {
+            "name": "RemoveVolumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id/block-volumes",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "remove volumes from mapping group"
+        },
+        {
+          "info": {
+            "name": "UpdateMappingGroupClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/mapping-groups/:mapping_group_id/client-group",
+            "params": [
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "path",
+                "description": "mapping group id"
+              }
+            ]
+          },
+          "docs": "update client group in mapping group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths block-volume-migration-jobs API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-volume-migration-jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBlockVolumeMigrationJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-migration-jobs/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "the status of volume migration job"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List volume migration jobs"
+        },
+        {
+          "info": {
+            "name": "GetBlockVolumeMigrationJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-migration-jobs/:block_volume_migration_job_id",
+            "params": [
+              {
+                "name": "block_volume_migration_job_id",
+                "value": "",
+                "type": "path",
+                "description": "volume migration job id"
+              }
+            ]
+          },
+          "docs": "get a volume migration job"
+        },
+        {
+          "info": {
+            "name": "CancelBlockVolumeMigrationJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volume-migration-jobs/:block_volume_migration_job_id:cancel",
+            "params": [
+              {
+                "name": "block_volume_migration_job_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume migration job id"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "UpdateMigration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volume-migration-jobs/:block_volume_migration_job_id:update",
+            "params": [
+              {
+                "name": "block_volume_migration_job_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume migration job id"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

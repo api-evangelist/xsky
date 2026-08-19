@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths dp-fs-snapshot-policies API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dp-fs-snapshot-policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListDpFSSnapshotPolicies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-fs-snapshot-policies/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List dp fs snapshot policies"
+        },
+        {
+          "info": {
+            "name": "CreateDpFSSnapshotPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dp-fs-snapshot-policies/"
+          },
+          "docs": "Create dp fs snapshot policy"
+        },
+        {
+          "info": {
+            "name": "GetDpFSSnapshotPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-fs-snapshot-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "Get dp fs snapshot policy"
+        },
+        {
+          "info": {
+            "name": "UpdateDpFSSnapshotPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/dp-fs-snapshot-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "Update dp fs snapshot policy"
+        },
+        {
+          "info": {
+            "name": "DeleteDpFSSnapshotPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dp-fs-snapshot-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "Delete dp fs snapshot policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

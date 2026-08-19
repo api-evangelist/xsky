@@ -1,0 +1,1231 @@
+{
+  "item": [
+    {
+      "id": "aeb4ee2c-29e8-40a9-a579-2c7cf456b45e",
+      "name": "block-snapshots",
+      "description": {
+        "content": "BlockSnapshotController Operations about Block Snapshot\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a159e9c-7c80-4fb0-b8b0-06b71bc33220",
+          "name": "List Block Snapshots",
+          "request": {
+            "name": "List Block Snapshots",
+            "description": {
+              "content": "List block snapshots",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-snapshots",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool_id",
+                  "value": "<long>",
+                  "description": "pool id"
+                },
+                {
+                  "disabled": false,
+                  "key": "block_volume_id",
+                  "value": "<long>",
+                  "description": "volume id"
+                },
+                {
+                  "disabled": false,
+                  "key": "reserved",
+                  "value": "<boolean>",
+                  "description": "show reserved snapshot or not, default not"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "all",
+                  "value": "<boolean>",
+                  "description": "show all snapshots"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a35a189-05dc-4dc0-8022-c712b34db5ec",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "reserved",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshots\": [\n    {\n      \"cloned_block_volume_num\": 1,\n      \"creator\": \"creator\",\n      \"hidden\": true,\n      \"pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"snap_name\": \"snap_name\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"allocated_size\": 0,\n      \"passive\": true,\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"protected\": true,\n      \"size\": 7,\n      \"remote_cluster\": {\n        \"name\": \"name\",\n        \"id\": 2,\n        \"fs_id\": \"fs_id\",\n        \"url\": \"url\"\n      },\n      \"reserved\": true,\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"action_status\": \"action_status\",\n      \"block_volume_group_snapshot\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"status\": \"status\"\n    },\n    {\n      \"cloned_block_volume_num\": 1,\n      \"creator\": \"creator\",\n      \"hidden\": true,\n      \"pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"snap_name\": \"snap_name\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"allocated_size\": 0,\n      \"passive\": true,\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"protected\": true,\n      \"size\": 7,\n      \"remote_cluster\": {\n        \"name\": \"name\",\n        \"id\": 2,\n        \"fs_id\": \"fs_id\",\n        \"url\": \"url\"\n      },\n      \"reserved\": true,\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"action_status\": \"action_status\",\n      \"block_volume_group_snapshot\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9db2fb86-43a3-4f21-a562-8170081e47f6",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "reserved",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f089203-2a7e-4199-9cbb-ab9722afd72e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "pool_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "reserved",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed2475dd-eb30-4ea1-8dcd-a2c092b2248f",
+          "name": "Create Block Snapshot",
+          "request": {
+            "name": "Create Block Snapshot",
+            "description": {
+              "content": "Create block snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-snapshots",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block_snapshot\": {\n    \"block_volume_id\": \"<long>\",\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b7a5cd3-6692-4522-9f59-30e65a4edb58",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"block_volume_id\": 0,\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshot\": {\n    \"cloned_block_volume_num\": 1,\n    \"creator\": \"creator\",\n    \"hidden\": true,\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"snap_name\": \"snap_name\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"allocated_size\": 0,\n    \"passive\": true,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"protected\": true,\n    \"size\": 7,\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"reserved\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"action_status\": \"action_status\",\n    \"block_volume_group_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34c0928a-7cbc-4fa2-929f-b4d58f39d640",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"block_volume_id\": 0,\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37ef6c24-6823-4b60-91bf-384c50c80a09",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"block_volume_id\": 0,\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ee6eaa5-8947-4ab6-bb4e-c13b92352821",
+          "name": "Get Block Snapshot",
+          "request": {
+            "name": "Get Block Snapshot",
+            "description": {
+              "content": "get block snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-snapshots",
+                ":block_snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "block_snapshot_id",
+                  "description": "(Required) the block snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd25e6d5-e58a-4c68-9b9c-6365740d8fa4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":block_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_snapshot_id",
+                      "description": "(Required) the block snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshot\": {\n    \"cloned_block_volume_num\": 1,\n    \"creator\": \"creator\",\n    \"hidden\": true,\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"snap_name\": \"snap_name\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"allocated_size\": 0,\n    \"passive\": true,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"protected\": true,\n    \"size\": 7,\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"reserved\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"action_status\": \"action_status\",\n    \"block_volume_group_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "976938cf-2461-4455-87b4-e07873db249f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":block_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_snapshot_id",
+                      "description": "(Required) the block snapshot id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fcfaf9e-8b48-4ea9-a70f-885a0b06df16",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":block_snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_snapshot_id",
+                      "description": "(Required) the block snapshot id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7b2b72e-0b53-4155-b889-42f938e1a094",
+          "name": "Delete Block Snapshot",
+          "request": {
+            "name": "Delete Block Snapshot",
+            "description": {
+              "content": "Delete block snapshot",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-snapshots",
+                ":snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "snapshot_id",
+                  "description": "(Required) snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c3da1df4-4e66-4dab-80eb-813ec42ed2b4",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshot\": {\n    \"cloned_block_volume_num\": 1,\n    \"creator\": \"creator\",\n    \"hidden\": true,\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"snap_name\": \"snap_name\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"allocated_size\": 0,\n    \"passive\": true,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"protected\": true,\n    \"size\": 7,\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"reserved\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"action_status\": \"action_status\",\n    \"block_volume_group_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33de21a7-b0b2-45b8-9d6b-aad8d2f74c79",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "02d71bf5-1c55-4b70-ba3e-b403301a456b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04d40976-c161-4a0f-b3e7-8fae2d6f1e6f",
+          "name": "Update Snapshot",
+          "request": {
+            "name": "Update Snapshot",
+            "description": {
+              "content": "Update block snapshot info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-snapshots",
+                ":snapshot_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "snapshot_id",
+                  "description": "(Required) snapshot id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block_snapshot\": {\n    \"description\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3da274b2-f385-4811-b590-f38c10e690da",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_snapshot\": {\n    \"cloned_block_volume_num\": 1,\n    \"creator\": \"creator\",\n    \"hidden\": true,\n    \"pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"snap_name\": \"snap_name\",\n    \"description\": \"description\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"allocated_size\": 0,\n    \"passive\": true,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"protected\": true,\n    \"size\": 7,\n    \"remote_cluster\": {\n      \"name\": \"name\",\n      \"id\": 2,\n      \"fs_id\": \"fs_id\",\n      \"url\": \"url\"\n    },\n    \"reserved\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 5,\n    \"action_status\": \"action_status\",\n    \"block_volume_group_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ee4fcc-61b4-4b73-8395-37e9fd2c575e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f34523c-66db-4784-8485-6a57b9b899f9",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4b29d68-7524-4e81-a50b-6d68d15c5403",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-snapshots",
+                    ":snapshot_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "snapshot_id",
+                      "description": "(Required) snapshot id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_snapshot\": {\n    \"name\": \"name\",\n    \"description\": \"description\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "40fde726-3eb2-4563-83f9-fb1a4200cfe6",
+    "name": "XMS access-paths block-snapshots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

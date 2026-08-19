@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths licenses API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "licenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListLicenses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/licenses/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "filter license by active status"
+              }
+            ]
+          },
+          "docs": "List licenses"
+        },
+        {
+          "info": {
+            "name": "RegisterLicense",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/licenses/",
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force activate"
+              }
+            ]
+          },
+          "docs": "Activate product license"
+        },
+        {
+          "info": {
+            "name": "DownloadLicenseKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/licenses/key"
+          },
+          "docs": "get license key file"
+        },
+        {
+          "info": {
+            "name": "GetActiveLicense",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/licenses/license"
+          },
+          "docs": "get current active license"
+        },
+        {
+          "info": {
+            "name": "GetLicense",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/licenses/:license_id",
+            "params": [
+              {
+                "name": "license_id",
+                "value": "",
+                "type": "path",
+                "description": "the license id"
+              }
+            ]
+          },
+          "docs": "get license"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

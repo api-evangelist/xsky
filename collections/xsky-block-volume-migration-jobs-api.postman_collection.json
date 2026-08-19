@@ -1,0 +1,1120 @@
+{
+  "item": [
+    {
+      "id": "30089bb7-175c-475d-8f90-549dd94ef237",
+      "name": "block-volume-migration-jobs",
+      "description": {
+        "content": "BlockVolumeMigrationJobController Operations about block volume migration job\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fb26fad-1acc-42c1-9141-902a0c003d66",
+          "name": "List Block Volume Migration Jobs",
+          "request": {
+            "name": "List Block Volume Migration Jobs",
+            "description": {
+              "content": "List volume migration jobs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-migration-jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "the status of volume migration job"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a36b1ef1-bd49-473f-af7e-cc18cbcf15ce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_jobs\": [\n    {\n      \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"stripes\": 1,\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"remaining_time\": 6,\n      \"source_pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"task\": {\n        \"retried\": true,\n        \"error_msg\": \"error_msg\",\n        \"data\": \"data\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"priority\": 5,\n        \"type\": \"type\",\n        \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n        \"host_role\": \"host_role\",\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"retry\": 2,\n        \"retry_type\": \"retry_type\",\n        \"status\": \"status\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"dest_pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"status\": \"status\"\n    },\n    {\n      \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"stripes\": 1,\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"remaining_time\": 6,\n      \"source_pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"task\": {\n        \"retried\": true,\n        \"error_msg\": \"error_msg\",\n        \"data\": \"data\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"priority\": 5,\n        \"type\": \"type\",\n        \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n        \"host_role\": \"host_role\",\n        \"host\": {\n          \"name\": \"name\",\n          \"admin_ip\": \"admin_ip\",\n          \"id\": 0\n        },\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 5,\n        \"retry\": 2,\n        \"retry_type\": \"retry_type\",\n        \"status\": \"status\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"dest_pool\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca7d7a6f-db6e-44e6-acc2-0c20bd7c17e4",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32c755bb-e5d3-4758-8bb0-1f1ff335ca36",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13f8ff17-91fa-4a34-b651-4a998b44ffb0",
+          "name": "Get Block Volume Migration Job",
+          "request": {
+            "name": "Get Block Volume Migration Job",
+            "description": {
+              "content": "get a volume migration job",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "block-volume-migration-jobs",
+                ":block_volume_migration_job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "block_volume_migration_job_id",
+                  "description": "(Required) volume migration job id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3005ae37-baa6-4f64-9283-8dc7d32f4180",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ":block_volume_migration_job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_migration_job_id",
+                      "description": "(Required) volume migration job id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stripes\": 1,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"remaining_time\": 6,\n    \"source_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"task\": {\n      \"retried\": true,\n      \"error_msg\": \"error_msg\",\n      \"data\": \"data\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"priority\": 5,\n      \"type\": \"type\",\n      \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n      \"host_role\": \"host_role\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"retry\": 2,\n      \"retry_type\": \"retry_type\",\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"dest_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e958b8-ab7d-423c-b10f-5f1806936b36",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ":block_volume_migration_job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_migration_job_id",
+                      "description": "(Required) volume migration job id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba88a61c-8d1e-4a5e-8d07-23615cf449b7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    ":block_volume_migration_job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "block_volume_migration_job_id",
+                      "description": "(Required) volume migration job id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb91ff60-59b6-4ed6-9ec1-59af8ac14ada",
+          "name": "Cancel Block Volume Migration Job",
+          "request": {
+            "name": "Cancel Block Volume Migration Job",
+            "description": {},
+            "url": {
+              "path": [
+                "block-volume-migration-jobs",
+                "{{block_volume_migration_job_id}}:cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f838622-0b85-4b9f-bf83-6c5078879eaf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stripes\": 1,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"remaining_time\": 6,\n    \"source_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"task\": {\n      \"retried\": true,\n      \"error_msg\": \"error_msg\",\n      \"data\": \"data\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"priority\": 5,\n      \"type\": \"type\",\n      \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n      \"host_role\": \"host_role\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"retry\": 2,\n      \"retry_type\": \"retry_type\",\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"dest_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cf75405-e1db-492e-835d-7ee0e01e41c7",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stripes\": 1,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"remaining_time\": 6,\n    \"source_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"task\": {\n      \"retried\": true,\n      \"error_msg\": \"error_msg\",\n      \"data\": \"data\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"priority\": 5,\n      \"type\": \"type\",\n      \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n      \"host_role\": \"host_role\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"retry\": 2,\n      \"retry_type\": \"retry_type\",\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"dest_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cd6ba2f-ed3b-4979-a710-78dc2e35c3f0",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ba5c906-01ed-439d-8f1b-45a4d1274f8e",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f96ee932-13c8-439d-84ab-d3df2f9fcad5",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1f9b187-1615-4243-aea6-82b34e39f814",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66a143fd-c223-4224-8650-14723fb5c6a7",
+          "name": "Update Migration",
+          "request": {
+            "name": "Update Migration",
+            "description": {},
+            "url": {
+              "path": [
+                "block-volume-migration-jobs",
+                "{{block_volume_migration_job_id}}:update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18427ef0-e887-40a5-a4df-727d129a4a4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stripes\": 1,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"remaining_time\": 6,\n    \"source_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"task\": {\n      \"retried\": true,\n      \"error_msg\": \"error_msg\",\n      \"data\": \"data\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"priority\": 5,\n      \"type\": \"type\",\n      \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n      \"host_role\": \"host_role\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"retry\": 2,\n      \"retry_type\": \"retry_type\",\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"dest_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ff0123c-d73c-403d-af0e-28e9a3588f86",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_volume_migration_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stripes\": 1,\n    \"volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"remaining_time\": 6,\n    \"source_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"task\": {\n      \"retried\": true,\n      \"error_msg\": \"error_msg\",\n      \"data\": \"data\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"priority\": 5,\n      \"type\": \"type\",\n      \"execute\": \"2000-01-23T04:56:07.000+00:00\",\n      \"host_role\": \"host_role\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"finish\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 5,\n      \"retry\": 2,\n      \"retry_type\": \"retry_type\",\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"dest_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d004b3ca-0940-453c-907f-35c205579417",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "158d998e-14d2-4a34-bb67-c11d2fd9762f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "170daf2b-6141-47c1-b2c9-bbc2c683a584",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "270c0dcc-509a-46a9-91b4-588b4b7bef8f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "block-volume-migration-jobs",
+                    "{{block_volume_migration_job_id}}:update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"volume_migration_job\": {\n    \"stripes\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) block volume migration job id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "block_volume_migration_job_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "7efb91a6-2f5c-4ef5-a0c1-8cceba48ea20",
+    "name": "XMS access-paths block-volume-migration-jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

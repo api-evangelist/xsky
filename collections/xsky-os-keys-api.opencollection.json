@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-keys API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-keys/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "object storage user id"
+              }
+            ]
+          },
+          "docs": "List object storage keys"
+        },
+        {
+          "info": {
+            "name": "CreateKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-keys/"
+          },
+          "docs": "Create new object storage key"
+        },
+        {
+          "info": {
+            "name": "GetKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-keys/:key_id",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "get object storage key"
+        },
+        {
+          "info": {
+            "name": "UpdateKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-keys/:key_id",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "key id"
+              }
+            ]
+          },
+          "docs": "Update object storage key"
+        },
+        {
+          "info": {
+            "name": "DeleteKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-keys/:key_id",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "key id"
+              }
+            ]
+          },
+          "docs": "Delete object storage key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-zone-locks API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-zone-locks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSZoneLocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-zone-locks/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all zone locks"
+              }
+            ]
+          },
+          "docs": "List os zone locks."
+        },
+        {
+          "info": {
+            "name": "CreateOSZoneLock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-zone-locks/"
+          },
+          "docs": "Create a os zone lock."
+        },
+        {
+          "info": {
+            "name": "GetOSZoneLock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-zone-locks/:lock_uuid",
+            "params": [
+              {
+                "name": "lock_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os zone lock uuid"
+              }
+            ]
+          },
+          "docs": "Get a os zone lock."
+        },
+        {
+          "info": {
+            "name": "DeleteOSZoneLock",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-zone-locks/:lock_uuid",
+            "params": [
+              {
+                "name": "lock_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os zone lock uuid"
+              }
+            ]
+          },
+          "docs": "Delete a os zone lock."
+        },
+        {
+          "info": {
+            "name": "RefreshOSZoneLock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-zone-locks/:lock_uuid:refresh",
+            "params": [
+              {
+                "name": "lock_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os zone lock uuid"
+              }
+            ]
+          },
+          "docs": "Refresh a os zone lock."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

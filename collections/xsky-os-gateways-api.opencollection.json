@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-gateways API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-gateways/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List s3 gateways"
+        },
+        {
+          "info": {
+            "name": "CreateGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-gateways/"
+          },
+          "docs": "Create s3 gateway"
+        },
+        {
+          "info": {
+            "name": "GetGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              }
+            ]
+          },
+          "docs": "Get s3 gateway"
+        },
+        {
+          "info": {
+            "name": "UpdateGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/os-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              }
+            ]
+          },
+          "docs": "Update s3 gateway"
+        },
+        {
+          "info": {
+            "name": "DeleteGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              }
+            ]
+          },
+          "docs": "Delete s3 gateway"
+        },
+        {
+          "info": {
+            "name": "GetGatewaySamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-gateways/:gateway_id/samples",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "Get s3 gateway's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

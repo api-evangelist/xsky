@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths access-tokens API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "access-tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAccessTokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/access-tokens/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of user access tokens belong to"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "filter access tokens by role"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all access tokens"
+              }
+            ]
+          },
+          "docs": "List access tokens"
+        },
+        {
+          "info": {
+            "name": "CreateAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/access-tokens/"
+          },
+          "docs": "Create an access token"
+        },
+        {
+          "info": {
+            "name": "GetAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/access-tokens/:access_token_id",
+            "params": [
+              {
+                "name": "access_token_id",
+                "value": "",
+                "type": "path",
+                "description": "access token id"
+              }
+            ]
+          },
+          "docs": "get an access Token"
+        },
+        {
+          "info": {
+            "name": "UpdateAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/access-tokens/:access_token_id",
+            "params": [
+              {
+                "name": "access_token_id",
+                "value": "",
+                "type": "path",
+                "description": "access token id"
+              }
+            ]
+          },
+          "docs": "update an access token"
+        },
+        {
+          "info": {
+            "name": "DeleteAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/access-tokens/:access_token_id",
+            "params": [
+              {
+                "name": "access_token_id",
+                "value": "",
+                "type": "path",
+                "description": "access token id"
+              }
+            ]
+          },
+          "docs": "delete an access token"
+        },
+        {
+          "info": {
+            "name": "RegenerateAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/access-tokens/:access_token_id:regenerate",
+            "params": [
+              {
+                "name": "access_token_id",
+                "value": "",
+                "type": "path",
+                "description": "access token id"
+              }
+            ]
+          },
+          "docs": "regenereate an access token UUID"
+        },
+        {
+          "info": {
+            "name": "ValidateAccessToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/access-tokens:validate",
+            "params": [
+              {
+                "name": "subject_access_token",
+                "value": "",
+                "type": "query",
+                "description": "access token to be validated"
+              }
+            ]
+          },
+          "docs": "validate an access token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

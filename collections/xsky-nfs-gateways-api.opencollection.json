@@ -1,0 +1,334 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths nfs-gateways API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "nfs-gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNFSGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nfs-gateways/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List all nfs gateways"
+        },
+        {
+          "info": {
+            "name": "CreateNFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/nfs-gateways/"
+          },
+          "docs": "create nfs gateway"
+        },
+        {
+          "info": {
+            "name": "GetNFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              }
+            ]
+          },
+          "docs": "show nfs gateway"
+        },
+        {
+          "info": {
+            "name": "DoNFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force stop or no"
+              }
+            ]
+          },
+          "docs": "start/stop nfs gateway"
+        },
+        {
+          "info": {
+            "name": "UpdateNFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              }
+            ]
+          },
+          "docs": "update nfs gateway"
+        },
+        {
+          "info": {
+            "name": "DeleteNFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete nfs gateway"
+        },
+        {
+          "info": {
+            "name": "ListNFSGatewayBucketMaps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/buckets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              }
+            ]
+          },
+          "docs": "List nfs gateway bucket maps"
+        },
+        {
+          "info": {
+            "name": "GetNFSGatewayBucketMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/buckets/:bucket_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "get nfs gateway bucket map"
+        },
+        {
+          "info": {
+            "name": "CreateNFSGatewayBucketMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/buckets/:bucket_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "add bucket to nfs gateway"
+        },
+        {
+          "info": {
+            "name": "UpdateNFSGatewayBucketMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/buckets/:bucket_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force update bucket map"
+              }
+            ]
+          },
+          "docs": "update nfs gateway bucket"
+        },
+        {
+          "info": {
+            "name": "DeleteNFSGatewayBucketMap",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/buckets/:bucket_id",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs gateway id"
+              },
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or no"
+              }
+            ]
+          },
+          "docs": "remove bucket from nfs gateway"
+        },
+        {
+          "info": {
+            "name": "GetNFSGatewaySamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/nfs-gateways/:gateway_id/samples",
+            "params": [
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "Get nfs gateway's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

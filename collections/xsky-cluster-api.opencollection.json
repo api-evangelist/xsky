@@ -1,0 +1,329 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths cluster API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/"
+          },
+          "docs": "Output the status of the cluster"
+        },
+        {
+          "info": {
+            "name": "UpdateCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/cluster/"
+          },
+          "docs": "set disk lighting mode of cluster"
+        },
+        {
+          "info": {
+            "name": "GetActionLogReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/action-log-report"
+          },
+          "docs": "Get report of cluster action logs"
+        },
+        {
+          "info": {
+            "name": "GetAlertReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/alert-report"
+          },
+          "docs": "Get report of cluster alerts"
+        },
+        {
+          "info": {
+            "name": "BootNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/bootnode"
+          },
+          "docs": "get bootnode info"
+        },
+        {
+          "info": {
+            "name": "SetBootNode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/cluster/bootnode"
+          },
+          "docs": "set bootnode info"
+        },
+        {
+          "info": {
+            "name": "GetEventLogReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/event-log-report"
+          },
+          "docs": "Get report of cluster event logs"
+        },
+        {
+          "info": {
+            "name": "Installation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/installation"
+          },
+          "docs": "show the installation status"
+        },
+        {
+          "info": {
+            "name": "UpdateClusterMaintenance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/cluster/maintenance"
+          },
+          "docs": "update maintenance mode of cluster"
+        },
+        {
+          "info": {
+            "name": "GetObjectStorage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/object-storage"
+          },
+          "docs": "Get object storage system status"
+        },
+        {
+          "info": {
+            "name": "InitObjectStorage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/cluster/object-storage"
+          },
+          "docs": "Initialize object storage system in current cluster"
+        },
+        {
+          "info": {
+            "name": "SetObjectStorage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/cluster/object-storage"
+          },
+          "docs": "Set object storage system in current cluster"
+        },
+        {
+          "info": {
+            "name": "DeleteObjectStorage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/cluster/object-storage",
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "Delete object storage system in current cluster"
+        },
+        {
+          "info": {
+            "name": "CommitMasterSwitching",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster/object-storage:commit-master-switching"
+          },
+          "docs": "Commit the switch to new master os zone."
+        },
+        {
+          "info": {
+            "name": "EnableMultiZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster/object-storage:enable-multi-zone"
+          },
+          "docs": "Enable multi zone for object storage system"
+        },
+        {
+          "info": {
+            "name": "PrepareMasterSwitching",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster/object-storage:prepare-master-switching"
+          },
+          "docs": "Prepare to switch to new master os zone."
+        },
+        {
+          "info": {
+            "name": "RollbackMasterSwitching",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster/object-storage:rollback-master-switching"
+          },
+          "docs": "Rollback the switch to new master os zone."
+        },
+        {
+          "info": {
+            "name": "SwitchOSZoneToMaster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster/object-storage:switch-os-zone-to-master",
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force to switch even if old master is dead"
+              }
+            ]
+          },
+          "docs": "Switch current os zone to master"
+        },
+        {
+          "info": {
+            "name": "GetClusterReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/report"
+          },
+          "docs": "Get report of a cluster"
+        },
+        {
+          "info": {
+            "name": "GetClusterSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/samples",
+            "params": [
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get cluster's samples"
+        },
+        {
+          "info": {
+            "name": "GetClusterOverview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/stats"
+          },
+          "docs": "Get overview data of a cluster"
+        },
+        {
+          "info": {
+            "name": "GetStatsUsagePrediction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/stats-usage-prediction"
+          },
+          "docs": "Get prediction of stats space usage"
+        },
+        {
+          "info": {
+            "name": "ServerTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster/time"
+          },
+          "docs": "show current server time"
+        },
+        {
+          "info": {
+            "name": "RemoveClusterAccessInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster:remove-access-info"
+          },
+          "docs": "Remove cluster access info"
+        },
+        {
+          "info": {
+            "name": "SetClusterAccessInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster:set-access-info"
+          },
+          "docs": "Set cluster access info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

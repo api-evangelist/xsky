@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths vm-flavors API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vm-flavors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListVMFlavors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vm-flavors/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List vm flavors"
+        },
+        {
+          "info": {
+            "name": "GetVMFlavor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vm-flavors/:vm_flavor_id",
+            "params": [
+              {
+                "name": "vm_flavor_id",
+                "value": "",
+                "type": "path",
+                "description": "vm flavor id"
+              }
+            ]
+          },
+          "docs": "Get vm flavor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

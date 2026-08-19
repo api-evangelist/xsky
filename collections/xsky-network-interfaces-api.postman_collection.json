@@ -1,0 +1,749 @@
+{
+  "item": [
+    {
+      "id": "6e730144-52d0-4250-80b0-61c15fa25498",
+      "name": "network-interfaces",
+      "description": {
+        "content": "NetworkInterfaceController Network Interface Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "add75926-b8e8-43bf-9683-bb2d25b73057",
+          "name": "List Network Interfaces",
+          "request": {
+            "name": "List Network Interfaces",
+            "description": {
+              "content": "List network interfaces",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-interfaces",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "master_network_interface_id",
+                  "value": "<long>",
+                  "description": "master network interface id"
+                },
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<long>",
+                  "description": "host id"
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "network interface role"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ab9b6b2-8861-4edd-b637-cba65c8a0575",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "master_network_interface_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_interfaces\": [\n    {\n      \"bonding_mode\": \"string\",\n      \"create\": \"1993-04-13T15:35:25.761Z\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 1221,\n      \"link_detected\": true,\n      \"mac_address\": \"string\",\n      \"master_network_interface\": {\n        \"mac_address\": \"mac_address\",\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"megabits\": 784,\n      \"name\": \"string\",\n      \"operstate\": \"string\",\n      \"type\": \"string\",\n      \"update\": \"2003-08-09T05:56:24.755Z\",\n      \"samples\": [\n        {\n          \"tx_pps\": 2.027123023002322,\n          \"tx_bandwidth_kbyte\": 7.061401241503109,\n          \"error_pps\": 6.027456183070403,\n          \"rx_bandwidth_kbyte\": 1.4658129805029452,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"rx_drop_pps\": 5.962133916683182,\n          \"rx_error_pps\": 5.637376656633329,\n          \"rx_pps\": 2.3021358869347655,\n          \"tx_error_pps\": 3.616076749251911,\n          \"drop_pps\": 0.8008281904610115,\n          \"tx_drop_pps\": 9.301444243932576\n        },\n        {\n          \"tx_pps\": 2.027123023002322,\n          \"tx_bandwidth_kbyte\": 7.061401241503109,\n          \"error_pps\": 6.027456183070403,\n          \"rx_bandwidth_kbyte\": 1.4658129805029452,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"rx_drop_pps\": 5.962133916683182,\n          \"rx_error_pps\": 5.637376656633329,\n          \"rx_pps\": 2.3021358869347655,\n          \"tx_error_pps\": 3.616076749251911,\n          \"drop_pps\": 0.8008281904610115,\n          \"tx_drop_pps\": 9.301444243932576\n        }\n      ]\n    },\n    {\n      \"bonding_mode\": \"string\",\n      \"create\": \"1979-09-30T20:56:24.260Z\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 3129,\n      \"link_detected\": true,\n      \"mac_address\": \"string\",\n      \"master_network_interface\": {\n        \"mac_address\": \"mac_address\",\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"megabits\": 2710,\n      \"name\": \"string\",\n      \"operstate\": \"string\",\n      \"type\": \"string\",\n      \"update\": \"1991-01-16T02:08:37.845Z\",\n      \"samples\": [\n        {\n          \"tx_pps\": 2.027123023002322,\n          \"tx_bandwidth_kbyte\": 7.061401241503109,\n          \"error_pps\": 6.027456183070403,\n          \"rx_bandwidth_kbyte\": 1.4658129805029452,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"rx_drop_pps\": 5.962133916683182,\n          \"rx_error_pps\": 5.637376656633329,\n          \"rx_pps\": 2.3021358869347655,\n          \"tx_error_pps\": 3.616076749251911,\n          \"drop_pps\": 0.8008281904610115,\n          \"tx_drop_pps\": 9.301444243932576\n        },\n        {\n          \"tx_pps\": 2.027123023002322,\n          \"tx_bandwidth_kbyte\": 7.061401241503109,\n          \"error_pps\": 6.027456183070403,\n          \"rx_bandwidth_kbyte\": 1.4658129805029452,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"rx_drop_pps\": 5.962133916683182,\n          \"rx_error_pps\": 5.637376656633329,\n          \"rx_pps\": 2.3021358869347655,\n          \"tx_error_pps\": 3.616076749251911,\n          \"drop_pps\": 0.8008281904610115,\n          \"tx_drop_pps\": 9.301444243932576\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "655fe902-06ed-4583-a8c7-bc6b2c7ac88c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "master_network_interface_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a58ad1a7-caf9-4521-a156-3bbf8eb739d2",
+          "name": "Get Network Interface",
+          "request": {
+            "name": "Get Network Interface",
+            "description": {
+              "content": "Get a network interface",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-interfaces",
+                ":network_interface_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "network_interface_id",
+                  "description": "(Required) network interface id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "924493fc-cc27-4434-88c8-bb22d75c4233",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_interface\": {\n    \"bonding_mode\": \"string\",\n    \"create\": \"1970-02-13T08:10:01.587Z\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4037,\n    \"link_detected\": true,\n    \"mac_address\": \"string\",\n    \"master_network_interface\": {\n      \"mac_address\": \"mac_address\",\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"megabits\": 9240,\n    \"name\": \"string\",\n    \"operstate\": \"string\",\n    \"type\": \"string\",\n    \"update\": \"1954-06-14T11:16:12.548Z\",\n    \"samples\": [\n      {\n        \"tx_pps\": 2.027123023002322,\n        \"tx_bandwidth_kbyte\": 7.061401241503109,\n        \"error_pps\": 6.027456183070403,\n        \"rx_bandwidth_kbyte\": 1.4658129805029452,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"rx_drop_pps\": 5.962133916683182,\n        \"rx_error_pps\": 5.637376656633329,\n        \"rx_pps\": 2.3021358869347655,\n        \"tx_error_pps\": 3.616076749251911,\n        \"drop_pps\": 0.8008281904610115,\n        \"tx_drop_pps\": 9.301444243932576\n      },\n      {\n        \"tx_pps\": 2.027123023002322,\n        \"tx_bandwidth_kbyte\": 7.061401241503109,\n        \"error_pps\": 6.027456183070403,\n        \"rx_bandwidth_kbyte\": 1.4658129805029452,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"rx_drop_pps\": 5.962133916683182,\n        \"rx_error_pps\": 5.637376656633329,\n        \"rx_pps\": 2.3021358869347655,\n        \"tx_error_pps\": 3.616076749251911,\n        \"drop_pps\": 0.8008281904610115,\n        \"tx_drop_pps\": 9.301444243932576\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24408d3d-3767-4865-a567-b66a4ca87f41",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "beaac16d-e9cd-47cb-abd5-585250c6e964",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3f7c7f9-cc69-469a-a925-b1a77e1fc21e",
+          "name": "Get Network Interface Samples",
+          "request": {
+            "name": "Get Network Interface Samples",
+            "description": {
+              "content": "get a network interface's Samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-interfaces",
+                ":network_interface_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "network_interface_id",
+                  "description": "(Required) network interface id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7459a7c4-f623-4ded-8321-ac554105fdbf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_interface_samples\": [\n    {\n      \"tx_pps\": 2.027123023002322,\n      \"tx_bandwidth_kbyte\": 7.061401241503109,\n      \"error_pps\": 6.027456183070403,\n      \"rx_bandwidth_kbyte\": 1.4658129805029452,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"rx_drop_pps\": 5.962133916683182,\n      \"rx_error_pps\": 5.637376656633329,\n      \"rx_pps\": 2.3021358869347655,\n      \"tx_error_pps\": 3.616076749251911,\n      \"drop_pps\": 0.8008281904610115,\n      \"tx_drop_pps\": 9.301444243932576\n    },\n    {\n      \"tx_pps\": 2.027123023002322,\n      \"tx_bandwidth_kbyte\": 7.061401241503109,\n      \"error_pps\": 6.027456183070403,\n      \"rx_bandwidth_kbyte\": 1.4658129805029452,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"rx_drop_pps\": 5.962133916683182,\n      \"rx_error_pps\": 5.637376656633329,\n      \"rx_pps\": 2.3021358869347655,\n      \"tx_error_pps\": 3.616076749251911,\n      \"drop_pps\": 0.8008281904610115,\n      \"tx_drop_pps\": 9.301444243932576\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bd2fed7-ff3e-4c7a-bf19-f06510cc5adb",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f6adf6d-5947-41b3-a5c9-eb9be7486ecb",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42077a8f-36e9-4d0c-b000-90e9ec5a8f08",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-interfaces",
+                    ":network_interface_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_interface_id",
+                      "description": "(Required) network interface id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9736ecf-dce5-46d3-b2f7-0f257d8b4cad",
+    "name": "XMS access-paths network-interfaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

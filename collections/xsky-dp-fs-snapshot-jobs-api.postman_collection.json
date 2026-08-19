@@ -1,0 +1,560 @@
+{
+  "item": [
+    {
+      "id": "bb1dd165-6ca8-4a6b-8ddd-03914f2bc21d",
+      "name": "dp-fs-snapshot-jobs",
+      "description": {
+        "content": "DpFSSnapshotJobController API /dp-fs-snapshot-jobs/\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cdedb87-f70b-43e3-997b-19e2eb719abb",
+          "name": "List Dp FS Snapshot Jobs",
+          "request": {
+            "name": "List Dp FS Snapshot Jobs",
+            "description": {
+              "content": "List dp fs snapshot jobs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-fs-snapshot-jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_folder_id",
+                  "value": "<long>",
+                  "description": "fs folder"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_snapshot_id",
+                  "value": "<long>",
+                  "description": "fs snapshot"
+                },
+                {
+                  "disabled": false,
+                  "key": "dp_fs_snapshot_policy_id",
+                  "value": "<long>",
+                  "description": "dp fs snapshot policy"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50736907-293e-43e3-bb17-6acdd593db1d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fs_folder_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_snapshot_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_fs_snapshot_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_fs_snapshot_jobs\": [\n    {\n      \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"size\": 2,\n      \"updated_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_folder\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"dp_fs_snapshot_policy\": {\n        \"name\": \"name\",\n        \"id\": 0\n      },\n      \"progress\": 5.637376656633329,\n      \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_snapshot\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"id\": 5,\n      \"status\": \"status\"\n    },\n    {\n      \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"size\": 2,\n      \"updated_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_folder\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"dp_fs_snapshot_policy\": {\n        \"name\": \"name\",\n        \"id\": 0\n      },\n      \"progress\": 5.637376656633329,\n      \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_snapshot\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"id\": 5,\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b284be3-f8fa-4680-b3a6-16a2cfe4a2f1",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fs_folder_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_snapshot_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_fs_snapshot_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4ae1752-016f-409a-912a-568209c4ab9b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fs_folder_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_snapshot_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_fs_snapshot_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bd5df51-5c6a-4625-a8ef-0e69468e13cb",
+          "name": "Get Dp FS Snapshot Job",
+          "request": {
+            "name": "Get Dp FS Snapshot Job",
+            "description": {
+              "content": "Get dp fs snapshot job",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dp-fs-snapshot-jobs",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "job_id",
+                  "description": "(Required) resource id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a344bc8-1a6c-42d5-b899-46fb954e378c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) resource id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dp_fs_snapshot_job\": {\n    \"finished_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"size\": 2,\n    \"updated_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"dp_fs_snapshot_policy\": {\n      \"name\": \"name\",\n      \"id\": 0\n    },\n    \"progress\": 5.637376656633329,\n    \"started_at\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_snapshot\": {\n      \"name\": \"name\",\n      \"id\": 1\n    },\n    \"id\": 5,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87b35fd9-42a2-47e9-befb-ec0879658670",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) resource id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c2bd3ef-74fc-4528-830a-30f0b3d440be",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) resource id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9e887b2-df69-4726-8851-aea8e0b045ae",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dp-fs-snapshot-jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "job_id",
+                      "description": "(Required) resource id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "efe4db7c-ea6d-4a3b-a54f-b6443d80f11b",
+    "name": "XMS access-paths dp-fs-snapshot-jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

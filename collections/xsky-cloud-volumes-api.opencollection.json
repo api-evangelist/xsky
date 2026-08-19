@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths cloud-volumes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cloud-volumes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListCloudVolumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-volumes/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "cloud_instance_id",
+                "value": "",
+                "type": "query",
+                "description": "cloud instance id"
+              }
+            ]
+          },
+          "docs": "List cloud volumes"
+        },
+        {
+          "info": {
+            "name": "GetCloudVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-volumes/:cloud_volume_id",
+            "params": [
+              {
+                "name": "cloud_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud volume id"
+              }
+            ]
+          },
+          "docs": "Get a cloud volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

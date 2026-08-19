@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths identity-platforms API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "identity-platforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListIdentityPlatforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/identity-platforms/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List identity platforms"
+        },
+        {
+          "info": {
+            "name": "CreateIdentityPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/identity-platforms/"
+          },
+          "docs": "Create identity platform"
+        },
+        {
+          "info": {
+            "name": "GetIdentityPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/identity-platforms/:identity_platform_id",
+            "params": [
+              {
+                "name": "identity_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "identity platform id"
+              }
+            ]
+          },
+          "docs": "Get a identity platform"
+        },
+        {
+          "info": {
+            "name": "UpdateIdentityPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/identity-platforms/:identity_platform_id",
+            "params": [
+              {
+                "name": "identity_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "identity platform id"
+              }
+            ]
+          },
+          "docs": "Update a identity platform"
+        },
+        {
+          "info": {
+            "name": "DeleteIdentityPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/identity-platforms/:identity_platform_id",
+            "params": [
+              {
+                "name": "identity_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "identity platform id"
+              }
+            ]
+          },
+          "docs": "Delete identity platform"
+        },
+        {
+          "info": {
+            "name": "RegenerateIdentityKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/identity-platforms/:identity_platform_id:regenerate",
+            "params": [
+              {
+                "name": "identity_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "identity platform id"
+              }
+            ]
+          },
+          "docs": "regenereate a identity platform key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

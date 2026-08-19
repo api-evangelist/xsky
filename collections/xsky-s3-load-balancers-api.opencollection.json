@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths s3-load-balancers API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "s3-load-balancers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListS3LoadBalancers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancers/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "s3 load balancer group id"
+              }
+            ]
+          },
+          "docs": "List s3 load balancers"
+        },
+        {
+          "info": {
+            "name": "BatchGetS3LoadBalancerSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancers/samples"
+          },
+          "docs": "Get samples of multiple s3 load balancers"
+        },
+        {
+          "info": {
+            "name": "GetS3LoadBalancer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancers/:load_balancer_id",
+            "params": [
+              {
+                "name": "load_balancer_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer id"
+              }
+            ]
+          },
+          "docs": "Get s3 load balancer"
+        },
+        {
+          "info": {
+            "name": "GetS3LoadBalancerSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/s3-load-balancers/:s3_load_balancer_id/samples",
+            "params": [
+              {
+                "name": "s3_load_balancer_id",
+                "value": "",
+                "type": "path",
+                "description": "s3 load balancer id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a s3 load balancer's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

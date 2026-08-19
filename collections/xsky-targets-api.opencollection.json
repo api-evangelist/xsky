@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths targets API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "targets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTargets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/targets/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "query",
+                "description": "access path id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List all targets in the cluster"
+        },
+        {
+          "info": {
+            "name": "CreateTarget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/targets/"
+          },
+          "docs": "Create target"
+        },
+        {
+          "info": {
+            "name": "DeleteTarget",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/targets/:target_id",
+            "params": [
+              {
+                "name": "target_id",
+                "value": "",
+                "type": "path",
+                "description": "target id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete target"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

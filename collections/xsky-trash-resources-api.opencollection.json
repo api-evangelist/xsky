@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths trash-resources API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "trash-resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTrashResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trash-resources/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "the type of trash resources"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List trash resources"
+        },
+        {
+          "info": {
+            "name": "GetTrashResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/trash-resources/:trash_resource_id",
+            "params": [
+              {
+                "name": "trash_resource_id",
+                "value": "",
+                "type": "path",
+                "description": "trash resource id"
+              }
+            ]
+          },
+          "docs": "get a trash resource"
+        },
+        {
+          "info": {
+            "name": "DeleteTrashResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/trash-resources/:trash_resource_id",
+            "params": [
+              {
+                "name": "trash_resource_id",
+                "value": "",
+                "type": "path",
+                "description": "trash resource id"
+              }
+            ]
+          },
+          "docs": "Delete trash resource"
+        },
+        {
+          "info": {
+            "name": "RestoreTrashResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/trash-resources/:trash_resource_id:restore",
+            "params": [
+              {
+                "name": "trash_resource_id",
+                "value": "",
+                "type": "path",
+                "description": "trash resource id"
+              }
+            ]
+          },
+          "docs": "Restore trash resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

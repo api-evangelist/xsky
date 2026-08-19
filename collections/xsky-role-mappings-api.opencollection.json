@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths role-mappings API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "role-mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListRoleMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/role-mappings/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "identity_platform_id",
+                "value": "",
+                "type": "query",
+                "description": "identity platform id"
+              }
+            ]
+          },
+          "docs": "List role mappings"
+        },
+        {
+          "info": {
+            "name": "CreateRoleMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/role-mappings/"
+          },
+          "docs": "Create role mapping"
+        },
+        {
+          "info": {
+            "name": "GetRoleMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/role-mappings/:role_mapping_id",
+            "params": [
+              {
+                "name": "role_mapping_id",
+                "value": "",
+                "type": "path",
+                "description": "role mapping id"
+              }
+            ]
+          },
+          "docs": "Get a role mapping"
+        },
+        {
+          "info": {
+            "name": "UpdateRoleMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/role-mappings/:role_mapping_id",
+            "params": [
+              {
+                "name": "role_mapping_id",
+                "value": "",
+                "type": "path",
+                "description": "role mapping id"
+              }
+            ]
+          },
+          "docs": "Update a role mapping"
+        },
+        {
+          "info": {
+            "name": "DeleteRoleMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/role-mappings/:role_mapping_id",
+            "params": [
+              {
+                "name": "role_mapping_id",
+                "value": "",
+                "type": "path",
+                "description": "role mapping id"
+              }
+            ]
+          },
+          "docs": "Delete role mapping"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

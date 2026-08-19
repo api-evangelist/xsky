@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths dp-sites API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dp-sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListDpSites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-sites/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "protection_type",
+                "value": "",
+                "type": "query",
+                "description": "protection type"
+              }
+            ]
+          },
+          "docs": "List data protection sites"
+        },
+        {
+          "info": {
+            "name": "CreateDpSite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dp-sites/"
+          },
+          "docs": "Create a data protection site"
+        },
+        {
+          "info": {
+            "name": "GetDpSite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "protection site id"
+              }
+            ]
+          },
+          "docs": "Get data protection site"
+        },
+        {
+          "info": {
+            "name": "UpdateDpSite",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/dp-sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "dp site id"
+              }
+            ]
+          },
+          "docs": "Update a data protection site"
+        },
+        {
+          "info": {
+            "name": "DeleteDpSite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dp-sites/:site_id",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "dp site id"
+              }
+            ]
+          },
+          "docs": "Delete data protection site"
+        },
+        {
+          "info": {
+            "name": "GetBackupBlockSnapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-sites/:site_id/backup-block-snapshots",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "dp site id"
+              },
+              {
+                "name": "dp_gateway_id",
+                "value": "",
+                "type": "query",
+                "description": "the dp gateway to execute the query"
+              },
+              {
+                "name": "cluster_fs_id",
+                "value": "",
+                "type": "query",
+                "description": "cluster fs id"
+              },
+              {
+                "name": "block_volume_name",
+                "value": "",
+                "type": "query",
+                "description": "block volume name"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "continuation token"
+              }
+            ]
+          },
+          "docs": "List snapshots of a volume stored on a dp site"
+        },
+        {
+          "info": {
+            "name": "GetBackupBlockVolumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-sites/:site_id/backup-block-volumes",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "dp site id"
+              },
+              {
+                "name": "dp_gateway_id",
+                "value": "",
+                "type": "query",
+                "description": "the dp gateway to execute the query"
+              },
+              {
+                "name": "cluster_fs_id",
+                "value": "",
+                "type": "query",
+                "description": "cluster fs id"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "continuation token"
+              }
+            ]
+          },
+          "docs": "List volumes of a cluster stored on a dp site"
+        },
+        {
+          "info": {
+            "name": "GetBackupClusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-sites/:site_id/backup-clusters",
+            "params": [
+              {
+                "name": "site_id",
+                "value": "",
+                "type": "path",
+                "description": "dp site id"
+              },
+              {
+                "name": "dp_gateway_id",
+                "value": "",
+                "type": "query",
+                "description": "the dp gateway to execute the query"
+              }
+            ]
+          },
+          "docs": "List clusters stored on a dp site"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths osd-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "osd-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOsdGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osd-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List osd groups"
+        },
+        {
+          "info": {
+            "name": "GetOsdGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osd-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Get osd group"
+        },
+        {
+          "info": {
+            "name": "GetOsdGroupSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/osd-groups/:group_id/samples",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a osd group's samples"
+        },
+        {
+          "info": {
+            "name": "AddOsdsToOsdGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:add-osds",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Add osds to osd grouop"
+        },
+        {
+          "info": {
+            "name": "DisableDeviceTypeCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:disable-device-type-check",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Disable device type check when add osd"
+        },
+        {
+          "info": {
+            "name": "EnableDeviceTypeCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:enable-device-type-check",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Enable device type check when add osd"
+        },
+        {
+          "info": {
+            "name": "RemoveOsdsFromOsdGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:remove-osds",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Remove multiple osds from a osd group"
+        },
+        {
+          "info": {
+            "name": "ReweightOsdGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:reweight",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Reweight pools of osd group"
+        },
+        {
+          "info": {
+            "name": "SetOsdFullRatio",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:set-osd-full-ratio",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Set osd full ratio of osd group"
+        },
+        {
+          "info": {
+            "name": "SetOsdGroupQos",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/osd-groups/:group_id:set-qos",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "osd group id"
+              }
+            ]
+          },
+          "docs": "Set osd group's qos"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

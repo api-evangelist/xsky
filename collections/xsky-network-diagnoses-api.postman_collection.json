@@ -1,0 +1,1181 @@
+{
+  "item": [
+    {
+      "id": "d81dd760-cd9f-4457-ba71-1ba9a3c0a2e0",
+      "name": "network-diagnoses",
+      "description": {
+        "content": "NetworkDiagnosisController provides API for network diagnosis\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0f922ff-bf95-44bf-9cb3-4843b033a405",
+          "name": "List Network Diagnoses",
+          "request": {
+            "name": "List Network Diagnoses",
+            "description": {
+              "content": "List network diagnoses",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-diagnoses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98e837ca-4efd-4b05-aea2-132496196945",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_diagnoses\": [\n    {\n      \"diagnose_warning_num\": 5,\n      \"diagnose_active_num\": 0,\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"networks\": [\n        \"networks\",\n        \"networks\"\n      ],\n      \"diagnose_error_num\": 6,\n      \"diagnosing_num\": 5,\n      \"host_num\": 2,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"diagnose_num\": 1,\n      \"progress\": 3.616076749251911,\n      \"id\": 7,\n      \"not_diagnose_num\": 9,\n      \"status\": \"status\"\n    },\n    {\n      \"diagnose_warning_num\": 5,\n      \"diagnose_active_num\": 0,\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"networks\": [\n        \"networks\",\n        \"networks\"\n      ],\n      \"diagnose_error_num\": 6,\n      \"diagnosing_num\": 5,\n      \"host_num\": 2,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"diagnose_num\": 1,\n      \"progress\": 3.616076749251911,\n      \"id\": 7,\n      \"not_diagnose_num\": 9,\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45baeeec-6dbc-40b5-b8ab-1e065b39c7ba",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39955a8d-87fe-4713-9a89-95e551530062",
+          "name": "Create Network Diagnosis",
+          "request": {
+            "name": "Create Network Diagnosis",
+            "description": {
+              "content": "Create network diagnosis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-diagnoses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"network_diagnosis\": {\n    \"host_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"host_scope\": \"<string>\",\n    \"networks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05fd2960-e1c5-4af4-bd29-c82812cf0296",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_diagnosis\": {\n    \"diagnose_warning_num\": 5,\n    \"diagnose_active_num\": 0,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ],\n    \"diagnose_error_num\": 6,\n    \"diagnosing_num\": 5,\n    \"host_num\": 2,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"diagnose_num\": 1,\n    \"progress\": 3.616076749251911,\n    \"id\": 7,\n    \"not_diagnose_num\": 9,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c89a59f6-cba6-42fa-8d79-78db770cd328",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_diagnosis\": {\n    \"diagnose_warning_num\": 5,\n    \"diagnose_active_num\": 0,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ],\n    \"diagnose_error_num\": 6,\n    \"diagnosing_num\": 5,\n    \"host_num\": 2,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"diagnose_num\": 1,\n    \"progress\": 3.616076749251911,\n    \"id\": 7,\n    \"not_diagnose_num\": 9,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e7b7dbf-0e47-4477-8176-650adec9e3a9",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54bfbad6-1847-4707-afaa-dcf1bbb025ab",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9359f12c-ab3c-4329-9681-798efb15c4f4",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72392f66-4a1d-4e07-8fbd-85ada08dac80",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network_diagnosis\": {\n    \"host_scope\": \"host_scope\",\n    \"host_ids\": [\n      0,\n      0\n    ],\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76f25c51-3bbf-4bb1-937a-071e8e0f7136",
+          "name": "Get Network Diagnosis",
+          "request": {
+            "name": "Get Network Diagnosis",
+            "description": {
+              "content": "Get network diagnosis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-diagnoses",
+                ":network_diagnosis_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "network_diagnosis_id",
+                  "description": "(Required) network diagnosis id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "559c3981-3da9-4d1d-a963-a1e7091230b7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_diagnosis\": {\n    \"diagnose_warning_num\": 5,\n    \"diagnose_active_num\": 0,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ],\n    \"diagnose_error_num\": 6,\n    \"diagnosing_num\": 5,\n    \"host_num\": 2,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"diagnose_num\": 1,\n    \"progress\": 3.616076749251911,\n    \"id\": 7,\n    \"not_diagnose_num\": 9,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cd28126-e28a-4945-b4f9-3a868acb6991",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33716205-60f3-4c39-9dd1-eb057d099cff",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "879e84c3-f513-40d4-b7e1-39d49c88d555",
+          "name": "Delete Network Diagnosis",
+          "request": {
+            "name": "Delete Network Diagnosis",
+            "description": {
+              "content": "delete network diagnosis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-diagnoses",
+                ":network_diagnosis_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "network_diagnosis_id",
+                  "description": "(Required) network diagnosis id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd2124c0-d534-4b37-a25a-21adb399a431",
+              "name": "Not Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0e64f9b-733d-46ab-81fe-201b259cbd4d",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58112167-7ed8-4e22-a581-91fae739ad2b",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c9a67f4-c387-4bc6-9e14-f1fd1dc0c9f1",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    ":network_diagnosis_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "network_diagnosis_id",
+                      "description": "(Required) network diagnosis id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d896fa3a-1825-4fd2-a1de-0158dcf759c0",
+          "name": "Stop Network Diagnosis",
+          "request": {
+            "name": "Stop Network Diagnosis",
+            "description": {
+              "content": "stop network diagnosis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-diagnoses",
+                "{{network_diagnosis_id}}:stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "135bf4da-b7eb-4f00-86a9-ac3b06903c66",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    "{{network_diagnosis_id}}:stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"network_diagnosis\": {\n    \"diagnose_warning_num\": 5,\n    \"diagnose_active_num\": 0,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"networks\": [\n      \"networks\",\n      \"networks\"\n    ],\n    \"diagnose_error_num\": 6,\n    \"diagnosing_num\": 5,\n    \"host_num\": 2,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"diagnose_num\": 1,\n    \"progress\": 3.616076749251911,\n    \"id\": 7,\n    \"not_diagnose_num\": 9,\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27ec9ddf-0c23-43c8-ab2b-d72c2f081d61",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    "{{network_diagnosis_id}}:stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "206144c8-e786-497f-bd16-18599b2bc1bd",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    "{{network_diagnosis_id}}:stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e168a38-4826-4d87-b6fe-1d01c04cb1e2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-diagnoses",
+                    "{{network_diagnosis_id}}:stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) network diagnosis id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "network_diagnosis_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "6a156f7a-cc52-4620-a984-0ad331a0f85b",
+    "name": "XMS access-paths network-diagnoses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

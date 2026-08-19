@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths vip-instances API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vip-instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListVIPInstances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vip-instances/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "vip_id",
+                "value": "",
+                "type": "query",
+                "description": "vip id"
+              }
+            ]
+          },
+          "docs": "List vip instances"
+        },
+        {
+          "info": {
+            "name": "GetVIPInstance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vip-instances/:vip_instance_id",
+            "params": [
+              {
+                "name": "vip_instance_id",
+                "value": "",
+                "type": "path",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "Get a vip group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

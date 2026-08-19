@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-arbitration-pools API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-arbitration-pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSArbitrationPools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-arbitration-pools/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List file storage arbitration pools"
+        },
+        {
+          "info": {
+            "name": "CreateFSArbitrationPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-arbitration-pools/"
+          },
+          "docs": "create file storage arbitration pool"
+        },
+        {
+          "info": {
+            "name": "GetFSArbitrationPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-arbitration-pools/:fs_arbitration_pool_id",
+            "params": [
+              {
+                "name": "fs_arbitration_pool_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage arbitration pool id"
+              }
+            ]
+          },
+          "docs": "Get file storage arbitration pool"
+        },
+        {
+          "info": {
+            "name": "UpdateFSArbitrationPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-arbitration-pools/:fs_arbitration_pool_id",
+            "params": [
+              {
+                "name": "fs_arbitration_pool_id",
+                "value": "",
+                "type": "path",
+                "description": "file system arbitration pool id"
+              }
+            ]
+          },
+          "docs": "Update file system arbitration pool"
+        },
+        {
+          "info": {
+            "name": "DeleteFSArbitrationPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-arbitration-pools/:fs_arbitration_pool_id",
+            "params": [
+              {
+                "name": "fs_arbitration_pool_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage arbitration pool id"
+              }
+            ]
+          },
+          "docs": "Delete file storage arbitration pool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

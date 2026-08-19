@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "cfce0f59-6e82-4fea-b9a9-4e5a391e713b",
+      "name": "volume-dp-block-backup-policy-mappings",
+      "description": {
+        "content": "VolumeDpBlockBackupPolicyMappingController API /volume-dp-block-backup-policy-mappings\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f0a0f62-9807-4ef2-8fa7-a470ec5c529d",
+          "name": "List Volume Dp Block Backup Policy Mappings",
+          "request": {
+            "name": "List Volume Dp Block Backup Policy Mappings",
+            "description": {
+              "content": "List volume dp block backup policy mapping",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "volume-dp-block-backup-policy-mappings",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "block_volume_id",
+                  "value": "<long>",
+                  "description": "show mappings of specific block volume"
+                },
+                {
+                  "disabled": false,
+                  "key": "dp_block_backup_policy_id",
+                  "value": "<long>",
+                  "description": "show mappings of specific block volume"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3da30f63-b391-4d38-b27f-5073cfcb1472",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "volume-dp-block-backup-policy-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_block_backup_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"volume_dp_block_backup_policy_mappings\": [\n    {\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"dp_block_backup_policy\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"id\": 0,\n      \"status\": \"status\"\n    },\n    {\n      \"volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"dp_block_backup_policy\": {\n        \"name\": \"name\",\n        \"id\": 1\n      },\n      \"id\": 0,\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65a96dc0-2d11-4dbb-a05f-f3b28c485db1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "volume-dp-block-backup-policy-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_block_backup_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0af40276-364b-4612-862a-a5e4388ba0b3",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "volume-dp-block-backup-policy-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "block_volume_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dp_block_backup_policy_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dfe4e2e6-cafc-4231-bd70-37ae6f1d9810",
+    "name": "XMS access-paths volume-dp-block-backup-policy-mappings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

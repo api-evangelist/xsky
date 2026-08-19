@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths block-snapshots API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBlockSnapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-snapshots/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "query",
+                "description": "pool id"
+              },
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "query",
+                "description": "volume id"
+              },
+              {
+                "name": "reserved",
+                "value": "",
+                "type": "query",
+                "description": "show reserved snapshot or not, default not"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all snapshots"
+              }
+            ]
+          },
+          "docs": "List block snapshots"
+        },
+        {
+          "info": {
+            "name": "CreateBlockSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-snapshots/"
+          },
+          "docs": "Create block snapshot"
+        },
+        {
+          "info": {
+            "name": "GetBlockSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-snapshots/:block_snapshot_id",
+            "params": [
+              {
+                "name": "block_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "the block snapshot id"
+              }
+            ]
+          },
+          "docs": "get block snapshot"
+        },
+        {
+          "info": {
+            "name": "UpdateSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/block-snapshots/:snapshot_id",
+            "params": [
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "snapshot id"
+              }
+            ]
+          },
+          "docs": "Update block snapshot info"
+        },
+        {
+          "info": {
+            "name": "DeleteBlockSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/block-snapshots/:snapshot_id",
+            "params": [
+              {
+                "name": "snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "snapshot id"
+              }
+            ]
+          },
+          "docs": "Delete block snapshot"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

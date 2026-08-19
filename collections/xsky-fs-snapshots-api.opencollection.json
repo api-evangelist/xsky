@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-snapshots API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSSnapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-snapshots/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_folder_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage folder id"
+              }
+            ]
+          },
+          "docs": "List file storage snapshots"
+        },
+        {
+          "info": {
+            "name": "CreateFSSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-snapshots/"
+          },
+          "docs": "Create file storage snapshot"
+        },
+        {
+          "info": {
+            "name": "GetFSSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-snapshots/:fs_snapshot_id",
+            "params": [
+              {
+                "name": "fs_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage snapshot id"
+              }
+            ]
+          },
+          "docs": "Get file storage snapshot"
+        },
+        {
+          "info": {
+            "name": "UpdateFSSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-snapshots/:fs_snapshot_id",
+            "params": [
+              {
+                "name": "fs_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "snapshot id"
+              }
+            ]
+          },
+          "docs": "Update file storage snapshot"
+        },
+        {
+          "info": {
+            "name": "DeleteFSSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-snapshots/:fs_snapshot_id",
+            "params": [
+              {
+                "name": "fs_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "snapshot id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete file storage snapshot"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

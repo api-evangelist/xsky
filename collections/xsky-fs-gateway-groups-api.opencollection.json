@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-gateway-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-gateway-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSGatewayGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-gateway-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "type of file storage gateway group"
+              },
+              {
+                "name": "security",
+                "value": "",
+                "type": "query",
+                "description": "security of file storage gateway group"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List file storage gateway groups"
+        },
+        {
+          "info": {
+            "name": "CreateFSGatewayGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-gateway-groups/"
+          },
+          "docs": "Create file storage gateway group"
+        },
+        {
+          "info": {
+            "name": "GetFSGatewayGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-gateway-groups/:fs_gateway_group_id",
+            "params": [
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway group id"
+              }
+            ]
+          },
+          "docs": "Get file storage gateway group"
+        },
+        {
+          "info": {
+            "name": "UpdateFSGatewayGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-gateway-groups/:fs_gateway_group_id",
+            "params": [
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway group id"
+              }
+            ]
+          },
+          "docs": "Update file storage gateway group"
+        },
+        {
+          "info": {
+            "name": "DeleteFSGatewayGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-gateway-groups/:fs_gateway_group_id",
+            "params": [
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete file storage gateway group"
+        },
+        {
+          "info": {
+            "name": "AddFSGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-gateway-groups/:fs_gateway_group_id:add-gateways",
+            "params": [
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway group id"
+              }
+            ]
+          },
+          "docs": "add file storage gateways"
+        },
+        {
+          "info": {
+            "name": "RemoveFSGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-gateway-groups/:fs_gateway_group_id:remove-gateways",
+            "params": [
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway group id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "remove gateways from gateway group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

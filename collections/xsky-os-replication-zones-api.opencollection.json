@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-replication-zones API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-replication-zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSReplicationZones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-replication-zones/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "marker",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "replication_uuid",
+                "value": "",
+                "type": "query",
+                "description": "os replication uuid"
+              },
+              {
+                "name": "os_zone_uuid",
+                "value": "",
+                "type": "query",
+                "description": "os zone uuid"
+              }
+            ]
+          },
+          "docs": "List os replication zones"
+        },
+        {
+          "info": {
+            "name": "CreateOSReplicationZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-replication-zones/"
+          },
+          "docs": "Create a os replication zone"
+        },
+        {
+          "info": {
+            "name": "GetOSReplicationZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-replication-zones/:zone_uuid",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os replication zone uuid"
+              }
+            ]
+          },
+          "docs": "Get a os replication zone"
+        },
+        {
+          "info": {
+            "name": "DeleteOSReplicationZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-replication-zones/:zone_uuid",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os replication zone uuid"
+              }
+            ]
+          },
+          "docs": "Delete a os replication zone"
+        },
+        {
+          "info": {
+            "name": "GetOSReplicationZoneSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-replication-zones/:zone_uuid/samples",
+            "params": [
+              {
+                "name": "zone_uuid",
+                "value": "",
+                "type": "path",
+                "description": "os replication zone uuid"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get an os replication zone's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

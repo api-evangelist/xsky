@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-storage-classes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-storage-classes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOSStorageClasses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-storage-classes/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "os_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "os policy id"
+              }
+            ]
+          },
+          "docs": "List os storage classes"
+        },
+        {
+          "info": {
+            "name": "GetOSStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-storage-classes/:storage_class_id",
+            "params": [
+              {
+                "name": "storage_class_id",
+                "value": "",
+                "type": "path",
+                "description": "storage class id"
+              }
+            ]
+          },
+          "docs": "Get a os storage class"
+        },
+        {
+          "info": {
+            "name": "UpdateOSStorageClass",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-storage-classes/:storage_class_id",
+            "params": [
+              {
+                "name": "storage_class_id",
+                "value": "",
+                "type": "path",
+                "description": "storage class id"
+              }
+            ]
+          },
+          "docs": "update storage class"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

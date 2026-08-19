@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-lifecycles API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-lifecycles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListLifecycles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-lifecycles/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List object storage lifecycles"
+        },
+        {
+          "info": {
+            "name": "GetLifecycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-lifecycles/:lifecycle_id",
+            "params": [
+              {
+                "name": "lifecycle_id",
+                "value": "",
+                "type": "path",
+                "description": "lifecycle id"
+              }
+            ]
+          },
+          "docs": "Get object storage lifecycle"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,726 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths os-buckets API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "os-buckets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBuckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "name of object storage buckets"
+              },
+              {
+                "name": "os_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of policy object storage buckets belong to"
+              },
+              {
+                "name": "os_user_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of user object storage buckets belong to"
+              },
+              {
+                "name": "replication_uuid",
+                "value": "",
+                "type": "query",
+                "description": "The uuid of replication os buckets belong to"
+              },
+              {
+                "name": "virtual",
+                "value": "",
+                "type": "query",
+                "description": "Virtual bucket or not"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List object storage buckets"
+        },
+        {
+          "info": {
+            "name": "CreateBucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/"
+          },
+          "docs": "Create os bucket"
+        },
+        {
+          "info": {
+            "name": "BatchGetObjectStorageSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/samples",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "bucket ids"
+              }
+            ]
+          },
+          "docs": "Get samples of multiple object storage buckets"
+        },
+        {
+          "info": {
+            "name": "GetBucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Get object storage bucket"
+        },
+        {
+          "info": {
+            "name": "UpdateBucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Update object storage bucket"
+        },
+        {
+          "info": {
+            "name": "DeleteBucket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete object storage bucket"
+        },
+        {
+          "info": {
+            "name": "SetObjectStorageLifecycleRules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/lifecycle",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Set object storage lifecycle rules"
+        },
+        {
+          "info": {
+            "name": "DeleteObjectStorageLifecycle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/lifecycle",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "delete object storage lifecycle"
+        },
+        {
+          "info": {
+            "name": "ListObjectStorageBucketNFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/nfs-clients",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "List nfs clients"
+        },
+        {
+          "info": {
+            "name": "CreateObjectStorageBucketNFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/nfs-clients",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "create nfs client"
+        },
+        {
+          "info": {
+            "name": "DeleteObjectStorageBucketNFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/nfs-clients",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "delete nfs clients"
+        },
+        {
+          "info": {
+            "name": "GetObjectStorageBucketNFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/nfs-clients/:client_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs client id"
+              }
+            ]
+          },
+          "docs": "show nfs client"
+        },
+        {
+          "info": {
+            "name": "UpdateObjectStorageBucketNFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/nfs-clients/:client_id",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path",
+                "description": "nfs client id"
+              }
+            ]
+          },
+          "docs": "update nfs client"
+        },
+        {
+          "info": {
+            "name": "GetObjectStorageBucketSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id/samples",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get an object storage bucket's Samples"
+        },
+        {
+          "info": {
+            "name": "AddCustomLabels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:add-custom-labels",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "add object storage bucket custom labels"
+        },
+        {
+          "info": {
+            "name": "AddOSReplicationPaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:add-os-replication-paths",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "add os replication paths for os bucket"
+        },
+        {
+          "info": {
+            "name": "AddOSReplicationZones",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:add-os-replication-zones",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "add os replication zones for os bucket"
+        },
+        {
+          "info": {
+            "name": "RemoveCustomLabels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:remove-custom-labels",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "object storage bucket id"
+              }
+            ]
+          },
+          "docs": "remove object storage bucket custom labels"
+        },
+        {
+          "info": {
+            "name": "RemoveOSBucketLoggings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:remove-os-bucket-loggings",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Remove os bucket loggings of os bucket"
+        },
+        {
+          "info": {
+            "name": "RemoveOSReplicationPaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:remove-os-replication-paths",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "remove os replication paths for os bucket"
+        },
+        {
+          "info": {
+            "name": "RemoveOSReplicationZones",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:remove-os-replication-zones",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete os replication zone even if target zone is dead"
+              }
+            ]
+          },
+          "docs": "remove os replication zones for os bucket"
+        },
+        {
+          "info": {
+            "name": "SetAccessLogging",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:set-access-logging",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Set access logging of os bucket"
+        },
+        {
+          "info": {
+            "name": "SetOSBucketPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:set-bucket-policy",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "set object storage bucket policy"
+        },
+        {
+          "info": {
+            "name": "SetMetadataSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:set-metadata-search",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "object storage bucket id"
+              }
+            ]
+          },
+          "docs": "set object storage bucket metadata search"
+        },
+        {
+          "info": {
+            "name": "SuspendAccessLoggings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:suspend-access-logging",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "suspend access logging for os bucket"
+        },
+        {
+          "info": {
+            "name": "SuspendOSReplicationPaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:suspend-os-replication-paths",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "suspend os replication paths for os bucket"
+        },
+        {
+          "info": {
+            "name": "SwitchOwnerOSZone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:switch-owner-os-zone",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force to switch even if old owner zone is dead"
+              }
+            ]
+          },
+          "docs": "Switch owner zone of os bucket"
+        },
+        {
+          "info": {
+            "name": "UnsetAccessLogging",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:unset-access-logging",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "Unset access logging of os bucket"
+        },
+        {
+          "info": {
+            "name": "UnsetOSBucketPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:unset-bucket-policy",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "unset object storage bucket policy"
+        },
+        {
+          "info": {
+            "name": "UnsuspendAccessLogging",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:unsuspend-access-logging",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "unsuspend access logging for os bucket"
+        },
+        {
+          "info": {
+            "name": "UnsuspendOSReplicationPaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:unsuspend-os-replication-paths",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "bucket id"
+              }
+            ]
+          },
+          "docs": "unsuspend os replication paths for os bucket"
+        },
+        {
+          "info": {
+            "name": "UpdateCustomLabels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/os-buckets/:bucket_id:update-custom-labels",
+            "params": [
+              {
+                "name": "bucket_id",
+                "value": "",
+                "type": "path",
+                "description": "object storage bucket id"
+              }
+            ]
+          },
+          "docs": "update object storage bucket custom labels"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

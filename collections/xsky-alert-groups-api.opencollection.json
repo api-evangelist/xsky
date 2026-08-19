@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths alert-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alert-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAlertGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List all alert groups"
+        },
+        {
+          "info": {
+            "name": "CreateAlertGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alert-groups/"
+          },
+          "docs": "create alert group"
+        },
+        {
+          "info": {
+            "name": "GetAlertGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert group"
+              }
+            ]
+          },
+          "docs": "get alert group"
+        },
+        {
+          "info": {
+            "name": "UpdateAlertGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/alert-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert group"
+              }
+            ]
+          },
+          "docs": "update alert group"
+        },
+        {
+          "info": {
+            "name": "DeleteAlertGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alert-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert group"
+              }
+            ]
+          },
+          "docs": "delete alert group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

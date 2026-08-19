@@ -1,0 +1,186 @@
+{
+  "item": [
+    {
+      "id": "708386c2-86d0-40b5-abed-623bf5cd5efe",
+      "name": "os-bucket-loggings",
+      "description": {
+        "content": "OSBucketLoggingController API /os-bucket-loggings.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "964c6001-9d31-4e22-837a-8e28294e5975",
+          "name": "List OS Bucket Loggings",
+          "request": {
+            "name": "List OS Bucket Loggings",
+            "description": {
+              "content": "List os bucket loggings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "os-bucket-loggings",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "source_bucket_name",
+                  "value": "<string>",
+                  "description": "source bucket name"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_bucket_name",
+                  "value": "<string>",
+                  "description": "target bucket name"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f08f8db-d0c5-4644-a471-ad33777dabda",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "os-bucket-loggings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "source_bucket_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "target_bucket_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"os_bucket_loggings\": [\n    {\n      \"target_bucket_name\": \"target_bucket_name\",\n      \"prefix\": \"prefix\",\n      \"source_bucket_name\": \"source_bucket_name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0\n    },\n    {\n      \"target_bucket_name\": \"target_bucket_name\",\n      \"prefix\": \"prefix\",\n      \"source_bucket_name\": \"source_bucket_name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8055019-e563-416c-9fe3-5311856d76cd",
+    "name": "XMS access-paths os-bucket-loggings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths vip-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vip-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListVIPGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vip-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "query",
+                "description": "resource type"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "List vip groups"
+        },
+        {
+          "info": {
+            "name": "CreateVIPGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vip-groups/"
+          },
+          "docs": "Create a vip group"
+        },
+        {
+          "info": {
+            "name": "GetVIPGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vip-groups/:vip_group_id",
+            "params": [
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "path",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "Get a vip group"
+        },
+        {
+          "info": {
+            "name": "UpdateVIPGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/vip-groups/:vip_group_id",
+            "params": [
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "path",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "Update a vip group"
+        },
+        {
+          "info": {
+            "name": "DeleteVIPGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/vip-groups/:vip_group_id",
+            "params": [
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "path",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "Delete a vip group"
+        },
+        {
+          "info": {
+            "name": "RedeployVIPGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vip-groups/:vip_group_id:redeploy",
+            "params": [
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "path",
+                "description": "vip group id"
+              }
+            ]
+          },
+          "docs": "Redeploy a vip group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

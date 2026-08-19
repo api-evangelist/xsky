@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths confs API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "confs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SetConfItem",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/confs/"
+          },
+          "docs": "set conf item"
+        },
+        {
+          "info": {
+            "name": "ListConfItems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/confs/:type",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "filter the type of conf"
+              }
+            ]
+          },
+          "docs": "List conf items"
+        },
+        {
+          "info": {
+            "name": "SetConfItems",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/confs/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "filter the type of conf"
+              }
+            ]
+          },
+          "docs": "set conf items"
+        },
+        {
+          "info": {
+            "name": "GetConfItem",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/confs/:type/:key",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "filter the type of conf"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "filter the key of conf item"
+              }
+            ]
+          },
+          "docs": "get conf item"
+        },
+        {
+          "info": {
+            "name": "DeleteConfItem",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/confs/:type/:key",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "filter the type of conf item"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "filter the key of conf item"
+              }
+            ]
+          },
+          "docs": "delete conf item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

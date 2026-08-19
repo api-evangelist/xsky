@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths tasks API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tasks/",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "task status"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "task type"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host running the task"
+              }
+            ]
+          },
+          "docs": "List tasks by fileter"
+        },
+        {
+          "info": {
+            "name": "GetTask",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tasks/:task_id",
+            "params": [
+              {
+                "name": "task_id",
+                "value": "",
+                "type": "path",
+                "description": "the task id"
+              }
+            ]
+          },
+          "docs": "get a task info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

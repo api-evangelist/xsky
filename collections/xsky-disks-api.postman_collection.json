@@ -1,0 +1,1686 @@
+{
+  "item": [
+    {
+      "id": "9faeb0e4-0070-4960-b74f-8082328c0ed1",
+      "name": "disks",
+      "description": {
+        "content": "DiskController Disk Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5989ecc-c6bc-4e9b-8bc7-f587889b3076",
+          "name": "List Disks",
+          "request": {
+            "name": "List Disks",
+            "description": {
+              "content": "List all pyhsical disks in the system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<long>",
+                  "description": "host id"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_cache",
+                  "value": "<boolean>",
+                  "description": "filter cache disk"
+                },
+                {
+                  "disabled": false,
+                  "key": "used",
+                  "value": "<boolean>",
+                  "description": "filter used"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7db6640c-55a1-485a-9c24-fb3da257b27a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "is_cache",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disks\": [\n    {\n      \"action_status\": \"string\",\n      \"bytes\": 804,\n      \"cache_create\": \"1968-02-02T18:06:53.755Z\",\n      \"channel_id\": \"string\",\n      \"create\": \"1958-10-08T09:19:57.041Z\",\n      \"device\": \"string\",\n      \"disk_type\": \"string\",\n      \"driver_type\": \"string\",\n      \"enclosure_id\": \"string\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 9517,\n      \"is_cache\": true,\n      \"is_root\": false,\n      \"lighting_status\": \"string\",\n      \"model\": \"string\",\n      \"partition_num\": 1752,\n      \"partitions\": [\n        {\n          \"omap_device_path\": \"omap_device_path\",\n          \"update\": \"2000-01-23T04:56:07.000+00:00\",\n          \"omap_byte\": 1,\n          \"used\": true,\n          \"uuid\": \"uuid\",\n          \"version\": 5,\n          \"path\": \"path\",\n          \"disk\": {\n            \"disk_type\": \"disk_type\",\n            \"id\": 0,\n            \"device\": \"device\"\n          },\n          \"size\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 6,\n          \"action_status\": \"action_status\",\n          \"status\": \"status\"\n        },\n        {\n          \"omap_device_path\": \"omap_device_path\",\n          \"update\": \"2000-01-23T04:56:07.000+00:00\",\n          \"omap_byte\": 1,\n          \"used\": true,\n          \"uuid\": \"uuid\",\n          \"version\": 5,\n          \"path\": \"path\",\n          \"disk\": {\n            \"disk_type\": \"disk_type\",\n            \"id\": 0,\n            \"device\": \"device\"\n          },\n          \"size\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 6,\n          \"action_status\": \"action_status\",\n          \"status\": \"status\"\n        }\n      ],\n      \"power_safe\": false,\n      \"rotation_rate\": \"string\",\n      \"rotational\": true,\n      \"serial\": \"string\",\n      \"slot_id\": \"string\",\n      \"smart_attrs\": [\n        {\n          \"attr_id\": 385,\n          \"create\": \"1952-02-05T06:38:57.591Z\",\n          \"flag\": \"string\",\n          \"id\": 8605,\n          \"name\": \"string\",\n          \"raw_value\": \"string\",\n          \"status\": \"string\",\n          \"thresh\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"when_failed\": \"string\",\n          \"worst\": \"string\"\n        },\n        {\n          \"attr_id\": 2734,\n          \"create\": \"2022-02-05T18:58:44.933Z\",\n          \"flag\": \"string\",\n          \"id\": 1990,\n          \"name\": \"string\",\n          \"raw_value\": \"string\",\n          \"status\": \"string\",\n          \"thresh\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"when_failed\": \"string\",\n          \"worst\": \"string\"\n        }\n      ],\n      \"ssd_life_left\": 1834,\n      \"status\": \"string\",\n      \"update\": \"1989-09-30T08:16:00.020Z\",\n      \"used\": false,\n      \"wwid\": \"string\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        },\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        }\n      ]\n    },\n    {\n      \"action_status\": \"string\",\n      \"bytes\": 686,\n      \"cache_create\": \"1991-10-23T01:25:10.024Z\",\n      \"channel_id\": \"string\",\n      \"create\": \"2021-04-13T23:35:12.134Z\",\n      \"device\": \"string\",\n      \"disk_type\": \"string\",\n      \"driver_type\": \"string\",\n      \"enclosure_id\": \"string\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 8717,\n      \"is_cache\": false,\n      \"is_root\": false,\n      \"lighting_status\": \"string\",\n      \"model\": \"string\",\n      \"partition_num\": 9291,\n      \"partitions\": [\n        {\n          \"omap_device_path\": \"omap_device_path\",\n          \"update\": \"2000-01-23T04:56:07.000+00:00\",\n          \"omap_byte\": 1,\n          \"used\": true,\n          \"uuid\": \"uuid\",\n          \"version\": 5,\n          \"path\": \"path\",\n          \"disk\": {\n            \"disk_type\": \"disk_type\",\n            \"id\": 0,\n            \"device\": \"device\"\n          },\n          \"size\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 6,\n          \"action_status\": \"action_status\",\n          \"status\": \"status\"\n        },\n        {\n          \"omap_device_path\": \"omap_device_path\",\n          \"update\": \"2000-01-23T04:56:07.000+00:00\",\n          \"omap_byte\": 1,\n          \"used\": true,\n          \"uuid\": \"uuid\",\n          \"version\": 5,\n          \"path\": \"path\",\n          \"disk\": {\n            \"disk_type\": \"disk_type\",\n            \"id\": 0,\n            \"device\": \"device\"\n          },\n          \"size\": 5,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"id\": 6,\n          \"action_status\": \"action_status\",\n          \"status\": \"status\"\n        }\n      ],\n      \"power_safe\": true,\n      \"rotation_rate\": \"string\",\n      \"rotational\": true,\n      \"serial\": \"string\",\n      \"slot_id\": \"string\",\n      \"smart_attrs\": [\n        {\n          \"attr_id\": 67,\n          \"create\": \"1987-09-19T09:23:46.912Z\",\n          \"flag\": \"string\",\n          \"id\": 2101,\n          \"name\": \"string\",\n          \"raw_value\": \"string\",\n          \"status\": \"string\",\n          \"thresh\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"when_failed\": \"string\",\n          \"worst\": \"string\"\n        },\n        {\n          \"attr_id\": 9891,\n          \"create\": \"1986-05-21T12:29:54.877Z\",\n          \"flag\": \"string\",\n          \"id\": 2660,\n          \"name\": \"string\",\n          \"raw_value\": \"string\",\n          \"status\": \"string\",\n          \"thresh\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\",\n          \"when_failed\": \"string\",\n          \"worst\": \"string\"\n        }\n      ],\n      \"ssd_life_left\": 4907,\n      \"status\": \"string\",\n      \"update\": \"1996-06-09T03:53:17.146Z\",\n      \"used\": false,\n      \"wwid\": \"string\",\n      \"samples\": [\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        },\n        {\n          \"healthy_percent\": 1.4658129805029452,\n          \"read_wait_us\": 7.386281948385884,\n          \"recovery_percent\": 1.2315135367772556,\n          \"total_bandwidth_kbyte\": 1.0246457001441578,\n          \"read_merged_ps\": 4.145608029883936,\n          \"read_bandwidth_kbyte\": 3.616076749251911,\n          \"omap_total_kbyte\": 2.3021358869347655,\n          \"avg_queue_len\": 0.8008281904610115,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 9.369310271410669,\n          \"total_kbyte\": 7,\n          \"degraded_percent\": 6.027456183070403,\n          \"total_iops\": 6.84685269835264,\n          \"write_merged_ps\": 6.683562403749608,\n          \"unavailable_percent\": 1.1730742509559433,\n          \"read_iops\": 2.027123023002322,\n          \"io_util\": 5.962133916683182,\n          \"omap_used_kbyte\": 7.061401241503109,\n          \"omap_used_percent\": 9.301444243932576,\n          \"used_kbyte\": 4,\n          \"write_bandwidth_kbyte\": 9.965781217890562,\n          \"write_wait_us\": 8.762042012749001,\n          \"used_percent\": 5.025004791520295,\n          \"kbyte_per_io\": 5.637376656633329,\n          \"total_io_wait_us\": 1.4894159098541704\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66b8429a-620c-432e-9f23-09f6b1e12a20",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "is_cache",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9225e84-ab6c-40e5-8001-bd15a492918e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "is_cache",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "used",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bf07e1e-5148-4e71-bb14-17a525d0d953",
+          "name": "Get Disk",
+          "request": {
+            "name": "Get Disk",
+            "description": {
+              "content": "Get a disk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ":disk_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "disk_id",
+                  "description": "(Required) disk id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5df0d51e-b199-4e57-8372-102e452a8347",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disk\": {\n    \"action_status\": \"string\",\n    \"bytes\": 928,\n    \"cache_create\": \"1986-05-05T21:37:15.681Z\",\n    \"channel_id\": \"string\",\n    \"create\": \"2005-11-22T14:44:35.697Z\",\n    \"device\": \"string\",\n    \"disk_type\": \"string\",\n    \"driver_type\": \"string\",\n    \"enclosure_id\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4963,\n    \"is_cache\": false,\n    \"is_root\": false,\n    \"lighting_status\": \"string\",\n    \"model\": \"string\",\n    \"partition_num\": 548,\n    \"partitions\": [\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      }\n    ],\n    \"power_safe\": false,\n    \"rotation_rate\": \"string\",\n    \"rotational\": true,\n    \"serial\": \"string\",\n    \"slot_id\": \"string\",\n    \"smart_attrs\": [\n      {\n        \"attr_id\": 6185,\n        \"create\": \"2010-10-22T21:53:49.873Z\",\n        \"flag\": \"string\",\n        \"id\": 3873,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      },\n      {\n        \"attr_id\": 7533,\n        \"create\": \"1964-12-04T20:05:56.895Z\",\n        \"flag\": \"string\",\n        \"id\": 172,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      }\n    ],\n    \"ssd_life_left\": 7066,\n    \"status\": \"string\",\n    \"update\": \"1967-06-05T16:16:38.491Z\",\n    \"used\": false,\n    \"wwid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "686981e1-6be9-4adc-b4f1-52dfc6d06d3a",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23528f1e-f80b-4310-b8e9-52c45c2afae8",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7aba08d3-3a6e-4422-8bd4-eb8318c4d9b0",
+          "name": "Update Disk",
+          "request": {
+            "name": "Update Disk",
+            "description": {
+              "content": "update disk info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ":disk_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "disk_id",
+                  "description": "(Required) disk id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"disk\": {\n    \"disk_type\": \"<string>\",\n    \"lighting_status\": \"<string>\",\n    \"power_safe\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af608529-8589-4d84-92b7-bbc96646c4a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk\": {\n    \"power_safe\": true,\n    \"disk_type\": \"disk_type\",\n    \"lighting_status\": \"lighting_status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disk\": {\n    \"action_status\": \"string\",\n    \"bytes\": 928,\n    \"cache_create\": \"1986-05-05T21:37:15.681Z\",\n    \"channel_id\": \"string\",\n    \"create\": \"2005-11-22T14:44:35.697Z\",\n    \"device\": \"string\",\n    \"disk_type\": \"string\",\n    \"driver_type\": \"string\",\n    \"enclosure_id\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4963,\n    \"is_cache\": false,\n    \"is_root\": false,\n    \"lighting_status\": \"string\",\n    \"model\": \"string\",\n    \"partition_num\": 548,\n    \"partitions\": [\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      }\n    ],\n    \"power_safe\": false,\n    \"rotation_rate\": \"string\",\n    \"rotational\": true,\n    \"serial\": \"string\",\n    \"slot_id\": \"string\",\n    \"smart_attrs\": [\n      {\n        \"attr_id\": 6185,\n        \"create\": \"2010-10-22T21:53:49.873Z\",\n        \"flag\": \"string\",\n        \"id\": 3873,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      },\n      {\n        \"attr_id\": 7533,\n        \"create\": \"1964-12-04T20:05:56.895Z\",\n        \"flag\": \"string\",\n        \"id\": 172,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      }\n    ],\n    \"ssd_life_left\": 7066,\n    \"status\": \"string\",\n    \"update\": \"1967-06-05T16:16:38.491Z\",\n    \"used\": false,\n    \"wwid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "216dbcaa-ac79-442e-9a23-1d7fd69b7f1d",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk\": {\n    \"power_safe\": true,\n    \"disk_type\": \"disk_type\",\n    \"lighting_status\": \"lighting_status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0246821d-b8e7-4d00-b232-3989f0bb5fce",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk\": {\n    \"power_safe\": true,\n    \"disk_type\": \"disk_type\",\n    \"lighting_status\": \"lighting_status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd92aee6-6153-46b4-894c-af27ffbee837",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disk\": {\n    \"power_safe\": true,\n    \"disk_type\": \"disk_type\",\n    \"lighting_status\": \"lighting_status\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e14626d1-3075-4003-ba10-832bc540956c",
+          "name": "Create Partitions",
+          "request": {
+            "name": "Create Partitions",
+            "description": {
+              "content": "create cache partitions for disk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ":disk_id",
+                "partitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "num",
+                  "value": "<long>",
+                  "description": "num of partitions to create"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "disk_id",
+                  "description": "(Required) disk id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitions\": {\n    \"num\": \"<long>\",\n    \"omap_byte\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5bc0f8be-609d-4262-999d-50600d89e015",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitions\": {\n    \"num\": 0,\n    \"omap_byte\": 6\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disk\": {\n    \"action_status\": \"string\",\n    \"bytes\": 928,\n    \"cache_create\": \"1986-05-05T21:37:15.681Z\",\n    \"channel_id\": \"string\",\n    \"create\": \"2005-11-22T14:44:35.697Z\",\n    \"device\": \"string\",\n    \"disk_type\": \"string\",\n    \"driver_type\": \"string\",\n    \"enclosure_id\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4963,\n    \"is_cache\": false,\n    \"is_root\": false,\n    \"lighting_status\": \"string\",\n    \"model\": \"string\",\n    \"partition_num\": 548,\n    \"partitions\": [\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      }\n    ],\n    \"power_safe\": false,\n    \"rotation_rate\": \"string\",\n    \"rotational\": true,\n    \"serial\": \"string\",\n    \"slot_id\": \"string\",\n    \"smart_attrs\": [\n      {\n        \"attr_id\": 6185,\n        \"create\": \"2010-10-22T21:53:49.873Z\",\n        \"flag\": \"string\",\n        \"id\": 3873,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      },\n      {\n        \"attr_id\": 7533,\n        \"create\": \"1964-12-04T20:05:56.895Z\",\n        \"flag\": \"string\",\n        \"id\": 172,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      }\n    ],\n    \"ssd_life_left\": 7066,\n    \"status\": \"string\",\n    \"update\": \"1967-06-05T16:16:38.491Z\",\n    \"used\": false,\n    \"wwid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "362cee9a-fb7a-405c-8712-97596180cbb6",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitions\": {\n    \"num\": 0,\n    \"omap_byte\": 6\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "316968f4-91d4-4070-a4a4-b2821f0e22c5",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitions\": {\n    \"num\": 0,\n    \"omap_byte\": 6\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9260bdf6-d50f-4f93-92ee-1dce1d76bba9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "num",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitions\": {\n    \"num\": 0,\n    \"omap_byte\": 6\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd157a8b-fa16-40d0-ac99-ad6041cd5b05",
+          "name": "Delete Partitions",
+          "request": {
+            "name": "Delete Partitions",
+            "description": {
+              "content": "delete cache partitions of disk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ":disk_id",
+                "partitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "disk_id",
+                  "description": "(Required) disk id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9976b1d7-8416-4558-97c3-1a83dd06637b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disk\": {\n    \"action_status\": \"string\",\n    \"bytes\": 928,\n    \"cache_create\": \"1986-05-05T21:37:15.681Z\",\n    \"channel_id\": \"string\",\n    \"create\": \"2005-11-22T14:44:35.697Z\",\n    \"device\": \"string\",\n    \"disk_type\": \"string\",\n    \"driver_type\": \"string\",\n    \"enclosure_id\": \"string\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 4963,\n    \"is_cache\": false,\n    \"is_root\": false,\n    \"lighting_status\": \"string\",\n    \"model\": \"string\",\n    \"partition_num\": 548,\n    \"partitions\": [\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      },\n      {\n        \"omap_device_path\": \"omap_device_path\",\n        \"update\": \"2000-01-23T04:56:07.000+00:00\",\n        \"omap_byte\": 1,\n        \"used\": true,\n        \"uuid\": \"uuid\",\n        \"version\": 5,\n        \"path\": \"path\",\n        \"disk\": {\n          \"disk_type\": \"disk_type\",\n          \"id\": 0,\n          \"device\": \"device\"\n        },\n        \"size\": 5,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"id\": 6,\n        \"action_status\": \"action_status\",\n        \"status\": \"status\"\n      }\n    ],\n    \"power_safe\": false,\n    \"rotation_rate\": \"string\",\n    \"rotational\": true,\n    \"serial\": \"string\",\n    \"slot_id\": \"string\",\n    \"smart_attrs\": [\n      {\n        \"attr_id\": 6185,\n        \"create\": \"2010-10-22T21:53:49.873Z\",\n        \"flag\": \"string\",\n        \"id\": 3873,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      },\n      {\n        \"attr_id\": 7533,\n        \"create\": \"1964-12-04T20:05:56.895Z\",\n        \"flag\": \"string\",\n        \"id\": 172,\n        \"name\": \"string\",\n        \"raw_value\": \"string\",\n        \"status\": \"string\",\n        \"thresh\": \"string\",\n        \"type\": \"string\",\n        \"value\": \"string\",\n        \"when_failed\": \"string\",\n        \"worst\": \"string\"\n      }\n    ],\n    \"ssd_life_left\": 7066,\n    \"status\": \"string\",\n    \"update\": \"1967-06-05T16:16:38.491Z\",\n    \"used\": false,\n    \"wwid\": \"string\",\n    \"samples\": [\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      },\n      {\n        \"healthy_percent\": 1.4658129805029452,\n        \"read_wait_us\": 7.386281948385884,\n        \"recovery_percent\": 1.2315135367772556,\n        \"total_bandwidth_kbyte\": 1.0246457001441578,\n        \"read_merged_ps\": 4.145608029883936,\n        \"read_bandwidth_kbyte\": 3.616076749251911,\n        \"omap_total_kbyte\": 2.3021358869347655,\n        \"avg_queue_len\": 0.8008281904610115,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 9.369310271410669,\n        \"total_kbyte\": 7,\n        \"degraded_percent\": 6.027456183070403,\n        \"total_iops\": 6.84685269835264,\n        \"write_merged_ps\": 6.683562403749608,\n        \"unavailable_percent\": 1.1730742509559433,\n        \"read_iops\": 2.027123023002322,\n        \"io_util\": 5.962133916683182,\n        \"omap_used_kbyte\": 7.061401241503109,\n        \"omap_used_percent\": 9.301444243932576,\n        \"used_kbyte\": 4,\n        \"write_bandwidth_kbyte\": 9.965781217890562,\n        \"write_wait_us\": 8.762042012749001,\n        \"used_percent\": 5.025004791520295,\n        \"kbyte_per_io\": 5.637376656633329,\n        \"total_io_wait_us\": 1.4894159098541704\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0480676c-41df-4324-876d-1b18a7139285",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40a28111-ef78-470b-8bb5-7500c9c678ee",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2761f2a0-7a7e-4452-8c95-8850aeac4bda",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab506f3-bdd0-4fb0-8f98-f5c8b821ee24",
+          "name": "Get Disk Samples",
+          "request": {
+            "name": "Get Disk Samples",
+            "description": {
+              "content": "get a disk's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "disks",
+                ":disk_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "disk_id",
+                  "description": "(Required) disk id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "668d7b40-e566-4845-88f4-29cf8c81af9a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"disk_samples\": [\n    {\n      \"healthy_percent\": 1.4658129805029452,\n      \"read_wait_us\": 7.386281948385884,\n      \"recovery_percent\": 1.2315135367772556,\n      \"total_bandwidth_kbyte\": 1.0246457001441578,\n      \"read_merged_ps\": 4.145608029883936,\n      \"read_bandwidth_kbyte\": 3.616076749251911,\n      \"omap_total_kbyte\": 2.3021358869347655,\n      \"avg_queue_len\": 0.8008281904610115,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"write_iops\": 9.369310271410669,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 6.027456183070403,\n      \"total_iops\": 6.84685269835264,\n      \"write_merged_ps\": 6.683562403749608,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"read_iops\": 2.027123023002322,\n      \"io_util\": 5.962133916683182,\n      \"omap_used_kbyte\": 7.061401241503109,\n      \"omap_used_percent\": 9.301444243932576,\n      \"used_kbyte\": 4,\n      \"write_bandwidth_kbyte\": 9.965781217890562,\n      \"write_wait_us\": 8.762042012749001,\n      \"used_percent\": 5.025004791520295,\n      \"kbyte_per_io\": 5.637376656633329,\n      \"total_io_wait_us\": 1.4894159098541704\n    },\n    {\n      \"healthy_percent\": 1.4658129805029452,\n      \"read_wait_us\": 7.386281948385884,\n      \"recovery_percent\": 1.2315135367772556,\n      \"total_bandwidth_kbyte\": 1.0246457001441578,\n      \"read_merged_ps\": 4.145608029883936,\n      \"read_bandwidth_kbyte\": 3.616076749251911,\n      \"omap_total_kbyte\": 2.3021358869347655,\n      \"avg_queue_len\": 0.8008281904610115,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"write_iops\": 9.369310271410669,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 6.027456183070403,\n      \"total_iops\": 6.84685269835264,\n      \"write_merged_ps\": 6.683562403749608,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"read_iops\": 2.027123023002322,\n      \"io_util\": 5.962133916683182,\n      \"omap_used_kbyte\": 7.061401241503109,\n      \"omap_used_percent\": 9.301444243932576,\n      \"used_kbyte\": 4,\n      \"write_bandwidth_kbyte\": 9.965781217890562,\n      \"write_wait_us\": 8.762042012749001,\n      \"used_percent\": 5.025004791520295,\n      \"kbyte_per_io\": 5.637376656633329,\n      \"total_io_wait_us\": 1.4894159098541704\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4db81aad-b08a-4654-9788-3103afc6f5e2",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8da54aef-1573-4270-be6d-a3583efa113f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d98e16d3-55c1-4200-8bbd-6a1899730652",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "disks",
+                    ":disk_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "disk_id",
+                      "description": "(Required) disk id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a65fe751-8283-4a17-9f4e-b0f440d9941b",
+    "name": "XMS access-paths disks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

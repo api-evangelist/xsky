@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths vips API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vips",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListVIPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vips/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "vip_group_id",
+                "value": "",
+                "type": "query",
+                "description": "vip_group id"
+              }
+            ]
+          },
+          "docs": "List vips"
+        },
+        {
+          "info": {
+            "name": "CreateVIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vips/"
+          },
+          "docs": "Create a vip"
+        },
+        {
+          "info": {
+            "name": "GetVIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vips/:vip_id",
+            "params": [
+              {
+                "name": "vip_id",
+                "value": "",
+                "type": "path",
+                "description": "vip id"
+              }
+            ]
+          },
+          "docs": "Get a vip"
+        },
+        {
+          "info": {
+            "name": "UpdateVIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/vips/:vip_id",
+            "params": [
+              {
+                "name": "vip_id",
+                "value": "",
+                "type": "path",
+                "description": "vip id"
+              }
+            ]
+          },
+          "docs": "Update a vip"
+        },
+        {
+          "info": {
+            "name": "DeleteVIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/vips/:vip_id",
+            "params": [
+              {
+                "name": "vip_id",
+                "value": "",
+                "type": "path",
+                "description": "vip id"
+              }
+            ]
+          },
+          "docs": "Delete a vip"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

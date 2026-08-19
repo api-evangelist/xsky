@@ -1,0 +1,2275 @@
+{
+  "item": [
+    {
+      "id": "61afa3d0-51a7-45d0-b13a-ada2fdd4e132",
+      "name": "fs-smb-shares",
+      "description": {
+        "content": "FSSMBShareController provides API for fs smb share\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11fd496a-8d04-4bb3-b1e4-808774212375",
+          "name": "List FSSMB Shares",
+          "request": {
+            "name": "List FSSMB Shares",
+            "description": {
+              "content": "List fs smb shares",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_folder_id",
+                  "value": "<long>",
+                  "description": "fs folder id"
+                },
+                {
+                  "disabled": false,
+                  "key": "fs_gateway_group_id",
+                  "value": "<long>",
+                  "description": "fs gateway group id"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c79208b-da8a-4584-91a1-020c08c37c43",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_folder_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_gateway_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_shares\": [\n    {\n      \"acl_inherited\": true,\n      \"fs_quota_tree\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"security\": \"security\",\n      \"recycled\": true,\n      \"mapping_num\": 1,\n      \"case_sensitive\": true,\n      \"fs_folder\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"acl_num\": 0,\n      \"id\": 6,\n      \"fs_gateway_group\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"vip_mask\": 1,\n        \"vip\": \"vip\"\n      },\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    {\n      \"acl_inherited\": true,\n      \"fs_quota_tree\": {\n        \"name\": \"name\",\n        \"id\": 5\n      },\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"security\": \"security\",\n      \"recycled\": true,\n      \"mapping_num\": 1,\n      \"case_sensitive\": true,\n      \"fs_folder\": {\n        \"name\": \"name\",\n        \"id\": 6\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"acl_num\": 0,\n      \"id\": 6,\n      \"fs_gateway_group\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"vip_mask\": 1,\n        \"vip\": \"vip\"\n      },\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6c46575-afef-4cb9-9cbb-3d5ab2ad8d37",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_folder_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "fs_gateway_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23cd87fc-786a-4327-9951-b0fb31fce976",
+          "name": "Create FSSMB Share",
+          "request": {
+            "name": "Create FSSMB Share",
+            "description": {
+              "content": "Create fs smb share",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_smb_share\": {\n    \"fs_folder_id\": \"<long>\",\n    \"fs_gateway_group_id\": \"<long>\",\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"fs_quota_tree_id\": \"<long>\",\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "026cbd2b-774b-40cd-b5d2-0b886a1aa790",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_folder_id\": \"<long>\",\n    \"fs_gateway_group_id\": \"<long>\",\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"fs_quota_tree_id\": \"<long>\",\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61432421-7466-4f8c-b7f0-fa491780df20",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_folder_id\": \"<long>\",\n    \"fs_gateway_group_id\": \"<long>\",\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"fs_quota_tree_id\": \"<long>\",\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6b67a93-ee44-4658-9737-2ce280cfabb5",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_folder_id\": \"<long>\",\n    \"fs_gateway_group_id\": \"<long>\",\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"fs_quota_tree_id\": \"<long>\",\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f05c15f-1584-474c-9669-669186a78bca",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_folder_id\": \"<long>\",\n    \"fs_gateway_group_id\": \"<long>\",\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"fs_quota_tree_id\": \"<long>\",\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"name\": \"<string>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd713042-a7b4-46cc-b8b3-2fc988e89b2e",
+          "name": "Get FSSMB Share",
+          "request": {
+            "name": "Get FSSMB Share",
+            "description": {
+              "content": "Get fs smb share",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                ":fs_smb_share_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_smb_share_id",
+                  "description": "(Required) share id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2eb30a8a-a273-42fa-a417-5b490ed9dd42",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fe03f40-d4d2-4431-98e7-c1c0f13a416f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30e33243-545b-4d5e-a575-bf321f6c49fa",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e33dac37-07ab-450f-95dc-b67ae4dc3f09",
+          "name": "Delete FSSMB Share",
+          "request": {
+            "name": "Delete FSSMB Share",
+            "description": {
+              "content": "delete fs smb share",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                ":fs_smb_share_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "force delete or not"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_smb_share_id",
+                  "description": "(Required) share id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22a5cdc8-006b-43b9-b9a8-8feb932f8b99",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "833e889c-ff96-4a14-af24-af05ca5d3f7b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf7dc837-95e0-4b51-a668-db364b18fb47",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7997d727-d9bd-42c4-8f8d-c5a7c845ac34",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96d464c8-1049-4b0d-bf7f-7ebe1874661a",
+          "name": "Update FSSMB Share",
+          "request": {
+            "name": "Update FSSMB Share",
+            "description": {
+              "content": "Update fs smb share",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                ":fs_smb_share_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_smb_share_id",
+                  "description": "(Required) share id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8823a55d-aac1-4893-bfa0-31eeb36dd853",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cf763c4-d2c9-46b2-8071-2452690068a3",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48ae584d-21df-4347-b591-87276630f42a",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54578a1d-19d3-4f52-b82c-ec3e8ccd0e40",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d69c83d-9eba-45b4-8e91-9c4d313ff0b2",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23786307-71ae-4c1c-8179-a390ce1be8ba",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    ":fs_smb_share_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_smb_share_id",
+                      "description": "(Required) share id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": \"<boolean>\",\n    \"case_sensitive\": \"<boolean>\",\n    \"recycled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53af608a-ccc7-4fba-b9dd-742eb9d1e98d",
+          "name": "Add FSSMB Share AC Ls",
+          "request": {
+            "name": "Add FSSMB Share AC Ls",
+            "description": {
+              "content": "Add fs smb share acls",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                "{{fs_smb_share_id}}:add-acls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e03a8044-9adb-463c-99e3-1c69b4a60533",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:add-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0707190c-cc06-4fb3-b469-90de32b99959",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:add-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fb0beac-9c2c-436e-9d4a-0cac10146c5f",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:add-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74925d73-3a1f-480c-93e5-8889f3b8e6b3",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:add-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "101f344a-2184-4ee6-a91f-52f1d05687c4",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:add-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"fs_user_group_id\": \"<long>\",\n        \"fs_user_group_name\": \"<string>\",\n        \"fs_user_id\": \"<long>\",\n        \"fs_user_name\": \"<string>\",\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "939293d3-08af-49de-b852-fae2a8411572",
+          "name": "Remove FSSMB Share AC Ls",
+          "request": {
+            "name": "Remove FSSMB Share AC Ls",
+            "description": {
+              "content": "remove fs smb share acls",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                "{{fs_smb_share_id}}:remove-acls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7865776a-f4f9-48d7-9b4c-07e53b9f8a64",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:remove-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b02dd45-baf3-430d-a179-15753be8a7bf",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:remove-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e87171ff-593a-431f-b552-02569887bdc5",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:remove-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f922f5c-439f-474d-93e1-197d588f53ed",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:remove-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "202b9fab-3e93-4710-a246-39804ea5bf23",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:remove-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acl_ids\": [\n      \"<long>\",\n      \"<long>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d40772a6-521c-4ce8-a4ab-b8468da7ec7e",
+          "name": "Update FSSMB Share AC Ls",
+          "request": {
+            "name": "Update FSSMB Share AC Ls",
+            "description": {
+              "content": "Update fs smb share ACL",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-smb-shares",
+                "{{fs_smb_share_id}}:update-acls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "548b64ce-b864-40f6-8459-3011a37bc04e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3856631-ef24-4ba2-b755-38696f4b7feb",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_smb_share\": {\n    \"acl_inherited\": true,\n    \"fs_quota_tree\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"security\": \"security\",\n    \"recycled\": true,\n    \"mapping_num\": 1,\n    \"case_sensitive\": true,\n    \"fs_folder\": {\n      \"name\": \"name\",\n      \"id\": 6\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"acl_num\": 0,\n    \"id\": 6,\n    \"fs_gateway_group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"vip_mask\": 1,\n      \"vip\": \"vip\"\n    },\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2c903e0-0ad7-466d-917d-81afb0bcd79e",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f0c8dcf-98fc-4980-a981-37c1ad967420",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9cdc35d-97b5-45c6-adce-c2ce78e7cafd",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fc8abd7-dc48-43cc-b730-27984a34499a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-smb-shares",
+                    "{{fs_smb_share_id}}:update-acls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_smb_share\": {\n    \"fs_smb_share_acls\": [\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"permission\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) fs smb share id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "fs_smb_share_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "63c4bb2a-3c24-45aa-9d9b-3d3876de29a9",
+    "name": "XMS access-paths fs-smb-shares API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

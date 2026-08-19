@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "6be10b3e-8e6c-4418-ac68-ad055071e6c7",
+      "name": "cloud-volumes",
+      "description": {
+        "content": "CloudVolumeController Cloud Volume Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31228fed-1568-45a1-8e1f-dd0e2c0b0cb0",
+          "name": "List Cloud Volumes",
+          "request": {
+            "name": "List Cloud Volumes",
+            "description": {
+              "content": "List cloud volumes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cloud-volumes",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "cloud_instance_id",
+                  "value": "<long>",
+                  "description": "cloud instance id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "16d1ea09-032d-4b0f-b0db-4f51d38d5c43",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cloud-volumes",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cloud_instance_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cloud_volumes\": [\n    {\n      \"cloud_volume_id\": \"cloud_volume_id\",\n      \"cloud_datacenter\": {\n        \"name\": \"name\",\n        \"id\": 0\n      },\n      \"cloud_platform\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"type\": \"type\"\n      },\n      \"block_volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"multi_attach\": true,\n      \"id\": 1,\n      \"type\": \"type\"\n    },\n    {\n      \"cloud_volume_id\": \"cloud_volume_id\",\n      \"cloud_datacenter\": {\n        \"name\": \"name\",\n        \"id\": 0\n      },\n      \"cloud_platform\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"type\": \"type\"\n      },\n      \"block_volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"multi_attach\": true,\n      \"id\": 1,\n      \"type\": \"type\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b79f53de-560b-40f3-b286-0831f1216c69",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cloud-volumes",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cloud_instance_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3aa4a35b-6229-4cc3-b1eb-5dff77312e1b",
+          "name": "Get Cloud Volume",
+          "request": {
+            "name": "Get Cloud Volume",
+            "description": {
+              "content": "Get a cloud volume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cloud-volumes",
+                ":cloud_volume_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "cloud_volume_id",
+                  "description": "(Required) cloud volume id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d320819-63de-491a-8788-04ab025bada4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cloud-volumes",
+                    ":cloud_volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "cloud_volume_id",
+                      "description": "(Required) cloud volume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cloud_volume\": {\n    \"cloud_volume_id\": \"cloud_volume_id\",\n    \"cloud_datacenter\": {\n      \"name\": \"name\",\n      \"id\": 0\n    },\n    \"cloud_platform\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"type\": \"type\"\n    },\n    \"block_volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"multi_attach\": true,\n    \"id\": 1,\n    \"type\": \"type\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc75fbb2-2e61-46af-9cec-975ba53aaf3b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cloud-volumes",
+                    ":cloud_volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "cloud_volume_id",
+                      "description": "(Required) cloud volume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "829b2ecb-3fec-42db-949e-c865a9442b48",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cloud-volumes",
+                    ":cloud_volume_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "cloud_volume_id",
+                      "description": "(Required) cloud volume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b6506249-3ecd-4c52-8483-4cc73ebc58f2",
+    "name": "XMS access-paths cloud-volumes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths hosts API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListHosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "protection_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "protection domain id"
+              },
+              {
+                "name": "hostname",
+                "value": "",
+                "type": "query",
+                "description": "host name"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "if it existed, value should be xdcactive"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "filter by host role"
+              },
+              {
+                "name": "fc_available",
+                "value": "",
+                "type": "query",
+                "description": "available host with fc port"
+              },
+              {
+                "name": "replication_gateway_available",
+                "value": "",
+                "type": "query",
+                "description": "available host for replication gateway"
+              },
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage gateway group id"
+              },
+              {
+                "name": "fs_gateway_group_used",
+                "value": "",
+                "type": "query",
+                "description": "used in file storage gateway group"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List hosts by fileter"
+        },
+        {
+          "info": {
+            "name": "CreateHost",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/hosts/"
+          },
+          "docs": "check env and install packages"
+        },
+        {
+          "info": {
+            "name": "GetHost",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:host_id",
+            "params": [
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "path",
+                "description": "the host id"
+              }
+            ]
+          },
+          "docs": "get a host info"
+        },
+        {
+          "info": {
+            "name": "UpdateHost",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/hosts/:host_id",
+            "params": [
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "path",
+                "description": "host id"
+              }
+            ]
+          },
+          "docs": "update host info"
+        },
+        {
+          "info": {
+            "name": "DeleteHost",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/hosts/:host_id",
+            "params": [
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "path",
+                "description": "host id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "delete host"
+        },
+        {
+          "info": {
+            "name": "GetHostSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:host_id/samples",
+            "params": [
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "path",
+                "description": "host id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a host's samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

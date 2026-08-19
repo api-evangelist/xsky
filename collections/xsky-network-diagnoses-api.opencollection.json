@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths network-diagnoses API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "network-diagnoses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNetworkDiagnoses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-diagnoses/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List network diagnoses"
+        },
+        {
+          "info": {
+            "name": "CreateNetworkDiagnosis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/network-diagnoses/"
+          },
+          "docs": "Create network diagnosis"
+        },
+        {
+          "info": {
+            "name": "GetNetworkDiagnosis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-diagnoses/:network_diagnosis_id",
+            "params": [
+              {
+                "name": "network_diagnosis_id",
+                "value": "",
+                "type": "path",
+                "description": "network diagnosis id"
+              }
+            ]
+          },
+          "docs": "Get network diagnosis"
+        },
+        {
+          "info": {
+            "name": "DeleteNetworkDiagnosis",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/network-diagnoses/:network_diagnosis_id",
+            "params": [
+              {
+                "name": "network_diagnosis_id",
+                "value": "",
+                "type": "path",
+                "description": "network diagnosis id"
+              }
+            ]
+          },
+          "docs": "delete network diagnosis"
+        },
+        {
+          "info": {
+            "name": "StopNetworkDiagnosis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/network-diagnoses/:network_diagnosis_id:stop",
+            "params": [
+              {
+                "name": "network_diagnosis_id",
+                "value": "",
+                "type": "path",
+                "description": "network diagnosis id"
+              }
+            ]
+          },
+          "docs": "stop network diagnosis"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

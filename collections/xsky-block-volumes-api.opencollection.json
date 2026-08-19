@@ -1,0 +1,463 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths block-volumes API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-volumes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBlockVolumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volumes/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the pool volumes belong to"
+              },
+              {
+                "name": "block_snapshot_id",
+                "value": "",
+                "type": "query",
+                "description": "related snapshot id"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "name of volume"
+              },
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "query",
+                "description": "related client group id"
+              },
+              {
+                "name": "mapping_group_id",
+                "value": "",
+                "type": "query",
+                "description": "related mapping group id"
+              },
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "query",
+                "description": "related access path id"
+              },
+              {
+                "name": "passive",
+                "value": "",
+                "type": "query",
+                "description": "passive or not"
+              },
+              {
+                "name": "recycled",
+                "value": "",
+                "type": "query",
+                "description": "recycled or not"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all volumes"
+              },
+              {
+                "name": "dp_block_backup_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "show volumes of specific dp block backup policy"
+              }
+            ]
+          },
+          "docs": "List block volumes"
+        },
+        {
+          "info": {
+            "name": "CreateBlockVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/"
+          },
+          "docs": "Create block volume"
+        },
+        {
+          "info": {
+            "name": "BatchGetBlockVolumeSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volumes/samples"
+          },
+          "docs": "Get samples of multiple block volumes"
+        },
+        {
+          "info": {
+            "name": "GetBlockVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "get a block volume"
+        },
+        {
+          "info": {
+            "name": "UpdateBlockVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              }
+            ]
+          },
+          "docs": "Update block volume info"
+        },
+        {
+          "info": {
+            "name": "DeleteBlockVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "volume id"
+              },
+              {
+                "name": "bypass_trash",
+                "value": "",
+                "type": "query",
+                "description": "bypass trash or not"
+              }
+            ]
+          },
+          "docs": "Delete block volume"
+        },
+        {
+          "info": {
+            "name": "GetBlockVolumeSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id/samples",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a block volume's Samples"
+        },
+        {
+          "info": {
+            "name": "MigrateBlockVolume",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:migrate",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "RebuildBlockVolumeReplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:rebuild-replication",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force rebuild or not"
+              }
+            ]
+          },
+          "docs": "Rebuild block volume replication"
+        },
+        {
+          "info": {
+            "name": "SetBackupProtection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:set-backup-protection",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              }
+            ]
+          },
+          "docs": "Set backup protection for a block volume"
+        },
+        {
+          "info": {
+            "name": "SetBlockVolumeCrc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:set-crc",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "Set block volume crc"
+        },
+        {
+          "info": {
+            "name": "SetBlockVolumeReplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:set-replication",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "Set block volume replication"
+        },
+        {
+          "info": {
+            "name": "SetSnapshotProtection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:set-snapshot-protection",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              }
+            ]
+          },
+          "docs": "Set snapshot protection for a block volume"
+        },
+        {
+          "info": {
+            "name": "SuspendBlockVolumeReplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:suspend-replication",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "Suspend block volume replication"
+        },
+        {
+          "info": {
+            "name": "UnsetBackupProtection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:unset-backup-protection",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force unset or not"
+              }
+            ]
+          },
+          "docs": "Unset backup protection for a block volume"
+        },
+        {
+          "info": {
+            "name": "UnsetBlockVolumeCrc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:unset-crc",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "Unset block volume crc"
+        },
+        {
+          "info": {
+            "name": "SetBlockVolumeReplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:unset-replication",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume id"
+              }
+            ]
+          },
+          "docs": "Unset block volume replication"
+        },
+        {
+          "info": {
+            "name": "UnsetSnapshotProtection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volumes/:block_volume_id:unset-snapshot-protection",
+            "params": [
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force unset or not"
+              }
+            ]
+          },
+          "docs": "Unset snapshot protection for a block volume"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

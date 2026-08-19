@@ -1,0 +1,461 @@
+{
+  "item": [
+    {
+      "id": "98549268-077f-4430-84f9-b4f92ab6e5cd",
+      "name": "client-lun-mappings",
+      "description": {
+        "content": "ClientLunMappingController API /client-lun-mappings\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7dccd79-2dc1-4975-9dd9-b55867a6e21e",
+          "name": "List Client Lun Mappings",
+          "request": {
+            "name": "List Client Lun Mappings",
+            "description": {
+              "content": "List client lun mappings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client-lun-mappings",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "mapping_group_id",
+                  "value": "<long>",
+                  "description": "(Required) mapping group id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c716f9ec-507c-4563-ae00-0545c2e4857d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "mapping_group_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"client_lun_mappings\": [\n    {\n      \"block_volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"client\": {\n        \"code\": \"string\",\n        \"id\": 5475\n      },\n      \"create\": \"1973-01-03T13:55:01.803Z\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 8446,\n      \"lun\": {\n        \"id\": 7581,\n        \"lun_id\": 418\n      },\n      \"status\": \"string\",\n      \"target\": {\n        \"id\": 6617\n      },\n      \"update\": \"1966-07-20T10:40:48.416Z\",\n      \"samples\": [\n        {\n          \"migrate_write_iops\": 1.1730742509559433,\n          \"FailedTask\": {\n            \"abort\": 7.061401241503109,\n            \"busy\": 9.301444243932576,\n            \"check_cond\": 3.616076749251911,\n            \"resv_conflict\": 2.027123023002322\n          },\n          \"total_bandwidth_kbyte\": 1.284659006116532,\n          \"write_latency_us\": 5.944895607614016,\n          \"total_iops\": 2.8841621266687802,\n          \"read_latency_us\": 6.965117697638846,\n          \"read_iops\": 3.5571952270680973,\n          \"migrate_write_latency_us\": 4.965218492984954,\n          \"non_io_task\": {\n            \"ats\": 5.025004791520295,\n            \"other\": 9.965781217890562,\n            \"write_same\": 6.683562403749608,\n            \"xcopy\": 8.762042012749001,\n            \"unmap\": 9.369310271410669\n          },\n          \"io_size\": {\n            \"8_32kbyte\": 1.4894159098541704,\n            \"0_4kbyte\": 4.145608029883936,\n            \"32_64kbyte\": 7.386281948385884,\n            \"4_8kbyte\": 1.2315135367772556,\n            \"above_512kbyte\": 6.84685269835264,\n            \"64_512kbyte\": 1.0246457001441578\n          },\n          \"read_bandwidth_kbyte\": 6.438423552598547,\n          \"write_bandwidth_kbyte\": 6.778324963048013,\n          \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 6.878052220127876,\n          \"queue_depth\": 9.018348186070783\n        },\n        {\n          \"migrate_write_iops\": 1.1730742509559433,\n          \"FailedTask\": {\n            \"abort\": 7.061401241503109,\n            \"busy\": 9.301444243932576,\n            \"check_cond\": 3.616076749251911,\n            \"resv_conflict\": 2.027123023002322\n          },\n          \"total_bandwidth_kbyte\": 1.284659006116532,\n          \"write_latency_us\": 5.944895607614016,\n          \"total_iops\": 2.8841621266687802,\n          \"read_latency_us\": 6.965117697638846,\n          \"read_iops\": 3.5571952270680973,\n          \"migrate_write_latency_us\": 4.965218492984954,\n          \"non_io_task\": {\n            \"ats\": 5.025004791520295,\n            \"other\": 9.965781217890562,\n            \"write_same\": 6.683562403749608,\n            \"xcopy\": 8.762042012749001,\n            \"unmap\": 9.369310271410669\n          },\n          \"io_size\": {\n            \"8_32kbyte\": 1.4894159098541704,\n            \"0_4kbyte\": 4.145608029883936,\n            \"32_64kbyte\": 7.386281948385884,\n            \"4_8kbyte\": 1.2315135367772556,\n            \"above_512kbyte\": 6.84685269835264,\n            \"64_512kbyte\": 1.0246457001441578\n          },\n          \"read_bandwidth_kbyte\": 6.438423552598547,\n          \"write_bandwidth_kbyte\": 6.778324963048013,\n          \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 6.878052220127876,\n          \"queue_depth\": 9.018348186070783\n        }\n      ],\n      \"session_status\": \"string\"\n    },\n    {\n      \"block_volume\": {\n        \"original_name\": \"original_name\",\n        \"name\": \"name\",\n        \"id\": 9\n      },\n      \"client\": {\n        \"code\": \"string\",\n        \"id\": 9036\n      },\n      \"create\": \"2013-08-02T15:32:41.526Z\",\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"id\": 3222,\n      \"lun\": {\n        \"id\": 9414,\n        \"lun_id\": 762\n      },\n      \"status\": \"string\",\n      \"target\": {\n        \"id\": 2315\n      },\n      \"update\": \"1950-08-08T06:58:20.768Z\",\n      \"samples\": [\n        {\n          \"migrate_write_iops\": 1.1730742509559433,\n          \"FailedTask\": {\n            \"abort\": 7.061401241503109,\n            \"busy\": 9.301444243932576,\n            \"check_cond\": 3.616076749251911,\n            \"resv_conflict\": 2.027123023002322\n          },\n          \"total_bandwidth_kbyte\": 1.284659006116532,\n          \"write_latency_us\": 5.944895607614016,\n          \"total_iops\": 2.8841621266687802,\n          \"read_latency_us\": 6.965117697638846,\n          \"read_iops\": 3.5571952270680973,\n          \"migrate_write_latency_us\": 4.965218492984954,\n          \"non_io_task\": {\n            \"ats\": 5.025004791520295,\n            \"other\": 9.965781217890562,\n            \"write_same\": 6.683562403749608,\n            \"xcopy\": 8.762042012749001,\n            \"unmap\": 9.369310271410669\n          },\n          \"io_size\": {\n            \"8_32kbyte\": 1.4894159098541704,\n            \"0_4kbyte\": 4.145608029883936,\n            \"32_64kbyte\": 7.386281948385884,\n            \"4_8kbyte\": 1.2315135367772556,\n            \"above_512kbyte\": 6.84685269835264,\n            \"64_512kbyte\": 1.0246457001441578\n          },\n          \"read_bandwidth_kbyte\": 6.438423552598547,\n          \"write_bandwidth_kbyte\": 6.778324963048013,\n          \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 6.878052220127876,\n          \"queue_depth\": 9.018348186070783\n        },\n        {\n          \"migrate_write_iops\": 1.1730742509559433,\n          \"FailedTask\": {\n            \"abort\": 7.061401241503109,\n            \"busy\": 9.301444243932576,\n            \"check_cond\": 3.616076749251911,\n            \"resv_conflict\": 2.027123023002322\n          },\n          \"total_bandwidth_kbyte\": 1.284659006116532,\n          \"write_latency_us\": 5.944895607614016,\n          \"total_iops\": 2.8841621266687802,\n          \"read_latency_us\": 6.965117697638846,\n          \"read_iops\": 3.5571952270680973,\n          \"migrate_write_latency_us\": 4.965218492984954,\n          \"non_io_task\": {\n            \"ats\": 5.025004791520295,\n            \"other\": 9.965781217890562,\n            \"write_same\": 6.683562403749608,\n            \"xcopy\": 8.762042012749001,\n            \"unmap\": 9.369310271410669\n          },\n          \"io_size\": {\n            \"8_32kbyte\": 1.4894159098541704,\n            \"0_4kbyte\": 4.145608029883936,\n            \"32_64kbyte\": 7.386281948385884,\n            \"4_8kbyte\": 1.2315135367772556,\n            \"above_512kbyte\": 6.84685269835264,\n            \"64_512kbyte\": 1.0246457001441578\n          },\n          \"read_bandwidth_kbyte\": 6.438423552598547,\n          \"write_bandwidth_kbyte\": 6.778324963048013,\n          \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"write_iops\": 6.878052220127876,\n          \"queue_depth\": 9.018348186070783\n        }\n      ],\n      \"session_status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c01b2410-ca6b-4102-88fa-92b8af9524d9",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "mapping_group_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc04e057-ff6b-440b-a256-7b1406f9c507",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "mapping_group_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "404724be-582b-4e5e-afc0-84c239d44175",
+          "name": "Get Client Lun Mapping",
+          "request": {
+            "name": "Get Client Lun Mapping",
+            "description": {
+              "content": "get a client lun mapping",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "client-lun-mappings",
+                ":client_lun_mapping_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "client_lun_mapping_id",
+                  "description": "(Required) client lun mapping id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f7848d3d-ebd3-407d-babe-50d317a165c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ":client_lun_mapping_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "client_lun_mapping_id",
+                      "description": "(Required) client lun mapping id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"client_lun_mapping\": {\n    \"block_volume\": {\n      \"original_name\": \"original_name\",\n      \"name\": \"name\",\n      \"id\": 9\n    },\n    \"client\": {\n      \"code\": \"string\",\n      \"id\": 4608\n    },\n    \"create\": \"1993-09-30T19:09:53.495Z\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"id\": 5788,\n    \"lun\": {\n      \"id\": 6846,\n      \"lun_id\": 1221\n    },\n    \"status\": \"string\",\n    \"target\": {\n      \"id\": 4044\n    },\n    \"update\": \"2005-02-09T15:36:58.670Z\",\n    \"samples\": [\n      {\n        \"migrate_write_iops\": 1.1730742509559433,\n        \"FailedTask\": {\n          \"abort\": 7.061401241503109,\n          \"busy\": 9.301444243932576,\n          \"check_cond\": 3.616076749251911,\n          \"resv_conflict\": 2.027123023002322\n        },\n        \"total_bandwidth_kbyte\": 1.284659006116532,\n        \"write_latency_us\": 5.944895607614016,\n        \"total_iops\": 2.8841621266687802,\n        \"read_latency_us\": 6.965117697638846,\n        \"read_iops\": 3.5571952270680973,\n        \"migrate_write_latency_us\": 4.965218492984954,\n        \"non_io_task\": {\n          \"ats\": 5.025004791520295,\n          \"other\": 9.965781217890562,\n          \"write_same\": 6.683562403749608,\n          \"xcopy\": 8.762042012749001,\n          \"unmap\": 9.369310271410669\n        },\n        \"io_size\": {\n          \"8_32kbyte\": 1.4894159098541704,\n          \"0_4kbyte\": 4.145608029883936,\n          \"32_64kbyte\": 7.386281948385884,\n          \"4_8kbyte\": 1.2315135367772556,\n          \"above_512kbyte\": 6.84685269835264,\n          \"64_512kbyte\": 1.0246457001441578\n        },\n        \"read_bandwidth_kbyte\": 6.438423552598547,\n        \"write_bandwidth_kbyte\": 6.778324963048013,\n        \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 6.878052220127876,\n        \"queue_depth\": 9.018348186070783\n      },\n      {\n        \"migrate_write_iops\": 1.1730742509559433,\n        \"FailedTask\": {\n          \"abort\": 7.061401241503109,\n          \"busy\": 9.301444243932576,\n          \"check_cond\": 3.616076749251911,\n          \"resv_conflict\": 2.027123023002322\n        },\n        \"total_bandwidth_kbyte\": 1.284659006116532,\n        \"write_latency_us\": 5.944895607614016,\n        \"total_iops\": 2.8841621266687802,\n        \"read_latency_us\": 6.965117697638846,\n        \"read_iops\": 3.5571952270680973,\n        \"migrate_write_latency_us\": 4.965218492984954,\n        \"non_io_task\": {\n          \"ats\": 5.025004791520295,\n          \"other\": 9.965781217890562,\n          \"write_same\": 6.683562403749608,\n          \"xcopy\": 8.762042012749001,\n          \"unmap\": 9.369310271410669\n        },\n        \"io_size\": {\n          \"8_32kbyte\": 1.4894159098541704,\n          \"0_4kbyte\": 4.145608029883936,\n          \"32_64kbyte\": 7.386281948385884,\n          \"4_8kbyte\": 1.2315135367772556,\n          \"above_512kbyte\": 6.84685269835264,\n          \"64_512kbyte\": 1.0246457001441578\n        },\n        \"read_bandwidth_kbyte\": 6.438423552598547,\n        \"write_bandwidth_kbyte\": 6.778324963048013,\n        \"migrate_write_bandwidth_kbyte\": 7.457744773683766,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"write_iops\": 6.878052220127876,\n        \"queue_depth\": 9.018348186070783\n      }\n    ],\n    \"session_status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58327105-c391-43c9-b38a-caa005007085",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ":client_lun_mapping_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "client_lun_mapping_id",
+                      "description": "(Required) client lun mapping id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b41d733-3372-4842-b48d-3b479c7dae8e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "client-lun-mappings",
+                    ":client_lun_mapping_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "client_lun_mapping_id",
+                      "description": "(Required) client lun mapping id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a08d19bd-6d63-4d12-9407-d28550bf9b53",
+    "name": "XMS access-paths client-lun-mappings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-client-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-client-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSClientGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-client-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_client_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage client id"
+              }
+            ]
+          },
+          "docs": "List file storage client groups"
+        },
+        {
+          "info": {
+            "name": "CreateFSClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-client-groups/"
+          },
+          "docs": "Create file storage client group"
+        },
+        {
+          "info": {
+            "name": "GetFSClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-client-groups/:fs_client_group_id",
+            "params": [
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "Get file storage client group"
+        },
+        {
+          "info": {
+            "name": "UpdateFSClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-client-groups/:fs_client_group_id",
+            "params": [
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "Update file storage client group"
+        },
+        {
+          "info": {
+            "name": "DeleteFSClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-client-groups/:fs_client_group_id",
+            "params": [
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "delete file storage client group"
+        },
+        {
+          "info": {
+            "name": "AddFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/fs-client-groups/:fs_client_group_id/fs-clients",
+            "params": [
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "add clients to file storage client group"
+        },
+        {
+          "info": {
+            "name": "RemoveFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-client-groups/:fs_client_group_id/fs-clients",
+            "params": [
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "remove clients from file storage client group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

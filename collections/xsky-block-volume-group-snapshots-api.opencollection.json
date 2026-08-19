@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths block-volume-group-snapshots API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-volume-group-snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBlockVolumeGroupSnapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-group-snapshots/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List block volume group snapshots"
+        },
+        {
+          "info": {
+            "name": "CreateBlockVolumeGroupSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volume-group-snapshots/"
+          },
+          "docs": "Create block volume group snapshot"
+        },
+        {
+          "info": {
+            "name": "GetBlockVolumeGroupSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-group-snapshots/:block_volume_group_snapshot_id",
+            "params": [
+              {
+                "name": "block_volume_group_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume group snapshot id"
+              }
+            ]
+          },
+          "docs": "get block volume group snapshot"
+        },
+        {
+          "info": {
+            "name": "UpdateBlockVolumeGroupSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/block-volume-group-snapshots/:block_volume_group_snapshot_id",
+            "params": [
+              {
+                "name": "block_volume_group_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "the block volume group snapshot id"
+              }
+            ]
+          },
+          "docs": "Update block volume group snapshot"
+        },
+        {
+          "info": {
+            "name": "DeleteBlockVolumeGroupSnapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/block-volume-group-snapshots/:block_volume_group_snapshot_id",
+            "params": [
+              {
+                "name": "block_volume_group_snapshot_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group snapshot id"
+              }
+            ]
+          },
+          "docs": "Delete a block volume group snapshot"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

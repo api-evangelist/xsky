@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths alerts API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAlerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "query",
+                "description": "resource type of alert"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query",
+                "description": "resource id of alert"
+              },
+              {
+                "name": "alert_type",
+                "value": "",
+                "type": "query",
+                "description": "type of alert"
+              },
+              {
+                "name": "acked",
+                "value": "",
+                "type": "query",
+                "description": "acked of alert"
+              },
+              {
+                "name": "resolved",
+                "value": "",
+                "type": "query",
+                "description": "resolved or not of alert"
+              },
+              {
+                "name": "resolve_type",
+                "value": "",
+                "type": "query",
+                "description": "resolve type of alert"
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "level of alert"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              }
+            ]
+          },
+          "docs": "List all alerts"
+        },
+        {
+          "info": {
+            "name": "DoAlerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/alerts/"
+          },
+          "docs": "set the ack status of alerts"
+        },
+        {
+          "info": {
+            "name": "DeleteAlerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alerts/",
+            "params": [
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "create time of last alert"
+              }
+            ]
+          },
+          "docs": "delete alerts"
+        },
+        {
+          "info": {
+            "name": "CountAlerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alerts/stats",
+            "params": [
+              {
+                "name": "acked",
+                "value": "",
+                "type": "query",
+                "description": "acked of alert"
+              },
+              {
+                "name": "resolved",
+                "value": "",
+                "type": "query",
+                "description": "resolved or not of alert"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "query",
+                "description": "resource type of alert"
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query",
+                "description": "resource id of alert"
+              }
+            ]
+          },
+          "docs": "count all alert"
+        },
+        {
+          "info": {
+            "name": "DoAlert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/alerts/:alert_id",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert"
+              }
+            ]
+          },
+          "docs": "set the ack status of alert"
+        },
+        {
+          "info": {
+            "name": "DeleteAlert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alerts/:alert_id",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "alert id"
+              }
+            ]
+          },
+          "docs": "Delete alert"
+        },
+        {
+          "info": {
+            "name": "ResolveAlert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alerts/:alert_id:resolve",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert"
+              }
+            ]
+          },
+          "docs": "set the resolved status of alert"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

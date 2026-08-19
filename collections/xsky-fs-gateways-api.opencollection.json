@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-gateways API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSGateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-gateways/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_gateway_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage gateway group id"
+              }
+            ]
+          },
+          "docs": "List file storage gateways"
+        },
+        {
+          "info": {
+            "name": "GetFSGateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-gateways/:fs_gateway_id",
+            "params": [
+              {
+                "name": "fs_gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "gateway id"
+              }
+            ]
+          },
+          "docs": "Get file storage gateway"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths alert-rules API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alert-rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAlertRules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-rules/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "alert_group_id",
+                "value": "",
+                "type": "query",
+                "description": "alert group id"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "query",
+                "description": "resource type of alert rule"
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "level of alert rule"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "enabled or not"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List all alert rules"
+        },
+        {
+          "info": {
+            "name": "CreateAlertRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alert-rules/"
+          },
+          "docs": "create alert rule"
+        },
+        {
+          "info": {
+            "name": "CreateAlertRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/alert-rules/"
+          },
+          "docs": "create alert rule"
+        },
+        {
+          "info": {
+            "name": "GetAlertRuleSchema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-rules/schema"
+          },
+          "docs": "get alert rule schema"
+        },
+        {
+          "info": {
+            "name": "GetAlertRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-rules/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              }
+            ]
+          },
+          "docs": "get alert rule"
+        },
+        {
+          "info": {
+            "name": "UpdateAlertRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/alert-rules/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              }
+            ]
+          },
+          "docs": "set alert rule"
+        },
+        {
+          "info": {
+            "name": "DeleteAlertRule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alert-rules/:rule_id",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              }
+            ]
+          },
+          "docs": "delete alert rule"
+        },
+        {
+          "info": {
+            "name": "ListAlertRuleResourceBlacklist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/alert-rules/:rule_id/blacklist",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "blacklist",
+                "value": "",
+                "type": "query",
+                "description": "filter resource in blacklist or not"
+              }
+            ]
+          },
+          "docs": "List all blacklist of alert rule"
+        },
+        {
+          "info": {
+            "name": "CreateAlertRuleResourceBlacklist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/alert-rules/:rule_id/blacklist",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              }
+            ]
+          },
+          "docs": "create resource blacklist of alert rule"
+        },
+        {
+          "info": {
+            "name": "DeleteAlertRuleResourceBlacklist",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/alert-rules/:rule_id/blacklist",
+            "params": [
+              {
+                "name": "rule_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of alert rule"
+              }
+            ]
+          },
+          "docs": "delete resource blacklist of alert rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

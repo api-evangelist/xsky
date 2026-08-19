@@ -1,0 +1,398 @@
+{
+  "item": [
+    {
+      "id": "fea747c3-376b-4973-b8b6-ae445668785a",
+      "name": "partitions",
+      "description": {
+        "content": "PartitionController API /partitions.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d363de75-679e-4544-a8c8-e39967c364d1",
+          "name": "List Partitions",
+          "request": {
+            "name": "List Partitions",
+            "description": {
+              "content": "List partitions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partitions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "host_id",
+                  "value": "<long>",
+                  "description": "host id"
+                },
+                {
+                  "disabled": false,
+                  "key": "disk_id",
+                  "value": "<long>",
+                  "description": "disk id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "16f66dfb-84b7-4fc9-9f9c-82705b6563a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partitions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "host_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "disk_id",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitions\": [\n    {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    {\n      \"omap_device_path\": \"omap_device_path\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"omap_byte\": 1,\n      \"used\": true,\n      \"uuid\": \"uuid\",\n      \"version\": 5,\n      \"path\": \"path\",\n      \"disk\": {\n        \"disk_type\": \"disk_type\",\n        \"id\": 0,\n        \"device\": \"device\"\n      },\n      \"size\": 5,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 6,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "812e2034-337f-4b0e-9d11-1136e03b6368",
+          "name": "Get Partition",
+          "request": {
+            "name": "Get Partition",
+            "description": {
+              "content": "Get a partition info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partitions",
+                ":partition_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partition_id",
+                  "description": "(Required) partition id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d63fc3a-0941-4b0a-8c4e-38681e10a21f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partitions",
+                    ":partition_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partition_id",
+                      "description": "(Required) partition id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partition\": {\n    \"omap_device_path\": \"omap_device_path\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"omap_byte\": 1,\n    \"used\": true,\n    \"uuid\": \"uuid\",\n    \"version\": 5,\n    \"path\": \"path\",\n    \"disk\": {\n      \"disk_type\": \"disk_type\",\n      \"id\": 0,\n      \"device\": \"device\"\n    },\n    \"size\": 5,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ef6cbb6-4017-40c2-92e4-db6e78586721",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partitions",
+                    ":partition_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partition_id",
+                      "description": "(Required) partition id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "119a3cb1-f337-4f0c-8723-4621e54c71b5",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partitions",
+                    ":partition_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partition_id",
+                      "description": "(Required) partition id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "beaa5aca-daec-48d8-8179-1257dc0f0f3d",
+    "name": "XMS access-paths partitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

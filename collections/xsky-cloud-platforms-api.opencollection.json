@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths cloud-platforms API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cloud-platforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListCloudPlatforms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-platforms/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List cloud platforms"
+        },
+        {
+          "info": {
+            "name": "CreateCloudPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cloud-platforms/"
+          },
+          "docs": "Create cloud platform"
+        },
+        {
+          "info": {
+            "name": "GetCloudPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-platforms/:cloud_platform_id",
+            "params": [
+              {
+                "name": "cloud_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud platform id"
+              }
+            ]
+          },
+          "docs": "Get a cloud platform"
+        },
+        {
+          "info": {
+            "name": "UpdateCloudPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/cloud-platforms/:cloud_platform_id",
+            "params": [
+              {
+                "name": "cloud_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud platform id"
+              }
+            ]
+          },
+          "docs": "Update a cloud platform"
+        },
+        {
+          "info": {
+            "name": "DeleteCloudPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/cloud-platforms/:cloud_platform_id",
+            "params": [
+              {
+                "name": "cloud_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud platform id"
+              }
+            ]
+          },
+          "docs": "Delete cloud platform"
+        },
+        {
+          "info": {
+            "name": "SyncCloudPlatform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cloud-platforms/:cloud_platform_id:sync",
+            "params": [
+              {
+                "name": "cloud_platform_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud platform id"
+              }
+            ]
+          },
+          "docs": "Sync a cloud platform"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

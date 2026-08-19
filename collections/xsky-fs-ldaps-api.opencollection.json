@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-ldaps API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-ldaps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSLdaps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-ldaps/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List file storage ldaps"
+        },
+        {
+          "info": {
+            "name": "CreateFSLdap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ldaps/"
+          },
+          "docs": "create file storage ldap"
+        },
+        {
+          "info": {
+            "name": "GetFSLdap",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-ldaps/:fs_ldap_id",
+            "params": [
+              {
+                "name": "fs_ldap_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage ldap id"
+              }
+            ]
+          },
+          "docs": "Get a file storage ldap"
+        },
+        {
+          "info": {
+            "name": "UpdateFSLdap",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-ldaps/:fs_ldap_id",
+            "params": [
+              {
+                "name": "fs_ldap_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage ldap id"
+              }
+            ]
+          },
+          "docs": "Update a file storage ldap"
+        },
+        {
+          "info": {
+            "name": "DeleteFSLdap",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-ldaps/:fs_ldap_id",
+            "params": [
+              {
+                "name": "fs_ldap_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage ldap id"
+              }
+            ]
+          },
+          "docs": "Delete file storage ldap"
+        },
+        {
+          "info": {
+            "name": "VerifyFSLdap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-ldaps/:fs_ldap_id:verify",
+            "params": [
+              {
+                "name": "fs_ldap_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage ldap id"
+              }
+            ]
+          },
+          "docs": "Verify a file storage ldap"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

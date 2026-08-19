@@ -1,0 +1,595 @@
+{
+  "item": [
+    {
+      "id": "779ffb3e-fab2-4262-86e2-78f2fa4f8a94",
+      "name": "emails",
+      "description": {
+        "content": "EmailController Operations about Email\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08251d14-c681-410d-ba01-cf8c5e008544",
+          "name": "Send Email",
+          "request": {
+            "name": "Send Email",
+            "description": {
+              "content": "send email",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emails",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": {\n    \"body\": \"<string>\",\n    \"to\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"content_type\": \"<string>\"\n  },\n  \"email_config\": {\n    \"enabled\": \"<boolean>\",\n    \"smtp_enable_ssl\": \"<boolean>\",\n    \"smtp_host\": \"<string>\",\n    \"smtp_password\": \"<string>\",\n    \"smtp_port\": \"<long>\",\n    \"smtp_skip_tls_cert_verify\": \"<boolean>\",\n    \"smtp_user\": \"<string>\",\n    \"subject\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5287c49c-dc0b-41cd-9426-c0386a8bc3c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": {\n    \"content_type\": \"content_type\",\n    \"to\": [\n      \"to\",\n      \"to\"\n    ],\n    \"body\": \"body\"\n  },\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": {\n    \"content_type\": \"content_type\",\n    \"subject\": \"subject\",\n    \"from\": \"from\",\n    \"to\": [\n      \"to\",\n      \"to\"\n    ],\n    \"body\": \"body\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21f3156c-e310-474a-b540-222282d299c1",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": {\n    \"content_type\": \"content_type\",\n    \"to\": [\n      \"to\",\n      \"to\"\n    ],\n    \"body\": \"body\"\n  },\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ae81b30-8a56-4a41-8858-6bb73409ef4b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": {\n    \"content_type\": \"content_type\",\n    \"to\": [\n      \"to\",\n      \"to\"\n    ],\n    \"body\": \"body\"\n  },\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09e7bcd6-22ee-48c7-a0f0-e9e44201f93c",
+          "name": "Get Email Config",
+          "request": {
+            "name": "Get Email Config",
+            "description": {
+              "content": "setup email configs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emails",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f66a61bb-16f8-44c5-a5da-0771086fe6b2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34910127-0e88-4871-9b30-84b50e26b9d0",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc9d593-02c1-4fac-800a-22c9fecfc1f6",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7c2a080-c6e0-41d0-b8e7-65d8fd4f65f0",
+          "name": "Update Email Config",
+          "request": {
+            "name": "Update Email Config",
+            "description": {
+              "content": "setup email configs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emails",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email_config\": {\n    \"enabled\": \"<boolean>\",\n    \"smtp_enable_ssl\": \"<boolean>\",\n    \"smtp_host\": \"<string>\",\n    \"smtp_password\": \"<string>\",\n    \"smtp_port\": \"<long>\",\n    \"smtp_skip_tls_cert_verify\": \"<boolean>\",\n    \"smtp_user\": \"<string>\",\n    \"subject\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "250330b8-65ef-4072-a13c-a2d063b93f23",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fa01ce3-40f6-44fe-ab04-66d121a3b4fa",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b96931b4-ca7a-4645-ba06-91b788d6b383",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email_config\": {\n    \"smtp_password\": \"smtp_password\",\n    \"smtp_port\": 0,\n    \"smtp_user\": \"smtp_user\",\n    \"smtp_skip_tls_cert_verify\": true,\n    \"subject\": \"subject\",\n    \"smtp_host\": \"smtp_host\",\n    \"smtp_enable_ssl\": true,\n    \"enabled\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "45704b32-1ff9-46b5-88c5-7d2180bd7e42",
+    "name": "XMS access-paths emails API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

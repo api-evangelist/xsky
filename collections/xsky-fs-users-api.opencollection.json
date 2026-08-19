@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-users API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-users/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "security",
+                "value": "",
+                "type": "query",
+                "description": "security of file storage users"
+              },
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage user group id"
+              },
+              {
+                "name": "not_fs_user_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage user group id"
+              },
+              {
+                "name": "available",
+                "value": "",
+                "type": "query",
+                "description": "available user or not"
+              }
+            ]
+          },
+          "docs": "List file storage users"
+        },
+        {
+          "info": {
+            "name": "CreateFSUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-users/"
+          },
+          "docs": "create file storage user"
+        },
+        {
+          "info": {
+            "name": "GetFSUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-users/:fs_user_id",
+            "params": [
+              {
+                "name": "fs_user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "get file storage user"
+        },
+        {
+          "info": {
+            "name": "UpdateFSUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-users/:fs_user_id",
+            "params": [
+              {
+                "name": "fs_user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "update file storage user"
+        },
+        {
+          "info": {
+            "name": "DeleteFSUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-users/:fs_user_id",
+            "params": [
+              {
+                "name": "fs_user_id",
+                "value": "",
+                "type": "path",
+                "description": "user id"
+              }
+            ]
+          },
+          "docs": "delete file storage user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

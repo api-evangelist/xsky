@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "20227707-1510-41a2-b436-e6c0f52a8c37",
+      "name": "host-initializations",
+      "description": {
+        "content": "HostInitializationController provides API for host initialization\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb1ae83e-e301-406e-9da5-989323f33991",
+          "name": "Host Initialization",
+          "request": {
+            "name": "Host Initialization",
+            "description": {
+              "content": "Create host initialization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "host-initializations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host_initialization\": {\n    \"admin_ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ssh_user\": \"<string>\",\n    \"disable_firewalld\": \"<boolean>\",\n    \"hostname_prefix\": \"<string>\",\n    \"set_hostname\": \"<boolean>\",\n    \"ssh_password\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34f9bbe1-035a-43e9-9ba1-1994bd2889ea",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-initializations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_initialization\": {\n    \"hostname_prefix\": \"hostname_prefix\",\n    \"disable_firewalld\": true,\n    \"set_hostname\": true,\n    \"ssh_password\": \"ssh_password\",\n    \"admin_ips\": [\n      \"admin_ips\",\n      \"admin_ips\"\n    ],\n    \"ssh_user\": \"ssh_user\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"host_initialization\": {\n    \"hostname_prefix\": \"hostname_prefix\",\n    \"disable_firewalld\": true,\n    \"set_hostname\": true,\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"message\": \"message\",\n    \"admin_ips\": [\n      \"admin_ips\",\n      \"admin_ips\"\n    ],\n    \"ssh_user\": \"ssh_user\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9283e0d1-c0cf-4918-b3f4-b6785a1d9b60",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-initializations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_initialization\": {\n    \"hostname_prefix\": \"hostname_prefix\",\n    \"disable_firewalld\": true,\n    \"set_hostname\": true,\n    \"ssh_password\": \"ssh_password\",\n    \"admin_ips\": [\n      \"admin_ips\",\n      \"admin_ips\"\n    ],\n    \"ssh_user\": \"ssh_user\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46bc1c6c-d53d-4b3b-9238-ffc3b221c503",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "host-initializations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_initialization\": {\n    \"hostname_prefix\": \"hostname_prefix\",\n    \"disable_firewalld\": true,\n    \"set_hostname\": true,\n    \"ssh_password\": \"ssh_password\",\n    \"admin_ips\": [\n      \"admin_ips\",\n      \"admin_ips\"\n    ],\n    \"ssh_user\": \"ssh_user\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6d5f8f82-cc4e-46b5-8770-dbdafee7a675",
+    "name": "XMS access-paths host-initializations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

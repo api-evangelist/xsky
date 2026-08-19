@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths host-enc-specs API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "host-enc-specs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListHostEncSpecs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/host-enc-specs/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "host model"
+              },
+              {
+                "name": "vendor",
+                "value": "",
+                "type": "query",
+                "description": "host vendor"
+              }
+            ]
+          },
+          "docs": "List host enclosure specs"
+        },
+        {
+          "info": {
+            "name": "CreateHostEncSpec",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/host-enc-specs/"
+          },
+          "docs": "Create a host enclosure spec"
+        },
+        {
+          "info": {
+            "name": "GetHostEncSpec",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/host-enc-specs/:spec_id",
+            "params": [
+              {
+                "name": "spec_id",
+                "value": "",
+                "type": "path",
+                "description": "host enclosure spec id"
+              }
+            ]
+          },
+          "docs": "Get host enclosure spec"
+        },
+        {
+          "info": {
+            "name": "DeleteHostEncSpec",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/host-enc-specs/:spec_id",
+            "params": [
+              {
+                "name": "spec_id",
+                "value": "",
+                "type": "path",
+                "description": "host enclosure spec id"
+              }
+            ]
+          },
+          "docs": "Delete a host enclosure spec"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

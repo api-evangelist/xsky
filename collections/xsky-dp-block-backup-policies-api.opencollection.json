@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths dp-block-backup-policies API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dp-block-backup-policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListDpBlockBackupPolicies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-block-backup-policies/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "query",
+                "description": "show dp block backup policies of specific block volume"
+              }
+            ]
+          },
+          "docs": "List dp block backup policies"
+        },
+        {
+          "info": {
+            "name": "CreateDpBlockBackupPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dp-block-backup-policies/"
+          },
+          "docs": "Create dp block backup policy"
+        },
+        {
+          "info": {
+            "name": "GetDpBlockBackupPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dp-block-backup-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "Get dp block backup policy"
+        },
+        {
+          "info": {
+            "name": "UpdateDpBlockBackupPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/dp-block-backup-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              }
+            ]
+          },
+          "docs": "Update dp block backup policy"
+        },
+        {
+          "info": {
+            "name": "DeleteDpBlockBackupPolicy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dp-block-backup-policies/:policy_id",
+            "params": [
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "path",
+                "description": "resource id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "Delete dp block backup policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

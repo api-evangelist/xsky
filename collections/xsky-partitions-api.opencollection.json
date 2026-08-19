@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths partitions API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "partitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListPartitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/partitions/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "disk_id",
+                "value": "",
+                "type": "query",
+                "description": "disk id"
+              }
+            ]
+          },
+          "docs": "List partitions"
+        },
+        {
+          "info": {
+            "name": "GetPartition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/partitions/:partition_id",
+            "params": [
+              {
+                "name": "partition_id",
+                "value": "",
+                "type": "path",
+                "description": "partition id"
+              }
+            ]
+          },
+          "docs": "Get a partition info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

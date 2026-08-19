@@ -1,0 +1,1113 @@
+{
+  "item": [
+    {
+      "id": "0200df37-a659-444f-b89c-d9daf373c90f",
+      "name": "vips",
+      "description": {
+        "content": "VIPController API /vips\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c6692a5-0f09-4d1e-bd6a-f966115cca7e",
+          "name": "List VI Ps",
+          "request": {
+            "name": "List VI Ps",
+            "description": {
+              "content": "List vips",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vips",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "vip_group_id",
+                  "value": "<long>",
+                  "description": "vip_group id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19d4ab47-9390-48ac-8cfe-af353df5e542",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "vip_group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vips\": [\n    {\n      \"action_status\": \"string\",\n      \"create\": \"1969-12-24T10:32:19.683Z\",\n      \"id\": 6761,\n      \"ip\": \"string\",\n      \"mac_address\": \"string\",\n      \"mask\": 1892,\n      \"status\": \"string\",\n      \"update\": \"1966-12-17T19:53:29.458Z\",\n      \"vip_group\": {\n        \"id\": 4774,\n        \"name\": \"string\",\n        \"network\": \"string\",\n        \"resource_id\": 2492,\n        \"resource_type\": \"string\"\n      },\n      \"virtual_router_id\": 4910,\n      \"current_vip_instance\": {\n        \"id\": 6688\n      },\n      \"default_vip_instance\": {\n        \"id\": 4736\n      }\n    },\n    {\n      \"action_status\": \"string\",\n      \"create\": \"2015-01-27T19:27:48.547Z\",\n      \"id\": 9985,\n      \"ip\": \"string\",\n      \"mac_address\": \"string\",\n      \"mask\": 5751,\n      \"status\": \"string\",\n      \"update\": \"1995-03-11T19:18:23.483Z\",\n      \"vip_group\": {\n        \"id\": 3326,\n        \"name\": \"string\",\n        \"network\": \"string\",\n        \"resource_id\": 4643,\n        \"resource_type\": \"string\"\n      },\n      \"virtual_router_id\": 5552,\n      \"current_vip_instance\": {\n        \"id\": 5728\n      },\n      \"default_vip_instance\": {\n        \"id\": 2001\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b8a8e7e-9adf-437e-ac84-894541f85c1c",
+          "name": "Create VIP",
+          "request": {
+            "name": "Create VIP",
+            "description": {
+              "content": "Create a vip",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vips",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vip\": {\n    \"ip\": \"<string>\",\n    \"network_address_id\": \"<long>\",\n    \"vip_group_id\": \"<long>\",\n    \"mask\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f149f109-06d0-4abe-80d7-dd384465a448",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vip\": {\n    \"ip\": \"<string>\",\n    \"network_address_id\": \"<long>\",\n    \"vip_group_id\": \"<long>\",\n    \"mask\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vip\": {\n    \"action_status\": \"string\",\n    \"create\": \"1947-04-08T20:08:36.632Z\",\n    \"id\": 5476,\n    \"ip\": \"string\",\n    \"mac_address\": \"string\",\n    \"mask\": 2283,\n    \"status\": \"string\",\n    \"update\": \"2013-03-26T01:36:33.077Z\",\n    \"vip_group\": {\n      \"id\": 5450,\n      \"name\": \"string\",\n      \"network\": \"string\",\n      \"resource_id\": 4216,\n      \"resource_type\": \"string\"\n    },\n    \"virtual_router_id\": 103,\n    \"current_vip_instance\": {\n      \"id\": 9258\n    },\n    \"default_vip_instance\": {\n      \"id\": 1253\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aebf1666-cbc3-4031-9593-81e094670fc4",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vip\": {\n    \"ip\": \"<string>\",\n    \"network_address_id\": \"<long>\",\n    \"vip_group_id\": \"<long>\",\n    \"mask\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dba48a3-4eff-4b3a-9e74-e045197ff519",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vip\": {\n    \"ip\": \"<string>\",\n    \"network_address_id\": \"<long>\",\n    \"vip_group_id\": \"<long>\",\n    \"mask\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "818eaa29-5077-423e-b0bf-c5568af2053a",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vip\": {\n    \"ip\": \"<string>\",\n    \"network_address_id\": \"<long>\",\n    \"vip_group_id\": \"<long>\",\n    \"mask\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be4477b4-4ab8-433e-98cf-b0ac620ebceb",
+          "name": "Get VIP",
+          "request": {
+            "name": "Get VIP",
+            "description": {
+              "content": "Get a vip",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vips",
+                ":vip_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "vip_id",
+                  "description": "(Required) vip id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b3ca8c5-32e0-41af-9d20-b92652e96263",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vip\": {\n    \"action_status\": \"string\",\n    \"create\": \"1947-04-08T20:08:36.632Z\",\n    \"id\": 5476,\n    \"ip\": \"string\",\n    \"mac_address\": \"string\",\n    \"mask\": 2283,\n    \"status\": \"string\",\n    \"update\": \"2013-03-26T01:36:33.077Z\",\n    \"vip_group\": {\n      \"id\": 5450,\n      \"name\": \"string\",\n      \"network\": \"string\",\n      \"resource_id\": 4216,\n      \"resource_type\": \"string\"\n    },\n    \"virtual_router_id\": 103,\n    \"current_vip_instance\": {\n      \"id\": 9258\n    },\n    \"default_vip_instance\": {\n      \"id\": 1253\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43e43340-5820-4c12-b0f4-57253bc2e403",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "794c5eb3-63ea-4622-a542-7c9158f9dfdc",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c946f90-e04d-479f-b47b-815efbb8e1dc",
+          "name": "Delete VIP",
+          "request": {
+            "name": "Delete VIP",
+            "description": {
+              "content": "Delete a vip",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vips",
+                ":vip_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "vip_id",
+                  "description": "(Required) vip id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed91c7ca-fe47-483b-ada0-595c78a2e532",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vip\": {\n    \"action_status\": \"string\",\n    \"create\": \"1947-04-08T20:08:36.632Z\",\n    \"id\": 5476,\n    \"ip\": \"string\",\n    \"mac_address\": \"string\",\n    \"mask\": 2283,\n    \"status\": \"string\",\n    \"update\": \"2013-03-26T01:36:33.077Z\",\n    \"vip_group\": {\n      \"id\": 5450,\n      \"name\": \"string\",\n      \"network\": \"string\",\n      \"resource_id\": 4216,\n      \"resource_type\": \"string\"\n    },\n    \"virtual_router_id\": 103,\n    \"current_vip_instance\": {\n      \"id\": 9258\n    },\n    \"default_vip_instance\": {\n      \"id\": 1253\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80253f98-7e3f-4491-97b0-20aa2762d9ed",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70d14166-518f-47e8-90fd-2ef7bf6bf3d2",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37dce9e9-01d2-4356-aa43-204d92052bfc",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ffbe229-27c3-424d-9409-9f5ee5e33615",
+          "name": "Update VIP",
+          "request": {
+            "name": "Update VIP",
+            "description": {
+              "content": "Update a vip",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vips",
+                ":vip_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "vip_id",
+                  "description": "(Required) vip id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "537f50a0-7af1-4dde-9b47-50602942eeeb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vip\": {\n    \"action_status\": \"string\",\n    \"create\": \"1947-04-08T20:08:36.632Z\",\n    \"id\": 5476,\n    \"ip\": \"string\",\n    \"mac_address\": \"string\",\n    \"mask\": 2283,\n    \"status\": \"string\",\n    \"update\": \"2013-03-26T01:36:33.077Z\",\n    \"vip_group\": {\n      \"id\": 5450,\n      \"name\": \"string\",\n      \"network\": \"string\",\n      \"resource_id\": 4216,\n      \"resource_type\": \"string\"\n    },\n    \"virtual_router_id\": 103,\n    \"current_vip_instance\": {\n      \"id\": 9258\n    },\n    \"default_vip_instance\": {\n      \"id\": 1253\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b4d310c-78ee-4398-a232-82a905147270",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cd52b38-152b-4c0f-9102-62e9e4fa0855",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "905f0af8-96d6-428f-abeb-a52b4bf7d0f5",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76d363c1-d26a-48ee-a549-ae82d542fad9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vips",
+                    ":vip_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "vip_id",
+                      "description": "(Required) vip id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "077e1d46-73b9-480e-b75c-bc146bfef9bc",
+    "name": "XMS access-paths vips API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

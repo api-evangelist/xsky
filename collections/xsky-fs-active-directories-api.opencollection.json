@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-active-directories API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-active-directories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSActiveDirectories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-active-directories/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              }
+            ]
+          },
+          "docs": "List file storage active directories"
+        },
+        {
+          "info": {
+            "name": "CreateFSActiveDirectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-active-directories/"
+          },
+          "docs": "create file storage active directory"
+        },
+        {
+          "info": {
+            "name": "GetFSActiveDirectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-active-directories/:fs_active_directory_id",
+            "params": [
+              {
+                "name": "fs_active_directory_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage active directory id"
+              }
+            ]
+          },
+          "docs": "Get a file storage active directory"
+        },
+        {
+          "info": {
+            "name": "UpdateFSActiveDirectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-active-directories/:fs_active_directory_id",
+            "params": [
+              {
+                "name": "fs_active_directory_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage active directory id"
+              }
+            ]
+          },
+          "docs": "Update a file storage active directory"
+        },
+        {
+          "info": {
+            "name": "DeleteFSActiveDirectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-active-directories/:fs_active_directory_id",
+            "params": [
+              {
+                "name": "fs_active_directory_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage active directory id"
+              }
+            ]
+          },
+          "docs": "Delete file storage active directory"
+        },
+        {
+          "info": {
+            "name": "VerifyFSActiveDirectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-active-directories/:fs_active_directory_id:verify",
+            "params": [
+              {
+                "name": "fs_active_directory_id",
+                "value": "",
+                "type": "path",
+                "description": "file storage active directory id"
+              }
+            ]
+          },
+          "docs": "Verify a fs active directory or user/group info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

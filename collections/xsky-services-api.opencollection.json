@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths services API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListServices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/services/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "service type"
+              }
+            ]
+          },
+          "docs": "List all services by host"
+        },
+        {
+          "info": {
+            "name": "GetService",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/services/:service_id",
+            "params": [
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path",
+                "description": "service id"
+              }
+            ]
+          },
+          "docs": "get a service"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

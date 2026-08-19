@@ -1,0 +1,1380 @@
+{
+  "item": [
+    {
+      "id": "4865b9d4-dbfb-45c0-8f96-c90d4a637a43",
+      "name": "fs-ldaps",
+      "description": {
+        "content": "FSLdapController File Storage LDAP Management\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40ec51dc-5972-4c2d-9675-3f939aeb15aa",
+          "name": "List FS Ldaps",
+          "request": {
+            "name": "List FS Ldaps",
+            "description": {
+              "content": "List file storage ldaps",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a0367dc6-1f07-4db0-9f1f-3319d165cd42",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_ldaps\": [\n    {\n      \"admin_dn\": \"admin_dn\",\n      \"ip\": \"ip\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"suffix\": \"suffix\",\n      \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n      \"ips\": [\n        \"ips\",\n        \"ips\"\n      ],\n      \"timeout\": 5,\n      \"group_suffix\": \"group_suffix\",\n      \"user_suffix\": \"user_suffix\",\n      \"port\": 5,\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_gateway_group_num\": 6,\n      \"id\": 1,\n      \"connection_timeout\": 0,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    },\n    {\n      \"admin_dn\": \"admin_dn\",\n      \"ip\": \"ip\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"suffix\": \"suffix\",\n      \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n      \"ips\": [\n        \"ips\",\n        \"ips\"\n      ],\n      \"timeout\": 5,\n      \"group_suffix\": \"group_suffix\",\n      \"user_suffix\": \"user_suffix\",\n      \"port\": 5,\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"fs_gateway_group_num\": 6,\n      \"id\": 1,\n      \"connection_timeout\": 0,\n      \"action_status\": \"action_status\",\n      \"status\": \"status\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b31ea12b-88b9-4519-93ec-5dadffb5a7b7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "590164cd-5773-4322-a1f2-e50e9ed73e3c",
+          "name": "Create FS Ldap",
+          "request": {
+            "name": "Create FS Ldap",
+            "description": {
+              "content": "create file storage ldap",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "208b2509-5ef8-4731-8051-002c2b98a214",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_ldap\": {\n    \"admin_dn\": \"admin_dn\",\n    \"ip\": \"ip\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"suffix\": \"suffix\",\n    \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n    \"ips\": [\n      \"ips\",\n      \"ips\"\n    ],\n    \"timeout\": 5,\n    \"group_suffix\": \"group_suffix\",\n    \"user_suffix\": \"user_suffix\",\n    \"port\": 5,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_gateway_group_num\": 6,\n    \"id\": 1,\n    \"connection_timeout\": 0,\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7916d81-9c46-44e4-a51b-3a80b11b2777",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "555301ce-9537-452c-b209-4c46acb2e64d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "160ba080-9705-472d-b684-387648425b09",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a68ff866-bfdc-4e8b-9f64-a03ba51db436",
+          "name": "Get FS Ldap",
+          "request": {
+            "name": "Get FS Ldap",
+            "description": {
+              "content": "Get a file storage ldap",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                ":fs_ldap_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_ldap_id",
+                  "description": "(Required) file storage ldap id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c5eace03-7c77-4840-9e21-de8f016c88f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_ldap\": {\n    \"admin_dn\": \"admin_dn\",\n    \"ip\": \"ip\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"suffix\": \"suffix\",\n    \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n    \"ips\": [\n      \"ips\",\n      \"ips\"\n    ],\n    \"timeout\": 5,\n    \"group_suffix\": \"group_suffix\",\n    \"user_suffix\": \"user_suffix\",\n    \"port\": 5,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_gateway_group_num\": 6,\n    \"id\": 1,\n    \"connection_timeout\": 0,\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a834ee4c-e3ef-4bfb-9134-740022890aaf",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2763f745-6219-4ea9-bd9a-5b55d97d7c8c",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e42a9f09-6a90-4868-8513-eb126236eaa3",
+          "name": "Delete FS Ldap",
+          "request": {
+            "name": "Delete FS Ldap",
+            "description": {
+              "content": "Delete file storage ldap",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                ":fs_ldap_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_ldap_id",
+                  "description": "(Required) file storage ldap id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc1b91fd-9b31-48f4-a889-be0a1ff6e94b",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2703e0b-c196-4c17-a754-1be4319008f1",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2c57660-ee07-4778-9fff-df668a7f0a36",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c50ef71e-50fe-40ee-8b06-821d438f604f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8525319-b6b7-4cac-890a-077983063aa4",
+          "name": "Update FS Ldap",
+          "request": {
+            "name": "Update FS Ldap",
+            "description": {
+              "content": "Update a file storage ldap",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                ":fs_ldap_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fs_ldap_id",
+                  "description": "(Required) file storage ldap id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7aba1e18-14f3-45e9-87df-4a2369519a4f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_ldap\": {\n    \"admin_dn\": \"admin_dn\",\n    \"ip\": \"ip\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"suffix\": \"suffix\",\n    \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n    \"ips\": [\n      \"ips\",\n      \"ips\"\n    ],\n    \"timeout\": 5,\n    \"group_suffix\": \"group_suffix\",\n    \"user_suffix\": \"user_suffix\",\n    \"port\": 5,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_gateway_group_num\": 6,\n    \"id\": 1,\n    \"connection_timeout\": 0,\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "243331fd-724a-49cd-be05-05761362909b",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ff639ca-5f44-485d-9112-d82ea4058879",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "989fd041-ead7-441d-98e0-21736f52f0b1",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    ":fs_ldap_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fs_ldap_id",
+                      "description": "(Required) file storage ldap id"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fs_ldap\": {\n    \"ip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"port\": \"<long>\",\n    \"suffix\": \"<string>\",\n    \"admin_dn\": \"<string>\",\n    \"connection_timeout\": \"<long>\",\n    \"group_suffix\": \"<string>\",\n    \"ips\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"password\": \"<string>\",\n    \"timeout\": \"<long>\",\n    \"user_suffix\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc2d06dc-b3ad-4148-9d06-6ccd1cea5b33",
+          "name": "Verify FS Ldap",
+          "request": {
+            "name": "Verify FS Ldap",
+            "description": {
+              "content": "Verify a file storage ldap",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fs-ldaps",
+                "{{fs_ldap_id}}:verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f860563-cd6c-43c3-a039-a81def075ff5",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    "{{fs_ldap_id}}:verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fs_ldap\": {\n    \"admin_dn\": \"admin_dn\",\n    \"ip\": \"ip\",\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"suffix\": \"suffix\",\n    \"verify_time\": \"2000-01-23T04:56:07.000+00:00\",\n    \"ips\": [\n      \"ips\",\n      \"ips\"\n    ],\n    \"timeout\": 5,\n    \"group_suffix\": \"group_suffix\",\n    \"user_suffix\": \"user_suffix\",\n    \"port\": 5,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"fs_gateway_group_num\": 6,\n    \"id\": 1,\n    \"connection_timeout\": 0,\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ff47048-7ed2-475f-a8bb-e2d3e6daf0b4",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    "{{fs_ldap_id}}:verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff8e79db-e29f-49d8-af4e-29de577dfe5c",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    "{{fs_ldap_id}}:verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a614625a-28d4-46ab-8398-8397447a0ae0",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fs-ldaps",
+                    "{{fs_ldap_id}}:verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) file storage ldap id",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "fs_ldap_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "60308367-c090-4c92-8d5f-065a18b7500a",
+    "name": "XMS access-paths fs-ldaps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

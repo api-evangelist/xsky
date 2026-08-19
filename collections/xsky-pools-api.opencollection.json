@@ -1,0 +1,390 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths pools API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListPools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pools/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all pools"
+              },
+              {
+                "name": "protection_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "protection domain id"
+              },
+              {
+                "name": "compound_osd_only",
+                "value": "",
+                "type": "query",
+                "description": "filter pool with only compound osds"
+              },
+              {
+                "name": "osd_group_id",
+                "value": "",
+                "type": "query",
+                "description": "osd group id"
+              },
+              {
+                "name": "pool_type",
+                "value": "",
+                "type": "query",
+                "description": "filter pool by type"
+              },
+              {
+                "name": "pool_role",
+                "value": "",
+                "type": "query",
+                "description": "filter pool by role"
+              },
+              {
+                "name": "pool_mode",
+                "value": "",
+                "type": "query",
+                "description": "filter pool by pool_mode"
+              },
+              {
+                "name": "stretched",
+                "value": "",
+                "type": "query",
+                "description": "filter stretched pool"
+              },
+              {
+                "name": "with_compound",
+                "value": "",
+                "type": "query",
+                "description": "with compound pool"
+              },
+              {
+                "name": "os_policy_id",
+                "value": "",
+                "type": "query",
+                "description": "filter data pool by object storage policy id"
+              },
+              {
+                "name": "storage_class_id",
+                "value": "",
+                "type": "query",
+                "description": "filter data pool by os storage class id"
+              },
+              {
+                "name": "storage_class_pool_type",
+                "value": "",
+                "type": "query",
+                "description": "storage class pool type(active inactive) to query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List pools"
+        },
+        {
+          "info": {
+            "name": "CreatePool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pools/"
+          },
+          "docs": "Create pool"
+        },
+        {
+          "info": {
+            "name": "GetPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pools/:pool_id",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "get pool"
+        },
+        {
+          "info": {
+            "name": "UpdatePool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/pools/:pool_id",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "update pool info"
+        },
+        {
+          "info": {
+            "name": "DeletePool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/pools/:pool_id",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "force delete or not"
+              }
+            ]
+          },
+          "docs": "Delete pool"
+        },
+        {
+          "info": {
+            "name": "AddOsdsToPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/pools/:pool_id/osds",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Add osds to pool"
+        },
+        {
+          "info": {
+            "name": "RemoveOsdsFromPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/pools/:pool_id/osds",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Remove multiple osds from a pool"
+        },
+        {
+          "info": {
+            "name": "GetPoolPredictions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pools/:pool_id/predictions",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "get a pool's prediction"
+        },
+        {
+          "info": {
+            "name": "GetPoolSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pools/:pool_id/samples",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get pool's samples"
+        },
+        {
+          "info": {
+            "name": "GetPoolTopology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pools/:pool_id/topology",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "get pool topology"
+        },
+        {
+          "info": {
+            "name": "DisableDeviceTypeCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pools/:pool_id:disable-device-type-check",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Disable device type check when add osd"
+        },
+        {
+          "info": {
+            "name": "EnableDeviceTypeCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pools/:pool_id:enable-device-type-check",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Enable device type check when add osd"
+        },
+        {
+          "info": {
+            "name": "ReweightPool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pools/:pool_id:reweight",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Reweight a pool"
+        },
+        {
+          "info": {
+            "name": "SwitchPoolRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pools/:pool_id:switch-role",
+            "params": [
+              {
+                "name": "pool_id",
+                "value": "",
+                "type": "path",
+                "description": "pool id"
+              }
+            ]
+          },
+          "docs": "Switch pool role to compound"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

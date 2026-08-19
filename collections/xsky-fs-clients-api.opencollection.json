@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-clients API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSClients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-clients/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "fs_client_group_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage client group id"
+              },
+              {
+                "name": "not_fs_client_group_id",
+                "value": "",
+                "type": "query",
+                "description": "group id the client don't belong to"
+              }
+            ]
+          },
+          "docs": "List file storage clients"
+        },
+        {
+          "info": {
+            "name": "CreateFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-clients/"
+          },
+          "docs": "Create file storage client"
+        },
+        {
+          "info": {
+            "name": "GetFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-clients/:fs_client_id",
+            "params": [
+              {
+                "name": "fs_client_id",
+                "value": "",
+                "type": "path",
+                "description": "client id"
+              }
+            ]
+          },
+          "docs": "Get file storage client"
+        },
+        {
+          "info": {
+            "name": "UpdateFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-clients/:fs_client_id",
+            "params": [
+              {
+                "name": "fs_client_id",
+                "value": "",
+                "type": "path",
+                "description": "client id"
+              }
+            ]
+          },
+          "docs": "Update file storage client"
+        },
+        {
+          "info": {
+            "name": "DeleteFSClient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-clients/:fs_client_id",
+            "params": [
+              {
+                "name": "fs_client_id",
+                "value": "",
+                "type": "path",
+                "description": "client id"
+              }
+            ]
+          },
+          "docs": "delete file storage client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

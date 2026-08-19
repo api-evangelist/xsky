@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "access-paths",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAccessPaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/access-paths/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "query",
+                "description": "related client group id"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "show all access targets"
+              }
+            ]
+          },
+          "docs": "List access paths"
+        },
+        {
+          "info": {
+            "name": "CreateAccessPath",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/access-paths/"
+          },
+          "docs": "Create an access path"
+        },
+        {
+          "info": {
+            "name": "GetAccessPath",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/access-paths/:access_path_id",
+            "params": [
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "path",
+                "description": "access path id"
+              }
+            ]
+          },
+          "docs": "Get access path by id"
+        },
+        {
+          "info": {
+            "name": "UpdateAccessPath",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/access-paths/:access_path_id",
+            "params": [
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "path",
+                "description": "access path id"
+              }
+            ]
+          },
+          "docs": "update access path"
+        },
+        {
+          "info": {
+            "name": "DeleteAccessPath",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/access-paths/:access_path_id",
+            "params": [
+              {
+                "name": "access_path_id",
+                "value": "",
+                "type": "path",
+                "description": "access path id"
+              }
+            ]
+          },
+          "docs": "Delete access path"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

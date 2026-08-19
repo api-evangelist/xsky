@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths client-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "client-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListClientGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/client-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "block_volume_id",
+                "value": "",
+                "type": "query",
+                "description": "related block volume id"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List client groups"
+        },
+        {
+          "info": {
+            "name": "CreateClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/client-groups/"
+          },
+          "docs": "Create a client group"
+        },
+        {
+          "info": {
+            "name": "GetClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/client-groups/:client_group_id",
+            "params": [
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "get a client group"
+        },
+        {
+          "info": {
+            "name": "UpdateClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/client-groups/:client_group_id",
+            "params": [
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "update client group"
+        },
+        {
+          "info": {
+            "name": "DeleteClientGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/client-groups/:client_group_id",
+            "params": [
+              {
+                "name": "client_group_id",
+                "value": "",
+                "type": "path",
+                "description": "client group id"
+              }
+            ]
+          },
+          "docs": "Delete a client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

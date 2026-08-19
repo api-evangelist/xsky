@@ -1,0 +1,995 @@
+{
+  "item": [
+    {
+      "id": "dddb8747-fe6e-4948-9a12-a4220ed3cabc",
+      "name": "s3-load-balancers",
+      "description": {
+        "content": "S3LoadBalancerController API\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f5778ce-6ef8-487e-a11e-a7cb050fc4c1",
+          "name": "List S3Load Balancers",
+          "request": {
+            "name": "List S3Load Balancers",
+            "description": {
+              "content": "List s3 load balancers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "s3-load-balancers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<long>",
+                  "description": "paging param"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "query param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "sort param of search"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<long>",
+                  "description": "s3 load balancer group id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2555006f-ef8a-4eaa-838a-c2f4c80e3ac5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"s3_load_balancers\": [\n    {\n      \"create\": \"1989-05-13T04:35:15.951Z\",\n      \"description\": \"string\",\n      \"group\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"status\": \"status\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"https_port\": 2850,\n      \"id\": 9820,\n      \"interface_name\": \"string\",\n      \"ip\": \"string\",\n      \"name\": \"string\",\n      \"port\": 1125,\n      \"roles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search_https_port\": 8066,\n      \"search_port\": 3128,\n      \"ssl_certificate\": {\n        \"force_https\": true,\n        \"name\": \"name\",\n        \"id\": 2\n      },\n      \"status\": \"string\",\n      \"sync_port\": 8369,\n      \"update\": \"1954-08-11T10:35:55.867Z\",\n      \"vip\": \"string\",\n      \"vip_mask\": 7783,\n      \"vips\": \"string\",\n      \"web_console_endpoint\": \"string\",\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        },\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        }\n      ]\n    },\n    {\n      \"create\": \"2008-10-06T01:55:12.807Z\",\n      \"description\": \"string\",\n      \"group\": {\n        \"name\": \"name\",\n        \"id\": 6,\n        \"status\": \"status\"\n      },\n      \"host\": {\n        \"name\": \"name\",\n        \"admin_ip\": \"admin_ip\",\n        \"id\": 0\n      },\n      \"https_port\": 5875,\n      \"id\": 9702,\n      \"interface_name\": \"string\",\n      \"ip\": \"string\",\n      \"name\": \"string\",\n      \"port\": 6911,\n      \"roles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search_https_port\": 4636,\n      \"search_port\": 4537,\n      \"ssl_certificate\": {\n        \"force_https\": true,\n        \"name\": \"name\",\n        \"id\": 2\n      },\n      \"status\": \"string\",\n      \"sync_port\": 9014,\n      \"update\": \"1961-08-22T09:01:29.592Z\",\n      \"vip\": \"string\",\n      \"vip_mask\": 5229,\n      \"vips\": \"string\",\n      \"web_console_endpoint\": \"string\",\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        },\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de99a07b-9042-4248-a622-ba64d6dc438d",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67fae1b5-9676-40d0-b1d7-071daca21ca7",
+          "name": "Batch Get S3Load Balancer Samples",
+          "request": {
+            "name": "Batch Get S3Load Balancer Samples",
+            "description": {
+              "content": "Get samples of multiple s3 load balancers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "s3-load-balancers",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3eb2c37-8728-450c-a972-e031f5a60364",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"s3_load_balancers_samples\": [\n    {\n      \"paging\": {\n        \"duration\": 1,\n        \"next\": \"next\",\n        \"period\": \"period\",\n        \"offset\": 5,\n        \"total_count\": 2,\n        \"count\": 6,\n        \"duration_end\": \"2000-01-23T04:56:07.000+00:00\",\n        \"limit\": 5,\n        \"truncated\": true,\n        \"duration_begin\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      \"id\": 0,\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        },\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        }\n      ]\n    },\n    {\n      \"paging\": {\n        \"duration\": 1,\n        \"next\": \"next\",\n        \"period\": \"period\",\n        \"offset\": 5,\n        \"total_count\": 2,\n        \"count\": 6,\n        \"duration_end\": \"2000-01-23T04:56:07.000+00:00\",\n        \"limit\": 5,\n        \"truncated\": true,\n        \"duration_begin\": \"2000-01-23T04:56:07.000+00:00\"\n      },\n      \"id\": 0,\n      \"samples\": [\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        },\n        {\n          \"up_bandwidth_kbyte\": 9.301444243932576,\n          \"down_bandwidth_kbyte\": 5.962133916683182,\n          \"success_requests\": 7.061401241503109,\n          \"mem_usage_percent\": 2.3021358869347655,\n          \"create\": \"2000-01-23T04:56:07.000+00:00\",\n          \"active_connections\": 6.027456183070403,\n          \"cpu_util\": 1.4658129805029452,\n          \"failure_requests\": 5.637376656633329\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2193c9b0-161c-4345-bfce-a3af59e55f94",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec139d61-2e61-42dd-b1a4-2e16b73b0f1b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84feebaa-b054-4292-b13d-c864ec3a3d58",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92d31e01-427c-4f21-8fe5-27c220afc54e",
+          "name": "Get S3Load Balancer",
+          "request": {
+            "name": "Get S3Load Balancer",
+            "description": {
+              "content": "Get s3 load balancer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "s3-load-balancers",
+                ":load_balancer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "load_balancer_id",
+                  "description": "(Required) s3 load balancer id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eeace440-0e70-4b38-b69b-87e984718e44",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":load_balancer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"s3_load_balancer\": {\n    \"create\": \"1951-05-15T12:17:40.290Z\",\n    \"description\": \"string\",\n    \"group\": {\n      \"name\": \"name\",\n      \"id\": 6,\n      \"status\": \"status\"\n    },\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"https_port\": 669,\n    \"id\": 9969,\n    \"interface_name\": \"string\",\n    \"ip\": \"string\",\n    \"name\": \"string\",\n    \"port\": 7328,\n    \"roles\": [\n      \"string\",\n      \"string\"\n    ],\n    \"search_https_port\": 4283,\n    \"search_port\": 2381,\n    \"ssl_certificate\": {\n      \"force_https\": true,\n      \"name\": \"name\",\n      \"id\": 2\n    },\n    \"status\": \"string\",\n    \"sync_port\": 2968,\n    \"update\": \"2001-01-21T12:24:54.491Z\",\n    \"vip\": \"string\",\n    \"vip_mask\": 7068,\n    \"vips\": \"string\",\n    \"web_console_endpoint\": \"string\",\n    \"samples\": [\n      {\n        \"up_bandwidth_kbyte\": 9.301444243932576,\n        \"down_bandwidth_kbyte\": 5.962133916683182,\n        \"success_requests\": 7.061401241503109,\n        \"mem_usage_percent\": 2.3021358869347655,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"active_connections\": 6.027456183070403,\n        \"cpu_util\": 1.4658129805029452,\n        \"failure_requests\": 5.637376656633329\n      },\n      {\n        \"up_bandwidth_kbyte\": 9.301444243932576,\n        \"down_bandwidth_kbyte\": 5.962133916683182,\n        \"success_requests\": 7.061401241503109,\n        \"mem_usage_percent\": 2.3021358869347655,\n        \"create\": \"2000-01-23T04:56:07.000+00:00\",\n        \"active_connections\": 6.027456183070403,\n        \"cpu_util\": 1.4658129805029452,\n        \"failure_requests\": 5.637376656633329\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "977a6ccf-0a4b-481c-a06d-19f91c41036d",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":load_balancer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d24affc3-13cb-415f-a8d2-78c697930760",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":load_balancer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a00550e7-9fc3-4d2c-aa5f-d4991d505976",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":load_balancer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fafd13c-8024-4537-9f28-9dd9d3c73449",
+          "name": "Get S3Load Balancer Samples",
+          "request": {
+            "name": "Get S3Load Balancer Samples",
+            "description": {
+              "content": "get a s3 load balancer's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "s3-load-balancers",
+                ":s3_load_balancer_id",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "s3_load_balancer_id",
+                  "description": "(Required) s3 load balancer id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "05c396b5-67f9-47f4-96df-cf2aa098b31e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":s3_load_balancer_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "s3_load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"s3_load_balancer_samples\": [\n    {\n      \"up_bandwidth_kbyte\": 9.301444243932576,\n      \"down_bandwidth_kbyte\": 5.962133916683182,\n      \"success_requests\": 7.061401241503109,\n      \"mem_usage_percent\": 2.3021358869347655,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"active_connections\": 6.027456183070403,\n      \"cpu_util\": 1.4658129805029452,\n      \"failure_requests\": 5.637376656633329\n    },\n    {\n      \"up_bandwidth_kbyte\": 9.301444243932576,\n      \"down_bandwidth_kbyte\": 5.962133916683182,\n      \"success_requests\": 7.061401241503109,\n      \"mem_usage_percent\": 2.3021358869347655,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"active_connections\": 6.027456183070403,\n      \"cpu_util\": 1.4658129805029452,\n      \"failure_requests\": 5.637376656633329\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00f0cc41-f444-44dd-a860-6e60b7ae36f6",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":s3_load_balancer_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "s3_load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3cb1b94-b57a-4f1c-bba1-9982c6e58ae1",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":s3_load_balancer_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "s3_load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28a9de52-c438-4a1d-8302-c36109b5493f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "s3-load-balancers",
+                    ":s3_load_balancer_id",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "s3_load_balancer_id",
+                      "description": "(Required) s3 load balancer id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "303c9d97-574f-40af-b82d-361877603569",
+    "name": "XMS access-paths s3-load-balancers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}

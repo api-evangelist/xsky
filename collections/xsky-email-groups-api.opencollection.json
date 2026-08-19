@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths email-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "email-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListEmailGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/email-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "alert_group_id",
+                "value": "",
+                "type": "query",
+                "description": "alert group id"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "name of email groups"
+              }
+            ]
+          },
+          "docs": "List all email groups"
+        },
+        {
+          "info": {
+            "name": "CreateEmailGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/email-groups/"
+          },
+          "docs": "create email group"
+        },
+        {
+          "info": {
+            "name": "GetEmailGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/email-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of email group"
+              }
+            ]
+          },
+          "docs": "get email group"
+        },
+        {
+          "info": {
+            "name": "UpdateEmailGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/email-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of email group"
+              }
+            ]
+          },
+          "docs": "update email group"
+        },
+        {
+          "info": {
+            "name": "DeleteEmailGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/email-groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "the id of email group"
+              }
+            ]
+          },
+          "docs": "delete email group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

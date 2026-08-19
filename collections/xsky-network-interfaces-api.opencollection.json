@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths network-interfaces API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "network-interfaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNetworkInterfaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-interfaces/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "master_network_interface_id",
+                "value": "",
+                "type": "query",
+                "description": "master network interface id"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "host id"
+              },
+              {
+                "name": "role",
+                "value": "",
+                "type": "query",
+                "description": "network interface role"
+              }
+            ]
+          },
+          "docs": "List network interfaces"
+        },
+        {
+          "info": {
+            "name": "GetNetworkInterface",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-interfaces/:network_interface_id",
+            "params": [
+              {
+                "name": "network_interface_id",
+                "value": "",
+                "type": "path",
+                "description": "network interface id"
+              }
+            ]
+          },
+          "docs": "Get a network interface"
+        },
+        {
+          "info": {
+            "name": "GetNetworkInterfaceSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/network-interfaces/:network_interface_id/samples",
+            "params": [
+              {
+                "name": "network_interface_id",
+                "value": "",
+                "type": "path",
+                "description": "network interface id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a network interface's Samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

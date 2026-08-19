@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths cloud-instances API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cloud-instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListCloudInstances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-instances/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "cloud_platform_id",
+                "value": "",
+                "type": "query",
+                "description": "cloud platform id"
+              },
+              {
+                "name": "cloud_platform_type",
+                "value": "",
+                "type": "query",
+                "description": "cloud platform type"
+              },
+              {
+                "name": "cloud_platform_name",
+                "value": "",
+                "type": "query",
+                "description": "cloud platform name"
+              }
+            ]
+          },
+          "docs": "List cloud instances"
+        },
+        {
+          "info": {
+            "name": "GetCloudInstance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-instances/:cloud_instance_id",
+            "params": [
+              {
+                "name": "cloud_instance_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud instance id"
+              }
+            ]
+          },
+          "docs": "Get a cloud instance"
+        },
+        {
+          "info": {
+            "name": "GetCloudInstanceSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cloud-instances/:cloud_instance_id/samples",
+            "params": [
+              {
+                "name": "cloud_instance_id",
+                "value": "",
+                "type": "path",
+                "description": "cloud instance id"
+              },
+              {
+                "name": "duration_begin",
+                "value": "",
+                "type": "query",
+                "description": "duration begin timestamp"
+              },
+              {
+                "name": "duration_end",
+                "value": "",
+                "type": "query",
+                "description": "duration end timestamp"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "samples period"
+              }
+            ]
+          },
+          "docs": "get a cloud instance's Samples"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

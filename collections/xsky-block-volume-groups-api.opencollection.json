@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths block-volume-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "block-volume-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListBlockVolumeGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List block volume groups"
+        },
+        {
+          "info": {
+            "name": "CreateBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/block-volume-groups/"
+          },
+          "docs": "Create block volume group"
+        },
+        {
+          "info": {
+            "name": "GetBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/block-volume-groups/:block_volume_group_id",
+            "params": [
+              {
+                "name": "block_volume_group_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group id"
+              }
+            ]
+          },
+          "docs": "get a block volume group"
+        },
+        {
+          "info": {
+            "name": "UpdateBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/block-volume-groups/:block_volume_group_id",
+            "params": [
+              {
+                "name": "block_volume_group_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group id"
+              }
+            ]
+          },
+          "docs": "Update block volume group"
+        },
+        {
+          "info": {
+            "name": "DeleteBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/block-volume-groups/:block_volume_group_id",
+            "params": [
+              {
+                "name": "block_volume_group_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group id"
+              }
+            ]
+          },
+          "docs": "Delete a block volume group"
+        },
+        {
+          "info": {
+            "name": "AddBlockVolumeToBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/block-volume-groups/:block_volume_group_id/block-volumes",
+            "params": [
+              {
+                "name": "block_volume_group_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group id"
+              }
+            ]
+          },
+          "docs": "Add block volume to block volume group"
+        },
+        {
+          "info": {
+            "name": "RemoveBlockVolumeFromBlockVolumeGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/block-volume-groups/:block_volume_group_id/block-volumes",
+            "params": [
+              {
+                "name": "block_volume_group_id",
+                "value": "",
+                "type": "path",
+                "description": "block volume group id"
+              }
+            ]
+          },
+          "docs": "Remove block volume from block volume group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths crypto-keys API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crypto-keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListCryptoKeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/crypto-keys/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              }
+            ]
+          },
+          "docs": "List crypto keys"
+        },
+        {
+          "info": {
+            "name": "CreateCryptoKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/crypto-keys/"
+          },
+          "docs": "Create a crypto key"
+        },
+        {
+          "info": {
+            "name": "GetCryptoKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/crypto-keys/:key_id",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "crypto key id"
+              }
+            ]
+          },
+          "docs": "Get a crypto key"
+        },
+        {
+          "info": {
+            "name": "UpdateCryptoKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/crypto-keys/:key_id",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "crypto key id"
+              }
+            ]
+          },
+          "docs": "Update a crypto key"
+        },
+        {
+          "info": {
+            "name": "DownloadCryptoKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/crypto-keys/:key_id/key",
+            "params": [
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path",
+                "description": "crypto key id"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "password"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "XMS access-paths fs-user-groups API",
+    "version": "SDS_4.2.000.0.200302"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fs-user-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFSUserGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-user-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "paging param"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "query param of search"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "sort param of search"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "security type of file storage user group"
+              },
+              {
+                "name": "fs_user_id",
+                "value": "",
+                "type": "query",
+                "description": "file storage user id"
+              }
+            ]
+          },
+          "docs": "List file storage user groups"
+        },
+        {
+          "info": {
+            "name": "CreateFSUserGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fs-user-groups/"
+          },
+          "docs": "Create file storage user group"
+        },
+        {
+          "info": {
+            "name": "GetFSUserGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fs-user-groups/:fs_user_group_id",
+            "params": [
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "user group id"
+              }
+            ]
+          },
+          "docs": "Get file storage user group"
+        },
+        {
+          "info": {
+            "name": "UpdateFSUserGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/fs-user-groups/:fs_user_group_id",
+            "params": [
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "user group id"
+              }
+            ]
+          },
+          "docs": "Update file storage user group"
+        },
+        {
+          "info": {
+            "name": "DeleteFSUserGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-user-groups/:fs_user_group_id",
+            "params": [
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "user group id"
+              }
+            ]
+          },
+          "docs": "delete file storage user group"
+        },
+        {
+          "info": {
+            "name": "AddFSUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/fs-user-groups/:fs_user_group_id/fs-users",
+            "params": [
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "user group id"
+              }
+            ]
+          },
+          "docs": "add users to file storage user group"
+        },
+        {
+          "info": {
+            "name": "RemoveFSUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fs-user-groups/:fs_user_group_id/fs-users",
+            "params": [
+              {
+                "name": "fs_user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "user group id"
+              }
+            ]
+          },
+          "docs": "remove users from file storage user group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,4280 @@
+{
+  "item": [
+    {
+      "id": "9c49663c-7038-4ac4-99be-2d71e0bbb2a4",
+      "name": "cluster",
+      "description": {
+        "content": "ClusterController API /cluster\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a72b1eb-b6d2-4345-93ce-e8acfec45f24",
+          "name": "Cluster",
+          "request": {
+            "name": "Cluster",
+            "description": {
+              "content": "Output the status of the cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad4f4295-e36d-46f3-9a64-494e6e6c813b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster\": {\n    \"access_url\": \"access_url\",\n    \"snmp_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stats_reserved_days\": 1,\n    \"version\": \"version\",\n    \"down_out_interval\": 0,\n    \"os_gateway_oplog_switch\": true,\n    \"access_token\": {\n      \"roles\": [\n        \"roles\",\n        \"roles\"\n      ],\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"used\": true,\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      }\n    },\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"maintained\": true,\n    \"fs_id\": \"fs_id\",\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2388dd28-9bbb-4b06-a8bc-8140633d4811",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89241209-a68d-467f-87f7-f93e40cec881",
+          "name": "Update Cluster",
+          "request": {
+            "name": "Update Cluster",
+            "description": {
+              "content": "set disk lighting mode of cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": {\n    \"disk_lighting_mode\": \"<string>\",\n    \"down_out_interval\": \"<long>\",\n    \"elasticsearch_enabled\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"os_gateway_oplog_switch\": \"<boolean>\",\n    \"stats_reserved_days\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ed50bd4-6d14-4449-a0f8-0f304b41bc2a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"stats_reserved_days\": 6,\n    \"down_out_interval\": 0,\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"os_gateway_oplog_switch\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster\": {\n    \"access_url\": \"access_url\",\n    \"snmp_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stats_reserved_days\": 1,\n    \"version\": \"version\",\n    \"down_out_interval\": 0,\n    \"os_gateway_oplog_switch\": true,\n    \"access_token\": {\n      \"roles\": [\n        \"roles\",\n        \"roles\"\n      ],\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"used\": true,\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      }\n    },\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"maintained\": true,\n    \"fs_id\": \"fs_id\",\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bc20d22-6a34-4eb8-9206-e91b42f539dd",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"stats_reserved_days\": 6,\n    \"down_out_interval\": 0,\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"os_gateway_oplog_switch\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57b38ce9-3874-47a4-bad4-739a8c12cd02",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"stats_reserved_days\": 6,\n    \"down_out_interval\": 0,\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"os_gateway_oplog_switch\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38f459b8-b9d8-44c8-b45d-06603b2e69a3",
+          "name": "Get Action Log Report",
+          "request": {
+            "name": "Get Action Log Report",
+            "description": {
+              "content": "Get report of cluster action logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "action-log-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c203240-1381-4de3-909b-bff8d456f3c6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "action-log-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3925a682-de0c-4999-8168-138821533207",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "action-log-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd141d3e-479e-4898-8cd3-31a93199c5b2",
+          "name": "Get Alert Report",
+          "request": {
+            "name": "Get Alert Report",
+            "description": {
+              "content": "Get report of cluster alerts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "alert-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41b7c56a-9cde-45d5-86b1-5f79aebace11",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "alert-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec7551c5-87a5-49a5-8750-13be598f1ced",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "alert-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e416f3d-4433-4b60-b114-dddc8e7babdc",
+          "name": "Boot Node",
+          "request": {
+            "name": "Boot Node",
+            "description": {
+              "content": "get bootnode info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "bootnode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47446cf7-310a-462d-be51-187430fd82f7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"admin_network\": \"admin_network\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7474e3bf-15fa-4f8c-91b4-97afbeabe91e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02a9c782-452e-42f4-b60d-539e89c691cf",
+          "name": "Set Boot Node",
+          "request": {
+            "name": "Set Boot Node",
+            "description": {
+              "content": "set bootnode info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "bootnode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bootnode\": {\n    \"private_network\": \"<string>\",\n    \"public_network\": \"<string>\",\n    \"admin_network\": \"<string>\",\n    \"gateway_network\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33d0519d-7114-46f4-be8b-a0db553d4d65",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"admin_network\": \"admin_network\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"admin_network\": \"admin_network\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22d901e4-cdf4-4637-bc16-7473cf616fda",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"admin_network\": \"admin_network\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"host\": {\n      \"name\": \"name\",\n      \"admin_ip\": \"admin_ip\",\n      \"id\": 0\n    },\n    \"admin_network\": \"admin_network\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0fddb49-f510-4682-90ab-ce07f3261ff1",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"admin_network\": \"admin_network\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcebb36f-764f-4c8a-96dc-77a27ca1cafe",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "bootnode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bootnode\": {\n    \"gateway_network\": \"gateway_network\",\n    \"private_network\": \"private_network\",\n    \"public_network\": \"public_network\",\n    \"admin_network\": \"admin_network\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d62ea148-84e9-4927-969d-b58b91e4a911",
+          "name": "Get Event Log Report",
+          "request": {
+            "name": "Get Event Log Report",
+            "description": {
+              "content": "Get report of cluster event logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "event-log-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5709efbd-92f8-45e7-8cfb-1ec0889fa5fe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "event-log-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96f4a9a2-2dfd-4b75-b5a1-b13120ec21e5",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "event-log-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93331f03-e78a-49fe-b2c5-0f6a3f69753f",
+          "name": "Installation",
+          "request": {
+            "name": "Installation",
+            "description": {
+              "content": "show the installation status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "installation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2360fb14-7675-4a4b-a3e4-4b72a3f5ec02",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "installation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"installation\": {\n    \"finished\": true,\n    \"steps\": {\n      \"license\": true,\n      \"bootnode\": true,\n      \"user\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b6b0067-046c-43cd-9d0b-45b8bafb01ec",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "installation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f001cba-34b9-4e47-9212-7e412719fdec",
+          "name": "Update Cluster Maintenance",
+          "request": {
+            "name": "Update Cluster Maintenance",
+            "description": {
+              "content": "update maintenance mode of cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "maintenance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": {\n    \"maintained\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a676efde-bda2-48c8-aa96-b61f174eab95",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "maintenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"maintained\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster\": {\n    \"access_url\": \"access_url\",\n    \"snmp_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stats_reserved_days\": 1,\n    \"version\": \"version\",\n    \"down_out_interval\": 0,\n    \"os_gateway_oplog_switch\": true,\n    \"access_token\": {\n      \"roles\": [\n        \"roles\",\n        \"roles\"\n      ],\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"used\": true,\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      }\n    },\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"maintained\": true,\n    \"fs_id\": \"fs_id\",\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f35fc220-7d7b-4a89-8846-951be6a9adb7",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "maintenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"maintained\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fae22dd1-8ca7-4810-8d44-1cd724a32724",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "maintenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"maintained\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc69e957-1a3d-4321-93ef-c295ec7396e5",
+          "name": "Get Object Storage",
+          "request": {
+            "name": "Get Object Storage",
+            "description": {
+              "content": "Get object storage system status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "90ab748d-03fc-40e8-b69f-6d4cfce5671e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fe5e970-a410-44b6-99f7-74594285df13",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50867433-bcc4-4285-b022-03dac4ba8aef",
+          "name": "Init Object Storage",
+          "request": {
+            "name": "Init Object Storage",
+            "description": {
+              "content": "Initialize object storage system in current cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object_storage\": {\n    \"pool_id\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "808fd3f8-36b6-4ae9-8f75-06903c6eafa9",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"pool_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b937d7ce-6fbd-4d0c-b993-966b1ac922e5",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"pool_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5edeea04-0f8f-4881-bd56-cc59a91bb7bf",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"pool_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f173a9f9-74b6-43f4-a8e9-1af4c2e025e0",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"pool_id\": 0\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ead5fdfc-a977-4ce0-b77c-1e63ea3b7891",
+          "name": "Delete Object Storage",
+          "request": {
+            "name": "Delete Object Storage",
+            "description": {
+              "content": "Delete object storage system in current cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "force delete or not"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a7c18bf0-2869-4011-ad6f-4ade561d0deb",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "312f59b3-a598-411b-9095-335c8eadabb9",
+              "name": "Conflicted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "373e1da7-cc48-4a9b-9a81-63294f640e6d",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff277bf1-22dd-4a60-b1d9-38b7ac6ef4b2",
+          "name": "Set Object Storage",
+          "request": {
+            "name": "Set Object Storage",
+            "description": {
+              "content": "Set object storage system in current cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object_storage\": {\n    \"lifecycle_end_on\": \"<string>\",\n    \"lifecycle_start_on\": \"<string>\",\n    \"second_mergence_enabled\": \"<boolean>\",\n    \"second_mergence_end_on\": \"<string>\",\n    \"second_mergence_start_on\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52bbe5a9-9577-4670-807c-e1565f810207",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_enabled\": true,\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"lifecycle_end_on\": \"lifecycle_end_on\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "807a1581-f1bf-413b-a4ad-8d0339ab2265",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_enabled\": true,\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"lifecycle_end_on\": \"lifecycle_end_on\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e5b8c19-c856-4eb4-8470-d57dd1049641",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_enabled\": true,\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"lifecycle_end_on\": \"lifecycle_end_on\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c623df2b-ef04-4320-a0ca-310445f59157",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_storage\": {\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_enabled\": true,\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"lifecycle_end_on\": \"lifecycle_end_on\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc8b2a77-c22a-4d9f-a6c3-745ae3603b3d",
+          "name": "Commit Master Switching",
+          "request": {
+            "name": "Commit Master Switching",
+            "description": {
+              "content": "Commit the switch to new master os zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage:commit-master-switching"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb03b106-f0cc-4d5a-8721-a63e9c4c187d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:commit-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69fa3a7e-eefa-49fe-a3b4-f8b06770b0ab",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:commit-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e314923-273a-4464-b8b2-cb7817915241",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:commit-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06a9e5e6-6e47-4435-a2fb-985a34ef3160",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:commit-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "561515cf-c2cd-4689-933a-e203a65f80fb",
+          "name": "Enable Multi Zone",
+          "request": {
+            "name": "Enable Multi Zone",
+            "description": {
+              "content": "Enable multi zone for object storage system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage:enable-multi-zone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22577797-7912-4eba-9d35-f33586be858d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:enable-multi-zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ae033d-d2b4-47e0-92ec-72d541b4855b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:enable-multi-zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e4a5f64-4088-43cd-b8ff-aa4b8a04bdd6",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:enable-multi-zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac426859-3801-40af-9cf6-19457e40e192",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:enable-multi-zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c9eba5e-ced7-4d21-985f-e701ae3a6316",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:enable-multi-zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eedee911-27aa-448d-8a62-d2eaac67a3ec",
+          "name": "Prepare Master Switching",
+          "request": {
+            "name": "Prepare Master Switching",
+            "description": {
+              "content": "Prepare to switch to new master os zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage:prepare-master-switching"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fcc6d29-eb3b-452c-aa21-23695bcbb01b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:prepare-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e39746b-2f2a-4128-9845-a63a25289e8f",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:prepare-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da6291cc-06ef-42c1-b1d9-4ca4ac9f5eb2",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:prepare-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69a66b99-2906-48d6-8fd4-1922cfef18b7",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:prepare-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4398b6d-c2ff-49c7-9dd2-e9dfd389ae61",
+          "name": "Rollback Master Switching",
+          "request": {
+            "name": "Rollback Master Switching",
+            "description": {
+              "content": "Rollback the switch to new master os zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage:rollback-master-switching"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Xms-Auth-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "852b2a5c-264c-4478-9b42-887cf9fd6004",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:rollback-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9b0f31c-e98e-41aa-93a8-6ee9896818a2",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:rollback-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3dcd5b9-94fb-4553-8f64-6545ed176135",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:rollback-master-switching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Xms-Auth-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe795f1d-64f2-4aae-8552-06c968b3b7a1",
+          "name": "Switch OS Zone To Master",
+          "request": {
+            "name": "Switch OS Zone To Master",
+            "description": {
+              "content": "Switch current os zone to master",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "object-storage:switch-os-zone-to-master"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "force to switch even if old master is dead"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0feb3053-722c-4f96-a7f6-0e613c5a4a33",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:switch-os-zone-to-master"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object_storage\": {\n    \"second_mergence_enabled\": true,\n    \"search_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"index_pool\": {\n      \"name\": \"name\",\n      \"id\": 5\n    },\n    \"lifecycle_start_on\": \"lifecycle_start_on\",\n    \"second_mergence_end_on\": \"second_mergence_end_on\",\n    \"second_mergence_start_on\": \"second_mergence_start_on\",\n    \"multi_zone_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 0,\n    \"lifecycle_end_on\": \"lifecycle_end_on\",\n    \"action_status\": \"action_status\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df87b1cd-8ccd-48de-af61-14719ec33f6c",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:switch-os-zone-to-master"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3022731c-f3b6-47c8-925e-ee2f18190c2c",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:switch-os-zone-to-master"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39583a73-72ea-43d5-afff-47105da55cb9",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "object-storage:switch-os-zone-to-master"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73de0168-6ccb-4a52-b084-1b1925d724af",
+          "name": "Get Cluster Report",
+          "request": {
+            "name": "Get Cluster Report",
+            "description": {
+              "content": "Get report of a cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fe1dd4ab-50a5-416b-b960-82d249fe3bf7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa2c2549-4e87-4f11-a6cd-17fd4618b173",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e6c5b3a-e576-4628-ae7d-64e1c341d825",
+          "name": "Get Cluster Samples",
+          "request": {
+            "name": "Get Cluster Samples",
+            "description": {
+              "content": "get cluster's samples",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "samples"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_begin",
+                  "value": "<string>",
+                  "description": "duration begin timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "duration_end",
+                  "value": "<string>",
+                  "description": "duration end timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "samples period"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3f0ef1f-c679-4d21-b41d-313ab447fce3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster_samples\": [\n    {\n      \"healthy_percent\": 5.637376656633329,\n      \"error_kbyte\": 5,\n      \"os_down_bandwidth_kbyte\": 2.3021358869347655,\n      \"os_down_iops\": 7.061401241503109,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 1.4658129805029452,\n      \"recovery_percent\": 6.84685269835264,\n      \"write_latency_us\": 9.369310271410669,\n      \"read_latency_us\": 1.2315135367772556,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"data_kbyte\": 6,\n      \"read_iops\": 7.386281948385884,\n      \"actual_kbyte\": 0,\n      \"used_kbyte\": 4,\n      \"read_bandwidth_kbyte\": 4.145608029883936,\n      \"recovery_iops\": 1.4894159098541704,\n      \"write_bandwidth_kbyte\": 5.025004791520295,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"recovery_bandwidth_kbyte\": 1.0246457001441578,\n      \"write_iops\": 9.965781217890562,\n      \"os_up_iops\": 2.027123023002322,\n      \"os_merge_speed\": 9,\n      \"os_up_bandwidth_kbyte\": 3.616076749251911\n    },\n    {\n      \"healthy_percent\": 5.637376656633329,\n      \"error_kbyte\": 5,\n      \"os_down_bandwidth_kbyte\": 2.3021358869347655,\n      \"os_down_iops\": 7.061401241503109,\n      \"total_kbyte\": 7,\n      \"degraded_percent\": 1.4658129805029452,\n      \"recovery_percent\": 6.84685269835264,\n      \"write_latency_us\": 9.369310271410669,\n      \"read_latency_us\": 1.2315135367772556,\n      \"unavailable_percent\": 1.1730742509559433,\n      \"data_kbyte\": 6,\n      \"read_iops\": 7.386281948385884,\n      \"actual_kbyte\": 0,\n      \"used_kbyte\": 4,\n      \"read_bandwidth_kbyte\": 4.145608029883936,\n      \"recovery_iops\": 1.4894159098541704,\n      \"write_bandwidth_kbyte\": 5.025004791520295,\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"recovery_bandwidth_kbyte\": 1.0246457001441578,\n      \"write_iops\": 9.965781217890562,\n      \"os_up_iops\": 2.027123023002322,\n      \"os_merge_speed\": 9,\n      \"os_up_bandwidth_kbyte\": 3.616076749251911\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aceb0af3-400b-4da8-a438-95d00512a20e",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "samples"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3ef7ef1-5f8a-41c2-ab05-1de1f4d3d87d",
+          "name": "Get Cluster Overview",
+          "request": {
+            "name": "Get Cluster Overview",
+            "description": {
+              "content": "Get overview data of a cluster",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07582c5e-65ef-4ec3-b65e-140bfcf14195",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster_stats\": {\n    \"fs_folder_active_num\": 6,\n    \"pool_num\": 3,\n    \"block_volume_num\": 7,\n    \"fs_gateway_group_active_num\": 4,\n    \"osd_offline_num\": 4,\n    \"access_path_num\": 1,\n    \"os_gateway_active_num\": 6,\n    \"partition_used_num\": 0,\n    \"nfs_gateway_num\": 3,\n    \"s3_load_balancer_num\": 9,\n    \"osd_error_num\": 0,\n    \"os_bucket_error_num\": 0,\n    \"fs_snapshot_num\": 9,\n    \"fs_snapshot_active_num\": 6,\n    \"os_policy_active_num\": 7,\n    \"service_xms_active_num\": 7,\n    \"os_policy_error_num\": 3,\n    \"s3_load_balancer_error_num\": 1,\n    \"pd_active_num\": 9,\n    \"nfs_gateway_stopped_num\": 3,\n    \"s3_load_balancer_group_warning_num\": 8,\n    \"osd_warning_num\": 1,\n    \"pool_recovering_num\": 0,\n    \"service_mon_stopped_num\": 8,\n    \"os_user_num\": 3,\n    \"partition_active_num\": 4,\n    \"cloud_platform_num\": 7,\n    \"snapshot_error_num\": 7,\n    \"host_active_num\": 6,\n    \"pool_full_num\": 4,\n    \"service_xms_num\": 3,\n    \"client_group_num\": 2,\n    \"pool_error_num\": 8,\n    \"access_path_active_num\": 0,\n    \"snapshot_active_num\": 5,\n    \"service_xdc_error_num\": 5,\n    \"fs_gateway_group_error_num\": 5,\n    \"service_xms_error_num\": 3,\n    \"os_gateway_num\": 4,\n    \"nfs_gateway_error_num\": 6,\n    \"block_volume_error_num\": 2,\n    \"host_error_num\": 1,\n    \"partition_error_num\": 7,\n    \"s3_load_balancer_active_num\": 2,\n    \"pd_error_num\": 0,\n    \"os_user_error_num\": 5,\n    \"client_group_error_num\": 3,\n    \"fs_folder_error_num\": 7,\n    \"os_policy_num\": 3,\n    \"s3_load_balancer_group_error_num\": 6,\n    \"service_xdc_active_num\": 0,\n    \"cloud_instance_num\": 4,\n    \"access_path_error_num\": 6,\n    \"os_gateway_stopped_num\": 8,\n    \"osd_active_num\": 4,\n    \"fs_snapshot_error_num\": 8,\n    \"service_xms_stopped_num\": 9,\n    \"access_path_warning_num\": 5,\n    \"nfs_gateway_active_num\": 5,\n    \"os_bucket_active_num\": 7,\n    \"block_volume_active_num\": 5,\n    \"fs_user_available_num\": 6,\n    \"fs_client_num\": 1,\n    \"partition_num\": 9,\n    \"fs_user_num\": 3,\n    \"os_gateway_error_num\": 0,\n    \"pd_warning_num\": 5,\n    \"host_warning_num\": 6,\n    \"cloud_volume_num\": 1,\n    \"pool_degraded_num\": 6,\n    \"client_group_active_num\": 9,\n    \"fs_client_group_num\": 1,\n    \"fs_folder_num\": 1,\n    \"fs_gateway_group_warning_num\": 9,\n    \"host_offline_num\": 6,\n    \"pool_active_num\": 4,\n    \"service_mon_error_num\": 3,\n    \"service_xdc_num\": 5,\n    \"snapshot_num\": 0,\n    \"host_num\": 2,\n    \"service_mon_num\": 9,\n    \"pd_num\": 7,\n    \"osd_num\": 6,\n    \"os_user_active_num\": 7,\n    \"fs_gateway_group_num\": 9,\n    \"s3_load_balancer_group_num\": 4,\n    \"os_bucket_num\": 7,\n    \"service_mon_active_num\": 1,\n    \"s3_load_balancer_group_active_num\": 8,\n    \"service_xdc_stopped_num\": 8\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "486bd38a-1e76-45d4-b2a1-8958044ed265",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05c7bf9c-b0bd-49fd-b5ca-0aba47d84828",
+          "name": "Get Stats Usage Prediction",
+          "request": {
+            "name": "Get Stats Usage Prediction",
+            "description": {
+              "content": "Get prediction of stats space usage",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "stats-usage-prediction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96ad0516-c380-4266-8118-d4010c0af3fa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "stats-usage-prediction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stats_usage_bytes_per_day\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89954fa8-d794-418b-991c-58bad88c79ff",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "stats-usage-prediction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09364fc1-3397-41e8-a7f6-0d2b2c4c0169",
+          "name": "Server Time",
+          "request": {
+            "name": "Server Time",
+            "description": {
+              "content": "show current server time",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster",
+                "time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0639dda0-ace9-4949-aa79-7d5776ba3173",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster",
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"server_time\": \"2000-01-23T04:56:07.000+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1530f7c0-a20e-4617-9828-213761d3959f",
+          "name": "Remove Cluster Access Info",
+          "request": {
+            "name": "Remove Cluster Access Info",
+            "description": {
+              "content": "Remove cluster access info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster:remove-access-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c149c10c-87fa-4298-ba52-11883277388b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:remove-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster\": {\n    \"access_url\": \"access_url\",\n    \"snmp_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stats_reserved_days\": 1,\n    \"version\": \"version\",\n    \"down_out_interval\": 0,\n    \"os_gateway_oplog_switch\": true,\n    \"access_token\": {\n      \"roles\": [\n        \"roles\",\n        \"roles\"\n      ],\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"used\": true,\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      }\n    },\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"maintained\": true,\n    \"fs_id\": \"fs_id\",\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78d9f819-c288-4a33-8323-55be16c660ba",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:remove-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fb2d6e4-0d64-4265-bb23-f9ab0be58fde",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:remove-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a077058-4e0d-40ce-be60-d7059f4c93cc",
+          "name": "Set Cluster Access Info",
+          "request": {
+            "name": "Set Cluster Access Info",
+            "description": {
+              "content": "Set cluster access info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster:set-access-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cluster\": {\n    \"access_token_id\": \"<long>\",\n    \"access_url\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f6e8896-bdf1-4dc8-a03b-b996cd5e983b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:set-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"access_token_id\": 0,\n    \"access_url\": \"access_url\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cluster\": {\n    \"access_url\": \"access_url\",\n    \"snmp_enabled\": true,\n    \"update\": \"2000-01-23T04:56:07.000+00:00\",\n    \"stats_reserved_days\": 1,\n    \"version\": \"version\",\n    \"down_out_interval\": 0,\n    \"os_gateway_oplog_switch\": true,\n    \"access_token\": {\n      \"roles\": [\n        \"roles\",\n        \"roles\"\n      ],\n      \"name\": \"name\",\n      \"create\": \"2000-01-23T04:56:07.000+00:00\",\n      \"description\": \"description\",\n      \"update\": \"2000-01-23T04:56:07.000+00:00\",\n      \"id\": 0,\n      \"used\": true,\n      \"user\": {\n        \"name\": \"name\",\n        \"id\": 6\n      }\n    },\n    \"elasticsearch_enabled\": true,\n    \"name\": \"name\",\n    \"create\": \"2000-01-23T04:56:07.000+00:00\",\n    \"id\": 6,\n    \"maintained\": true,\n    \"fs_id\": \"fs_id\",\n    \"disk_lighting_mode\": \"disk_lighting_mode\",\n    \"status\": \"status\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e60bc96-d272-4c01-b5c0-83c9441f92fe",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:set-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"access_token_id\": 0,\n    \"access_url\": \"access_url\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee332bc9-bc6b-411e-a8be-1ad796e821ac",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster:set-access-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cluster\": {\n    \"access_token_id\": 0,\n    \"access_url\": \"access_url\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "73e318f5-90a1-44c4-a1c5-62b078663628",
+    "name": "XMS access-paths cluster API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "XMS is the controller of distributed storage system",
+      "type": "text/plain"
+    }
+  }
+}
