@@ -1,0 +1,544 @@
+slug: xsky
+provider: XSKY
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 56
+edges:
+- tag: block-volumes
+  spec_file: xsky-block-volumes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: CreateBlockVolume; MigrateBlockVolume; SetBlockVolumeReplication; SetBackupProtection
+  reason: Full lifecycle of block storage volumes including replication and backup protection settings
+    in a distributed storage platform — clearly storage infrastructure management.
+- tag: osd-groups
+  spec_file: xsky-osd-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: AddOsdsToOsdGroup, ReweightOsdGroup, SetOsdFullRatio, SetOsdGroupQos; schemas OsdGroup, OsdQos,
+    Pool_Nestview
+  reason: Managing OSD groups, weights, fullness ratios and QoS is direct administration of distributed
+    storage infrastructure.
+- tag: osds
+  spec_file: xsky-osds-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: CreateOsd, MaintainOsd, RebuildOsd, GetOsdPredictions; schemas Osd, DiskStat, DiskPrediction,
+    PlacementGroupScrub
+  reason: Lifecycle and maintenance of object-storage daemons and their underlying disks — storage infrastructure
+    operations.
+- tag: pools
+  spec_file: xsky-pools-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.9
+  evidence: CreatePool, AddOsdsToPool, GetPoolTopology, GetPoolPredictions; schemas Pool, PoolPlacementNode,
+    ProtectionDomain_Nestview
+  reason: Storage pool provisioning, OSD membership and topology/capacity views are core storage infrastructure
+    administration.
+- tag: block-volume-groups
+  spec_file: xsky-block-volume-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: CreateBlockVolumeGroup; AddBlockVolumeToBlockVolumeGroup; schema VolumeGroupSnapshot_Nestview
+    — "XMS is the controller of distributed storage system"
+  reason: Operations create and manage groupings of block storage volumes in a software-defined storage
+    controller. This is storage infrastructure provisioning, i.e. IT Infrastructure Management (compute,
+    storage, network, cloud).
+- tag: hosts
+  spec_file: xsky-hosts-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: POST /hosts/ CreateHost; GET /hosts/{host_id}/samples GetHostSamples; schemas HostFcPort,
+    Disk_Nestview, ProtectionDomain_Nestview
+  reason: Lifecycle and telemetry of storage cluster hosts, disks and FC ports — clearly compute/storage
+    infrastructure management.
+- tag: os-zones
+  spec_file: xsky-os-zones-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: CreateObjectStorageZone, DeleteObjectStorageZone, GetObjectStorageZoneSamples; schemas ObjectStorageZone,
+    S3LoadBalancerGroup_Nestview, RemoteCluster_Nestview
+  reason: CRUD plus metrics over object-storage zones (with S3 load-balancer groups and remote clusters)
+    is provisioning and stewardship of storage infrastructure.
+- tag: placement-nodes
+  spec_file: xsky-placement-nodes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: CreatePlacementNode, GetPlacementNodeTopology; schemas PlacementNode, PlacementNodeTopology
+  reason: Placement-node and topology management is the physical/logical layout of the storage cluster
+    — infrastructure management.
+- tag: block-volume-migration-jobs
+  spec_file: xsky-block-volume-migration-jobs-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListBlockVolumeMigrationJobs; CancelBlockVolumeMigrationJob; schema VolumeMigrationJob, Pool_Nestview
+  reason: Tracks and cancels jobs that migrate block volumes between storage pools/hosts — storage infrastructure
+    operations, not a business migration concept.
+- tag: client-lun-mappings
+  spec_file: xsky-client-lun-mappings-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListClientLunMappings; schemas ClientLunMapping, Lun_Nestview, Target_Nestview, Volume_Nestview
+  reason: Exposes mappings of LUNs/volumes to storage clients via targets — SAN access-path configuration,
+    squarely storage infrastructure management.
+- tag: cloud-instances
+  spec_file: xsky-cloud-instances-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListCloudInstances; GetCloudInstanceSamples; schemas CloudInstance, CloudPlatform_Nestview,
+    CloudDatacenter_Nestview
+  reason: Inventory and performance samples of cloud compute instances discovered from attached cloud
+    platforms/datacentres — cloud infrastructure visibility.
+- tag: cloud-platforms
+  spec_file: xsky-cloud-platforms-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: CreateCloudPlatform; SyncCloudPlatform; schema CloudPlatformCreateReq_Platform
+  reason: Registers and synchronises external cloud platforms with the storage controller — management
+    of cloud infrastructure connections.
+- tag: cloud-volume-attachments
+  spec_file: xsky-cloud-volume-attachments-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListCloudVolumeAttachments; schemas CloudVolumeAttachment, CloudInstance_Nestview, CloudVolume_Nestview
+  reason: Lists attachments between cloud volumes and cloud compute instances — storage/cloud infrastructure
+    topology, no business meaning.
+- tag: cloud-volumes
+  spec_file: xsky-cloud-volumes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListCloudVolumes; GetCloudVolume; schemas CloudVolume, CloudDatacenter_Nestview
+  reason: Read access to cloud-side storage volumes correlated with platform and datacentre — cloud storage
+    infrastructure inventory.
+- tag: disks
+  spec_file: xsky-disks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /disks/ ListDisks; PUT /disks/{disk_id}/partitions CreatePartitions; schemas Disk, SmartAttr,
+    Host_Nestview
+  reason: Manages physical disks, partitions and SMART health on storage hosts — direct management of
+    storage infrastructure assets, not a business-domain object.
+- tag: fs-ftp-shares
+  spec_file: xsky-fs-ftp-shares-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /fs-ftp-shares/  CreateFSFTPShare; DELETE /fs-ftp-shares/{fs_ftp_share_id}  DeleteFSFTPShare
+  reason: Lifecycle management of FTP file-share access paths on XSKY's distributed storage controller
+    ('XMS is the controller of distributed storage system') — storage infrastructure provisioning.
+- tag: fs-gateway-groups
+  spec_file: xsky-fs-gateway-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /fs-gateway-groups/  CreateFSGatewayGroup; POST /fs-gateway-groups/{fs_gateway_group_id}:add-gateways  AddFSGateways
+  reason: Creating and composing file-storage gateway groups within a distributed storage controller is
+    compute/storage infrastructure management.
+- tag: fs-gateways
+  spec_file: xsky-fs-gateways-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /fs-gateways/  ListFSGateways; schemas FSGateway, NetworkAddress_Nestview, Host_Nestview
+  reason: Inventory of file-storage gateway nodes (hosts, network addresses) in the distributed storage
+    system — storage/network infrastructure management.
+- tag: fs-nfs-shares
+  spec_file: xsky-fs-nfs-shares-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /fs-nfs-shares/  CreateFSNFSShare; POST /fs-nfs-shares/{fs_nfs_share_id}:add-acls  AddFSNFSShareACLs
+  reason: Create/delete/configure NFS export shares on the distributed storage controller — storage infrastructure
+    provisioning.
+- tag: fs-smb-shares
+  spec_file: xsky-fs-smb-shares-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /fs-smb-shares/  CreateFSSMBShare; PATCH /fs-smb-shares/{fs_smb_share_id}  UpdateFSSMBShare
+  reason: Full lifecycle of SMB file shares exposed by the distributed storage controller — storage infrastructure
+    provisioning and configuration.
+- tag: luns
+  spec_file: xsky-luns-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /luns/ ListLuns; schemas Lun, AccessPath, Volume_Nestview
+  reason: LUN/volume access-path inventory in a block storage system — storage infrastructure management.
+- tag: os-buckets
+  spec_file: xsky-os-buckets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /os-buckets/ CreateBucket; PUT /os-buckets/{bucket_id}/lifecycle SetObjectStorageLifecycleRules
+  reason: Creation, configuration, lifecycle rules and replication of object-storage buckets — core storage
+    infrastructure management by a software-defined storage vendor.
+- tag: os-storage-classes
+  spec_file: xsky-os-storage-classes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /os-storage-classes/ ListOSStorageClasses; schemas OSStorageClass, Pool_Nestview
+  reason: Storage classes mapped to storage pools in the object store — unambiguously storage/infrastructure
+    configuration.
+- tag: partitions
+  spec_file: xsky-partitions-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: ListPartitions / GetPartition; schemas Partition, Disk_Nestview
+  reason: Disk partition inventory within the storage controller; clearly storage/compute infrastructure
+    inventory rather than any business capability.
+- tag: s3-load-balancer-groups
+  spec_file: xsky-s3-load-balancer-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: CreateS3LoadBalancerGroup / AddS3LoadBalancersToGroup / RedeployS3LoadBalancerGroup on 'XMS
+    is the controller of distributed storage system'
+  reason: Configuration of S3 load balancer groups (network front-end for object storage) is storage/network
+    infrastructure management within IT.
+- tag: nfs-gateways
+  spec_file: xsky-nfs-gateways-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: POST /nfs-gateways/ CreateNFSGateway; GET /nfs-gateways/{gateway_id}/samples GetNFSGatewaySamples
+  reason: Full lifecycle of NFS gateway services fronting object storage — provisioning and monitoring
+    of storage infrastructure components.
+- tag: os-gateways
+  spec_file: xsky-os-gateways-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: POST /os-gateways/ CreateGateway; GET /os-gateways/{gateway_id}/samples GetGatewaySamples;
+    schema ObjectStorageGatewayStat
+  reason: Lifecycle and performance sampling of object-storage gateway services on hosts — provisioning
+    and running of storage infrastructure.
+- tag: remote-clusters
+  spec_file: xsky-remote-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: CreateRemoteCluster, UpdateRemoteCluster; schemas RemoteCluster, RemoteClusterCreateReq
+  reason: Registration of peer storage clusters (used for cross-cluster replication) is infrastructure
+    topology configuration.
+- tag: role-mappings
+  spec_file: xsky-role-mappings-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: CreateRoleMapping, UpdateRoleMapping; schemas RoleMapping, IdentityPlatform_Nestview
+  reason: Mapping external identity-platform groups to platform roles is identity and access management
+    (federation/authorisation) for the storage controller.
+- tag: cluster
+  spec_file: xsky-cluster-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: GET /cluster/ Cluster; PUT /cluster/bootnode SetBootNode; GET /cluster/installation Installation;
+    PUT /cluster/maintenance UpdateClusterMaintenance — "XMS is the controller of distributed storage
+    system"
+  reason: Operations install, configure and maintain a distributed storage cluster (boot nodes, object-storage
+    initialisation, cluster stats), i.e. management of storage/compute infrastructure. No SaaS-product
+    or industry-specific reading fits; this is core IT infrastructure management.
+- tag: fs-folders
+  spec_file: xsky-fs-folders-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: CreateFolder, AddFSQuotaTrees, SetFSSnapshotProtection, RollBackFolder, schemas FSFolder,
+    VolumeQosSpec
+  reason: File-system folder provisioning with quota trees, QoS, snapshot protection and rollback on the
+    distributed storage platform — clearly storage infrastructure administration.
+- tag: os-policies
+  spec_file: xsky-os-policies-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: CreatePolicy / UpdatePolicy with schemas ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt,
+    Pool_Nestview
+  reason: '''Policy'' here is an object-storage placement policy binding storage classes to pools — storage
+    infrastructure configuration, not compliance policy management.'
+- tag: protection-domains
+  spec_file: xsky-protection-domains-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: ListProtectionDomains / GetProtectionDomain; schemas ProtectionDomain, PlacementNode_Nestview
+  reason: Protection (failure) domains describe fault-tolerance layout of the storage cluster; read-only
+    infrastructure metadata. Not enterprise business-continuity planning.
+- tag: s3-load-balancers
+  spec_file: xsky-s3-load-balancers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: ListS3LoadBalancers, GetS3LoadBalancerSamples, schema 'S3LoadBalancerStat'
+  reason: Read/monitor load balancer instances of the storage platform — infrastructure component management
+    with performance samples; infrastructure management is the best fit.
+- tag: access-paths
+  spec_file: xsky-access-paths-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: 'CreateAccessPath ... schemas: AccessPath, ProtectionDomain_Nestview, MappingGroupReq'
+  reason: XMS is 'the controller of distributed storage system'; access paths with protection domains
+    and mapping groups are storage-fabric configuration objects, i.e. storage infrastructure management,
+    not business access control.
+- tag: fs-quota-trees
+  spec_file: xsky-fs-quota-trees-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: GET /fs-quota-trees/  ListQuotaTrees; PATCH /fs-quota-trees/{fs_quota_tree_id}  UpdateQuotaTree
+  reason: Management of filesystem directory quotas in the distributed storage system — capacity/configuration
+    control of storage infrastructure. Not commercial quota or API rate limiting.
+- tag: os-external-storage-classes
+  spec_file: xsky-os-external-storage-classes-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: POST /os-external-storage-classes/ CreateExternalStorageClass; schema OSExternalStoragePlatform
+  reason: Definition of external storage classes/platforms for tiering object data — storage infrastructure
+    configuration.
+- tag: block-snapshots
+  spec_file: xsky-block-snapshots-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: 'POST /block-snapshots/  CreateBlockSnapshot ... schemas: Snapshot, Pool_Nestview, Volume_Nestview'
+  reason: Creating and managing block-volume snapshots within pools of a distributed storage system is
+    storage infrastructure management (compute/storage/cloud infrastructure).
+- tag: block-volume-group-snapshots
+  spec_file: xsky-block-volume-group-snapshots-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: 'POST /block-volume-group-snapshots/  CreateBlockVolumeGroupSnapshot ... schemas: VolumeGroupSnapshot,
+    Pool_Nestview'
+  reason: Consistency-group snapshot lifecycle for block volumes in the distributed storage platform —
+    storage infrastructure management rather than any business-domain capability.
+- tag: client-groups
+  spec_file: xsky-client-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateClientGroup; schemas ClientGroupCreateReq_ClientGroup_Clients_Elt, Client, ClientGroup_Nestview
+  reason: '''Clients'' here are storage initiators/hosts consuming the distributed storage; grouping them
+    is a storage access-path configuration task, not customer management. Mapped to IT Infrastructure
+    Management.'
+- tag: clients
+  spec_file: xsky-clients-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: ListClients; GetClient; schemas Client, ClientGroup_Nestview
+  reason: Read-only inventory of storage clients (initiators) attached to the distributed storage controller;
+    a homograph for customer data but the context is storage access paths. Read-only nature keeps confidence
+    moderate.
+- tag: dp-block-snapshot-recovery-jobs
+  spec_file: xsky-dp-block-snapshot-recovery-jobs-api-openapi.yml
+  capability_id: BC-160.20
+  capability_id_l1: BC-160
+  capability_name: Disaster Recovery Management
+  confidence: 0.7
+  evidence: POST /dp-block-snapshot-recovery-jobs/ CreateDpBlockSnapshotRecoveryJob; schemas DpBackupBlockSnapshot,
+    DpBackupBlockVolume, DpBackupCluster
+  reason: Explicit restore-from-backup jobs (recovering volumes from backup snapshots on a backup cluster)
+    — restore/failover operations that are the substance of IT disaster recovery.
+- tag: dp-gateways
+  spec_file: xsky-dp-gateways-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateDpGateway, schemas DpGateway, Host_Nestview — 'XMS is the controller of distributed
+    storage system'
+  reason: CRUD over data-protection gateway nodes (bound to hosts) in a software-defined storage cluster;
+    this is compute/storage infrastructure provisioning, i.e. IT Infrastructure Management.
+- tag: fs-arbitration-pools
+  spec_file: xsky-fs-arbitration-pools-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateFSArbitrationPool, schemas FSArbitrationPool, Pool_Nestview
+  reason: Arbitration (quorum) pools for the distributed file system cluster — internal storage cluster
+    resource configuration, i.e. IT infrastructure management.
+- tag: fs-client-groups
+  spec_file: xsky-fs-client-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateFSClientGroup, AddFSClients, RemoveFSClients, schema FSClient_Nestview
+  reason: Grouping of file-system client hosts for access to the distributed storage; 'client' here is
+    a mounting machine, not a customer. Storage infrastructure configuration.
+- tag: fs-clients
+  spec_file: xsky-fs-clients-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateFSClient, schemas FSClient, FSClientGroup_Nestview
+  reason: Registration of file-system client endpoints against the distributed storage cluster — infrastructure
+    objects, not CRM customers. Maps to IT Infrastructure Management.
+- tag: fs-snapshots
+  spec_file: xsky-fs-snapshots-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /fs-snapshots/ CreateFSSnapshot; schemas FSSnapshot, FSFolder_Nestview, Pool_Nestview
+    — file-storage snapshot management in a distributed storage controller
+  reason: Snapshot lifecycle on file-storage pools is storage/infrastructure administration, not a business
+    process; mapped to IT Infrastructure Management.
+- tag: mapping-groups
+  spec_file: xsky-mapping-groups-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /mapping-groups/{mapping_group_id}/block-volumes AddVolumes; PATCH .../client-group UpdateMappingGroupClientGroup
+  reason: Maps block volumes to client groups over access paths — storage provisioning/configuration,
+    i.e. infrastructure management.
+- tag: network-addresses
+  spec_file: xsky-network-addresses-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /network-addresses/ ListNetworkAddresses; schemas NetworkAddress, NetworkInterface_Nestview,
+    Host_Nestview
+  reason: Read-only inventory of network addresses bound to hosts/interfaces in a distributed storage
+    cluster — compute/storage/network infrastructure management, not a business-domain capability.
+- tag: network-interfaces
+  spec_file: xsky-network-interfaces-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /network-interfaces/{network_interface_id}/samples GetNetworkInterfaceSamples; schema
+    NetworkInterfaceStat
+  reason: Inventory and performance samples of host network interfaces in the storage platform — network/compute
+    infrastructure management.
+- tag: os-replication-paths
+  spec_file: xsky-os-replication-paths-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /os-replication-paths/{path_uuid} GetOSReplicationPath; schema ObjectStorageZone_Nestview
+  reason: Replication paths between object-storage zones — distributed storage replication topology, i.e.
+    IT infrastructure management.
+- tag: os-replication-zones
+  spec_file: xsky-os-replication-zones-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /os-replication-zones/ CreateOSReplicationZone; schemas RemoteCluster_Nestview, OSReplicationZoneStat
+  reason: Creating and monitoring object-storage replication zones against remote clusters — storage infrastructure/replication
+    configuration.
+- tag: os-search-engines
+  spec_file: xsky-os-search-engines-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /os-search-engines/{os_search_engine_id}:start StartOSSearchEngine; schemas VMFlavor_Nestview,
+    S3LoadBalancerGroup_Nestview
+  reason: Provisioning, sizing (VM flavor), starting/stopping and attaching gateways to search-engine
+    service instances inside the storage cluster — infrastructure component lifecycle, not a business
+    search capability.
+- tag: snmp
+  spec_file: xsky-snmp-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: GetSnmp / SetSnmp / DownloadMib with schemas 'TrapReceiver', 'SnmpGateway'
+  reason: SNMP agent and trap receiver configuration is infrastructure monitoring/day-to-day IT operations
+    tooling.
+- tag: system-logs
+  spec_file: xsky-system-logs-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: ListSystemLogs, DownloadSystemLogs with schema 'SystemLog', 'Host'
+  reason: System log listing and archive download for the storage controller is IT operations monitoring/diagnostics.
+- tag: targets
+  spec_file: xsky-targets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateTarget / DeleteTarget with schemas 'Target', 'AccessPath_Nestview', 'Host_Nestview'
+  reason: Storage access-path targets (block/iSCSI style export endpoints) — storage infrastructure provisioning,
+    not a business-domain 'target'.
