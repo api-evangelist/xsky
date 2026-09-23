@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths fs-nfs-share-acls API
+  title: XMS Fs Nfs Share Acls API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: fs-nfs-share-acls
-  description: 'FSNFSShareACLController provides API for fs nfs shares acl
-
-    '
+  description: FSNFSShareACLController provides API for fs nfs shares acl
 paths:
   /fs-nfs-share-acls/:
     get:
@@ -19,49 +18,52 @@ paths:
       - fs-nfs-share-acls
       description: List fs nfs shares acls
       operationId: ListFSNFSShareACLs
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: fs_nfs_share_id
         in: query
         description: fs nfs shares id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: FsNfsShareId
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSNFSShareACLsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSNFSShareACLsResp'
         400:
           description: BadRequest
         500:
@@ -69,30 +71,42 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  FSNFSShare_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-    title: FSNFSShare_Nestview
-    example:
-      id: 0
-  FSNFSShareACLsResp:
-    type: object
-    required:
-    - fs_nfs_share_acls
-    properties:
-      fs_nfs_share_acls:
-        type: array
-        description: file storage folder share acls
-        items:
-          $ref: '#/definitions/FSNFSShareACL'
-    title: FSNFSShareACLsResp
-    example:
-      fs_nfs_share_acls:
-      - all_squash: true
+      summary: List FSNFS share ACLs
+      x-summary-source: derived
+components:
+  schemas:
+    FSNFSShareACL:
+      type: object
+      properties:
+        all_squash:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        fs_client:
+          $ref: '#/components/schemas/FSClient_Nestview'
+        fs_client_group:
+          $ref: '#/components/schemas/FSClientGroup_Nestview'
+        fs_nfs_share:
+          $ref: '#/components/schemas/FSNFSShare_Nestview'
+        id:
+          type: integer
+          format: int64
+        permission:
+          type: string
+        root_squash:
+          type: boolean
+        sync:
+          type: boolean
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: FSNFSShareACL
+      description: FSNFSShareACL defines model of fs nfs share ACL
+      example:
+        all_squash: true
         fs_client_group:
           name: name
           id: 6
@@ -108,101 +122,92 @@ definitions:
         root_squash: true
         type: type
         sync: true
-      - all_squash: true
-        fs_client_group:
-          name: name
-          id: 6
-        fs_client:
-          name: name
-          id: 6
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        fs_nfs_share:
+    FSClient_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSClient_Nestview
+      example:
+        name: name
+        id: 6
+    FSNFSShareACLsResp:
+      type: object
+      required:
+      - fs_nfs_share_acls
+      properties:
+        fs_nfs_share_acls:
+          type: array
+          description: file storage folder share acls
+          items:
+            $ref: '#/components/schemas/FSNFSShareACL'
+      title: FSNFSShareACLsResp
+      example:
+        fs_nfs_share_acls:
+        - all_squash: true
+          fs_client_group:
+            name: name
+            id: 6
+          fs_client:
+            name: name
+            id: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_nfs_share:
+            id: 0
+          permission: permission
           id: 0
-        permission: permission
-        id: 0
-        root_squash: true
-        type: type
-        sync: true
-  FSNFSShareACL:
-    type: object
-    properties:
-      all_squash:
-        type: boolean
-      create:
-        type: string
-        format: date-time
-      fs_client:
-        $ref: '#/definitions/FSClient_Nestview'
-      fs_client_group:
-        $ref: '#/definitions/FSClientGroup_Nestview'
-      fs_nfs_share:
-        $ref: '#/definitions/FSNFSShare_Nestview'
-      id:
-        type: integer
-        format: int64
-      permission:
-        type: string
-      root_squash:
-        type: boolean
-      sync:
-        type: boolean
-      type:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: FSNFSShareACL
-    description: FSNFSShareACL defines model of fs nfs share ACL
-    example:
-      all_squash: true
-      fs_client_group:
+          root_squash: true
+          type: type
+          sync: true
+        - all_squash: true
+          fs_client_group:
+            name: name
+            id: 6
+          fs_client:
+            name: name
+            id: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_nfs_share:
+            id: 0
+          permission: permission
+          id: 0
+          root_squash: true
+          type: type
+          sync: true
+    FSClientGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSClientGroup_Nestview
+      example:
         name: name
         id: 6
-      fs_client:
-        name: name
-        id: 6
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      fs_nfs_share:
+    FSNFSShare_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: FSNFSShare_Nestview
+      example:
         id: 0
-      permission: permission
-      id: 0
-      root_squash: true
-      type: type
-      sync: true
-  FSClient_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: FSClient_Nestview
-    example:
-      name: name
-      id: 6
-  FSClientGroup_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: FSClientGroup_Nestview
-    example:
-      name: name
-      id: 6
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

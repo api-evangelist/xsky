@@ -1,86 +1,90 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths block-snapshots API
+  title: XMS Block Snapshots API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: block-snapshots
-  description: 'BlockSnapshotController Operations about Block Snapshot
-
-    '
+  description: BlockSnapshotController Operations about Block Snapshot
 paths:
   /block-snapshots/:
     get:
       tags:
       - block-snapshots
-      description: List block snapshots
       operationId: ListBlockSnapshots
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: pool_id
         in: query
         description: pool id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: PoolId
+        schema:
+          type: integer
+          format: int64
       - name: block_volume_id
         in: query
         description: volume id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: reserved
         in: query
         description: show reserved snapshot or not, default not
         required: false
-        type: boolean
         x-exportParamName: Reserved
+        schema:
+          type: boolean
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       - name: all
         in: query
         description: show all snapshots
         required: false
-        type: boolean
         x-exportParamName: All
+        schema:
+          type: boolean
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SnapshotsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotsResp'
         400:
           description: BadRequest
         500:
@@ -88,28 +92,19 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List block snapshots
+      x-summary-source: derived
     post:
       tags:
       - block-snapshots
-      description: Create block snapshot
       operationId: CreateBlockSnapshot
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: snapshot info
-        required: true
-        schema:
-          $ref: '#/definitions/SnapshotCreateReq'
-        x-exportParamName: Body
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/SnapshotResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResp'
         400:
           description: BadRequest
         500:
@@ -117,29 +112,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotCreateReq'
+        description: snapshot info
+        required: true
+      summary: Create block snapshot
+      x-summary-source: derived
   /block-snapshots/{block_snapshot_id}:
     get:
       tags:
       - block-snapshots
       description: get block snapshot
       operationId: GetBlockSnapshot
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_snapshot_id
         in: path
         description: the block snapshot id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockSnapshotId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SnapshotResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResp'
         404:
           description: NotFound
         500:
@@ -147,29 +150,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get block snapshot
+      x-summary-source: derived
   /block-snapshots/{snapshot_id}:
     delete:
       tags:
       - block-snapshots
-      description: Delete block snapshot
       operationId: DeleteBlockSnapshot
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: snapshot_id
         in: path
         description: snapshot id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: SnapshotId
+        schema:
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/SnapshotResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResp'
         404:
           description: NotFound
         500:
@@ -177,35 +180,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete block snapshot
+      x-summary-source: derived
     patch:
       tags:
       - block-snapshots
       description: Update block snapshot info
       operationId: UpdateSnapshot
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: snapshot_id
         in: path
         description: snapshot id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: SnapshotId
-      - in: body
-        name: body
-        description: snapshot info
-        required: true
         schema:
-          $ref: '#/definitions/SnapshotUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/SnapshotResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResp'
         400:
           description: BadRequest
         404:
@@ -215,261 +212,141 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
-definitions:
-  SnapshotUpdateReq_Snapshot:
-    type: object
-    properties:
-      description:
-        type: string
-      name:
-        type: string
-    title: SnapshotUpdateReq_Snapshot
-    example:
-      name: name
-      description: description
-  RemoteCluster_Nestview:
-    type: object
-    properties:
-      fs_id:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      url:
-        type: string
-    title: RemoteCluster_Nestview
-    example:
-      name: name
-      id: 2
-      fs_id: fs_id
-      url: url
-  SnapshotUpdateReq:
-    type: object
-    required:
-    - block_snapshot
-    properties:
-      block_snapshot:
-        $ref: '#/definitions/SnapshotUpdateReq_Snapshot'
-    title: SnapshotUpdateReq
-    example:
-      block_snapshot:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotUpdateReq'
+        description: snapshot info
+        required: true
+      summary: Update snapshot
+      x-summary-source: derived
+components:
+  schemas:
+    SnapshotUpdateReq:
+      type: object
+      required:
+      - block_snapshot
+      properties:
+        block_snapshot:
+          $ref: '#/components/schemas/SnapshotUpdateReq_Snapshot'
+      title: SnapshotUpdateReq
+      example:
+        block_snapshot:
+          name: name
+          description: description
+    VolumeGroupSnapshot_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: VolumeGroupSnapshot_Nestview
+      example:
+        name: name
+        id: 6
+    SnapshotCreateReq_Snapshot:
+      type: object
+      required:
+      - block_volume_id
+      - description
+      - name
+      properties:
+        block_volume_id:
+          type: integer
+          format: int64
+        description:
+          type: string
+        name:
+          type: string
+      title: SnapshotCreateReq_Snapshot
+      example:
+        block_volume_id: 0
         name: name
         description: description
-  SnapshotsResp:
-    type: object
-    required:
-    - block_snapshots
-    properties:
-      block_snapshots:
-        type: array
-        description: snapshots
-        items:
-          $ref: '#/definitions/Snapshot'
-    title: SnapshotsResp
-    example:
-      block_snapshots:
-      - cloned_block_volume_num: 1
-        creator: creator
-        hidden: true
-        pool:
+    SnapshotCreateReq:
+      type: object
+      required:
+      - block_snapshot
+      properties:
+        block_snapshot:
+          $ref: '#/components/schemas/SnapshotCreateReq_Snapshot'
+      title: SnapshotCreateReq
+      example:
+        block_snapshot:
+          block_volume_id: 0
           name: name
-          id: 5
-        snap_name: snap_name
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        allocated_size: 0
-        passive: true
-        volume:
-          original_name: original_name
-          name: name
-          id: 9
-        protected: true
-        size: 7
-        remote_cluster:
-          name: name
-          id: 2
-          fs_id: fs_id
-          url: url
-        reserved: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 5
-        action_status: action_status
-        block_volume_group_snapshot:
-          name: name
-          id: 6
-        status: status
-      - cloned_block_volume_num: 1
-        creator: creator
-        hidden: true
-        pool:
-          name: name
-          id: 5
-        snap_name: snap_name
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        allocated_size: 0
-        passive: true
-        volume:
-          original_name: original_name
-          name: name
-          id: 9
-        protected: true
-        size: 7
-        remote_cluster:
-          name: name
-          id: 2
-          fs_id: fs_id
-          url: url
-        reserved: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 5
-        action_status: action_status
-        block_volume_group_snapshot:
-          name: name
-          id: 6
-        status: status
-  Pool_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Pool_Nestview
-    example:
-      name: name
-      id: 5
-  VolumeGroupSnapshot_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: VolumeGroupSnapshot_Nestview
-    example:
-      name: name
-      id: 6
-  Snapshot:
-    type: object
-    properties:
-      action_status:
-        type: string
-      allocated_size:
-        type: integer
-        format: int64
-      block_volume_group_snapshot:
-        $ref: '#/definitions/VolumeGroupSnapshot_Nestview'
-      cloned_block_volume_num:
-        type: integer
-        format: int64
-      create:
-        type: string
-        format: date-time
-      creator:
-        type: string
-      description:
-        type: string
-      hidden:
-        type: boolean
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      passive:
-        type: boolean
-      pool:
-        $ref: '#/definitions/Pool_Nestview'
-      protected:
-        type: boolean
-      remote_cluster:
-        description: the snapshot is replicated from a remote cluster
-        $ref: '#/definitions/RemoteCluster_Nestview'
-      reserved:
-        type: boolean
-      size:
-        type: integer
-        format: int64
-      snap_name:
-        type: string
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-      volume:
-        $ref: '#/definitions/Volume_Nestview'
-    title: Snapshot
-    description: Snapshot is the corresponding rbd snapshot
-    example:
-      cloned_block_volume_num: 1
-      creator: creator
-      hidden: true
-      pool:
-        name: name
-        id: 5
-      snap_name: snap_name
-      description: description
-      update: '2000-01-23T04:56:07.000+00:00'
-      allocated_size: 0
-      passive: true
-      volume:
+          description: description
+    Volume_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
         original_name: original_name
         name: name
         id: 9
-      protected: true
-      size: 7
-      remote_cluster:
-        name: name
-        id: 2
-        fs_id: fs_id
-        url: url
-      reserved: true
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      id: 5
-      action_status: action_status
-      block_volume_group_snapshot:
-        name: name
-        id: 6
-      status: status
-  SnapshotCreateReq_Snapshot:
-    type: object
-    required:
-    - block_volume_id
-    - description
-    - name
-    properties:
-      block_volume_id:
-        type: integer
-        format: int64
-      description:
-        type: string
-      name:
-        type: string
-    title: SnapshotCreateReq_Snapshot
-    example:
-      block_volume_id: 0
-      name: name
-      description: description
-  SnapshotResp:
-    type: object
-    required:
-    - block_snapshot
-    properties:
-      block_snapshot:
-        description: snapshot
-        $ref: '#/definitions/Snapshot'
-    title: SnapshotResp
-    example:
-      block_snapshot:
+    Snapshot:
+      type: object
+      properties:
+        action_status:
+          type: string
+        allocated_size:
+          type: integer
+          format: int64
+        block_volume_group_snapshot:
+          $ref: '#/components/schemas/VolumeGroupSnapshot_Nestview'
+        cloned_block_volume_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        creator:
+          type: string
+        description:
+          type: string
+        hidden:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        passive:
+          type: boolean
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        protected:
+          type: boolean
+        remote_cluster:
+          description: the snapshot is replicated from a remote cluster
+          $ref: '#/components/schemas/RemoteCluster_Nestview'
+        reserved:
+          type: boolean
+        size:
+          type: integer
+          format: int64
+        snap_name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+      title: Snapshot
+      description: Snapshot is the corresponding rbd snapshot
+      example:
         cloned_block_volume_num: 1
         creator: creator
         hidden: true
@@ -501,42 +378,172 @@ definitions:
           name: name
           id: 6
         status: status
-  Volume_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      original_name:
-        type: string
-    title: Volume_Nestview
-    example:
-      original_name: original_name
-      name: name
-      id: 9
-  SnapshotCreateReq:
-    type: object
-    required:
-    - block_snapshot
-    properties:
-      block_snapshot:
-        $ref: '#/definitions/SnapshotCreateReq_Snapshot'
-    title: SnapshotCreateReq
-    example:
-      block_snapshot:
-        block_volume_id: 0
+    SnapshotResp:
+      type: object
+      required:
+      - block_snapshot
+      properties:
+        block_snapshot:
+          description: snapshot
+          $ref: '#/components/schemas/Snapshot'
+      title: SnapshotResp
+      example:
+        block_snapshot:
+          cloned_block_volume_num: 1
+          creator: creator
+          hidden: true
+          pool:
+            name: name
+            id: 5
+          snap_name: snap_name
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          allocated_size: 0
+          passive: true
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          protected: true
+          size: 7
+          remote_cluster:
+            name: name
+            id: 2
+            fs_id: fs_id
+            url: url
+          reserved: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
+    SnapshotsResp:
+      type: object
+      required:
+      - block_snapshots
+      properties:
+        block_snapshots:
+          type: array
+          description: snapshots
+          items:
+            $ref: '#/components/schemas/Snapshot'
+      title: SnapshotsResp
+      example:
+        block_snapshots:
+        - cloned_block_volume_num: 1
+          creator: creator
+          hidden: true
+          pool:
+            name: name
+            id: 5
+          snap_name: snap_name
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          allocated_size: 0
+          passive: true
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          protected: true
+          size: 7
+          remote_cluster:
+            name: name
+            id: 2
+            fs_id: fs_id
+            url: url
+          reserved: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
+        - cloned_block_volume_num: 1
+          creator: creator
+          hidden: true
+          pool:
+            name: name
+            id: 5
+          snap_name: snap_name
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          allocated_size: 0
+          passive: true
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          protected: true
+          size: 7
+          remote_cluster:
+            name: name
+            id: 2
+            fs_id: fs_id
+            url: url
+          reserved: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    SnapshotUpdateReq_Snapshot:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+      title: SnapshotUpdateReq_Snapshot
+      example:
         name: name
         description: description
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    RemoteCluster_Nestview:
+      type: object
+      properties:
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+      title: RemoteCluster_Nestview
+      example:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

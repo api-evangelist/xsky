@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths os-gateways API
+  title: XMS Os Gateways API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: os-gateways
-  description: 'ObjectStorageGatewayController provides API for s3 gateway
-
-    '
+  description: ObjectStorageGatewayController provides API for s3 gateway
 paths:
   /os-gateways/:
     get:
@@ -19,69 +18,63 @@ paths:
       - os-gateways
       description: List s3 gateways
       operationId: ListGateways
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewaysResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewaysResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List gateways
+      x-summary-source: derived
     post:
       tags:
       - os-gateways
       description: Create s3 gateway
       operationId: CreateGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: gateway info
-        required: true
-        schema:
-          $ref: '#/definitions/ObjectStorageGatewayCreateReq'
-        x-exportParamName: Body
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewayResp'
         400:
           description: BadRequest
         409:
@@ -91,29 +84,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageGatewayCreateReq'
+        description: gateway info
+        required: true
+      summary: Create gateway
+      x-summary-source: derived
   /os-gateways/{gateway_id}:
     get:
       tags:
       - os-gateways
       description: Get s3 gateway
       operationId: GetGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewayResp'
         404:
           description: NotFound
         500:
@@ -121,39 +122,35 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get gateway
+      x-summary-source: derived
     put:
       tags:
       - os-gateways
       description: Update s3 gateway
       operationId: UpdateGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
-      - in: body
-        name: body
-        description: gateway info
-        required: true
         schema:
-          $ref: '#/definitions/ObjectStorageGatewayUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewayResp'
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewayResp'
         400:
           description: BadRequest
         404:
@@ -165,28 +162,36 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectStorageGatewayUpdateReq'
+        description: gateway info
+        required: true
+      summary: Update gateway
+      x-summary-source: derived
     delete:
       tags:
       - os-gateways
       description: Delete s3 gateway
       operationId: DeleteGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
+        schema:
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewayResp'
         400:
           description: BadRequest
         409:
@@ -196,47 +201,51 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete gateway
+      x-summary-source: derived
   /os-gateways/{gateway_id}/samples:
     get:
       tags:
       - os-gateways
       description: Get s3 gateway's samples
       operationId: GetGatewaySamples
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
+        schema:
+          type: integer
+          format: int64
       - name: duration_begin
         in: query
         description: duration begin timestamp
         required: false
-        type: string
         x-exportParamName: DurationBegin
+        schema:
+          type: string
       - name: duration_end
         in: query
         description: duration end timestamp
         required: false
-        type: string
         x-exportParamName: DurationEnd
+        schema:
+          type: string
       - name: period
         in: query
         description: samples period
         required: false
-        type: string
         x-exportParamName: Period
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ObjectStorageGatewaySamplesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectStorageGatewaySamplesResp'
         404:
           description: NotFound
         500:
@@ -244,231 +253,236 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  ObjectStorageGatewayStat:
-    type: object
-    properties:
-      cpu_util:
-        type: number
-        format: double
-      create:
-        type: string
-        format: date-time
-      down_bandwidth_kbyte:
-        type: number
-        format: double
-      down_ops:
-        type: number
-        format: double
-      mem_usage_percent:
-        type: number
-        format: double
-      merge_speed:
-        type: integer
-        format: int64
-      requests:
-        type: integer
-        format: int64
-      sync_down_bandwidth_kbyte:
-        type: number
-        format: double
-      sync_down_ops:
-        type: number
-        format: double
-      up_bandwidth_kbyte:
-        type: number
-        format: double
-      up_ops:
-        type: number
-        format: double
-    title: ObjectStorageGatewayStat
-    description: ObjectStorageGatewayStat is the model of object_storage_gateway_stat
-    example:
-      up_bandwidth_kbyte: 3.616076749251911
-      up_ops: 2.027123023002322
-      down_bandwidth_kbyte: 6.027456183070403
-      down_ops: 1.4658129805029452
-      sync_down_ops: 9.301444243932576
-      merge_speed: 5
-      mem_usage_percent: 5.962133916683182
-      create: '2000-01-23T04:56:07.000+00:00'
-      requests: 2
-      sync_down_bandwidth_kbyte: 7.061401241503109
-      cpu_util: 0.8008281904610115
-  ObjectStorageGateway:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      description:
-        type: string
-      gateway_ip:
-        type: string
-      gateway_name:
-        type: string
-      host:
-        $ref: '#/definitions/Host_Nestview'
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      os_zone:
-        $ref: '#/definitions/ObjectStorageZone_Nestview'
-      port:
-        type: integer
-        format: int64
-      role:
-        type: string
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: ObjectStorageGateway
-    description: ObjectStorageGateway is the model of object_storage_gateway @grpc-models-proto
-  ObjectStorageGatewayUpdateReq_Gateway:
-    type: object
-    properties:
-      action:
-        type: string
-    title: ObjectStorageGatewayUpdateReq_Gateway
-    example:
-      action: action
-  ObjectStorageGatewayResp:
-    type: object
-    required:
-    - os_gateway
-    properties:
-      os_gateway:
-        description: object storage gateway
-        $ref: '#/definitions/ObjectStorageGatewayRecord'
-    title: ObjectStorageGatewayResp
-    example:
-      os_gateway: ''
-  ObjectStorageGatewaysResp:
-    type: object
-    required:
-    - os_gateways
-    properties:
-      os_gateways:
-        type: array
-        description: object storage gateways
-        items:
-          $ref: '#/definitions/ObjectStorageGatewayRecord'
-    title: ObjectStorageGatewaysResp
-    example:
-      os_gateways:
-      - ''
-      - ''
-  ObjectStorageGatewayCreateReq_Gateway:
-    type: object
-    required:
-    - host_id
-    - name
-    - port
-    properties:
-      description:
-        type: string
-      gateway_ip:
-        type: string
-      host_id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      port:
-        type: integer
-        format: int64
-      role:
-        type: string
-    title: ObjectStorageGatewayCreateReq_Gateway
-    example:
-      role: role
-      port: 6
-      name: name
-      description: description
-      gateway_ip: gateway_ip
-      host_id: 0
-  ObjectStorageGatewayRecord:
-    title: ObjectStorageGatewayRecord
-    allOf:
-    - $ref: '#/definitions/ObjectStorageGateway'
-    - properties:
-        samples:
-          type: array
-          items:
-            $ref: '#/definitions/ObjectStorageGatewayStat'
-    description: 'ObjectStorageGatewayRecord combine ObjectStorageGateway and
+      summary: Get gateway samples
+      x-summary-source: derived
+components:
+  schemas:
+    ObjectStorageGateway:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        gateway_ip:
+          type: string
+        gateway_name:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        os_zone:
+          $ref: '#/components/schemas/ObjectStorageZone_Nestview'
+        port:
+          type: integer
+          format: int64
+        role:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: ObjectStorageGateway
+      description: ObjectStorageGateway is the model of object_storage_gateway @grpc-models-proto
+    ObjectStorageGatewayResp:
+      type: object
+      required:
+      - os_gateway
+      properties:
+        os_gateway:
+          description: object storage gateway
+          $ref: '#/components/schemas/ObjectStorageGatewayRecord'
+      title: ObjectStorageGatewayResp
+      example:
+        os_gateway: ''
+    ObjectStorageGatewayRecord:
+      title: ObjectStorageGatewayRecord
+      allOf:
+      - $ref: '#/components/schemas/ObjectStorageGateway'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/ObjectStorageGatewayStat'
+      description: 'ObjectStorageGatewayRecord combine ObjectStorageGateway and
 
-      ObjectStorageGatewayStat as API response'
-  Host_Nestview:
-    type: object
-    required:
-    - admin_ip
-    properties:
-      admin_ip:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Host_Nestview
-    example:
-      name: name
-      admin_ip: admin_ip
-      id: 0
-  ObjectStorageGatewayCreateReq:
-    type: object
-    properties:
-      os_gateway:
-        $ref: '#/definitions/ObjectStorageGatewayCreateReq_Gateway'
-    title: ObjectStorageGatewayCreateReq
-    example:
-      os_gateway:
+        ObjectStorageGatewayStat as API response'
+    ObjectStorageGatewayCreateReq_Gateway:
+      type: object
+      required:
+      - host_id
+      - name
+      - port
+      properties:
+        description:
+          type: string
+        gateway_ip:
+          type: string
+        host_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        port:
+          type: integer
+          format: int64
+        role:
+          type: string
+      title: ObjectStorageGatewayCreateReq_Gateway
+      example:
         role: role
         port: 6
         name: name
         description: description
         gateway_ip: gateway_ip
         host_id: 0
-  ObjectStorageZone_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      uuid:
-        type: string
-    title: ObjectStorageZone_Nestview
-    example:
-      id: 7
-      uuid: uuid
-  ObjectStorageGatewayUpdateReq:
-    type: object
-    properties:
-      os_gateway:
-        $ref: '#/definitions/ObjectStorageGatewayUpdateReq_Gateway'
-    title: ObjectStorageGatewayUpdateReq
-    example:
-      os_gateway:
+    ObjectStorageGatewayUpdateReq_Gateway:
+      type: object
+      properties:
+        action:
+          type: string
+      title: ObjectStorageGatewayUpdateReq_Gateway
+      example:
         action: action
-  ObjectStorageGatewaySamplesResp:
-    type: object
-    required:
-    - os_gateway_samples
-    properties:
-      os_gateway_samples:
-        type: array
-        description: object storage gateway samples
-        items:
-          $ref: '#/definitions/ObjectStorageGatewayStat'
-    title: ObjectStorageGatewaySamplesResp
-    example:
-      os_gateway_samples:
-      - up_bandwidth_kbyte: 3.616076749251911
+    ObjectStorageGatewayCreateReq:
+      type: object
+      properties:
+        os_gateway:
+          $ref: '#/components/schemas/ObjectStorageGatewayCreateReq_Gateway'
+      title: ObjectStorageGatewayCreateReq
+      example:
+        os_gateway:
+          role: role
+          port: 6
+          name: name
+          description: description
+          gateway_ip: gateway_ip
+          host_id: 0
+    ObjectStorageGatewaysResp:
+      type: object
+      required:
+      - os_gateways
+      properties:
+        os_gateways:
+          type: array
+          description: object storage gateways
+          items:
+            $ref: '#/components/schemas/ObjectStorageGatewayRecord'
+      title: ObjectStorageGatewaysResp
+      example:
+        os_gateways:
+        - ''
+        - ''
+    ObjectStorageGatewaySamplesResp:
+      type: object
+      required:
+      - os_gateway_samples
+      properties:
+        os_gateway_samples:
+          type: array
+          description: object storage gateway samples
+          items:
+            $ref: '#/components/schemas/ObjectStorageGatewayStat'
+      title: ObjectStorageGatewaySamplesResp
+      example:
+        os_gateway_samples:
+        - up_bandwidth_kbyte: 3.616076749251911
+          up_ops: 2.027123023002322
+          down_bandwidth_kbyte: 6.027456183070403
+          down_ops: 1.4658129805029452
+          sync_down_ops: 9.301444243932576
+          merge_speed: 5
+          mem_usage_percent: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+          requests: 2
+          sync_down_bandwidth_kbyte: 7.061401241503109
+          cpu_util: 0.8008281904610115
+        - up_bandwidth_kbyte: 3.616076749251911
+          up_ops: 2.027123023002322
+          down_bandwidth_kbyte: 6.027456183070403
+          down_ops: 1.4658129805029452
+          sync_down_ops: 9.301444243932576
+          merge_speed: 5
+          mem_usage_percent: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+          requests: 2
+          sync_down_bandwidth_kbyte: 7.061401241503109
+          cpu_util: 0.8008281904610115
+    ObjectStorageZone_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+      title: ObjectStorageZone_Nestview
+      example:
+        id: 7
+        uuid: uuid
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    ObjectStorageGatewayStat:
+      type: object
+      properties:
+        cpu_util:
+          type: number
+          format: double
+        create:
+          type: string
+          format: date-time
+        down_bandwidth_kbyte:
+          type: number
+          format: double
+        down_ops:
+          type: number
+          format: double
+        mem_usage_percent:
+          type: number
+          format: double
+        merge_speed:
+          type: integer
+          format: int64
+        requests:
+          type: integer
+          format: int64
+        sync_down_bandwidth_kbyte:
+          type: number
+          format: double
+        sync_down_ops:
+          type: number
+          format: double
+        up_bandwidth_kbyte:
+          type: number
+          format: double
+        up_ops:
+          type: number
+          format: double
+      title: ObjectStorageGatewayStat
+      description: ObjectStorageGatewayStat is the model of object_storage_gateway_stat
+      example:
+        up_bandwidth_kbyte: 3.616076749251911
         up_ops: 2.027123023002322
         down_bandwidth_kbyte: 6.027456183070403
         down_ops: 1.4658129805029452
@@ -479,25 +493,23 @@ definitions:
         requests: 2
         sync_down_bandwidth_kbyte: 7.061401241503109
         cpu_util: 0.8008281904610115
-      - up_bandwidth_kbyte: 3.616076749251911
-        up_ops: 2.027123023002322
-        down_bandwidth_kbyte: 6.027456183070403
-        down_ops: 1.4658129805029452
-        sync_down_ops: 9.301444243932576
-        merge_speed: 5
-        mem_usage_percent: 5.962133916683182
-        create: '2000-01-23T04:56:07.000+00:00'
-        requests: 2
-        sync_down_bandwidth_kbyte: 7.061401241503109
-        cpu_util: 0.8008281904610115
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    ObjectStorageGatewayUpdateReq:
+      type: object
+      properties:
+        os_gateway:
+          $ref: '#/components/schemas/ObjectStorageGatewayUpdateReq_Gateway'
+      title: ObjectStorageGatewayUpdateReq
+      example:
+        os_gateway:
+          action: action
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

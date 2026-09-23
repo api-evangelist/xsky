@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths client-codes API
+  title: XMS Client Codes API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: client-codes
-  description: 'ClientCodeController Operations about client code
-
-    '
+  description: ClientCodeController Operations about client code
 paths:
   /client-codes/:
     get:
@@ -19,42 +18,44 @@ paths:
       - client-codes
       description: List client iqns/wwns
       operationId: ListClientCodes
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: type
         in: query
         description: FC/iSCSI
         required: false
-        type: string
         x-exportParamName: Type_
+        schema:
+          type: string
       - name: unused
         in: query
         description: list unused client codes
         required: false
-        type: boolean
         x-exportParamName: Unused
+        schema:
+          type: boolean
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ClientCodesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientCodesResp'
         400:
           description: BadRequest
         500:
@@ -62,55 +63,58 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  ClientCodesResp:
-    type: object
-    required:
-    - client_codes
-    properties:
-      client_codes:
-        type: array
-        description: client codes
-        items:
-          $ref: '#/definitions/ClientCode'
-    title: ClientCodesResp
-    example:
-      client_codes:
-      - code: code
+      summary: List client codes
+      x-summary-source: derived
+components:
+  schemas:
+    ClientCode:
+      type: object
+      properties:
+        code:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        type:
+          type: string
+      title: ClientCode
+      example:
+        code: code
         create: '2000-01-23T04:56:07.000+00:00'
         id: 0
         type: type
-      - code: code
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        type: type
-  ClientCode:
-    type: object
-    properties:
-      code:
-        type: string
-      create:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      type:
-        type: string
-    title: ClientCode
-    example:
-      code: code
-      create: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-      type: type
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    ClientCodesResp:
+      type: object
+      required:
+      - client_codes
+      properties:
+        client_codes:
+          type: array
+          description: client codes
+          items:
+            $ref: '#/components/schemas/ClientCode'
+      title: ClientCodesResp
+      example:
+        client_codes:
+        - code: code
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+        - code: code
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

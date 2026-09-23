@@ -1,87 +1,79 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths dp-gateways API
+  title: XMS Dp Gateways API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: dp-gateways
-  description: 'DpGatewayController API /dp-gateways/
-
-    '
+  description: DpGatewayController API /dp-gateways/
 paths:
   /dp-gateways/:
     get:
       tags:
       - dp-gateways
-      description: List dp gateways
       operationId: ListDpGateways
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpGatewaysResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpGatewaysResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List dp gateways
+      x-summary-source: derived
     post:
       tags:
       - dp-gateways
       description: Create a dp gateway
       operationId: CreateDpGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: dp gateway info
-        required: true
-        schema:
-          $ref: '#/definitions/DpGatewayCreateReq'
-        x-exportParamName: Body
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DpGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpGatewayResp'
         400:
           description: BadRequest
         409:
@@ -91,56 +83,63 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DpGatewayCreateReq'
+        description: dp gateway info
+        required: true
+      summary: Create dp gateway
+      x-summary-source: derived
   /dp-gateways/{gateway_id}:
     get:
       tags:
       - dp-gateways
-      description: Get dp gateway
       operationId: GetDpGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: dp gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpGatewayResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get dp gateway
+      x-summary-source: derived
     delete:
       tags:
       - dp-gateways
-      description: Delete dp gateway
       operationId: DeleteDpGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: dp gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
+        schema:
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DpGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpGatewayResp'
         404:
           description: NotFound
         409:
@@ -150,35 +149,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete dp gateway
+      x-summary-source: derived
     patch:
       tags:
       - dp-gateways
       description: Update a dp gateway
       operationId: UpdateDpGateway
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: gateway_id
         in: path
         description: dp gateway id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GatewayId
-      - in: body
-        name: body
-        description: dp gateway info
-        required: true
         schema:
-          $ref: '#/definitions/DpGatewayUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpGatewayResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpGatewayResp'
         400:
           description: BadRequest
         404:
@@ -190,108 +183,163 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  DpGatewayCreateReq_Gateway:
-    type: object
-    required:
-    - host_id
-    - name
-    properties:
-      host_id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: DpGatewayCreateReq_Gateway
-    example:
-      name: name
-      host_id: 0
-  DpGateway:
-    type: object
-    properties:
-      admin_port:
-        type: integer
-        format: int64
-      create:
-        type: string
-        format: date-time
-      gateway_port:
-        type: integer
-        format: int64
-      host:
-        $ref: '#/definitions/Host_Nestview'
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: DpGateway
-    description: DpGateway is a process to execute data protection jobs
-    example:
-      admin_port: 0
-      gateway_port: 6
-      host:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DpGatewayUpdateReq'
+        description: dp gateway info
+        required: true
+      summary: Update dp gateway
+      x-summary-source: derived
+components:
+  schemas:
+    DpGatewayUpdateReq_Gateway:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: dp gateway name
+      title: DpGatewayUpdateReq_Gateway
+      example:
+        name: name
+    DpGatewaysResp:
+      type: object
+      required:
+      - dp_gateways
+      properties:
+        dp_gateways:
+          type: array
+          description: dp gateways
+          items:
+            $ref: '#/components/schemas/DpGateway'
+      title: DpGatewaysResp
+      example:
+        dp_gateways:
+        - admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+        - admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+    DpGatewayCreateReq:
+      type: object
+      properties:
+        dp_gateway:
+          $ref: '#/components/schemas/DpGatewayCreateReq_Gateway'
+      title: DpGatewayCreateReq
+      example:
+        dp_gateway:
+          name: name
+          host_id: 0
+    DpGatewayCreateReq_Gateway:
+      type: object
+      required:
+      - host_id
+      - name
+      properties:
+        host_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGatewayCreateReq_Gateway
+      example:
+        name: name
+        host_id: 0
+    DpGatewayUpdateReq:
+      type: object
+      properties:
+        dp_gateway:
+          $ref: '#/components/schemas/DpGatewayUpdateReq_Gateway'
+      title: DpGatewayUpdateReq
+      example:
+        dp_gateway:
+          name: name
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
         name: name
         admin_ip: admin_ip
         id: 0
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 1
-      status: status
-  Host_Nestview:
-    type: object
-    required:
-    - admin_ip
-    properties:
-      admin_ip:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Host_Nestview
-    example:
-      name: name
-      admin_ip: admin_ip
-      id: 0
-  DpGatewayUpdateReq_Gateway:
-    type: object
-    required:
-    - name
-    properties:
-      name:
-        type: string
-        description: dp gateway name
-    title: DpGatewayUpdateReq_Gateway
-    example:
-      name: name
-  DpGatewayUpdateReq:
-    type: object
-    properties:
-      dp_gateway:
-        $ref: '#/definitions/DpGatewayUpdateReq_Gateway'
-    title: DpGatewayUpdateReq
-    example:
-      dp_gateway:
-        name: name
-  DpGatewayResp:
-    type: object
-    required:
-    - dp_gateway
-    properties:
-      dp_gateway:
-        description: dp gateway
-        $ref: '#/definitions/DpGateway'
-    title: DpGatewayResp
-    example:
-      dp_gateway:
+    DpGatewayResp:
+      type: object
+      required:
+      - dp_gateway
+      properties:
+        dp_gateway:
+          description: dp gateway
+          $ref: '#/components/schemas/DpGateway'
+      title: DpGatewayResp
+      example:
+        dp_gateway:
+          admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+    DpGateway:
+      type: object
+      properties:
+        admin_port:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        gateway_port:
+          type: integer
+          format: int64
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: DpGateway
+      description: DpGateway is a process to execute data protection jobs
+      example:
         admin_port: 0
         gateway_port: 6
         host:
@@ -303,59 +351,14 @@ definitions:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 1
         status: status
-  DpGatewaysResp:
-    type: object
-    required:
-    - dp_gateways
-    properties:
-      dp_gateways:
-        type: array
-        description: dp gateways
-        items:
-          $ref: '#/definitions/DpGateway'
-    title: DpGatewaysResp
-    example:
-      dp_gateways:
-      - admin_port: 0
-        gateway_port: 6
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 1
-        status: status
-      - admin_port: 0
-        gateway_port: 6
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 1
-        status: status
-  DpGatewayCreateReq:
-    type: object
-    properties:
-      dp_gateway:
-        $ref: '#/definitions/DpGatewayCreateReq_Gateway'
-    title: DpGatewayCreateReq
-    example:
-      dp_gateway:
-        name: name
-        host_id: 0
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

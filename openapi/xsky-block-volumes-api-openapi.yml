@@ -1,126 +1,136 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths block-volumes API
+  title: XMS Block Volumes API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: block-volumes
-  description: 'BlockVolumeController Operations about Block
-
-    '
+  description: BlockVolumeController Operations about Block
 paths:
   /block-volumes/:
     get:
       tags:
       - block-volumes
-      description: List block volumes
       operationId: ListBlockVolumes
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: pool_id
         in: query
         description: The id of the pool volumes belong to
         required: false
-        type: integer
-        format: int64
         x-exportParamName: PoolId
+        schema:
+          type: integer
+          format: int64
       - name: block_snapshot_id
         in: query
         description: related snapshot id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: BlockSnapshotId
+        schema:
+          type: integer
+          format: int64
       - name: name
         in: query
         description: name of volume
         required: false
-        type: string
         x-exportParamName: Name
+        schema:
+          type: string
       - name: client_group_id
         in: query
         description: related client group id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: ClientGroupId
+        schema:
+          type: integer
+          format: int64
       - name: mapping_group_id
         in: query
         description: related mapping group id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: MappingGroupId
+        schema:
+          type: integer
+          format: int64
       - name: access_path_id
         in: query
         description: related access path id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: AccessPathId
+        schema:
+          type: integer
+          format: int64
       - name: passive
         in: query
         description: passive or not
         required: false
-        type: boolean
         x-exportParamName: Passive
+        schema:
+          type: boolean
       - name: recycled
         in: query
         description: recycled or not
         required: false
-        type: boolean
         x-exportParamName: Recycled
+        schema:
+          type: boolean
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       - name: all
         in: query
         description: show all volumes
         required: false
-        type: boolean
         x-exportParamName: All
+        schema:
+          type: boolean
       - name: dp_block_backup_policy_id
         in: query
         description: show volumes of specific dp block backup policy
         required: false
-        type: integer
-        format: int64
         x-exportParamName: DpBlockBackupPolicyId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumesResp'
         400:
           description: BadRequest
         500:
@@ -128,28 +138,19 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List block volumes
+      x-summary-source: derived
     post:
       tags:
       - block-volumes
-      description: Create block volume
       operationId: CreateBlockVolume
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: volume info
-        required: true
-        schema:
-          $ref: '#/definitions/VolumeCreateReq'
-        x-exportParamName: Body
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         500:
@@ -157,22 +158,28 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeCreateReq'
+        description: volume info
+        required: true
+      summary: Create block volume
+      x-summary-source: derived
   /block-volumes/samples:
     get:
       tags:
       - block-volumes
       description: Get samples of multiple block volumes
       operationId: BatchGetBlockVolumeSamples
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/MultiVolumesSamplesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiVolumesSamplesResp'
         400:
           description: BadRequest
         404:
@@ -182,29 +189,30 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Batch get block volume samples
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:
     get:
       tags:
       - block-volumes
       description: get a block volume
       operationId: GetBlockVolume
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         404:
           description: NotFound
         500:
@@ -212,34 +220,35 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get block volume
+      x-summary-source: derived
     delete:
       tags:
       - block-volumes
-      description: Delete block volume
       operationId: DeleteBlockVolume
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: bypass_trash
         in: query
         description: bypass trash or not
         required: false
-        type: boolean
         x-exportParamName: BypassTrash
+        schema:
+          type: boolean
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -249,35 +258,29 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
+      summary: Delete block volume
+      x-summary-source: derived
     patch:
       tags:
       - block-volumes
       description: Update block volume info
       operationId: UpdateBlockVolume
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: volume info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -287,47 +290,58 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeUpdateReq'
+        description: volume info
+        required: true
+      summary: Update block volume
+      x-summary-source: derived
   /block-volumes/{block_volume_id}/samples:
     get:
       tags:
       - block-volumes
       description: get a block volume's Samples
       operationId: GetBlockVolumeSamples
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: duration_begin
         in: query
         description: duration begin timestamp
         required: false
-        type: string
         x-exportParamName: DurationBegin
+        schema:
+          type: string
       - name: duration_end
         in: query
         description: duration end timestamp
         required: false
-        type: string
         x-exportParamName: DurationEnd
+        schema:
+          type: string
       - name: period
         in: query
         description: samples period
         required: false
-        type: string
         x-exportParamName: Period
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeSamplesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeSamplesResp'
         400:
           description: BadRequest
         404:
@@ -337,35 +351,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get block volume samples
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:migrate:
     post:
       tags:
       - block-volumes
       operationId: MigrateBlockVolume
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: volume migration info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeMigrateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -377,35 +385,43 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeMigrateReq'
+        description: volume migration info
+        required: true
+      summary: Migrate block volume
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:rebuild-replication:
     post:
       tags:
       - block-volumes
-      description: Rebuild block volume replication
       operationId: RebuildBlockVolumeReplication
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: force
         in: query
         description: force rebuild or not
         required: false
-        type: boolean
         x-exportParamName: Force
+        schema:
+          type: boolean
       responses:
         202:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -417,36 +433,30 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Rebuild block volume replication
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:set-backup-protection:
     post:
       tags:
       - block-volumes
       description: Set backup protection for a block volume
       operationId: SetBackupProtection
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: request info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeBackupProtectionReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -456,40 +466,42 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeBackupProtectionReq'
+        description: request info
+        required: true
+      summary: Set backup protection
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:set-crc:
     post:
       tags:
       - block-volumes
-      description: Set block volume crc
       operationId: SetBlockVolumeCrc
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: volume crc info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeCrcSetReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -499,36 +511,36 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeCrcSetReq'
+        description: volume crc info
+        required: true
+      summary: Set block volume crc
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:set-replication:
     post:
       tags:
       - block-volumes
-      description: Set block volume replication
       operationId: SetBlockVolumeReplication
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: volume replication info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeReplicationSetReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -540,36 +552,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeReplicationSetReq'
+        description: volume replication info
+        required: true
+      summary: Set block volume replication
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:set-snapshot-protection:
     post:
       tags:
       - block-volumes
       description: Set snapshot protection for a block volume
       operationId: SetSnapshotProtection
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: request info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeSnapshotProtectionReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -579,29 +592,36 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeSnapshotProtectionReq'
+        description: request info
+        required: true
+      summary: Set snapshot protection
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:suspend-replication:
     post:
       tags:
       - block-volumes
-      description: Suspend block volume replication
       operationId: SuspendBlockVolumeReplication
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       responses:
         202:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -613,35 +633,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Suspend block volume replication
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:unset-backup-protection:
     post:
       tags:
       - block-volumes
       description: Unset backup protection for a block volume
       operationId: UnsetBackupProtection
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: force
         in: query
         description: force unset or not
         required: false
-        type: boolean
         x-exportParamName: Force
+        schema:
+          type: boolean
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -651,40 +673,35 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Unset backup protection
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:unset-crc:
     post:
       tags:
       - block-volumes
-      description: Unset block volume crc
       operationId: UnsetBlockVolumeCrc
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
-      - in: body
-        name: body
-        description: volume crc info
-        required: true
         schema:
-          $ref: '#/definitions/VolumeCrcSetReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -694,29 +711,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumeCrcSetReq'
+        description: volume crc info
+        required: true
+      summary: Unset block volume crc
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:unset-replication:
     post:
       tags:
       - block-volumes
       description: Unset block volume replication
       operationId: SetBlockVolumeReplication
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       responses:
         202:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -728,35 +753,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Set block volume replication
+      x-summary-source: derived
   /block-volumes/{block_volume_id}:unset-snapshot-protection:
     post:
       tags:
       - block-volumes
       description: Unset snapshot protection for a block volume
       operationId: UnsetSnapshotProtection
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: path
         description: the block volume id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: force
         in: query
         description: force unset or not
         required: false
-        type: boolean
         x-exportParamName: Force
+        schema:
+          type: boolean
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/VolumeResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeResp'
         400:
           description: BadRequest
         404:
@@ -766,65 +793,202 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
-definitions:
-  VolumeRecord:
-    title: VolumeRecord
-    allOf:
-    - $ref: '#/definitions/Volume'
-    - properties:
-        samples:
-          type: array
-          items:
-            $ref: '#/definitions/VolumeStat'
-    description: VolumeRecord defines the response content of volume related API
-  DpBlockReplicationPolicy_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: DpBlockReplicationPolicy_Nestview
-  TrashResource_Nestview:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      expire_time:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      resource_id:
-        type: integer
-        format: int64
-      resource_type:
-        type: string
-    title: TrashResource_Nestview
-  VolumeReplicationSetReq:
-    type: object
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeReplicationSetReq_Volume'
-    title: VolumeReplicationSetReq
-    example:
-      block_volume:
-        dest_pool_id: 0
-        dest_volume_name: dest_volume_name
-        dp_block_replication_policy_id: 6
-  VolumeCreateReq:
-    type: object
-    required:
-    - block_volume
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeCreateReq_Volume'
-    title: VolumeCreateReq
-    example:
-      block_volume:
+      summary: Unset snapshot protection
+      x-summary-source: derived
+components:
+  schemas:
+    VolumeBackupProtectionReq:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeBackupProtectionReq_Volume'
+      title: VolumeBackupProtectionReq
+      example:
+        block_volume:
+          dp_block_backup_policy_id: 0
+    VolumeSnapshotProtectionReq:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeSnapshotProtectionReq_Volume'
+      title: VolumeSnapshotProtectionReq
+      example:
+        block_volume:
+          dest_pool_id: 0
+          dest_volume_name: dest_volume_name
+          dp_block_snapshot_policy_id: 6
+    VolumeStat:
+      type: object
+      properties:
+        FailedTask:
+          $ref: '#/components/schemas/VolumeFailedTask'
+        create:
+          type: string
+          format: date-time
+        io_size:
+          $ref: '#/components/schemas/VolumeIOSize'
+        migrate_write_bandwidth_kbyte:
+          type: number
+          format: double
+        migrate_write_iops:
+          type: number
+          format: double
+        migrate_write_latency_us:
+          type: number
+          format: double
+        non_io_task:
+          $ref: '#/components/schemas/VolumeNonIOTask'
+        queue_depth:
+          type: number
+          format: double
+        read_bandwidth_kbyte:
+          type: number
+          format: double
+        read_iops:
+          type: number
+          format: double
+        read_latency_us:
+          type: number
+          format: double
+        total_bandwidth_kbyte:
+          type: number
+          format: double
+        total_iops:
+          type: number
+          format: double
+        write_bandwidth_kbyte:
+          type: number
+          format: double
+        write_iops:
+          type: number
+          format: double
+        write_latency_us:
+          type: number
+          format: double
+      title: VolumeStat
+      description: VolumeStat records volume stat info
+      example:
+        migrate_write_iops: 1.1730742509559433
+        FailedTask:
+          abort: 7.061401241503109
+          busy: 9.301444243932576
+          check_cond: 3.616076749251911
+          resv_conflict: 2.027123023002322
+        total_bandwidth_kbyte: 1.284659006116532
+        write_latency_us: 5.944895607614016
+        total_iops: 2.8841621266687802
+        read_latency_us: 6.965117697638846
+        read_iops: 3.5571952270680973
+        migrate_write_latency_us: 4.965218492984954
+        non_io_task:
+          ats: 5.025004791520295
+          other: 9.965781217890562
+          write_same: 6.683562403749608
+          xcopy: 8.762042012749001
+          unmap: 9.369310271410669
+        io_size:
+          8_32kbyte: 1.4894159098541704
+          0_4kbyte: 4.145608029883936
+          32_64kbyte: 7.386281948385884
+          4_8kbyte: 1.2315135367772556
+          above_512kbyte: 6.84685269835264
+          64_512kbyte: 1.0246457001441578
+        read_bandwidth_kbyte: 6.438423552598547
+        write_bandwidth_kbyte: 6.778324963048013
+        migrate_write_bandwidth_kbyte: 7.457744773683766
+        create: '2000-01-23T04:56:07.000+00:00'
+        write_iops: 6.878052220127876
+        queue_depth: 9.018348186070783
+    VolumeCreateReq_Volume:
+      type: object
+      required:
+      - name
+      - pool_id
+      properties:
+        block_snapshot_id:
+          type: integer
+          format: int64
+          description: id of related block volume snapshot
+        crc_check:
+          type: boolean
+          description: crc check or not
+        description:
+          type: string
+          description: description of volume
+        flattened:
+          type: boolean
+          description: flatten or not flatten
+        format:
+          type: integer
+          format: int64
+          description: 'volume format: { 128 | 129 (advanced) }, default 128'
+        name:
+          type: string
+          description: name of volume
+        performance_priority:
+          type: integer
+          format: int64
+          description: 'performance priority: { 0 | 1 }, default 0'
+        pool_id:
+          type: integer
+          format: int64
+          description: id of pool belonged to
+        qos:
+          description: qos of volume
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+          description: enable or disable the qos
+        remote_cluster_fs_id:
+          type: string
+          description: replication remote cluster fsid
+        replication_pool:
+          type: string
+          description: replication peer pool
+        replication_pool_id:
+          type: integer
+          format: int64
+          description: replication peer pool id
+        replication_pool_name:
+          type: string
+          description: replication peer pool name
+        replication_version:
+          type: integer
+          format: int64
+          description: replication version
+        replication_volume:
+          type: string
+          description: replication peer volume
+        replication_volume_id:
+          type: integer
+          format: int64
+          description: replication peer volume id
+        replication_volume_name:
+          type: string
+          description: replication peer volume name
+        size:
+          type: integer
+          format: int64
+          description: size of volume
+        sn:
+          type: string
+          description: volume sn, used when creating replication volume
+        snapshot_replication_pool:
+          type: string
+          description: snapshot replication peer pool
+        snapshot_replication_pool_id:
+          type: integer
+          format: int64
+          description: snapshot replication peer pool id
+        snapshot_replication_volume:
+          type: string
+          description: snapshot replication peer volume
+        snapshot_replication_volume_id:
+          type: integer
+          format: int64
+          description: snapshot replication peer volume id
+      title: VolumeCreateReq_Volume
+      example:
         flattened: true
         replication_pool: replication_pool
         replication_version: 2
@@ -853,80 +1017,545 @@ definitions:
         sn: sn
         replication_volume_id: 4
         qos_enabled: true
-  VolumeFailedTask:
-    type: object
-    properties:
-      abort:
-        type: number
-        format: double
-      busy:
-        type: number
-        format: double
-      check_cond:
-        type: number
-        format: double
-      resv_conflict:
-        type: number
-        format: double
-    title: VolumeFailedTask
-    example:
-      abort: 7.061401241503109
-      busy: 9.301444243932576
-      check_cond: 3.616076749251911
-      resv_conflict: 2.027123023002322
-  Paging:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int64
-      duration:
-        type: integer
-        format: int64
-      duration_begin:
-        type: string
-        format: date-time
-      duration_end:
-        type: string
-        format: date-time
-      limit:
-        type: integer
-        format: int64
-      next:
-        type: string
-      offset:
-        type: integer
-        format: int64
-      period:
-        type: string
-      total_count:
-        type: integer
-        format: int64
-      truncated:
-        type: boolean
-    title: Paging
-    description: Paging defines paging object
-    example:
-      duration: 1
-      next: next
-      period: period
-      offset: 5
-      total_count: 2
-      count: 6
-      duration_end: '2000-01-23T04:56:07.000+00:00'
-      limit: 5
-      truncated: true
-      duration_begin: '2000-01-23T04:56:07.000+00:00'
-  VolumeUpdateReq:
-    type: object
-    required:
-    - block_volume
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeUpdateReq_Volume'
-    title: VolumeUpdateReq
-    example:
-      block_volume:
+    VolumeGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: VolumeGroup_Nestview
+      example:
+        name: name
+        id: 6
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    DpBlockSnapshotPolicy_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpBlockSnapshotPolicy_Nestview
+      example:
+        name: name
+        id: 6
+    VolumeReplicationSetReq_Volume:
+      type: object
+      required:
+      - dest_pool_id
+      - dest_volume_name
+      - dp_block_replication_policy_id
+      properties:
+        dest_pool_id:
+          type: integer
+          format: int64
+          description: destination pool id
+        dest_volume_name:
+          type: string
+          description: destination volume name
+        dp_block_replication_policy_id:
+          type: integer
+          format: int64
+          description: block replication policy id
+      title: VolumeReplicationSetReq_Volume
+      example:
+        dest_pool_id: 0
+        dest_volume_name: dest_volume_name
+        dp_block_replication_policy_id: 6
+    VolumeCrcSetReq:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeCrcSetReq_Volume'
+      title: VolumeCrcSetReq
+      example:
+        block_volume:
+          crc_check: true
+    VolumeUpdateReq:
+      type: object
+      required:
+      - block_volume
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeUpdateReq_Volume'
+      title: VolumeUpdateReq
+      example:
+        block_volume:
+          flattened: true
+          performance_priority: 6
+          qos:
+            burst_total_iops: 2
+            max_total_iops: 9
+            burst_total_bw: 5
+            max_total_bw: 7
+          size: 1
+          block_snapshot_id: 0
+          name: name
+          action: action
+          description: description
+          qos_enabled: true
+    Snapshot_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Snapshot_Nestview
+      example:
+        name: name
+        id: 0
+    VolumeSamplesResp:
+      type: object
+      required:
+      - block_volume_samples
+      properties:
+        block_volume_samples:
+          type: array
+          description: volume samples
+          items:
+            $ref: '#/components/schemas/VolumeStat'
+      title: VolumeSamplesResp
+      example:
+        block_volume_samples:
+        - migrate_write_iops: 1.1730742509559433
+          FailedTask:
+            abort: 7.061401241503109
+            busy: 9.301444243932576
+            check_cond: 3.616076749251911
+            resv_conflict: 2.027123023002322
+          total_bandwidth_kbyte: 1.284659006116532
+          write_latency_us: 5.944895607614016
+          total_iops: 2.8841621266687802
+          read_latency_us: 6.965117697638846
+          read_iops: 3.5571952270680973
+          migrate_write_latency_us: 4.965218492984954
+          non_io_task:
+            ats: 5.025004791520295
+            other: 9.965781217890562
+            write_same: 6.683562403749608
+            xcopy: 8.762042012749001
+            unmap: 9.369310271410669
+          io_size:
+            8_32kbyte: 1.4894159098541704
+            0_4kbyte: 4.145608029883936
+            32_64kbyte: 7.386281948385884
+            4_8kbyte: 1.2315135367772556
+            above_512kbyte: 6.84685269835264
+            64_512kbyte: 1.0246457001441578
+          read_bandwidth_kbyte: 6.438423552598547
+          write_bandwidth_kbyte: 6.778324963048013
+          migrate_write_bandwidth_kbyte: 7.457744773683766
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 6.878052220127876
+          queue_depth: 9.018348186070783
+        - migrate_write_iops: 1.1730742509559433
+          FailedTask:
+            abort: 7.061401241503109
+            busy: 9.301444243932576
+            check_cond: 3.616076749251911
+            resv_conflict: 2.027123023002322
+          total_bandwidth_kbyte: 1.284659006116532
+          write_latency_us: 5.944895607614016
+          total_iops: 2.8841621266687802
+          read_latency_us: 6.965117697638846
+          read_iops: 3.5571952270680973
+          migrate_write_latency_us: 4.965218492984954
+          non_io_task:
+            ats: 5.025004791520295
+            other: 9.965781217890562
+            write_same: 6.683562403749608
+            xcopy: 8.762042012749001
+            unmap: 9.369310271410669
+          io_size:
+            8_32kbyte: 1.4894159098541704
+            0_4kbyte: 4.145608029883936
+            32_64kbyte: 7.386281948385884
+            4_8kbyte: 1.2315135367772556
+            above_512kbyte: 6.84685269835264
+            64_512kbyte: 1.0246457001441578
+          read_bandwidth_kbyte: 6.438423552598547
+          write_bandwidth_kbyte: 6.778324963048013
+          migrate_write_bandwidth_kbyte: 7.457744773683766
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 6.878052220127876
+          queue_depth: 9.018348186070783
+    VolumesResp:
+      type: object
+      required:
+      - block_volumes
+      properties:
+        block_volumes:
+          type: array
+          description: volumes
+          items:
+            $ref: '#/components/schemas/VolumeRecord'
+      title: VolumesResp
+      example:
+        block_volumes:
+        - ''
+        - ''
+    Paging:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        duration:
+          type: integer
+          format: int64
+        duration_begin:
+          type: string
+          format: date-time
+        duration_end:
+          type: string
+          format: date-time
+        limit:
+          type: integer
+          format: int64
+        next:
+          type: string
+        offset:
+          type: integer
+          format: int64
+        period:
+          type: string
+        total_count:
+          type: integer
+          format: int64
+        truncated:
+          type: boolean
+      title: Paging
+      description: Paging defines paging object
+      example:
+        duration: 1
+        next: next
+        period: period
+        offset: 5
+        total_count: 2
+        count: 6
+        duration_end: '2000-01-23T04:56:07.000+00:00'
+        limit: 5
+        truncated: true
+        duration_begin: '2000-01-23T04:56:07.000+00:00'
+    MultiVolumesSamplesResp:
+      type: object
+      properties:
+        block_volumes_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/VolumeSamplesElem'
+      title: MultiVolumesSamplesResp
+      example:
+        block_volumes_samples:
+        - paging:
+            duration: 1
+            next: next
+            period: period
+            offset: 5
+            total_count: 2
+            count: 6
+            duration_end: '2000-01-23T04:56:07.000+00:00'
+            limit: 5
+            truncated: true
+            duration_begin: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          samples:
+          - migrate_write_iops: 1.1730742509559433
+            FailedTask:
+              abort: 7.061401241503109
+              busy: 9.301444243932576
+              check_cond: 3.616076749251911
+              resv_conflict: 2.027123023002322
+            total_bandwidth_kbyte: 1.284659006116532
+            write_latency_us: 5.944895607614016
+            total_iops: 2.8841621266687802
+            read_latency_us: 6.965117697638846
+            read_iops: 3.5571952270680973
+            migrate_write_latency_us: 4.965218492984954
+            non_io_task:
+              ats: 5.025004791520295
+              other: 9.965781217890562
+              write_same: 6.683562403749608
+              xcopy: 8.762042012749001
+              unmap: 9.369310271410669
+            io_size:
+              8_32kbyte: 1.4894159098541704
+              0_4kbyte: 4.145608029883936
+              32_64kbyte: 7.386281948385884
+              4_8kbyte: 1.2315135367772556
+              above_512kbyte: 6.84685269835264
+              64_512kbyte: 1.0246457001441578
+            read_bandwidth_kbyte: 6.438423552598547
+            write_bandwidth_kbyte: 6.778324963048013
+            migrate_write_bandwidth_kbyte: 7.457744773683766
+            create: '2000-01-23T04:56:07.000+00:00'
+            write_iops: 6.878052220127876
+            queue_depth: 9.018348186070783
+          - migrate_write_iops: 1.1730742509559433
+            FailedTask:
+              abort: 7.061401241503109
+              busy: 9.301444243932576
+              check_cond: 3.616076749251911
+              resv_conflict: 2.027123023002322
+            total_bandwidth_kbyte: 1.284659006116532
+            write_latency_us: 5.944895607614016
+            total_iops: 2.8841621266687802
+            read_latency_us: 6.965117697638846
+            read_iops: 3.5571952270680973
+            migrate_write_latency_us: 4.965218492984954
+            non_io_task:
+              ats: 5.025004791520295
+              other: 9.965781217890562
+              write_same: 6.683562403749608
+              xcopy: 8.762042012749001
+              unmap: 9.369310271410669
+            io_size:
+              8_32kbyte: 1.4894159098541704
+              0_4kbyte: 4.145608029883936
+              32_64kbyte: 7.386281948385884
+              4_8kbyte: 1.2315135367772556
+              above_512kbyte: 6.84685269835264
+              64_512kbyte: 1.0246457001441578
+            read_bandwidth_kbyte: 6.438423552598547
+            write_bandwidth_kbyte: 6.778324963048013
+            migrate_write_bandwidth_kbyte: 7.457744773683766
+            create: '2000-01-23T04:56:07.000+00:00'
+            write_iops: 6.878052220127876
+            queue_depth: 9.018348186070783
+        - paging:
+            duration: 1
+            next: next
+            period: period
+            offset: 5
+            total_count: 2
+            count: 6
+            duration_end: '2000-01-23T04:56:07.000+00:00'
+            limit: 5
+            truncated: true
+            duration_begin: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          samples:
+          - migrate_write_iops: 1.1730742509559433
+            FailedTask:
+              abort: 7.061401241503109
+              busy: 9.301444243932576
+              check_cond: 3.616076749251911
+              resv_conflict: 2.027123023002322
+            total_bandwidth_kbyte: 1.284659006116532
+            write_latency_us: 5.944895607614016
+            total_iops: 2.8841621266687802
+            read_latency_us: 6.965117697638846
+            read_iops: 3.5571952270680973
+            migrate_write_latency_us: 4.965218492984954
+            non_io_task:
+              ats: 5.025004791520295
+              other: 9.965781217890562
+              write_same: 6.683562403749608
+              xcopy: 8.762042012749001
+              unmap: 9.369310271410669
+            io_size:
+              8_32kbyte: 1.4894159098541704
+              0_4kbyte: 4.145608029883936
+              32_64kbyte: 7.386281948385884
+              4_8kbyte: 1.2315135367772556
+              above_512kbyte: 6.84685269835264
+              64_512kbyte: 1.0246457001441578
+            read_bandwidth_kbyte: 6.438423552598547
+            write_bandwidth_kbyte: 6.778324963048013
+            migrate_write_bandwidth_kbyte: 7.457744773683766
+            create: '2000-01-23T04:56:07.000+00:00'
+            write_iops: 6.878052220127876
+            queue_depth: 9.018348186070783
+          - migrate_write_iops: 1.1730742509559433
+            FailedTask:
+              abort: 7.061401241503109
+              busy: 9.301444243932576
+              check_cond: 3.616076749251911
+              resv_conflict: 2.027123023002322
+            total_bandwidth_kbyte: 1.284659006116532
+            write_latency_us: 5.944895607614016
+            total_iops: 2.8841621266687802
+            read_latency_us: 6.965117697638846
+            read_iops: 3.5571952270680973
+            migrate_write_latency_us: 4.965218492984954
+            non_io_task:
+              ats: 5.025004791520295
+              other: 9.965781217890562
+              write_same: 6.683562403749608
+              xcopy: 8.762042012749001
+              unmap: 9.369310271410669
+            io_size:
+              8_32kbyte: 1.4894159098541704
+              0_4kbyte: 4.145608029883936
+              32_64kbyte: 7.386281948385884
+              4_8kbyte: 1.2315135367772556
+              above_512kbyte: 6.84685269835264
+              64_512kbyte: 1.0246457001441578
+            read_bandwidth_kbyte: 6.438423552598547
+            write_bandwidth_kbyte: 6.778324963048013
+            migrate_write_bandwidth_kbyte: 7.457744773683766
+            create: '2000-01-23T04:56:07.000+00:00'
+            write_iops: 6.878052220127876
+            queue_depth: 9.018348186070783
+    VolumeSamplesElem:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        paging:
+          $ref: '#/components/schemas/Paging'
+        samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/VolumeStat'
+      title: VolumeSamplesElem
+      example:
+        paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - migrate_write_iops: 1.1730742509559433
+          FailedTask:
+            abort: 7.061401241503109
+            busy: 9.301444243932576
+            check_cond: 3.616076749251911
+            resv_conflict: 2.027123023002322
+          total_bandwidth_kbyte: 1.284659006116532
+          write_latency_us: 5.944895607614016
+          total_iops: 2.8841621266687802
+          read_latency_us: 6.965117697638846
+          read_iops: 3.5571952270680973
+          migrate_write_latency_us: 4.965218492984954
+          non_io_task:
+            ats: 5.025004791520295
+            other: 9.965781217890562
+            write_same: 6.683562403749608
+            xcopy: 8.762042012749001
+            unmap: 9.369310271410669
+          io_size:
+            8_32kbyte: 1.4894159098541704
+            0_4kbyte: 4.145608029883936
+            32_64kbyte: 7.386281948385884
+            4_8kbyte: 1.2315135367772556
+            above_512kbyte: 6.84685269835264
+            64_512kbyte: 1.0246457001441578
+          read_bandwidth_kbyte: 6.438423552598547
+          write_bandwidth_kbyte: 6.778324963048013
+          migrate_write_bandwidth_kbyte: 7.457744773683766
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 6.878052220127876
+          queue_depth: 9.018348186070783
+        - migrate_write_iops: 1.1730742509559433
+          FailedTask:
+            abort: 7.061401241503109
+            busy: 9.301444243932576
+            check_cond: 3.616076749251911
+            resv_conflict: 2.027123023002322
+          total_bandwidth_kbyte: 1.284659006116532
+          write_latency_us: 5.944895607614016
+          total_iops: 2.8841621266687802
+          read_latency_us: 6.965117697638846
+          read_iops: 3.5571952270680973
+          migrate_write_latency_us: 4.965218492984954
+          non_io_task:
+            ats: 5.025004791520295
+            other: 9.965781217890562
+            write_same: 6.683562403749608
+            xcopy: 8.762042012749001
+            unmap: 9.369310271410669
+          io_size:
+            8_32kbyte: 1.4894159098541704
+            0_4kbyte: 4.145608029883936
+            32_64kbyte: 7.386281948385884
+            4_8kbyte: 1.2315135367772556
+            above_512kbyte: 6.84685269835264
+            64_512kbyte: 1.0246457001441578
+          read_bandwidth_kbyte: 6.438423552598547
+          write_bandwidth_kbyte: 6.778324963048013
+          migrate_write_bandwidth_kbyte: 7.457744773683766
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 6.878052220127876
+          queue_depth: 9.018348186070783
+    VolumeCrcSetReq_Volume:
+      type: object
+      required:
+      - crc_check
+      properties:
+        crc_check:
+          type: boolean
+      title: VolumeCrcSetReq_Volume
+      example:
+        crc_check: true
+    RemoteCluster_Nestview:
+      type: object
+      properties:
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+      title: RemoteCluster_Nestview
+      example:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+    VolumeUpdateReq_Volume:
+      type: object
+      properties:
+        action:
+          type: string
+        block_snapshot_id:
+          type: integer
+          format: int64
+        description:
+          type: string
+        flattened:
+          type: boolean
+        name:
+          type: string
+        performance_priority:
+          type: integer
+          format: int64
+        qos:
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+        size:
+          type: integer
+          format: int64
+      title: VolumeUpdateReq_Volume
+      example:
         flattened: true
         performance_priority: 6
         qos:
@@ -940,1028 +1569,429 @@ definitions:
         action: action
         description: description
         qos_enabled: true
-  VolumeMigrateReq:
-    type: object
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeMigrateReq_Volume'
-    title: VolumeMigrateReq
-    example:
-      block_volume:
-        dest_pool_id: 0
-        migration_stripes: 6
-  Snapshot_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Snapshot_Nestview
-    example:
-      name: name
-      id: 0
-  VolumeSamplesResp:
-    type: object
-    required:
-    - block_volume_samples
-    properties:
-      block_volume_samples:
-        type: array
-        description: volume samples
-        items:
-          $ref: '#/definitions/VolumeStat'
-    title: VolumeSamplesResp
-    example:
-      block_volume_samples:
-      - migrate_write_iops: 1.1730742509559433
-        FailedTask:
-          abort: 7.061401241503109
-          busy: 9.301444243932576
-          check_cond: 3.616076749251911
-          resv_conflict: 2.027123023002322
-        total_bandwidth_kbyte: 1.284659006116532
-        write_latency_us: 5.944895607614016
-        total_iops: 2.8841621266687802
-        read_latency_us: 6.965117697638846
-        read_iops: 3.5571952270680973
-        migrate_write_latency_us: 4.965218492984954
-        non_io_task:
-          ats: 5.025004791520295
-          other: 9.965781217890562
-          write_same: 6.683562403749608
-          xcopy: 8.762042012749001
-          unmap: 9.369310271410669
-        io_size:
-          8_32kbyte: 1.4894159098541704
-          0_4kbyte: 4.145608029883936
-          32_64kbyte: 7.386281948385884
-          4_8kbyte: 1.2315135367772556
-          above_512kbyte: 6.84685269835264
-          64_512kbyte: 1.0246457001441578
-        read_bandwidth_kbyte: 6.438423552598547
-        write_bandwidth_kbyte: 6.778324963048013
-        migrate_write_bandwidth_kbyte: 7.457744773683766
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 6.878052220127876
-        queue_depth: 9.018348186070783
-      - migrate_write_iops: 1.1730742509559433
-        FailedTask:
-          abort: 7.061401241503109
-          busy: 9.301444243932576
-          check_cond: 3.616076749251911
-          resv_conflict: 2.027123023002322
-        total_bandwidth_kbyte: 1.284659006116532
-        write_latency_us: 5.944895607614016
-        total_iops: 2.8841621266687802
-        read_latency_us: 6.965117697638846
-        read_iops: 3.5571952270680973
-        migrate_write_latency_us: 4.965218492984954
-        non_io_task:
-          ats: 5.025004791520295
-          other: 9.965781217890562
-          write_same: 6.683562403749608
-          xcopy: 8.762042012749001
-          unmap: 9.369310271410669
-        io_size:
-          8_32kbyte: 1.4894159098541704
-          0_4kbyte: 4.145608029883936
-          32_64kbyte: 7.386281948385884
-          4_8kbyte: 1.2315135367772556
-          above_512kbyte: 6.84685269835264
-          64_512kbyte: 1.0246457001441578
-        read_bandwidth_kbyte: 6.438423552598547
-        write_bandwidth_kbyte: 6.778324963048013
-        migrate_write_bandwidth_kbyte: 7.457744773683766
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 6.878052220127876
-        queue_depth: 9.018348186070783
-  AccessPath_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: AccessPath_Nestview
-    example:
-      name: name
-      id: 0
-  VolumeBackupProtectionReq:
-    type: object
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeBackupProtectionReq_Volume'
-    title: VolumeBackupProtectionReq
-    example:
-      block_volume:
+    Volume:
+      type: object
+      properties:
+        access_path:
+          $ref: '#/components/schemas/AccessPath_Nestview'
+        action_status:
+          type: string
+        allocated_size:
+          type: integer
+          format: int64
+        block_snapshot_num:
+          type: integer
+          format: int64
+        block_volume_group:
+          $ref: '#/components/schemas/VolumeGroup_Nestview'
+        client_group_num:
+          type: integer
+          format: int64
+        cloud_platform:
+          $ref: '#/components/schemas/CloudPlatform_Nestview'
+        crc_check:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        dp_block_backup_policy_num:
+          type: integer
+          format: int64
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicy_Nestview'
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicy_Nestview'
+        flattened:
+          type: boolean
+        format:
+          type: integer
+          format: int64
+          description: 128 or 129 (advanced)
+        hidden:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        image_id:
+          type: string
+        latest_snapshot_time:
+          type: string
+          format: date-time
+        migration_stripes:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+        original_volume_name:
+          type: string
+        passive:
+          type: boolean
+        performance_priority:
+          type: integer
+          format: int64
+          description: 0 or 1
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        progress:
+          type: number
+          format: double
+        qos:
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+        recycled:
+          type: boolean
+          description: trash
+        remote_cluster:
+          description: the volume is replicated from a remote cluster, via snapshot or IO
+          $ref: '#/components/schemas/RemoteCluster_Nestview'
+        replication_dest:
+          type: string
+        replication_pool:
+          type: string
+        replication_pool_id:
+          type: integer
+          format: int64
+        replication_pool_name:
+          type: string
+        replication_role:
+          type: string
+        replication_status:
+          type: string
+        replication_version:
+          type: integer
+          format: int64
+        replication_volume:
+          type: string
+        replication_volume_id:
+          type: integer
+          format: int64
+        replication_volume_name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        sn:
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/Snapshot_Nestview'
+        snapshot_replication_pool:
+          type: string
+        snapshot_replication_pool_id:
+          type: integer
+          format: int64
+        snapshot_replication_role:
+          type: string
+        snapshot_replication_status:
+          type: string
+        snapshot_replication_volume:
+          type: string
+        snapshot_replication_volume_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        trash_resource:
+          $ref: '#/components/schemas/TrashResource_Nestview'
+        update:
+          type: string
+          format: date-time
+        volume_name:
+          type: string
+      title: Volume
+      description: Volume is the corresponding rbd image @grpc-models-proto
+    VolumeBackupProtectionReq_Volume:
+      type: object
+      required:
+      - dp_block_backup_policy_id
+      properties:
+        dp_block_backup_policy_id:
+          type: integer
+          format: int64
+          description: policy
+      title: VolumeBackupProtectionReq_Volume
+      example:
         dp_block_backup_policy_id: 0
-  VolumeResp:
-    type: object
-    required:
-    - block_volume
-    properties:
-      block_volume:
-        description: volume
-        $ref: '#/definitions/VolumeRecord'
-    title: VolumeResp
-    example:
-      block_volume: ''
-  VolumeSnapshotProtectionReq_Volume:
-    type: object
-    required:
-    - dp_block_snapshot_policy_id
-    properties:
-      dest_pool_id:
-        type: integer
-        format: int64
-        description: destination pool id
-      dest_volume_name:
-        type: string
-        description: destination volume name
-      dp_block_snapshot_policy_id:
-        type: integer
-        format: int64
-        description: policy
-    title: VolumeSnapshotProtectionReq_Volume
-    example:
-      dest_pool_id: 0
-      dest_volume_name: dest_volume_name
-      dp_block_snapshot_policy_id: 6
-  VolumesResp:
-    type: object
-    required:
-    - block_volumes
-    properties:
-      block_volumes:
-        type: array
-        description: volumes
-        items:
-          $ref: '#/definitions/VolumeRecord'
-    title: VolumesResp
-    example:
-      block_volumes:
-      - ''
-      - ''
-  VolumeCrcSetReq:
-    type: object
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeCrcSetReq_Volume'
-    title: VolumeCrcSetReq
-    example:
-      block_volume:
-        crc_check: true
-  VolumeGroup_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: VolumeGroup_Nestview
-    example:
-      name: name
-      id: 6
-  VolumeIOSize:
-    type: object
-    properties:
-      0_4kbyte:
-        type: number
-        format: double
-      32_64kbyte:
-        type: number
-        format: double
-      4_8kbyte:
-        type: number
-        format: double
-      64_512kbyte:
-        type: number
-        format: double
-      8_32kbyte:
-        type: number
-        format: double
-      above_512kbyte:
-        type: number
-        format: double
-    title: VolumeIOSize
-    example:
-      8_32kbyte: 1.4894159098541704
-      0_4kbyte: 4.145608029883936
-      32_64kbyte: 7.386281948385884
-      4_8kbyte: 1.2315135367772556
-      above_512kbyte: 6.84685269835264
-      64_512kbyte: 1.0246457001441578
-  CloudPlatform_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      type:
-        type: string
-    title: CloudPlatform_Nestview
-    example:
-      name: name
-      id: 6
-      type: type
-  Volume:
-    type: object
-    properties:
-      access_path:
-        $ref: '#/definitions/AccessPath_Nestview'
-      action_status:
-        type: string
-      allocated_size:
-        type: integer
-        format: int64
-      block_snapshot_num:
-        type: integer
-        format: int64
-      block_volume_group:
-        $ref: '#/definitions/VolumeGroup_Nestview'
-      client_group_num:
-        type: integer
-        format: int64
-      cloud_platform:
-        $ref: '#/definitions/CloudPlatform_Nestview'
-      crc_check:
-        type: boolean
-      create:
-        type: string
-        format: date-time
-      description:
-        type: string
-      dp_block_backup_policy_num:
-        type: integer
-        format: int64
-      dp_block_replication_policy:
-        $ref: '#/definitions/DpBlockReplicationPolicy_Nestview'
-      dp_block_snapshot_policy:
-        $ref: '#/definitions/DpBlockSnapshotPolicy_Nestview'
-      flattened:
-        type: boolean
-      format:
-        type: integer
-        format: int64
-        description: 128 or 129 (advanced)
-      hidden:
-        type: boolean
-      id:
-        type: integer
-        format: int64
-      image_id:
-        type: string
-      latest_snapshot_time:
-        type: string
-        format: date-time
-      migration_stripes:
-        type: integer
-        format: int64
-      name:
-        type: string
-      original_name:
-        type: string
-      original_volume_name:
-        type: string
-      passive:
-        type: boolean
-      performance_priority:
-        type: integer
-        format: int64
-        description: 0 or 1
-      pool:
-        $ref: '#/definitions/Pool_Nestview'
-      progress:
-        type: number
-        format: double
-      qos:
-        $ref: '#/definitions/VolumeQosSpec'
-      qos_enabled:
-        type: boolean
-      recycled:
-        type: boolean
-        description: trash
-      remote_cluster:
-        description: the volume is replicated from a remote cluster, via snapshot or IO
-        $ref: '#/definitions/RemoteCluster_Nestview'
-      replication_dest:
-        type: string
-      replication_pool:
-        type: string
-      replication_pool_id:
-        type: integer
-        format: int64
-      replication_pool_name:
-        type: string
-      replication_role:
-        type: string
-      replication_status:
-        type: string
-      replication_version:
-        type: integer
-        format: int64
-      replication_volume:
-        type: string
-      replication_volume_id:
-        type: integer
-        format: int64
-      replication_volume_name:
-        type: string
-      size:
-        type: integer
-        format: int64
-      sn:
-        type: string
-      snapshot:
-        $ref: '#/definitions/Snapshot_Nestview'
-      snapshot_replication_pool:
-        type: string
-      snapshot_replication_pool_id:
-        type: integer
-        format: int64
-      snapshot_replication_role:
-        type: string
-      snapshot_replication_status:
-        type: string
-      snapshot_replication_volume:
-        type: string
-      snapshot_replication_volume_id:
-        type: integer
-        format: int64
-      status:
-        type: string
-      trash_resource:
-        $ref: '#/definitions/TrashResource_Nestview'
-      update:
-        type: string
-        format: date-time
-      volume_name:
-        type: string
-    title: Volume
-    description: Volume is the corresponding rbd image @grpc-models-proto
-  RemoteCluster_Nestview:
-    type: object
-    properties:
-      fs_id:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      url:
-        type: string
-    title: RemoteCluster_Nestview
-    example:
-      name: name
-      id: 2
-      fs_id: fs_id
-      url: url
-  VolumeUpdateReq_Volume:
-    type: object
-    properties:
-      action:
-        type: string
-      block_snapshot_id:
-        type: integer
-        format: int64
-      description:
-        type: string
-      flattened:
-        type: boolean
-      name:
-        type: string
-      performance_priority:
-        type: integer
-        format: int64
-      qos:
-        $ref: '#/definitions/VolumeQosSpec'
-      qos_enabled:
-        type: boolean
-      size:
-        type: integer
-        format: int64
-    title: VolumeUpdateReq_Volume
-    example:
-      flattened: true
-      performance_priority: 6
-      qos:
-        burst_total_iops: 2
-        max_total_iops: 9
-        burst_total_bw: 5
-        max_total_bw: 7
-      size: 1
-      block_snapshot_id: 0
-      name: name
-      action: action
-      description: description
-      qos_enabled: true
-  VolumeReplicationSetReq_Volume:
-    type: object
-    required:
-    - dest_pool_id
-    - dest_volume_name
-    - dp_block_replication_policy_id
-    properties:
-      dest_pool_id:
-        type: integer
-        format: int64
-        description: destination pool id
-      dest_volume_name:
-        type: string
-        description: destination volume name
-      dp_block_replication_policy_id:
-        type: integer
-        format: int64
-        description: block replication policy id
-    title: VolumeReplicationSetReq_Volume
-    example:
-      dest_pool_id: 0
-      dest_volume_name: dest_volume_name
-      dp_block_replication_policy_id: 6
-  VolumeSnapshotProtectionReq:
-    type: object
-    properties:
-      block_volume:
-        $ref: '#/definitions/VolumeSnapshotProtectionReq_Volume'
-    title: VolumeSnapshotProtectionReq
-    example:
-      block_volume:
-        dest_pool_id: 0
-        dest_volume_name: dest_volume_name
-        dp_block_snapshot_policy_id: 6
-  VolumeMigrateReq_Volume:
-    type: object
-    required:
-    - dest_pool_id
-    properties:
-      dest_pool_id:
-        type: integer
-        format: int64
-        description: migrate destination pool
-      migration_stripes:
-        type: integer
-        format: int64
-    title: VolumeMigrateReq_Volume
-    example:
-      dest_pool_id: 0
-      migration_stripes: 6
-  VolumeBackupProtectionReq_Volume:
-    type: object
-    required:
-    - dp_block_backup_policy_id
-    properties:
-      dp_block_backup_policy_id:
-        type: integer
-        format: int64
-        description: policy
-    title: VolumeBackupProtectionReq_Volume
-    example:
-      dp_block_backup_policy_id: 0
-  VolumeCrcSetReq_Volume:
-    type: object
-    required:
-    - crc_check
-    properties:
-      crc_check:
-        type: boolean
-    title: VolumeCrcSetReq_Volume
-    example:
-      crc_check: true
-  VolumeNonIOTask:
-    type: object
-    properties:
-      ats:
-        type: number
-        format: double
-      other:
-        type: number
-        format: double
-      unmap:
-        type: number
-        format: double
-      write_same:
-        type: number
-        format: double
-      xcopy:
-        type: number
-        format: double
-    title: VolumeNonIOTask
-    example:
-      ats: 5.025004791520295
-      other: 9.965781217890562
-      write_same: 6.683562403749608
-      xcopy: 8.762042012749001
-      unmap: 9.369310271410669
-  DpBlockSnapshotPolicy_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: DpBlockSnapshotPolicy_Nestview
-    example:
-      name: name
-      id: 6
-  MultiVolumesSamplesResp:
-    type: object
-    properties:
-      block_volumes_samples:
-        type: array
-        items:
-          $ref: '#/definitions/VolumeSamplesElem'
-    title: MultiVolumesSamplesResp
-    example:
-      block_volumes_samples:
-      - paging:
-          duration: 1
-          next: next
-          period: period
-          offset: 5
-          total_count: 2
-          count: 6
-          duration_end: '2000-01-23T04:56:07.000+00:00'
-          limit: 5
-          truncated: true
-          duration_begin: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        samples:
-        - migrate_write_iops: 1.1730742509559433
-          FailedTask:
-            abort: 7.061401241503109
-            busy: 9.301444243932576
-            check_cond: 3.616076749251911
-            resv_conflict: 2.027123023002322
-          total_bandwidth_kbyte: 1.284659006116532
-          write_latency_us: 5.944895607614016
-          total_iops: 2.8841621266687802
-          read_latency_us: 6.965117697638846
-          read_iops: 3.5571952270680973
-          migrate_write_latency_us: 4.965218492984954
-          non_io_task:
-            ats: 5.025004791520295
-            other: 9.965781217890562
-            write_same: 6.683562403749608
-            xcopy: 8.762042012749001
-            unmap: 9.369310271410669
-          io_size:
-            8_32kbyte: 1.4894159098541704
-            0_4kbyte: 4.145608029883936
-            32_64kbyte: 7.386281948385884
-            4_8kbyte: 1.2315135367772556
-            above_512kbyte: 6.84685269835264
-            64_512kbyte: 1.0246457001441578
-          read_bandwidth_kbyte: 6.438423552598547
-          write_bandwidth_kbyte: 6.778324963048013
-          migrate_write_bandwidth_kbyte: 7.457744773683766
-          create: '2000-01-23T04:56:07.000+00:00'
-          write_iops: 6.878052220127876
-          queue_depth: 9.018348186070783
-        - migrate_write_iops: 1.1730742509559433
-          FailedTask:
-            abort: 7.061401241503109
-            busy: 9.301444243932576
-            check_cond: 3.616076749251911
-            resv_conflict: 2.027123023002322
-          total_bandwidth_kbyte: 1.284659006116532
-          write_latency_us: 5.944895607614016
-          total_iops: 2.8841621266687802
-          read_latency_us: 6.965117697638846
-          read_iops: 3.5571952270680973
-          migrate_write_latency_us: 4.965218492984954
-          non_io_task:
-            ats: 5.025004791520295
-            other: 9.965781217890562
-            write_same: 6.683562403749608
-            xcopy: 8.762042012749001
-            unmap: 9.369310271410669
-          io_size:
-            8_32kbyte: 1.4894159098541704
-            0_4kbyte: 4.145608029883936
-            32_64kbyte: 7.386281948385884
-            4_8kbyte: 1.2315135367772556
-            above_512kbyte: 6.84685269835264
-            64_512kbyte: 1.0246457001441578
-          read_bandwidth_kbyte: 6.438423552598547
-          write_bandwidth_kbyte: 6.778324963048013
-          migrate_write_bandwidth_kbyte: 7.457744773683766
-          create: '2000-01-23T04:56:07.000+00:00'
-          write_iops: 6.878052220127876
-          queue_depth: 9.018348186070783
-      - paging:
-          duration: 1
-          next: next
-          period: period
-          offset: 5
-          total_count: 2
-          count: 6
-          duration_end: '2000-01-23T04:56:07.000+00:00'
-          limit: 5
-          truncated: true
-          duration_begin: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        samples:
-        - migrate_write_iops: 1.1730742509559433
-          FailedTask:
-            abort: 7.061401241503109
-            busy: 9.301444243932576
-            check_cond: 3.616076749251911
-            resv_conflict: 2.027123023002322
-          total_bandwidth_kbyte: 1.284659006116532
-          write_latency_us: 5.944895607614016
-          total_iops: 2.8841621266687802
-          read_latency_us: 6.965117697638846
-          read_iops: 3.5571952270680973
-          migrate_write_latency_us: 4.965218492984954
-          non_io_task:
-            ats: 5.025004791520295
-            other: 9.965781217890562
-            write_same: 6.683562403749608
-            xcopy: 8.762042012749001
-            unmap: 9.369310271410669
-          io_size:
-            8_32kbyte: 1.4894159098541704
-            0_4kbyte: 4.145608029883936
-            32_64kbyte: 7.386281948385884
-            4_8kbyte: 1.2315135367772556
-            above_512kbyte: 6.84685269835264
-            64_512kbyte: 1.0246457001441578
-          read_bandwidth_kbyte: 6.438423552598547
-          write_bandwidth_kbyte: 6.778324963048013
-          migrate_write_bandwidth_kbyte: 7.457744773683766
-          create: '2000-01-23T04:56:07.000+00:00'
-          write_iops: 6.878052220127876
-          queue_depth: 9.018348186070783
-        - migrate_write_iops: 1.1730742509559433
-          FailedTask:
-            abort: 7.061401241503109
-            busy: 9.301444243932576
-            check_cond: 3.616076749251911
-            resv_conflict: 2.027123023002322
-          total_bandwidth_kbyte: 1.284659006116532
-          write_latency_us: 5.944895607614016
-          total_iops: 2.8841621266687802
-          read_latency_us: 6.965117697638846
-          read_iops: 3.5571952270680973
-          migrate_write_latency_us: 4.965218492984954
-          non_io_task:
-            ats: 5.025004791520295
-            other: 9.965781217890562
-            write_same: 6.683562403749608
-            xcopy: 8.762042012749001
-            unmap: 9.369310271410669
-          io_size:
-            8_32kbyte: 1.4894159098541704
-            0_4kbyte: 4.145608029883936
-            32_64kbyte: 7.386281948385884
-            4_8kbyte: 1.2315135367772556
-            above_512kbyte: 6.84685269835264
-            64_512kbyte: 1.0246457001441578
-          read_bandwidth_kbyte: 6.438423552598547
-          write_bandwidth_kbyte: 6.778324963048013
-          migrate_write_bandwidth_kbyte: 7.457744773683766
-          create: '2000-01-23T04:56:07.000+00:00'
-          write_iops: 6.878052220127876
-          queue_depth: 9.018348186070783
-  VolumeCreateReq_Volume:
-    type: object
-    required:
-    - name
-    - pool_id
-    properties:
-      block_snapshot_id:
-        type: integer
-        format: int64
-        description: id of related block volume snapshot
-      crc_check:
-        type: boolean
-        description: crc check or not
-      description:
-        type: string
-        description: description of volume
-      flattened:
-        type: boolean
-        description: flatten or not flatten
-      format:
-        type: integer
-        format: int64
-        description: 'volume format: { 128 | 129 (advanced) }, default 128'
-      name:
-        type: string
-        description: name of volume
-      performance_priority:
-        type: integer
-        format: int64
-        description: 'performance priority: { 0 | 1 }, default 0'
-      pool_id:
-        type: integer
-        format: int64
-        description: id of pool belonged to
-      qos:
-        description: qos of volume
-        $ref: '#/definitions/VolumeQosSpec'
-      qos_enabled:
-        type: boolean
-        description: enable or disable the qos
-      remote_cluster_fs_id:
-        type: string
-        description: replication remote cluster fsid
-      replication_pool:
-        type: string
-        description: replication peer pool
-      replication_pool_id:
-        type: integer
-        format: int64
-        description: replication peer pool id
-      replication_pool_name:
-        type: string
-        description: replication peer pool name
-      replication_version:
-        type: integer
-        format: int64
-        description: replication version
-      replication_volume:
-        type: string
-        description: replication peer volume
-      replication_volume_id:
-        type: integer
-        format: int64
-        description: replication peer volume id
-      replication_volume_name:
-        type: string
-        description: replication peer volume name
-      size:
-        type: integer
-        format: int64
-        description: size of volume
-      sn:
-        type: string
-        description: volume sn, used when creating replication volume
-      snapshot_replication_pool:
-        type: string
-        description: snapshot replication peer pool
-      snapshot_replication_pool_id:
-        type: integer
-        format: int64
-        description: snapshot replication peer pool id
-      snapshot_replication_volume:
-        type: string
-        description: snapshot replication peer volume
-      snapshot_replication_volume_id:
-        type: integer
-        format: int64
-        description: snapshot replication peer volume id
-    title: VolumeCreateReq_Volume
-    example:
-      flattened: true
-      replication_pool: replication_pool
-      replication_version: 2
-      format: 6
-      description: description
-      pool_id: 5
-      performance_priority: 1
-      qos:
-        burst_total_iops: 2
-        max_total_iops: 9
-        burst_total_bw: 5
-        max_total_bw: 7
-      replication_pool_id: 3
-      replication_pool_name: replication_pool_name
-      size: 7
-      replication_volume: replication_volume
-      replication_volume_name: replication_volume_name
-      snapshot_replication_volume: snapshot_replication_volume
-      block_snapshot_id: 0
-      name: name
-      snapshot_replication_pool_id: 1
-      snapshot_replication_volume_id: 1
-      remote_cluster_fs_id: remote_cluster_fs_id
-      snapshot_replication_pool: snapshot_replication_pool
-      crc_check: true
-      sn: sn
-      replication_volume_id: 4
-      qos_enabled: true
-  VolumeQosSpec:
-    type: object
-    properties:
-      burst_total_bw:
-        type: integer
-        format: int64
-      burst_total_iops:
-        type: integer
-        format: int64
-      max_total_bw:
-        type: integer
-        format: int64
-      max_total_iops:
-        type: integer
-        format: int64
-    title: VolumeQosSpec
-    description: VolumeQosSpec is a collection of all qos field
-    example:
-      burst_total_iops: 2
-      max_total_iops: 9
-      burst_total_bw: 5
-      max_total_bw: 7
-  Pool_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Pool_Nestview
-    example:
-      name: name
-      id: 5
-  VolumeSamplesElem:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      paging:
-        $ref: '#/definitions/Paging'
-      samples:
-        type: array
-        items:
-          $ref: '#/definitions/VolumeStat'
-    title: VolumeSamplesElem
-    example:
-      paging:
-        duration: 1
-        next: next
-        period: period
-        offset: 5
-        total_count: 2
-        count: 6
-        duration_end: '2000-01-23T04:56:07.000+00:00'
-        limit: 5
-        truncated: true
-        duration_begin: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-      samples:
-      - migrate_write_iops: 1.1730742509559433
-        FailedTask:
-          abort: 7.061401241503109
-          busy: 9.301444243932576
-          check_cond: 3.616076749251911
-          resv_conflict: 2.027123023002322
-        total_bandwidth_kbyte: 1.284659006116532
-        write_latency_us: 5.944895607614016
-        total_iops: 2.8841621266687802
-        read_latency_us: 6.965117697638846
-        read_iops: 3.5571952270680973
-        migrate_write_latency_us: 4.965218492984954
-        non_io_task:
-          ats: 5.025004791520295
-          other: 9.965781217890562
-          write_same: 6.683562403749608
-          xcopy: 8.762042012749001
-          unmap: 9.369310271410669
-        io_size:
-          8_32kbyte: 1.4894159098541704
-          0_4kbyte: 4.145608029883936
-          32_64kbyte: 7.386281948385884
-          4_8kbyte: 1.2315135367772556
-          above_512kbyte: 6.84685269835264
-          64_512kbyte: 1.0246457001441578
-        read_bandwidth_kbyte: 6.438423552598547
-        write_bandwidth_kbyte: 6.778324963048013
-        migrate_write_bandwidth_kbyte: 7.457744773683766
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 6.878052220127876
-        queue_depth: 9.018348186070783
-      - migrate_write_iops: 1.1730742509559433
-        FailedTask:
-          abort: 7.061401241503109
-          busy: 9.301444243932576
-          check_cond: 3.616076749251911
-          resv_conflict: 2.027123023002322
-        total_bandwidth_kbyte: 1.284659006116532
-        write_latency_us: 5.944895607614016
-        total_iops: 2.8841621266687802
-        read_latency_us: 6.965117697638846
-        read_iops: 3.5571952270680973
-        migrate_write_latency_us: 4.965218492984954
-        non_io_task:
-          ats: 5.025004791520295
-          other: 9.965781217890562
-          write_same: 6.683562403749608
-          xcopy: 8.762042012749001
-          unmap: 9.369310271410669
-        io_size:
-          8_32kbyte: 1.4894159098541704
-          0_4kbyte: 4.145608029883936
-          32_64kbyte: 7.386281948385884
-          4_8kbyte: 1.2315135367772556
-          above_512kbyte: 6.84685269835264
-          64_512kbyte: 1.0246457001441578
-        read_bandwidth_kbyte: 6.438423552598547
-        write_bandwidth_kbyte: 6.778324963048013
-        migrate_write_bandwidth_kbyte: 7.457744773683766
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 6.878052220127876
-        queue_depth: 9.018348186070783
-  VolumeStat:
-    type: object
-    properties:
-      FailedTask:
-        $ref: '#/definitions/VolumeFailedTask'
-      create:
-        type: string
-        format: date-time
-      io_size:
-        $ref: '#/definitions/VolumeIOSize'
-      migrate_write_bandwidth_kbyte:
-        type: number
-        format: double
-      migrate_write_iops:
-        type: number
-        format: double
-      migrate_write_latency_us:
-        type: number
-        format: double
-      non_io_task:
-        $ref: '#/definitions/VolumeNonIOTask'
-      queue_depth:
-        type: number
-        format: double
-      read_bandwidth_kbyte:
-        type: number
-        format: double
-      read_iops:
-        type: number
-        format: double
-      read_latency_us:
-        type: number
-        format: double
-      total_bandwidth_kbyte:
-        type: number
-        format: double
-      total_iops:
-        type: number
-        format: double
-      write_bandwidth_kbyte:
-        type: number
-        format: double
-      write_iops:
-        type: number
-        format: double
-      write_latency_us:
-        type: number
-        format: double
-    title: VolumeStat
-    description: VolumeStat records volume stat info
-    example:
-      migrate_write_iops: 1.1730742509559433
-      FailedTask:
-        abort: 7.061401241503109
-        busy: 9.301444243932576
-        check_cond: 3.616076749251911
-        resv_conflict: 2.027123023002322
-      total_bandwidth_kbyte: 1.284659006116532
-      write_latency_us: 5.944895607614016
-      total_iops: 2.8841621266687802
-      read_latency_us: 6.965117697638846
-      read_iops: 3.5571952270680973
-      migrate_write_latency_us: 4.965218492984954
-      non_io_task:
+    TrashResource_Nestview:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        expire_time:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        resource_id:
+          type: integer
+          format: int64
+        resource_type:
+          type: string
+      title: TrashResource_Nestview
+    CloudPlatform_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+      title: CloudPlatform_Nestview
+      example:
+        name: name
+        id: 6
+        type: type
+    VolumeNonIOTask:
+      type: object
+      properties:
+        ats:
+          type: number
+          format: double
+        other:
+          type: number
+          format: double
+        unmap:
+          type: number
+          format: double
+        write_same:
+          type: number
+          format: double
+        xcopy:
+          type: number
+          format: double
+      title: VolumeNonIOTask
+      example:
         ats: 5.025004791520295
         other: 9.965781217890562
         write_same: 6.683562403749608
         xcopy: 8.762042012749001
         unmap: 9.369310271410669
-      io_size:
+    VolumeIOSize:
+      type: object
+      properties:
+        0_4kbyte:
+          type: number
+          format: double
+        32_64kbyte:
+          type: number
+          format: double
+        4_8kbyte:
+          type: number
+          format: double
+        64_512kbyte:
+          type: number
+          format: double
+        8_32kbyte:
+          type: number
+          format: double
+        above_512kbyte:
+          type: number
+          format: double
+      title: VolumeIOSize
+      example:
         8_32kbyte: 1.4894159098541704
         0_4kbyte: 4.145608029883936
         32_64kbyte: 7.386281948385884
         4_8kbyte: 1.2315135367772556
         above_512kbyte: 6.84685269835264
         64_512kbyte: 1.0246457001441578
-      read_bandwidth_kbyte: 6.438423552598547
-      write_bandwidth_kbyte: 6.778324963048013
-      migrate_write_bandwidth_kbyte: 7.457744773683766
-      create: '2000-01-23T04:56:07.000+00:00'
-      write_iops: 6.878052220127876
-      queue_depth: 9.018348186070783
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    VolumeRecord:
+      title: VolumeRecord
+      allOf:
+      - $ref: '#/components/schemas/Volume'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/VolumeStat'
+      description: VolumeRecord defines the response content of volume related API
+    VolumeFailedTask:
+      type: object
+      properties:
+        abort:
+          type: number
+          format: double
+        busy:
+          type: number
+          format: double
+        check_cond:
+          type: number
+          format: double
+        resv_conflict:
+          type: number
+          format: double
+      title: VolumeFailedTask
+      example:
+        abort: 7.061401241503109
+        busy: 9.301444243932576
+        check_cond: 3.616076749251911
+        resv_conflict: 2.027123023002322
+    VolumeResp:
+      type: object
+      required:
+      - block_volume
+      properties:
+        block_volume:
+          description: volume
+          $ref: '#/components/schemas/VolumeRecord'
+      title: VolumeResp
+      example:
+        block_volume: ''
+    VolumeMigrateReq_Volume:
+      type: object
+      required:
+      - dest_pool_id
+      properties:
+        dest_pool_id:
+          type: integer
+          format: int64
+          description: migrate destination pool
+        migration_stripes:
+          type: integer
+          format: int64
+      title: VolumeMigrateReq_Volume
+      example:
+        dest_pool_id: 0
+        migration_stripes: 6
+    VolumeCreateReq:
+      type: object
+      required:
+      - block_volume
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeCreateReq_Volume'
+      title: VolumeCreateReq
+      example:
+        block_volume:
+          flattened: true
+          replication_pool: replication_pool
+          replication_version: 2
+          format: 6
+          description: description
+          pool_id: 5
+          performance_priority: 1
+          qos:
+            burst_total_iops: 2
+            max_total_iops: 9
+            burst_total_bw: 5
+            max_total_bw: 7
+          replication_pool_id: 3
+          replication_pool_name: replication_pool_name
+          size: 7
+          replication_volume: replication_volume
+          replication_volume_name: replication_volume_name
+          snapshot_replication_volume: snapshot_replication_volume
+          block_snapshot_id: 0
+          name: name
+          snapshot_replication_pool_id: 1
+          snapshot_replication_volume_id: 1
+          remote_cluster_fs_id: remote_cluster_fs_id
+          snapshot_replication_pool: snapshot_replication_pool
+          crc_check: true
+          sn: sn
+          replication_volume_id: 4
+          qos_enabled: true
+    AccessPath_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: AccessPath_Nestview
+      example:
+        name: name
+        id: 0
+    VolumeQosSpec:
+      type: object
+      properties:
+        burst_total_bw:
+          type: integer
+          format: int64
+        burst_total_iops:
+          type: integer
+          format: int64
+        max_total_bw:
+          type: integer
+          format: int64
+        max_total_iops:
+          type: integer
+          format: int64
+      title: VolumeQosSpec
+      description: VolumeQosSpec is a collection of all qos field
+      example:
+        burst_total_iops: 2
+        max_total_iops: 9
+        burst_total_bw: 5
+        max_total_bw: 7
+    VolumeReplicationSetReq:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeReplicationSetReq_Volume'
+      title: VolumeReplicationSetReq
+      example:
+        block_volume:
+          dest_pool_id: 0
+          dest_volume_name: dest_volume_name
+          dp_block_replication_policy_id: 6
+    VolumeSnapshotProtectionReq_Volume:
+      type: object
+      required:
+      - dp_block_snapshot_policy_id
+      properties:
+        dest_pool_id:
+          type: integer
+          format: int64
+          description: destination pool id
+        dest_volume_name:
+          type: string
+          description: destination volume name
+        dp_block_snapshot_policy_id:
+          type: integer
+          format: int64
+          description: policy
+      title: VolumeSnapshotProtectionReq_Volume
+      example:
+        dest_pool_id: 0
+        dest_volume_name: dest_volume_name
+        dp_block_snapshot_policy_id: 6
+    DpBlockReplicationPolicy_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpBlockReplicationPolicy_Nestview
+    VolumeMigrateReq:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/VolumeMigrateReq_Volume'
+      title: VolumeMigrateReq
+      example:
+        block_volume:
+          dest_pool_id: 0
+          migration_stripes: 6
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

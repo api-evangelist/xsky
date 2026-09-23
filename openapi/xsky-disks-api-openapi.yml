@@ -1,79 +1,83 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths disks API
+  title: XMS Disks API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: disks
-  description: 'DiskController Disk Management
-
-    '
+- name: Disks
+  description: DiskController Disk Management
 paths:
   /disks/:
     get:
       tags:
-      - disks
+      - Disks
       description: List all pyhsical disks in the system
       operationId: ListDisks
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: host_id
         in: query
         description: host id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: HostId
+        schema:
+          type: integer
+          format: int64
       - name: is_cache
         in: query
         description: filter cache disk
         required: false
-        type: boolean
         x-exportParamName: IsCache
+        schema:
+          type: boolean
       - name: used
         in: query
         description: filter used
         required: false
-        type: boolean
         x-exportParamName: Used
+        schema:
+          type: boolean
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DisksResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisksResp'
         400:
           description: BadRequest
         500:
@@ -81,29 +85,30 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List disks
+      x-summary-source: derived
   /disks/{disk_id}:
     get:
       tags:
-      - disks
+      - Disks
       description: Get a disk
       operationId: GetDisk
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: disk_id
         in: path
         description: disk id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: DiskId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DiskResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiskResp'
         404:
           description: NotFound
         500:
@@ -111,35 +116,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get disk
+      x-summary-source: derived
     patch:
       tags:
-      - disks
+      - Disks
       description: update disk info
       operationId: UpdateDisk
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: disk_id
         in: path
         description: disk id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: DiskId
-      - in: body
-        name: disk
-        description: disk info
-        required: true
         schema:
-          $ref: '#/definitions/DiskUpdateReq'
-        x-exportParamName: Disk
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DiskResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiskResp'
         400:
           description: BadRequest
         404:
@@ -149,43 +148,45 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiskUpdateReq'
+        description: disk info
+        required: true
+      summary: Update disk
+      x-summary-source: derived
   /disks/{disk_id}/partitions:
     put:
       tags:
-      - disks
+      - Disks
       description: create cache partitions for disk
       operationId: CreatePartitions
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: disk_id
         in: path
         description: disk id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: DiskId
+        schema:
+          type: integer
+          format: int64
       - name: num
         in: query
         description: num of partitions to create
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Num
-      - in: body
-        name: body
-        description: partitions info
-        required: true
         schema:
-          $ref: '#/definitions/PartitionsCreateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DiskResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiskResp'
         400:
           description: BadRequest
         404:
@@ -195,28 +196,36 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartitionsCreateReq'
+        description: partitions info
+        required: true
+      summary: Create partitions
+      x-summary-source: derived
     delete:
       tags:
-      - disks
+      - Disks
       description: delete cache partitions of disk
       operationId: DeletePartitions
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: disk_id
         in: path
         description: disk id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: DiskId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DiskResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiskResp'
         400:
           description: BadRequest
         404:
@@ -226,47 +235,51 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete partitions
+      x-summary-source: derived
   /disks/{disk_id}/samples:
     get:
       tags:
-      - disks
+      - Disks
       description: get a disk's samples
       operationId: GetDiskSamples
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: disk_id
         in: path
         description: disk id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: DiskId
+        schema:
+          type: integer
+          format: int64
       - name: duration_begin
         in: query
         description: duration begin timestamp
         required: false
-        type: string
         x-exportParamName: DurationBegin
+        schema:
+          type: string
       - name: duration_end
         in: query
         description: duration end timestamp
         required: false
-        type: string
         x-exportParamName: DurationEnd
+        schema:
+          type: string
       - name: period
         in: query
         description: samples period
         required: false
-        type: string
         x-exportParamName: Period
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DiskSamplesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiskSamplesResp'
         400:
           description: BadRequest
         404:
@@ -276,465 +289,468 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
-definitions:
-  DiskRecord:
-    title: DiskRecord
-    allOf:
-    - $ref: '#/definitions/Disk'
-    - properties:
-        samples:
+      summary: Get disk samples
+      x-summary-source: derived
+components:
+  schemas:
+    DisksResp:
+      type: object
+      required:
+      - disks
+      properties:
+        disks:
           type: array
+          description: disks
           items:
-            $ref: '#/definitions/DiskStat'
-    description: DiskRecord contains information of a disk
-  DiskSamplesResp:
-    type: object
-    required:
-    - disk_samples
-    properties:
-      disk_samples:
-        type: array
-        description: disk samples
-        items:
-          $ref: '#/definitions/DiskStat'
-    title: DiskSamplesResp
-    example:
-      disk_samples:
-      - healthy_percent: 1.4658129805029452
-        read_wait_us: 7.386281948385884
-        recovery_percent: 1.2315135367772556
-        total_bandwidth_kbyte: 1.0246457001441578
-        read_merged_ps: 4.145608029883936
-        read_bandwidth_kbyte: 3.616076749251911
-        omap_total_kbyte: 2.3021358869347655
-        avg_queue_len: 0.8008281904610115
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 9.369310271410669
-        total_kbyte: 7
-        degraded_percent: 6.027456183070403
-        total_iops: 6.84685269835264
-        write_merged_ps: 6.683562403749608
-        unavailable_percent: 1.1730742509559433
-        read_iops: 2.027123023002322
-        io_util: 5.962133916683182
-        omap_used_kbyte: 7.061401241503109
-        omap_used_percent: 9.301444243932576
-        used_kbyte: 4
-        write_bandwidth_kbyte: 9.965781217890562
-        write_wait_us: 8.762042012749001
-        used_percent: 5.025004791520295
-        kbyte_per_io: 5.637376656633329
-        total_io_wait_us: 1.4894159098541704
-      - healthy_percent: 1.4658129805029452
-        read_wait_us: 7.386281948385884
-        recovery_percent: 1.2315135367772556
-        total_bandwidth_kbyte: 1.0246457001441578
-        read_merged_ps: 4.145608029883936
-        read_bandwidth_kbyte: 3.616076749251911
-        omap_total_kbyte: 2.3021358869347655
-        avg_queue_len: 0.8008281904610115
-        create: '2000-01-23T04:56:07.000+00:00'
-        write_iops: 9.369310271410669
-        total_kbyte: 7
-        degraded_percent: 6.027456183070403
-        total_iops: 6.84685269835264
-        write_merged_ps: 6.683562403749608
-        unavailable_percent: 1.1730742509559433
-        read_iops: 2.027123023002322
-        io_util: 5.962133916683182
-        omap_used_kbyte: 7.061401241503109
-        omap_used_percent: 9.301444243932576
-        used_kbyte: 4
-        write_bandwidth_kbyte: 9.965781217890562
-        write_wait_us: 8.762042012749001
-        used_percent: 5.025004791520295
-        kbyte_per_io: 5.637376656633329
-        total_io_wait_us: 1.4894159098541704
-  PartitionsCreateReq:
-    type: object
-    properties:
-      partitions:
-        $ref: '#/definitions/PartitionsCreateReq_Partitions'
-    title: PartitionsCreateReq
-    example:
-      partitions:
-        num: 0
-        omap_byte: 6
-  PartitionsCreateReq_Partitions:
-    type: object
-    properties:
-      num:
-        type: integer
-        format: int64
-      omap_byte:
-        type: integer
-        format: int64
-    title: PartitionsCreateReq_Partitions
-    example:
-      num: 0
-      omap_byte: 6
-  Host_Nestview:
-    type: object
-    required:
-    - admin_ip
-    properties:
-      admin_ip:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Host_Nestview
-    example:
-      name: name
-      admin_ip: admin_ip
-      id: 0
-  DisksResp:
-    type: object
-    required:
-    - disks
-    properties:
-      disks:
-        type: array
-        description: disks
-        items:
-          $ref: '#/definitions/DiskRecord'
-    title: DisksResp
-    example:
-      disks:
-      - ''
-      - ''
-  DiskUpdateReq:
-    type: object
-    required:
-    - disk
-    properties:
-      disk:
-        $ref: '#/definitions/DiskUpdateReq_Disk'
-    title: DiskUpdateReq
-    example:
-      disk:
+            $ref: '#/components/schemas/DiskRecord'
+      title: DisksResp
+      example:
+        disks:
+        - ''
+        - ''
+    DiskUpdateReq_Disk:
+      type: object
+      properties:
+        disk_type:
+          type: string
+        lighting_status:
+          type: string
+        power_safe:
+          type: boolean
+      title: DiskUpdateReq_Disk
+      example:
         power_safe: true
         disk_type: disk_type
         lighting_status: lighting_status
-  DiskUpdateReq_Disk:
-    type: object
-    properties:
-      disk_type:
-        type: string
-      lighting_status:
-        type: string
-      power_safe:
-        type: boolean
-    title: DiskUpdateReq_Disk
-    example:
-      power_safe: true
-      disk_type: disk_type
-      lighting_status: lighting_status
-  DiskResp:
-    type: object
-    required:
-    - disk
-    properties:
-      disk:
-        description: disk
-        $ref: '#/definitions/DiskRecord'
-    title: DiskResp
-    example:
-      disk: ''
-  Disk:
-    type: object
-    properties:
-      action_status:
-        type: string
-      bytes:
-        type: integer
-        format: int64
-        description: size of disk
-      cache_create:
-        type: string
-        format: date-time
-      channel_id:
-        type: string
-      create:
-        type: string
-        format: date-time
-      device:
-        type: string
-      disk_type:
-        type: string
-      driver_type:
-        type: string
-      enclosure_id:
-        type: string
-      host:
-        $ref: '#/definitions/Host_Nestview'
-      id:
-        type: integer
-        format: int64
-      is_cache:
-        type: boolean
-        description: used as cache disk
-      is_root:
-        type: boolean
-        description: used as root disk
-      lighting_status:
-        type: string
-      model:
-        type: string
-      partition_num:
-        type: integer
-        format: int64
-      partitions:
-        type: array
-        items:
-          $ref: '#/definitions/Partition'
-      power_safe:
-        type: boolean
-      rotation_rate:
-        type: string
-      rotational:
-        type: boolean
-      serial:
-        type: string
-      slot_id:
-        type: string
-      smart_attrs:
-        type: array
-        items:
-          $ref: '#/definitions/SmartAttr'
-      ssd_life_left:
-        type: integer
-        format: int64
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-      used:
-        type: boolean
-      wwid:
-        type: string
-    title: Disk
-    description: Disk defines the available disk @grpc-models-proto
-  DiskStat:
-    type: object
-    properties:
-      avg_queue_len:
-        type: number
-        format: double
-      create:
-        type: string
-        format: date-time
-      degraded_percent:
-        type: number
-        format: double
-      healthy_percent:
-        type: number
-        format: double
-      io_util:
-        type: number
-        format: double
-      kbyte_per_io:
-        type: number
-        format: double
-      omap_total_kbyte:
-        type: number
-        format: double
-      omap_used_kbyte:
-        type: number
-        format: double
-      omap_used_percent:
-        type: number
-        format: double
-      read_bandwidth_kbyte:
-        type: number
-        format: double
-      read_iops:
-        type: number
-        format: double
-      read_merged_ps:
-        type: number
-        format: double
-      read_wait_us:
-        type: number
-        format: double
-      recovery_percent:
-        type: number
-        format: double
-      total_bandwidth_kbyte:
-        type: number
-        format: double
-      total_io_wait_us:
-        type: number
-        format: double
-      total_iops:
-        type: number
-        format: double
-      total_kbyte:
-        type: integer
-        format: int64
-      unavailable_percent:
-        type: number
-        format: double
-      used_kbyte:
-        type: integer
-        format: int64
-      used_percent:
-        type: number
-        format: double
-      write_bandwidth_kbyte:
-        type: number
-        format: double
-      write_iops:
-        type: number
-        format: double
-      write_merged_ps:
-        type: number
-        format: double
-      write_wait_us:
-        type: number
-        format: double
-    title: DiskStat
-    description: DiskStat defines the basic info of a DiskStat
-    example:
-      healthy_percent: 1.4658129805029452
-      read_wait_us: 7.386281948385884
-      recovery_percent: 1.2315135367772556
-      total_bandwidth_kbyte: 1.0246457001441578
-      read_merged_ps: 4.145608029883936
-      read_bandwidth_kbyte: 3.616076749251911
-      omap_total_kbyte: 2.3021358869347655
-      avg_queue_len: 0.8008281904610115
-      create: '2000-01-23T04:56:07.000+00:00'
-      write_iops: 9.369310271410669
-      total_kbyte: 7
-      degraded_percent: 6.027456183070403
-      total_iops: 6.84685269835264
-      write_merged_ps: 6.683562403749608
-      unavailable_percent: 1.1730742509559433
-      read_iops: 2.027123023002322
-      io_util: 5.962133916683182
-      omap_used_kbyte: 7.061401241503109
-      omap_used_percent: 9.301444243932576
-      used_kbyte: 4
-      write_bandwidth_kbyte: 9.965781217890562
-      write_wait_us: 8.762042012749001
-      used_percent: 5.025004791520295
-      kbyte_per_io: 5.637376656633329
-      total_io_wait_us: 1.4894159098541704
-  SmartAttr:
-    type: object
-    properties:
-      attr_id:
-        type: integer
-        format: int64
-        description: sata only
-      create:
-        type: string
-        format: date-time
-      flag:
-        type: string
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-        description: base
-      raw_value:
-        type: string
-      status:
-        type: string
-      thresh:
-        type: string
-      type:
-        type: string
-      value:
-        type: string
-      when_failed:
-        type: string
-      worst:
-        type: string
-    title: SmartAttr
-    description: SmartAttr defines disk smart attribute
-  Partition:
-    type: object
-    properties:
-      action_status:
-        type: string
-      create:
-        type: string
-        format: date-time
-      disk:
-        $ref: '#/definitions/Disk_Nestview'
-      id:
-        type: integer
-        format: int64
-      omap_byte:
-        type: integer
-        format: int64
-      omap_device_path:
-        type: string
-      path:
-        type: string
-      size:
-        type: integer
-        format: int64
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-      used:
-        type: boolean
-      uuid:
-        type: string
-      version:
-        type: integer
-        format: int64
-    title: Partition
-    description: Partition defines cache partition of disk
-    example:
-      omap_device_path: omap_device_path
-      update: '2000-01-23T04:56:07.000+00:00'
-      omap_byte: 1
-      used: true
-      uuid: uuid
-      version: 5
-      path: path
-      disk:
+    DiskStat:
+      type: object
+      properties:
+        avg_queue_len:
+          type: number
+          format: double
+        create:
+          type: string
+          format: date-time
+        degraded_percent:
+          type: number
+          format: double
+        healthy_percent:
+          type: number
+          format: double
+        io_util:
+          type: number
+          format: double
+        kbyte_per_io:
+          type: number
+          format: double
+        omap_total_kbyte:
+          type: number
+          format: double
+        omap_used_kbyte:
+          type: number
+          format: double
+        omap_used_percent:
+          type: number
+          format: double
+        read_bandwidth_kbyte:
+          type: number
+          format: double
+        read_iops:
+          type: number
+          format: double
+        read_merged_ps:
+          type: number
+          format: double
+        read_wait_us:
+          type: number
+          format: double
+        recovery_percent:
+          type: number
+          format: double
+        total_bandwidth_kbyte:
+          type: number
+          format: double
+        total_io_wait_us:
+          type: number
+          format: double
+        total_iops:
+          type: number
+          format: double
+        total_kbyte:
+          type: integer
+          format: int64
+        unavailable_percent:
+          type: number
+          format: double
+        used_kbyte:
+          type: integer
+          format: int64
+        used_percent:
+          type: number
+          format: double
+        write_bandwidth_kbyte:
+          type: number
+          format: double
+        write_iops:
+          type: number
+          format: double
+        write_merged_ps:
+          type: number
+          format: double
+        write_wait_us:
+          type: number
+          format: double
+      title: DiskStat
+      description: DiskStat defines the basic info of a DiskStat
+      example:
+        healthy_percent: 1.4658129805029452
+        read_wait_us: 7.386281948385884
+        recovery_percent: 1.2315135367772556
+        total_bandwidth_kbyte: 1.0246457001441578
+        read_merged_ps: 4.145608029883936
+        read_bandwidth_kbyte: 3.616076749251911
+        omap_total_kbyte: 2.3021358869347655
+        avg_queue_len: 0.8008281904610115
+        create: '2000-01-23T04:56:07.000+00:00'
+        write_iops: 9.369310271410669
+        total_kbyte: 7
+        degraded_percent: 6.027456183070403
+        total_iops: 6.84685269835264
+        write_merged_ps: 6.683562403749608
+        unavailable_percent: 1.1730742509559433
+        read_iops: 2.027123023002322
+        io_util: 5.962133916683182
+        omap_used_kbyte: 7.061401241503109
+        omap_used_percent: 9.301444243932576
+        used_kbyte: 4
+        write_bandwidth_kbyte: 9.965781217890562
+        write_wait_us: 8.762042012749001
+        used_percent: 5.025004791520295
+        kbyte_per_io: 5.637376656633329
+        total_io_wait_us: 1.4894159098541704
+    PartitionsCreateReq_Partitions:
+      type: object
+      properties:
+        num:
+          type: integer
+          format: int64
+        omap_byte:
+          type: integer
+          format: int64
+      title: PartitionsCreateReq_Partitions
+      example:
+        num: 0
+        omap_byte: 6
+    PartitionsCreateReq:
+      type: object
+      properties:
+        partitions:
+          $ref: '#/components/schemas/PartitionsCreateReq_Partitions'
+      title: PartitionsCreateReq
+      example:
+        partitions:
+          num: 0
+          omap_byte: 6
+    Disk:
+      type: object
+      properties:
+        action_status:
+          type: string
+        bytes:
+          type: integer
+          format: int64
+          description: size of disk
+        cache_create:
+          type: string
+          format: date-time
+        channel_id:
+          type: string
+        create:
+          type: string
+          format: date-time
+        device:
+          type: string
+        disk_type:
+          type: string
+        driver_type:
+          type: string
+        enclosure_id:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        is_cache:
+          type: boolean
+          description: used as cache disk
+        is_root:
+          type: boolean
+          description: used as root disk
+        lighting_status:
+          type: string
+        model:
+          type: string
+        partition_num:
+          type: integer
+          format: int64
+        partitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partition'
+        power_safe:
+          type: boolean
+        rotation_rate:
+          type: string
+        rotational:
+          type: boolean
+        serial:
+          type: string
+        slot_id:
+          type: string
+        smart_attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmartAttr'
+        ssd_life_left:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        wwid:
+          type: string
+      title: Disk
+      description: Disk defines the available disk @grpc-models-proto
+    DiskRecord:
+      title: DiskRecord
+      allOf:
+      - $ref: '#/components/schemas/Disk'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/DiskStat'
+      description: DiskRecord contains information of a disk
+    DiskSamplesResp:
+      type: object
+      required:
+      - disk_samples
+      properties:
+        disk_samples:
+          type: array
+          description: disk samples
+          items:
+            $ref: '#/components/schemas/DiskStat'
+      title: DiskSamplesResp
+      example:
+        disk_samples:
+        - healthy_percent: 1.4658129805029452
+          read_wait_us: 7.386281948385884
+          recovery_percent: 1.2315135367772556
+          total_bandwidth_kbyte: 1.0246457001441578
+          read_merged_ps: 4.145608029883936
+          read_bandwidth_kbyte: 3.616076749251911
+          omap_total_kbyte: 2.3021358869347655
+          avg_queue_len: 0.8008281904610115
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 9.369310271410669
+          total_kbyte: 7
+          degraded_percent: 6.027456183070403
+          total_iops: 6.84685269835264
+          write_merged_ps: 6.683562403749608
+          unavailable_percent: 1.1730742509559433
+          read_iops: 2.027123023002322
+          io_util: 5.962133916683182
+          omap_used_kbyte: 7.061401241503109
+          omap_used_percent: 9.301444243932576
+          used_kbyte: 4
+          write_bandwidth_kbyte: 9.965781217890562
+          write_wait_us: 8.762042012749001
+          used_percent: 5.025004791520295
+          kbyte_per_io: 5.637376656633329
+          total_io_wait_us: 1.4894159098541704
+        - healthy_percent: 1.4658129805029452
+          read_wait_us: 7.386281948385884
+          recovery_percent: 1.2315135367772556
+          total_bandwidth_kbyte: 1.0246457001441578
+          read_merged_ps: 4.145608029883936
+          read_bandwidth_kbyte: 3.616076749251911
+          omap_total_kbyte: 2.3021358869347655
+          avg_queue_len: 0.8008281904610115
+          create: '2000-01-23T04:56:07.000+00:00'
+          write_iops: 9.369310271410669
+          total_kbyte: 7
+          degraded_percent: 6.027456183070403
+          total_iops: 6.84685269835264
+          write_merged_ps: 6.683562403749608
+          unavailable_percent: 1.1730742509559433
+          read_iops: 2.027123023002322
+          io_util: 5.962133916683182
+          omap_used_kbyte: 7.061401241503109
+          omap_used_percent: 9.301444243932576
+          used_kbyte: 4
+          write_bandwidth_kbyte: 9.965781217890562
+          write_wait_us: 8.762042012749001
+          used_percent: 5.025004791520295
+          kbyte_per_io: 5.637376656633329
+          total_io_wait_us: 1.4894159098541704
+    DiskResp:
+      type: object
+      required:
+      - disk
+      properties:
+        disk:
+          description: disk
+          $ref: '#/components/schemas/DiskRecord'
+      title: DiskResp
+      example:
+        disk: ''
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    DiskUpdateReq:
+      type: object
+      required:
+      - disk
+      properties:
+        disk:
+          $ref: '#/components/schemas/DiskUpdateReq_Disk'
+      title: DiskUpdateReq
+      example:
+        disk:
+          power_safe: true
+          disk_type: disk_type
+          lighting_status: lighting_status
+    Disk_Nestview:
+      type: object
+      properties:
+        device:
+          type: string
+        disk_type:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Disk_Nestview
+      example:
         disk_type: disk_type
         id: 0
         device: device
-      size: 5
-      create: '2000-01-23T04:56:07.000+00:00'
-      id: 6
-      action_status: action_status
-      status: status
-  Disk_Nestview:
-    type: object
-    properties:
-      device:
-        type: string
-      disk_type:
-        type: string
-      id:
-        type: integer
-        format: int64
-    title: Disk_Nestview
-    example:
-      disk_type: disk_type
-      id: 0
-      device: device
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    SmartAttr:
+      type: object
+      properties:
+        attr_id:
+          type: integer
+          format: int64
+          description: sata only
+        create:
+          type: string
+          format: date-time
+        flag:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: base
+        raw_value:
+          type: string
+        status:
+          type: string
+        thresh:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+        when_failed:
+          type: string
+        worst:
+          type: string
+      title: SmartAttr
+      description: SmartAttr defines disk smart attribute
+    Partition:
+      type: object
+      properties:
+        action_status:
+          type: string
+        create:
+          type: string
+          format: date-time
+        disk:
+          $ref: '#/components/schemas/Disk_Nestview'
+        id:
+          type: integer
+          format: int64
+        omap_byte:
+          type: integer
+          format: int64
+        omap_device_path:
+          type: string
+        path:
+          type: string
+        size:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        uuid:
+          type: string
+        version:
+          type: integer
+          format: int64
+      title: Partition
+      description: Partition defines cache partition of disk
+      example:
+        omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        action_status: action_status
+        status: status
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

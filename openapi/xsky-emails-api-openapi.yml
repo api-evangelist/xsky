@@ -1,41 +1,30 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths emails API
+  title: XMS Emails API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: emails
-  description: 'EmailController Operations about Email
-
-    '
+- name: Emails
+  description: EmailController Operations about Email
 paths:
   /emails/:
     post:
       tags:
-      - emails
+      - Emails
       description: send email
       operationId: SendEmail
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: email info
-        required: true
-        schema:
-          $ref: '#/definitions/EmailSendReq'
-        x-exportParamName: Body
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/EmailResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailResp'
         400:
           description: BadRequest
         500:
@@ -43,22 +32,28 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailSendReq'
+        description: email info
+        required: true
+      summary: Send email
+      x-summary-source: derived
   /emails/config:
     get:
       tags:
-      - emails
+      - Emails
       description: setup email configs
       operationId: GetEmailConfig
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/EmailConfigResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigResp'
         400:
           description: BadRequest
         500:
@@ -66,28 +61,20 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get email config
+      x-summary-source: derived
     patch:
       tags:
-      - emails
+      - Emails
       description: setup email configs
       operationId: UpdateEmailConfig
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: email config info
-        required: true
-        schema:
-          $ref: '#/definitions/EmailConfigUpdateReq'
-        x-exportParamName: Body
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/EmailConfigResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigResp'
         400:
           description: BadRequest
         500:
@@ -95,24 +82,65 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  EmailSendReq:
-    type: object
-    properties:
-      email:
-        $ref: '#/definitions/EmailSendReq_Email'
-      email_config:
-        $ref: '#/definitions/EmailConfig'
-    title: EmailSendReq
-    description: EmailSendReq defines the data of email sending
-    example:
-      email:
-        content_type: content_type
-        to:
-        - to
-        - to
-        body: body
-      email_config:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailConfigUpdateReq'
+        description: email config info
+        required: true
+      summary: Update email config
+      x-summary-source: derived
+components:
+  schemas:
+    EmailSendReq:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailSendReq_Email'
+        email_config:
+          $ref: '#/components/schemas/EmailConfig'
+      title: EmailSendReq
+      description: EmailSendReq defines the data of email sending
+      example:
+        email:
+          content_type: content_type
+          to:
+          - to
+          - to
+          body: body
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+    EmailConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        smtp_enable_ssl:
+          type: boolean
+        smtp_host:
+          type: string
+        smtp_password:
+          type: string
+        smtp_port:
+          type: integer
+          format: int64
+        smtp_skip_tls_cert_verify:
+          type: boolean
+        smtp_user:
+          type: string
+        subject:
+          type: string
+      title: EmailConfig
+      description: EmailConfig define email config
+      example:
         smtp_password: smtp_password
         smtp_port: 0
         smtp_user: smtp_user
@@ -121,36 +149,107 @@ definitions:
         smtp_host: smtp_host
         smtp_enable_ssl: true
         enabled: true
-  EmailSendReq_Email:
-    type: object
-    required:
-    - body
-    - to
-    properties:
-      body:
-        type: string
-      content_type:
-        type: string
-        description: content type, 'text/plain' or 'text/html'
-      to:
-        type: array
-        items:
+    EmailConfigUpdateReq_EmailConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        smtp_enable_ssl:
+          type: boolean
+        smtp_host:
           type: string
-    title: EmailSendReq_Email
-    example:
-      content_type: content_type
-      to:
+        smtp_password:
+          type: string
+        smtp_port:
+          type: integer
+          format: int64
+        smtp_skip_tls_cert_verify:
+          type: boolean
+        smtp_user:
+          type: string
+        subject:
+          type: string
+      title: EmailConfigUpdateReq_EmailConfig
+      example:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
+    EmailConfigUpdateReq:
+      type: object
+      properties:
+        email_config:
+          $ref: '#/components/schemas/EmailConfigUpdateReq_EmailConfig'
+      title: EmailConfigUpdateReq
+      example:
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+    EmailResp:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+      title: EmailResp
+      example:
+        email:
+          content_type: content_type
+          subject: subject
+          from: from
+          to:
+          - to
+          - to
+          body: body
+    EmailSendReq_Email:
+      type: object
+      required:
+      - body
       - to
-      - to
-      body: body
-  EmailResp:
-    type: object
-    properties:
-      email:
-        $ref: '#/definitions/Email'
-    title: EmailResp
-    example:
-      email:
+      properties:
+        body:
+          type: string
+        content_type:
+          type: string
+          description: content type, 'text/plain' or 'text/html'
+        to:
+          type: array
+          items:
+            type: string
+      title: EmailSendReq_Email
+      example:
+        content_type: content_type
+        to:
+        - to
+        - to
+        body: body
+    Email:
+      type: object
+      properties:
+        body:
+          type: string
+        content_type:
+          type: string
+        from:
+          type: string
+        subject:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+      title: Email
+      description: Email defines email model
+      example:
         content_type: content_type
         subject: subject
         from: from
@@ -158,132 +257,30 @@ definitions:
         - to
         - to
         body: body
-  EmailConfigResp:
-    type: object
-    properties:
-      email_config:
-        $ref: '#/definitions/EmailConfig'
-    title: EmailConfigResp
-    example:
-      email_config:
-        smtp_password: smtp_password
-        smtp_port: 0
-        smtp_user: smtp_user
-        smtp_skip_tls_cert_verify: true
-        subject: subject
-        smtp_host: smtp_host
-        smtp_enable_ssl: true
-        enabled: true
-  EmailConfig:
-    type: object
-    properties:
-      enabled:
-        type: boolean
-      smtp_enable_ssl:
-        type: boolean
-      smtp_host:
-        type: string
-      smtp_password:
-        type: string
-      smtp_port:
-        type: integer
-        format: int64
-      smtp_skip_tls_cert_verify:
-        type: boolean
-      smtp_user:
-        type: string
-      subject:
-        type: string
-    title: EmailConfig
-    description: EmailConfig define email config
-    example:
-      smtp_password: smtp_password
-      smtp_port: 0
-      smtp_user: smtp_user
-      smtp_skip_tls_cert_verify: true
-      subject: subject
-      smtp_host: smtp_host
-      smtp_enable_ssl: true
-      enabled: true
-  Email:
-    type: object
-    properties:
-      body:
-        type: string
-      content_type:
-        type: string
-      from:
-        type: string
-      subject:
-        type: string
-      to:
-        type: array
-        items:
-          type: string
-    title: Email
-    description: Email defines email model
-    example:
-      content_type: content_type
-      subject: subject
-      from: from
-      to:
-      - to
-      - to
-      body: body
-  EmailConfigUpdateReq_EmailConfig:
-    type: object
-    properties:
-      enabled:
-        type: boolean
-      smtp_enable_ssl:
-        type: boolean
-      smtp_host:
-        type: string
-      smtp_password:
-        type: string
-      smtp_port:
-        type: integer
-        format: int64
-      smtp_skip_tls_cert_verify:
-        type: boolean
-      smtp_user:
-        type: string
-      subject:
-        type: string
-    title: EmailConfigUpdateReq_EmailConfig
-    example:
-      smtp_password: smtp_password
-      smtp_port: 0
-      smtp_user: smtp_user
-      smtp_skip_tls_cert_verify: true
-      subject: subject
-      smtp_host: smtp_host
-      smtp_enable_ssl: true
-      enabled: true
-  EmailConfigUpdateReq:
-    type: object
-    properties:
-      email_config:
-        $ref: '#/definitions/EmailConfigUpdateReq_EmailConfig'
-    title: EmailConfigUpdateReq
-    example:
-      email_config:
-        smtp_password: smtp_password
-        smtp_port: 0
-        smtp_user: smtp_user
-        smtp_skip_tls_cert_verify: true
-        subject: subject
-        smtp_host: smtp_host
-        smtp_enable_ssl: true
-        enabled: true
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    EmailConfigResp:
+      type: object
+      properties:
+        email_config:
+          $ref: '#/components/schemas/EmailConfig'
+      title: EmailConfigResp
+      example:
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

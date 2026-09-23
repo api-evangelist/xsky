@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths os-remote-policies API
+  title: XMS Os Remote Policies API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: os-remote-policies
-  description: 'OSRemotePolicyController API /os-remote-policies
-
-    '
+  description: OSRemotePolicyController API /os-remote-policies
 paths:
   /os-remote-policies/:
     get:
@@ -19,67 +18,70 @@ paths:
       - os-remote-policies
       description: List os remote policies
       operationId: ListOSRemotePolicies
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: marker
         in: query
         description: paging param
         required: false
-        type: string
         x-exportParamName: Marker
+        schema:
+          type: string
       - name: zone_uuid
         in: query
         description: zone uuid
         required: false
-        type: string
         x-exportParamName: ZoneUuid
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/OSRemotePoliciesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSRemotePoliciesResp'
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List OS remote policies
+      x-summary-source: derived
   /os-remote-policies/{policy_uuid}:
     get:
       tags:
       - os-remote-policies
       description: Get a os remote policy
       operationId: GetOSRemotePolicy
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: policy_uuid
         in: path
         description: policy uuid
         required: true
-        type: string
         x-exportParamName: PolicyUuid
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/OSRemotePolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSRemotePolicyResp'
         404:
           description: NotFound
         500:
@@ -87,44 +89,71 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  OSRemotePolicy:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      default:
-        type: boolean
-      name:
-        type: string
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-      uuid:
-        type: string
-      zone_uuid:
-        type: string
-    title: OSRemotePolicy
-    description: OSRemotePolicy defines model of cached remote os policy.
-    example:
-      default: true
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      zone_uuid: zone_uuid
-      uuid: uuid
-      status: status
-  OSRemotePolicyResp:
-    type: object
-    properties:
-      os_remote_policy:
-        $ref: '#/definitions/OSRemotePolicy'
-    title: OSRemotePolicyResp
-    example:
-      os_remote_policy:
+      summary: Get OS remote policy
+      x-summary-source: derived
+components:
+  schemas:
+    OSRemotePolicyResp:
+      type: object
+      properties:
+        os_remote_policy:
+          $ref: '#/components/schemas/OSRemotePolicy'
+      title: OSRemotePolicyResp
+      example:
+        os_remote_policy:
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          zone_uuid: zone_uuid
+          uuid: uuid
+          status: status
+    OSRemotePoliciesResp:
+      type: object
+      properties:
+        os_remote_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSRemotePolicy'
+      title: OSRemotePoliciesResp
+      example:
+        os_remote_policies:
+        - default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          zone_uuid: zone_uuid
+          uuid: uuid
+          status: status
+        - default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          zone_uuid: zone_uuid
+          uuid: uuid
+          status: status
+    OSRemotePolicy:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        default:
+          type: boolean
+        name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        uuid:
+          type: string
+        zone_uuid:
+          type: string
+      title: OSRemotePolicy
+      description: OSRemotePolicy defines model of cached remote os policy.
+      example:
         default: true
         name: name
         create: '2000-01-23T04:56:07.000+00:00'
@@ -132,38 +161,14 @@ definitions:
         zone_uuid: zone_uuid
         uuid: uuid
         status: status
-  OSRemotePoliciesResp:
-    type: object
-    properties:
-      os_remote_policies:
-        type: array
-        items:
-          $ref: '#/definitions/OSRemotePolicy'
-    title: OSRemotePoliciesResp
-    example:
-      os_remote_policies:
-      - default: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        zone_uuid: zone_uuid
-        uuid: uuid
-        status: status
-      - default: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        zone_uuid: zone_uuid
-        uuid: uuid
-        status: status
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

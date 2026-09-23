@@ -1,93 +1,86 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths users API
+  title: XMS Users API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: users
-  description: 'UserController Manage users
-
-    '
+- name: Users
+  description: UserController Manage users
 paths:
   /users/:
     get:
       tags:
-      - users
-      description: List users
+      - Users
       operationId: ListUsers
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: name
         in: query
         description: user name
         required: false
-        type: string
         x-exportParamName: Name
+        schema:
+          type: string
       - name: email
         in: query
         description: user email
         required: false
-        type: string
         x-exportParamName: Email
+        schema:
+          type: string
       - name: all
         in: query
         description: show all users
         required: false
-        type: boolean
         x-exportParamName: All
+        schema:
+          type: boolean
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/UsersResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List users
+      x-summary-source: derived
     post:
       tags:
-      - users
+      - Users
       description: create user
       operationId: CreateUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: user info
-        required: true
-        schema:
-          $ref: '#/definitions/UserCreateReq'
-        x-exportParamName: Body
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/UserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResp'
         400:
           description: BadRequest
         500:
@@ -95,29 +88,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateReq'
+        description: user info
+        required: true
+      summary: Create user
+      x-summary-source: derived
   /users/{user_id}:
     get:
       tags:
-      - users
+      - Users
       description: get a user
       operationId: GetUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/UserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResp'
         404:
           description: NotFound
         500:
@@ -125,23 +126,22 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get user
+      x-summary-source: derived
     delete:
       tags:
-      - users
+      - Users
       description: delete user
       operationId: DeleteUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: No Content
@@ -152,35 +152,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete user
+      x-summary-source: derived
     patch:
       tags:
-      - users
+      - Users
       description: update user info
       operationId: UpdateUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
-      - in: body
-        name: body
-        description: user info
-        required: true
         schema:
-          $ref: '#/definitions/UserUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/UserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResp'
         400:
           description: BadRequest
         404:
@@ -190,31 +184,30 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateReq'
+        description: user info
+        required: true
+      summary: Update user
+      x-summary-source: derived
   /users/{user_id}/password:
     put:
       tags:
-      - users
+      - Users
       description: change user password
       operationId: ChangePassword
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
-      - in: body
-        name: body
-        description: update info
-        required: true
         schema:
-          $ref: '#/definitions/ChangePasswordReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         204:
           description: No Content
@@ -225,29 +218,37 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordReq'
+        description: update info
+        required: true
+      summary: Change password
+      x-summary-source: derived
   /users/{user_id}/settings:
     get:
       tags:
-      - users
+      - Users
       description: update user info
       operationId: GetUserSettings
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/UserSettings'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
         400:
           description: BadRequest
         403:
@@ -259,35 +260,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get user settings
+      x-summary-source: derived
     patch:
       tags:
-      - users
+      - Users
       description: update user info
       operationId: UpdateUserSettings
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: UserId
-      - in: body
-        name: body
-        description: user settings
-        required: true
         schema:
-          $ref: '#/definitions/UserSettings'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/UserSettings'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
         400:
           description: BadRequest
         403:
@@ -299,232 +294,93 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  UserCreateReq_User:
-    type: object
-    required:
-    - email
-    - enabled
-    - name
-    - password
-    properties:
-      email:
-        type: string
-        description: email of user
-      enabled:
-        type: boolean
-        description: enable or disable the user
-      name:
-        type: string
-        description: name of user
-      password:
-        type: string
-        description: password of user
-      roles:
-        type: array
-        description: roles of user
-        items:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+        description: user settings
+        required: true
+      summary: Update user settings
+      x-summary-source: derived
+components:
+  schemas:
+    UserUpdateReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/UserUpdateReq_User'
+      title: UserUpdateReq
+      example:
+        user:
+          roles:
+          - roles
+          - roles
+          name: name
+          email: email
+          enabled: true
+    ChangePasswordReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          description: user
+          $ref: '#/components/schemas/ChangePasswordReq_Req'
+      title: ChangePasswordReq
+      example:
+        user:
+          original_password: original_password
+          password: password
+          rsa_key_id: rsa_key_id
+          encrypted_original_password: encrypted_original_password
+          encrypted_password: encrypted_password
+    UserCreateReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/UserCreateReq_User'
+      title: UserCreateReq
+      example:
+        user:
+          password: password
+          roles:
+          - roles
+          - roles
+          name: name
+          email: email
+          enabled: true
+    UserCreateReq_User:
+      type: object
+      required:
+      - email
+      - enabled
+      - name
+      - password
+      properties:
+        email:
           type: string
-    title: UserCreateReq_User
-    example:
-      password: password
-      roles:
-      - roles
-      - roles
-      name: name
-      email: email
-      enabled: true
-  UserSettings:
-    type: object
-    required:
-    - user
-    properties:
-      user:
-        $ref: '#/definitions/UserSettings_User'
-    title: UserSettings
-    example:
-      user:
-        settings:
-          dashboard: dashboard
-  ChangePasswordReq_Req:
-    type: object
-    required:
-    - original_password
-    - password
-    properties:
-      encrypted_original_password:
-        type: string
-        description: encrypted original password for auth
-      encrypted_password:
-        type: string
-        description: encrypted password for auth
-      original_password:
-        type: string
-        description: original password of user
-      password:
-        type: string
-        description: new password of user
-      rsa_key_id:
-        type: string
-        description: rsa key id
-    title: ChangePasswordReq_Req
-    example:
-      original_password: original_password
-      password: password
-      rsa_key_id: rsa_key_id
-      encrypted_original_password: encrypted_original_password
-      encrypted_password: encrypted_password
-  UserSettings_User_Settings:
-    type: object
-    properties:
-      dashboard:
-        type: string
-        description: dashboard setting
-    title: UserSettings_User_Settings
-    example:
-      dashboard: dashboard
-  User:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-        description: time of creating user
-      email:
-        type: string
-        description: email of user
-      enabled:
-        type: boolean
-        description: enable the user or not
-      external_id:
-        type: string
-        description: external id of user
-      id:
-        type: integer
-        format: int64
-        description: id of user
-      identity_platform:
-        description: identity platform of user
-        $ref: '#/definitions/IdentityPlatform_Nestview'
-      name:
-        type: string
-        description: name of user
-      password_last_update:
-        type: string
-        format: date-time
-        description: time of last password update
-      roles:
-        type: array
-        description: roles of user
-        items:
+          description: email of user
+        enabled:
+          type: boolean
+          description: enable or disable the user
+        name:
           type: string
-    title: User
-  UserResp:
-    type: object
-    required:
-    - user
-    properties:
-      user:
-        description: user
-        $ref: '#/definitions/UserRecord'
-    title: UserResp
-    example:
-      user: ''
-  UserUpdateReq:
-    type: object
-    required:
-    - user
-    properties:
-      user:
-        $ref: '#/definitions/UserUpdateReq_User'
-    title: UserUpdateReq
-    example:
-      user:
+          description: name of user
+        password:
+          type: string
+          description: password of user
         roles:
-        - roles
-        - roles
-        name: name
-        email: email
-        enabled: true
-  UserSettings_User:
-    type: object
-    required:
-    - settings
-    properties:
-      settings:
-        $ref: '#/definitions/UserSettings_User_Settings'
-    title: UserSettings_User
-    example:
-      settings:
-        dashboard: dashboard
-  UsersResp:
-    type: object
-    required:
-    - users
-    properties:
-      users:
-        type: array
-        description: users
-        items:
-          $ref: '#/definitions/UserRecord'
-    title: UsersResp
-    example:
-      users:
-      - ''
-      - ''
-  UserUpdateReq_User:
-    type: object
-    required:
-    - email
-    - enabled
-    - name
-    properties:
-      email:
-        type: string
-        description: email of user
-      enabled:
-        type: boolean
-        description: enable or disable the user
-      name:
-        type: string
-        description: name of user
-      roles:
-        type: array
-        description: roles of user
-        items:
-          type: string
-    title: UserUpdateReq_User
-    example:
-      roles:
-      - roles
-      - roles
-      name: name
-      email: email
-      enabled: true
-  IdentityPlatform_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-        description: id of identity platform
-      name:
-        type: string
-        description: name of identity platform
-    title: IdentityPlatform_Nestview
-    example:
-      name: name
-      id: 6
-  UserCreateReq:
-    type: object
-    required:
-    - user
-    properties:
-      user:
-        $ref: '#/definitions/UserCreateReq_User'
-    title: UserCreateReq
-    example:
-      user:
+          type: array
+          description: roles of user
+          items:
+            type: string
+      title: UserCreateReq_User
+      example:
         password: password
         roles:
         - roles
@@ -532,35 +388,184 @@ definitions:
         name: name
         email: email
         enabled: true
-  UserRecord:
-    title: UserRecord
-    allOf:
-    - $ref: '#/definitions/User'
-    description: UserRecord defines user record for api response
-  ChangePasswordReq:
-    type: object
-    required:
-    - user
-    properties:
-      user:
-        description: user
-        $ref: '#/definitions/ChangePasswordReq_Req'
-    title: ChangePasswordReq
-    example:
-      user:
+    ChangePasswordReq_Req:
+      type: object
+      required:
+      - original_password
+      - password
+      properties:
+        encrypted_original_password:
+          type: string
+          description: encrypted original password for auth
+        encrypted_password:
+          type: string
+          description: encrypted password for auth
+        original_password:
+          type: string
+          description: original password of user
+        password:
+          type: string
+          description: new password of user
+        rsa_key_id:
+          type: string
+          description: rsa key id
+      title: ChangePasswordReq_Req
+      example:
         original_password: original_password
         password: password
         rsa_key_id: rsa_key_id
         encrypted_original_password: encrypted_original_password
         encrypted_password: encrypted_password
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    IdentityPlatform_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of identity platform
+        name:
+          type: string
+          description: name of identity platform
+      title: IdentityPlatform_Nestview
+      example:
+        name: name
+        id: 6
+    UserRecord:
+      title: UserRecord
+      allOf:
+      - $ref: '#/components/schemas/User'
+      description: UserRecord defines user record for api response
+    UserResp:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          description: user
+          $ref: '#/components/schemas/UserRecord'
+      title: UserResp
+      example:
+        user: ''
+    User:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+          description: time of creating user
+        email:
+          type: string
+          description: email of user
+        enabled:
+          type: boolean
+          description: enable the user or not
+        external_id:
+          type: string
+          description: external id of user
+        id:
+          type: integer
+          format: int64
+          description: id of user
+        identity_platform:
+          description: identity platform of user
+          $ref: '#/components/schemas/IdentityPlatform_Nestview'
+        name:
+          type: string
+          description: name of user
+        password_last_update:
+          type: string
+          format: date-time
+          description: time of last password update
+        roles:
+          type: array
+          description: roles of user
+          items:
+            type: string
+      title: User
+    UserSettings:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/UserSettings_User'
+      title: UserSettings
+      example:
+        user:
+          settings:
+            dashboard: dashboard
+    UsersResp:
+      type: object
+      required:
+      - users
+      properties:
+        users:
+          type: array
+          description: users
+          items:
+            $ref: '#/components/schemas/UserRecord'
+      title: UsersResp
+      example:
+        users:
+        - ''
+        - ''
+    UserSettings_User_Settings:
+      type: object
+      properties:
+        dashboard:
+          type: string
+          description: dashboard setting
+      title: UserSettings_User_Settings
+      example:
+        dashboard: dashboard
+    UserUpdateReq_User:
+      type: object
+      required:
+      - email
+      - enabled
+      - name
+      properties:
+        email:
+          type: string
+          description: email of user
+        enabled:
+          type: boolean
+          description: enable or disable the user
+        name:
+          type: string
+          description: name of user
+        roles:
+          type: array
+          description: roles of user
+          items:
+            type: string
+      title: UserUpdateReq_User
+      example:
+        roles:
+        - roles
+        - roles
+        name: name
+        email: email
+        enabled: true
+    UserSettings_User:
+      type: object
+      required:
+      - settings
+      properties:
+        settings:
+          $ref: '#/components/schemas/UserSettings_User_Settings'
+      title: UserSettings_User
+      example:
+        settings:
+          dashboard: dashboard
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

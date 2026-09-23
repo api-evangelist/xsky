@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths fs-arbitration-pools API
+  title: XMS Fs Arbitration Pools API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: fs-arbitration-pools
-  description: 'FSArbitrationPoolController File Storage Arbitration Pool Management
-
-    '
+  description: FSArbitrationPoolController File Storage Arbitration Pool Management
 paths:
   /fs-arbitration-pools/:
     get:
@@ -19,57 +18,49 @@ paths:
       - fs-arbitration-pools
       description: List file storage arbitration pools
       operationId: ListFSArbitrationPools
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSArbitrationPoolsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSArbitrationPoolsResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List FS arbitration pools
+      x-summary-source: derived
     post:
       tags:
       - fs-arbitration-pools
       description: create file storage arbitration pool
       operationId: CreateFSArbitrationPool
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: file system arbitration pool info
-        required: true
-        schema:
-          $ref: '#/definitions/FSArbitrationPoolCreateReq'
-        x-exportParamName: Body
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/FSArbitrationPoolResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSArbitrationPoolResp'
         400:
           description: BadRequest
         409:
@@ -79,29 +70,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FSArbitrationPoolCreateReq'
+        description: file system arbitration pool info
+        required: true
+      summary: Create FS arbitration pool
+      x-summary-source: derived
   /fs-arbitration-pools/{fs_arbitration_pool_id}:
     get:
       tags:
       - fs-arbitration-pools
       description: Get file storage arbitration pool
       operationId: GetFSArbitrationPool
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_arbitration_pool_id
         in: path
         description: file storage arbitration pool id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsArbitrationPoolId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSArbitrationPoolResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSArbitrationPoolResp'
         404:
           description: NotFound
         500:
@@ -109,23 +108,22 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get FS arbitration pool
+      x-summary-source: derived
     delete:
       tags:
       - fs-arbitration-pools
       description: Delete file storage arbitration pool
       operationId: DeleteFSArbitrationPool
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_arbitration_pool_id
         in: path
         description: file storage arbitration pool id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsArbitrationPoolId
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: Not Content
@@ -136,35 +134,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete FS arbitration pool
+      x-summary-source: derived
     patch:
       tags:
       - fs-arbitration-pools
       description: Update file system arbitration pool
       operationId: UpdateFSArbitrationPool
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_arbitration_pool_id
         in: path
         description: file system arbitration pool id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsArbitrationPoolId
-      - in: body
-        name: body
-        description: file system arbitration pool info
-        required: true
         schema:
-          $ref: '#/definitions/FSArbitrationPoolUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         202:
           description: OK
-          schema:
-            $ref: '#/definitions/FSArbitrationPoolResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSArbitrationPoolResp'
         400:
           description: BadRequest
         409:
@@ -174,128 +166,138 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  FSArbitrationPoolUpdateReq_Info:
-    type: object
-    required:
-    - pool_id
-    properties:
-      pool_id:
-        type: integer
-        format: int64
-        description: pool used for file system arbitration
-    title: FSArbitrationPoolUpdateReq_Info
-  FSArbitrationPoolsResp:
-    type: object
-    required:
-    - fs_arbitration_pools
-    properties:
-      fs_arbitration_pools:
-        type: array
-        description: file storage arbitration pools
-        items:
-          $ref: '#/definitions/FSArbitrationPool'
-    title: FSArbitrationPoolsResp
-    example:
-      fs_arbitration_pools:
-      - pool:
-          name: name
-          id: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-      - pool:
-          name: name
-          id: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-  FSArbitrationPoolCreateReq_Info:
-    type: object
-    required:
-    - pool_id
-    properties:
-      pool_id:
-        type: integer
-        format: int64
-        description: pool used for file system arbitration
-    title: FSArbitrationPoolCreateReq_Info
-  Pool_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: Pool_Nestview
-    example:
-      name: name
-      id: 5
-  FSArbitrationPoolResp:
-    type: object
-    required:
-    - fs_arbitration_pool
-    properties:
-      fs_arbitration_pool:
-        description: file storage arbitration pool
-        $ref: '#/definitions/FSArbitrationPool'
-    title: FSArbitrationPoolResp
-    example:
-      fs_arbitration_pool:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FSArbitrationPoolUpdateReq'
+        description: file system arbitration pool info
+        required: true
+      summary: Update FS arbitration pool
+      x-summary-source: derived
+components:
+  schemas:
+    FSArbitrationPoolsResp:
+      type: object
+      required:
+      - fs_arbitration_pools
+      properties:
+        fs_arbitration_pools:
+          type: array
+          description: file storage arbitration pools
+          items:
+            $ref: '#/components/schemas/FSArbitrationPool'
+      title: FSArbitrationPoolsResp
+      example:
+        fs_arbitration_pools:
+        - pool:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+        - pool:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    FSArbitrationPoolUpdateReq:
+      type: object
+      required:
+      - fs_arbitration_pool
+      properties:
+        fs_arbitration_pool:
+          $ref: '#/components/schemas/FSArbitrationPoolUpdateReq_Info'
+      title: FSArbitrationPoolUpdateReq
+    FSArbitrationPool:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        update:
+          type: string
+          format: date-time
+      title: FSArbitrationPool
+      description: FSArbitrationPool defines file system arbitration pool
+      example:
         pool:
           name: name
           id: 5
         create: '2000-01-23T04:56:07.000+00:00'
         update: '2000-01-23T04:56:07.000+00:00'
         id: 0
-  FSArbitrationPoolUpdateReq:
-    type: object
-    required:
-    - fs_arbitration_pool
-    properties:
-      fs_arbitration_pool:
-        $ref: '#/definitions/FSArbitrationPoolUpdateReq_Info'
-    title: FSArbitrationPoolUpdateReq
-  FSArbitrationPoolCreateReq:
-    type: object
-    required:
-    - fs_arbitration_pool
-    properties:
-      fs_arbitration_pool:
-        $ref: '#/definitions/FSArbitrationPoolCreateReq_Info'
-    title: FSArbitrationPoolCreateReq
-  FSArbitrationPool:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      pool:
-        $ref: '#/definitions/Pool_Nestview'
-      update:
-        type: string
-        format: date-time
-    title: FSArbitrationPool
-    description: FSArbitrationPool defines file system arbitration pool
-    example:
-      pool:
+    FSArbitrationPoolUpdateReq_Info:
+      type: object
+      required:
+      - pool_id
+      properties:
+        pool_id:
+          type: integer
+          format: int64
+          description: pool used for file system arbitration
+      title: FSArbitrationPoolUpdateReq_Info
+    FSArbitrationPoolResp:
+      type: object
+      required:
+      - fs_arbitration_pool
+      properties:
+        fs_arbitration_pool:
+          description: file storage arbitration pool
+          $ref: '#/components/schemas/FSArbitrationPool'
+      title: FSArbitrationPoolResp
+      example:
+        fs_arbitration_pool:
+          pool:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    FSArbitrationPoolCreateReq_Info:
+      type: object
+      required:
+      - pool_id
+      properties:
+        pool_id:
+          type: integer
+          format: int64
+          description: pool used for file system arbitration
+      title: FSArbitrationPoolCreateReq_Info
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
         name: name
         id: 5
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    FSArbitrationPoolCreateReq:
+      type: object
+      required:
+      - fs_arbitration_pool
+      properties:
+        fs_arbitration_pool:
+          $ref: '#/components/schemas/FSArbitrationPoolCreateReq_Info'
+      title: FSArbitrationPoolCreateReq
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

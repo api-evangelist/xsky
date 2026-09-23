@@ -1,48 +1,47 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths alert-groups API
+  title: XMS Alert Groups API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: alert-groups
-  description: 'AlertGroupController Operations about alert group
-
-    '
+- name: Alert Groups
+  description: AlertGroupController Operations about alert group
 paths:
   /alert-groups/:
     get:
       tags:
-      - alert-groups
+      - Alert Groups
       description: List all alert groups
       operationId: ListAlertGroups
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/AlertGroupsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertGroupsResp'
         400:
           description: BadRequest
         500:
@@ -50,28 +49,20 @@ paths:
       security:
       - tokenInHeader: []
       - tokenInQuery: []
+      summary: List alert groups
+      x-summary-source: derived
     post:
       tags:
-      - alert-groups
+      - Alert Groups
       description: create alert group
       operationId: CreateAlertGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: alert group
-        required: true
-        schema:
-          $ref: '#/definitions/AlertGroupCreateReq'
-        x-exportParamName: Body
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/AlertGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertGroupResp'
         400:
           description: BadRequest
         500:
@@ -79,29 +70,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertGroupCreateReq'
+        description: alert group
+        required: true
+      summary: Create alert group
+      x-summary-source: derived
   /alert-groups/{group_id}:
     get:
       tags:
-      - alert-groups
+      - Alert Groups
       description: get alert group
       operationId: GetAlertGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: group_id
         in: path
         description: the id of alert group
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GroupId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/AlertGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertGroupResp'
         404:
           description: NotFound
         500:
@@ -109,23 +108,22 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get alert group
+      x-summary-source: derived
     delete:
       tags:
-      - alert-groups
+      - Alert Groups
       description: delete alert group
       operationId: DeleteAlertGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: group_id
         in: path
         description: the id of alert group
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GroupId
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: No Content
@@ -138,35 +136,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete alert group
+      x-summary-source: derived
     patch:
       tags:
-      - alert-groups
+      - Alert Groups
       description: update alert group
       operationId: UpdateAlertGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: group_id
         in: path
         description: the id of alert group
         required: true
-        type: integer
-        format: int64
         x-exportParamName: GroupId
-      - in: body
-        name: body
-        description: alert group
-        required: true
         schema:
-          $ref: '#/definitions/AlertGroupUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/AlertGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertGroupResp'
         400:
           description: BadRequest
         500:
@@ -174,158 +166,168 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  AlertGroupCreateReq:
-    type: object
-    required:
-    - alert_group
-    properties:
-      alert_group:
-        $ref: '#/definitions/AlertGroupCreateReq_AlertGroup'
-    title: AlertGroupCreateReq
-    example:
-      alert_group:
-        alert_rule_ids:
-        - 0
-        - 0
-        name: name
-        email_group_ids:
-        - 6
-        - 6
-  AlertGroupUpdateReq_AlertGroup:
-    type: object
-    properties:
-      alert_rule_ids:
-        type: array
-        items:
-          type: integer
-          format: int64
-      email_group_ids:
-        type: array
-        items:
-          type: integer
-          format: int64
-      name:
-        type: string
-    title: AlertGroupUpdateReq_AlertGroup
-    example:
-      alert_rule_ids:
-      - 0
-      - 0
-      name: name
-      email_group_ids:
-      - 6
-      - 6
-  AlertGroupUpdateReq:
-    type: object
-    required:
-    - alert_group
-    properties:
-      alert_group:
-        $ref: '#/definitions/AlertGroupUpdateReq_AlertGroup'
-    title: AlertGroupUpdateReq
-    example:
-      alert_group:
-        alert_rule_ids:
-        - 0
-        - 0
-        name: name
-        email_group_ids:
-        - 6
-        - 6
-  AlertGroupCreateReq_AlertGroup:
-    type: object
-    required:
-    - alert_rule_ids
-    - email_group_ids
-    - name
-    properties:
-      alert_rule_ids:
-        type: array
-        items:
-          type: integer
-          format: int64
-      email_group_ids:
-        type: array
-        items:
-          type: integer
-          format: int64
-      name:
-        type: string
-    title: AlertGroupCreateReq_AlertGroup
-    example:
-      alert_rule_ids:
-      - 0
-      - 0
-      name: name
-      email_group_ids:
-      - 6
-      - 6
-  AlertGroup:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: AlertGroup
-    description: AlertGroup defines the alert group
-    example:
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-  AlertGroupsResp:
-    type: object
-    required:
-    - alert_groups
-    properties:
-      alert_groups:
-        type: array
-        description: alert groups
-        items:
-          $ref: '#/definitions/AlertGroup'
-    title: AlertGroupsResp
-    example:
-      alert_groups:
-      - name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-      - name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-  AlertGroupResp:
-    type: object
-    required:
-    - alert_group
-    properties:
-      alert_group:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertGroupUpdateReq'
         description: alert group
-        $ref: '#/definitions/AlertGroup'
-    title: AlertGroupResp
-    example:
-      alert_group:
+        required: true
+      summary: Update alert group
+      x-summary-source: derived
+components:
+  schemas:
+    AlertGroupCreateReq_AlertGroup:
+      type: object
+      required:
+      - alert_rule_ids
+      - email_group_ids
+      - name
+      properties:
+        alert_rule_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        email_group_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        name:
+          type: string
+      title: AlertGroupCreateReq_AlertGroup
+      example:
+        alert_rule_ids:
+        - 0
+        - 0
+        name: name
+        email_group_ids:
+        - 6
+        - 6
+    AlertGroupUpdateReq_AlertGroup:
+      type: object
+      properties:
+        alert_rule_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        email_group_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        name:
+          type: string
+      title: AlertGroupUpdateReq_AlertGroup
+      example:
+        alert_rule_ids:
+        - 0
+        - 0
+        name: name
+        email_group_ids:
+        - 6
+        - 6
+    AlertGroupResp:
+      type: object
+      required:
+      - alert_group
+      properties:
+        alert_group:
+          description: alert group
+          $ref: '#/components/schemas/AlertGroup'
+      title: AlertGroupResp
+      example:
+        alert_group:
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    AlertGroupUpdateReq:
+      type: object
+      required:
+      - alert_group
+      properties:
+        alert_group:
+          $ref: '#/components/schemas/AlertGroupUpdateReq_AlertGroup'
+      title: AlertGroupUpdateReq
+      example:
+        alert_group:
+          alert_rule_ids:
+          - 0
+          - 0
+          name: name
+          email_group_ids:
+          - 6
+          - 6
+    AlertGroup:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: AlertGroup
+      description: AlertGroup defines the alert group
+      example:
         name: name
         create: '2000-01-23T04:56:07.000+00:00'
         update: '2000-01-23T04:56:07.000+00:00'
         id: 0
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    AlertGroupsResp:
+      type: object
+      required:
+      - alert_groups
+      properties:
+        alert_groups:
+          type: array
+          description: alert groups
+          items:
+            $ref: '#/components/schemas/AlertGroup'
+      title: AlertGroupsResp
+      example:
+        alert_groups:
+        - name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+        - name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    AlertGroupCreateReq:
+      type: object
+      required:
+      - alert_group
+      properties:
+        alert_group:
+          $ref: '#/components/schemas/AlertGroupCreateReq_AlertGroup'
+      title: AlertGroupCreateReq
+      example:
+        alert_group:
+          alert_rule_ids:
+          - 0
+          - 0
+          name: name
+          email_group_ids:
+          - 6
+          - 6
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

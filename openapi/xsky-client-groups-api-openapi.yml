@@ -1,67 +1,68 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths client-groups API
+  title: XMS Client Groups API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: client-groups
-  description: 'ClientGroupController Operations about client group
-
-    '
+- name: Client Groups
+  description: ClientGroupController Operations about client group
 paths:
   /client-groups/:
     get:
       tags:
-      - client-groups
-      description: List client groups
+      - Client Groups
       operationId: ListClientGroups
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: block_volume_id
         in: query
         description: related block volume id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ClientGroupsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientGroupsResp'
         400:
           description: BadRequest
         500:
@@ -69,28 +70,20 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List client groups
+      x-summary-source: derived
     post:
       tags:
-      - client-groups
+      - Client Groups
       description: Create a client group
       operationId: CreateClientGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: client
-        description: client group info
-        required: true
-        schema:
-          $ref: '#/definitions/ClientGroupCreateReq'
-        x-exportParamName: Client
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/ClientGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientGroupResp'
         400:
           description: BadRequest
         500:
@@ -98,29 +91,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientGroupCreateReq'
+        description: client group info
+        required: true
+      summary: Create client group
+      x-summary-source: derived
   /client-groups/{client_group_id}:
     get:
       tags:
-      - client-groups
+      - Client Groups
       description: get a client group
       operationId: GetClientGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: client_group_id
         in: path
         description: client group id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: ClientGroupId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/ClientGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientGroupResp'
         400:
           description: BadRequest
         404:
@@ -130,23 +131,22 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get client group
+      x-summary-source: derived
     delete:
       tags:
-      - client-groups
+      - Client Groups
       description: Delete a client
       operationId: DeleteClientGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: client_group_id
         in: path
         description: client group id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: ClientGroupId
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: No Content
@@ -159,35 +159,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete client group
+      x-summary-source: derived
     patch:
       tags:
-      - client-groups
+      - Client Groups
       description: update client group
       operationId: UpdateClientGroup
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: client_group_id
         in: path
         description: client group id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: ClientGroupId
-      - in: body
-        name: client
-        description: client group info
-        required: true
         schema:
-          $ref: '#/definitions/ClientGroupUpdateReq'
-        x-exportParamName: Client
+          type: integer
+          format: int64
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/ClientGroupResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientGroupResp'
         400:
           description: BadRequest
         500:
@@ -195,130 +189,123 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  ClientGroupCreateReq_ClientGroup_Clients_Elt:
-    type: object
-    properties:
-      code:
-        type: string
-    title: ClientGroupCreateReq_ClientGroup_Clients_Elt
-    example:
-      code: code
-  Client:
-    type: object
-    properties:
-      client_group:
-        $ref: '#/definitions/ClientGroup_Nestview'
-      code:
-        type: string
-      create:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: Client
-    example:
-      code: code
-      client_group:
-        name: name
-        id: 5
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 5
-      status: status
-  ClientGroupUpdateReq:
-    type: object
-    properties:
-      client_group:
-        $ref: '#/definitions/ClientGroupUpdateReq_ClientGroup'
-    title: ClientGroupUpdateReq
-    example:
-      client_group:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientGroupUpdateReq'
+        description: client group info
+        required: true
+      summary: Update client group
+      x-summary-source: derived
+components:
+  schemas:
+    ClientGroupUpdateReq:
+      type: object
+      properties:
+        client_group:
+          $ref: '#/components/schemas/ClientGroupUpdateReq_ClientGroup'
+      title: ClientGroupUpdateReq
+      example:
+        client_group:
+          clients:
+          - code: code
+          - code: code
+          name: name
+          description: description
+    ClientGroup:
+      type: object
+      properties:
+        access_path_num:
+          type: integer
+          format: int64
+        block_volume_num:
+          type: integer
+          format: int64
+        chap:
+          type: boolean
+        client_num:
+          type: integer
+          format: int64
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        id:
+          type: integer
+          format: int64
+        iname:
+          type: string
+        isecret:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: ClientGroup
+      description: ClientGroup defines the access client group
+      example:
         clients:
         - code: code
+          client_group:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          status: status
         - code: code
-        name: name
+          client_group:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          status: status
+        block_volume_num: 6
+        access_path_num: 0
+        client_num: 1
         description: description
-  ClientGroupCreateReq_ClientGroup:
-    type: object
-    properties:
-      chap:
-        type: boolean
-      clients:
-        type: array
-        items:
-          $ref: '#/definitions/ClientGroupCreateReq_ClientGroup_Clients_Elt'
-      description:
-        type: string
-      iname:
-        type: string
-      isecret:
-        type: string
-      name:
-        type: string
-      type:
-        type: string
-    title: ClientGroupCreateReq_ClientGroup
-    example:
-      isecret: isecret
-      clients:
-      - code: code
-      - code: code
-      name: name
-      description: description
-      chap: true
-      type: type
-      iname: iname
-  ClientGroup:
-    type: object
-    properties:
-      access_path_num:
-        type: integer
-        format: int64
-      block_volume_num:
-        type: integer
-        format: int64
-      chap:
-        type: boolean
-      client_num:
-        type: integer
-        format: int64
-      clients:
-        type: array
-        items:
-          $ref: '#/definitions/Client'
-      create:
-        type: string
-        format: date-time
-      description:
-        type: string
-      id:
-        type: integer
-        format: int64
-      iname:
-        type: string
-      isecret:
-        type: string
-      name:
-        type: string
-      status:
-        type: string
-      type:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: ClientGroup
-    description: ClientGroup defines the access client group
-    example:
-      clients:
-      - code: code
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        iname: iname
+        isecret: isecret
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 2
+        status: status
+    Client:
+      type: object
+      properties:
+        client_group:
+          $ref: '#/components/schemas/ClientGroup_Nestview'
+        code:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: Client
+      example:
+        code: code
         client_group:
           name: name
           id: 5
@@ -326,204 +313,221 @@ definitions:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 5
         status: status
-      - code: code
+    ClientGroupUpdateReq_ClientGroup_Clients_Elt:
+      type: object
+      properties:
+        code:
+          type: string
+      title: ClientGroupUpdateReq_ClientGroup_Clients_Elt
+      example:
+        code: code
+    ClientGroupResp:
+      type: object
+      required:
+      - client_group
+      properties:
         client_group:
+          description: client group
+          $ref: '#/components/schemas/ClientGroup'
+      title: ClientGroupResp
+      example:
+        client_group:
+          clients:
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          block_volume_num: 6
+          access_path_num: 0
+          client_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          iname: iname
+          isecret: isecret
           name: name
-          id: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 2
+          status: status
+    ClientGroupCreateReq_ClientGroup_Clients_Elt:
+      type: object
+      properties:
+        code:
+          type: string
+      title: ClientGroupCreateReq_ClientGroup_Clients_Elt
+      example:
+        code: code
+    ClientGroupCreateReq_ClientGroup:
+      type: object
+      properties:
+        chap:
+          type: boolean
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientGroupCreateReq_ClientGroup_Clients_Elt'
+        description:
+          type: string
+        iname:
+          type: string
+        isecret:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      title: ClientGroupCreateReq_ClientGroup
+      example:
+        isecret: isecret
+        clients:
+        - code: code
+        - code: code
+        name: name
+        description: description
+        chap: true
+        type: type
+        iname: iname
+    ClientGroupUpdateReq_ClientGroup:
+      type: object
+      properties:
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientGroupUpdateReq_ClientGroup_Clients_Elt'
+        description:
+          type: string
+        name:
+          type: string
+      title: ClientGroupUpdateReq_ClientGroup
+      example:
+        clients:
+        - code: code
+        - code: code
+        name: name
+        description: description
+    ClientGroupsResp:
+      type: object
+      required:
+      - client_groups
+      properties:
+        client_groups:
+          type: array
+          description: client groups
+          items:
+            $ref: '#/components/schemas/ClientGroup'
+      title: ClientGroupsResp
+      example:
+        client_groups:
+        - clients:
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          block_volume_num: 6
+          access_path_num: 0
+          client_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          iname: iname
+          isecret: isecret
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 2
+          status: status
+        - clients:
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          - code: code
+            client_group:
+              name: name
+              id: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            status: status
+          block_volume_num: 6
+          access_path_num: 0
+          client_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          iname: iname
+          isecret: isecret
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 2
+          status: status
+    ClientGroupCreateReq:
+      type: object
+      properties:
+        client_group:
+          $ref: '#/components/schemas/ClientGroupCreateReq_ClientGroup'
+      title: ClientGroupCreateReq
+      example:
+        client_group:
+          isecret: isecret
+          clients:
+          - code: code
+          - code: code
+          name: name
+          description: description
+          chap: true
+          type: type
+          iname: iname
+    ClientGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: ClientGroup_Nestview
+      example:
+        name: name
         id: 5
-        status: status
-      block_volume_num: 6
-      access_path_num: 0
-      client_num: 1
-      description: description
-      update: '2000-01-23T04:56:07.000+00:00'
-      type: type
-      iname: iname
-      isecret: isecret
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      chap: true
-      id: 2
-      status: status
-  ClientGroupResp:
-    type: object
-    required:
-    - client_group
-    properties:
-      client_group:
-        description: client group
-        $ref: '#/definitions/ClientGroup'
-    title: ClientGroupResp
-    example:
-      client_group:
-        clients:
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        block_volume_num: 6
-        access_path_num: 0
-        client_num: 1
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        type: type
-        iname: iname
-        isecret: isecret
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        chap: true
-        id: 2
-        status: status
-  ClientGroupsResp:
-    type: object
-    required:
-    - client_groups
-    properties:
-      client_groups:
-        type: array
-        description: client groups
-        items:
-          $ref: '#/definitions/ClientGroup'
-    title: ClientGroupsResp
-    example:
-      client_groups:
-      - clients:
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        block_volume_num: 6
-        access_path_num: 0
-        client_num: 1
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        type: type
-        iname: iname
-        isecret: isecret
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        chap: true
-        id: 2
-        status: status
-      - clients:
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        - code: code
-          client_group:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          status: status
-        block_volume_num: 6
-        access_path_num: 0
-        client_num: 1
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        type: type
-        iname: iname
-        isecret: isecret
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        chap: true
-        id: 2
-        status: status
-  ClientGroup_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: ClientGroup_Nestview
-    example:
-      name: name
-      id: 5
-  ClientGroupCreateReq:
-    type: object
-    properties:
-      client_group:
-        $ref: '#/definitions/ClientGroupCreateReq_ClientGroup'
-    title: ClientGroupCreateReq
-    example:
-      client_group:
-        isecret: isecret
-        clients:
-        - code: code
-        - code: code
-        name: name
-        description: description
-        chap: true
-        type: type
-        iname: iname
-  ClientGroupUpdateReq_ClientGroup_Clients_Elt:
-    type: object
-    properties:
-      code:
-        type: string
-    title: ClientGroupUpdateReq_ClientGroup_Clients_Elt
-    example:
-      code: code
-  ClientGroupUpdateReq_ClientGroup:
-    type: object
-    properties:
-      clients:
-        type: array
-        items:
-          $ref: '#/definitions/ClientGroupUpdateReq_ClientGroup_Clients_Elt'
-      description:
-        type: string
-      name:
-        type: string
-    title: ClientGroupUpdateReq_ClientGroup
-    example:
-      clients:
-      - code: code
-      - code: code
-      name: name
-      description: description
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

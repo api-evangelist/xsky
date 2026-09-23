@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths os-zone-periods API
+  title: XMS Os Zone Periods API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: os-zone-periods
-  description: 'OSZonePeriodController API /os-zone-periods
-
-    '
+  description: OSZonePeriodController API /os-zone-periods
 paths:
   /os-zone-periods/:
     get:
@@ -19,57 +18,58 @@ paths:
       - os-zone-periods
       description: List os zone periods.
       operationId: ListOSZonePeriods
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/OSZonePeriodsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSZonePeriodsResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List OS zone periods
+      x-summary-source: derived
   /os-zone-periods/{period_uuid}:
     get:
       tags:
       - os-zone-periods
       description: Get a os zone period.
       operationId: GetOSZonePeriod
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: period_uuid
         in: path
         description: os zone period uuid
         required: true
-        type: string
         x-exportParamName: PeriodUuid
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/OSZonePeriodResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSZonePeriodResp'
         404:
           description: NotFound
         500:
@@ -77,47 +77,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  OSZonePeriodsResp:
-    type: object
-    required:
-    - os_zone_periods
-    properties:
-      os_zone_periods:
-        type: array
-        items:
-          $ref: '#/definitions/OSZonePeriod'
-    title: OSZonePeriodsResp
-    example:
-      os_zone_periods:
-      - next_master_os_zone_uuid: next_master_os_zone_uuid
-        action: action
-        create: '2000-01-23T04:56:07.000+00:00'
-        master_os_zone_uuid: master_os_zone_uuid
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        period_id: period_id
-        uuid: uuid
-        status: status
-      - next_master_os_zone_uuid: next_master_os_zone_uuid
-        action: action
-        create: '2000-01-23T04:56:07.000+00:00'
-        master_os_zone_uuid: master_os_zone_uuid
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        period_id: period_id
-        uuid: uuid
-        status: status
-  OSZonePeriodResp:
-    type: object
-    required:
-    - os_zone_period
-    properties:
-      os_zone_period:
-        $ref: '#/definitions/OSZonePeriod'
-    title: OSZonePeriodResp
-    example:
-      os_zone_period:
+      summary: Get OS zone period
+      x-summary-source: derived
+components:
+  schemas:
+    OSZonePeriod:
+      type: object
+      properties:
+        action:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        master_os_zone_uuid:
+          type: string
+        next_master_os_zone_uuid:
+          type: string
+        period_id:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        uuid:
+          type: string
+      title: OSZonePeriod
+      description: OSZonePeriod records progressing of a zone group operation.
+      example:
         next_master_os_zone_uuid: next_master_os_zone_uuid
         action: action
         create: '2000-01-23T04:56:07.000+00:00'
@@ -127,50 +117,63 @@ definitions:
         period_id: period_id
         uuid: uuid
         status: status
-  OSZonePeriod:
-    type: object
-    properties:
-      action:
-        type: string
-      create:
-        type: string
-        format: date-time
-      id:
-        type: integer
-        format: int64
-      master_os_zone_uuid:
-        type: string
-      next_master_os_zone_uuid:
-        type: string
-      period_id:
-        type: string
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-      uuid:
-        type: string
-    title: OSZonePeriod
-    description: OSZonePeriod records progressing of a zone group operation.
-    example:
-      next_master_os_zone_uuid: next_master_os_zone_uuid
-      action: action
-      create: '2000-01-23T04:56:07.000+00:00'
-      master_os_zone_uuid: master_os_zone_uuid
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-      period_id: period_id
-      uuid: uuid
-      status: status
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+    OSZonePeriodsResp:
+      type: object
+      required:
+      - os_zone_periods
+      properties:
+        os_zone_periods:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSZonePeriod'
+      title: OSZonePeriodsResp
+      example:
+        os_zone_periods:
+        - next_master_os_zone_uuid: next_master_os_zone_uuid
+          action: action
+          create: '2000-01-23T04:56:07.000+00:00'
+          master_os_zone_uuid: master_os_zone_uuid
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          period_id: period_id
+          uuid: uuid
+          status: status
+        - next_master_os_zone_uuid: next_master_os_zone_uuid
+          action: action
+          create: '2000-01-23T04:56:07.000+00:00'
+          master_os_zone_uuid: master_os_zone_uuid
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          period_id: period_id
+          uuid: uuid
+          status: status
+    OSZonePeriodResp:
+      type: object
+      required:
+      - os_zone_period
+      properties:
+        os_zone_period:
+          $ref: '#/components/schemas/OSZonePeriod'
+      title: OSZonePeriodResp
+      example:
+        os_zone_period:
+          next_master_os_zone_uuid: next_master_os_zone_uuid
+          action: action
+          create: '2000-01-23T04:56:07.000+00:00'
+          master_os_zone_uuid: master_os_zone_uuid
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          period_id: period_id
+          uuid: uuid
+          status: status
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

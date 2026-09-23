@@ -1,60 +1,60 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths dp-block-snapshot-policies API
+  title: XMS Dp Block Snapshot Policies API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: dp-block-snapshot-policies
-  description: 'DpBlockSnapshotPolicyController API /dp-block-snapshot-policies
-
-    '
+  description: DpBlockSnapshotPolicyController API /dp-block-snapshot-policies
 paths:
   /dp-block-snapshot-policies/:
     get:
       tags:
       - dp-block-snapshot-policies
-      description: List dp block snapshot policies
       operationId: ListDpBlockSnapshotPolicies
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPoliciesResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPoliciesResp'
         400:
           description: BadRequest
         500:
@@ -62,28 +62,19 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List dp block snapshot policies
+      x-summary-source: derived
     post:
       tags:
       - dp-block-snapshot-policies
-      description: Create dp block snapshot policy
       operationId: CreateDpBlockSnapshotPolicy
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: policy info
-        required: true
-        schema:
-          $ref: '#/definitions/DpBlockSnapshotPolicyCreateReq'
-        x-exportParamName: Body
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPolicyResp'
         400:
           description: BadRequest
         500:
@@ -91,29 +82,36 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DpBlockSnapshotPolicyCreateReq'
+        description: policy info
+        required: true
+      summary: Create dp block snapshot policy
+      x-summary-source: derived
   /dp-block-snapshot-policies/{policy_id}:
     get:
       tags:
       - dp-block-snapshot-policies
-      description: Get dp block snapshot policy
       operationId: GetDpBlockSnapshotPolicy
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: policy_id
         in: path
         description: resource id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: PolicyId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPolicyResp'
         400:
           description: BadRequest
         404:
@@ -123,34 +121,35 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get dp block snapshot policy
+      x-summary-source: derived
     delete:
       tags:
       - dp-block-snapshot-policies
-      description: Delete dp block snapshot policy
       operationId: DeleteDpBlockSnapshotPolicy
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: policy_id
         in: path
         description: resource id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: PolicyId
+        schema:
+          type: integer
+          format: int64
       - name: force
         in: query
         description: force delete or not
         required: false
-        type: boolean
         x-exportParamName: Force
+        schema:
+          type: boolean
       responses:
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPolicyResp'
         400:
           description: BadRequest
         404:
@@ -160,39 +159,34 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete dp block snapshot policy
+      x-summary-source: derived
     patch:
       tags:
       - dp-block-snapshot-policies
-      description: Update dp block snapshot policy
       operationId: UpdateDpBlockSnapshotPolicy
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: policy_id
         in: path
         description: resource id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: PolicyId
-      - in: body
-        name: body
-        description: policy info
-        required: true
         schema:
-          $ref: '#/definitions/DpBlockSnapshotPolicyUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPolicyResp'
         202:
           description: Accepted
-          schema:
-            $ref: '#/definitions/DpBlockSnapshotPolicyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DpBlockSnapshotPolicyResp'
         400:
           description: BadRequest
         404:
@@ -202,15 +196,124 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  DpBlockSnapshotPolicyResp:
-    type: object
-    properties:
-      dp_block_snapshot_policy:
-        $ref: '#/definitions/DpBlockSnapshotPolicy'
-    title: DpBlockSnapshotPolicyResp
-    example:
-      dp_block_snapshot_policy:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DpBlockSnapshotPolicyUpdateReq'
+        description: policy info
+        required: true
+      summary: Update dp block snapshot policy
+      x-summary-source: derived
+components:
+  schemas:
+    DpBlockSnapshotPolicyUpdateReq:
+      type: object
+      required:
+      - dp_block_snapshot_policy
+      properties:
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicyUpdateReq_Policy'
+      title: DpBlockSnapshotPolicyUpdateReq
+      example:
+        dp_block_snapshot_policy:
+          retained_max: 0
+          cron_expr: cron_expr
+          name: name
+    DpBlockSnapshotPolicyUpdateReq_Policy:
+      type: object
+      properties:
+        cron_expr:
+          type: string
+          description: cron expression
+        name:
+          type: string
+          description: name
+        retained_max:
+          type: integer
+          format: int64
+          description: retained max number of snapshots
+      title: DpBlockSnapshotPolicyUpdateReq_Policy
+      example:
+        retained_max: 0
+        cron_expr: cron_expr
+        name: name
+    DpBlockSnapshotPolicyResp:
+      type: object
+      properties:
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicy'
+      title: DpBlockSnapshotPolicyResp
+      example:
+        dp_block_snapshot_policy:
+          retained_max: 1
+          block_volume_num: 0
+          cron_expr: cron_expr
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          dp_gateway:
+            name: name
+            id: 6
+          id: 6
+          status: status
+    DpBlockSnapshotPolicyCreateReq_Policy:
+      type: object
+      required:
+      - cron_expr
+      - dp_gateway_id
+      - name
+      - retained_max
+      properties:
+        cron_expr:
+          type: string
+          description: cron expression
+        dp_gateway_id:
+          type: integer
+          format: int64
+          description: dp gateway
+        name:
+          type: string
+          description: name
+        retained_max:
+          type: integer
+          format: int64
+          description: retained max number of snapshots
+      title: DpBlockSnapshotPolicyCreateReq_Policy
+      example:
+        retained_max: 6
+        dp_gateway_id: 0
+        cron_expr: cron_expr
+        name: name
+    DpBlockSnapshotPolicy:
+      type: object
+      properties:
+        block_volume_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        cron_expr:
+          type: string
+        dp_gateway:
+          $ref: '#/components/schemas/DpGateway_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        retained_max:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: DpBlockSnapshotPolicy
+      description: DpBlockSnapshotPolicy protects a block volume by snapshot
+      example:
         retained_max: 1
         block_volume_num: 0
         cron_expr: cron_expr
@@ -222,171 +325,72 @@ definitions:
           id: 6
         id: 6
         status: status
-  DpBlockSnapshotPolicyUpdateReq:
-    type: object
-    required:
-    - dp_block_snapshot_policy
-    properties:
-      dp_block_snapshot_policy:
-        $ref: '#/definitions/DpBlockSnapshotPolicyUpdateReq_Policy'
-    title: DpBlockSnapshotPolicyUpdateReq
-    example:
-      dp_block_snapshot_policy:
-        retained_max: 0
-        cron_expr: cron_expr
-        name: name
-  DpBlockSnapshotPolicyCreateReq:
-    type: object
-    required:
-    - dp_block_snapshot_policy
-    properties:
-      dp_block_snapshot_policy:
-        $ref: '#/definitions/DpBlockSnapshotPolicyCreateReq_Policy'
-    title: DpBlockSnapshotPolicyCreateReq
-    example:
-      dp_block_snapshot_policy:
-        retained_max: 6
-        dp_gateway_id: 0
-        cron_expr: cron_expr
-        name: name
-  DpBlockSnapshotPoliciesResp:
-    type: object
-    properties:
-      dp_block_snapshot_policies:
-        type: array
-        items:
-          $ref: '#/definitions/DpBlockSnapshotPolicy'
-    title: DpBlockSnapshotPoliciesResp
-    example:
-      dp_block_snapshot_policies:
-      - retained_max: 1
-        block_volume_num: 0
-        cron_expr: cron_expr
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        dp_gateway:
+    DpBlockSnapshotPolicyCreateReq:
+      type: object
+      required:
+      - dp_block_snapshot_policy
+      properties:
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicyCreateReq_Policy'
+      title: DpBlockSnapshotPolicyCreateReq
+      example:
+        dp_block_snapshot_policy:
+          retained_max: 6
+          dp_gateway_id: 0
+          cron_expr: cron_expr
           name: name
-          id: 6
-        id: 6
-        status: status
-      - retained_max: 1
-        block_volume_num: 0
-        cron_expr: cron_expr
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        dp_gateway:
+    DpBlockSnapshotPoliciesResp:
+      type: object
+      properties:
+        dp_block_snapshot_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/DpBlockSnapshotPolicy'
+      title: DpBlockSnapshotPoliciesResp
+      example:
+        dp_block_snapshot_policies:
+        - retained_max: 1
+          block_volume_num: 0
+          cron_expr: cron_expr
           name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          dp_gateway:
+            name: name
+            id: 6
           id: 6
-        id: 6
-        status: status
-  DpBlockSnapshotPolicyUpdateReq_Policy:
-    type: object
-    properties:
-      cron_expr:
-        type: string
-        description: cron expression
-      name:
-        type: string
-        description: name
-      retained_max:
-        type: integer
-        format: int64
-        description: retained max number of snapshots
-    title: DpBlockSnapshotPolicyUpdateReq_Policy
-    example:
-      retained_max: 0
-      cron_expr: cron_expr
-      name: name
-  DpBlockSnapshotPolicyCreateReq_Policy:
-    type: object
-    required:
-    - cron_expr
-    - dp_gateway_id
-    - name
-    - retained_max
-    properties:
-      cron_expr:
-        type: string
-        description: cron expression
-      dp_gateway_id:
-        type: integer
-        format: int64
-        description: dp gateway
-      name:
-        type: string
-        description: name
-      retained_max:
-        type: integer
-        format: int64
-        description: retained max number of snapshots
-    title: DpBlockSnapshotPolicyCreateReq_Policy
-    example:
-      retained_max: 6
-      dp_gateway_id: 0
-      cron_expr: cron_expr
-      name: name
-  DpBlockSnapshotPolicy:
-    type: object
-    properties:
-      block_volume_num:
-        type: integer
-        format: int64
-      create:
-        type: string
-        format: date-time
-      cron_expr:
-        type: string
-      dp_gateway:
-        $ref: '#/definitions/DpGateway_Nestview'
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      retained_max:
-        type: integer
-        format: int64
-      status:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: DpBlockSnapshotPolicy
-    description: DpBlockSnapshotPolicy protects a block volume by snapshot
-    example:
-      retained_max: 1
-      block_volume_num: 0
-      cron_expr: cron_expr
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      dp_gateway:
+          status: status
+        - retained_max: 1
+          block_volume_num: 0
+          cron_expr: cron_expr
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          dp_gateway:
+            name: name
+            id: 6
+          id: 6
+          status: status
+    DpGateway_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGateway_Nestview
+      example:
         name: name
         id: 6
-      id: 6
-      status: status
-  DpGateway_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: DpGateway_Nestview
-    example:
-      name: name
-      id: 6
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths fs-users API
+  title: XMS Fs Users API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: fs-users
-  description: 'FSUserController provides API for file storage user
-
-    '
+  description: FSUserController provides API for file storage user
 paths:
   /fs-users/:
     get:
@@ -19,95 +18,93 @@ paths:
       - fs-users
       description: List file storage users
       operationId: ListFSUsers
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       - name: security
         in: query
         description: security of file storage users
         required: false
-        type: string
         x-exportParamName: Security
+        schema:
+          type: string
       - name: fs_user_group_id
         in: query
         description: file storage user group id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: FsUserGroupId
+        schema:
+          type: integer
+          format: int64
       - name: not_fs_user_group_id
         in: query
         description: file storage user group id
         required: false
-        type: integer
-        format: int64
         x-exportParamName: NotFsUserGroupId
+        schema:
+          type: integer
+          format: int64
       - name: available
         in: query
         description: available user or not
         required: false
-        type: boolean
         x-exportParamName: Available
+        schema:
+          type: boolean
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSUsersResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSUsersResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List FS users
+      x-summary-source: derived
     post:
       tags:
       - fs-users
       description: create file storage user
       operationId: CreateFSUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: user info
-        required: true
-        schema:
-          $ref: '#/definitions/FSUserCreateReq'
-        x-exportParamName: Body
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/FSUserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSUserResp'
         400:
           description: BadRequest
         409:
@@ -117,29 +114,37 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FSUserCreateReq'
+        description: user info
+        required: true
+      summary: Create FS user
+      x-summary-source: derived
   /fs-users/{fs_user_id}:
     get:
       tags:
       - fs-users
       description: get file storage user
       operationId: GetFSUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsUserId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSUserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSUserResp'
         404:
           description: NotFound
         500:
@@ -147,23 +152,22 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get FS user
+      x-summary-source: derived
     delete:
       tags:
       - fs-users
       description: delete file storage user
       operationId: DeleteFSUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsUserId
+        schema:
+          type: integer
+          format: int64
       responses:
         204:
           description: Not Content
@@ -176,35 +180,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Delete FS user
+      x-summary-source: derived
     patch:
       tags:
       - fs-users
       description: update file storage user
       operationId: UpdateFSUser
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: fs_user_id
         in: path
         description: user id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: FsUserId
-      - in: body
-        name: body
-        description: user info
-        required: true
         schema:
-          $ref: '#/definitions/FSUserUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/FSUserResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FSUserResp'
         400:
           description: BadRequest
         404:
@@ -216,18 +214,161 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  FSUserResp:
-    type: object
-    required:
-    - fs_user
-    properties:
-      fs_user:
-        description: file storage user
-        $ref: '#/definitions/FSUser'
-    title: FSUserResp
-    example:
-      fs_user:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FSUserUpdateReq'
+        description: user info
+        required: true
+      summary: Update FS user
+      x-summary-source: derived
+components:
+  schemas:
+    FSUserUpdateReq:
+      type: object
+      properties:
+        fs_user:
+          $ref: '#/components/schemas/FSUserUpdateReq_User'
+      title: FSUserUpdateReq
+    FSUserGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSUserGroup_Nestview
+      example:
+        name: name
+        id: 1
+    FSUserResp:
+      type: object
+      required:
+      - fs_user
+      properties:
+        fs_user:
+          description: file storage user
+          $ref: '#/components/schemas/FSUser'
+      title: FSUserResp
+      example:
+        fs_user:
+          password: password
+          available: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_user_groups:
+          - name: name
+            id: 1
+          - name: name
+            id: 1
+          id: 6
+          fs_user_group_num: 0
+          email: email
+    FSUserCreateReq_User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email of file storage user
+        name:
+          type: string
+          description: name of file storage user
+        password:
+          type: string
+          description: password of file storage user
+      title: FSUserCreateReq_User
+    FSUserCreateReq:
+      type: object
+      properties:
+        fs_user:
+          $ref: '#/components/schemas/FSUserCreateReq_User'
+      title: FSUserCreateReq
+    FSUserUpdateReq_User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email of user
+        name:
+          type: string
+          description: name of user
+        password:
+          type: string
+          description: password of user
+      title: FSUserUpdateReq_User
+    FSUsersResp:
+      type: object
+      required:
+      - fs_users
+      properties:
+        fs_users:
+          type: array
+          description: file storage users
+          items:
+            $ref: '#/components/schemas/FSUser'
+      title: FSUsersResp
+      example:
+        fs_users:
+        - password: password
+          available: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_user_groups:
+          - name: name
+            id: 1
+          - name: name
+            id: 1
+          id: 6
+          fs_user_group_num: 0
+          email: email
+        - password: password
+          available: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_user_groups:
+          - name: name
+            id: 1
+          - name: name
+            id: 1
+          id: 6
+          fs_user_group_num: 0
+          email: email
+    FSUser:
+      type: object
+      properties:
+        available:
+          type: boolean
+          description: 'TODO(liubo): should be delete, but used in overview...'
+        create:
+          type: string
+          format: date-time
+        email:
+          type: string
+        fs_user_group_num:
+          type: integer
+          format: int64
+        fs_user_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/FSUserGroup_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        password:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: FSUser
+      description: FSUser defines model of file storage user
+      example:
         password: password
         available: true
         name: name
@@ -241,147 +382,14 @@ definitions:
         id: 6
         fs_user_group_num: 0
         email: email
-  FSUserCreateReq:
-    type: object
-    properties:
-      fs_user:
-        $ref: '#/definitions/FSUserCreateReq_User'
-    title: FSUserCreateReq
-  FSUsersResp:
-    type: object
-    required:
-    - fs_users
-    properties:
-      fs_users:
-        type: array
-        description: file storage users
-        items:
-          $ref: '#/definitions/FSUser'
-    title: FSUsersResp
-    example:
-      fs_users:
-      - password: password
-        available: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        fs_user_groups:
-        - name: name
-          id: 1
-        - name: name
-          id: 1
-        id: 6
-        fs_user_group_num: 0
-        email: email
-      - password: password
-        available: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        fs_user_groups:
-        - name: name
-          id: 1
-        - name: name
-          id: 1
-        id: 6
-        fs_user_group_num: 0
-        email: email
-  FSUserUpdateReq_User:
-    type: object
-    properties:
-      email:
-        type: string
-        description: email of user
-      name:
-        type: string
-        description: name of user
-      password:
-        type: string
-        description: password of user
-    title: FSUserUpdateReq_User
-  FSUserGroup_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: FSUserGroup_Nestview
-    example:
-      name: name
-      id: 1
-  FSUser:
-    type: object
-    properties:
-      available:
-        type: boolean
-        description: 'TODO(liubo): should be delete, but used in overview...'
-      create:
-        type: string
-        format: date-time
-      email:
-        type: string
-      fs_user_group_num:
-        type: integer
-        format: int64
-      fs_user_groups:
-        type: array
-        items:
-          $ref: '#/definitions/FSUserGroup_Nestview'
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      password:
-        type: string
-      update:
-        type: string
-        format: date-time
-    title: FSUser
-    description: FSUser defines model of file storage user
-    example:
-      password: password
-      available: true
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      fs_user_groups:
-      - name: name
-        id: 1
-      - name: name
-        id: 1
-      id: 6
-      fs_user_group_num: 0
-      email: email
-  FSUserUpdateReq:
-    type: object
-    properties:
-      fs_user:
-        $ref: '#/definitions/FSUserUpdateReq_User'
-    title: FSUserUpdateReq
-  FSUserCreateReq_User:
-    type: object
-    properties:
-      email:
-        type: string
-        description: email of file storage user
-      name:
-        type: string
-        description: name of file storage user
-      password:
-        type: string
-        description: password of file storage user
-    title: FSUserCreateReq_User
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

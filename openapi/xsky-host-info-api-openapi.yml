@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths host-info API
+  title: XMS Host Info API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: host-info
-  description: 'HostInfoController Host Info Management
-
-    '
+  description: HostInfoController Host Info Management
 paths:
   /host-info/:
     get:
@@ -19,22 +18,21 @@ paths:
       - host-info
       description: scan host info from specified ip
       operationId: GetHostInfo
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: ip
         in: query
         description: host ip
         required: true
-        type: string
         x-exportParamName: Ip
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/HostInfoResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostInfoResp'
         400:
           description: BadRequest
         500:
@@ -42,41 +40,44 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  HostInfoResp:
-    type: object
-    required:
-    - host_info
-    properties:
-      host_info:
-        description: host info
-        $ref: '#/definitions/HostInfo'
-    title: HostInfoResp
-    example:
-      host_info:
+      summary: Get host info
+      x-summary-source: derived
+components:
+  schemas:
+    HostInfoResp:
+      type: object
+      required:
+      - host_info
+      properties:
+        host_info:
+          description: host info
+          $ref: '#/components/schemas/HostInfo'
+      title: HostInfoResp
+      example:
+        host_info:
+          ips:
+          - ips
+          - ips
+    HostInfo:
+      type: object
+      properties:
+        ips:
+          type: array
+          items:
+            type: string
+      title: HostInfo
+      example:
         ips:
         - ips
         - ips
-  HostInfo:
-    type: object
-    properties:
-      ips:
-        type: array
-        items:
-          type: string
-    title: HostInfo
-    example:
-      ips:
-      - ips
-      - ips
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

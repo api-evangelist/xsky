@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths search-capabilities API
+  title: XMS Search Capabilities API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: search-capabilities
-  description: 'SearchCapabilityController defines search capability apis
-
-    '
+  description: SearchCapabilityController defines search capability apis
 paths:
   /search-capabilities/:
     get:
@@ -19,11 +18,6 @@ paths:
       - search-capabilities
       description: search capabilites
       operationId: SearchCapabilites
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters: []
       responses:
         200:
           description: OK {object} controllers.SearchCapabilitiesResp OK
@@ -32,14 +26,17 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+      summary: Search capabilites
+      x-summary-source: derived
+components:
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

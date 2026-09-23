@@ -1,90 +1,79 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths crypto-keys API
+  title: XMS Crypto Keys API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
-- name: crypto-keys
-  description: 'CryptoKeyController API /crypto-keys/
-
-    '
+- name: Crypto Keys
+  description: CryptoKeyController API /crypto-keys/
 paths:
   /crypto-keys/:
     get:
       tags:
-      - crypto-keys
-      description: List crypto keys
+      - Crypto Keys
       operationId: ListCryptoKeys
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: limit
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Limit
+        schema:
+          type: integer
+          format: int64
       - name: offset
         in: query
         description: paging param
         required: false
-        type: integer
-        format: int64
         x-exportParamName: Offset
+        schema:
+          type: integer
+          format: int64
       - name: q
         in: query
         description: query param of search
         required: false
-        type: string
         x-exportParamName: Q
+        schema:
+          type: string
       - name: sort
         in: query
         description: sort param of search
         required: false
-        type: string
         x-exportParamName: Sort
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/CryptoKeysResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoKeysResp'
         500:
           description: InternalServerError
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: List crypto keys
+      x-summary-source: derived
     post:
       tags:
-      - crypto-keys
+      - Crypto Keys
       description: Create a crypto key
       operationId: CreateCryptoKey
-      consumes:
-      - multipart/form-data
-      parameters:
-      - name: name
-        in: formData
-        description: crypto key name
-        required: true
-        type: string
-        x-exportParamName: Name
-      - name: key
-        in: formData
-        description: crypto key
-        required: false
-        type: string
-        x-exportParamName: Key
       responses:
         201:
           description: Created
-          schema:
-            $ref: '#/definitions/CryptoKeyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoKeyResp'
         400:
           description: BadRequest
         500:
@@ -92,29 +81,44 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: crypto key name
+                key:
+                  type: string
+                  description: crypto key
+              required:
+              - name
+      summary: Create crypto key
+      x-summary-source: derived
   /crypto-keys/{key_id}:
     get:
       tags:
-      - crypto-keys
+      - Crypto Keys
       description: Get a crypto key
       operationId: GetCryptoKey
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: key_id
         in: path
         description: crypto key id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: KeyId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/CryptoKeyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoKeyResp'
         404:
           description: NotFound
         500:
@@ -122,35 +126,29 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      summary: Get crypto key
+      x-summary-source: derived
     patch:
       tags:
-      - crypto-keys
+      - Crypto Keys
       description: Update a crypto key
       operationId: UpdateCryptoKey
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: key_id
         in: path
         description: crypto key id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: KeyId
-      - in: body
-        name: body
-        description: crypto key info
-        required: true
         schema:
-          $ref: '#/definitions/CryptoKeyUpdateReq'
-        x-exportParamName: Body
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/CryptoKeyResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoKeyResp'
         400:
           description: BadRequest
         404:
@@ -160,35 +158,44 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoKeyUpdateReq'
+        description: crypto key info
+        required: true
+      summary: Update crypto key
+      x-summary-source: derived
   /crypto-keys/{key_id}/key:
     get:
       tags:
-      - crypto-keys
+      - Crypto Keys
       operationId: DownloadCryptoKey
-      consumes:
-      - application/octet-stream
-      produces:
-      - application/octet-stream
       parameters:
       - name: key_id
         in: path
         description: crypto key id
         required: true
-        type: integer
-        format: int64
         x-exportParamName: KeyId
+        schema:
+          type: integer
+          format: int64
       - name: password
         in: query
         description: password
         required: false
-        type: string
         x-exportParamName: Password
+        schema:
+          type: string
       responses:
         200:
           description: OK
-          schema:
-            type: string
-            format: binary
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
         404:
           description: NotFound
         500:
@@ -196,101 +203,104 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  CryptoKeyUpdateReq_Key:
-    type: object
-    properties:
-      enabled:
-        type: boolean
-        description: enable or disable the key
-    title: CryptoKeyUpdateReq_Key
-    example:
-      enabled: true
-  CryptoKeyResp:
-    type: object
-    required:
-    - crypto_key
-    properties:
-      crypto_key:
-        $ref: '#/definitions/CryptoKey'
-    title: CryptoKeyResp
-    example:
-      crypto_key:
+      summary: Download crypto key
+      x-summary-source: derived
+components:
+  schemas:
+    CryptoKey:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        enabled:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        update:
+          type: string
+          format: date-time
+      title: CryptoKey
+      description: CryptoKey is a crypto key
+      example:
         size: 6
         name: name
         create: '2000-01-23T04:56:07.000+00:00'
         update: '2000-01-23T04:56:07.000+00:00'
         id: 0
         enabled: true
-  CryptoKeysResp:
-    type: object
-    required:
-    - crypto_keys
-    properties:
-      crypto_keys:
-        type: array
-        items:
-          $ref: '#/definitions/CryptoKey'
-    title: CryptoKeysResp
-    example:
-      crypto_keys:
-      - size: 6
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
+    CryptoKeyUpdateReq:
+      type: object
+      properties:
+        crypto_key:
+          $ref: '#/components/schemas/CryptoKeyUpdateReq_Key'
+      title: CryptoKeyUpdateReq
+      example:
+        crypto_key:
+          enabled: true
+    CryptoKeysResp:
+      type: object
+      required:
+      - crypto_keys
+      properties:
+        crypto_keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/CryptoKey'
+      title: CryptoKeysResp
+      example:
+        crypto_keys:
+        - size: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
+        - size: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
+    CryptoKeyResp:
+      type: object
+      required:
+      - crypto_key
+      properties:
+        crypto_key:
+          $ref: '#/components/schemas/CryptoKey'
+      title: CryptoKeyResp
+      example:
+        crypto_key:
+          size: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
+    CryptoKeyUpdateReq_Key:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: enable or disable the key
+      title: CryptoKeyUpdateReq_Key
+      example:
         enabled: true
-      - size: 6
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        enabled: true
-  CryptoKeyUpdateReq:
-    type: object
-    properties:
-      crypto_key:
-        $ref: '#/definitions/CryptoKeyUpdateReq_Key'
-    title: CryptoKeyUpdateReq
-    example:
-      crypto_key:
-        enabled: true
-  CryptoKey:
-    type: object
-    properties:
-      create:
-        type: string
-        format: date-time
-      enabled:
-        type: boolean
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      size:
-        type: integer
-        format: int64
-      update:
-        type: string
-        format: date-time
-    title: CryptoKey
-    description: CryptoKey is a crypto key
-    example:
-      size: 6
-      name: name
-      create: '2000-01-23T04:56:07.000+00:00'
-      update: '2000-01-23T04:56:07.000+00:00'
-      id: 0
-      enabled: true
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query

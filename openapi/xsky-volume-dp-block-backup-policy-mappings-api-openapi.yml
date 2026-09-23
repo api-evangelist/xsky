@@ -1,17 +1,16 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: XMS is the controller of distributed storage system
   version: SDS_4.2.000.0.200302
-  title: XMS access-paths volume-dp-block-backup-policy-mappings API
+  title: XMS Volume Dp Block Backup Policy Mappings API
   contact: {}
   license:
     name: Commercial
-basePath: /v1
+servers:
+- url: /v1
 tags:
 - name: volume-dp-block-backup-policy-mappings
-  description: 'VolumeDpBlockBackupPolicyMappingController API /volume-dp-block-backup-policy-mappings
-
-    '
+  description: VolumeDpBlockBackupPolicyMappingController API /volume-dp-block-backup-policy-mappings
 paths:
   /volume-dp-block-backup-policy-mappings/:
     get:
@@ -19,30 +18,30 @@ paths:
       - volume-dp-block-backup-policy-mappings
       description: List volume dp block backup policy mapping
       operationId: ListVolumeDpBlockBackupPolicyMappings
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - name: block_volume_id
         in: query
         description: show mappings of specific block volume
         required: false
-        type: integer
-        format: int64
         x-exportParamName: BlockVolumeId
+        schema:
+          type: integer
+          format: int64
       - name: dp_block_backup_policy_id
         in: query
         description: show mappings of specific block volume
         required: false
-        type: integer
-        format: int64
         x-exportParamName: DpBlockBackupPolicyId
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: OK
-          schema:
-            $ref: '#/definitions/VolumeDpBlockBackupPolicyMappingsResp'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumeDpBlockBackupPolicyMappingsResp'
         403:
           description: Forbidden
         500:
@@ -50,96 +49,99 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-definitions:
-  VolumeDpBlockBackupPolicyMappingsResp:
-    type: object
-    properties:
-      volume_dp_block_backup_policy_mappings:
-        type: array
-        items:
-          $ref: '#/definitions/VolumeDpBlockBackupPolicyMapping'
-    title: VolumeDpBlockBackupPolicyMappingsResp
-    example:
-      volume_dp_block_backup_policy_mappings:
-      - volume:
-          original_name: original_name
-          name: name
-          id: 9
+      summary: List volume dp block backup policy mappings
+      x-summary-source: derived
+components:
+  schemas:
+    DpBlockBackupPolicy_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpBlockBackupPolicy_Nestview
+      example:
+        name: name
+        id: 1
+    VolumeDpBlockBackupPolicyMappingsResp:
+      type: object
+      properties:
+        volume_dp_block_backup_policy_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/VolumeDpBlockBackupPolicyMapping'
+      title: VolumeDpBlockBackupPolicyMappingsResp
+      example:
+        volume_dp_block_backup_policy_mappings:
+        - volume:
+            original_name: original_name
+            name: name
+            id: 9
+          dp_block_backup_policy:
+            name: name
+            id: 1
+          id: 0
+          status: status
+        - volume:
+            original_name: original_name
+            name: name
+            id: 9
+          dp_block_backup_policy:
+            name: name
+            id: 1
+          id: 0
+          status: status
+    VolumeDpBlockBackupPolicyMapping:
+      type: object
+      properties:
         dp_block_backup_policy:
-          name: name
-          id: 1
-        id: 0
-        status: status
-      - volume:
-          original_name: original_name
-          name: name
-          id: 9
-        dp_block_backup_policy:
-          name: name
-          id: 1
-        id: 0
-        status: status
-  DpBlockBackupPolicy_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    title: DpBlockBackupPolicy_Nestview
-    example:
-      name: name
-      id: 1
-  Volume_Nestview:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-      original_name:
-        type: string
-    title: Volume_Nestview
-    example:
-      original_name: original_name
-      name: name
-      id: 9
-  VolumeDpBlockBackupPolicyMapping:
-    type: object
-    properties:
-      dp_block_backup_policy:
-        $ref: '#/definitions/DpBlockBackupPolicy_Nestview'
-      id:
-        type: integer
-        format: int64
-      status:
-        type: string
-      volume:
-        $ref: '#/definitions/Volume_Nestview'
-    title: VolumeDpBlockBackupPolicyMapping
-    description: 'VolumeDpBlockBackupPolicyMapping represent the mapping relationship of volume
+          $ref: '#/components/schemas/DpBlockBackupPolicy_Nestview'
+        id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+      title: VolumeDpBlockBackupPolicyMapping
+      description: 'VolumeDpBlockBackupPolicyMapping represent the mapping relationship of volume
 
-      and dp block backup policies'
-    example:
-      volume:
+        and dp block backup policies'
+      example:
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        dp_block_backup_policy:
+          name: name
+          id: 1
+        id: 0
+        status: status
+    Volume_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
         original_name: original_name
         name: name
         id: 9
-      dp_block_backup_policy:
-        name: name
-        id: 1
-      id: 0
-      status: status
-securityDefinitions:
-  tokenInHeader:
-    description: auth by token
-    type: apiKey
-    name: Xms-Auth-Token
-    in: header
-  tokenInQuery:
-    description: auth by token
-    type: apiKey
-    name: token
-    in: query
+  securitySchemes:
+    tokenInHeader:
+      description: auth by token
+      type: apiKey
+      name: Xms-Auth-Token
+      in: header
+    tokenInQuery:
+      description: auth by token
+      type: apiKey
+      name: token
+      in: query
