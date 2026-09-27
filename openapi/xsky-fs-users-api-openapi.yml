@@ -225,67 +225,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSUserUpdateReq:
-      type: object
-      properties:
-        fs_user:
-          $ref: '#/components/schemas/FSUserUpdateReq_User'
-      title: FSUserUpdateReq
-    FSUserGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSUserGroup_Nestview
-      example:
-        name: name
-        id: 1
-    FSUserResp:
-      type: object
-      required:
-      - fs_user
-      properties:
-        fs_user:
-          description: file storage user
-          $ref: '#/components/schemas/FSUser'
-      title: FSUserResp
-      example:
-        fs_user:
-          password: password
-          available: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_user_groups:
-          - name: name
-            id: 1
-          - name: name
-            id: 1
-          id: 6
-          fs_user_group_num: 0
-          email: email
-    FSUserCreateReq_User:
-      type: object
-      properties:
-        email:
-          type: string
-          description: email of file storage user
-        name:
-          type: string
-          description: name of file storage user
-        password:
-          type: string
-          description: password of file storage user
-      title: FSUserCreateReq_User
-    FSUserCreateReq:
-      type: object
-      properties:
-        fs_user:
-          $ref: '#/components/schemas/FSUserCreateReq_User'
-      title: FSUserCreateReq
     FSUserUpdateReq_User:
       type: object
       properties:
@@ -299,6 +238,18 @@ components:
           type: string
           description: password of user
       title: FSUserUpdateReq_User
+    FSUserGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSUserGroup_Nestview
+      example:
+        name: name
+        id: 1
     FSUsersResp:
       type: object
       required:
@@ -326,6 +277,30 @@ components:
           fs_user_group_num: 0
           email: email
         - password: password
+          available: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_user_groups:
+          - name: name
+            id: 1
+          - name: name
+            id: 1
+          id: 6
+          fs_user_group_num: 0
+          email: email
+    FSUserResp:
+      type: object
+      required:
+      - fs_user
+      properties:
+        fs_user:
+          description: file storage user
+          $ref: '#/components/schemas/FSUser'
+      title: FSUserResp
+      example:
+        fs_user:
+          password: password
           available: true
           name: name
           create: '2000-01-23T04:56:07.000+00:00'
@@ -382,6 +357,31 @@ components:
         id: 6
         fs_user_group_num: 0
         email: email
+    FSUserCreateReq_User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email of file storage user
+        name:
+          type: string
+          description: name of file storage user
+        password:
+          type: string
+          description: password of file storage user
+      title: FSUserCreateReq_User
+    FSUserUpdateReq:
+      type: object
+      properties:
+        fs_user:
+          $ref: '#/components/schemas/FSUserUpdateReq_User'
+      title: FSUserUpdateReq
+    FSUserCreateReq:
+      type: object
+      properties:
+        fs_user:
+          $ref: '#/components/schemas/FSUserCreateReq_User'
+      title: FSUserCreateReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

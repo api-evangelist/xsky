@@ -36,7 +36,7 @@ paths:
       tags:
       - os-objects
       description: List object storage objects by search
-      operationId: ListOSObjectsBySearch
+      operationId: postOsObjectsSearch
       responses:
         200:
           description: OK
@@ -51,6 +51,8 @@ paths:
       - tokenInHeader: []
       summary: List OS objects by search
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: ListOSObjectsBySearch
   /os-objects/_sql:
     get:
       tags:
@@ -75,7 +77,7 @@ paths:
       tags:
       - os-objects
       description: List object storage objects by sql
-      operationId: ListOSObjectsBySQL
+      operationId: postOsObjectsSql
       responses:
         200:
           description: OK
@@ -90,6 +92,8 @@ paths:
       - tokenInHeader: []
       summary: List OS objects by SQL
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: ListOSObjectsBySQL
   /os-objects/report/_sql:
     get:
       tags:
@@ -134,7 +138,7 @@ paths:
       tags:
       - os-objects
       description: Download object storage objects report by sql
-      operationId: ReportOSObjectsBySQL
+      operationId: postOsObjectsReportSql
       parameters:
       - name: sql
         in: query
@@ -169,6 +173,8 @@ paths:
       - tokenInHeader: []
       summary: Report OS objects by SQL
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: ReportOSObjectsBySQL
 components:
   securitySchemes:
     tokenInHeader:

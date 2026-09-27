@@ -64,152 +64,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    NetworkDiagnosisItemsResp:
-      type: object
-      required:
-      - network_diagnosis_items
-      properties:
-        network_diagnosis_items:
-          type: array
-          description: network diagnosis items
-          items:
-            $ref: '#/components/schemas/NetworkDiagnosisItem'
-      title: NetworkDiagnosisItemsResp
-      example:
-        network_diagnosis_items:
-        - src_interface: src_interface
-          stat:
-            recv_bytes: 3
-            recv_pkgs: 2
-            tcp_conn_errs: 1
-            bandwidth: 5
-            err_pkg_ratio: 7.061401241503109
-            send_pkgs: 7
-            tcp_segment_retrans: 1
-            lost_pkg_ratio: 9.301444243932576
-            send_bytes: 4
-            coll_pkgs: 2
-          update: '2000-01-23T04:56:07.000+00:00'
-          network_diagnosis:
-            id: 1
-          src_host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          dst_interface: dst_interface
-          message: message
-          networks:
-          - networks
-          - networks
-          execute: '2000-01-23T04:56:07.000+00:00'
-          dst_ip: dst_ip
-          src_ip: src_ip
-          dst_type: dst_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          dst_megabits: 0
-          finish: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          src_type: src_type
-          dst_host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          src_megabits: 5
-          status: status
-        - src_interface: src_interface
-          stat:
-            recv_bytes: 3
-            recv_pkgs: 2
-            tcp_conn_errs: 1
-            bandwidth: 5
-            err_pkg_ratio: 7.061401241503109
-            send_pkgs: 7
-            tcp_segment_retrans: 1
-            lost_pkg_ratio: 9.301444243932576
-            send_bytes: 4
-            coll_pkgs: 2
-          update: '2000-01-23T04:56:07.000+00:00'
-          network_diagnosis:
-            id: 1
-          src_host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          dst_interface: dst_interface
-          message: message
-          networks:
-          - networks
-          - networks
-          execute: '2000-01-23T04:56:07.000+00:00'
-          dst_ip: dst_ip
-          src_ip: src_ip
-          dst_type: dst_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          dst_megabits: 0
-          finish: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          src_type: src_type
-          dst_host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          src_megabits: 5
-          status: status
-    NetworkDiagnosis_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: NetworkDiagnosis_Nestview
-      example:
-        id: 1
-    NetworkDiagnosisStat:
-      type: object
-      properties:
-        bandwidth:
-          type: integer
-          format: int64
-        coll_pkgs:
-          type: integer
-          format: int64
-        err_pkg_ratio:
-          type: number
-          format: double
-        lost_pkg_ratio:
-          type: number
-          format: double
-        recv_bytes:
-          type: integer
-          format: int64
-        recv_pkgs:
-          type: integer
-          format: int64
-        send_bytes:
-          type: integer
-          format: int64
-        send_pkgs:
-          type: integer
-          format: int64
-        tcp_conn_errs:
-          type: integer
-          format: int64
-        tcp_segment_retrans:
-          type: integer
-          format: int64
-      title: NetworkDiagnosisStat
-      description: NetworkDiagnosisStat defines model of network diagnosis stat
-      example:
-        recv_bytes: 3
-        recv_pkgs: 2
-        tcp_conn_errs: 1
-        bandwidth: 5
-        err_pkg_ratio: 7.061401241503109
-        send_pkgs: 7
-        tcp_segment_retrans: 1
-        lost_pkg_ratio: 9.301444243932576
-        send_bytes: 4
-        coll_pkgs: 2
     NetworkDiagnosisItem:
       type: object
       properties:
@@ -321,6 +175,152 @@ components:
         name: name
         admin_ip: admin_ip
         id: 0
+    NetworkDiagnosisItemsResp:
+      type: object
+      required:
+      - network_diagnosis_items
+      properties:
+        network_diagnosis_items:
+          type: array
+          description: network diagnosis items
+          items:
+            $ref: '#/components/schemas/NetworkDiagnosisItem'
+      title: NetworkDiagnosisItemsResp
+      example:
+        network_diagnosis_items:
+        - src_interface: src_interface
+          stat:
+            recv_bytes: 3
+            recv_pkgs: 2
+            tcp_conn_errs: 1
+            bandwidth: 5
+            err_pkg_ratio: 7.061401241503109
+            send_pkgs: 7
+            tcp_segment_retrans: 1
+            lost_pkg_ratio: 9.301444243932576
+            send_bytes: 4
+            coll_pkgs: 2
+          update: '2000-01-23T04:56:07.000+00:00'
+          network_diagnosis:
+            id: 1
+          src_host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          dst_interface: dst_interface
+          message: message
+          networks:
+          - networks
+          - networks
+          execute: '2000-01-23T04:56:07.000+00:00'
+          dst_ip: dst_ip
+          src_ip: src_ip
+          dst_type: dst_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          dst_megabits: 0
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          src_type: src_type
+          dst_host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          src_megabits: 5
+          status: status
+        - src_interface: src_interface
+          stat:
+            recv_bytes: 3
+            recv_pkgs: 2
+            tcp_conn_errs: 1
+            bandwidth: 5
+            err_pkg_ratio: 7.061401241503109
+            send_pkgs: 7
+            tcp_segment_retrans: 1
+            lost_pkg_ratio: 9.301444243932576
+            send_bytes: 4
+            coll_pkgs: 2
+          update: '2000-01-23T04:56:07.000+00:00'
+          network_diagnosis:
+            id: 1
+          src_host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          dst_interface: dst_interface
+          message: message
+          networks:
+          - networks
+          - networks
+          execute: '2000-01-23T04:56:07.000+00:00'
+          dst_ip: dst_ip
+          src_ip: src_ip
+          dst_type: dst_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          dst_megabits: 0
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          src_type: src_type
+          dst_host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          src_megabits: 5
+          status: status
+    NetworkDiagnosisStat:
+      type: object
+      properties:
+        bandwidth:
+          type: integer
+          format: int64
+        coll_pkgs:
+          type: integer
+          format: int64
+        err_pkg_ratio:
+          type: number
+          format: double
+        lost_pkg_ratio:
+          type: number
+          format: double
+        recv_bytes:
+          type: integer
+          format: int64
+        recv_pkgs:
+          type: integer
+          format: int64
+        send_bytes:
+          type: integer
+          format: int64
+        send_pkgs:
+          type: integer
+          format: int64
+        tcp_conn_errs:
+          type: integer
+          format: int64
+        tcp_segment_retrans:
+          type: integer
+          format: int64
+      title: NetworkDiagnosisStat
+      description: NetworkDiagnosisStat defines model of network diagnosis stat
+      example:
+        recv_bytes: 3
+        recv_pkgs: 2
+        tcp_conn_errs: 1
+        bandwidth: 5
+        err_pkg_ratio: 7.061401241503109
+        send_pkgs: 7
+        tcp_segment_retrans: 1
+        lost_pkg_ratio: 9.301444243932576
+        send_bytes: 4
+        coll_pkgs: 2
+    NetworkDiagnosis_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: NetworkDiagnosis_Nestview
+      example:
+        id: 1
   securitySchemes:
     tokenInHeader:
       description: auth by token

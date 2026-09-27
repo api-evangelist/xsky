@@ -231,77 +231,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    VIPGroupResp:
-      type: object
-      required:
-      - vip_group
-      properties:
-        vip_group:
-          $ref: '#/components/schemas/VIPGroup'
-      title: VIPGroupResp
-      example:
-        vip_group:
-          name: name
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          preempt: true
-          action_status: action_status
-          network: network
-          status: status
-    VIPGroupUpdateReq_VIPGroup:
-      type: object
-      properties:
-        preempt:
-          type: boolean
-      title: VIPGroupUpdateReq_VIPGroup
-    VIPGroupCreateReq_VIPGroup_VIPs_Elt:
-      type: object
-      required:
-      - ip
-      - network_address_id
-      properties:
-        ip:
-          type: string
-        mask:
-          type: integer
-          format: int64
-        network_address_id:
-          type: integer
-          format: int64
-      title: VIPGroupCreateReq_VIPGroup_VIPs_Elt
-    VIPGroupCreateReq:
-      type: object
-      required:
-      - vip_group
-      properties:
-        vip_group:
-          $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup'
-      title: VIPGroupCreateReq
-    VIPGroupCreateReq_VIPGroup:
-      type: object
-      required:
-      - network
-      - resource_id
-      - resource_type
-      - vips
-      properties:
-        network:
-          type: string
-        preempt:
-          type: boolean
-        resource_id:
-          type: integer
-          format: int64
-        resource_type:
-          type: string
-        vips:
-          type: array
-          items:
-            $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup_VIPs_Elt'
-      title: VIPGroupCreateReq_VIPGroup
     VIPGroup:
       type: object
       properties:
@@ -342,6 +271,36 @@ components:
         action_status: action_status
         network: network
         status: status
+    VIPGroupUpdateReq:
+      type: object
+      required:
+      - vip_group
+      properties:
+        vip_group:
+          $ref: '#/components/schemas/VIPGroupUpdateReq_VIPGroup'
+      title: VIPGroupUpdateReq
+    VIPGroupCreateReq_VIPGroup:
+      type: object
+      required:
+      - network
+      - resource_id
+      - resource_type
+      - vips
+      properties:
+        network:
+          type: string
+        preempt:
+          type: boolean
+        resource_id:
+          type: integer
+          format: int64
+        resource_type:
+          type: string
+        vips:
+          type: array
+          items:
+            $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup_VIPs_Elt'
+      title: VIPGroupCreateReq_VIPGroup
     VIPGroupResps:
       type: object
       required:
@@ -374,14 +333,55 @@ components:
           action_status: action_status
           network: network
           status: status
-    VIPGroupUpdateReq:
+    VIPGroupUpdateReq_VIPGroup:
+      type: object
+      properties:
+        preempt:
+          type: boolean
+      title: VIPGroupUpdateReq_VIPGroup
+    VIPGroupResp:
       type: object
       required:
       - vip_group
       properties:
         vip_group:
-          $ref: '#/components/schemas/VIPGroupUpdateReq_VIPGroup'
-      title: VIPGroupUpdateReq
+          $ref: '#/components/schemas/VIPGroup'
+      title: VIPGroupResp
+      example:
+        vip_group:
+          name: name
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          preempt: true
+          action_status: action_status
+          network: network
+          status: status
+    VIPGroupCreateReq:
+      type: object
+      required:
+      - vip_group
+      properties:
+        vip_group:
+          $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup'
+      title: VIPGroupCreateReq
+    VIPGroupCreateReq_VIPGroup_VIPs_Elt:
+      type: object
+      required:
+      - ip
+      - network_address_id
+      properties:
+        ip:
+          type: string
+        mask:
+          type: integer
+          format: int64
+        network_address_id:
+          type: integer
+          format: int64
+      title: VIPGroupCreateReq_VIPGroup_VIPs_Elt
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -229,6 +229,64 @@ components:
           type: integer
           format: int64
       title: DpFSSnapshotPolicyCreateReq_Policy
+    DpFSSnapshotPolicyCreateReq:
+      type: object
+      required:
+      - dp_fs_snapshot_policy
+      properties:
+        dp_fs_snapshot_policy:
+          $ref: '#/components/schemas/DpFSSnapshotPolicyCreateReq_Policy'
+      title: DpFSSnapshotPolicyCreateReq
+    DpGateway_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGateway_Nestview
+      example:
+        name: name
+        id: 6
+    DpFSSnapshotPolicyResp:
+      type: object
+      properties:
+        dp_fs_snapshot_policy:
+          $ref: '#/components/schemas/DpFSSnapshotPolicy'
+      title: DpFSSnapshotPolicyResp
+      example:
+        dp_fs_snapshot_policy:
+          retained_max: 1
+          cron_expr: cron_expr
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          dp_gateway:
+            name: name
+            id: 6
+          id: 6
+          fs_folder_num: 0
+          status: status
+    DpFSSnapshotPolicyUpdateReq:
+      type: object
+      required:
+      - dp_fs_snapshot_policy
+      properties:
+        dp_fs_snapshot_policy:
+          $ref: '#/components/schemas/DpFSSnapshotPolicyUpdateReq_Policy'
+      title: DpFSSnapshotPolicyUpdateReq
+    DpFSSnapshotPolicyUpdateReq_Policy:
+      type: object
+      properties:
+        cron_expr:
+          type: string
+        name:
+          type: string
+        retained_max:
+          type: integer
+          format: int64
+      title: DpFSSnapshotPolicyUpdateReq_Policy
     DpFSSnapshotPolicy:
       type: object
       properties:
@@ -269,52 +327,6 @@ components:
         id: 6
         fs_folder_num: 0
         status: status
-    DpFSSnapshotPolicyResp:
-      type: object
-      properties:
-        dp_fs_snapshot_policy:
-          $ref: '#/components/schemas/DpFSSnapshotPolicy'
-      title: DpFSSnapshotPolicyResp
-      example:
-        dp_fs_snapshot_policy:
-          retained_max: 1
-          cron_expr: cron_expr
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          dp_gateway:
-            name: name
-            id: 6
-          id: 6
-          fs_folder_num: 0
-          status: status
-    DpFSSnapshotPolicyCreateReq:
-      type: object
-      required:
-      - dp_fs_snapshot_policy
-      properties:
-        dp_fs_snapshot_policy:
-          $ref: '#/components/schemas/DpFSSnapshotPolicyCreateReq_Policy'
-      title: DpFSSnapshotPolicyCreateReq
-    DpFSSnapshotPolicyUpdateReq:
-      type: object
-      required:
-      - dp_fs_snapshot_policy
-      properties:
-        dp_fs_snapshot_policy:
-          $ref: '#/components/schemas/DpFSSnapshotPolicyUpdateReq_Policy'
-      title: DpFSSnapshotPolicyUpdateReq
-    DpFSSnapshotPolicyUpdateReq_Policy:
-      type: object
-      properties:
-        cron_expr:
-          type: string
-        name:
-          type: string
-        retained_max:
-          type: integer
-          format: int64
-      title: DpFSSnapshotPolicyUpdateReq_Policy
     DpFSSnapshotPoliciesResp:
       type: object
       properties:
@@ -347,18 +359,6 @@ components:
           id: 6
           fs_folder_num: 0
           status: status
-    DpGateway_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpGateway_Nestview
-      example:
-        name: name
-        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

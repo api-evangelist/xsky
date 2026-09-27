@@ -419,55 +419,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OsdGroupOsdsUpdateReq:
-      type: object
-      required:
-      - osd_group
-      properties:
-        osd_group:
-          $ref: '#/components/schemas/OsdGroupOsdsUpdateReq_OsdGroup'
-      title: OsdGroupOsdsUpdateReq
-      example:
-        osd_group:
-          osd_ids:
-          - 0
-          - 0
-    OsdGroupRecord:
-      title: OsdGroupRecord
-      allOf:
-      - $ref: '#/components/schemas/OsdGroup'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/OsdGroupStat'
-      description: OsdGroupRecord combine OsdGroup and OsdGroupStat as API response
-    OsdGroupSamplesResp:
-      type: object
-      required:
-      - osd_group_samples
-      properties:
-        osd_group_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/OsdGroupStat'
-      title: OsdGroupSamplesResp
-      example:
-        osd_group_samples:
-        - used_kbyte: 6
-          total_kbyte: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-        - used_kbyte: 6
-          total_kbyte: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-    OsdGroupResp:
+    Pool_Nestview:
       type: object
       properties:
-        osd_group:
-          $ref: '#/components/schemas/OsdGroupRecord'
-      title: OsdGroupResp
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
       example:
-        osd_group: ''
+        name: name
+        id: 5
     OsdGroupOsdsUpdateReq_OsdGroup:
       type: object
       required:
@@ -483,22 +446,17 @@ components:
         osd_ids:
         - 0
         - 0
-    OsdGroupSetQosReq_OsdGroup:
+    SetOsdFullRatioReq_OsdGroup:
       type: object
       required:
-      - qos
+      - osd_full_ratio
       properties:
-        qos:
-          $ref: '#/components/schemas/OsdQos'
-      title: OsdGroupSetQosReq_OsdGroup
+        osd_full_ratio:
+          type: number
+          format: double
+      title: SetOsdFullRatioReq_OsdGroup
       example:
-        qos:
-          mode: 5
-          bandwidth: 0
-          bandwidth_max: 6
-          id: 5
-          client_threshold: 1
-          recovery_rate_type: recovery_rate_type
+        osd_full_ratio: 0.8008281904610115
     OsdGroupSetQosReq:
       type: object
       required:
@@ -516,17 +474,6 @@ components:
             id: 5
             client_threshold: 1
             recovery_rate_type: recovery_rate_type
-    SetOsdFullRatioReq_OsdGroup:
-      type: object
-      required:
-      - osd_full_ratio
-      properties:
-        osd_full_ratio:
-          type: number
-          format: double
-      title: SetOsdFullRatioReq_OsdGroup
-      example:
-        osd_full_ratio: 0.8008281904610115
     OsdQos:
       type: object
       properties:
@@ -567,18 +514,34 @@ components:
       example:
         osd_group:
           osd_full_ratio: 0.8008281904610115
-    Pool_Nestview:
+    OsdGroupSamplesResp:
       type: object
+      required:
+      - osd_group_samples
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Pool_Nestview
+        osd_group_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/OsdGroupStat'
+      title: OsdGroupSamplesResp
       example:
-        name: name
-        id: 5
+        osd_group_samples:
+        - used_kbyte: 6
+          total_kbyte: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+        - used_kbyte: 6
+          total_kbyte: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+    OsdGroupRecord:
+      title: OsdGroupRecord
+      allOf:
+      - $ref: '#/components/schemas/OsdGroup'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/OsdGroupStat'
+      description: OsdGroupRecord combine OsdGroup and OsdGroupStat as API response
     OsdGroup:
       type: object
       properties:
@@ -618,6 +581,47 @@ components:
           format: date-time
       title: OsdGroup
       description: OsdGroup defines model of osd group
+    OsdGroupOsdsUpdateReq:
+      type: object
+      required:
+      - osd_group
+      properties:
+        osd_group:
+          $ref: '#/components/schemas/OsdGroupOsdsUpdateReq_OsdGroup'
+      title: OsdGroupOsdsUpdateReq
+      example:
+        osd_group:
+          osd_ids:
+          - 0
+          - 0
+    OsdGroupsResp:
+      type: object
+      properties:
+        osd_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/OsdGroupRecord'
+      title: OsdGroupsResp
+      example:
+        osd_groups:
+        - ''
+        - ''
+    OsdGroupSetQosReq_OsdGroup:
+      type: object
+      required:
+      - qos
+      properties:
+        qos:
+          $ref: '#/components/schemas/OsdQos'
+      title: OsdGroupSetQosReq_OsdGroup
+      example:
+        qos:
+          mode: 5
+          bandwidth: 0
+          bandwidth_max: 6
+          id: 5
+          client_threshold: 1
+          recovery_rate_type: recovery_rate_type
     OsdGroupStat:
       type: object
       properties:
@@ -636,18 +640,14 @@ components:
         used_kbyte: 6
         total_kbyte: 0
         create: '2000-01-23T04:56:07.000+00:00'
-    OsdGroupsResp:
+    OsdGroupResp:
       type: object
       properties:
-        osd_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/OsdGroupRecord'
-      title: OsdGroupsResp
+        osd_group:
+          $ref: '#/components/schemas/OsdGroupRecord'
+      title: OsdGroupResp
       example:
-        osd_groups:
-        - ''
-        - ''
+        osd_group: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

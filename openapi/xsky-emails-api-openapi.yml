@@ -93,22 +93,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EmailSendReq:
+    EmailConfigResp:
       type: object
       properties:
-        email:
-          $ref: '#/components/schemas/EmailSendReq_Email'
         email_config:
           $ref: '#/components/schemas/EmailConfig'
-      title: EmailSendReq
-      description: EmailSendReq defines the data of email sending
+      title: EmailConfigResp
       example:
-        email:
-          content_type: content_type
-          to:
-          - to
-          - to
-          body: body
         email_config:
           smtp_password: smtp_password
           smtp_port: 0
@@ -149,6 +140,84 @@ components:
         smtp_host: smtp_host
         smtp_enable_ssl: true
         enabled: true
+    EmailResp:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+      title: EmailResp
+      example:
+        email:
+          content_type: content_type
+          subject: subject
+          from: from
+          to:
+          - to
+          - to
+          body: body
+    EmailSendReq:
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailSendReq_Email'
+        email_config:
+          $ref: '#/components/schemas/EmailConfig'
+      title: EmailSendReq
+      description: EmailSendReq defines the data of email sending
+      example:
+        email:
+          content_type: content_type
+          to:
+          - to
+          - to
+          body: body
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+    EmailSendReq_Email:
+      type: object
+      required:
+      - body
+      - to
+      properties:
+        body:
+          type: string
+        content_type:
+          type: string
+          description: content type, 'text/plain' or 'text/html'
+        to:
+          type: array
+          items:
+            type: string
+      title: EmailSendReq_Email
+      example:
+        content_type: content_type
+        to:
+        - to
+        - to
+        body: body
+    EmailConfigUpdateReq:
+      type: object
+      properties:
+        email_config:
+          $ref: '#/components/schemas/EmailConfigUpdateReq_EmailConfig'
+      title: EmailConfigUpdateReq
+      example:
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
     EmailConfigUpdateReq_EmailConfig:
       type: object
       properties:
@@ -179,59 +248,6 @@ components:
         smtp_host: smtp_host
         smtp_enable_ssl: true
         enabled: true
-    EmailConfigUpdateReq:
-      type: object
-      properties:
-        email_config:
-          $ref: '#/components/schemas/EmailConfigUpdateReq_EmailConfig'
-      title: EmailConfigUpdateReq
-      example:
-        email_config:
-          smtp_password: smtp_password
-          smtp_port: 0
-          smtp_user: smtp_user
-          smtp_skip_tls_cert_verify: true
-          subject: subject
-          smtp_host: smtp_host
-          smtp_enable_ssl: true
-          enabled: true
-    EmailResp:
-      type: object
-      properties:
-        email:
-          $ref: '#/components/schemas/Email'
-      title: EmailResp
-      example:
-        email:
-          content_type: content_type
-          subject: subject
-          from: from
-          to:
-          - to
-          - to
-          body: body
-    EmailSendReq_Email:
-      type: object
-      required:
-      - body
-      - to
-      properties:
-        body:
-          type: string
-        content_type:
-          type: string
-          description: content type, 'text/plain' or 'text/html'
-        to:
-          type: array
-          items:
-            type: string
-      title: EmailSendReq_Email
-      example:
-        content_type: content_type
-        to:
-        - to
-        - to
-        body: body
     Email:
       type: object
       properties:
@@ -257,22 +273,6 @@ components:
         - to
         - to
         body: body
-    EmailConfigResp:
-      type: object
-      properties:
-        email_config:
-          $ref: '#/components/schemas/EmailConfig'
-      title: EmailConfigResp
-      example:
-        email_config:
-          smtp_password: smtp_password
-          smtp_port: 0
-          smtp_user: smtp_user
-          smtp_skip_tls_cert_verify: true
-          subject: subject
-          smtp_host: smtp_host
-          smtp_enable_ssl: true
-          enabled: true
   securitySchemes:
     tokenInHeader:
       description: auth by token

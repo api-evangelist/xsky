@@ -364,6 +364,258 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DpBackupBlockSnapshotsResp:
+      type: object
+      required:
+      - backup_block_snapshots
+      properties:
+        backup_block_snapshots:
+          type: array
+          description: block snapshots
+          items:
+            $ref: '#/components/schemas/DpBackupBlockSnapshot'
+      title: DpBackupBlockSnapshotsResp
+      example:
+        backup_block_snapshots:
+        - size: 0
+          backup_type: backup_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 6
+        - size: 0
+          backup_type: backup_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          volume_size: 6
+    DpSiteCreateReq:
+      type: object
+      properties:
+        dp_site:
+          $ref: '#/components/schemas/DpSiteCreateReq_Site'
+      title: DpSiteCreateReq
+      example:
+        dp_site:
+          address: address
+          remote_cluster_id: 6
+          service: service
+          name: name
+          protection_type: protection_type
+          config:
+            block_snapshot_replication:
+              remote_gateway: remote_gateway
+            block_snapshot_backup:
+              bucket: bucket
+              secret_key: secret_key
+              mount_path: mount_path
+              password: password
+              port: 0
+              access_key: access_key
+              region: region
+              app_id: app_id
+              username: username
+            block_volume_replication:
+              destination: destination
+              local_gateways:
+              - local_gateways
+              - local_gateways
+              remote_gateways:
+              - remote_gateways
+              - remote_gateways
+          crypto_key_id: 0
+          platform: platform
+    SnapshotReplicationConfig:
+      type: object
+      properties:
+        remote_gateway:
+          type: string
+      title: SnapshotReplicationConfig
+      description: SnapshotReplicationConfig contains config for snapshot replication
+      example:
+        remote_gateway: remote_gateway
+    DpSiteCreateReq_Site:
+      type: object
+      required:
+      - config
+      - name
+      - platform
+      - protection_type
+      - service
+      properties:
+        address:
+          type: string
+          description: site address
+        config:
+          description: extra config
+          $ref: '#/components/schemas/DpSiteConfig'
+        crypto_key_id:
+          type: integer
+          format: int64
+          description: crypto key
+        name:
+          type: string
+          description: site name
+        platform:
+          type: string
+          description: platform of site
+        protection_type:
+          type: string
+          description: protection type
+        remote_cluster_id:
+          type: integer
+          format: int64
+          description: remote cluster
+        service:
+          type: string
+          description: service of site
+      title: DpSiteCreateReq_Site
+      example:
+        address: address
+        remote_cluster_id: 6
+        service: service
+        name: name
+        protection_type: protection_type
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+        crypto_key_id: 0
+        platform: platform
+    CryptoKey_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: CryptoKey_Nestview
+      example:
+        name: name
+        id: 6
+    DpSiteConfig:
+      type: object
+      properties:
+        block_snapshot_backup:
+          $ref: '#/components/schemas/SnapshotBackupConfig'
+        block_snapshot_replication:
+          $ref: '#/components/schemas/SnapshotReplicationConfig'
+        block_volume_replication:
+          $ref: '#/components/schemas/BlockReplicationConfig'
+      title: DpSiteConfig
+      description: DpSiteConfig contains config of different sites in dpg
+      example:
+        block_snapshot_replication:
+          remote_gateway: remote_gateway
+        block_snapshot_backup:
+          bucket: bucket
+          secret_key: secret_key
+          mount_path: mount_path
+          password: password
+          port: 0
+          access_key: access_key
+          region: region
+          app_id: app_id
+          username: username
+        block_volume_replication:
+          destination: destination
+          local_gateways:
+          - local_gateways
+          - local_gateways
+          remote_gateways:
+          - remote_gateways
+          - remote_gateways
+    DpSiteUpdateReq_Site:
+      type: object
+      properties:
+        config:
+          description: dp site config
+          $ref: '#/components/schemas/DpSiteConfig'
+        name:
+          type: string
+          description: dp site name
+      title: DpSiteUpdateReq_Site
+      example:
+        name: name
+        config:
+          block_snapshot_replication:
+            remote_gateway: remote_gateway
+          block_snapshot_backup:
+            bucket: bucket
+            secret_key: secret_key
+            mount_path: mount_path
+            password: password
+            port: 0
+            access_key: access_key
+            region: region
+            app_id: app_id
+            username: username
+          block_volume_replication:
+            destination: destination
+            local_gateways:
+            - local_gateways
+            - local_gateways
+            remote_gateways:
+            - remote_gateways
+            - remote_gateways
+    DpBackupBlockVolumesResp:
+      type: object
+      required:
+      - backup_block_volumes
+      properties:
+        backup_block_volumes:
+          type: array
+          description: block volumes
+          items:
+            $ref: '#/components/schemas/DpBackupBlockVolume'
+      title: DpBackupBlockVolumesResp
+      example:
+        backup_block_volumes:
+        - size: 5
+          format: 1
+          name: name
+          volume_name: volume_name
+        - size: 5
+          format: 1
+          name: name
+          volume_name: volume_name
+    BlockReplicationConfig:
+      type: object
+      properties:
+        destination:
+          type: string
+        local_gateways:
+          type: array
+          items:
+            type: string
+        remote_gateways:
+          type: array
+          items:
+            type: string
+      title: BlockReplicationConfig
+      description: BlockReplicationConfig contains config for block replication
+      example:
+        destination: destination
+        local_gateways:
+        - local_gateways
+        - local_gateways
+        remote_gateways:
+        - remote_gateways
+        - remote_gateways
     DpSiteResp:
       type: object
       required:
@@ -413,312 +665,6 @@ components:
               - remote_gateways
           platform: platform
           status: status
-    DpBackupBlockVolume:
-      type: object
-      properties:
-        format:
-          type: integer
-          format: int64
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        volume_name:
-          type: string
-      title: DpBackupBlockVolume
-      description: DpBackupBlockVolume is a block volume stored on a site
-      example:
-        size: 5
-        format: 1
-        name: name
-        volume_name: volume_name
-    DpSiteCreateReq:
-      type: object
-      properties:
-        dp_site:
-          $ref: '#/components/schemas/DpSiteCreateReq_Site'
-      title: DpSiteCreateReq
-      example:
-        dp_site:
-          address: address
-          remote_cluster_id: 6
-          service: service
-          name: name
-          protection_type: protection_type
-          config:
-            block_snapshot_replication:
-              remote_gateway: remote_gateway
-            block_snapshot_backup:
-              bucket: bucket
-              secret_key: secret_key
-              mount_path: mount_path
-              password: password
-              port: 0
-              access_key: access_key
-              region: region
-              app_id: app_id
-              username: username
-            block_volume_replication:
-              destination: destination
-              local_gateways:
-              - local_gateways
-              - local_gateways
-              remote_gateways:
-              - remote_gateways
-              - remote_gateways
-          crypto_key_id: 0
-          platform: platform
-    BlockReplicationConfig:
-      type: object
-      properties:
-        destination:
-          type: string
-        local_gateways:
-          type: array
-          items:
-            type: string
-        remote_gateways:
-          type: array
-          items:
-            type: string
-      title: BlockReplicationConfig
-      description: BlockReplicationConfig contains config for block replication
-      example:
-        destination: destination
-        local_gateways:
-        - local_gateways
-        - local_gateways
-        remote_gateways:
-        - remote_gateways
-        - remote_gateways
-    DpBackupCluster:
-      type: object
-      properties:
-        fs_id:
-          type: string
-        name:
-          type: string
-      title: DpBackupCluster
-      description: DpBackupCluster is a cluster stored on a site
-      example:
-        name: name
-        fs_id: fs_id
-    DpBackupBlockSnapshot:
-      type: object
-      properties:
-        backup_type:
-          type: string
-        create:
-          type: string
-          format: date-time
-        size:
-          type: integer
-          format: int64
-        volume_size:
-          type: integer
-          format: int64
-      title: DpBackupBlockSnapshot
-      description: DpBackupBlockSnapshot is a block snapshot stored on a site
-      example:
-        size: 0
-        backup_type: backup_type
-        create: '2000-01-23T04:56:07.000+00:00'
-        volume_size: 6
-    DpBackupClustersResp:
-      type: object
-      required:
-      - backup_clusters
-      properties:
-        backup_clusters:
-          type: array
-          description: clusters
-          items:
-            $ref: '#/components/schemas/DpBackupCluster'
-      title: DpBackupClustersResp
-      example:
-        backup_clusters:
-        - name: name
-          fs_id: fs_id
-        - name: name
-          fs_id: fs_id
-    DpSiteUpdateReq_Site:
-      type: object
-      properties:
-        config:
-          description: dp site config
-          $ref: '#/components/schemas/DpSiteConfig'
-        name:
-          type: string
-          description: dp site name
-      title: DpSiteUpdateReq_Site
-      example:
-        name: name
-        config:
-          block_snapshot_replication:
-            remote_gateway: remote_gateway
-          block_snapshot_backup:
-            bucket: bucket
-            secret_key: secret_key
-            mount_path: mount_path
-            password: password
-            port: 0
-            access_key: access_key
-            region: region
-            app_id: app_id
-            username: username
-          block_volume_replication:
-            destination: destination
-            local_gateways:
-            - local_gateways
-            - local_gateways
-            remote_gateways:
-            - remote_gateways
-            - remote_gateways
-    DpSite:
-      type: object
-      properties:
-        address:
-          type: string
-        config:
-          $ref: '#/components/schemas/DpSiteConfig'
-        create:
-          type: string
-          format: date-time
-        crypto_key:
-          $ref: '#/components/schemas/CryptoKey_Nestview'
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        platform:
-          type: string
-        protection_type:
-          type: string
-        remote_cluster:
-          $ref: '#/components/schemas/RemoteCluster_Nestview'
-        service:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: DpSite
-      description: DpSite is a site to storage data protection data
-      example:
-        crypto_key:
-          name: name
-          id: 6
-        address: address
-        remote_cluster:
-          name: name
-          id: 2
-          fs_id: fs_id
-          url: url
-        service: service
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        protection_type: protection_type
-        id: 1
-        config:
-          block_snapshot_replication:
-            remote_gateway: remote_gateway
-          block_snapshot_backup:
-            bucket: bucket
-            secret_key: secret_key
-            mount_path: mount_path
-            password: password
-            port: 0
-            access_key: access_key
-            region: region
-            app_id: app_id
-            username: username
-          block_volume_replication:
-            destination: destination
-            local_gateways:
-            - local_gateways
-            - local_gateways
-            remote_gateways:
-            - remote_gateways
-            - remote_gateways
-        platform: platform
-        status: status
-    RemoteCluster_Nestview:
-      type: object
-      properties:
-        fs_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        url:
-          type: string
-      title: RemoteCluster_Nestview
-      example:
-        name: name
-        id: 2
-        fs_id: fs_id
-        url: url
-    DpBackupBlockSnapshotsResp:
-      type: object
-      required:
-      - backup_block_snapshots
-      properties:
-        backup_block_snapshots:
-          type: array
-          description: block snapshots
-          items:
-            $ref: '#/components/schemas/DpBackupBlockSnapshot'
-      title: DpBackupBlockSnapshotsResp
-      example:
-        backup_block_snapshots:
-        - size: 0
-          backup_type: backup_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          volume_size: 6
-        - size: 0
-          backup_type: backup_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          volume_size: 6
-    SnapshotBackupConfig:
-      type: object
-      properties:
-        access_key:
-          type: string
-        app_id:
-          type: string
-        bucket:
-          type: string
-        mount_path:
-          type: string
-        password:
-          type: string
-        port:
-          type: integer
-          format: int64
-        region:
-          type: string
-        secret_key:
-          type: string
-        username:
-          type: string
-      title: SnapshotBackupConfig
-      description: SnapshotBackupConfig contains config for snapshot backup
-      example:
-        bucket: bucket
-        secret_key: secret_key
-        mount_path: mount_path
-        password: password
-        port: 0
-        access_key: access_key
-        region: region
-        app_id: app_id
-        username: username
     DpSitesResp:
       type: object
       required:
@@ -808,18 +754,18 @@ components:
               - remote_gateways
           platform: platform
           status: status
-    CryptoKey_Nestview:
+    DpBackupCluster:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
+        fs_id:
+          type: string
         name:
           type: string
-      title: CryptoKey_Nestview
+      title: DpBackupCluster
+      description: DpBackupCluster is a cluster stored on a site
       example:
         name: name
-        id: 6
+        fs_id: fs_id
     DpSiteUpdateReq:
       type: object
       properties:
@@ -850,48 +796,108 @@ components:
               remote_gateways:
               - remote_gateways
               - remote_gateways
-    DpSiteCreateReq_Site:
+    DpBackupBlockVolume:
       type: object
-      required:
-      - config
-      - name
-      - platform
-      - protection_type
-      - service
+      properties:
+        format:
+          type: integer
+          format: int64
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        volume_name:
+          type: string
+      title: DpBackupBlockVolume
+      description: DpBackupBlockVolume is a block volume stored on a site
+      example:
+        size: 5
+        format: 1
+        name: name
+        volume_name: volume_name
+    SnapshotBackupConfig:
+      type: object
+      properties:
+        access_key:
+          type: string
+        app_id:
+          type: string
+        bucket:
+          type: string
+        mount_path:
+          type: string
+        password:
+          type: string
+        port:
+          type: integer
+          format: int64
+        region:
+          type: string
+        secret_key:
+          type: string
+        username:
+          type: string
+      title: SnapshotBackupConfig
+      description: SnapshotBackupConfig contains config for snapshot backup
+      example:
+        bucket: bucket
+        secret_key: secret_key
+        mount_path: mount_path
+        password: password
+        port: 0
+        access_key: access_key
+        region: region
+        app_id: app_id
+        username: username
+    DpSite:
+      type: object
       properties:
         address:
           type: string
-          description: site address
         config:
-          description: extra config
           $ref: '#/components/schemas/DpSiteConfig'
-        crypto_key_id:
+        create:
+          type: string
+          format: date-time
+        crypto_key:
+          $ref: '#/components/schemas/CryptoKey_Nestview'
+        id:
           type: integer
           format: int64
-          description: crypto key
         name:
           type: string
-          description: site name
         platform:
           type: string
-          description: platform of site
         protection_type:
           type: string
-          description: protection type
-        remote_cluster_id:
-          type: integer
-          format: int64
-          description: remote cluster
+        remote_cluster:
+          $ref: '#/components/schemas/RemoteCluster_Nestview'
         service:
           type: string
-          description: service of site
-      title: DpSiteCreateReq_Site
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: DpSite
+      description: DpSite is a site to storage data protection data
       example:
+        crypto_key:
+          name: name
+          id: 6
         address: address
-        remote_cluster_id: 6
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
         service: service
         name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
         protection_type: protection_type
+        id: 1
         config:
           block_snapshot_replication:
             remote_gateway: remote_gateway
@@ -913,70 +919,64 @@ components:
             remote_gateways:
             - remote_gateways
             - remote_gateways
-        crypto_key_id: 0
         platform: platform
-    SnapshotReplicationConfig:
+        status: status
+    DpBackupBlockSnapshot:
       type: object
       properties:
-        remote_gateway:
+        backup_type:
           type: string
-      title: SnapshotReplicationConfig
-      description: SnapshotReplicationConfig contains config for snapshot replication
+        create:
+          type: string
+          format: date-time
+        size:
+          type: integer
+          format: int64
+        volume_size:
+          type: integer
+          format: int64
+      title: DpBackupBlockSnapshot
+      description: DpBackupBlockSnapshot is a block snapshot stored on a site
       example:
-        remote_gateway: remote_gateway
-    DpSiteConfig:
-      type: object
-      properties:
-        block_snapshot_backup:
-          $ref: '#/components/schemas/SnapshotBackupConfig'
-        block_snapshot_replication:
-          $ref: '#/components/schemas/SnapshotReplicationConfig'
-        block_volume_replication:
-          $ref: '#/components/schemas/BlockReplicationConfig'
-      title: DpSiteConfig
-      description: DpSiteConfig contains config of different sites in dpg
-      example:
-        block_snapshot_replication:
-          remote_gateway: remote_gateway
-        block_snapshot_backup:
-          bucket: bucket
-          secret_key: secret_key
-          mount_path: mount_path
-          password: password
-          port: 0
-          access_key: access_key
-          region: region
-          app_id: app_id
-          username: username
-        block_volume_replication:
-          destination: destination
-          local_gateways:
-          - local_gateways
-          - local_gateways
-          remote_gateways:
-          - remote_gateways
-          - remote_gateways
-    DpBackupBlockVolumesResp:
+        size: 0
+        backup_type: backup_type
+        create: '2000-01-23T04:56:07.000+00:00'
+        volume_size: 6
+    DpBackupClustersResp:
       type: object
       required:
-      - backup_block_volumes
+      - backup_clusters
       properties:
-        backup_block_volumes:
+        backup_clusters:
           type: array
-          description: block volumes
+          description: clusters
           items:
-            $ref: '#/components/schemas/DpBackupBlockVolume'
-      title: DpBackupBlockVolumesResp
+            $ref: '#/components/schemas/DpBackupCluster'
+      title: DpBackupClustersResp
       example:
-        backup_block_volumes:
-        - size: 5
-          format: 1
-          name: name
-          volume_name: volume_name
-        - size: 5
-          format: 1
-          name: name
-          volume_name: volume_name
+        backup_clusters:
+        - name: name
+          fs_id: fs_id
+        - name: name
+          fs_id: fs_id
+    RemoteCluster_Nestview:
+      type: object
+      properties:
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+      title: RemoteCluster_Nestview
+      example:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -216,14 +216,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSActiveDirectoryCreateReq:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          $ref: '#/components/schemas/FSActiveDirectoryCreateReq_Info'
-      title: FSActiveDirectoryCreateReq
     FSActiveDirectoryCreateReq_Info:
       type: object
       required:
@@ -252,74 +244,6 @@ components:
           type: string
           description: workgroup of active directory
       title: FSActiveDirectoryCreateReq_Info
-    FSActiveDirectoryResp:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          description: file storage active directory
-          $ref: '#/components/schemas/FSActiveDirectory'
-      title: FSActiveDirectoryResp
-      example:
-        fs_active_directory:
-          workgroup: workgroup
-          ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 0
-          realm: realm
-          id: 6
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          action_status: action_status
-          status: status
-          username: username
-    FSActiveDirectoryUpdateReq:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          $ref: '#/components/schemas/FSActiveDirectoryUpdateReq_Info'
-      title: FSActiveDirectoryUpdateReq
-    FSActiveDirectoriesResp:
-      type: object
-      required:
-      - fs_active_directories
-      properties:
-        fs_active_directories:
-          type: array
-          description: file storage active directories
-          items:
-            $ref: '#/components/schemas/FSActiveDirectory'
-      title: FSActiveDirectoriesResp
-      example:
-        fs_active_directories:
-        - workgroup: workgroup
-          ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 0
-          realm: realm
-          id: 6
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          action_status: action_status
-          status: status
-          username: username
-        - workgroup: workgroup
-          ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 0
-          realm: realm
-          id: 6
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          action_status: action_status
-          status: status
-          username: username
     FSActiveDirectory:
       type: object
       properties:
@@ -389,6 +313,82 @@ components:
           type: string
           description: workgroup of active directory
       title: FSActiveDirectoryUpdateReq_Info
+    FSActiveDirectoryResp:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          description: file storage active directory
+          $ref: '#/components/schemas/FSActiveDirectory'
+      title: FSActiveDirectoryResp
+      example:
+        fs_active_directory:
+          workgroup: workgroup
+          ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 0
+          realm: realm
+          id: 6
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          action_status: action_status
+          status: status
+          username: username
+    FSActiveDirectoryCreateReq:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          $ref: '#/components/schemas/FSActiveDirectoryCreateReq_Info'
+      title: FSActiveDirectoryCreateReq
+    FSActiveDirectoryUpdateReq:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          $ref: '#/components/schemas/FSActiveDirectoryUpdateReq_Info'
+      title: FSActiveDirectoryUpdateReq
+    FSActiveDirectoriesResp:
+      type: object
+      required:
+      - fs_active_directories
+      properties:
+        fs_active_directories:
+          type: array
+          description: file storage active directories
+          items:
+            $ref: '#/components/schemas/FSActiveDirectory'
+      title: FSActiveDirectoriesResp
+      example:
+        fs_active_directories:
+        - workgroup: workgroup
+          ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 0
+          realm: realm
+          id: 6
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          action_status: action_status
+          status: status
+          username: username
+        - workgroup: workgroup
+          ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 0
+          realm: realm
+          id: 6
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          action_status: action_status
+          status: status
+          username: username
   securitySchemes:
     tokenInHeader:
       description: auth by token

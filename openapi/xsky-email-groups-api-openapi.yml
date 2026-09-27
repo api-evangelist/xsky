@@ -192,6 +192,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EmailGroupRecord:
+      title: EmailGroupRecord
+      allOf:
+      - $ref: '#/components/schemas/EmailGroup'
+      description: EmailGroupRecord defines email group record
     EmailGroupsResp:
       type: object
       required:
@@ -207,26 +212,6 @@ components:
         email_groups:
         - ''
         - ''
-    EmailGroup:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        emails:
-          type: array
-          items:
-            type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: EmailGroup
-      description: EmailGroup defines the email group
     EmailGroupUpdateReq_EmailGroup:
       type: object
       required:
@@ -259,11 +244,26 @@ components:
           - emails
           - emails
           name: name
-    EmailGroupRecord:
-      title: EmailGroupRecord
-      allOf:
-      - $ref: '#/components/schemas/EmailGroup'
-      description: EmailGroupRecord defines email group record
+    EmailGroup:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        emails:
+          type: array
+          items:
+            type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: EmailGroup
+      description: EmailGroup defines the email group
     EmailGroupResp:
       type: object
       required:

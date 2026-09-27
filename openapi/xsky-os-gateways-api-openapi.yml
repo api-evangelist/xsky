@@ -257,128 +257,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageGateway:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        gateway_ip:
-          type: string
-        gateway_name:
-          type: string
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        os_zone:
-          $ref: '#/components/schemas/ObjectStorageZone_Nestview'
-        port:
-          type: integer
-          format: int64
-        role:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: ObjectStorageGateway
-      description: ObjectStorageGateway is the model of object_storage_gateway @grpc-models-proto
-    ObjectStorageGatewayResp:
-      type: object
-      required:
-      - os_gateway
-      properties:
-        os_gateway:
-          description: object storage gateway
-          $ref: '#/components/schemas/ObjectStorageGatewayRecord'
-      title: ObjectStorageGatewayResp
-      example:
-        os_gateway: ''
-    ObjectStorageGatewayRecord:
-      title: ObjectStorageGatewayRecord
-      allOf:
-      - $ref: '#/components/schemas/ObjectStorageGateway'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/ObjectStorageGatewayStat'
-      description: 'ObjectStorageGatewayRecord combine ObjectStorageGateway and
-
-        ObjectStorageGatewayStat as API response'
-    ObjectStorageGatewayCreateReq_Gateway:
-      type: object
-      required:
-      - host_id
-      - name
-      - port
-      properties:
-        description:
-          type: string
-        gateway_ip:
-          type: string
-        host_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        port:
-          type: integer
-          format: int64
-        role:
-          type: string
-      title: ObjectStorageGatewayCreateReq_Gateway
-      example:
-        role: role
-        port: 6
-        name: name
-        description: description
-        gateway_ip: gateway_ip
-        host_id: 0
-    ObjectStorageGatewayUpdateReq_Gateway:
-      type: object
-      properties:
-        action:
-          type: string
-      title: ObjectStorageGatewayUpdateReq_Gateway
-      example:
-        action: action
-    ObjectStorageGatewayCreateReq:
-      type: object
-      properties:
-        os_gateway:
-          $ref: '#/components/schemas/ObjectStorageGatewayCreateReq_Gateway'
-      title: ObjectStorageGatewayCreateReq
-      example:
-        os_gateway:
-          role: role
-          port: 6
-          name: name
-          description: description
-          gateway_ip: gateway_ip
-          host_id: 0
-    ObjectStorageGatewaysResp:
-      type: object
-      required:
-      - os_gateways
-      properties:
-        os_gateways:
-          type: array
-          description: object storage gateways
-          items:
-            $ref: '#/components/schemas/ObjectStorageGatewayRecord'
-      title: ObjectStorageGatewaysResp
-      example:
-        os_gateways:
-        - ''
-        - ''
     ObjectStorageGatewaySamplesResp:
       type: object
       required:
@@ -443,6 +321,20 @@ components:
         name: name
         admin_ip: admin_ip
         id: 0
+    ObjectStorageGatewayCreateReq:
+      type: object
+      properties:
+        os_gateway:
+          $ref: '#/components/schemas/ObjectStorageGatewayCreateReq_Gateway'
+      title: ObjectStorageGatewayCreateReq
+      example:
+        os_gateway:
+          role: role
+          port: 6
+          name: name
+          description: description
+          gateway_ip: gateway_ip
+          host_id: 0
     ObjectStorageGatewayStat:
       type: object
       properties:
@@ -502,6 +394,114 @@ components:
       example:
         os_gateway:
           action: action
+    ObjectStorageGatewayRecord:
+      title: ObjectStorageGatewayRecord
+      allOf:
+      - $ref: '#/components/schemas/ObjectStorageGateway'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/ObjectStorageGatewayStat'
+      description: 'ObjectStorageGatewayRecord combine ObjectStorageGateway and
+
+        ObjectStorageGatewayStat as API response'
+    ObjectStorageGatewayCreateReq_Gateway:
+      type: object
+      required:
+      - host_id
+      - name
+      - port
+      properties:
+        description:
+          type: string
+        gateway_ip:
+          type: string
+        host_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        port:
+          type: integer
+          format: int64
+        role:
+          type: string
+      title: ObjectStorageGatewayCreateReq_Gateway
+      example:
+        role: role
+        port: 6
+        name: name
+        description: description
+        gateway_ip: gateway_ip
+        host_id: 0
+    ObjectStorageGatewayUpdateReq_Gateway:
+      type: object
+      properties:
+        action:
+          type: string
+      title: ObjectStorageGatewayUpdateReq_Gateway
+      example:
+        action: action
+    ObjectStorageGateway:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        gateway_ip:
+          type: string
+        gateway_name:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        os_zone:
+          $ref: '#/components/schemas/ObjectStorageZone_Nestview'
+        port:
+          type: integer
+          format: int64
+        role:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: ObjectStorageGateway
+      description: ObjectStorageGateway is the model of object_storage_gateway @grpc-models-proto
+    ObjectStorageGatewaysResp:
+      type: object
+      required:
+      - os_gateways
+      properties:
+        os_gateways:
+          type: array
+          description: object storage gateways
+          items:
+            $ref: '#/components/schemas/ObjectStorageGatewayRecord'
+      title: ObjectStorageGatewaysResp
+      example:
+        os_gateways:
+        - ''
+        - ''
+    ObjectStorageGatewayResp:
+      type: object
+      required:
+      - os_gateway
+      properties:
+        os_gateway:
+          description: object storage gateway
+          $ref: '#/components/schemas/ObjectStorageGatewayRecord'
+      title: ObjectStorageGatewayResp
+      example:
+        os_gateway: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

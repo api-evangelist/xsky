@@ -189,6 +189,37 @@ components:
       example:
         role_mapping:
           value: value
+    RoleMappingResp:
+      type: object
+      properties:
+        role_mapping:
+          description: role mapping
+          $ref: '#/components/schemas/RoleMapping'
+      title: RoleMappingResp
+      example:
+        role_mapping:
+          role: role
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          value: value
+          identity_platform:
+            name: name
+            id: 6
+    IdentityPlatform_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of identity platform
+        name:
+          type: string
+          description: name of identity platform
+      title: IdentityPlatform_Nestview
+      example:
+        name: name
+        id: 6
     RoleMappingsResp:
       type: object
       properties:
@@ -216,20 +247,17 @@ components:
           identity_platform:
             name: name
             id: 6
-    IdentityPlatform_Nestview:
+    RoleMappingCreateReq:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          description: id of identity platform
-        name:
-          type: string
-          description: name of identity platform
-      title: IdentityPlatform_Nestview
+        role_mapping:
+          $ref: '#/components/schemas/RoleMappingCreateReq_Mapping'
+      title: RoleMappingCreateReq
       example:
-        name: name
-        id: 6
+        role_mapping:
+          role: role
+          identity_platform_id: 0
+          value: value
     RoleMappingCreateReq_Mapping:
       type: object
       properties:
@@ -247,32 +275,6 @@ components:
       example:
         role: role
         identity_platform_id: 0
-        value: value
-    RoleMappingResp:
-      type: object
-      properties:
-        role_mapping:
-          description: role mapping
-          $ref: '#/components/schemas/RoleMapping'
-      title: RoleMappingResp
-      example:
-        role_mapping:
-          role: role
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          value: value
-          identity_platform:
-            name: name
-            id: 6
-    RoleMappingUpdateReq_Mapping:
-      type: object
-      properties:
-        value:
-          type: string
-          description: roles of identity platform
-      title: RoleMappingUpdateReq_Mapping
-      example:
         value: value
     RoleMapping:
       type: object
@@ -309,17 +311,15 @@ components:
         identity_platform:
           name: name
           id: 6
-    RoleMappingCreateReq:
+    RoleMappingUpdateReq_Mapping:
       type: object
       properties:
-        role_mapping:
-          $ref: '#/components/schemas/RoleMappingCreateReq_Mapping'
-      title: RoleMappingCreateReq
+        value:
+          type: string
+          description: roles of identity platform
+      title: RoleMappingUpdateReq_Mapping
       example:
-        role_mapping:
-          role: role
-          identity_platform_id: 0
-          value: value
+        value: value
   securitySchemes:
     tokenInHeader:
       description: auth by token

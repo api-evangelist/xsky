@@ -316,17 +316,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AlertsActionReq:
+    ActionLog_Nestview:
       type: object
-      required:
-      - alerts
       properties:
-        alerts:
-          $ref: '#/components/schemas/AlertsActionReq_Alerts'
-      title: AlertsActionReq
-      example:
-        alerts:
-          action: action
+        id:
+          type: integer
+          format: int64
+      title: ActionLog_Nestview
     AlertActionReq_Alert:
       type: object
       required:
@@ -337,37 +333,6 @@ components:
       title: AlertActionReq_Alert
       example:
         action: action
-    Alert_Nestview:
-      type: object
-      properties:
-        alarm_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Alert_Nestview
-    AlertsResp:
-      type: object
-      required:
-      - alerts
-      properties:
-        alerts:
-          type: array
-          description: alerts
-          items:
-            $ref: '#/components/schemas/AlertRecord'
-      title: AlertsResp
-      example:
-        alerts:
-        - ''
-        - ''
-    ActionLog_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ActionLog_Nestview
     AlertStatsResp:
       type: object
       required:
@@ -383,66 +348,43 @@ components:
           info_num: 1
           error_num: 6
           warning_num: 5
-    AlertsActionReq_Alerts:
+    AlertsActionReq:
       type: object
       required:
-      - action
+      - alerts
       properties:
-        action:
-          type: string
-      title: AlertsActionReq_Alerts
+        alerts:
+          $ref: '#/components/schemas/AlertsActionReq_Alerts'
+      title: AlertsActionReq
       example:
-        action: action
-    AlertActionReq:
-      type: object
-      required:
-      - alert
-      properties:
-        alert:
-          $ref: '#/components/schemas/AlertActionReq_Alert'
-      title: AlertActionReq
-      example:
-        alert:
+        alerts:
           action: action
-    AlertResp:
+    Host_Nestview:
       type: object
       required:
-      - alert
+      - admin_ip
       properties:
-        alert:
-          description: alert
-          $ref: '#/components/schemas/Alert'
-      title: AlertResp
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
       example:
-        alert:
-          ack_time: '2000-01-23T04:56:07.000+00:00'
-          data: '{}'
-          resolve_type: resolve_type
-          level: level
-          resolve_time: '2000-01-23T04:56:07.000+00:00'
-          resource_type: resource_type
-          trigger_mode: trigger_mode
-          trigger_value: trigger_value
-          alert_value: alert_value
-          type: type
-          acked: true
-          extra_data: extra_data
-          related_resources:
-          - '{}'
-          - '{}'
-          trigger_period: 5
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 1
-          alarm_id: alarm_id
-          id: 6
-          resource_name: resource_name
-          group: group
-          resolved: true
-          status: status
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    Alert_Nestview:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Alert_Nestview
     AlertStats:
       type: object
       properties:
@@ -464,6 +406,52 @@ components:
         info_num: 1
         error_num: 6
         warning_num: 5
+    AlertRecord:
+      title: AlertRecord
+      allOf:
+      - $ref: '#/components/schemas/Alert'
+      - properties:
+          error_records:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorRecord'
+      description: AlertRecord defines the response errors of alert
+    AlertsActionReq_Alerts:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+      title: AlertsActionReq_Alerts
+      example:
+        action: action
+    AlertsResp:
+      type: object
+      required:
+      - alerts
+      properties:
+        alerts:
+          type: array
+          description: alerts
+          items:
+            $ref: '#/components/schemas/AlertRecord'
+      title: AlertsResp
+      example:
+        alerts:
+        - ''
+        - ''
+    AlertActionReq:
+      type: object
+      required:
+      - alert
+      properties:
+        alert:
+          $ref: '#/components/schemas/AlertActionReq_Alert'
+      title: AlertActionReq
+      example:
+        alert:
+          action: action
     Alert:
       type: object
       properties:
@@ -554,33 +542,45 @@ components:
         group: group
         resolved: true
         status: status
-    Host_Nestview:
+    AlertResp:
       type: object
       required:
-      - admin_ip
+      - alert
       properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
+        alert:
+          description: alert
+          $ref: '#/components/schemas/Alert'
+      title: AlertResp
       example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    AlertRecord:
-      title: AlertRecord
-      allOf:
-      - $ref: '#/components/schemas/Alert'
-      - properties:
-          error_records:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorRecord'
-      description: AlertRecord defines the response errors of alert
+        alert:
+          ack_time: '2000-01-23T04:56:07.000+00:00'
+          data: '{}'
+          resolve_type: resolve_type
+          level: level
+          resolve_time: '2000-01-23T04:56:07.000+00:00'
+          resource_type: resource_type
+          trigger_mode: trigger_mode
+          trigger_value: trigger_value
+          alert_value: alert_value
+          type: type
+          acked: true
+          extra_data: extra_data
+          related_resources:
+          - '{}'
+          - '{}'
+          trigger_period: 5
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 1
+          alarm_id: alarm_id
+          id: 6
+          resource_name: resource_name
+          group: group
+          resolved: true
+          status: status
     ErrorRecord:
       type: object
       properties:

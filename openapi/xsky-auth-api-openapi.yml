@@ -162,200 +162,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TokenCreateReq_Auth:
-      type: object
-      required:
-      - identity
-      properties:
-        identity:
-          $ref: '#/components/schemas/TokenCreateReq_Auth_Identity'
-      title: TokenCreateReq_Auth
-      example:
-        identity:
-          password:
-            user:
-              password: password
-              name: name
-              id: 0
-              email: email
-          token:
-            uuid: uuid
-    AuthSecurityPolicyResp:
+    AuthSecurityPolicy:
       type: object
       properties:
-        auth_security_policy:
-          $ref: '#/components/schemas/AuthSecurityPolicy'
-      title: AuthSecurityPolicyResp
+        enabled:
+          type: boolean
+        freeze_duration:
+          type: integer
+          format: int64
+          description: 'unit: second'
+        max_attempts:
+          type: integer
+          format: int64
+        password_expiration_warning:
+          type: boolean
+        password_lifetime:
+          type: integer
+          format: int64
+          description: 'unit: second'
+      title: AuthSecurityPolicy
+      description: AuthSecurityPolicy defines auth security policy
       example:
-        auth_security_policy:
-          freeze_duration: 0
-          max_attempts: 6
-          password_expiration_warning: true
-          password_lifetime: 1
-          enabled: true
-    AuthLoginReq_Auth:
-      type: object
-      properties:
-        encrypted_password:
-          type: string
-          description: encrypted password for auth
-        name:
-          type: string
-          description: user name or email for auth
-        password:
-          type: string
-          description: password for auth
-        platform:
-          type: string
-          description: uuid of the identity platform
-        rsa_key_id:
-          type: string
-          description: rsa key id
-        sign:
-          type: string
-          description: signature of login request
-        timestamp:
-          type: string
-          description: timestamp of platform token
-        token:
-          type: string
-          description: token of the identity platform
-      title: AuthLoginReq_Auth
-      example:
-        password: password
-        name: name
-        rsa_key_id: rsa_key_id
-        sign: sign
-        platform: platform
-        encrypted_password: encrypted_password
-        timestamp: timestamp
-        token: token
-    TokenResp:
-      type: object
-      required:
-      - token
-      properties:
-        token:
-          description: token
-          $ref: '#/components/schemas/TokenRecord'
-      title: TokenResp
-      example:
-        token: ''
-    TokenCreateReq_Auth_Identity:
-      type: object
-      properties:
-        password:
-          description: password for auth
-          $ref: '#/components/schemas/AuthPasswordReq'
-        token:
-          description: token for auth
-          $ref: '#/components/schemas/AuthTokenReq'
-      title: TokenCreateReq_Auth_Identity
-      example:
-        password:
-          user:
-            password: password
-            name: name
-            id: 0
-            email: email
-        token:
-          uuid: uuid
-    AuthTokenReq:
-      type: object
-      required:
-      - uuid
-      properties:
-        uuid:
-          type: string
-          description: uuid of authorized token
-      title: AuthTokenReq
-      example:
-        uuid: uuid
-    TokenRecord:
-      title: TokenRecord
-      allOf:
-      - $ref: '#/components/schemas/Token'
-      - properties:
-          roles:
-            type: array
-            items:
-              type: string
-      description: TokenRecord defines token record for api response
-    AuthLoginReq:
-      type: object
-      required:
-      - auth
-      properties:
-        auth:
-          $ref: '#/components/schemas/AuthLoginReq_Auth'
-      title: AuthLoginReq
-      example:
-        auth:
-          password: password
-          name: name
-          rsa_key_id: rsa_key_id
-          sign: sign
-          platform: platform
-          encrypted_password: encrypted_password
-          timestamp: timestamp
-          token: token
-    AuthPasswordReq:
-      type: object
-      required:
-      - user
-      properties:
-        user:
-          $ref: '#/components/schemas/AuthPasswordReq_User'
-      title: AuthPasswordReq
-      example:
-        user:
-          password: password
-          name: name
-          id: 0
-          email: email
-    AuthRSAKeyResp:
-      type: object
-      properties:
-        rsa_key:
-          $ref: '#/components/schemas/AuthRSAKey'
-      title: AuthRSAKeyResp
-      example:
-        rsa_key:
-          public_key: public_key
-          expiration: '2000-01-23T04:56:07.000+00:00'
-          id: id
-    TokenCreateReq:
-      type: object
-      required:
-      - auth
-      properties:
-        auth:
-          $ref: '#/components/schemas/TokenCreateReq_Auth'
-      title: TokenCreateReq
-      example:
-        auth:
-          identity:
-            password:
-              user:
-                password: password
-                name: name
-                id: 0
-                email: email
-            token:
-              uuid: uuid
-    AuthSecurityPolicyUpdateReq:
-      type: object
-      properties:
-        auth_security_policy:
-          $ref: '#/components/schemas/AuthSecurityPolicyUpdateReq_AuthSecurityPolicy'
-      title: AuthSecurityPolicyUpdateReq
-      example:
-        auth_security_policy:
-          freeze_duration: 0
-          max_attempts: 6
-          password_expiration_warning: true
-          password_lifetime: 1
-          enabled: true
+        freeze_duration: 0
+        max_attempts: 6
+        password_expiration_warning: true
+        password_lifetime: 1
+        enabled: true
     User:
       type: object
       properties:
@@ -392,69 +224,95 @@ components:
           items:
             type: string
       title: User
-    AuthSecurityPolicy:
+    AuthLoginReq:
       type: object
+      required:
+      - auth
       properties:
-        enabled:
-          type: boolean
-        freeze_duration:
-          type: integer
-          format: int64
-          description: 'unit: second'
-        max_attempts:
-          type: integer
-          format: int64
-        password_expiration_warning:
-          type: boolean
-        password_lifetime:
-          type: integer
-          format: int64
-          description: 'unit: second'
-      title: AuthSecurityPolicy
-      description: AuthSecurityPolicy defines auth security policy
+        auth:
+          $ref: '#/components/schemas/AuthLoginReq_Auth'
+      title: AuthLoginReq
       example:
-        freeze_duration: 0
-        max_attempts: 6
-        password_expiration_warning: true
-        password_lifetime: 1
-        enabled: true
-    AuthSecurityPolicyUpdateReq_AuthSecurityPolicy:
+        auth:
+          password: password
+          name: name
+          rsa_key_id: rsa_key_id
+          sign: sign
+          platform: platform
+          encrypted_password: encrypted_password
+          timestamp: timestamp
+          token: token
+    TokenCreateReq:
       type: object
+      required:
+      - auth
       properties:
-        enabled:
-          type: boolean
-        freeze_duration:
-          type: integer
-          format: int64
-        max_attempts:
-          type: integer
-          format: int64
-        password_expiration_warning:
-          type: boolean
-        password_lifetime:
-          type: integer
-          format: int64
-      title: AuthSecurityPolicyUpdateReq_AuthSecurityPolicy
+        auth:
+          $ref: '#/components/schemas/TokenCreateReq_Auth'
+      title: TokenCreateReq
       example:
-        freeze_duration: 0
-        max_attempts: 6
-        password_expiration_warning: true
-        password_lifetime: 1
-        enabled: true
-    IdentityPlatform_Nestview:
+        auth:
+          identity:
+            password:
+              user:
+                password: password
+                name: name
+                id: 0
+                email: email
+            token:
+              uuid: uuid
+    AuthPasswordReq_User:
       type: object
+      required:
+      - password
       properties:
+        email:
+          type: string
+          description: user email for auth
         id:
           type: integer
           format: int64
-          description: id of identity platform
+          description: user id for auth
         name:
           type: string
-          description: name of identity platform
-      title: IdentityPlatform_Nestview
+          description: user name or email for auth
+        password:
+          type: string
+          description: password for auth
+      title: AuthPasswordReq_User
       example:
+        password: password
         name: name
-        id: 6
+        id: 0
+        email: email
+    TokenCreateReq_Auth:
+      type: object
+      required:
+      - identity
+      properties:
+        identity:
+          $ref: '#/components/schemas/TokenCreateReq_Auth_Identity'
+      title: TokenCreateReq_Auth
+      example:
+        identity:
+          password:
+            user:
+              password: password
+              name: name
+              id: 0
+              email: email
+          token:
+            uuid: uuid
+    TokenRecord:
+      title: TokenRecord
+      allOf:
+      - $ref: '#/components/schemas/Token'
+      - properties:
+          roles:
+            type: array
+            items:
+              type: string
+      description: TokenRecord defines token record for api response
     AuthRSAKey:
       type: object
       properties:
@@ -497,30 +355,172 @@ components:
         control access to securable objects and to control the ability of the user to
 
         perform various system-related operations on the local computer.'
-    AuthPasswordReq_User:
+    TokenResp:
       type: object
       required:
-      - password
+      - token
       properties:
-        email:
-          type: string
-          description: user email for auth
+        token:
+          description: token
+          $ref: '#/components/schemas/TokenRecord'
+      title: TokenResp
+      example:
+        token: ''
+    TokenCreateReq_Auth_Identity:
+      type: object
+      properties:
+        password:
+          description: password for auth
+          $ref: '#/components/schemas/AuthPasswordReq'
+        token:
+          description: token for auth
+          $ref: '#/components/schemas/AuthTokenReq'
+      title: TokenCreateReq_Auth_Identity
+      example:
+        password:
+          user:
+            password: password
+            name: name
+            id: 0
+            email: email
+        token:
+          uuid: uuid
+    AuthSecurityPolicyUpdateReq_AuthSecurityPolicy:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        freeze_duration:
+          type: integer
+          format: int64
+        max_attempts:
+          type: integer
+          format: int64
+        password_expiration_warning:
+          type: boolean
+        password_lifetime:
+          type: integer
+          format: int64
+      title: AuthSecurityPolicyUpdateReq_AuthSecurityPolicy
+      example:
+        freeze_duration: 0
+        max_attempts: 6
+        password_expiration_warning: true
+        password_lifetime: 1
+        enabled: true
+    IdentityPlatform_Nestview:
+      type: object
+      properties:
         id:
           type: integer
           format: int64
-          description: user id for auth
+          description: id of identity platform
+        name:
+          type: string
+          description: name of identity platform
+      title: IdentityPlatform_Nestview
+      example:
+        name: name
+        id: 6
+    AuthSecurityPolicyResp:
+      type: object
+      properties:
+        auth_security_policy:
+          $ref: '#/components/schemas/AuthSecurityPolicy'
+      title: AuthSecurityPolicyResp
+      example:
+        auth_security_policy:
+          freeze_duration: 0
+          max_attempts: 6
+          password_expiration_warning: true
+          password_lifetime: 1
+          enabled: true
+    AuthTokenReq:
+      type: object
+      required:
+      - uuid
+      properties:
+        uuid:
+          type: string
+          description: uuid of authorized token
+      title: AuthTokenReq
+      example:
+        uuid: uuid
+    AuthLoginReq_Auth:
+      type: object
+      properties:
+        encrypted_password:
+          type: string
+          description: encrypted password for auth
         name:
           type: string
           description: user name or email for auth
         password:
           type: string
           description: password for auth
-      title: AuthPasswordReq_User
+        platform:
+          type: string
+          description: uuid of the identity platform
+        rsa_key_id:
+          type: string
+          description: rsa key id
+        sign:
+          type: string
+          description: signature of login request
+        timestamp:
+          type: string
+          description: timestamp of platform token
+        token:
+          type: string
+          description: token of the identity platform
+      title: AuthLoginReq_Auth
       example:
         password: password
         name: name
-        id: 0
-        email: email
+        rsa_key_id: rsa_key_id
+        sign: sign
+        platform: platform
+        encrypted_password: encrypted_password
+        timestamp: timestamp
+        token: token
+    AuthSecurityPolicyUpdateReq:
+      type: object
+      properties:
+        auth_security_policy:
+          $ref: '#/components/schemas/AuthSecurityPolicyUpdateReq_AuthSecurityPolicy'
+      title: AuthSecurityPolicyUpdateReq
+      example:
+        auth_security_policy:
+          freeze_duration: 0
+          max_attempts: 6
+          password_expiration_warning: true
+          password_lifetime: 1
+          enabled: true
+    AuthPasswordReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/AuthPasswordReq_User'
+      title: AuthPasswordReq
+      example:
+        user:
+          password: password
+          name: name
+          id: 0
+          email: email
+    AuthRSAKeyResp:
+      type: object
+      properties:
+        rsa_key:
+          $ref: '#/components/schemas/AuthRSAKey'
+      title: AuthRSAKeyResp
+      example:
+        rsa_key:
+          public_key: public_key
+          expiration: '2000-01-23T04:56:07.000+00:00'
+          id: id
   securitySchemes:
     tokenInHeader:
       description: auth by token

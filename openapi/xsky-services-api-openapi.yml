@@ -99,6 +99,57 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ServicesResp:
+      type: object
+      required:
+      - services
+      properties:
+        services:
+          type: array
+          description: services
+          items:
+            $ref: '#/components/schemas/Service'
+      title: ServicesResp
+      example:
+        services:
+        - ssl_certificate:
+            force_https: true
+            name: name
+            id: 2
+          heartbeat: '2000-01-23T04:56:07.000+00:00'
+          started_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enabled: true
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          up: true
+          primary: true
+          status: status
+        - ssl_certificate:
+            force_https: true
+            name: name
+            id: 2
+          heartbeat: '2000-01-23T04:56:07.000+00:00'
+          started_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enabled: true
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          up: true
+          primary: true
+          status: status
     SSLCertificate_Nestview:
       type: object
       properties:
@@ -117,6 +168,23 @@ components:
         force_https: true
         name: name
         id: 2
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     Service:
       type: object
       properties:
@@ -203,74 +271,6 @@ components:
           up: true
           primary: true
           status: status
-    ServicesResp:
-      type: object
-      required:
-      - services
-      properties:
-        services:
-          type: array
-          description: services
-          items:
-            $ref: '#/components/schemas/Service'
-      title: ServicesResp
-      example:
-        services:
-        - ssl_certificate:
-            force_https: true
-            name: name
-            id: 2
-          heartbeat: '2000-01-23T04:56:07.000+00:00'
-          started_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          enabled: true
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          up: true
-          primary: true
-          status: status
-        - ssl_certificate:
-            force_https: true
-            name: name
-            id: 2
-          heartbeat: '2000-01-23T04:56:07.000+00:00'
-          started_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          enabled: true
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          up: true
-          primary: true
-          status: status
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

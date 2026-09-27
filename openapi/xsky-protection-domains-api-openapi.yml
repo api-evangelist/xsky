@@ -95,113 +95,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PdRecord:
-      title: PdRecord
-      allOf:
-      - $ref: '#/components/schemas/ProtectionDomain'
-      description: PdRecord defines the response content of protection domain related API
-    ProtectionDomainRecordsResp:
-      type: object
-      required:
-      - protection_domains
-      properties:
-        protection_domains:
-          type: array
-          description: protection domains
-          items:
-            $ref: '#/components/schemas/PdRecord'
-      title: ProtectionDomainRecordsResp
-      example:
-        protection_domains:
-        - ''
-        - ''
-    PlacementNodeProperties:
-      type: object
-      properties:
-        is_witness:
-          type: boolean
-          description: whether this is a witness node
-      title: PlacementNodeProperties
-      description: PlacementNodeProperties contains properties for a placement node.
-      example:
-        is_witness: true
-    ProtectionDomainRecordResp:
-      type: object
-      required:
-      - protection_domain
-      properties:
-        protection_domain:
-          description: protection domain
-          $ref: '#/components/schemas/PdRecord'
-      title: ProtectionDomainRecordResp
-      example:
-        protection_domain: ''
-    PlacementNode_Nestview_parent:
-      properties:
-        create:
-          type: string
-          format: date-time
-          description: time of creating placement node
-        id:
-          type: integer
-          format: int64
-          description: id of placement node
-        name:
-          type: string
-          description: name of placement node
-        parent:
-          description: parent of placement node
-          $ref: '#/components/schemas/PlacementNode'
-        properties:
-          description: properties for this placement node like is_witness
-          $ref: '#/components/schemas/PlacementNodeProperties'
-        type:
-          type: string
-          description: type of placement node
-        update:
-          type: string
-          format: date-time
-          description: time of updating placement node
-      description: parent of placement node
-    PlacementNode_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of placement node
-        parent:
-          $ref: '#/components/schemas/PlacementNode_Nestview_parent'
-      title: PlacementNode_Nestview
-    ProtectionDomain:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-          description: time of creating protection domain
-        description:
-          type: string
-          description: description of protection domain
-        id:
-          type: integer
-          format: int64
-          description: id of protection domain
-        name:
-          type: string
-          description: name of protection domain
-        placement_node:
-          description: placement node of protection domain
-          $ref: '#/components/schemas/PlacementNode_Nestview'
-        status:
-          type: string
-          description: status protection domain
-        update:
-          type: string
-          format: date-time
-          description: time of updating protection domain
-      title: ProtectionDomain
-      description: ProtectionDomain defines protection domain objects
     PlacementNode:
       type: object
       properties:
@@ -240,6 +133,113 @@ components:
         type: type
         properties:
           is_witness: true
+    PlacementNode_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of placement node
+        parent:
+          $ref: '#/components/schemas/PlacementNode_Nestview_parent'
+      title: PlacementNode_Nestview
+    ProtectionDomainRecordResp:
+      type: object
+      required:
+      - protection_domain
+      properties:
+        protection_domain:
+          description: protection domain
+          $ref: '#/components/schemas/PdRecord'
+      title: ProtectionDomainRecordResp
+      example:
+        protection_domain: ''
+    PlacementNodeProperties:
+      type: object
+      properties:
+        is_witness:
+          type: boolean
+          description: whether this is a witness node
+      title: PlacementNodeProperties
+      description: PlacementNodeProperties contains properties for a placement node.
+      example:
+        is_witness: true
+    PlacementNode_Nestview_parent:
+      properties:
+        create:
+          type: string
+          format: date-time
+          description: time of creating placement node
+        id:
+          type: integer
+          format: int64
+          description: id of placement node
+        name:
+          type: string
+          description: name of placement node
+        parent:
+          description: parent of placement node
+          $ref: '#/components/schemas/PlacementNode'
+        properties:
+          description: properties for this placement node like is_witness
+          $ref: '#/components/schemas/PlacementNodeProperties'
+        type:
+          type: string
+          description: type of placement node
+        update:
+          type: string
+          format: date-time
+          description: time of updating placement node
+      description: parent of placement node
+    ProtectionDomain:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+          description: time of creating protection domain
+        description:
+          type: string
+          description: description of protection domain
+        id:
+          type: integer
+          format: int64
+          description: id of protection domain
+        name:
+          type: string
+          description: name of protection domain
+        placement_node:
+          description: placement node of protection domain
+          $ref: '#/components/schemas/PlacementNode_Nestview'
+        status:
+          type: string
+          description: status protection domain
+        update:
+          type: string
+          format: date-time
+          description: time of updating protection domain
+      title: ProtectionDomain
+      description: ProtectionDomain defines protection domain objects
+    PdRecord:
+      title: PdRecord
+      allOf:
+      - $ref: '#/components/schemas/ProtectionDomain'
+      description: PdRecord defines the response content of protection domain related API
+    ProtectionDomainRecordsResp:
+      type: object
+      required:
+      - protection_domains
+      properties:
+        protection_domains:
+          type: array
+          description: protection domains
+          items:
+            $ref: '#/components/schemas/PdRecord'
+      title: ProtectionDomainRecordsResp
+      example:
+        protection_domains:
+        - ''
+        - ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

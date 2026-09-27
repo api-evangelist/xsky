@@ -73,33 +73,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DomainUserValidatorCreateReq_Validator:
-      type: object
-      required:
-      - type
-      properties:
-        groups:
-          type: array
-          description: Domain groups
-          items:
-            type: string
-        type:
-          type: string
-          description: Domain type
-        users:
-          type: array
-          description: Domain users
-          items:
-            type: string
-      title: DomainUserValidatorCreateReq_Validator
-      example:
-        groups:
-        - groups
-        - groups
-        type: type
-        users:
-        - users
-        - users
     DomainUserValidatorCreateReq:
       type: object
       properties:
@@ -115,21 +88,6 @@ components:
           users:
           - users
           - users
-    DomainUserValidatorResp:
-      type: object
-      properties:
-        domain_user_validator:
-          $ref: '#/components/schemas/DomainUserValidator'
-      title: DomainUserValidatorResp
-      example:
-        domain_user_validator:
-          members: '{}'
-          report: '{}'
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          type: type
-          status: status
     DomainUserValidator:
       type: object
       properties:
@@ -162,6 +120,48 @@ components:
         id: 0
         type: type
         status: status
+    DomainUserValidatorResp:
+      type: object
+      properties:
+        domain_user_validator:
+          $ref: '#/components/schemas/DomainUserValidator'
+      title: DomainUserValidatorResp
+      example:
+        domain_user_validator:
+          members: '{}'
+          report: '{}'
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+          status: status
+    DomainUserValidatorCreateReq_Validator:
+      type: object
+      required:
+      - type
+      properties:
+        groups:
+          type: array
+          description: Domain groups
+          items:
+            type: string
+        type:
+          type: string
+          description: Domain type
+        users:
+          type: array
+          description: Domain users
+          items:
+            type: string
+      title: DomainUserValidatorCreateReq_Validator
+      example:
+        groups:
+        - groups
+        - groups
+        type: type
+        users:
+        - users
+        - users
   securitySchemes:
     tokenInHeader:
       description: auth by token

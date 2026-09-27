@@ -112,6 +112,96 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    NetworkAddress:
+      type: object
+      properties:
+        available:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        ip:
+          type: string
+        mask:
+          type: integer
+          format: int64
+        network_interface:
+          $ref: '#/components/schemas/NetworkInterface_Nestview'
+        roles:
+          type: array
+          items:
+            type: string
+        update:
+          type: string
+          format: date-time
+      title: NetworkAddress
+      description: NetworkAddress defines model of network address @grpc-models-proto
+      example:
+        ip: ip
+        roles:
+        - roles
+        - roles
+        available: true
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        mask: 6
+        network_interface:
+          mac_address: mac_address
+          name: name
+          id: 1
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    NetworkAddressResp:
+      type: object
+      properties:
+        network_address:
+          description: network address record
+          $ref: '#/components/schemas/NetworkAddress'
+      title: NetworkAddressResp
+      example:
+        network_address:
+          ip: ip
+          roles:
+          - roles
+          - roles
+          available: true
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          mask: 6
+          network_interface:
+            mac_address: mac_address
+            name: name
+            id: 1
     NetworkAddressesResp:
       type: object
       properties:
@@ -172,96 +262,6 @@ components:
         mac_address: mac_address
         name: name
         id: 1
-    NetworkAddressResp:
-      type: object
-      properties:
-        network_address:
-          description: network address record
-          $ref: '#/components/schemas/NetworkAddress'
-      title: NetworkAddressResp
-      example:
-        network_address:
-          ip: ip
-          roles:
-          - roles
-          - roles
-          available: true
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          mask: 6
-          network_interface:
-            mac_address: mac_address
-            name: name
-            id: 1
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    NetworkAddress:
-      type: object
-      properties:
-        available:
-          type: boolean
-        create:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        ip:
-          type: string
-        mask:
-          type: integer
-          format: int64
-        network_interface:
-          $ref: '#/components/schemas/NetworkInterface_Nestview'
-        roles:
-          type: array
-          items:
-            type: string
-        update:
-          type: string
-          format: date-time
-      title: NetworkAddress
-      description: NetworkAddress defines model of network address @grpc-models-proto
-      example:
-        ip: ip
-        roles:
-        - roles
-        - roles
-        available: true
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        mask: 6
-        network_interface:
-          mac_address: mac_address
-          name: name
-          id: 1
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -313,240 +313,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSGatewayGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        vip:
-          type: string
-        vip_mask:
-          type: integer
-          format: int64
-      title: FSGatewayGroup_Nestview
-      example:
-        name: name
-        id: 6
-        vip_mask: 1
-        vip: vip
-    FSFTPShareCreateReq:
-      type: object
-      required:
-      - fs_ftp_share
-      properties:
-        fs_ftp_share:
-          $ref: '#/components/schemas/FSFTPShareCreateReq_Share'
-      title: FSFTPShareCreateReq
-    FSFolder_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSFolder_Nestview
-      example:
-        name: name
-        id: 6
-    FSFTPShareUpdateACLReq:
-      type: object
-      properties:
-        create_enabled:
-          type: boolean
-          description: enable creating files
-        delete_enabled:
-          type: boolean
-          description: enable deleting files
-        download_bandwidth:
-          type: integer
-          format: int64
-          description: max bandwidth of downloading
-        download_enabled:
-          type: boolean
-          description: enable downloading files
-        id:
-          type: integer
-          format: int64
-          description: id of user group
-        list_enabled:
-          type: boolean
-          description: enable listing files
-        rename_enabled:
-          type: boolean
-          description: enable renaming files
-        upload_bandwidth:
-          type: integer
-          format: int64
-          description: max bandwidth of uploading
-        upload_enabled:
-          type: boolean
-          description: enable uploading files
-      title: FSFTPShareUpdateACLReq
-    FSFTPShareAddACLsReq:
-      type: object
-      required:
-      - fs_ftp_share
-      properties:
-        fs_ftp_share:
-          $ref: '#/components/schemas/FSFTPShareAddACLsReq_Share'
-      title: FSFTPShareAddACLsReq
-    FSFTPShareRemoveACLsReq:
-      type: object
-      required:
-      - fs_ftp_share
-      properties:
-        fs_ftp_share:
-          $ref: '#/components/schemas/FSFTPShareRemoveACLsReq_Share'
-      title: FSFTPShareRemoveACLsReq
-    FSFTPShareCreateReq_Share:
-      type: object
-      required:
-      - fs_folder_id
-      - fs_gateway_group_id
-      properties:
-        fs_folder_id:
-          type: integer
-          format: int64
-          description: folder id
-        fs_ftp_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSFTPShareACLReq'
-        fs_gateway_group_id:
-          type: integer
-          format: int64
-          description: gateway group id
-        fs_quota_tree_id:
-          type: integer
-          format: int64
-          description: quota tree id
-        name:
-          type: string
-          description: name of share
-      title: FSFTPShareCreateReq_Share
-    FSFTPShareRemoveACLsReq_Share:
-      type: object
-      required:
-      - fs_ftp_share_acl_ids
-      properties:
-        fs_ftp_share_acl_ids:
-          type: array
-          description: access control array
-          items:
-            type: integer
-            format: int64
-      title: FSFTPShareRemoveACLsReq_Share
-    FSFTPShareUpdateACLsReq_Share:
-      type: object
-      properties:
-        fs_ftp_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSFTPShareUpdateACLReq'
-      title: FSFTPShareUpdateACLsReq_Share
-    FSFTPShareAddACLsReq_Share:
-      type: object
-      required:
-      - fs_ftp_share_acls
-      properties:
-        fs_ftp_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSFTPShareACLReq'
-      title: FSFTPShareAddACLsReq_Share
-    FSFTPShareResp:
-      type: object
-      required:
-      - fs_ftp_share
-      properties:
-        fs_ftp_share:
-          description: fs ftp share
-          $ref: '#/components/schemas/FSFTPShare'
-      title: FSFTPShareResp
-      example:
-        fs_ftp_share:
-          mapping_num: 2
-          fs_folder:
-            name: name
-            id: 6
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_quota_tree:
-            name: name
-            id: 5
-          update: '2000-01-23T04:56:07.000+00:00'
-          acl_num: 0
-          id: 5
-          fs_gateway_group:
-            name: name
-            id: 6
-            vip_mask: 1
-            vip: vip
-          action_status: action_status
-          status: status
-    FSQuotaTree_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSQuotaTree_Nestview
-      example:
-        name: name
-        id: 5
-    FSFTPShareACLReq:
-      type: object
-      properties:
-        create_enabled:
-          type: boolean
-          description: enable creating files
-        delete_enabled:
-          type: boolean
-          description: enable deleting files
-        download_bandwidth:
-          type: integer
-          format: int64
-          description: max bandwidth of downloading
-        download_enabled:
-          type: boolean
-          description: enable downloading files
-        fs_user_group_id:
-          type: integer
-          format: int64
-          description: id of user group
-        fs_user_id:
-          type: integer
-          format: int64
-          description: id of user
-        id:
-          type: integer
-          format: int64
-          description: id of user group
-        list_enabled:
-          type: boolean
-          description: enable listing files
-        rename_enabled:
-          type: boolean
-          description: enable renaming files
-        type:
-          type: string
-          description: type of share acl
-        upload_bandwidth:
-          type: integer
-          format: int64
-          description: max bandwidth of uploading
-        upload_enabled:
-          type: boolean
-          description: enable uploading files
-      title: FSFTPShareACLReq
     FSFTPShare:
       type: object
       properties:
@@ -596,6 +362,41 @@ components:
           vip: vip
         action_status: action_status
         status: status
+    FSFTPShareCreateReq_Share:
+      type: object
+      required:
+      - fs_folder_id
+      - fs_gateway_group_id
+      properties:
+        fs_folder_id:
+          type: integer
+          format: int64
+          description: folder id
+        fs_ftp_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSFTPShareACLReq'
+        fs_gateway_group_id:
+          type: integer
+          format: int64
+          description: gateway group id
+        fs_quota_tree_id:
+          type: integer
+          format: int64
+          description: quota tree id
+        name:
+          type: string
+          description: name of share
+      title: FSFTPShareCreateReq_Share
+    FSFTPShareRemoveACLsReq:
+      type: object
+      required:
+      - fs_ftp_share
+      properties:
+        fs_ftp_share:
+          $ref: '#/components/schemas/FSFTPShareRemoveACLsReq_Share'
+      title: FSFTPShareRemoveACLsReq
     FSFTPShareUpdateACLsReq:
       type: object
       required:
@@ -604,6 +405,109 @@ components:
         fs_ftp_share:
           $ref: '#/components/schemas/FSFTPShareUpdateACLsReq_Share'
       title: FSFTPShareUpdateACLsReq
+    FSFTPShareRemoveACLsReq_Share:
+      type: object
+      required:
+      - fs_ftp_share_acl_ids
+      properties:
+        fs_ftp_share_acl_ids:
+          type: array
+          description: access control array
+          items:
+            type: integer
+            format: int64
+      title: FSFTPShareRemoveACLsReq_Share
+    FSQuotaTree_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSQuotaTree_Nestview
+      example:
+        name: name
+        id: 5
+    FSFTPShareUpdateACLReq:
+      type: object
+      properties:
+        create_enabled:
+          type: boolean
+          description: enable creating files
+        delete_enabled:
+          type: boolean
+          description: enable deleting files
+        download_bandwidth:
+          type: integer
+          format: int64
+          description: max bandwidth of downloading
+        download_enabled:
+          type: boolean
+          description: enable downloading files
+        id:
+          type: integer
+          format: int64
+          description: id of user group
+        list_enabled:
+          type: boolean
+          description: enable listing files
+        rename_enabled:
+          type: boolean
+          description: enable renaming files
+        upload_bandwidth:
+          type: integer
+          format: int64
+          description: max bandwidth of uploading
+        upload_enabled:
+          type: boolean
+          description: enable uploading files
+      title: FSFTPShareUpdateACLReq
+    FSFTPShareACLReq:
+      type: object
+      properties:
+        create_enabled:
+          type: boolean
+          description: enable creating files
+        delete_enabled:
+          type: boolean
+          description: enable deleting files
+        download_bandwidth:
+          type: integer
+          format: int64
+          description: max bandwidth of downloading
+        download_enabled:
+          type: boolean
+          description: enable downloading files
+        fs_user_group_id:
+          type: integer
+          format: int64
+          description: id of user group
+        fs_user_id:
+          type: integer
+          format: int64
+          description: id of user
+        id:
+          type: integer
+          format: int64
+          description: id of user group
+        list_enabled:
+          type: boolean
+          description: enable listing files
+        rename_enabled:
+          type: boolean
+          description: enable renaming files
+        type:
+          type: string
+          description: type of share acl
+        upload_bandwidth:
+          type: integer
+          format: int64
+          description: max bandwidth of uploading
+        upload_enabled:
+          type: boolean
+          description: enable uploading files
+      title: FSFTPShareACLReq
     FSFTPSharesResp:
       type: object
       required:
@@ -653,6 +557,102 @@ components:
             vip: vip
           action_status: action_status
           status: status
+    FSFTPShareResp:
+      type: object
+      required:
+      - fs_ftp_share
+      properties:
+        fs_ftp_share:
+          description: fs ftp share
+          $ref: '#/components/schemas/FSFTPShare'
+      title: FSFTPShareResp
+      example:
+        fs_ftp_share:
+          mapping_num: 2
+          fs_folder:
+            name: name
+            id: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_quota_tree:
+            name: name
+            id: 5
+          update: '2000-01-23T04:56:07.000+00:00'
+          acl_num: 0
+          id: 5
+          fs_gateway_group:
+            name: name
+            id: 6
+            vip_mask: 1
+            vip: vip
+          action_status: action_status
+          status: status
+    FSFolder_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSFolder_Nestview
+      example:
+        name: name
+        id: 6
+    FSFTPShareUpdateACLsReq_Share:
+      type: object
+      properties:
+        fs_ftp_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSFTPShareUpdateACLReq'
+      title: FSFTPShareUpdateACLsReq_Share
+    FSFTPShareAddACLsReq_Share:
+      type: object
+      required:
+      - fs_ftp_share_acls
+      properties:
+        fs_ftp_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSFTPShareACLReq'
+      title: FSFTPShareAddACLsReq_Share
+    FSGatewayGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vip:
+          type: string
+        vip_mask:
+          type: integer
+          format: int64
+      title: FSGatewayGroup_Nestview
+      example:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+    FSFTPShareAddACLsReq:
+      type: object
+      required:
+      - fs_ftp_share
+      properties:
+        fs_ftp_share:
+          $ref: '#/components/schemas/FSFTPShareAddACLsReq_Share'
+      title: FSFTPShareAddACLsReq
+    FSFTPShareCreateReq:
+      type: object
+      required:
+      - fs_ftp_share
+      properties:
+        fs_ftp_share:
+          $ref: '#/components/schemas/FSFTPShareCreateReq_Share'
+      title: FSFTPShareCreateReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

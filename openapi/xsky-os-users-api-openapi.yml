@@ -252,6 +252,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ObjectStorageUsersResp:
+      type: object
+      required:
+      - os_users
+      properties:
+        os_users:
+          type: array
+          description: object storage users
+          items:
+            $ref: '#/components/schemas/ObjectStorageUserRecord'
+      title: ObjectStorageUsersResp
+      example:
+        os_users:
+        - ''
+        - ''
     ObjectStorageUser_Nestview:
       type: object
       properties:
@@ -264,234 +279,6 @@ components:
       example:
         name: name
         id: 1
-    ObjectStorageUserRecord:
-      title: ObjectStorageUserRecord
-      allOf:
-      - $ref: '#/components/schemas/ObjectStorageUser'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/ObjectStorageUserStat'
-      description: 'ObjectStorageUserRecord is used to combine ObjectStorageUser and
-
-        ObjectStorageUserStat'
-    ObjectStorageUserCreateReq:
-      type: object
-      properties:
-        os_user:
-          $ref: '#/components/schemas/ObjectStorageUserCreateReq_Info'
-      title: ObjectStorageUserCreateReq
-      example:
-        os_user:
-          bucket_quota_max_objects: 0
-          policy_id: 5
-          keys:
-          - secret_key: secret_key
-            reserved: true
-            access_key: access_key
-            create: '2000-01-23T04:56:07.000+00:00'
-            update: '2000-01-23T04:56:07.000+00:00'
-            id: 0
-            type: type
-            user:
-              name: name
-              id: 1
-            status: status
-          - secret_key: secret_key
-            reserved: true
-            access_key: access_key
-            create: '2000-01-23T04:56:07.000+00:00'
-            update: '2000-01-23T04:56:07.000+00:00'
-            id: 0
-            type: type
-            user:
-              name: name
-              id: 1
-            status: status
-          max_buckets: 1
-          op_mask: op_mask
-          user_quota_max_objects: 2
-          display_name: display_name
-          policy_polling_enabled: true
-          location_constraint_enabled: true
-          name: name
-          email: email
-          properties:
-            user_type: 5
-            contact_person: contact_person
-            user_name: user_name
-            area_code: area_code
-            mobile: mobile
-            email: email
-          bucket_quota_max_size: 6
-          user_quota_max_size: 7
-    ObjectStorageUserStat:
-      type: object
-      properties:
-        allocated_objects:
-          type: integer
-          format: int64
-        allocated_size:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        del_ops_pm:
-          type: number
-          format: double
-        rx_bandwidth_kbyte:
-          type: number
-          format: double
-        rx_ops_pm:
-          type: number
-          format: double
-        total_del_ops:
-          type: integer
-          format: int64
-        total_del_success_ops:
-          type: integer
-          format: int64
-        total_rx_bytes:
-          type: integer
-          format: int64
-        total_rx_ops:
-          type: integer
-          format: int64
-        total_rx_success_ops:
-          type: integer
-          format: int64
-        total_tx_bytes:
-          type: integer
-          format: int64
-        total_tx_ops:
-          type: integer
-          format: int64
-        total_tx_success_ops:
-          type: integer
-          format: int64
-        tx_bandwidth_kbyte:
-          type: number
-          format: double
-        tx_ops_pm:
-          type: number
-          format: double
-      title: ObjectStorageUserStat
-      description: ObjectStorageUserStat define the object storage user statistics
-      example:
-        rx_ops_pm: 5.637376656633329
-        total_rx_ops: 3
-        allocated_objects: 0
-        allocated_size: 6
-        tx_ops_pm: 1.4894159098541704
-        total_tx_bytes: 4
-        total_rx_bytes: 9
-        total_tx_success_ops: 1
-        total_del_success_ops: 7
-        total_rx_success_ops: 2
-        total_del_ops: 2
-        total_tx_ops: 7
-        tx_bandwidth_kbyte: 1.0246457001441578
-        del_ops_pm: 1.4658129805029452
-        rx_bandwidth_kbyte: 5.962133916683182
-        create: '2000-01-23T04:56:07.000+00:00'
-    ObjectStorageUser:
-      type: object
-      properties:
-        bucket_num:
-          type: integer
-          format: int64
-        bucket_quota_max_objects:
-          type: integer
-          format: int64
-        bucket_quota_max_size:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        display_name:
-          type: string
-        email:
-          type: string
-        id:
-          type: integer
-          format: int64
-        location_constraint_enabled:
-          type: boolean
-        max_buckets:
-          type: integer
-          format: int64
-        name:
-          type: string
-        op_mask:
-          type: string
-        parent:
-          $ref: '#/components/schemas/ObjectStorageUser_Nestview'
-        policy:
-          $ref: '#/components/schemas/ObjectStoragePolicy_Nestview'
-        policy_polling_enabled:
-          type: boolean
-        properties:
-          $ref: '#/components/schemas/OSUserProperties'
-        status:
-          type: string
-        suspended:
-          type: boolean
-        update:
-          type: string
-          format: date-time
-        user_quota_max_objects:
-          type: integer
-          format: int64
-        user_quota_max_size:
-          type: integer
-          format: int64
-      title: ObjectStorageUser
-      description: ObjectStorageUser is the model of object_storage_user
-    OSUserPropertiesReq:
-      type: object
-      properties:
-        area_code:
-          type: string
-        contact_person:
-          type: string
-        email:
-          type: string
-        mobile:
-          type: string
-        user_name:
-          type: string
-        user_type:
-          type: integer
-          format: int64
-      title: OSUserPropertiesReq
-      example:
-        user_type: 5
-        contact_person: contact_person
-        user_name: user_name
-        area_code: area_code
-        mobile: mobile
-        email: email
-    OSUserProperties:
-      type: object
-      properties:
-        area_code:
-          type: string
-        contact_person:
-          type: string
-        email:
-          type: string
-        mobile:
-          type: string
-        user_name:
-          type: string
-        user_type:
-          type: integer
-          format: int64
-      title: OSUserProperties
-      description: OSUserProperties contains properties for a os user.
     ObjectStorageUserCreateReq_Info:
       type: object
       required:
@@ -577,59 +364,113 @@ components:
           email: email
         bucket_quota_max_size: 6
         user_quota_max_size: 7
-    ObjectStorageUsersResp:
-      type: object
-      required:
-      - os_users
-      properties:
-        os_users:
-          type: array
-          description: object storage users
-          items:
-            $ref: '#/components/schemas/ObjectStorageUserRecord'
-      title: ObjectStorageUsersResp
-      example:
-        os_users:
-        - ''
-        - ''
-    ObjectStorageKey:
+    ObjectStoragePolicy_Nestview:
       type: object
       properties:
-        access_key:
-          type: string
-        create:
-          type: string
-          format: date-time
         id:
           type: integer
           format: int64
-        reserved:
-          type: boolean
-        secret_key:
+        name:
           type: string
-        status:
-          type: string
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-        user:
-          $ref: '#/components/schemas/ObjectStorageUser_Nestview'
-      title: ObjectStorageKey
-      description: ObjectStorageKey defines access key and secret key for object storage
+      title: ObjectStoragePolicy_Nestview
       example:
-        secret_key: secret_key
-        reserved: true
-        access_key: access_key
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        type: type
-        user:
+        name: name
+        id: 9
+    ObjectStorageUserSamplesResp:
+      type: object
+      required:
+      - os_user_samples
+      properties:
+        os_user_samples:
+          type: array
+          description: object storage user samples
+          items:
+            $ref: '#/components/schemas/ObjectStorageUserStat'
+      title: ObjectStorageUserSamplesResp
+      example:
+        os_user_samples:
+        - rx_ops_pm: 5.637376656633329
+          total_rx_ops: 3
+          allocated_objects: 0
+          allocated_size: 6
+          tx_ops_pm: 1.4894159098541704
+          total_tx_bytes: 4
+          total_rx_bytes: 9
+          total_tx_success_ops: 1
+          total_del_success_ops: 7
+          total_rx_success_ops: 2
+          total_del_ops: 2
+          total_tx_ops: 7
+          tx_bandwidth_kbyte: 1.0246457001441578
+          del_ops_pm: 1.4658129805029452
+          rx_bandwidth_kbyte: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+        - rx_ops_pm: 5.637376656633329
+          total_rx_ops: 3
+          allocated_objects: 0
+          allocated_size: 6
+          tx_ops_pm: 1.4894159098541704
+          total_tx_bytes: 4
+          total_rx_bytes: 9
+          total_tx_success_ops: 1
+          total_del_success_ops: 7
+          total_rx_success_ops: 2
+          total_del_ops: 2
+          total_tx_ops: 7
+          tx_bandwidth_kbyte: 1.0246457001441578
+          del_ops_pm: 1.4658129805029452
+          rx_bandwidth_kbyte: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+    ObjectStorageUserCreateReq:
+      type: object
+      properties:
+        os_user:
+          $ref: '#/components/schemas/ObjectStorageUserCreateReq_Info'
+      title: ObjectStorageUserCreateReq
+      example:
+        os_user:
+          bucket_quota_max_objects: 0
+          policy_id: 5
+          keys:
+          - secret_key: secret_key
+            reserved: true
+            access_key: access_key
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 0
+            type: type
+            user:
+              name: name
+              id: 1
+            status: status
+          - secret_key: secret_key
+            reserved: true
+            access_key: access_key
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 0
+            type: type
+            user:
+              name: name
+              id: 1
+            status: status
+          max_buckets: 1
+          op_mask: op_mask
+          user_quota_max_objects: 2
+          display_name: display_name
+          policy_polling_enabled: true
+          location_constraint_enabled: true
           name: name
-          id: 1
-        status: status
+          email: email
+          properties:
+            user_type: 5
+            contact_person: contact_person
+            user_name: user_name
+            area_code: area_code
+            mobile: mobile
+            email: email
+          bucket_quota_max_size: 6
+          user_quota_max_size: 7
     ObjectStorageUserUpdateReq_Info:
       type: object
       properties:
@@ -686,74 +527,114 @@ components:
           email: email
         bucket_quota_max_size: 6
         user_quota_max_size: 2
-    ObjectStorageUserSamplesResp:
-      type: object
-      required:
-      - os_user_samples
-      properties:
-        os_user_samples:
-          type: array
-          description: object storage user samples
-          items:
-            $ref: '#/components/schemas/ObjectStorageUserStat'
-      title: ObjectStorageUserSamplesResp
-      example:
-        os_user_samples:
-        - rx_ops_pm: 5.637376656633329
-          total_rx_ops: 3
-          allocated_objects: 0
-          allocated_size: 6
-          tx_ops_pm: 1.4894159098541704
-          total_tx_bytes: 4
-          total_rx_bytes: 9
-          total_tx_success_ops: 1
-          total_del_success_ops: 7
-          total_rx_success_ops: 2
-          total_del_ops: 2
-          total_tx_ops: 7
-          tx_bandwidth_kbyte: 1.0246457001441578
-          del_ops_pm: 1.4658129805029452
-          rx_bandwidth_kbyte: 5.962133916683182
-          create: '2000-01-23T04:56:07.000+00:00'
-        - rx_ops_pm: 5.637376656633329
-          total_rx_ops: 3
-          allocated_objects: 0
-          allocated_size: 6
-          tx_ops_pm: 1.4894159098541704
-          total_tx_bytes: 4
-          total_rx_bytes: 9
-          total_tx_success_ops: 1
-          total_del_success_ops: 7
-          total_rx_success_ops: 2
-          total_del_ops: 2
-          total_tx_ops: 7
-          tx_bandwidth_kbyte: 1.0246457001441578
-          del_ops_pm: 1.4658129805029452
-          rx_bandwidth_kbyte: 5.962133916683182
-          create: '2000-01-23T04:56:07.000+00:00'
-    ObjectStorageUserResp:
-      type: object
-      required:
-      - os_user
-      properties:
-        os_user:
-          description: object storage user
-          $ref: '#/components/schemas/ObjectStorageUserRecord'
-      title: ObjectStorageUserResp
-      example:
-        os_user: ''
-    ObjectStoragePolicy_Nestview:
+    ObjectStorageKey:
       type: object
       properties:
+        access_key:
+          type: string
+        create:
+          type: string
+          format: date-time
         id:
           type: integer
           format: int64
-        name:
+        reserved:
+          type: boolean
+        secret_key:
           type: string
-      title: ObjectStoragePolicy_Nestview
+        status:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+        user:
+          $ref: '#/components/schemas/ObjectStorageUser_Nestview'
+      title: ObjectStorageKey
+      description: ObjectStorageKey defines access key and secret key for object storage
       example:
-        name: name
-        id: 9
+        secret_key: secret_key
+        reserved: true
+        access_key: access_key
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
+        user:
+          name: name
+          id: 1
+        status: status
+    ObjectStorageUserStat:
+      type: object
+      properties:
+        allocated_objects:
+          type: integer
+          format: int64
+        allocated_size:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        del_ops_pm:
+          type: number
+          format: double
+        rx_bandwidth_kbyte:
+          type: number
+          format: double
+        rx_ops_pm:
+          type: number
+          format: double
+        total_del_ops:
+          type: integer
+          format: int64
+        total_del_success_ops:
+          type: integer
+          format: int64
+        total_rx_bytes:
+          type: integer
+          format: int64
+        total_rx_ops:
+          type: integer
+          format: int64
+        total_rx_success_ops:
+          type: integer
+          format: int64
+        total_tx_bytes:
+          type: integer
+          format: int64
+        total_tx_ops:
+          type: integer
+          format: int64
+        total_tx_success_ops:
+          type: integer
+          format: int64
+        tx_bandwidth_kbyte:
+          type: number
+          format: double
+        tx_ops_pm:
+          type: number
+          format: double
+      title: ObjectStorageUserStat
+      description: ObjectStorageUserStat define the object storage user statistics
+      example:
+        rx_ops_pm: 5.637376656633329
+        total_rx_ops: 3
+        allocated_objects: 0
+        allocated_size: 6
+        tx_ops_pm: 1.4894159098541704
+        total_tx_bytes: 4
+        total_rx_bytes: 9
+        total_tx_success_ops: 1
+        total_del_success_ops: 7
+        total_rx_success_ops: 2
+        total_del_ops: 2
+        total_tx_ops: 7
+        tx_bandwidth_kbyte: 1.0246457001441578
+        del_ops_pm: 1.4658129805029452
+        rx_bandwidth_kbyte: 5.962133916683182
+        create: '2000-01-23T04:56:07.000+00:00'
     ObjectStorageUserUpdateReq:
       type: object
       properties:
@@ -781,6 +662,125 @@ components:
             email: email
           bucket_quota_max_size: 6
           user_quota_max_size: 2
+    ObjectStorageUser:
+      type: object
+      properties:
+        bucket_num:
+          type: integer
+          format: int64
+        bucket_quota_max_objects:
+          type: integer
+          format: int64
+        bucket_quota_max_size:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        display_name:
+          type: string
+        email:
+          type: string
+        id:
+          type: integer
+          format: int64
+        location_constraint_enabled:
+          type: boolean
+        max_buckets:
+          type: integer
+          format: int64
+        name:
+          type: string
+        op_mask:
+          type: string
+        parent:
+          $ref: '#/components/schemas/ObjectStorageUser_Nestview'
+        policy:
+          $ref: '#/components/schemas/ObjectStoragePolicy_Nestview'
+        policy_polling_enabled:
+          type: boolean
+        properties:
+          $ref: '#/components/schemas/OSUserProperties'
+        status:
+          type: string
+        suspended:
+          type: boolean
+        update:
+          type: string
+          format: date-time
+        user_quota_max_objects:
+          type: integer
+          format: int64
+        user_quota_max_size:
+          type: integer
+          format: int64
+      title: ObjectStorageUser
+      description: ObjectStorageUser is the model of object_storage_user
+    OSUserProperties:
+      type: object
+      properties:
+        area_code:
+          type: string
+        contact_person:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        user_name:
+          type: string
+        user_type:
+          type: integer
+          format: int64
+      title: OSUserProperties
+      description: OSUserProperties contains properties for a os user.
+    OSUserPropertiesReq:
+      type: object
+      properties:
+        area_code:
+          type: string
+        contact_person:
+          type: string
+        email:
+          type: string
+        mobile:
+          type: string
+        user_name:
+          type: string
+        user_type:
+          type: integer
+          format: int64
+      title: OSUserPropertiesReq
+      example:
+        user_type: 5
+        contact_person: contact_person
+        user_name: user_name
+        area_code: area_code
+        mobile: mobile
+        email: email
+    ObjectStorageUserRecord:
+      title: ObjectStorageUserRecord
+      allOf:
+      - $ref: '#/components/schemas/ObjectStorageUser'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/ObjectStorageUserStat'
+      description: 'ObjectStorageUserRecord is used to combine ObjectStorageUser and
+
+        ObjectStorageUserStat'
+    ObjectStorageUserResp:
+      type: object
+      required:
+      - os_user
+      properties:
+        os_user:
+          description: object storage user
+          $ref: '#/components/schemas/ObjectStorageUserRecord'
+      title: ObjectStorageUserResp
+      example:
+        os_user: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

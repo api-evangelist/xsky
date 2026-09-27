@@ -108,21 +108,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Disk_Nestview:
-      type: object
-      properties:
-        device:
-          type: string
-        disk_type:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Disk_Nestview
-      example:
-        disk_type: disk_type
-        id: 0
-        device: device
     PartitionResp:
       type: object
       properties:
@@ -147,6 +132,63 @@ components:
           id: 6
           action_status: action_status
           status: status
+    PartitionsResp:
+      type: object
+      properties:
+        partitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partition'
+      title: PartitionsResp
+      example:
+        partitions:
+        - omap_device_path: omap_device_path
+          update: '2000-01-23T04:56:07.000+00:00'
+          omap_byte: 1
+          used: true
+          uuid: uuid
+          version: 5
+          path: path
+          disk:
+            disk_type: disk_type
+            id: 0
+            device: device
+          size: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          action_status: action_status
+          status: status
+        - omap_device_path: omap_device_path
+          update: '2000-01-23T04:56:07.000+00:00'
+          omap_byte: 1
+          used: true
+          uuid: uuid
+          version: 5
+          path: path
+          disk:
+            disk_type: disk_type
+            id: 0
+            device: device
+          size: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          action_status: action_status
+          status: status
+    Disk_Nestview:
+      type: object
+      properties:
+        device:
+          type: string
+        disk_type:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Disk_Nestview
+      example:
+        disk_type: disk_type
+        id: 0
+        device: device
     Partition:
       type: object
       properties:
@@ -201,48 +243,6 @@ components:
         id: 6
         action_status: action_status
         status: status
-    PartitionsResp:
-      type: object
-      properties:
-        partitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Partition'
-      title: PartitionsResp
-      example:
-        partitions:
-        - omap_device_path: omap_device_path
-          update: '2000-01-23T04:56:07.000+00:00'
-          omap_byte: 1
-          used: true
-          uuid: uuid
-          version: 5
-          path: path
-          disk:
-            disk_type: disk_type
-            id: 0
-            device: device
-          size: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          action_status: action_status
-          status: status
-        - omap_device_path: omap_device_path
-          update: '2000-01-23T04:56:07.000+00:00'
-          omap_byte: 1
-          used: true
-          uuid: uuid
-          version: 5
-          path: path
-          disk:
-            disk_type: disk_type
-            id: 0
-            device: device
-          size: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          action_status: action_status
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

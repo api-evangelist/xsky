@@ -78,6 +78,176 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SnmpGateway:
+      type: object
+      properties:
+        auth_password:
+          type: string
+        auth_protocol:
+          type: string
+        context_engine_id:
+          type: string
+        context_name:
+          type: string
+        create:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        ip:
+          type: string
+        port:
+          type: integer
+          format: int64
+        priv_password:
+          type: string
+        priv_protocol:
+          type: string
+        read_community:
+          type: string
+          description: V2c specific
+        security_engine_id:
+          type: string
+        security_level:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        user_name:
+          type: string
+          description: V3 specific
+        version:
+          type: string
+        write_community:
+          type: string
+      title: SnmpGateway
+      description: SnmpGateway defines the snmp gateway
+      example:
+        read_community: read_community
+        user_name: user_name
+        ip: ip
+        auth_password: auth_password
+        update: '2000-01-23T04:56:07.000+00:00'
+        context_name: context_name
+        priv_protocol: priv_protocol
+        version: version
+        priv_password: priv_password
+        security_level: security_level
+        auth_protocol: auth_protocol
+        context_engine_id: context_engine_id
+        port: 6
+        write_community: write_community
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        security_engine_id: security_engine_id
+        status: status
+    SnmpResp:
+      type: object
+      required:
+      - snmp
+      properties:
+        snmp:
+          $ref: '#/components/schemas/SnmpResp_Snmp'
+      title: SnmpResp
+      example:
+        snmp:
+          gateways:
+          - read_community: read_community
+            user_name: user_name
+            ip: ip
+            auth_password: auth_password
+            update: '2000-01-23T04:56:07.000+00:00'
+            context_name: context_name
+            priv_protocol: priv_protocol
+            version: version
+            priv_password: priv_password
+            security_level: security_level
+            auth_protocol: auth_protocol
+            context_engine_id: context_engine_id
+            port: 6
+            write_community: write_community
+            host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 0
+            security_engine_id: security_engine_id
+            status: status
+          - read_community: read_community
+            user_name: user_name
+            ip: ip
+            auth_password: auth_password
+            update: '2000-01-23T04:56:07.000+00:00'
+            context_name: context_name
+            priv_protocol: priv_protocol
+            version: version
+            priv_password: priv_password
+            security_level: security_level
+            auth_protocol: auth_protocol
+            context_engine_id: context_engine_id
+            port: 6
+            write_community: write_community
+            host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 0
+            security_engine_id: security_engine_id
+            status: status
+          receivers:
+          - port: 5
+            ip: ip
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 1
+            msg_level: msg_level
+          - port: 5
+            ip: ip
+            create: '2000-01-23T04:56:07.000+00:00'
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 1
+            msg_level: msg_level
+          enabled: true
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    SnmpTrapReceiverReq:
+      type: object
+      properties:
+        ip:
+          type: string
+        port:
+          type: integer
+          format: int64
+      title: SnmpTrapReceiverReq
+      example:
+        port: 1
+        ip: ip
     SnmpResp_Snmp:
       type: object
       required:
@@ -187,6 +357,49 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 1
         msg_level: msg_level
+    SnmpSetReq:
+      type: object
+      properties:
+        snmp:
+          $ref: '#/components/schemas/SnmpSetReq_Snmp'
+      title: SnmpSetReq
+      example:
+        snmp:
+          gateways:
+          - read_community: read_community
+            user_name: user_name
+            Port: 0
+            auth_password: auth_password
+            context_name: context_name
+            priv_protocol: priv_protocol
+            version: version
+            host_id: 6
+            priv_password: priv_password
+            security_level: security_level
+            auth_protocol: auth_protocol
+            context_engine_id: context_engine_id
+            write_community: write_community
+            security_engine_id: security_engine_id
+          - read_community: read_community
+            user_name: user_name
+            Port: 0
+            auth_password: auth_password
+            context_name: context_name
+            priv_protocol: priv_protocol
+            version: version
+            host_id: 6
+            priv_password: priv_password
+            security_level: security_level
+            auth_protocol: auth_protocol
+            context_engine_id: context_engine_id
+            write_community: write_community
+            security_engine_id: security_engine_id
+          receivers:
+          - port: 1
+            ip: ip
+          - port: 1
+            ip: ip
+          enabled: true
     SnmpGatewayReq:
       type: object
       properties:
@@ -236,78 +449,6 @@ components:
         context_engine_id: context_engine_id
         write_community: write_community
         security_engine_id: security_engine_id
-    SnmpGateway:
-      type: object
-      properties:
-        auth_password:
-          type: string
-        auth_protocol:
-          type: string
-        context_engine_id:
-          type: string
-        context_name:
-          type: string
-        create:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        ip:
-          type: string
-        port:
-          type: integer
-          format: int64
-        priv_password:
-          type: string
-        priv_protocol:
-          type: string
-        read_community:
-          type: string
-          description: V2c specific
-        security_engine_id:
-          type: string
-        security_level:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        user_name:
-          type: string
-          description: V3 specific
-        version:
-          type: string
-        write_community:
-          type: string
-      title: SnmpGateway
-      description: SnmpGateway defines the snmp gateway
-      example:
-        read_community: read_community
-        user_name: user_name
-        ip: ip
-        auth_password: auth_password
-        update: '2000-01-23T04:56:07.000+00:00'
-        context_name: context_name
-        priv_protocol: priv_protocol
-        version: version
-        priv_password: priv_password
-        security_level: security_level
-        auth_protocol: auth_protocol
-        context_engine_id: context_engine_id
-        port: 6
-        write_community: write_community
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        security_engine_id: security_engine_id
-        status: status
     SnmpSetReq_Snmp:
       type: object
       properties:
@@ -358,147 +499,6 @@ components:
         - port: 1
           ip: ip
         enabled: true
-    SnmpResp:
-      type: object
-      required:
-      - snmp
-      properties:
-        snmp:
-          $ref: '#/components/schemas/SnmpResp_Snmp'
-      title: SnmpResp
-      example:
-        snmp:
-          gateways:
-          - read_community: read_community
-            user_name: user_name
-            ip: ip
-            auth_password: auth_password
-            update: '2000-01-23T04:56:07.000+00:00'
-            context_name: context_name
-            priv_protocol: priv_protocol
-            version: version
-            priv_password: priv_password
-            security_level: security_level
-            auth_protocol: auth_protocol
-            context_engine_id: context_engine_id
-            port: 6
-            write_community: write_community
-            host:
-              name: name
-              admin_ip: admin_ip
-              id: 0
-            create: '2000-01-23T04:56:07.000+00:00'
-            id: 0
-            security_engine_id: security_engine_id
-            status: status
-          - read_community: read_community
-            user_name: user_name
-            ip: ip
-            auth_password: auth_password
-            update: '2000-01-23T04:56:07.000+00:00'
-            context_name: context_name
-            priv_protocol: priv_protocol
-            version: version
-            priv_password: priv_password
-            security_level: security_level
-            auth_protocol: auth_protocol
-            context_engine_id: context_engine_id
-            port: 6
-            write_community: write_community
-            host:
-              name: name
-              admin_ip: admin_ip
-              id: 0
-            create: '2000-01-23T04:56:07.000+00:00'
-            id: 0
-            security_engine_id: security_engine_id
-            status: status
-          receivers:
-          - port: 5
-            ip: ip
-            create: '2000-01-23T04:56:07.000+00:00'
-            update: '2000-01-23T04:56:07.000+00:00'
-            id: 1
-            msg_level: msg_level
-          - port: 5
-            ip: ip
-            create: '2000-01-23T04:56:07.000+00:00'
-            update: '2000-01-23T04:56:07.000+00:00'
-            id: 1
-            msg_level: msg_level
-          enabled: true
-    SnmpTrapReceiverReq:
-      type: object
-      properties:
-        ip:
-          type: string
-        port:
-          type: integer
-          format: int64
-      title: SnmpTrapReceiverReq
-      example:
-        port: 1
-        ip: ip
-    SnmpSetReq:
-      type: object
-      properties:
-        snmp:
-          $ref: '#/components/schemas/SnmpSetReq_Snmp'
-      title: SnmpSetReq
-      example:
-        snmp:
-          gateways:
-          - read_community: read_community
-            user_name: user_name
-            Port: 0
-            auth_password: auth_password
-            context_name: context_name
-            priv_protocol: priv_protocol
-            version: version
-            host_id: 6
-            priv_password: priv_password
-            security_level: security_level
-            auth_protocol: auth_protocol
-            context_engine_id: context_engine_id
-            write_community: write_community
-            security_engine_id: security_engine_id
-          - read_community: read_community
-            user_name: user_name
-            Port: 0
-            auth_password: auth_password
-            context_name: context_name
-            priv_protocol: priv_protocol
-            version: version
-            host_id: 6
-            priv_password: priv_password
-            security_level: security_level
-            auth_protocol: auth_protocol
-            context_engine_id: context_engine_id
-            write_community: write_community
-            security_engine_id: security_engine_id
-          receivers:
-          - port: 1
-            ip: ip
-          - port: 1
-            ip: ip
-          enabled: true
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

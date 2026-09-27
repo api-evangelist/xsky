@@ -100,6 +100,27 @@ components:
           - '{}'
           id: 6
           status: status
+    ObjectStorageLifecycle:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
+          type: string
+      title: ObjectStorageLifecycle
+      description: ObjectStorageLifecycle is the model of object_storage_lifecycle
+      example:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
     ObjectStorageLifecyclesResp:
       type: object
       required:
@@ -123,27 +144,6 @@ components:
           - '{}'
           id: 6
           status: status
-    ObjectStorageLifecycle:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      title: ObjectStorageLifecycle
-      description: ObjectStorageLifecycle is the model of object_storage_lifecycle
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -321,72 +321,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    S3LoadBalancerGroup:
-      type: object
-      properties:
-        action_status:
-          type: string
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        https_port:
-          type: integer
-          format: int64
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        port:
-          type: integer
-          format: int64
-        roles:
-          type: array
-          items:
-            type: string
-        search_https_port:
-          type: integer
-          format: int64
-        search_port:
-          type: integer
-          format: int64
-        ssl_certificate:
-          $ref: '#/components/schemas/SSLCertificate_Nestview'
-        status:
-          type: string
-        sync_port:
-          type: integer
-          format: int64
-        update:
-          type: string
-          format: date-time
-        web_console_endpoint:
-          type: string
-      title: S3LoadBalancerGroup
-      description: S3LoadBalancerGroup groups s3 load balancer with vips
-      example:
-        ssl_certificate:
-          force_https: true
-          name: name
-          id: 2
-        search_port: 5
-        roles:
-        - roles
-        - roles
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        https_port: 0
-        search_https_port: 5
-        port: 1
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        web_console_endpoint: web_console_endpoint
-        id: 6
-        sync_port: 7
-        action_status: action_status
-        status: status
     SSLCertificate_Nestview:
       type: object
       properties:
@@ -405,55 +339,119 @@ components:
         force_https: true
         name: name
         id: 2
-    S3LoadBalancerGroupUpdateReq_Group:
+    S3LoadBalancersAddReq_LoadBalancers_Elt:
       type: object
+      required:
+      - host_id
+      - vip
       properties:
-        description:
+        host_id:
+          type: integer
+          format: int64
+          description: host of load balancer
+        interface_name:
           type: string
-          description: group description
-        https_port:
-          type: integer
-          format: int64
-          description: group access https port
-        name:
+          description: vip will be bound to interface, exclusive to ip
+        ip:
           type: string
-          description: group name
-        port:
-          type: integer
-          format: int64
-          description: group access http port
-        roles:
-          type: array
-          description: group roles
-          items:
-            type: string
-        search_https_port:
-          type: integer
-          format: int64
-          description: group search https port
-        search_port:
-          type: integer
-          format: int64
-          description: group search http port
-        sync_port:
-          type: integer
-          format: int64
-          description: group sync http port
-        web_console_endpoint:
+          description: vip will be bound to interface of the gateway ip, exclusive to interface_name
+        vip:
           type: string
-      title: S3LoadBalancerGroupUpdateReq_Group
+          description: vip of load balancer
+      title: S3LoadBalancersAddReq_LoadBalancers_Elt
       example:
-        https_port: 0
-        search_https_port: 1
-        search_port: 5
-        port: 6
-        roles:
-        - roles
-        - roles
-        name: name
-        description: description
-        web_console_endpoint: web_console_endpoint
-        sync_port: 5
+        ip: ip
+        interface_name: interface_name
+        vip: vip
+        host_id: 0
+    S3LoadBalancersRemoveReq:
+      type: object
+      required:
+      - s3_load_balancer_ids
+      properties:
+        s3_load_balancer_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: S3LoadBalancersRemoveReq
+      example:
+        s3_load_balancer_ids:
+        - 0
+        - 0
+    S3LoadBalancerGroupsResp:
+      type: object
+      required:
+      - s3_load_balancer_groups
+      properties:
+        s3_load_balancer_groups:
+          type: array
+          description: s3 load balancer groups
+          items:
+            $ref: '#/components/schemas/S3LoadBalancerGroup'
+      title: S3LoadBalancerGroupsResp
+      example:
+        s3_load_balancer_groups:
+        - ssl_certificate:
+            force_https: true
+            name: name
+            id: 2
+          search_port: 5
+          roles:
+          - roles
+          - roles
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          https_port: 0
+          search_https_port: 5
+          port: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          web_console_endpoint: web_console_endpoint
+          id: 6
+          sync_port: 7
+          action_status: action_status
+          status: status
+        - ssl_certificate:
+            force_https: true
+            name: name
+            id: 2
+          search_port: 5
+          roles:
+          - roles
+          - roles
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          https_port: 0
+          search_https_port: 5
+          port: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          web_console_endpoint: web_console_endpoint
+          id: 6
+          sync_port: 7
+          action_status: action_status
+          status: status
+    S3LoadBalancersAddReq:
+      type: object
+      required:
+      - s3_load_balancers
+      properties:
+        s3_load_balancers:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3LoadBalancersAddReq_LoadBalancers_Elt'
+      title: S3LoadBalancersAddReq
+      example:
+        s3_load_balancers:
+        - ip: ip
+          interface_name: interface_name
+          vip: vip
+          host_id: 0
+        - ip: ip
+          interface_name: interface_name
+          vip: vip
+          host_id: 0
     S3LoadBalancerGroupCreateReq_Group:
       type: object
       required:
@@ -545,115 +543,72 @@ components:
         interface_name: interface_name
         vip: vip
         host_id: 1
-    S3LoadBalancerGroupUpdateReq:
+    S3LoadBalancerGroup:
       type: object
-      required:
-      - s3_load_balancer_group
       properties:
-        s3_load_balancer_group:
-          $ref: '#/components/schemas/S3LoadBalancerGroupUpdateReq_Group'
-      title: S3LoadBalancerGroupUpdateReq
-      example:
-        s3_load_balancer_group:
-          https_port: 0
-          search_https_port: 1
-          search_port: 5
-          port: 6
-          roles:
-          - roles
-          - roles
-          name: name
-          description: description
-          web_console_endpoint: web_console_endpoint
-          sync_port: 5
-    S3LoadBalancerGroupsResp:
-      type: object
-      required:
-      - s3_load_balancer_groups
-      properties:
-        s3_load_balancer_groups:
-          type: array
-          description: s3 load balancer groups
-          items:
-            $ref: '#/components/schemas/S3LoadBalancerGroup'
-      title: S3LoadBalancerGroupsResp
-      example:
-        s3_load_balancer_groups:
-        - ssl_certificate:
-            force_https: true
-            name: name
-            id: 2
-          search_port: 5
-          roles:
-          - roles
-          - roles
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          https_port: 0
-          search_https_port: 5
-          port: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          web_console_endpoint: web_console_endpoint
-          id: 6
-          sync_port: 7
-          action_status: action_status
-          status: status
-        - ssl_certificate:
-            force_https: true
-            name: name
-            id: 2
-          search_port: 5
-          roles:
-          - roles
-          - roles
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          https_port: 0
-          search_https_port: 5
-          port: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          web_console_endpoint: web_console_endpoint
-          id: 6
-          sync_port: 7
-          action_status: action_status
-          status: status
-    S3LoadBalancersAddReq:
-      type: object
-      required:
-      - s3_load_balancers
-      properties:
-        s3_load_balancers:
+        action_status:
+          type: string
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        https_port:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        port:
+          type: integer
+          format: int64
+        roles:
           type: array
           items:
-            $ref: '#/components/schemas/S3LoadBalancersAddReq_LoadBalancers_Elt'
-      title: S3LoadBalancersAddReq
+            type: string
+        search_https_port:
+          type: integer
+          format: int64
+        search_port:
+          type: integer
+          format: int64
+        ssl_certificate:
+          $ref: '#/components/schemas/SSLCertificate_Nestview'
+        status:
+          type: string
+        sync_port:
+          type: integer
+          format: int64
+        update:
+          type: string
+          format: date-time
+        web_console_endpoint:
+          type: string
+      title: S3LoadBalancerGroup
+      description: S3LoadBalancerGroup groups s3 load balancer with vips
       example:
-        s3_load_balancers:
-        - ip: ip
-          interface_name: interface_name
-          vip: vip
-          host_id: 0
-        - ip: ip
-          interface_name: interface_name
-          vip: vip
-          host_id: 0
-    S3LoadBalancersRemoveReq:
-      type: object
-      required:
-      - s3_load_balancer_ids
-      properties:
-        s3_load_balancer_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: S3LoadBalancersRemoveReq
-      example:
-        s3_load_balancer_ids:
-        - 0
-        - 0
+        ssl_certificate:
+          force_https: true
+          name: name
+          id: 2
+        search_port: 5
+        roles:
+        - roles
+        - roles
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        https_port: 0
+        search_https_port: 5
+        port: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        web_console_endpoint: web_console_endpoint
+        id: 6
+        sync_port: 7
+        action_status: action_status
+        status: status
     S3LoadBalancerGroupCreateReq:
       type: object
       required:
@@ -684,31 +639,76 @@ components:
             vip: vip
             host_id: 1
           sync_port: 2
-    S3LoadBalancersAddReq_LoadBalancers_Elt:
+    S3LoadBalancerGroupUpdateReq_Group:
       type: object
-      required:
-      - host_id
-      - vip
       properties:
-        host_id:
+        description:
+          type: string
+          description: group description
+        https_port:
           type: integer
           format: int64
-          description: host of load balancer
-        interface_name:
+          description: group access https port
+        name:
           type: string
-          description: vip will be bound to interface, exclusive to ip
-        ip:
+          description: group name
+        port:
+          type: integer
+          format: int64
+          description: group access http port
+        roles:
+          type: array
+          description: group roles
+          items:
+            type: string
+        search_https_port:
+          type: integer
+          format: int64
+          description: group search https port
+        search_port:
+          type: integer
+          format: int64
+          description: group search http port
+        sync_port:
+          type: integer
+          format: int64
+          description: group sync http port
+        web_console_endpoint:
           type: string
-          description: vip will be bound to interface of the gateway ip, exclusive to interface_name
-        vip:
-          type: string
-          description: vip of load balancer
-      title: S3LoadBalancersAddReq_LoadBalancers_Elt
+      title: S3LoadBalancerGroupUpdateReq_Group
       example:
-        ip: ip
-        interface_name: interface_name
-        vip: vip
-        host_id: 0
+        https_port: 0
+        search_https_port: 1
+        search_port: 5
+        port: 6
+        roles:
+        - roles
+        - roles
+        name: name
+        description: description
+        web_console_endpoint: web_console_endpoint
+        sync_port: 5
+    S3LoadBalancerGroupUpdateReq:
+      type: object
+      required:
+      - s3_load_balancer_group
+      properties:
+        s3_load_balancer_group:
+          $ref: '#/components/schemas/S3LoadBalancerGroupUpdateReq_Group'
+      title: S3LoadBalancerGroupUpdateReq
+      example:
+        s3_load_balancer_group:
+          https_port: 0
+          search_https_port: 1
+          search_port: 5
+          port: 6
+          roles:
+          - roles
+          - roles
+          name: name
+          description: description
+          web_console_endpoint: web_console_endpoint
+          sync_port: 5
     S3LoadBalancerGroupResp:
       type: object
       required:

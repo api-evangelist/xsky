@@ -88,18 +88,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Snapshot_Nestview:
+    DpBlockSnapshotJobsResp:
       type: object
+      required:
+      - dp_block_snapshot_jobs
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Snapshot_Nestview
+        dp_block_snapshot_jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DpBlockSnapshotJob'
+      title: DpBlockSnapshotJobsResp
       example:
-        name: name
-        id: 0
+        dp_block_snapshot_jobs:
+        - block_volume_size: 0
+          finished_at: '2000-01-23T04:56:07.000+00:00'
+          size: 5
+          updated_at: '2000-01-23T04:56:07.000+00:00'
+          diff_type: diff_type
+          dp_block_snapshot_policy:
+            name: name
+            id: 6
+          block_volume:
+            original_name: original_name
+            name: name
+            id: 9
+          progress: 5.962133916683182
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          block_snapshot:
+            name: name
+            id: 0
+          status: status
+        - block_volume_size: 0
+          finished_at: '2000-01-23T04:56:07.000+00:00'
+          size: 5
+          updated_at: '2000-01-23T04:56:07.000+00:00'
+          diff_type: diff_type
+          dp_block_snapshot_policy:
+            name: name
+            id: 6
+          block_volume:
+            original_name: original_name
+            name: name
+            id: 9
+          progress: 5.962133916683182
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          block_snapshot:
+            name: name
+            id: 0
+          status: status
     DpBlockSnapshotJob:
       type: object
       properties:
@@ -171,56 +209,6 @@ components:
         original_name: original_name
         name: name
         id: 9
-    DpBlockSnapshotJobsResp:
-      type: object
-      required:
-      - dp_block_snapshot_jobs
-      properties:
-        dp_block_snapshot_jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/DpBlockSnapshotJob'
-      title: DpBlockSnapshotJobsResp
-      example:
-        dp_block_snapshot_jobs:
-        - block_volume_size: 0
-          finished_at: '2000-01-23T04:56:07.000+00:00'
-          size: 5
-          updated_at: '2000-01-23T04:56:07.000+00:00'
-          diff_type: diff_type
-          dp_block_snapshot_policy:
-            name: name
-            id: 6
-          block_volume:
-            original_name: original_name
-            name: name
-            id: 9
-          progress: 5.962133916683182
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          block_snapshot:
-            name: name
-            id: 0
-          status: status
-        - block_volume_size: 0
-          finished_at: '2000-01-23T04:56:07.000+00:00'
-          size: 5
-          updated_at: '2000-01-23T04:56:07.000+00:00'
-          diff_type: diff_type
-          dp_block_snapshot_policy:
-            name: name
-            id: 6
-          block_volume:
-            original_name: original_name
-            name: name
-            id: 9
-          progress: 5.962133916683182
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          block_snapshot:
-            name: name
-            id: 0
-          status: status
     DpBlockSnapshotPolicy_Nestview:
       type: object
       properties:
@@ -233,6 +221,18 @@ components:
       example:
         name: name
         id: 6
+    Snapshot_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Snapshot_Nestview
+      example:
+        name: name
+        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

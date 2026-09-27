@@ -194,125 +194,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DpGatewayUpdateReq_Gateway:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: dp gateway name
-      title: DpGatewayUpdateReq_Gateway
-      example:
-        name: name
-    DpGatewaysResp:
-      type: object
-      required:
-      - dp_gateways
-      properties:
-        dp_gateways:
-          type: array
-          description: dp gateways
-          items:
-            $ref: '#/components/schemas/DpGateway'
-      title: DpGatewaysResp
-      example:
-        dp_gateways:
-        - admin_port: 0
-          gateway_port: 6
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          status: status
-        - admin_port: 0
-          gateway_port: 6
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          status: status
-    DpGatewayCreateReq:
-      type: object
-      properties:
-        dp_gateway:
-          $ref: '#/components/schemas/DpGatewayCreateReq_Gateway'
-      title: DpGatewayCreateReq
-      example:
-        dp_gateway:
-          name: name
-          host_id: 0
-    DpGatewayCreateReq_Gateway:
-      type: object
-      required:
-      - host_id
-      - name
-      properties:
-        host_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpGatewayCreateReq_Gateway
-      example:
-        name: name
-        host_id: 0
-    DpGatewayUpdateReq:
-      type: object
-      properties:
-        dp_gateway:
-          $ref: '#/components/schemas/DpGatewayUpdateReq_Gateway'
-      title: DpGatewayUpdateReq
-      example:
-        dp_gateway:
-          name: name
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    DpGatewayResp:
-      type: object
-      required:
-      - dp_gateway
-      properties:
-        dp_gateway:
-          description: dp gateway
-          $ref: '#/components/schemas/DpGateway'
-      title: DpGatewayResp
-      example:
-        dp_gateway:
-          admin_port: 0
-          gateway_port: 6
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          status: status
     DpGateway:
       type: object
       properties:
@@ -351,6 +232,125 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 1
         status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    DpGatewayCreateReq:
+      type: object
+      properties:
+        dp_gateway:
+          $ref: '#/components/schemas/DpGatewayCreateReq_Gateway'
+      title: DpGatewayCreateReq
+      example:
+        dp_gateway:
+          name: name
+          host_id: 0
+    DpGatewayUpdateReq:
+      type: object
+      properties:
+        dp_gateway:
+          $ref: '#/components/schemas/DpGatewayUpdateReq_Gateway'
+      title: DpGatewayUpdateReq
+      example:
+        dp_gateway:
+          name: name
+    DpGatewaysResp:
+      type: object
+      required:
+      - dp_gateways
+      properties:
+        dp_gateways:
+          type: array
+          description: dp gateways
+          items:
+            $ref: '#/components/schemas/DpGateway'
+      title: DpGatewaysResp
+      example:
+        dp_gateways:
+        - admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+        - admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+    DpGatewayCreateReq_Gateway:
+      type: object
+      required:
+      - host_id
+      - name
+      properties:
+        host_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGatewayCreateReq_Gateway
+      example:
+        name: name
+        host_id: 0
+    DpGatewayUpdateReq_Gateway:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: dp gateway name
+      title: DpGatewayUpdateReq_Gateway
+      example:
+        name: name
+    DpGatewayResp:
+      type: object
+      required:
+      - dp_gateway
+      properties:
+        dp_gateway:
+          description: dp gateway
+          $ref: '#/components/schemas/DpGateway'
+      title: DpGatewayResp
+      example:
+        dp_gateway:
+          admin_port: 0
+          gateway_port: 6
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

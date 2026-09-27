@@ -69,36 +69,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageBucket_Nestview_lifecycle:
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
-    NFSGateway_Nestview:
+    ObjectStorageBucket_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
+        lifecycle:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
         name:
           type: string
-      title: NFSGateway_Nestview
+      title: ObjectStorageBucket_Nestview
       example:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
         name: name
-        id: 2
+        id: 0
     NFSGatewayBucketMap:
       type: object
       properties:
@@ -150,35 +140,18 @@ components:
           name: name
           id: 2
         status: status
-    ObjectStorageKey_Nestview:
+    NFSGateway_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
-      title: ObjectStorageKey_Nestview
-      example:
-        id: 5
-    ObjectStorageBucket_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        lifecycle:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
         name:
           type: string
-      title: ObjectStorageBucket_Nestview
+      title: NFSGateway_Nestview
       example:
-        lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
         name: name
-        id: 0
+        id: 2
     NFSGatewayBucketMapsResp:
       type: object
       required:
@@ -234,6 +207,33 @@ components:
             name: name
             id: 2
           status: status
+    ObjectStorageBucket_Nestview_lifecycle:
+      properties:
+        id:
+          type: integer
+          format: int64
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
+          type: string
+      example:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+    ObjectStorageKey_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ObjectStorageKey_Nestview
+      example:
+        id: 5
   securitySchemes:
     tokenInHeader:
       description: auth by token

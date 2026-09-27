@@ -203,6 +203,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SSLCertificateUpdateReq_Certificate:
+      type: object
+      properties:
+        description:
+          type: string
+          description: certificate description
+        enabled:
+          type: boolean
+          description: enabled or not
+        force_https:
+          type: boolean
+          description: redirect http request to https
+        name:
+          type: string
+          description: certificate name
+        type:
+          type: string
+          description: 'applied type: admin, s3'
+      title: SSLCertificateUpdateReq_Certificate
+    SSLCertificateCreateReq:
+      type: object
+      required:
+      - ssl_certificate
+      properties:
+        ssl_certificate:
+          $ref: '#/components/schemas/SSLCertificateCreateReq_Certificate'
+      title: SSLCertificateCreateReq
     SSLCertificateUpdateReq:
       type: object
       required:
@@ -223,6 +250,59 @@ components:
       example:
         ssl_certificate:
           not_before: '2000-01-23T04:56:07.000+00:00'
+          subject: '{}'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          version: 6
+          enabled: true
+          issuer: '{}'
+          not_after: '2000-01-23T04:56:07.000+00:00'
+          force_https: true
+          raw_certificate: raw_certificate
+          permitted_dns_domains:
+          - '{}'
+          - '{}'
+          public_key_algorithm: public_key_algorithm
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          signature_algorithm: signature_algorithm
+          id: 0
+          status: status
+    SSLCertificatesResp:
+      type: object
+      required:
+      - ssl_certificates
+      properties:
+        ssl_certificates:
+          type: array
+          description: ssl certificates
+          items:
+            $ref: '#/components/schemas/SSLCertificate'
+      title: SSLCertificatesResp
+      example:
+        ssl_certificates:
+        - not_before: '2000-01-23T04:56:07.000+00:00'
+          subject: '{}'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          version: 6
+          enabled: true
+          issuer: '{}'
+          not_after: '2000-01-23T04:56:07.000+00:00'
+          force_https: true
+          raw_certificate: raw_certificate
+          permitted_dns_domains:
+          - '{}'
+          - '{}'
+          public_key_algorithm: public_key_algorithm
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          signature_algorithm: signature_algorithm
+          id: 0
+          status: status
+        - not_before: '2000-01-23T04:56:07.000+00:00'
           subject: '{}'
           description: description
           update: '2000-01-23T04:56:07.000+00:00'
@@ -332,78 +412,6 @@ components:
         signature_algorithm: signature_algorithm
         id: 0
         status: status
-    SSLCertificatesResp:
-      type: object
-      required:
-      - ssl_certificates
-      properties:
-        ssl_certificates:
-          type: array
-          description: ssl certificates
-          items:
-            $ref: '#/components/schemas/SSLCertificate'
-      title: SSLCertificatesResp
-      example:
-        ssl_certificates:
-        - not_before: '2000-01-23T04:56:07.000+00:00'
-          subject: '{}'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          version: 6
-          enabled: true
-          issuer: '{}'
-          not_after: '2000-01-23T04:56:07.000+00:00'
-          force_https: true
-          raw_certificate: raw_certificate
-          permitted_dns_domains:
-          - '{}'
-          - '{}'
-          public_key_algorithm: public_key_algorithm
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          signature_algorithm: signature_algorithm
-          id: 0
-          status: status
-        - not_before: '2000-01-23T04:56:07.000+00:00'
-          subject: '{}'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          version: 6
-          enabled: true
-          issuer: '{}'
-          not_after: '2000-01-23T04:56:07.000+00:00'
-          force_https: true
-          raw_certificate: raw_certificate
-          permitted_dns_domains:
-          - '{}'
-          - '{}'
-          public_key_algorithm: public_key_algorithm
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          signature_algorithm: signature_algorithm
-          id: 0
-          status: status
-    SSLCertificateUpdateReq_Certificate:
-      type: object
-      properties:
-        description:
-          type: string
-          description: certificate description
-        enabled:
-          type: boolean
-          description: enabled or not
-        force_https:
-          type: boolean
-          description: redirect http request to https
-        name:
-          type: string
-          description: certificate name
-        type:
-          type: string
-          description: 'applied type: admin, s3'
-      title: SSLCertificateUpdateReq_Certificate
     SSLCertificateCreateReq_Certificate:
       type: object
       required:
@@ -424,14 +432,6 @@ components:
           type: string
           description: private key in pem
       title: SSLCertificateCreateReq_Certificate
-    SSLCertificateCreateReq:
-      type: object
-      required:
-      - ssl_certificate
-      properties:
-        ssl_certificate:
-          $ref: '#/components/schemas/SSLCertificateCreateReq_Certificate'
-      title: SSLCertificateCreateReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

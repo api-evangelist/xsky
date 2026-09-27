@@ -302,6 +302,14 @@ components:
           type: string
           description: name of client group
       title: FSClientGroupCreateReq_ClientGroup
+    FSClientGroupUpdateReq:
+      type: object
+      required:
+      - fs_client_group
+      properties:
+        fs_client_group:
+          $ref: '#/components/schemas/FSClientGroupUpdateReq_ClientGroup'
+      title: FSClientGroupUpdateReq
     FSClientGroupUpdateReq_ClientGroup:
       type: object
       required:
@@ -311,6 +319,68 @@ components:
           type: string
           description: name of client group
       title: FSClientGroupUpdateReq_ClientGroup
+    FSClient_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSClient_Nestview
+      example:
+        name: name
+        id: 6
+    FSClientGroupAddClientsReq:
+      type: object
+      required:
+      - fs_client_group
+      properties:
+        fs_client_group:
+          $ref: '#/components/schemas/FSClientGroupAddClientsReq_ClientGroup'
+      title: FSClientGroupAddClientsReq
+    FSClientGroupResp:
+      type: object
+      required:
+      - fs_client_group
+      properties:
+        fs_client_group:
+          description: file storage client group
+          $ref: '#/components/schemas/FSClientGroup'
+      title: FSClientGroupResp
+      example:
+        fs_client_group:
+          client_num: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_clients:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          id: 1
+          action_status: action_status
+    FSClientGroupAddClientsReq_ClientGroup:
+      type: object
+      required:
+      - fs_client_ids
+      properties:
+        fs_client_ids:
+          type: array
+          description: ids of clients
+          items:
+            type: integer
+            format: int64
+      title: FSClientGroupAddClientsReq_ClientGroup
+    FSClientGroupRemoveClientsReq:
+      type: object
+      required:
+      - fs_client_group
+      properties:
+        fs_client_group:
+          $ref: '#/components/schemas/FSClientGroupRemoveClientsReq_ClientGroup'
+      title: FSClientGroupRemoveClientsReq
     FSClientGroupsResp:
       type: object
       required:
@@ -358,68 +428,6 @@ components:
             type: integer
             format: int64
       title: FSClientGroupRemoveClientsReq_ClientGroup
-    FSClientGroupResp:
-      type: object
-      required:
-      - fs_client_group
-      properties:
-        fs_client_group:
-          description: file storage client group
-          $ref: '#/components/schemas/FSClientGroup'
-      title: FSClientGroupResp
-      example:
-        fs_client_group:
-          client_num: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_clients:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          id: 1
-          action_status: action_status
-    FSClientGroupAddClientsReq:
-      type: object
-      required:
-      - fs_client_group
-      properties:
-        fs_client_group:
-          $ref: '#/components/schemas/FSClientGroupAddClientsReq_ClientGroup'
-      title: FSClientGroupAddClientsReq
-    FSClient_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSClient_Nestview
-      example:
-        name: name
-        id: 6
-    FSClientGroupAddClientsReq_ClientGroup:
-      type: object
-      required:
-      - fs_client_ids
-      properties:
-        fs_client_ids:
-          type: array
-          description: ids of clients
-          items:
-            type: integer
-            format: int64
-      title: FSClientGroupAddClientsReq_ClientGroup
-    FSClientGroupUpdateReq:
-      type: object
-      required:
-      - fs_client_group
-      properties:
-        fs_client_group:
-          $ref: '#/components/schemas/FSClientGroupUpdateReq_ClientGroup'
-      title: FSClientGroupUpdateReq
     FSClientGroupCreateReq:
       type: object
       required:
@@ -465,14 +473,6 @@ components:
           id: 6
         id: 1
         action_status: action_status
-    FSClientGroupRemoveClientsReq:
-      type: object
-      required:
-      - fs_client_group
-      properties:
-        fs_client_group:
-          $ref: '#/components/schemas/FSClientGroupRemoveClientsReq_ClientGroup'
-      title: FSClientGroupRemoveClientsReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

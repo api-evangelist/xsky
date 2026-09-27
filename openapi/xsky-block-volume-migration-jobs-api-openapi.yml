@@ -192,110 +192,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BlockVolumeUpdateMigrationReq_VolumeMigrationJob:
-      type: object
-      required:
-      - stripes
-      properties:
-        stripes:
-          type: integer
-          format: int64
-      title: BlockVolumeUpdateMigrationReq_VolumeMigrationJob
-      example:
-        stripes: 0
-    BlockVolumeMigrationJobResp:
-      type: object
-      required:
-      - block_volume_migration_job
-      properties:
-        block_volume_migration_job:
-          description: volume migration job
-          $ref: '#/components/schemas/VolumeMigrationJob'
-      title: BlockVolumeMigrationJobResp
-      example:
-        block_volume_migration_job:
-          finished_at: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          stripes: 1
-          volume:
-            original_name: original_name
-            name: name
-            id: 9
-          remaining_time: 6
-          source_pool:
-            name: name
-            id: 5
-          task:
-            retried: true
-            error_msg: error_msg
-            data: data
-            update: '2000-01-23T04:56:07.000+00:00'
-            priority: 5
-            type: type
-            execute: '2000-01-23T04:56:07.000+00:00'
-            host_role: host_role
-            host:
-              name: name
-              admin_ip: admin_ip
-              id: 0
-            create: '2000-01-23T04:56:07.000+00:00'
-            finish: '2000-01-23T04:56:07.000+00:00'
-            id: 5
-            retry: 2
-            retry_type: retry_type
-            status: status
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          dest_pool:
-            name: name
-            id: 5
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          status: status
-    BlockVolumeUpdateMigrationReq:
-      type: object
-      properties:
-        volume_migration_job:
-          $ref: '#/components/schemas/BlockVolumeUpdateMigrationReq_VolumeMigrationJob'
-      title: BlockVolumeUpdateMigrationReq
-      example:
-        volume_migration_job:
-          stripes: 0
-    Volume_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        original_name:
-          type: string
-      title: Volume_Nestview
-      example:
-        original_name: original_name
-        name: name
-        id: 9
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     Pool_Nestview:
       type: object
       properties:
@@ -308,67 +204,6 @@ components:
       example:
         name: name
         id: 5
-    Task:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        data:
-          type: string
-        error_msg:
-          type: string
-        execute:
-          type: string
-          format: date-time
-        finish:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        host_role:
-          type: string
-        id:
-          type: integer
-          format: int64
-        priority:
-          type: integer
-          format: int64
-        retried:
-          type: boolean
-        retry:
-          type: integer
-          format: int64
-        retry_type:
-          type: string
-        status:
-          type: string
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: Task
-      description: Task defines a task will be run on a host @grpc-models-proto
-      example:
-        retried: true
-        error_msg: error_msg
-        data: data
-        update: '2000-01-23T04:56:07.000+00:00'
-        priority: 5
-        type: type
-        execute: '2000-01-23T04:56:07.000+00:00'
-        host_role: host_role
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        finish: '2000-01-23T04:56:07.000+00:00'
-        id: 5
-        retry: 2
-        retry_type: retry_type
-        status: status
     VolumeMigrationJob:
       type: object
       properties:
@@ -448,6 +283,171 @@ components:
           id: 5
         started_at: '2000-01-23T04:56:07.000+00:00'
         id: 0
+        status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    BlockVolumeMigrationJobResp:
+      type: object
+      required:
+      - block_volume_migration_job
+      properties:
+        block_volume_migration_job:
+          description: volume migration job
+          $ref: '#/components/schemas/VolumeMigrationJob'
+      title: BlockVolumeMigrationJobResp
+      example:
+        block_volume_migration_job:
+          finished_at: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          stripes: 1
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          remaining_time: 6
+          source_pool:
+            name: name
+            id: 5
+          task:
+            retried: true
+            error_msg: error_msg
+            data: data
+            update: '2000-01-23T04:56:07.000+00:00'
+            priority: 5
+            type: type
+            execute: '2000-01-23T04:56:07.000+00:00'
+            host_role: host_role
+            host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            finish: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            retry: 2
+            retry_type: retry_type
+            status: status
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          dest_pool:
+            name: name
+            id: 5
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          status: status
+    BlockVolumeUpdateMigrationReq:
+      type: object
+      properties:
+        volume_migration_job:
+          $ref: '#/components/schemas/BlockVolumeUpdateMigrationReq_VolumeMigrationJob'
+      title: BlockVolumeUpdateMigrationReq
+      example:
+        volume_migration_job:
+          stripes: 0
+    Volume_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
+        original_name: original_name
+        name: name
+        id: 9
+    BlockVolumeUpdateMigrationReq_VolumeMigrationJob:
+      type: object
+      required:
+      - stripes
+      properties:
+        stripes:
+          type: integer
+          format: int64
+      title: BlockVolumeUpdateMigrationReq_VolumeMigrationJob
+      example:
+        stripes: 0
+    Task:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        data:
+          type: string
+        error_msg:
+          type: string
+        execute:
+          type: string
+          format: date-time
+        finish:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        host_role:
+          type: string
+        id:
+          type: integer
+          format: int64
+        priority:
+          type: integer
+          format: int64
+        retried:
+          type: boolean
+        retry:
+          type: integer
+          format: int64
+        retry_type:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: Task
+      description: Task defines a task will be run on a host @grpc-models-proto
+      example:
+        retried: true
+        error_msg: error_msg
+        data: data
+        update: '2000-01-23T04:56:07.000+00:00'
+        priority: 5
+        type: type
+        execute: '2000-01-23T04:56:07.000+00:00'
+        host_role: host_role
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        finish: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        retry: 2
+        retry_type: retry_type
         status: status
     BlockVolumeMigrationJobsResp:
       type: object

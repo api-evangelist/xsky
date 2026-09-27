@@ -529,26 +529,49 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSFolderRemoveQuotaTreesReq_Folder:
-      type: object
-      properties:
-        fs_quota_tree_ids:
-          type: array
-          description: id array of quota trees
-          items:
-            type: integer
-            format: int64
-      title: FSFolderRemoveQuotaTreesReq_Folder
-    FSFolderSnapshotProtectionReq_Folder:
+    FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt:
       type: object
       required:
-      - dp_fs_snapshot_policy_id
+      - name
       properties:
-        dp_fs_snapshot_policy_id:
+        name:
+          type: string
+          description: name of quota tree
+        size:
           type: integer
           format: int64
-          description: id of dp fs snapshot policy
-      title: FSFolderSnapshotProtectionReq_Folder
+          description: size of quota tree
+        soft_quota_size:
+          type: integer
+          format: int64
+          description: soft quota size of quota tree
+      title: FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt
+    FSFolderAddQuotaTreesReq:
+      type: object
+      required:
+      - fs_folder
+      properties:
+        fs_folder:
+          $ref: '#/components/schemas/FSFolderAddQuotaTreesReq_Folder'
+      title: FSFolderAddQuotaTreesReq
+    FSFolderRecord:
+      title: FSFolderRecord
+      allOf:
+      - $ref: '#/components/schemas/FSFolder'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/FSFolderStat'
+      description: FSFolderRecord combine FSFolder and FSFolderStat as API response
+    FSFolderSnapshotProtectionReq:
+      type: object
+      required:
+      - fs_folder
+      properties:
+        fs_folder:
+          $ref: '#/components/schemas/FSFolderSnapshotProtectionReq_Folder'
+      title: FSFolderSnapshotProtectionReq
     FSFolderRemoveQuotaTreesReq:
       type: object
       required:
@@ -557,6 +580,36 @@ components:
         fs_folder:
           $ref: '#/components/schemas/FSFolderRemoveQuotaTreesReq_Folder'
       title: FSFolderRemoveQuotaTreesReq
+    DpFSSnapshotPolicy_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpFSSnapshotPolicy_Nestview
+      example:
+        name: name
+        id: 0
+    FSFolderAddQuotaTreesReq_Folder:
+      type: object
+      required:
+      - fs_quota_trees
+      properties:
+        fs_quota_trees:
+          type: array
+          items:
+            $ref: '#/components/schemas/FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt'
+      title: FSFolderAddQuotaTreesReq_Folder
+    FSFolderRollBackReq:
+      type: object
+      required:
+      - fs_folder
+      properties:
+        fs_folder:
+          $ref: '#/components/schemas/FSFolderRollBackReq_Folder'
+      title: FSFolderRollBackReq
     Volume_Nestview:
       type: object
       properties:
@@ -572,6 +625,39 @@ components:
         original_name: original_name
         name: name
         id: 9
+    FSFoldersResp:
+      type: object
+      required:
+      - fs_folders
+      properties:
+        fs_folders:
+          type: array
+          description: file storage folder records
+          items:
+            $ref: '#/components/schemas/FSFolderRecord'
+      title: FSFoldersResp
+      example:
+        fs_folders:
+        - ''
+        - ''
+    FSFolderCreateReq:
+      type: object
+      required:
+      - fs_folder
+      properties:
+        fs_folder:
+          $ref: '#/components/schemas/FSFolderCreateReq_Folder'
+      title: FSFolderCreateReq
+    FSFolderSnapshotProtectionReq_Folder:
+      type: object
+      required:
+      - dp_fs_snapshot_policy_id
+      properties:
+        dp_fs_snapshot_policy_id:
+          type: integer
+          format: int64
+          description: id of dp fs snapshot policy
+      title: FSFolderSnapshotProtectionReq_Folder
     Pool_Nestview:
       type: object
       properties:
@@ -584,148 +670,6 @@ components:
       example:
         name: name
         id: 5
-    FSFolderRollBackReq_Folder:
-      type: object
-      properties:
-        fs_snapshot_id:
-          type: integer
-          format: int64
-          description: file storage snapshot id
-      title: FSFolderRollBackReq_Folder
-    FSFolderUpdateReq:
-      type: object
-      required:
-      - fs_folder
-      properties:
-        fs_folder:
-          $ref: '#/components/schemas/FSFolderUpdateReq_Folder'
-      title: FSFolderUpdateReq
-    FSFolderSnapshotProtectionReq:
-      type: object
-      required:
-      - fs_folder
-      properties:
-        fs_folder:
-          $ref: '#/components/schemas/FSFolderSnapshotProtectionReq_Folder'
-      title: FSFolderSnapshotProtectionReq
-    FSFolder:
-      type: object
-      properties:
-        access_path:
-          $ref: '#/components/schemas/AccessPath_Nestview'
-        action_status:
-          type: string
-        block_volume:
-          $ref: '#/components/schemas/Volume_Nestview'
-        block_volume_status:
-          type: string
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        dp_fs_snapshot_policy:
-          $ref: '#/components/schemas/DpFSSnapshotPolicy_Nestview'
-        flattened:
-          type: boolean
-        formatted:
-          type: boolean
-        fs_gateway_group:
-          $ref: '#/components/schemas/FSGatewayGroup'
-        fs_quota_tree_num:
-          type: integer
-          format: int64
-        fs_snapshot:
-          $ref: '#/components/schemas/FSSnapshot_Nestview'
-        fs_snapshot_num:
-          type: integer
-          format: int64
-        id:
-          type: integer
-          format: int64
-        latest_snapshot_time:
-          type: string
-          format: date-time
-        name:
-          type: string
-        pool:
-          $ref: '#/components/schemas/Pool_Nestview'
-        progress:
-          type: number
-          format: double
-        qos:
-          $ref: '#/components/schemas/VolumeQosSpec'
-        qos_enabled:
-          type: boolean
-        quota_tree_share_types:
-          type: array
-          items:
-            type: string
-        quota_tree_shared:
-          type: boolean
-        share_types:
-          type: array
-          items:
-            type: string
-        shared:
-          type: boolean
-          description: 'before version 3.2.14, these fields was calculated by wizard, but there is quota
-
-            trees in new verion, calculations is too complicated, so add the fields to
-
-            folder struct'
-        size:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: FSFolder
-      description: FSFolder defines model of file storage folder
-    FSFolderUpdateReq_Folder:
-      type: object
-      properties:
-        description:
-          type: string
-          description: description of folder
-        name:
-          type: string
-          description: name of folder
-        qos:
-          description: qos of volume
-          $ref: '#/components/schemas/VolumeQosSpec'
-        qos_enabled:
-          type: boolean
-          description: enable or disable the qos
-        size:
-          type: integer
-          format: int64
-          description: size of folder
-      title: FSFolderUpdateReq_Folder
-    FSSnapshot_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSSnapshot_Nestview
-      example:
-        name: name
-        id: 1
-    FSFolderRecord:
-      title: FSFolderRecord
-      allOf:
-      - $ref: '#/components/schemas/FSFolder'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/FSFolderStat'
-      description: FSFolderRecord combine FSFolder and FSFolderStat as API response
     FSGatewayGroup:
       type: object
       properties:
@@ -809,181 +753,6 @@ components:
         action_status: action_status
         folder_num: 0
         status: status
-    FSFolderAddQuotaTreesReq:
-      type: object
-      required:
-      - fs_folder
-      properties:
-        fs_folder:
-          $ref: '#/components/schemas/FSFolderAddQuotaTreesReq_Folder'
-      title: FSFolderAddQuotaTreesReq
-    FSFolderCreateReq_Folder:
-      type: object
-      required:
-      - name
-      properties:
-        description:
-          type: string
-          description: description of folder
-        flattened:
-          type: boolean
-          description: flatten or not flatten
-        fs_snapshot_id:
-          type: integer
-          format: int64
-          description: file storage snapshot id
-        name:
-          type: string
-          description: name of folder
-        pool_id:
-          type: integer
-          format: int64
-          description: id of pool
-        qos:
-          description: qos of volume
-          $ref: '#/components/schemas/VolumeQosSpec'
-        qos_enabled:
-          type: boolean
-          description: enable or disable the qos
-        size:
-          type: integer
-          format: int64
-          description: size of folder
-      title: FSFolderCreateReq_Folder
-    DpFSSnapshotPolicy_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpFSSnapshotPolicy_Nestview
-      example:
-        name: name
-        id: 0
-    FSFolderCreateReq:
-      type: object
-      required:
-      - fs_folder
-      properties:
-        fs_folder:
-          $ref: '#/components/schemas/FSFolderCreateReq_Folder'
-      title: FSFolderCreateReq
-    FSFolderSamplesResp:
-      type: object
-      properties:
-        fs_folder_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/FSFolderStat'
-      title: FSFolderSamplesResp
-      example:
-        fs_folder_samples:
-        - used_kbyte: 2.3021358869347655
-          read_bandwidth_kbyte: 0.8008281904610115
-          write_bandwidth_kbyte: 7.061401241503109
-          create: '2000-01-23T04:56:07.000+00:00'
-          total_bandwidth_kbyte: 5.962133916683182
-          write_iops: 9.301444243932576
-          write_latency_us: 3.616076749251911
-          total_iops: 5.637376656633329
-          read_latency_us: 1.4658129805029452
-          read_iops: 6.027456183070403
-        - used_kbyte: 2.3021358869347655
-          read_bandwidth_kbyte: 0.8008281904610115
-          write_bandwidth_kbyte: 7.061401241503109
-          create: '2000-01-23T04:56:07.000+00:00'
-          total_bandwidth_kbyte: 5.962133916683182
-          write_iops: 9.301444243932576
-          write_latency_us: 3.616076749251911
-          total_iops: 5.637376656633329
-          read_latency_us: 1.4658129805029452
-          read_iops: 6.027456183070403
-    FSFolderAddQuotaTreesReq_Folder:
-      type: object
-      required:
-      - fs_quota_trees
-      properties:
-        fs_quota_trees:
-          type: array
-          items:
-            $ref: '#/components/schemas/FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt'
-      title: FSFolderAddQuotaTreesReq_Folder
-    FSFoldersResp:
-      type: object
-      required:
-      - fs_folders
-      properties:
-        fs_folders:
-          type: array
-          description: file storage folder records
-          items:
-            $ref: '#/components/schemas/FSFolderRecord'
-      title: FSFoldersResp
-      example:
-        fs_folders:
-        - ''
-        - ''
-    FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: name of quota tree
-        size:
-          type: integer
-          format: int64
-          description: size of quota tree
-        soft_quota_size:
-          type: integer
-          format: int64
-          description: soft quota size of quota tree
-      title: FSFolderAddQuotaTreesReq_Folder_QuotaTrees_Elt
-    FSFolderRollBackReq:
-      type: object
-      required:
-      - fs_folder
-      properties:
-        fs_folder:
-          $ref: '#/components/schemas/FSFolderRollBackReq_Folder'
-      title: FSFolderRollBackReq
-    AccessPath_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: AccessPath_Nestview
-      example:
-        name: name
-        id: 0
-    VolumeQosSpec:
-      type: object
-      properties:
-        burst_total_bw:
-          type: integer
-          format: int64
-        burst_total_iops:
-          type: integer
-          format: int64
-        max_total_bw:
-          type: integer
-          format: int64
-        max_total_iops:
-          type: integer
-          format: int64
-      title: VolumeQosSpec
-      description: VolumeQosSpec is a collection of all qos field
-      example:
-        burst_total_iops: 2
-        max_total_iops: 9
-        burst_total_bw: 5
-        max_total_bw: 7
     FSFolderStat:
       type: object
       properties:
@@ -1030,6 +799,56 @@ components:
         total_iops: 5.637376656633329
         read_latency_us: 1.4658129805029452
         read_iops: 6.027456183070403
+    AccessPath_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: AccessPath_Nestview
+      example:
+        name: name
+        id: 0
+    FSFolderRemoveQuotaTreesReq_Folder:
+      type: object
+      properties:
+        fs_quota_tree_ids:
+          type: array
+          description: id array of quota trees
+          items:
+            type: integer
+            format: int64
+      title: FSFolderRemoveQuotaTreesReq_Folder
+    FSFolderRollBackReq_Folder:
+      type: object
+      properties:
+        fs_snapshot_id:
+          type: integer
+          format: int64
+          description: file storage snapshot id
+      title: FSFolderRollBackReq_Folder
+    FSFolderUpdateReq_Folder:
+      type: object
+      properties:
+        description:
+          type: string
+          description: description of folder
+        name:
+          type: string
+          description: name of folder
+        qos:
+          description: qos of volume
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+          description: enable or disable the qos
+        size:
+          type: integer
+          format: int64
+          description: size of folder
+      title: FSFolderUpdateReq_Folder
     FSFolderResp:
       type: object
       required:
@@ -1041,6 +860,187 @@ components:
       title: FSFolderResp
       example:
         fs_folder: ''
+    VolumeQosSpec:
+      type: object
+      properties:
+        burst_total_bw:
+          type: integer
+          format: int64
+        burst_total_iops:
+          type: integer
+          format: int64
+        max_total_bw:
+          type: integer
+          format: int64
+        max_total_iops:
+          type: integer
+          format: int64
+      title: VolumeQosSpec
+      description: VolumeQosSpec is a collection of all qos field
+      example:
+        burst_total_iops: 2
+        max_total_iops: 9
+        burst_total_bw: 5
+        max_total_bw: 7
+    FSFolderUpdateReq:
+      type: object
+      required:
+      - fs_folder
+      properties:
+        fs_folder:
+          $ref: '#/components/schemas/FSFolderUpdateReq_Folder'
+      title: FSFolderUpdateReq
+    FSFolderCreateReq_Folder:
+      type: object
+      required:
+      - name
+      properties:
+        description:
+          type: string
+          description: description of folder
+        flattened:
+          type: boolean
+          description: flatten or not flatten
+        fs_snapshot_id:
+          type: integer
+          format: int64
+          description: file storage snapshot id
+        name:
+          type: string
+          description: name of folder
+        pool_id:
+          type: integer
+          format: int64
+          description: id of pool
+        qos:
+          description: qos of volume
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+          description: enable or disable the qos
+        size:
+          type: integer
+          format: int64
+          description: size of folder
+      title: FSFolderCreateReq_Folder
+    FSFolderSamplesResp:
+      type: object
+      properties:
+        fs_folder_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/FSFolderStat'
+      title: FSFolderSamplesResp
+      example:
+        fs_folder_samples:
+        - used_kbyte: 2.3021358869347655
+          read_bandwidth_kbyte: 0.8008281904610115
+          write_bandwidth_kbyte: 7.061401241503109
+          create: '2000-01-23T04:56:07.000+00:00'
+          total_bandwidth_kbyte: 5.962133916683182
+          write_iops: 9.301444243932576
+          write_latency_us: 3.616076749251911
+          total_iops: 5.637376656633329
+          read_latency_us: 1.4658129805029452
+          read_iops: 6.027456183070403
+        - used_kbyte: 2.3021358869347655
+          read_bandwidth_kbyte: 0.8008281904610115
+          write_bandwidth_kbyte: 7.061401241503109
+          create: '2000-01-23T04:56:07.000+00:00'
+          total_bandwidth_kbyte: 5.962133916683182
+          write_iops: 9.301444243932576
+          write_latency_us: 3.616076749251911
+          total_iops: 5.637376656633329
+          read_latency_us: 1.4658129805029452
+          read_iops: 6.027456183070403
+    FSSnapshot_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSSnapshot_Nestview
+      example:
+        name: name
+        id: 1
+    FSFolder:
+      type: object
+      properties:
+        access_path:
+          $ref: '#/components/schemas/AccessPath_Nestview'
+        action_status:
+          type: string
+        block_volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+        block_volume_status:
+          type: string
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        dp_fs_snapshot_policy:
+          $ref: '#/components/schemas/DpFSSnapshotPolicy_Nestview'
+        flattened:
+          type: boolean
+        formatted:
+          type: boolean
+        fs_gateway_group:
+          $ref: '#/components/schemas/FSGatewayGroup'
+        fs_quota_tree_num:
+          type: integer
+          format: int64
+        fs_snapshot:
+          $ref: '#/components/schemas/FSSnapshot_Nestview'
+        fs_snapshot_num:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        latest_snapshot_time:
+          type: string
+          format: date-time
+        name:
+          type: string
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        progress:
+          type: number
+          format: double
+        qos:
+          $ref: '#/components/schemas/VolumeQosSpec'
+        qos_enabled:
+          type: boolean
+        quota_tree_share_types:
+          type: array
+          items:
+            type: string
+        quota_tree_shared:
+          type: boolean
+        share_types:
+          type: array
+          items:
+            type: string
+        shared:
+          type: boolean
+          description: 'before version 3.2.14, these fields was calculated by wizard, but there is quota
+
+            trees in new verion, calculations is too complicated, so add the fields to
+
+            folder struct'
+        size:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: FSFolder
+      description: FSFolder defines model of file storage folder
   securitySchemes:
     tokenInHeader:
       description: auth by token

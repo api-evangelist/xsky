@@ -519,182 +519,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    NFSGatewayCreateReq_NFSGateway:
-      type: object
-      required:
-      - description
-      - host_id
-      - name
-      - port
-      properties:
-        description:
-          type: string
-        gateway_ip:
-          type: string
-        host_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        port:
-          type: integer
-          format: int64
-      title: NFSGatewayCreateReq_NFSGateway
-    NFSGateway:
-      type: object
-      properties:
-        bucket_num:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        gateway_ip:
-          type: string
-        gateway_name:
-          type: string
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        mount_clients:
-          type: string
-        mount_num:
-          type: integer
-          format: int64
-        name:
-          type: string
-        port:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: NFSGateway
-      description: NFSGateway defines nfs gateway @grpc-models-proto
-    NFSGatewaysResp:
-      type: object
-      required:
-      - nfs_gateways
-      properties:
-        nfs_gateways:
-          type: array
-          description: nfs gateways
-          items:
-            $ref: '#/components/schemas/NFSGatewayRecord'
-      title: NFSGatewaysResp
-      example:
-        nfs_gateways:
-        - ''
-        - ''
-    NFSGatewayBucketMapUpdateReq:
-      type: object
-      required:
-      - nfs_gateway_bucket_map
-      properties:
-        nfs_gateway_bucket_map:
-          $ref: '#/components/schemas/NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap'
-      title: NFSGatewayBucketMapUpdateReq
-    NFSGatewayStat:
-      type: object
-      properties:
-        cpu_util:
-          type: number
-          format: double
-        create:
-          type: string
-          format: date-time
-        down_bandwidth_kbyte:
-          type: number
-          format: double
-        down_latency_us:
-          type: number
-          format: double
-        down_ops:
-          type: number
-          format: double
-        mem_usage_percent:
-          type: number
-          format: double
-        up_bandwidth_kbyte:
-          type: number
-          format: double
-        up_latency_us:
-          type: number
-          format: double
-        up_ops:
-          type: number
-          format: double
-      title: NFSGatewayStat
-      description: NFSGatewayStat defines nfs gateway stat
-      example:
-        up_bandwidth_kbyte: 2.3021358869347655
-        up_ops: 9.301444243932576
-        down_bandwidth_kbyte: 6.027456183070403
-        down_ops: 5.962133916683182
-        up_latency_us: 7.061401241503109
-        mem_usage_percent: 5.637376656633329
-        create: '2000-01-23T04:56:07.000+00:00'
-        cpu_util: 0.8008281904610115
-        down_latency_us: 1.4658129805029452
-    ObjectStorageBucket_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        lifecycle:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
-        name:
-          type: string
-      title: ObjectStorageBucket_Nestview
-      example:
-        lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
-        name: name
-        id: 0
-    NFSGatewayRecord:
-      title: NFSGatewayRecord
-      allOf:
-      - $ref: '#/components/schemas/NFSGateway'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/NFSGatewayStat'
-      description: NFSGatewayRecord combine NFSGateway and NFSGatewayStat as API response
-    NFSGateway_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: NFSGateway_Nestview
-      example:
-        name: name
-        id: 2
-    NFSGatewayResp:
-      type: object
-      required:
-      - nfs_gateway
-      properties:
-        nfs_gateway:
-          description: nfs gateway
-          $ref: '#/components/schemas/NFSGatewayRecord'
-      title: NFSGatewayResp
-      example:
-        nfs_gateway: ''
     NFSGatewaySamplesResp:
       type: object
       required:
@@ -726,180 +550,39 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           cpu_util: 0.8008281904610115
           down_latency_us: 1.4658129805029452
-    ObjectStorageBucket_Nestview_lifecycle:
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
-    NFSGatewayActionReq:
+    NFSGatewayCreateReq_NFSGateway:
       type: object
       required:
-      - nfs_gateway
-      properties:
-        nfs_gateway:
-          $ref: '#/components/schemas/NFSGatewayActionReq_NFSGateway'
-      title: NFSGatewayActionReq
-    NFSGatewayBucketMap:
-      type: object
-      properties:
-        action_status:
-          type: string
-        bucket:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview'
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        key:
-          $ref: '#/components/schemas/ObjectStorageKey_Nestview'
-        mount_clients:
-          type: string
-        mount_num:
-          type: integer
-          format: int64
-        nfs_gateway:
-          $ref: '#/components/schemas/NFSGateway_Nestview'
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: NFSGatewayBucketMap
-      description: NFSGatewayBucketMap defines nfs gateway bucket map @grpc-models-proto
-      example:
-        bucket:
-          lifecycle:
-            rules:
-            - '{}'
-            - '{}'
-            id: 6
-            status: status
-          name: name
-          id: 0
-        mount_clients: mount_clients
-        mount_num: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 1
-        key:
-          id: 5
-        action_status: action_status
-        nfs_gateway:
-          name: name
-          id: 2
-        status: status
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    NFSGatewayCreateReq:
-      type: object
-      required:
-      - nfs_gateway
-      properties:
-        nfs_gateway:
-          $ref: '#/components/schemas/NFSGatewayCreateReq_NFSGateway'
-      title: NFSGatewayCreateReq
-    NFSGatewayBucketMapResp:
-      type: object
-      required:
-      - nfs_gateway_bucket_map
-      properties:
-        nfs_gateway_bucket_map:
-          description: map of nfs gateway and bucket
-          $ref: '#/components/schemas/NFSGatewayBucketMap'
-      title: NFSGatewayBucketMapResp
-      example:
-        nfs_gateway_bucket_map:
-          bucket:
-            lifecycle:
-              rules:
-              - '{}'
-              - '{}'
-              id: 6
-              status: status
-            name: name
-            id: 0
-          mount_clients: mount_clients
-          mount_num: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          key:
-            id: 5
-          action_status: action_status
-          nfs_gateway:
-            name: name
-            id: 2
-          status: status
-    NFSGatewayUpdateReq_NFSGateway:
-      type: object
+      - description
+      - host_id
+      - name
+      - port
       properties:
         description:
           type: string
-        name:
+        gateway_ip:
           type: string
-      title: NFSGatewayUpdateReq_NFSGateway
-    NFSGatewayUpdateReq:
-      type: object
-      required:
-      - nfs_gateway
-      properties:
-        nfs_gateway:
-          $ref: '#/components/schemas/NFSGatewayUpdateReq_NFSGateway'
-      title: NFSGatewayUpdateReq
-    NFSGatewayActionReq_NFSGateway:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-      title: NFSGatewayActionReq_NFSGateway
-    NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap:
-      type: object
-      properties:
-        key_id:
+        host_id:
           type: integer
           format: int64
-      title: NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap
-    ObjectStorageKey_Nestview:
+        name:
+          type: string
+        port:
+          type: integer
+          format: int64
+      title: NFSGatewayCreateReq_NFSGateway
+    NFSGateway_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
-      title: ObjectStorageKey_Nestview
+        name:
+          type: string
+      title: NFSGateway_Nestview
       example:
-        id: 5
+        name: name
+        id: 2
     NFSGatewayBucketMapsResp:
       type: object
       required:
@@ -955,6 +638,323 @@ components:
             name: name
             id: 2
           status: status
+    NFSGatewayStat:
+      type: object
+      properties:
+        cpu_util:
+          type: number
+          format: double
+        create:
+          type: string
+          format: date-time
+        down_bandwidth_kbyte:
+          type: number
+          format: double
+        down_latency_us:
+          type: number
+          format: double
+        down_ops:
+          type: number
+          format: double
+        mem_usage_percent:
+          type: number
+          format: double
+        up_bandwidth_kbyte:
+          type: number
+          format: double
+        up_latency_us:
+          type: number
+          format: double
+        up_ops:
+          type: number
+          format: double
+      title: NFSGatewayStat
+      description: NFSGatewayStat defines nfs gateway stat
+      example:
+        up_bandwidth_kbyte: 2.3021358869347655
+        up_ops: 9.301444243932576
+        down_bandwidth_kbyte: 6.027456183070403
+        down_ops: 5.962133916683182
+        up_latency_us: 7.061401241503109
+        mem_usage_percent: 5.637376656633329
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 0.8008281904610115
+        down_latency_us: 1.4658129805029452
+    ObjectStorageKey_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ObjectStorageKey_Nestview
+      example:
+        id: 5
+    NFSGatewayBucketMapUpdateReq:
+      type: object
+      required:
+      - nfs_gateway_bucket_map
+      properties:
+        nfs_gateway_bucket_map:
+          $ref: '#/components/schemas/NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap'
+      title: NFSGatewayBucketMapUpdateReq
+    ObjectStorageBucket_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        lifecycle:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
+        name:
+          type: string
+      title: ObjectStorageBucket_Nestview
+      example:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    NFSGatewaysResp:
+      type: object
+      required:
+      - nfs_gateways
+      properties:
+        nfs_gateways:
+          type: array
+          description: nfs gateways
+          items:
+            $ref: '#/components/schemas/NFSGatewayRecord'
+      title: NFSGatewaysResp
+      example:
+        nfs_gateways:
+        - ''
+        - ''
+    ObjectStorageBucket_Nestview_lifecycle:
+      properties:
+        id:
+          type: integer
+          format: int64
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
+          type: string
+      example:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+    NFSGatewayUpdateReq_NFSGateway:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+      title: NFSGatewayUpdateReq_NFSGateway
+    NFSGatewayBucketMap:
+      type: object
+      properties:
+        action_status:
+          type: string
+        bucket:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview'
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        key:
+          $ref: '#/components/schemas/ObjectStorageKey_Nestview'
+        mount_clients:
+          type: string
+        mount_num:
+          type: integer
+          format: int64
+        nfs_gateway:
+          $ref: '#/components/schemas/NFSGateway_Nestview'
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: NFSGatewayBucketMap
+      description: NFSGatewayBucketMap defines nfs gateway bucket map @grpc-models-proto
+      example:
+        bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        mount_clients: mount_clients
+        mount_num: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 1
+        key:
+          id: 5
+        action_status: action_status
+        nfs_gateway:
+          name: name
+          id: 2
+        status: status
+    NFSGatewayActionReq_NFSGateway:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+      title: NFSGatewayActionReq_NFSGateway
+    NFSGatewayRecord:
+      title: NFSGatewayRecord
+      allOf:
+      - $ref: '#/components/schemas/NFSGateway'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/NFSGatewayStat'
+      description: NFSGatewayRecord combine NFSGateway and NFSGatewayStat as API response
+    NFSGatewayActionReq:
+      type: object
+      required:
+      - nfs_gateway
+      properties:
+        nfs_gateway:
+          $ref: '#/components/schemas/NFSGatewayActionReq_NFSGateway'
+      title: NFSGatewayActionReq
+    NFSGateway:
+      type: object
+      properties:
+        bucket_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        gateway_ip:
+          type: string
+        gateway_name:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        mount_clients:
+          type: string
+        mount_num:
+          type: integer
+          format: int64
+        name:
+          type: string
+        port:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: NFSGateway
+      description: NFSGateway defines nfs gateway @grpc-models-proto
+    NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap:
+      type: object
+      properties:
+        key_id:
+          type: integer
+          format: int64
+      title: NFSGatewayBucketMapUpdateReq_NFSGatewayBucketMap
+    NFSGatewayCreateReq:
+      type: object
+      required:
+      - nfs_gateway
+      properties:
+        nfs_gateway:
+          $ref: '#/components/schemas/NFSGatewayCreateReq_NFSGateway'
+      title: NFSGatewayCreateReq
+    NFSGatewayUpdateReq:
+      type: object
+      required:
+      - nfs_gateway
+      properties:
+        nfs_gateway:
+          $ref: '#/components/schemas/NFSGatewayUpdateReq_NFSGateway'
+      title: NFSGatewayUpdateReq
+    NFSGatewayBucketMapResp:
+      type: object
+      required:
+      - nfs_gateway_bucket_map
+      properties:
+        nfs_gateway_bucket_map:
+          description: map of nfs gateway and bucket
+          $ref: '#/components/schemas/NFSGatewayBucketMap'
+      title: NFSGatewayBucketMapResp
+      example:
+        nfs_gateway_bucket_map:
+          bucket:
+            lifecycle:
+              rules:
+              - '{}'
+              - '{}'
+              id: 6
+              status: status
+            name: name
+            id: 0
+          mount_clients: mount_clients
+          mount_num: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          key:
+            id: 5
+          action_status: action_status
+          nfs_gateway:
+            name: name
+            id: 2
+          status: status
+    NFSGatewayResp:
+      type: object
+      required:
+      - nfs_gateway
+      properties:
+        nfs_gateway:
+          description: nfs gateway
+          $ref: '#/components/schemas/NFSGatewayRecord'
+      title: NFSGatewayResp
+      example:
+        nfs_gateway: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

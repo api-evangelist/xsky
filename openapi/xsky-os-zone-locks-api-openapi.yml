@@ -177,6 +177,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OSZoneLockCreateReq:
+      type: object
+      properties:
+        os_zone_lock:
+          $ref: '#/components/schemas/OSZoneLockCreateReq_Lock'
+      title: OSZoneLockCreateReq
     OSZoneLocksResp:
       type: object
       required:
@@ -197,6 +203,40 @@ components:
           value: value
           key: key
         - resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          value: value
+          key: key
+    OSZoneLockCreateReq_Lock:
+      type: object
+      required:
+      - key
+      - resource_type
+      - value
+      properties:
+        key:
+          type: string
+          description: key of lock, for example name of os bucket
+        resource_type:
+          type: string
+          description: resource type of lock, including os_bucket
+        value:
+          type: string
+          description: value of lock, for example action of os bucket
+      title: OSZoneLockCreateReq_Lock
+    OSZoneLockResp:
+      type: object
+      required:
+      - os_zone_lock
+      properties:
+        os_zone_lock:
+          $ref: '#/components/schemas/OSZoneLock'
+      title: OSZoneLockResp
+      example:
+        os_zone_lock:
+          resource_type: resource_type
           create: '2000-01-23T04:56:07.000+00:00'
           expired_time: '2000-01-23T04:56:07.000+00:00'
           update: '2000-01-23T04:56:07.000+00:00'
@@ -233,46 +273,6 @@ components:
         uuid: uuid
         value: value
         key: key
-    OSZoneLockCreateReq:
-      type: object
-      properties:
-        os_zone_lock:
-          $ref: '#/components/schemas/OSZoneLockCreateReq_Lock'
-      title: OSZoneLockCreateReq
-    OSZoneLockResp:
-      type: object
-      required:
-      - os_zone_lock
-      properties:
-        os_zone_lock:
-          $ref: '#/components/schemas/OSZoneLock'
-      title: OSZoneLockResp
-      example:
-        os_zone_lock:
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          value: value
-          key: key
-    OSZoneLockCreateReq_Lock:
-      type: object
-      required:
-      - key
-      - resource_type
-      - value
-      properties:
-        key:
-          type: string
-          description: key of lock, for example name of os bucket
-        resource_type:
-          type: string
-          description: resource type of lock, including os_bucket
-        value:
-          type: string
-          description: value of lock, for example action of os bucket
-      title: OSZoneLockCreateReq_Lock
   securitySchemes:
     tokenInHeader:
       description: auth by token

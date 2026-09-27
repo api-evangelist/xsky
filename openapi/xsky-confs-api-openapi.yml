@@ -195,6 +195,71 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ConfItemsSetReq:
+      type: object
+      required:
+      - confs
+      properties:
+        confs:
+          type: object
+          additionalProperties:
+            type: string
+      title: ConfItemsSetReq
+      example:
+        confs:
+          key: confs
+    ConfItemsResp:
+      type: object
+      required:
+      - confs
+      properties:
+        confs:
+          type: array
+          description: conf items
+          items:
+            $ref: '#/components/schemas/ConfItem'
+      title: ConfItemsResp
+      example:
+        confs:
+        - id: 0
+          type: type
+          value: value
+          key: key
+        - id: 0
+          type: type
+          value: value
+          key: key
+    ConfItemSetReq_ConfItem:
+      type: object
+      required:
+      - key
+      - type
+      - value
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      title: ConfItemSetReq_ConfItem
+      example:
+        type: type
+        value: value
+        key: key
+    ConfItemSetReq:
+      type: object
+      required:
+      - conf
+      properties:
+        conf:
+          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
+      title: ConfItemSetReq
+      example:
+        conf:
+          type: type
+          value: value
+          key: key
     ConfItem:
       type: object
       properties:
@@ -214,24 +279,6 @@ components:
         type: type
         value: value
         key: key
-    ConfItemSetReq_ConfItem:
-      type: object
-      required:
-      - key
-      - type
-      - value
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
-      title: ConfItemSetReq_ConfItem
-      example:
-        type: type
-        value: value
-        key: key
     ConfItemResp:
       type: object
       required:
@@ -244,53 +291,6 @@ components:
       example:
         conf:
           id: 0
-          type: type
-          value: value
-          key: key
-    ConfItemsSetReq:
-      type: object
-      required:
-      - confs
-      properties:
-        confs:
-          type: object
-          additionalProperties:
-            type: string
-      title: ConfItemsSetReq
-      example:
-        confs:
-          key: confs
-    ConfItemSetReq:
-      type: object
-      required:
-      - conf
-      properties:
-        conf:
-          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
-      title: ConfItemSetReq
-      example:
-        conf:
-          type: type
-          value: value
-          key: key
-    ConfItemsResp:
-      type: object
-      required:
-      - confs
-      properties:
-        confs:
-          type: array
-          description: conf items
-          items:
-            $ref: '#/components/schemas/ConfItem'
-      title: ConfItemsResp
-      example:
-        confs:
-        - id: 0
-          type: type
-          value: value
-          key: key
-        - id: 0
           type: type
           value: value
           key: key

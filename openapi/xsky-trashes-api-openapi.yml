@@ -187,6 +187,48 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TrashResp:
+      type: object
+      required:
+      - trash
+      properties:
+        trash:
+          description: trash
+          $ref: '#/components/schemas/Trash'
+      title: TrashResp
+      example:
+        trash:
+          trash_resource_num: 6
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
+          retention: retention
+          status: status
+    TrashUpdateReq:
+      type: object
+      required:
+      - trash
+      properties:
+        trash:
+          $ref: '#/components/schemas/TrashUpdateReq_Trash'
+      title: TrashUpdateReq
+      example:
+        trash:
+          enabled: true
+          retention: retention
+    TrashUpdateReq_Trash:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        retention:
+          type: string
+      title: TrashUpdateReq_Trash
+      example:
+        enabled: true
+        retention: retention
     TrashesResp:
       type: object
       required:
@@ -250,48 +292,6 @@ components:
         enabled: true
         retention: retention
         status: status
-    TrashResp:
-      type: object
-      required:
-      - trash
-      properties:
-        trash:
-          description: trash
-          $ref: '#/components/schemas/Trash'
-      title: TrashResp
-      example:
-        trash:
-          trash_resource_num: 6
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          enabled: true
-          retention: retention
-          status: status
-    TrashUpdateReq_Trash:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        retention:
-          type: string
-      title: TrashUpdateReq_Trash
-      example:
-        enabled: true
-        retention: retention
-    TrashUpdateReq:
-      type: object
-      required:
-      - trash
-      properties:
-        trash:
-          $ref: '#/components/schemas/TrashUpdateReq_Trash'
-      title: TrashUpdateReq
-      example:
-        trash:
-          enabled: true
-          retention: retention
   securitySchemes:
     tokenInHeader:
       description: auth by token

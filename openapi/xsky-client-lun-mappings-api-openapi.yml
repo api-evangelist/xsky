@@ -91,41 +91,60 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ClientLunMappingsResp:
-      type: object
-      required:
-      - client_lun_mappings
-      properties:
-        client_lun_mappings:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClientLunMappingRecord'
-      title: ClientLunMappingsResp
-      example:
-        client_lun_mappings:
-        - ''
-        - ''
-    VolumeFailedTask:
+    VolumeNonIOTask:
       type: object
       properties:
-        abort:
+        ats:
           type: number
           format: double
-        busy:
+        other:
           type: number
           format: double
-        check_cond:
+        unmap:
           type: number
           format: double
-        resv_conflict:
+        write_same:
           type: number
           format: double
-      title: VolumeFailedTask
+        xcopy:
+          type: number
+          format: double
+      title: VolumeNonIOTask
       example:
-        abort: 7.061401241503109
-        busy: 9.301444243932576
-        check_cond: 3.616076749251911
-        resv_conflict: 2.027123023002322
+        ats: 5.025004791520295
+        other: 9.965781217890562
+        write_same: 6.683562403749608
+        xcopy: 8.762042012749001
+        unmap: 9.369310271410669
+    VolumeIOSize:
+      type: object
+      properties:
+        0_4kbyte:
+          type: number
+          format: double
+        32_64kbyte:
+          type: number
+          format: double
+        4_8kbyte:
+          type: number
+          format: double
+        64_512kbyte:
+          type: number
+          format: double
+        8_32kbyte:
+          type: number
+          format: double
+        above_512kbyte:
+          type: number
+          format: double
+      title: VolumeIOSize
+      example:
+        8_32kbyte: 1.4894159098541704
+        0_4kbyte: 4.145608029883936
+        32_64kbyte: 7.386281948385884
+        4_8kbyte: 1.2315135367772556
+        above_512kbyte: 6.84685269835264
+        64_512kbyte: 1.0246457001441578
     ClientLunMapping:
       type: object
       properties:
@@ -152,6 +171,23 @@ components:
           format: date-time
       title: ClientLunMapping
       description: ClientLunMapping defines a mapping relation with lun and client group
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     VolumeStat:
       type: object
       properties:
@@ -249,6 +285,60 @@ components:
         original_name: original_name
         name: name
         id: 9
+    ClientLunMappingResp:
+      type: object
+      required:
+      - client_lun_mapping
+      properties:
+        client_lun_mapping:
+          $ref: '#/components/schemas/ClientLunMappingRecord'
+      title: ClientLunMappingResp
+      example:
+        client_lun_mapping: ''
+    Client_Nestview:
+      type: object
+      properties:
+        code:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Client_Nestview
+    VolumeFailedTask:
+      type: object
+      properties:
+        abort:
+          type: number
+          format: double
+        busy:
+          type: number
+          format: double
+        check_cond:
+          type: number
+          format: double
+        resv_conflict:
+          type: number
+          format: double
+      title: VolumeFailedTask
+      example:
+        abort: 7.061401241503109
+        busy: 9.301444243932576
+        check_cond: 3.616076749251911
+        resv_conflict: 2.027123023002322
+    ClientLunMappingsResp:
+      type: object
+      required:
+      - client_lun_mappings
+      properties:
+        client_lun_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientLunMappingRecord'
+      title: ClientLunMappingsResp
+      example:
+        client_lun_mappings:
+        - ''
+        - ''
     ClientLunMappingRecord:
       title: ClientLunMappingRecord
       allOf:
@@ -260,31 +350,6 @@ components:
               $ref: '#/components/schemas/VolumeStat'
           session_status:
             type: string
-    VolumeNonIOTask:
-      type: object
-      properties:
-        ats:
-          type: number
-          format: double
-        other:
-          type: number
-          format: double
-        unmap:
-          type: number
-          format: double
-        write_same:
-          type: number
-          format: double
-        xcopy:
-          type: number
-          format: double
-      title: VolumeNonIOTask
-      example:
-        ats: 5.025004791520295
-        other: 9.965781217890562
-        write_same: 6.683562403749608
-        xcopy: 8.762042012749001
-        unmap: 9.369310271410669
     Target_Nestview:
       type: object
       properties:
@@ -292,62 +357,6 @@ components:
           type: integer
           format: int64
       title: Target_Nestview
-    VolumeIOSize:
-      type: object
-      properties:
-        0_4kbyte:
-          type: number
-          format: double
-        32_64kbyte:
-          type: number
-          format: double
-        4_8kbyte:
-          type: number
-          format: double
-        64_512kbyte:
-          type: number
-          format: double
-        8_32kbyte:
-          type: number
-          format: double
-        above_512kbyte:
-          type: number
-          format: double
-      title: VolumeIOSize
-      example:
-        8_32kbyte: 1.4894159098541704
-        0_4kbyte: 4.145608029883936
-        32_64kbyte: 7.386281948385884
-        4_8kbyte: 1.2315135367772556
-        above_512kbyte: 6.84685269835264
-        64_512kbyte: 1.0246457001441578
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    ClientLunMappingResp:
-      type: object
-      required:
-      - client_lun_mapping
-      properties:
-        client_lun_mapping:
-          $ref: '#/components/schemas/ClientLunMappingRecord'
-      title: ClientLunMappingResp
-      example:
-        client_lun_mapping: ''
     Lun_Nestview:
       type: object
       properties:
@@ -358,15 +367,6 @@ components:
           type: integer
           format: int64
       title: Lun_Nestview
-    Client_Nestview:
-      type: object
-      properties:
-        code:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Client_Nestview
   securitySchemes:
     tokenInHeader:
       description: auth by token

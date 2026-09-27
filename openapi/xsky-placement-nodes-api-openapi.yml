@@ -198,115 +198,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PlacementNodeUpdateReq_PlacementNode:
-      type: object
-      required:
-      - name
-      - parent_id
-      properties:
-        name:
-          type: string
-        parent_id:
-          type: integer
-          format: int64
-      title: PlacementNodeUpdateReq_PlacementNode
-      example:
-        parent_id: 0
-        name: name
-    PlacementNodeResp:
-      type: object
-      required:
-      - placement_node
-      properties:
-        placement_node:
-          description: placement node
-          $ref: '#/components/schemas/PlacementNodeRecord'
-      title: PlacementNodeResp
-      example:
-        placement_node: ''
-    PlacementNodeProperties:
-      type: object
-      properties:
-        is_witness:
-          type: boolean
-          description: whether this is a witness node
-      title: PlacementNodeProperties
-      description: PlacementNodeProperties contains properties for a placement node.
-      example:
-        is_witness: true
-    PlacementNodeTopologyResp:
-      type: object
-      required:
-      - topology
-      properties:
-        topology:
-          description: topology of placement nodes
-          $ref: '#/components/schemas/PlacementNodeTopology'
-      title: PlacementNodeTopologyResp
-      example:
-        topology: ''
-    PlacementNodeTopology:
-      title: PlacementNodeTopology
-      allOf:
-      - $ref: '#/components/schemas/PlacementNode'
-      - properties:
-          available_osd_num:
-            type: integer
-            format: int64
-          children:
-            type: array
-            items:
-              $ref: '#/components/schemas/PlacementNodeTopology'
-      description: PlacementNodeTopology defines the response content of placement node topology
-    PlacementNodeRecord:
-      title: PlacementNodeRecord
-      allOf:
-      - $ref: '#/components/schemas/PlacementNode'
-      - {}
-    PlacementNodeCreateReq_PlacementNode:
-      type: object
-      required:
-      - name
-      - parent_id
-      - type
-      properties:
-        is_witness:
-          type: boolean
-        name:
-          type: string
-        parent_id:
-          type: integer
-          format: int64
-        type:
-          type: string
-      title: PlacementNodeCreateReq_PlacementNode
-      example:
-        is_witness: true
-        parent_id: 0
-        name: name
-        type: type
-    PlacementNodeCreateReq:
-      type: object
-      properties:
-        placement_node:
-          $ref: '#/components/schemas/PlacementNodeCreateReq_PlacementNode'
-      title: PlacementNodeCreateReq
-      example:
-        placement_node:
-          is_witness: true
-          parent_id: 0
-          name: name
-          type: type
-    PlacementNodeUpdateReq:
-      type: object
-      properties:
-        placement_node:
-          $ref: '#/components/schemas/PlacementNodeUpdateReq_PlacementNode'
-      title: PlacementNodeUpdateReq
-      example:
-        placement_node:
-          parent_id: 0
-          name: name
     PlacementNode:
       type: object
       properties:
@@ -345,6 +236,115 @@ components:
         type: type
         properties:
           is_witness: true
+    PlacementNodeResp:
+      type: object
+      required:
+      - placement_node
+      properties:
+        placement_node:
+          description: placement node
+          $ref: '#/components/schemas/PlacementNodeRecord'
+      title: PlacementNodeResp
+      example:
+        placement_node: ''
+    PlacementNodeProperties:
+      type: object
+      properties:
+        is_witness:
+          type: boolean
+          description: whether this is a witness node
+      title: PlacementNodeProperties
+      description: PlacementNodeProperties contains properties for a placement node.
+      example:
+        is_witness: true
+    PlacementNodeUpdateReq:
+      type: object
+      properties:
+        placement_node:
+          $ref: '#/components/schemas/PlacementNodeUpdateReq_PlacementNode'
+      title: PlacementNodeUpdateReq
+      example:
+        placement_node:
+          parent_id: 0
+          name: name
+    PlacementNodeTopology:
+      title: PlacementNodeTopology
+      allOf:
+      - $ref: '#/components/schemas/PlacementNode'
+      - properties:
+          available_osd_num:
+            type: integer
+            format: int64
+          children:
+            type: array
+            items:
+              $ref: '#/components/schemas/PlacementNodeTopology'
+      description: PlacementNodeTopology defines the response content of placement node topology
+    PlacementNodeCreateReq:
+      type: object
+      properties:
+        placement_node:
+          $ref: '#/components/schemas/PlacementNodeCreateReq_PlacementNode'
+      title: PlacementNodeCreateReq
+      example:
+        placement_node:
+          is_witness: true
+          parent_id: 0
+          name: name
+          type: type
+    PlacementNodeTopologyResp:
+      type: object
+      required:
+      - topology
+      properties:
+        topology:
+          description: topology of placement nodes
+          $ref: '#/components/schemas/PlacementNodeTopology'
+      title: PlacementNodeTopologyResp
+      example:
+        topology: ''
+    PlacementNodeRecord:
+      title: PlacementNodeRecord
+      allOf:
+      - $ref: '#/components/schemas/PlacementNode'
+      - {}
+    PlacementNodeCreateReq_PlacementNode:
+      type: object
+      required:
+      - name
+      - parent_id
+      - type
+      properties:
+        is_witness:
+          type: boolean
+        name:
+          type: string
+        parent_id:
+          type: integer
+          format: int64
+        type:
+          type: string
+      title: PlacementNodeCreateReq_PlacementNode
+      example:
+        is_witness: true
+        parent_id: 0
+        name: name
+        type: type
+    PlacementNodeUpdateReq_PlacementNode:
+      type: object
+      required:
+      - name
+      - parent_id
+      properties:
+        name:
+          type: string
+        parent_id:
+          type: integer
+          format: int64
+      title: PlacementNodeUpdateReq_PlacementNode
+      example:
+        parent_id: 0
+        name: name
   securitySchemes:
     tokenInHeader:
       description: auth by token

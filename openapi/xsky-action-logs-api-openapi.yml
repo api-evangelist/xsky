@@ -109,20 +109,54 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    User_Nestview:
+    ActionLogsResp:
+      type: object
+      required:
+      - action_logs
+      properties:
+        action_logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionLogRecord'
+      title: ActionLogsResp
+      example:
+        action_logs:
+        - ''
+        - ''
+    ActionLog_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
-          description: id of user
+      title: ActionLog_Nestview
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
         name:
           type: string
-          description: name of user
-      title: User_Nestview
+      title: Host_Nestview
       example:
         name: name
-        id: 6
+        admin_ip: admin_ip
+        id: 0
+    ActionLogRecord:
+      title: ActionLogRecord
+      allOf:
+      - $ref: '#/components/schemas/ActionLog'
+      - properties:
+          error_records:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorRecord'
+      description: ActionLogRecord defines the response errors of action log
     ActionLog:
       type: object
       properties:
@@ -177,13 +211,20 @@ components:
           type: integer
           format: int64
       title: Alert_Nestview
-    ActionLog_Nestview:
+    User_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
-      title: ActionLog_Nestview
+          description: id of user
+        name:
+          type: string
+          description: name of user
+      title: User_Nestview
+      example:
+        name: name
+        id: 6
     ErrorRecord:
       type: object
       properties:
@@ -210,47 +251,6 @@ components:
           type: string
       title: ErrorRecord
       description: ErrorRecord defines the error record attributes.
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    ActionLogRecord:
-      title: ActionLogRecord
-      allOf:
-      - $ref: '#/components/schemas/ActionLog'
-      - properties:
-          error_records:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorRecord'
-      description: ActionLogRecord defines the response errors of action log
-    ActionLogsResp:
-      type: object
-      required:
-      - action_logs
-      properties:
-        action_logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionLogRecord'
-      title: ActionLogsResp
-      example:
-        action_logs:
-        - ''
-        - ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -99,36 +99,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageBucket_Nestview_lifecycle:
+    ObjectStorageBucket_Nestview:
+      type: object
       properties:
         id:
           type: integer
           format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
+        lifecycle:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
+        name:
           type: string
+      title: ObjectStorageBucket_Nestview
       example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
-    OSCustomLabelResp:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+    OSCustomLabelsResp:
       type: object
       required:
-      - os_custom_label
+      - os_custom_labels
       properties:
-        os_custom_label:
-          description: object storage custom label
-          $ref: '#/components/schemas/OSCustomLabel'
-      title: OSCustomLabelResp
+        os_custom_labels:
+          type: array
+          description: object storage custom labels
+          items:
+            $ref: '#/components/schemas/OSCustomLabel'
+      title: OSCustomLabelsResp
       example:
-        os_custom_label:
-          bucket:
+        os_custom_labels:
+        - bucket:
+            lifecycle:
+              rules:
+              - '{}'
+              - '{}'
+              id: 6
+              status: status
+            name: name
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          category: category
+          type: type
+          status: status
+        - bucket:
             lifecycle:
               rules:
               - '{}'
@@ -185,20 +205,18 @@ components:
         category: category
         type: type
         status: status
-    OSCustomLabelsResp:
+    OSCustomLabelResp:
       type: object
       required:
-      - os_custom_labels
+      - os_custom_label
       properties:
-        os_custom_labels:
-          type: array
-          description: object storage custom labels
-          items:
-            $ref: '#/components/schemas/OSCustomLabel'
-      title: OSCustomLabelsResp
+        os_custom_label:
+          description: object storage custom label
+          $ref: '#/components/schemas/OSCustomLabel'
+      title: OSCustomLabelResp
       example:
-        os_custom_labels:
-        - bucket:
+        os_custom_label:
+          bucket:
             lifecycle:
               rules:
               - '{}'
@@ -214,42 +232,24 @@ components:
           category: category
           type: type
           status: status
-        - bucket:
-            lifecycle:
-              rules:
-              - '{}'
-              - '{}'
-              id: 6
-              status: status
-            name: name
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          category: category
-          type: type
-          status: status
-    ObjectStorageBucket_Nestview:
-      type: object
+    ObjectStorageBucket_Nestview_lifecycle:
       properties:
         id:
           type: integer
           format: int64
-        lifecycle:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
-        name:
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
           type: string
-      title: ObjectStorageBucket_Nestview
       example:
-        lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
-        name: name
-        id: 0
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

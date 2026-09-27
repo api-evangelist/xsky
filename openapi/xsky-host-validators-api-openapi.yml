@@ -107,47 +107,6 @@ components:
         admin_ip: admin_ip
         host_type: host_type
         private_ip: private_ip
-    HostValidatorCreateReq:
-      type: object
-      properties:
-        host_validator:
-          $ref: '#/components/schemas/HostValidatorCreateReq_Validator'
-      title: HostValidatorCreateReq
-      example:
-        host_validator:
-          gateway_ips:
-          - gateway_ips
-          - gateway_ips
-          public_ip: public_ip
-          host_roles:
-          - host_roles
-          - host_roles
-          admin_ip: admin_ip
-          host_type: host_type
-          private_ip: private_ip
-    HostValidatorResp:
-      type: object
-      properties:
-        host_validator:
-          $ref: '#/components/schemas/HostValidator'
-      title: HostValidatorResp
-      example:
-        host_validator:
-          gateway_ips:
-          - gateway_ips
-          - gateway_ips
-          public_ip: public_ip
-          host_roles:
-          - host_roles
-          - host_roles
-          report: '{}'
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          admin_ip: admin_ip
-          id: 0
-          host_type: host_type
-          private_ip: private_ip
-          status: status
     HostValidator:
       type: object
       properties:
@@ -199,6 +158,47 @@ components:
         host_type: host_type
         private_ip: private_ip
         status: status
+    HostValidatorCreateReq:
+      type: object
+      properties:
+        host_validator:
+          $ref: '#/components/schemas/HostValidatorCreateReq_Validator'
+      title: HostValidatorCreateReq
+      example:
+        host_validator:
+          gateway_ips:
+          - gateway_ips
+          - gateway_ips
+          public_ip: public_ip
+          host_roles:
+          - host_roles
+          - host_roles
+          admin_ip: admin_ip
+          host_type: host_type
+          private_ip: private_ip
+    HostValidatorResp:
+      type: object
+      properties:
+        host_validator:
+          $ref: '#/components/schemas/HostValidator'
+      title: HostValidatorResp
+      example:
+        host_validator:
+          gateway_ips:
+          - gateway_ips
+          - gateway_ips
+          public_ip: public_ip
+          host_roles:
+          - host_roles
+          - host_roles
+          report: '{}'
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          admin_ip: admin_ip
+          id: 0
+          host_type: host_type
+          private_ip: private_ip
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -93,6 +93,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OSRemotePolicy:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        default:
+          type: boolean
+        name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        uuid:
+          type: string
+        zone_uuid:
+          type: string
+      title: OSRemotePolicy
+      description: OSRemotePolicy defines model of cached remote os policy.
+      example:
+        default: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        zone_uuid: zone_uuid
+        uuid: uuid
+        status: status
     OSRemotePolicyResp:
       type: object
       properties:
@@ -132,35 +161,6 @@ components:
           zone_uuid: zone_uuid
           uuid: uuid
           status: status
-    OSRemotePolicy:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        default:
-          type: boolean
-        name:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        uuid:
-          type: string
-        zone_uuid:
-          type: string
-      title: OSRemotePolicy
-      description: OSRemotePolicy defines model of cached remote os policy.
-      example:
-        default: true
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        zone_uuid: zone_uuid
-        uuid: uuid
-        status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

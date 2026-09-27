@@ -156,19 +156,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TargetCreateReq_Target:
-      type: object
-      properties:
-        access_path_id:
-          type: integer
-          format: int64
-        host_id:
-          type: integer
-          format: int64
-      title: TargetCreateReq_Target
-      example:
-        access_path_id: 0
-        host_id: 6
     TargetResp:
       type: object
       required:
@@ -236,28 +223,6 @@ components:
         id: 6
         board: 0
         status: status
-    AccessPath_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: AccessPath_Nestview
-      example:
-        name: name
-        id: 0
-    TargetCreateReq:
-      type: object
-      properties:
-        target:
-          $ref: '#/components/schemas/TargetCreateReq_Target'
-      title: TargetCreateReq
-      example:
-        target:
-          access_path_id: 0
-          host_id: 6
     Host_Nestview:
       type: object
       required:
@@ -274,6 +239,18 @@ components:
       example:
         name: name
         admin_ip: admin_ip
+        id: 0
+    AccessPath_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: AccessPath_Nestview
+      example:
+        name: name
         id: 0
     TargetsResp:
       type: object
@@ -315,6 +292,29 @@ components:
           id: 6
           board: 0
           status: status
+    TargetCreateReq_Target:
+      type: object
+      properties:
+        access_path_id:
+          type: integer
+          format: int64
+        host_id:
+          type: integer
+          format: int64
+      title: TargetCreateReq_Target
+      example:
+        access_path_id: 0
+        host_id: 6
+    TargetCreateReq:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/TargetCreateReq_Target'
+      title: TargetCreateReq
+      example:
+        target:
+          access_path_id: 0
+          host_id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

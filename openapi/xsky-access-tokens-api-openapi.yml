@@ -271,20 +271,27 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    User_Nestview:
+    AccessTokenResp:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          description: id of user
-        name:
-          type: string
-          description: name of user
-      title: User_Nestview
+        access_token:
+          description: access token
+          $ref: '#/components/schemas/AccessToken'
+      title: AccessTokenResp
       example:
-        name: name
-        id: 6
+        access_token:
+          roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
     AccessTokenUpdateReq_AccessToken:
       type: object
       required:
@@ -296,15 +303,6 @@ components:
       title: AccessTokenUpdateReq_AccessToken
       example:
         name: name
-    AccessTokenUpdateReq:
-      type: object
-      properties:
-        access_token:
-          $ref: '#/components/schemas/AccessTokenUpdateReq_AccessToken'
-      title: AccessTokenUpdateReq
-      example:
-        access_token:
-          name: name
     AccessTokenCreateResp:
       type: object
       required:
@@ -324,6 +322,19 @@ components:
           uuid:
             type: string
       description: AccessTokenCreateRecord defines access token record for creating api response
+    AccessTokenCreateReq:
+      type: object
+      properties:
+        access_token:
+          $ref: '#/components/schemas/AccessTokenCreateReq_AccessToken'
+      title: AccessTokenCreateReq
+      example:
+        access_token:
+          roles:
+          - roles
+          - roles
+          name: name
+          description: description
     AccessTokensResp:
       type: object
       required:
@@ -361,27 +372,44 @@ components:
           user:
             name: name
             id: 6
-    AccessTokenResp:
+    User_Nestview:
       type: object
       properties:
-        access_token:
-          description: access token
-          $ref: '#/components/schemas/AccessToken'
-      title: AccessTokenResp
+        id:
+          type: integer
+          format: int64
+          description: id of user
+        name:
+          type: string
+          description: name of user
+      title: User_Nestview
       example:
-        access_token:
-          roles:
-          - roles
-          - roles
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          used: true
-          user:
-            name: name
-            id: 6
+        name: name
+        id: 6
+    AccessTokenCreateReq_AccessToken:
+      type: object
+      required:
+      - name
+      - roles
+      properties:
+        description:
+          type: string
+          description: description of access token
+        name:
+          type: string
+          description: name of access token
+        roles:
+          type: array
+          description: roles of access token
+          items:
+            type: string
+      title: AccessTokenCreateReq_AccessToken
+      example:
+        roles:
+        - roles
+        - roles
+        name: name
+        description: description
     AccessToken:
       type: object
       properties:
@@ -421,43 +449,15 @@ components:
         user:
           name: name
           id: 6
-    AccessTokenCreateReq:
+    AccessTokenUpdateReq:
       type: object
       properties:
         access_token:
-          $ref: '#/components/schemas/AccessTokenCreateReq_AccessToken'
-      title: AccessTokenCreateReq
+          $ref: '#/components/schemas/AccessTokenUpdateReq_AccessToken'
+      title: AccessTokenUpdateReq
       example:
         access_token:
-          roles:
-          - roles
-          - roles
           name: name
-          description: description
-    AccessTokenCreateReq_AccessToken:
-      type: object
-      required:
-      - name
-      - roles
-      properties:
-        description:
-          type: string
-          description: description of access token
-        name:
-          type: string
-          description: name of access token
-        roles:
-          type: array
-          description: roles of access token
-          items:
-            type: string
-      title: AccessTokenCreateReq_AccessToken
-      example:
-        roles:
-        - roles
-        - roles
-        name: name
-        description: description
   securitySchemes:
     tokenInHeader:
       description: auth by token
