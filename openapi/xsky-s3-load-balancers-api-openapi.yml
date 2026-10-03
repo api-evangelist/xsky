@@ -184,24 +184,107 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SSLCertificate_Nestview:
+    S3LoadBalancerSamplesElem:
       type: object
       properties:
-        force_https:
-          type: boolean
-          description: redirect http request to https
         id:
           type: integer
           format: int64
-          description: certificate id
-        name:
-          type: string
-          description: certificate name
-      title: SSLCertificate_Nestview
+        paging:
+          $ref: '#/components/schemas/Paging'
+        samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/S3LoadBalancerStat'
+      title: S3LoadBalancerSamplesElem
       example:
-        force_https: true
-        name: name
-        id: 2
+        paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+        - up_bandwidth_kbyte: 9.301444243932576
+          down_bandwidth_kbyte: 5.962133916683182
+          success_requests: 7.061401241503109
+          mem_usage_percent: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          active_connections: 6.027456183070403
+          cpu_util: 1.4658129805029452
+          failure_requests: 5.637376656633329
+    Paging:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        duration:
+          type: integer
+          format: int64
+        duration_begin:
+          type: string
+          format: date-time
+        duration_end:
+          type: string
+          format: date-time
+        limit:
+          type: integer
+          format: int64
+        next:
+          type: string
+        offset:
+          type: integer
+          format: int64
+        period:
+          type: string
+        total_count:
+          type: integer
+          format: int64
+        truncated:
+          type: boolean
+      title: Paging
+      description: Paging defines paging object
+      example:
+        duration: 1
+        next: next
+        period: period
+        offset: 5
+        total_count: 2
+        count: 6
+        duration_end: '2000-01-23T04:56:07.000+00:00'
+        limit: 5
+        truncated: true
+        duration_begin: '2000-01-23T04:56:07.000+00:00'
+    S3LoadBalancersResp:
+      type: object
+      required:
+      - s3_load_balancers
+      properties:
+        s3_load_balancers:
+          type: array
+          description: s3 load balancers
+          items:
+            $ref: '#/components/schemas/S3LoadBalancerRecord'
+      title: S3LoadBalancersResp
+      example:
+        s3_load_balancers:
+        - ''
+        - ''
     Host_Nestview:
       type: object
       required:
@@ -219,17 +302,54 @@ components:
         name: name
         admin_ip: admin_ip
         id: 0
-    S3LoadBalancerResp:
+    S3LoadBalancerRecord:
+      title: S3LoadBalancerRecord
+      allOf:
+      - $ref: '#/components/schemas/S3LoadBalancer'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/S3LoadBalancerStat'
+      description: S3LoadBalancerRecord defines s3 load balancer with samples
+    S3LoadBalancerStat:
       type: object
-      required:
-      - s3_load_balancer
       properties:
-        s3_load_balancer:
-          description: s3 load balancer
-          $ref: '#/components/schemas/S3LoadBalancerRecord'
-      title: S3LoadBalancerResp
+        active_connections:
+          type: number
+          format: double
+        cpu_util:
+          type: number
+          format: double
+        create:
+          type: string
+          format: date-time
+        down_bandwidth_kbyte:
+          type: number
+          format: double
+        failure_requests:
+          type: number
+          format: double
+        mem_usage_percent:
+          type: number
+          format: double
+        success_requests:
+          type: number
+          format: double
+        up_bandwidth_kbyte:
+          type: number
+          format: double
+      title: S3LoadBalancerStat
+      description: S3LoadBalancerStat define s3 load balancer stat info
       example:
-        s3_load_balancer: ''
+        up_bandwidth_kbyte: 9.301444243932576
+        down_bandwidth_kbyte: 5.962133916683182
+        success_requests: 7.061401241503109
+        mem_usage_percent: 2.3021358869347655
+        create: '2000-01-23T04:56:07.000+00:00'
+        active_connections: 6.027456183070403
+        cpu_util: 1.4658129805029452
+        failure_requests: 5.637376656633329
     MultiS3LoadBalancersSamplesResp:
       type: object
       properties:
@@ -298,6 +418,17 @@ components:
             active_connections: 6.027456183070403
             cpu_util: 1.4658129805029452
             failure_requests: 5.637376656633329
+    S3LoadBalancerResp:
+      type: object
+      required:
+      - s3_load_balancer
+      properties:
+        s3_load_balancer:
+          description: s3 load balancer
+          $ref: '#/components/schemas/S3LoadBalancerRecord'
+      title: S3LoadBalancerResp
+      example:
+        s3_load_balancer: ''
     S3LoadBalancer:
       type: object
       properties:
@@ -361,16 +492,24 @@ components:
           type: string
       title: S3LoadBalancer
       description: S3LoadBalancer is a load balancer for rados loadBalancers @grpc-models-proto
-    S3LoadBalancerRecord:
-      title: S3LoadBalancerRecord
-      allOf:
-      - $ref: '#/components/schemas/S3LoadBalancer'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/S3LoadBalancerStat'
-      description: S3LoadBalancerRecord defines s3 load balancer with samples
+    SSLCertificate_Nestview:
+      type: object
+      properties:
+        force_https:
+          type: boolean
+          description: redirect http request to https
+        id:
+          type: integer
+          format: int64
+          description: certificate id
+        name:
+          type: string
+          description: certificate name
+      title: SSLCertificate_Nestview
+      example:
+        force_https: true
+        name: name
+        id: 2
     S3LoadBalancerGroup_Nestview:
       type: object
       properties:
@@ -386,44 +525,6 @@ components:
         name: name
         id: 6
         status: status
-    S3LoadBalancerStat:
-      type: object
-      properties:
-        active_connections:
-          type: number
-          format: double
-        cpu_util:
-          type: number
-          format: double
-        create:
-          type: string
-          format: date-time
-        down_bandwidth_kbyte:
-          type: number
-          format: double
-        failure_requests:
-          type: number
-          format: double
-        mem_usage_percent:
-          type: number
-          format: double
-        success_requests:
-          type: number
-          format: double
-        up_bandwidth_kbyte:
-          type: number
-          format: double
-      title: S3LoadBalancerStat
-      description: S3LoadBalancerStat define s3 load balancer stat info
-      example:
-        up_bandwidth_kbyte: 9.301444243932576
-        down_bandwidth_kbyte: 5.962133916683182
-        success_requests: 7.061401241503109
-        mem_usage_percent: 2.3021358869347655
-        create: '2000-01-23T04:56:07.000+00:00'
-        active_connections: 6.027456183070403
-        cpu_util: 1.4658129805029452
-        failure_requests: 5.637376656633329
     S3LoadBalancerSamplesResp:
       type: object
       required:
@@ -437,107 +538,6 @@ components:
       title: S3LoadBalancerSamplesResp
       example:
         s3_load_balancer_samples:
-        - up_bandwidth_kbyte: 9.301444243932576
-          down_bandwidth_kbyte: 5.962133916683182
-          success_requests: 7.061401241503109
-          mem_usage_percent: 2.3021358869347655
-          create: '2000-01-23T04:56:07.000+00:00'
-          active_connections: 6.027456183070403
-          cpu_util: 1.4658129805029452
-          failure_requests: 5.637376656633329
-        - up_bandwidth_kbyte: 9.301444243932576
-          down_bandwidth_kbyte: 5.962133916683182
-          success_requests: 7.061401241503109
-          mem_usage_percent: 2.3021358869347655
-          create: '2000-01-23T04:56:07.000+00:00'
-          active_connections: 6.027456183070403
-          cpu_util: 1.4658129805029452
-          failure_requests: 5.637376656633329
-    S3LoadBalancersResp:
-      type: object
-      required:
-      - s3_load_balancers
-      properties:
-        s3_load_balancers:
-          type: array
-          description: s3 load balancers
-          items:
-            $ref: '#/components/schemas/S3LoadBalancerRecord'
-      title: S3LoadBalancersResp
-      example:
-        s3_load_balancers:
-        - ''
-        - ''
-    Paging:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int64
-        duration:
-          type: integer
-          format: int64
-        duration_begin:
-          type: string
-          format: date-time
-        duration_end:
-          type: string
-          format: date-time
-        limit:
-          type: integer
-          format: int64
-        next:
-          type: string
-        offset:
-          type: integer
-          format: int64
-        period:
-          type: string
-        total_count:
-          type: integer
-          format: int64
-        truncated:
-          type: boolean
-      title: Paging
-      description: Paging defines paging object
-      example:
-        duration: 1
-        next: next
-        period: period
-        offset: 5
-        total_count: 2
-        count: 6
-        duration_end: '2000-01-23T04:56:07.000+00:00'
-        limit: 5
-        truncated: true
-        duration_begin: '2000-01-23T04:56:07.000+00:00'
-    S3LoadBalancerSamplesElem:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        paging:
-          $ref: '#/components/schemas/Paging'
-        samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/S3LoadBalancerStat'
-      title: S3LoadBalancerSamplesElem
-      example:
-        paging:
-          duration: 1
-          next: next
-          period: period
-          offset: 5
-          total_count: 2
-          count: 6
-          duration_end: '2000-01-23T04:56:07.000+00:00'
-          limit: 5
-          truncated: true
-          duration_begin: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        samples:
         - up_bandwidth_kbyte: 9.301444243932576
           down_bandwidth_kbyte: 5.962133916683182
           success_requests: 7.061401241503109

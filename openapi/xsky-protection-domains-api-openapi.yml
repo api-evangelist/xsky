@@ -95,6 +95,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PlacementNodeProperties:
+      type: object
+      properties:
+        is_witness:
+          type: boolean
+          description: whether this is a witness node
+      title: PlacementNodeProperties
+      description: PlacementNodeProperties contains properties for a placement node.
+      example:
+        is_witness: true
     PlacementNode:
       type: object
       properties:
@@ -143,27 +153,21 @@ components:
         parent:
           $ref: '#/components/schemas/PlacementNode_Nestview_parent'
       title: PlacementNode_Nestview
-    ProtectionDomainRecordResp:
+    ProtectionDomainRecordsResp:
       type: object
       required:
-      - protection_domain
+      - protection_domains
       properties:
-        protection_domain:
-          description: protection domain
-          $ref: '#/components/schemas/PdRecord'
-      title: ProtectionDomainRecordResp
+        protection_domains:
+          type: array
+          description: protection domains
+          items:
+            $ref: '#/components/schemas/PdRecord'
+      title: ProtectionDomainRecordsResp
       example:
-        protection_domain: ''
-    PlacementNodeProperties:
-      type: object
-      properties:
-        is_witness:
-          type: boolean
-          description: whether this is a witness node
-      title: PlacementNodeProperties
-      description: PlacementNodeProperties contains properties for a placement node.
-      example:
-        is_witness: true
+        protection_domains:
+        - ''
+        - ''
     PlacementNode_Nestview_parent:
       properties:
         create:
@@ -191,6 +195,11 @@ components:
           format: date-time
           description: time of updating placement node
       description: parent of placement node
+    PdRecord:
+      title: PdRecord
+      allOf:
+      - $ref: '#/components/schemas/ProtectionDomain'
+      description: PdRecord defines the response content of protection domain related API
     ProtectionDomain:
       type: object
       properties:
@@ -220,26 +229,17 @@ components:
           description: time of updating protection domain
       title: ProtectionDomain
       description: ProtectionDomain defines protection domain objects
-    PdRecord:
-      title: PdRecord
-      allOf:
-      - $ref: '#/components/schemas/ProtectionDomain'
-      description: PdRecord defines the response content of protection domain related API
-    ProtectionDomainRecordsResp:
+    ProtectionDomainRecordResp:
       type: object
       required:
-      - protection_domains
+      - protection_domain
       properties:
-        protection_domains:
-          type: array
-          description: protection domains
-          items:
-            $ref: '#/components/schemas/PdRecord'
-      title: ProtectionDomainRecordsResp
+        protection_domain:
+          description: protection domain
+          $ref: '#/components/schemas/PdRecord'
+      title: ProtectionDomainRecordResp
       example:
-        protection_domains:
-        - ''
-        - ''
+        protection_domain: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

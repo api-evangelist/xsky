@@ -192,18 +192,101 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Pool_Nestview:
+    BlockVolumeMigrationJobsResp:
       type: object
+      required:
+      - block_volume_migration_jobs
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Pool_Nestview
+        block_volume_migration_jobs:
+          type: array
+          description: volume migration jobs
+          items:
+            $ref: '#/components/schemas/VolumeMigrationJob'
+      title: BlockVolumeMigrationJobsResp
       example:
-        name: name
-        id: 5
+        block_volume_migration_jobs:
+        - finished_at: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          stripes: 1
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          remaining_time: 6
+          source_pool:
+            name: name
+            id: 5
+          task:
+            retried: true
+            error_msg: error_msg
+            data: data
+            update: '2000-01-23T04:56:07.000+00:00'
+            priority: 5
+            type: type
+            execute: '2000-01-23T04:56:07.000+00:00'
+            host_role: host_role
+            host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            finish: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            retry: 2
+            retry_type: retry_type
+            status: status
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          dest_pool:
+            name: name
+            id: 5
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          status: status
+        - finished_at: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          stripes: 1
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          remaining_time: 6
+          source_pool:
+            name: name
+            id: 5
+          task:
+            retried: true
+            error_msg: error_msg
+            data: data
+            update: '2000-01-23T04:56:07.000+00:00'
+            priority: 5
+            type: type
+            execute: '2000-01-23T04:56:07.000+00:00'
+            host_role: host_role
+            host:
+              name: name
+              admin_ip: admin_ip
+              id: 0
+            create: '2000-01-23T04:56:07.000+00:00'
+            finish: '2000-01-23T04:56:07.000+00:00'
+            id: 5
+            retry: 2
+            retry_type: retry_type
+            status: status
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          dest_pool:
+            name: name
+            id: 5
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          status: status
     VolumeMigrationJob:
       type: object
       properties:
@@ -301,93 +384,6 @@ components:
         name: name
         admin_ip: admin_ip
         id: 0
-    BlockVolumeMigrationJobResp:
-      type: object
-      required:
-      - block_volume_migration_job
-      properties:
-        block_volume_migration_job:
-          description: volume migration job
-          $ref: '#/components/schemas/VolumeMigrationJob'
-      title: BlockVolumeMigrationJobResp
-      example:
-        block_volume_migration_job:
-          finished_at: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          stripes: 1
-          volume:
-            original_name: original_name
-            name: name
-            id: 9
-          remaining_time: 6
-          source_pool:
-            name: name
-            id: 5
-          task:
-            retried: true
-            error_msg: error_msg
-            data: data
-            update: '2000-01-23T04:56:07.000+00:00'
-            priority: 5
-            type: type
-            execute: '2000-01-23T04:56:07.000+00:00'
-            host_role: host_role
-            host:
-              name: name
-              admin_ip: admin_ip
-              id: 0
-            create: '2000-01-23T04:56:07.000+00:00'
-            finish: '2000-01-23T04:56:07.000+00:00'
-            id: 5
-            retry: 2
-            retry_type: retry_type
-            status: status
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          dest_pool:
-            name: name
-            id: 5
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          status: status
-    BlockVolumeUpdateMigrationReq:
-      type: object
-      properties:
-        volume_migration_job:
-          $ref: '#/components/schemas/BlockVolumeUpdateMigrationReq_VolumeMigrationJob'
-      title: BlockVolumeUpdateMigrationReq
-      example:
-        volume_migration_job:
-          stripes: 0
-    Volume_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        original_name:
-          type: string
-      title: Volume_Nestview
-      example:
-        original_name: original_name
-        name: name
-        id: 9
-    BlockVolumeUpdateMigrationReq_VolumeMigrationJob:
-      type: object
-      required:
-      - stripes
-      properties:
-        stripes:
-          type: integer
-          format: int64
-      title: BlockVolumeUpdateMigrationReq_VolumeMigrationJob
-      example:
-        stripes: 0
     Task:
       type: object
       properties:
@@ -449,61 +445,65 @@ components:
         retry: 2
         retry_type: retry_type
         status: status
-    BlockVolumeMigrationJobsResp:
+    BlockVolumeUpdateMigrationReq_VolumeMigrationJob:
       type: object
       required:
-      - block_volume_migration_jobs
+      - stripes
       properties:
-        block_volume_migration_jobs:
-          type: array
-          description: volume migration jobs
-          items:
-            $ref: '#/components/schemas/VolumeMigrationJob'
-      title: BlockVolumeMigrationJobsResp
+        stripes:
+          type: integer
+          format: int64
+      title: BlockVolumeUpdateMigrationReq_VolumeMigrationJob
       example:
-        block_volume_migration_jobs:
-        - finished_at: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          stripes: 1
-          volume:
-            original_name: original_name
-            name: name
-            id: 9
-          remaining_time: 6
-          source_pool:
-            name: name
-            id: 5
-          task:
-            retried: true
-            error_msg: error_msg
-            data: data
-            update: '2000-01-23T04:56:07.000+00:00'
-            priority: 5
-            type: type
-            execute: '2000-01-23T04:56:07.000+00:00'
-            host_role: host_role
-            host:
-              name: name
-              admin_ip: admin_ip
-              id: 0
-            create: '2000-01-23T04:56:07.000+00:00'
-            finish: '2000-01-23T04:56:07.000+00:00'
-            id: 5
-            retry: 2
-            retry_type: retry_type
-            status: status
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          dest_pool:
-            name: name
-            id: 5
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          status: status
-        - finished_at: '2000-01-23T04:56:07.000+00:00'
+        stripes: 0
+    Volume_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
+        original_name: original_name
+        name: name
+        id: 9
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    BlockVolumeUpdateMigrationReq:
+      type: object
+      properties:
+        volume_migration_job:
+          $ref: '#/components/schemas/BlockVolumeUpdateMigrationReq_VolumeMigrationJob'
+      title: BlockVolumeUpdateMigrationReq
+      example:
+        volume_migration_job:
+          stripes: 0
+    BlockVolumeMigrationJobResp:
+      type: object
+      required:
+      - block_volume_migration_job
+      properties:
+        block_volume_migration_job:
+          description: volume migration job
+          $ref: '#/components/schemas/VolumeMigrationJob'
+      title: BlockVolumeMigrationJobResp
+      example:
+        block_volume_migration_job:
+          finished_at: '2000-01-23T04:56:07.000+00:00'
           update: '2000-01-23T04:56:07.000+00:00'
           stripes: 1
           volume:

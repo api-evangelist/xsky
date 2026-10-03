@@ -145,6 +145,92 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FSQuotaTreeUpdateReq_QuotaTree:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of quota tree
+        size:
+          type: integer
+          format: int64
+          description: size of quota tree
+        soft_quota_size:
+          type: integer
+          format: int64
+          description: soft quota size of quota tree
+      title: FSQuotaTreeUpdateReq_QuotaTree
+    FSQuotaTreeUpdateReq:
+      type: object
+      required:
+      - fs_quota_tree
+      properties:
+        fs_quota_tree:
+          $ref: '#/components/schemas/FSQuotaTreeUpdateReq_QuotaTree'
+      title: FSQuotaTreeUpdateReq
+    FSQuotaTreeResp:
+      type: object
+      required:
+      - fs_quota_tree
+      properties:
+        fs_quota_tree:
+          description: file storage quota tree
+          $ref: '#/components/schemas/FSQuotaTree'
+      title: FSQuotaTreeResp
+      example:
+        fs_quota_tree:
+          shared: true
+          used_kbyte: 5
+          size: 6
+          soft_quota_size: 1
+          fs_folder:
+            name: name
+            id: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
+    FSQuotaTreesResp:
+      type: object
+      required:
+      - fs_quota_trees
+      properties:
+        fs_quota_trees:
+          type: array
+          description: file storage quota trees
+          items:
+            $ref: '#/components/schemas/FSQuotaTree'
+      title: FSQuotaTreesResp
+      example:
+        fs_quota_trees:
+        - shared: true
+          used_kbyte: 5
+          size: 6
+          soft_quota_size: 1
+          fs_folder:
+            name: name
+            id: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
+        - shared: true
+          used_kbyte: 5
+          size: 6
+          soft_quota_size: 1
+          fs_folder:
+            name: name
+            id: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
     FSQuotaTree:
       type: object
       properties:
@@ -192,92 +278,6 @@ components:
         id: 0
         action_status: action_status
         status: status
-    FSQuotaTreesResp:
-      type: object
-      required:
-      - fs_quota_trees
-      properties:
-        fs_quota_trees:
-          type: array
-          description: file storage quota trees
-          items:
-            $ref: '#/components/schemas/FSQuotaTree'
-      title: FSQuotaTreesResp
-      example:
-        fs_quota_trees:
-        - shared: true
-          used_kbyte: 5
-          size: 6
-          soft_quota_size: 1
-          fs_folder:
-            name: name
-            id: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
-        - shared: true
-          used_kbyte: 5
-          size: 6
-          soft_quota_size: 1
-          fs_folder:
-            name: name
-            id: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
-    FSQuotaTreeUpdateReq_QuotaTree:
-      type: object
-      properties:
-        name:
-          type: string
-          description: name of quota tree
-        size:
-          type: integer
-          format: int64
-          description: size of quota tree
-        soft_quota_size:
-          type: integer
-          format: int64
-          description: soft quota size of quota tree
-      title: FSQuotaTreeUpdateReq_QuotaTree
-    FSQuotaTreeResp:
-      type: object
-      required:
-      - fs_quota_tree
-      properties:
-        fs_quota_tree:
-          description: file storage quota tree
-          $ref: '#/components/schemas/FSQuotaTree'
-      title: FSQuotaTreeResp
-      example:
-        fs_quota_tree:
-          shared: true
-          used_kbyte: 5
-          size: 6
-          soft_quota_size: 1
-          fs_folder:
-            name: name
-            id: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
-    FSQuotaTreeUpdateReq:
-      type: object
-      required:
-      - fs_quota_tree
-      properties:
-        fs_quota_tree:
-          $ref: '#/components/schemas/FSQuotaTreeUpdateReq_QuotaTree'
-      title: FSQuotaTreeUpdateReq
     FSFolder_Nestview:
       type: object
       properties:

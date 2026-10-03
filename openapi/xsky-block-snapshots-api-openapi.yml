@@ -223,7 +223,104 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Pool_Nestview:
+    SnapshotCreateReq:
+      type: object
+      required:
+      - block_snapshot
+      properties:
+        block_snapshot:
+          $ref: '#/components/schemas/SnapshotCreateReq_Snapshot'
+      title: SnapshotCreateReq
+      example:
+        block_snapshot:
+          block_volume_id: 0
+          name: name
+          description: description
+    Snapshot:
+      type: object
+      properties:
+        action_status:
+          type: string
+        allocated_size:
+          type: integer
+          format: int64
+        block_volume_group_snapshot:
+          $ref: '#/components/schemas/VolumeGroupSnapshot_Nestview'
+        cloned_block_volume_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        creator:
+          type: string
+        description:
+          type: string
+        hidden:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        passive:
+          type: boolean
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        protected:
+          type: boolean
+        remote_cluster:
+          description: the snapshot is replicated from a remote cluster
+          $ref: '#/components/schemas/RemoteCluster_Nestview'
+        reserved:
+          type: boolean
+        size:
+          type: integer
+          format: int64
+        snap_name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+      title: Snapshot
+      description: Snapshot is the corresponding rbd snapshot
+      example:
+        cloned_block_volume_num: 1
+        creator: creator
+        hidden: true
+        pool:
+          name: name
+          id: 5
+        snap_name: snap_name
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        allocated_size: 0
+        passive: true
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        protected: true
+        size: 7
+        remote_cluster:
+          name: name
+          id: 2
+          fs_id: fs_id
+          url: url
+        reserved: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        block_volume_group_snapshot:
+          name: name
+          id: 6
+        status: status
+    VolumeGroupSnapshot_Nestview:
       type: object
       properties:
         id:
@@ -231,29 +328,10 @@ components:
           format: int64
         name:
           type: string
-      title: Pool_Nestview
+      title: VolumeGroupSnapshot_Nestview
       example:
         name: name
-        id: 5
-    SnapshotCreateReq_Snapshot:
-      type: object
-      required:
-      - block_volume_id
-      - description
-      - name
-      properties:
-        block_volume_id:
-          type: integer
-          format: int64
-        description:
-          type: string
-        name:
-          type: string
-      title: SnapshotCreateReq_Snapshot
-      example:
-        block_volume_id: 0
-        name: name
-        description: description
+        id: 6
     SnapshotsResp:
       type: object
       required:
@@ -371,44 +449,6 @@ components:
             name: name
             id: 6
           status: status
-    Volume_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        original_name:
-          type: string
-      title: Volume_Nestview
-      example:
-        original_name: original_name
-        name: name
-        id: 9
-    VolumeGroupSnapshot_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: VolumeGroupSnapshot_Nestview
-      example:
-        name: name
-        id: 6
-    SnapshotUpdateReq_Snapshot:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-      title: SnapshotUpdateReq_Snapshot
-      example:
-        name: name
-        description: description
     RemoteCluster_Nestview:
       type: object
       properties:
@@ -427,6 +467,25 @@ components:
         id: 2
         fs_id: fs_id
         url: url
+    SnapshotCreateReq_Snapshot:
+      type: object
+      required:
+      - block_volume_id
+      - description
+      - name
+      properties:
+        block_volume_id:
+          type: integer
+          format: int64
+        description:
+          type: string
+        name:
+          type: string
+      title: SnapshotCreateReq_Snapshot
+      example:
+        block_volume_id: 0
+        name: name
+        description: description
     SnapshotUpdateReq:
       type: object
       required:
@@ -439,103 +498,44 @@ components:
         block_snapshot:
           name: name
           description: description
-    Snapshot:
+    SnapshotUpdateReq_Snapshot:
       type: object
       properties:
-        action_status:
-          type: string
-        allocated_size:
-          type: integer
-          format: int64
-        block_volume_group_snapshot:
-          $ref: '#/components/schemas/VolumeGroupSnapshot_Nestview'
-        cloned_block_volume_num:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        creator:
-          type: string
         description:
           type: string
-        hidden:
-          type: boolean
+        name:
+          type: string
+      title: SnapshotUpdateReq_Snapshot
+      example:
+        name: name
+        description: description
+    Volume_Nestview:
+      type: object
+      properties:
         id:
           type: integer
           format: int64
         name:
           type: string
-        passive:
-          type: boolean
-        pool:
-          $ref: '#/components/schemas/Pool_Nestview'
-        protected:
-          type: boolean
-        remote_cluster:
-          description: the snapshot is replicated from a remote cluster
-          $ref: '#/components/schemas/RemoteCluster_Nestview'
-        reserved:
-          type: boolean
-        size:
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
+        original_name: original_name
+        name: name
+        id: 9
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
           type: integer
           format: int64
-        snap_name:
+        name:
           type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        volume:
-          $ref: '#/components/schemas/Volume_Nestview'
-      title: Snapshot
-      description: Snapshot is the corresponding rbd snapshot
+      title: Pool_Nestview
       example:
-        cloned_block_volume_num: 1
-        creator: creator
-        hidden: true
-        pool:
-          name: name
-          id: 5
-        snap_name: snap_name
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        allocated_size: 0
-        passive: true
-        volume:
-          original_name: original_name
-          name: name
-          id: 9
-        protected: true
-        size: 7
-        remote_cluster:
-          name: name
-          id: 2
-          fs_id: fs_id
-          url: url
-        reserved: true
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
         id: 5
-        action_status: action_status
-        block_volume_group_snapshot:
-          name: name
-          id: 6
-        status: status
-    SnapshotCreateReq:
-      type: object
-      required:
-      - block_snapshot
-      properties:
-        block_snapshot:
-          $ref: '#/components/schemas/SnapshotCreateReq_Snapshot'
-      title: SnapshotCreateReq
-      example:
-        block_snapshot:
-          block_volume_id: 0
-          name: name
-          description: description
   securitySchemes:
     tokenInHeader:
       description: auth by token

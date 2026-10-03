@@ -43,6 +43,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    HostInitializationResp:
+      type: object
+      properties:
+        host_initialization:
+          $ref: '#/components/schemas/HostInitialization'
+      title: HostInitializationResp
+      example:
+        host_initialization:
+          hostname_prefix: hostname_prefix
+          disable_firewalld: true
+          set_hostname: true
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          message: message
+          admin_ips:
+          - admin_ips
+          - admin_ips
+          ssh_user: ssh_user
+          status: status
+    HostInitializationReq:
+      type: object
+      properties:
+        host_initialization:
+          $ref: '#/components/schemas/HostInitializationReq_Initialization'
+      title: HostInitializationReq
+      example:
+        host_initialization:
+          hostname_prefix: hostname_prefix
+          disable_firewalld: true
+          set_hostname: true
+          ssh_password: ssh_password
+          admin_ips:
+          - admin_ips
+          - admin_ips
+          ssh_user: ssh_user
     HostInitialization:
       type: object
       properties:
@@ -82,22 +117,6 @@ components:
         - admin_ips
         ssh_user: ssh_user
         status: status
-    HostInitializationReq:
-      type: object
-      properties:
-        host_initialization:
-          $ref: '#/components/schemas/HostInitializationReq_Initialization'
-      title: HostInitializationReq
-      example:
-        host_initialization:
-          hostname_prefix: hostname_prefix
-          disable_firewalld: true
-          set_hostname: true
-          ssh_password: ssh_password
-          admin_ips:
-          - admin_ips
-          - admin_ips
-          ssh_user: ssh_user
     HostInitializationReq_Initialization:
       type: object
       required:
@@ -128,25 +147,6 @@ components:
         - admin_ips
         - admin_ips
         ssh_user: ssh_user
-    HostInitializationResp:
-      type: object
-      properties:
-        host_initialization:
-          $ref: '#/components/schemas/HostInitialization'
-      title: HostInitializationResp
-      example:
-        host_initialization:
-          hostname_prefix: hostname_prefix
-          disable_firewalld: true
-          set_hostname: true
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          message: message
-          admin_ips:
-          - admin_ips
-          - admin_ips
-          ssh_user: ssh_user
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

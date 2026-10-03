@@ -205,116 +205,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IdentityPlatformUpdateReq_Platform:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        name:
-          type: string
-          description: name of identity platform
-        url:
-          type: string
-      title: IdentityPlatformUpdateReq_Platform
-      example:
-        name: name
-        enabled: true
-        url: url
-    IdentityPlatformsResp:
-      type: object
-      properties:
-        identity_platforms:
-          type: array
-          description: identity platforms
-          items:
-            $ref: '#/components/schemas/IdentityPlatform'
-      title: IdentityPlatformsResp
-      example:
-        identity_platforms:
-        - failure_num: 0
-          success_num: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          type: type
-          uuid: uuid
-          enabled: true
-          key: key
-          url: url
-        - failure_num: 0
-          success_num: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          type: type
-          uuid: uuid
-          enabled: true
-          key: key
-          url: url
-    IdentityPlatformUpdateReq:
-      type: object
-      properties:
-        identity_platform:
-          $ref: '#/components/schemas/IdentityPlatformUpdateReq_Platform'
-      title: IdentityPlatformUpdateReq
-      example:
-        identity_platform:
-          name: name
-          enabled: true
-          url: url
-    IdentityPlatformCreateReq:
-      type: object
-      properties:
-        identity_platform:
-          $ref: '#/components/schemas/IdentityPlatformCreateReq_Platform'
-      title: IdentityPlatformCreateReq
-      example:
-        identity_platform:
-          name: name
-          type: type
-          enabled: true
-          url: url
-    IdentityPlatformCreateReq_Platform:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        name:
-          type: string
-          description: name of identity platform
-        type:
-          type: string
-          description: type of identity platform
-        url:
-          type: string
-      title: IdentityPlatformCreateReq_Platform
-      example:
-        name: name
-        type: type
-        enabled: true
-        url: url
-    IdentityPlatformResp:
-      type: object
-      properties:
-        identity_platform:
-          description: identity platform
-          $ref: '#/components/schemas/IdentityPlatform'
-      title: IdentityPlatformResp
-      example:
-        identity_platform:
-          failure_num: 0
-          success_num: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          type: type
-          uuid: uuid
-          enabled: true
-          key: key
-          url: url
     IdentityPlatform:
       type: object
       properties:
@@ -369,6 +259,116 @@ components:
         enabled: true
         key: key
         url: url
+    IdentityPlatformResp:
+      type: object
+      properties:
+        identity_platform:
+          description: identity platform
+          $ref: '#/components/schemas/IdentityPlatform'
+      title: IdentityPlatformResp
+      example:
+        identity_platform:
+          failure_num: 0
+          success_num: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          type: type
+          uuid: uuid
+          enabled: true
+          key: key
+          url: url
+    IdentityPlatformUpdateReq:
+      type: object
+      properties:
+        identity_platform:
+          $ref: '#/components/schemas/IdentityPlatformUpdateReq_Platform'
+      title: IdentityPlatformUpdateReq
+      example:
+        identity_platform:
+          name: name
+          enabled: true
+          url: url
+    IdentityPlatformCreateReq_Platform:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        name:
+          type: string
+          description: name of identity platform
+        type:
+          type: string
+          description: type of identity platform
+        url:
+          type: string
+      title: IdentityPlatformCreateReq_Platform
+      example:
+        name: name
+        type: type
+        enabled: true
+        url: url
+    IdentityPlatformsResp:
+      type: object
+      properties:
+        identity_platforms:
+          type: array
+          description: identity platforms
+          items:
+            $ref: '#/components/schemas/IdentityPlatform'
+      title: IdentityPlatformsResp
+      example:
+        identity_platforms:
+        - failure_num: 0
+          success_num: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          type: type
+          uuid: uuid
+          enabled: true
+          key: key
+          url: url
+        - failure_num: 0
+          success_num: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          type: type
+          uuid: uuid
+          enabled: true
+          key: key
+          url: url
+    IdentityPlatformUpdateReq_Platform:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        name:
+          type: string
+          description: name of identity platform
+        url:
+          type: string
+      title: IdentityPlatformUpdateReq_Platform
+      example:
+        name: name
+        enabled: true
+        url: url
+    IdentityPlatformCreateReq:
+      type: object
+      properties:
+        identity_platform:
+          $ref: '#/components/schemas/IdentityPlatformCreateReq_Platform'
+      title: IdentityPlatformCreateReq
+      example:
+        identity_platform:
+          name: name
+          type: type
+          enabled: true
+          url: url
   securitySchemes:
     tokenInHeader:
       description: auth by token

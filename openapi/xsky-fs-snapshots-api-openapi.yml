@@ -216,18 +216,72 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Pool_Nestview:
+    FSSnapshotCreateReq:
+      type: object
+      required:
+      - fs_snapshot
+      properties:
+        fs_snapshot:
+          $ref: '#/components/schemas/FSSnapshotCreateReq_Snapshot'
+      title: FSSnapshotCreateReq
+    FSSnapshotResp:
+      type: object
+      required:
+      - fs_snapshot
+      properties:
+        fs_snapshot:
+          description: file storage snapshot
+          $ref: '#/components/schemas/FSSnapshot'
+      title: FSSnapshotResp
+      example:
+        fs_snapshot:
+          creator: creator
+          formatted: true
+          pool:
+            name: name
+            id: 5
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          allocated_size: 0
+          block_snapshot:
+            name: name
+            id: 0
+          size: 5
+          clone_folder_num: 6
+          fs_folder:
+            name: name
+            id: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          status: status
+    FSSnapshotUpdateReq_Snapshot:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
+        description:
+          type: string
+          description: description of file storage snapshot
         name:
           type: string
-      title: Pool_Nestview
-      example:
-        name: name
-        id: 5
+          description: name of snapshot
+      title: FSSnapshotUpdateReq_Snapshot
+    FSSnapshotCreateReq_Snapshot:
+      type: object
+      required:
+      - fs_folder_id
+      - name
+      properties:
+        description:
+          type: string
+          description: description of file storage snapshot
+        fs_folder_id:
+          type: integer
+          format: int64
+          description: file storage folder id
+        name:
+          type: string
+          description: name of snapshot
+      title: FSSnapshotCreateReq_Snapshot
     FSSnapshot:
       type: object
       properties:
@@ -288,14 +342,6 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         id: 1
         status: status
-    FSSnapshotCreateReq:
-      type: object
-      required:
-      - fs_snapshot
-      properties:
-        fs_snapshot:
-          $ref: '#/components/schemas/FSSnapshotCreateReq_Snapshot'
-      title: FSSnapshotCreateReq
     FSSnapshotsResp:
       type: object
       required:
@@ -349,49 +395,6 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           id: 1
           status: status
-    FSFolder_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSFolder_Nestview
-      example:
-        name: name
-        id: 6
-    FSSnapshotResp:
-      type: object
-      required:
-      - fs_snapshot
-      properties:
-        fs_snapshot:
-          description: file storage snapshot
-          $ref: '#/components/schemas/FSSnapshot'
-      title: FSSnapshotResp
-      example:
-        fs_snapshot:
-          creator: creator
-          formatted: true
-          pool:
-            name: name
-            id: 5
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          allocated_size: 0
-          block_snapshot:
-            name: name
-            id: 0
-          size: 5
-          clone_folder_num: 6
-          fs_folder:
-            name: name
-            id: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          status: status
     FSSnapshotUpdateReq:
       type: object
       required:
@@ -400,33 +403,6 @@ components:
         fs_snapshot:
           $ref: '#/components/schemas/FSSnapshotUpdateReq_Snapshot'
       title: FSSnapshotUpdateReq
-    FSSnapshotUpdateReq_Snapshot:
-      type: object
-      properties:
-        description:
-          type: string
-          description: description of file storage snapshot
-        name:
-          type: string
-          description: name of snapshot
-      title: FSSnapshotUpdateReq_Snapshot
-    FSSnapshotCreateReq_Snapshot:
-      type: object
-      required:
-      - fs_folder_id
-      - name
-      properties:
-        description:
-          type: string
-          description: description of file storage snapshot
-        fs_folder_id:
-          type: integer
-          format: int64
-          description: file storage folder id
-        name:
-          type: string
-          description: name of snapshot
-      title: FSSnapshotCreateReq_Snapshot
     Snapshot_Nestview:
       type: object
       properties:
@@ -439,6 +415,30 @@ components:
       example:
         name: name
         id: 0
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    FSFolder_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSFolder_Nestview
+      example:
+        name: name
+        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

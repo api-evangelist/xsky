@@ -190,39 +190,60 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DpBlockReplicationPolicy:
+    DpBlockReplicationPolicyResp:
       type: object
       properties:
-        create:
-          type: string
-          format: date-time
-        dp_site:
-          $ref: '#/components/schemas/DpSite_Nestview'
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicy'
+      title: DpBlockReplicationPolicyResp
+      example:
+        dp_block_replication_policy:
+          dp_site:
+            name: name
+            id: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          timeout_seconds: 6
+          status: status
+    DpBlockReplicationPolicyCreateReq:
+      type: object
+      required:
+      - dp_block_replication_policy
+      properties:
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicyCreateReq_Policy'
+      title: DpBlockReplicationPolicyCreateReq
+      example:
+        dp_block_replication_policy:
+          name: name
+          dp_site_id: 0
+          timeout_seconds: 6
+    DpSite_Nestview:
+      type: object
+      properties:
         id:
           type: integer
           format: int64
         name:
           type: string
-        status:
-          type: string
-        timeout_seconds:
-          type: integer
-          format: int64
-        update:
-          type: string
-          format: date-time
-      title: DpBlockReplicationPolicy
-      description: DpBlockReplicationPolicy protects a block volume by sync replication
+      title: DpSite_Nestview
       example:
-        dp_site:
-          name: name
-          id: 1
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        timeout_seconds: 6
-        status: status
+        id: 1
+    DpBlockReplicationPolicyUpdateReq:
+      type: object
+      required:
+      - dp_block_replication_policy
+      properties:
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicyUpdateReq_Policy'
+      title: DpBlockReplicationPolicyUpdateReq
+      example:
+        dp_block_replication_policy:
+          name: name
+          timeout_seconds: 0
     DpBlockReplicationPolicyCreateReq_Policy:
       type: object
       required:
@@ -260,36 +281,39 @@ components:
       example:
         name: name
         timeout_seconds: 0
-    DpBlockReplicationPolicyCreateReq:
-      type: object
-      required:
-      - dp_block_replication_policy
-      properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicyCreateReq_Policy'
-      title: DpBlockReplicationPolicyCreateReq
-      example:
-        dp_block_replication_policy:
-          name: name
-          dp_site_id: 0
-          timeout_seconds: 6
-    DpBlockReplicationPolicyResp:
+    DpBlockReplicationPolicy:
       type: object
       properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicy'
-      title: DpBlockReplicationPolicyResp
+        create:
+          type: string
+          format: date-time
+        dp_site:
+          $ref: '#/components/schemas/DpSite_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+        timeout_seconds:
+          type: integer
+          format: int64
+        update:
+          type: string
+          format: date-time
+      title: DpBlockReplicationPolicy
+      description: DpBlockReplicationPolicy protects a block volume by sync replication
       example:
-        dp_block_replication_policy:
-          dp_site:
-            name: name
-            id: 1
+        dp_site:
           name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          timeout_seconds: 6
-          status: status
+          id: 1
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        timeout_seconds: 6
+        status: status
     DpBlockReplicationPoliciesResp:
       type: object
       properties:
@@ -318,30 +342,6 @@ components:
           id: 0
           timeout_seconds: 6
           status: status
-    DpSite_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpSite_Nestview
-      example:
-        name: name
-        id: 1
-    DpBlockReplicationPolicyUpdateReq:
-      type: object
-      required:
-      - dp_block_replication_policy
-      properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicyUpdateReq_Policy'
-      title: DpBlockReplicationPolicyUpdateReq
-      example:
-        dp_block_replication_policy:
-          name: name
-          timeout_seconds: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

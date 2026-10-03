@@ -178,36 +178,49 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    NetworkDiagnosisCreateReq_Diagnosis:
+    NetworkDiagnosesResp:
       type: object
       required:
-      - host_ids
-      - host_scope
-      - networks
+      - network_diagnoses
       properties:
-        host_ids:
+        network_diagnoses:
           type: array
-          description: ids of host
+          description: network diagnoses
           items:
-            type: integer
-            format: int64
-        host_scope:
-          type: string
-          description: host scope
-        networks:
-          type: array
-          description: network types
-          items:
-            type: string
-      title: NetworkDiagnosisCreateReq_Diagnosis
+            $ref: '#/components/schemas/NetworkDiagnosis'
+      title: NetworkDiagnosesResp
       example:
-        host_scope: host_scope
-        host_ids:
-        - 0
-        - 0
-        networks:
-        - networks
-        - networks
+        network_diagnoses:
+        - diagnose_warning_num: 5
+          diagnose_active_num: 0
+          update: '2000-01-23T04:56:07.000+00:00'
+          networks:
+          - networks
+          - networks
+          diagnose_error_num: 6
+          diagnosing_num: 5
+          host_num: 2
+          create: '2000-01-23T04:56:07.000+00:00'
+          diagnose_num: 1
+          progress: 3.616076749251911
+          id: 7
+          not_diagnose_num: 9
+          status: status
+        - diagnose_warning_num: 5
+          diagnose_active_num: 0
+          update: '2000-01-23T04:56:07.000+00:00'
+          networks:
+          - networks
+          - networks
+          diagnose_error_num: 6
+          diagnosing_num: 5
+          host_num: 2
+          create: '2000-01-23T04:56:07.000+00:00'
+          diagnose_num: 1
+          progress: 3.616076749251911
+          id: 7
+          not_diagnose_num: 9
+          status: status
     NetworkDiagnosisCreateReq:
       type: object
       required:
@@ -225,6 +238,32 @@ components:
           networks:
           - networks
           - networks
+    NetworkDiagnosisResp:
+      type: object
+      required:
+      - network_diagnosis
+      properties:
+        network_diagnosis:
+          description: network diagnosis
+          $ref: '#/components/schemas/NetworkDiagnosis'
+      title: NetworkDiagnosisResp
+      example:
+        network_diagnosis:
+          diagnose_warning_num: 5
+          diagnose_active_num: 0
+          update: '2000-01-23T04:56:07.000+00:00'
+          networks:
+          - networks
+          - networks
+          diagnose_error_num: 6
+          diagnosing_num: 5
+          host_num: 2
+          create: '2000-01-23T04:56:07.000+00:00'
+          diagnose_num: 1
+          progress: 3.616076749251911
+          id: 7
+          not_diagnose_num: 9
+          status: status
     NetworkDiagnosis:
       type: object
       properties:
@@ -285,75 +324,36 @@ components:
         id: 7
         not_diagnose_num: 9
         status: status
-    NetworkDiagnosisResp:
+    NetworkDiagnosisCreateReq_Diagnosis:
       type: object
       required:
-      - network_diagnosis
+      - host_ids
+      - host_scope
+      - networks
       properties:
-        network_diagnosis:
-          description: network diagnosis
-          $ref: '#/components/schemas/NetworkDiagnosis'
-      title: NetworkDiagnosisResp
-      example:
-        network_diagnosis:
-          diagnose_warning_num: 5
-          diagnose_active_num: 0
-          update: '2000-01-23T04:56:07.000+00:00'
-          networks:
-          - networks
-          - networks
-          diagnose_error_num: 6
-          diagnosing_num: 5
-          host_num: 2
-          create: '2000-01-23T04:56:07.000+00:00'
-          diagnose_num: 1
-          progress: 3.616076749251911
-          id: 7
-          not_diagnose_num: 9
-          status: status
-    NetworkDiagnosesResp:
-      type: object
-      required:
-      - network_diagnoses
-      properties:
-        network_diagnoses:
+        host_ids:
           type: array
-          description: network diagnoses
+          description: ids of host
           items:
-            $ref: '#/components/schemas/NetworkDiagnosis'
-      title: NetworkDiagnosesResp
+            type: integer
+            format: int64
+        host_scope:
+          type: string
+          description: host scope
+        networks:
+          type: array
+          description: network types
+          items:
+            type: string
+      title: NetworkDiagnosisCreateReq_Diagnosis
       example:
-        network_diagnoses:
-        - diagnose_warning_num: 5
-          diagnose_active_num: 0
-          update: '2000-01-23T04:56:07.000+00:00'
-          networks:
-          - networks
-          - networks
-          diagnose_error_num: 6
-          diagnosing_num: 5
-          host_num: 2
-          create: '2000-01-23T04:56:07.000+00:00'
-          diagnose_num: 1
-          progress: 3.616076749251911
-          id: 7
-          not_diagnose_num: 9
-          status: status
-        - diagnose_warning_num: 5
-          diagnose_active_num: 0
-          update: '2000-01-23T04:56:07.000+00:00'
-          networks:
-          - networks
-          - networks
-          diagnose_error_num: 6
-          diagnosing_num: 5
-          host_num: 2
-          create: '2000-01-23T04:56:07.000+00:00'
-          diagnose_num: 1
-          progress: 3.616076749251911
-          id: 7
-          not_diagnose_num: 9
-          status: status
+        host_scope: host_scope
+        host_ids:
+        - 0
+        - 0
+        networks:
+        - networks
+        - networks
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -134,18 +134,66 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Pool_Nestview:
+    ObjectStoragePolicy:
       type: object
       properties:
+        bucket_num:
+          type: integer
+          format: int64
+        cache_pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        compress:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        crypto:
+          type: boolean
+        default:
+          type: boolean
+        description:
+          type: string
         id:
           type: integer
           format: int64
+        index_pool:
+          $ref: '#/components/schemas/Pool_Nestview'
         name:
           type: string
-      title: Pool_Nestview
+        object_size_threshold:
+          type: integer
+          format: int64
+        policy_name:
+          type: string
+        shared:
+          type: boolean
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: ObjectStoragePolicy
+      description: ObjectStoragePolicy is the model of object_storage_policy
       example:
+        shared: true
+        cache_pool:
+          name: name
+          id: 5
+        compress: true
+        description: description
+        policy_name: policy_name
+        update: '2000-01-23T04:56:07.000+00:00'
+        bucket_num: 0
+        crypto: true
+        index_pool:
+          name: name
+          id: 5
+        object_size_threshold: 1
+        default: true
         name: name
-        id: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
     OSStorageClassUpdateReq_StorageClass:
       type: object
       properties:
@@ -164,6 +212,47 @@ components:
         name:
           type: string
       title: OSStorageClassUpdateReq_StorageClass
+    OSStorageClassResp:
+      type: object
+      properties:
+        os_storage_class:
+          $ref: '#/components/schemas/OSStorageClass'
+      title: OSStorageClassResp
+      example:
+        os_storage_class:
+          active_pool_ids:
+          - 0
+          - 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          class: 6
+          os_policy:
+            shared: true
+            cache_pool:
+              name: name
+              id: 5
+            compress: true
+            description: description
+            policy_name: policy_name
+            update: '2000-01-23T04:56:07.000+00:00'
+            bucket_num: 0
+            crypto: true
+            index_pool:
+              name: name
+              id: 5
+            object_size_threshold: 1
+            default: true
+            name: name
+            create: '2000-01-23T04:56:07.000+00:00'
+            id: 6
+            status: status
+          inactive_pool_ids:
+          - 5
+          - 5
+          status: status
     OSStorageClassUpdateReq:
       type: object
       properties:
@@ -246,66 +335,18 @@ components:
           - 5
           - 5
           status: status
-    ObjectStoragePolicy:
+    Pool_Nestview:
       type: object
       properties:
-        bucket_num:
-          type: integer
-          format: int64
-        cache_pool:
-          $ref: '#/components/schemas/Pool_Nestview'
-        compress:
-          type: boolean
-        create:
-          type: string
-          format: date-time
-        crypto:
-          type: boolean
-        default:
-          type: boolean
-        description:
-          type: string
         id:
           type: integer
           format: int64
-        index_pool:
-          $ref: '#/components/schemas/Pool_Nestview'
         name:
           type: string
-        object_size_threshold:
-          type: integer
-          format: int64
-        policy_name:
-          type: string
-        shared:
-          type: boolean
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: ObjectStoragePolicy
-      description: ObjectStoragePolicy is the model of object_storage_policy
+      title: Pool_Nestview
       example:
-        shared: true
-        cache_pool:
-          name: name
-          id: 5
-        compress: true
-        description: description
-        policy_name: policy_name
-        update: '2000-01-23T04:56:07.000+00:00'
-        bucket_num: 0
-        crypto: true
-        index_pool:
-          name: name
-          id: 5
-        object_size_threshold: 1
-        default: true
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 6
-        status: status
+        id: 5
     OSStorageClass:
       type: object
       properties:
@@ -375,47 +416,6 @@ components:
         - 5
         - 5
         status: status
-    OSStorageClassResp:
-      type: object
-      properties:
-        os_storage_class:
-          $ref: '#/components/schemas/OSStorageClass'
-      title: OSStorageClassResp
-      example:
-        os_storage_class:
-          active_pool_ids:
-          - 0
-          - 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          class: 6
-          os_policy:
-            shared: true
-            cache_pool:
-              name: name
-              id: 5
-            compress: true
-            description: description
-            policy_name: policy_name
-            update: '2000-01-23T04:56:07.000+00:00'
-            bucket_num: 0
-            crypto: true
-            index_pool:
-              name: name
-              id: 5
-            object_size_threshold: 1
-            default: true
-            name: name
-            create: '2000-01-23T04:56:07.000+00:00'
-            id: 6
-            status: status
-          inactive_pool_ids:
-          - 5
-          - 5
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

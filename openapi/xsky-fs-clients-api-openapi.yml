@@ -211,88 +211,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSClientCreateReq:
-      type: object
-      required:
-      - fs_client
-      properties:
-        fs_client:
-          $ref: '#/components/schemas/FSClientCreateReq_Client'
-      title: FSClientCreateReq
-    FSClientResp:
-      type: object
-      required:
-      - fs_client
-      properties:
-        fs_client:
-          description: file storage client
-          $ref: '#/components/schemas/FSClient'
-      title: FSClientResp
-      example:
-        fs_client:
-          ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_client_groups:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_client_group_num: 0
-          id: 1
-    FSClientUpdateReq:
-      type: object
-      required:
-      - fs_client
-      properties:
-        fs_client:
-          $ref: '#/components/schemas/FSClientUpdateReq_Client'
-      title: FSClientUpdateReq
-    FSClientsResp:
-      type: object
-      required:
-      - fs_clients
-      properties:
-        fs_clients:
-          type: array
-          description: file storage clients
-          items:
-            $ref: '#/components/schemas/FSClient'
-      title: FSClientsResp
-      example:
-        fs_clients:
-        - ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_client_groups:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_client_group_num: 0
-          id: 1
-        - ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_client_groups:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_client_group_num: 0
-          id: 1
-    FSClientUpdateReq_Client:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: name of client
-      title: FSClientUpdateReq_Client
     FSClient:
       type: object
       properties:
@@ -330,18 +248,66 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         fs_client_group_num: 0
         id: 1
-    FSClientGroup_Nestview:
+    FSClientUpdateReq_Client:
       type: object
+      required:
+      - name
       properties:
-        id:
-          type: integer
-          format: int64
         name:
           type: string
-      title: FSClientGroup_Nestview
+          description: name of client
+      title: FSClientUpdateReq_Client
+    FSClientUpdateReq:
+      type: object
+      required:
+      - fs_client
+      properties:
+        fs_client:
+          $ref: '#/components/schemas/FSClientUpdateReq_Client'
+      title: FSClientUpdateReq
+    FSClientCreateReq:
+      type: object
+      required:
+      - fs_client
+      properties:
+        fs_client:
+          $ref: '#/components/schemas/FSClientCreateReq_Client'
+      title: FSClientCreateReq
+    FSClientsResp:
+      type: object
+      required:
+      - fs_clients
+      properties:
+        fs_clients:
+          type: array
+          description: file storage clients
+          items:
+            $ref: '#/components/schemas/FSClient'
+      title: FSClientsResp
       example:
-        name: name
-        id: 6
+        fs_clients:
+        - ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_client_groups:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_client_group_num: 0
+          id: 1
+        - ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_client_groups:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_client_group_num: 0
+          id: 1
     FSClientCreateReq_Client:
       type: object
       required:
@@ -355,6 +321,40 @@ components:
           type: string
           description: name of client
       title: FSClientCreateReq_Client
+    FSClientResp:
+      type: object
+      required:
+      - fs_client
+      properties:
+        fs_client:
+          description: file storage client
+          $ref: '#/components/schemas/FSClient'
+      title: FSClientResp
+      example:
+        fs_client:
+          ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_client_groups:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_client_group_num: 0
+          id: 1
+    FSClientGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSClientGroup_Nestview
+      example:
+        name: name
+        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -322,71 +322,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    HostRecord:
-      title: HostRecord
-      allOf:
-      - $ref: '#/components/schemas/Host'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/HostStat'
-      description: HostRecord combine Host and HostStatus to let API comfortable
-    HostUpdateReq_Host:
-      type: object
-      properties:
-        description:
-          type: string
-        roles:
-          type: array
-          items:
-            type: string
-      title: HostUpdateReq_Host
-      example:
-        roles:
-        - roles
-        - roles
-        description: description
-    HostFcPort:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        wwn:
-          type: string
-      title: HostFcPort
-      description: HostFcPort defines fc port on the host
-      example:
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 5
-        wwn: wwn
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     HostResp:
       type: object
       required:
@@ -398,159 +333,6 @@ components:
       title: HostResp
       example:
         host: ''
-    HostStat:
-      type: object
-      properties:
-        context_switch_ps:
-          type: number
-          format: double
-        cpu_util:
-          type: number
-          format: double
-        create:
-          type: string
-          format: date-time
-        interrupts_ps:
-          type: number
-          format: double
-        load15min:
-          type: number
-          format: double
-        load1min:
-          type: number
-          format: double
-        load5min:
-          type: number
-          format: double
-        mem_usage_percent:
-          type: number
-          format: double
-        meta_docker_used_kbyte:
-          type: number
-          format: double
-        meta_elasticsearch_used_kbyte:
-          type: number
-          format: double
-        meta_etcd_used_kbyte:
-          type: number
-          format: double
-        meta_log_used_kbyte:
-          type: number
-          format: double
-        meta_mon_used_kbyte:
-          type: number
-          format: double
-        meta_postgres_used_kbyte:
-          type: number
-          format: double
-        meta_prometheus_used_kbyte:
-          type: number
-          format: double
-        network_drop_pps:
-          type: number
-          format: double
-        network_error_pps:
-          type: number
-          format: double
-        network_rx_bandwidth_kbyte:
-          type: number
-          format: double
-        network_rx_drop_pps:
-          type: number
-          format: double
-        network_rx_error_pps:
-          type: number
-          format: double
-        network_rx_pps:
-          type: number
-          format: double
-        network_tx_bandwidth_kbyte:
-          type: number
-          format: double
-        network_tx_drop_pps:
-          type: number
-          format: double
-        network_tx_error_pps:
-          type: number
-          format: double
-        network_tx_pps:
-          type: number
-          format: double
-        page_paging_ps:
-          type: number
-          format: double
-      title: HostStat
-      description: HostStat define the host statistics
-      example:
-        network_tx_error_pps: 6.683562403749608
-        meta_mon_used_kbyte: 7.386281948385884
-        meta_postgres_used_kbyte: 1.2315135367772556
-        network_drop_pps: 1.4894159098541704
-        network_tx_pps: 8.762042012749001
-        load5min: 2.3021358869347655
-        meta_docker_used_kbyte: 9.301444243932576
-        network_error_pps: 6.84685269835264
-        network_rx_pps: 5.025004791520295
-        page_paging_ps: 9.018348186070783
-        load1min: 5.637376656633329
-        network_rx_bandwidth_kbyte: 7.457744773683766
-        create: '2000-01-23T04:56:07.000+00:00'
-        cpu_util: 6.027456183070403
-        context_switch_ps: 0.8008281904610115
-        network_rx_error_pps: 4.965218492984954
-        network_rx_drop_pps: 1.1730742509559433
-        load15min: 5.962133916683182
-        mem_usage_percent: 7.061401241503109
-        meta_elasticsearch_used_kbyte: 3.616076749251911
-        interrupts_ps: 1.4658129805029452
-        meta_prometheus_used_kbyte: 1.0246457001441578
-        network_tx_bandwidth_kbyte: 9.965781217890562
-        meta_log_used_kbyte: 4.145608029883936
-        meta_etcd_used_kbyte: 2.027123023002322
-        network_tx_drop_pps: 9.369310271410669
-    HostUpdateReq:
-      type: object
-      required:
-      - host
-      properties:
-        host:
-          $ref: '#/components/schemas/HostUpdateReq_Host'
-      title: HostUpdateReq
-      example:
-        host:
-          roles:
-          - roles
-          - roles
-          description: description
-    HostsResp:
-      type: object
-      required:
-      - hosts
-      properties:
-        hosts:
-          type: array
-          description: hosts
-          items:
-            $ref: '#/components/schemas/HostRecord'
-      title: HostsResp
-      example:
-        hosts:
-        - ''
-        - ''
-    ProtectionDomain_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of protection domain
-        name:
-          type: string
-          description: name of protection domain
-      title: ProtectionDomain_Nestview
-      example:
-        name: name
-        id: 5
     HostCreateReq_Host:
       type: object
       required:
@@ -605,6 +387,38 @@ components:
         type: type
         protection_domain_id: 0
         private_ip: private_ip
+    HostUpdateReq_Host:
+      type: object
+      properties:
+        description:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+      title: HostUpdateReq_Host
+      example:
+        roles:
+        - roles
+        - roles
+        description: description
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     HostSamplesResp:
       type: object
       required:
@@ -670,42 +484,21 @@ components:
           meta_log_used_kbyte: 4.145608029883936
           meta_etcd_used_kbyte: 2.027123023002322
           network_tx_drop_pps: 9.369310271410669
-    Disk_Nestview:
+    HostsResp:
       type: object
+      required:
+      - hosts
       properties:
-        device:
-          type: string
-        disk_type:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Disk_Nestview
+        hosts:
+          type: array
+          description: hosts
+          items:
+            $ref: '#/components/schemas/HostRecord'
+      title: HostsResp
       example:
-        disk_type: disk_type
-        id: 0
-        device: device
-    HostCreateReq:
-      type: object
-      properties:
-        host:
-          $ref: '#/components/schemas/HostCreateReq_Host'
-      title: HostCreateReq
-      example:
-        host:
-          gateway_ips:
-          - gateway_ips
-          - gateway_ips
-          public_ip: public_ip
-          roles:
-          - roles
-          - roles
-          description: description
-          meta_device: meta_device
-          admin_ip: admin_ip
-          type: type
-          protection_domain_id: 0
-          private_ip: private_ip
+        hosts:
+        - ''
+        - ''
     Host:
       type: object
       required:
@@ -834,6 +627,213 @@ components:
           id: 5
           wwn: wwn
         status: status
+    HostUpdateReq:
+      type: object
+      required:
+      - host
+      properties:
+        host:
+          $ref: '#/components/schemas/HostUpdateReq_Host'
+      title: HostUpdateReq
+      example:
+        host:
+          roles:
+          - roles
+          - roles
+          description: description
+    HostRecord:
+      title: HostRecord
+      allOf:
+      - $ref: '#/components/schemas/Host'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/HostStat'
+      description: HostRecord combine Host and HostStatus to let API comfortable
+    ProtectionDomain_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of protection domain
+        name:
+          type: string
+          description: name of protection domain
+      title: ProtectionDomain_Nestview
+      example:
+        name: name
+        id: 5
+    HostCreateReq:
+      type: object
+      properties:
+        host:
+          $ref: '#/components/schemas/HostCreateReq_Host'
+      title: HostCreateReq
+      example:
+        host:
+          gateway_ips:
+          - gateway_ips
+          - gateway_ips
+          public_ip: public_ip
+          roles:
+          - roles
+          - roles
+          description: description
+          meta_device: meta_device
+          admin_ip: admin_ip
+          type: type
+          protection_domain_id: 0
+          private_ip: private_ip
+    HostStat:
+      type: object
+      properties:
+        context_switch_ps:
+          type: number
+          format: double
+        cpu_util:
+          type: number
+          format: double
+        create:
+          type: string
+          format: date-time
+        interrupts_ps:
+          type: number
+          format: double
+        load15min:
+          type: number
+          format: double
+        load1min:
+          type: number
+          format: double
+        load5min:
+          type: number
+          format: double
+        mem_usage_percent:
+          type: number
+          format: double
+        meta_docker_used_kbyte:
+          type: number
+          format: double
+        meta_elasticsearch_used_kbyte:
+          type: number
+          format: double
+        meta_etcd_used_kbyte:
+          type: number
+          format: double
+        meta_log_used_kbyte:
+          type: number
+          format: double
+        meta_mon_used_kbyte:
+          type: number
+          format: double
+        meta_postgres_used_kbyte:
+          type: number
+          format: double
+        meta_prometheus_used_kbyte:
+          type: number
+          format: double
+        network_drop_pps:
+          type: number
+          format: double
+        network_error_pps:
+          type: number
+          format: double
+        network_rx_bandwidth_kbyte:
+          type: number
+          format: double
+        network_rx_drop_pps:
+          type: number
+          format: double
+        network_rx_error_pps:
+          type: number
+          format: double
+        network_rx_pps:
+          type: number
+          format: double
+        network_tx_bandwidth_kbyte:
+          type: number
+          format: double
+        network_tx_drop_pps:
+          type: number
+          format: double
+        network_tx_error_pps:
+          type: number
+          format: double
+        network_tx_pps:
+          type: number
+          format: double
+        page_paging_ps:
+          type: number
+          format: double
+      title: HostStat
+      description: HostStat define the host statistics
+      example:
+        network_tx_error_pps: 6.683562403749608
+        meta_mon_used_kbyte: 7.386281948385884
+        meta_postgres_used_kbyte: 1.2315135367772556
+        network_drop_pps: 1.4894159098541704
+        network_tx_pps: 8.762042012749001
+        load5min: 2.3021358869347655
+        meta_docker_used_kbyte: 9.301444243932576
+        network_error_pps: 6.84685269835264
+        network_rx_pps: 5.025004791520295
+        page_paging_ps: 9.018348186070783
+        load1min: 5.637376656633329
+        network_rx_bandwidth_kbyte: 7.457744773683766
+        create: '2000-01-23T04:56:07.000+00:00'
+        cpu_util: 6.027456183070403
+        context_switch_ps: 0.8008281904610115
+        network_rx_error_pps: 4.965218492984954
+        network_rx_drop_pps: 1.1730742509559433
+        load15min: 5.962133916683182
+        mem_usage_percent: 7.061401241503109
+        meta_elasticsearch_used_kbyte: 3.616076749251911
+        interrupts_ps: 1.4658129805029452
+        meta_prometheus_used_kbyte: 1.0246457001441578
+        network_tx_bandwidth_kbyte: 9.965781217890562
+        meta_log_used_kbyte: 4.145608029883936
+        meta_etcd_used_kbyte: 2.027123023002322
+        network_tx_drop_pps: 9.369310271410669
+    HostFcPort:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        wwn:
+          type: string
+      title: HostFcPort
+      description: HostFcPort defines fc port on the host
+      example:
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        wwn: wwn
+    Disk_Nestview:
+      type: object
+      properties:
+        device:
+          type: string
+        disk_type:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Disk_Nestview
+      example:
+        disk_type: disk_type
+        id: 0
+        device: device
   securitySchemes:
     tokenInHeader:
       description: auth by token

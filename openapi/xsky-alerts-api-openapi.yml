@@ -316,13 +316,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ActionLog_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ActionLog_Nestview
     AlertActionReq_Alert:
       type: object
       required:
@@ -333,58 +326,6 @@ components:
       title: AlertActionReq_Alert
       example:
         action: action
-    AlertStatsResp:
-      type: object
-      required:
-      - alert_stats
-      properties:
-        alert_stats:
-          description: alert stats
-          $ref: '#/components/schemas/AlertStats'
-      title: AlertStatsResp
-      example:
-        alert_stats:
-          critical_num: 0
-          info_num: 1
-          error_num: 6
-          warning_num: 5
-    AlertsActionReq:
-      type: object
-      required:
-      - alerts
-      properties:
-        alerts:
-          $ref: '#/components/schemas/AlertsActionReq_Alerts'
-      title: AlertsActionReq
-      example:
-        alerts:
-          action: action
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    Alert_Nestview:
-      type: object
-      properties:
-        alarm_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Alert_Nestview
     AlertStats:
       type: object
       properties:
@@ -406,52 +347,6 @@ components:
         info_num: 1
         error_num: 6
         warning_num: 5
-    AlertRecord:
-      title: AlertRecord
-      allOf:
-      - $ref: '#/components/schemas/Alert'
-      - properties:
-          error_records:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorRecord'
-      description: AlertRecord defines the response errors of alert
-    AlertsActionReq_Alerts:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-      title: AlertsActionReq_Alerts
-      example:
-        action: action
-    AlertsResp:
-      type: object
-      required:
-      - alerts
-      properties:
-        alerts:
-          type: array
-          description: alerts
-          items:
-            $ref: '#/components/schemas/AlertRecord'
-      title: AlertsResp
-      example:
-        alerts:
-        - ''
-        - ''
-    AlertActionReq:
-      type: object
-      required:
-      - alert
-      properties:
-        alert:
-          $ref: '#/components/schemas/AlertActionReq_Alert'
-      title: AlertActionReq
-      example:
-        alert:
-          action: action
     Alert:
       type: object
       properties:
@@ -542,6 +437,65 @@ components:
         group: group
         resolved: true
         status: status
+    AlertStatsResp:
+      type: object
+      required:
+      - alert_stats
+      properties:
+        alert_stats:
+          description: alert stats
+          $ref: '#/components/schemas/AlertStats'
+      title: AlertStatsResp
+      example:
+        alert_stats:
+          critical_num: 0
+          info_num: 1
+          error_num: 6
+          warning_num: 5
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    AlertActionReq:
+      type: object
+      required:
+      - alert
+      properties:
+        alert:
+          $ref: '#/components/schemas/AlertActionReq_Alert'
+      title: AlertActionReq
+      example:
+        alert:
+          action: action
+    ActionLog_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ActionLog_Nestview
+    Alert_Nestview:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Alert_Nestview
     AlertResp:
       type: object
       required:
@@ -581,6 +535,52 @@ components:
           group: group
           resolved: true
           status: status
+    AlertsResp:
+      type: object
+      required:
+      - alerts
+      properties:
+        alerts:
+          type: array
+          description: alerts
+          items:
+            $ref: '#/components/schemas/AlertRecord'
+      title: AlertsResp
+      example:
+        alerts:
+        - ''
+        - ''
+    AlertsActionReq:
+      type: object
+      required:
+      - alerts
+      properties:
+        alerts:
+          $ref: '#/components/schemas/AlertsActionReq_Alerts'
+      title: AlertsActionReq
+      example:
+        alerts:
+          action: action
+    AlertRecord:
+      title: AlertRecord
+      allOf:
+      - $ref: '#/components/schemas/Alert'
+      - properties:
+          error_records:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorRecord'
+      description: AlertRecord defines the response errors of alert
+    AlertsActionReq_Alerts:
+      type: object
+      required:
+      - action
+      properties:
+        action:
+          type: string
+      title: AlertsActionReq_Alerts
+      example:
+        action: action
     ErrorRecord:
       type: object
       properties:

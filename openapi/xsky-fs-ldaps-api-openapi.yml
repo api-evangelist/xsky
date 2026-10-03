@@ -259,44 +259,14 @@ components:
           type: string
           description: user suffix
       title: FSLdapCreateReq_Info
-    FSLdapResp:
+    FSLdapCreateReq:
       type: object
       required:
       - fs_ldap
       properties:
         fs_ldap:
-          description: file storage ldap
-          $ref: '#/components/schemas/FSLdap'
-      title: FSLdapResp
-      example:
-        fs_ldap:
-          admin_dn: admin_dn
-          ip: ip
-          update: '2000-01-23T04:56:07.000+00:00'
-          suffix: suffix
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          ips:
-          - ips
-          - ips
-          timeout: 5
-          group_suffix: group_suffix
-          user_suffix: user_suffix
-          port: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 6
-          id: 1
-          connection_timeout: 0
-          action_status: action_status
-          status: status
-    FSLdapUpdateReq:
-      type: object
-      required:
-      - fs_ldap
-      properties:
-        fs_ldap:
-          $ref: '#/components/schemas/FSLdapUpdateReq_Info'
-      title: FSLdapUpdateReq
+          $ref: '#/components/schemas/FSLdapCreateReq_Info'
+      title: FSLdapCreateReq
     FSLdapUpdateReq_Info:
       type: object
       required:
@@ -344,57 +314,6 @@ components:
           type: string
           description: user suffix
       title: FSLdapUpdateReq_Info
-    FSLdapsResp:
-      type: object
-      required:
-      - fs_ldaps
-      properties:
-        fs_ldaps:
-          type: array
-          description: file storage ldaps
-          items:
-            $ref: '#/components/schemas/FSLdap'
-      title: FSLdapsResp
-      example:
-        fs_ldaps:
-        - admin_dn: admin_dn
-          ip: ip
-          update: '2000-01-23T04:56:07.000+00:00'
-          suffix: suffix
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          ips:
-          - ips
-          - ips
-          timeout: 5
-          group_suffix: group_suffix
-          user_suffix: user_suffix
-          port: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 6
-          id: 1
-          connection_timeout: 0
-          action_status: action_status
-          status: status
-        - admin_dn: admin_dn
-          ip: ip
-          update: '2000-01-23T04:56:07.000+00:00'
-          suffix: suffix
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          ips:
-          - ips
-          - ips
-          timeout: 5
-          group_suffix: group_suffix
-          user_suffix: user_suffix
-          port: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 6
-          id: 1
-          connection_timeout: 0
-          action_status: action_status
-          status: status
     FSLdap:
       type: object
       properties:
@@ -464,14 +383,95 @@ components:
         connection_timeout: 0
         action_status: action_status
         status: status
-    FSLdapCreateReq:
+    FSLdapResp:
       type: object
       required:
       - fs_ldap
       properties:
         fs_ldap:
-          $ref: '#/components/schemas/FSLdapCreateReq_Info'
-      title: FSLdapCreateReq
+          description: file storage ldap
+          $ref: '#/components/schemas/FSLdap'
+      title: FSLdapResp
+      example:
+        fs_ldap:
+          admin_dn: admin_dn
+          ip: ip
+          update: '2000-01-23T04:56:07.000+00:00'
+          suffix: suffix
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          ips:
+          - ips
+          - ips
+          timeout: 5
+          group_suffix: group_suffix
+          user_suffix: user_suffix
+          port: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 6
+          id: 1
+          connection_timeout: 0
+          action_status: action_status
+          status: status
+    FSLdapUpdateReq:
+      type: object
+      required:
+      - fs_ldap
+      properties:
+        fs_ldap:
+          $ref: '#/components/schemas/FSLdapUpdateReq_Info'
+      title: FSLdapUpdateReq
+    FSLdapsResp:
+      type: object
+      required:
+      - fs_ldaps
+      properties:
+        fs_ldaps:
+          type: array
+          description: file storage ldaps
+          items:
+            $ref: '#/components/schemas/FSLdap'
+      title: FSLdapsResp
+      example:
+        fs_ldaps:
+        - admin_dn: admin_dn
+          ip: ip
+          update: '2000-01-23T04:56:07.000+00:00'
+          suffix: suffix
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          ips:
+          - ips
+          - ips
+          timeout: 5
+          group_suffix: group_suffix
+          user_suffix: user_suffix
+          port: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 6
+          id: 1
+          connection_timeout: 0
+          action_status: action_status
+          status: status
+        - admin_dn: admin_dn
+          ip: ip
+          update: '2000-01-23T04:56:07.000+00:00'
+          suffix: suffix
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          ips:
+          - ips
+          - ips
+          timeout: 5
+          group_suffix: group_suffix
+          user_suffix: user_suffix
+          port: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 6
+          id: 1
+          connection_timeout: 0
+          action_status: action_status
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

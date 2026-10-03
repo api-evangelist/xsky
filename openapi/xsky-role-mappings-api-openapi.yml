@@ -180,32 +180,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RoleMappingUpdateReq:
+    RoleMapping:
       type: object
       properties:
-        role_mapping:
-          $ref: '#/components/schemas/RoleMappingUpdateReq_Mapping'
-      title: RoleMappingUpdateReq
+        create:
+          type: string
+          format: date-time
+          description: time of creating identity platform
+        id:
+          type: integer
+          format: int64
+          description: id of role mapping
+        identity_platform:
+          description: identity platform of role mapping
+          $ref: '#/components/schemas/IdentityPlatform_Nestview'
+        role:
+          type: string
+          description: mapped role of sds platform
+        update:
+          type: string
+          format: date-time
+          description: time of updating identity platform
+        value:
+          type: string
+          description: roles of external identity platform
+      title: RoleMapping
+      description: RoleMapping defines role mappings for auth
       example:
-        role_mapping:
-          value: value
-    RoleMappingResp:
-      type: object
-      properties:
-        role_mapping:
-          description: role mapping
-          $ref: '#/components/schemas/RoleMapping'
-      title: RoleMappingResp
-      example:
-        role_mapping:
-          role: role
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          value: value
-          identity_platform:
-            name: name
-            id: 6
+        role: role
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        value: value
+        identity_platform:
+          name: name
+          id: 6
     IdentityPlatform_Nestview:
       type: object
       properties:
@@ -258,6 +267,23 @@ components:
           role: role
           identity_platform_id: 0
           value: value
+    RoleMappingResp:
+      type: object
+      properties:
+        role_mapping:
+          description: role mapping
+          $ref: '#/components/schemas/RoleMapping'
+      title: RoleMappingResp
+      example:
+        role_mapping:
+          role: role
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          value: value
+          identity_platform:
+            name: name
+            id: 6
     RoleMappingCreateReq_Mapping:
       type: object
       properties:
@@ -276,41 +302,15 @@ components:
         role: role
         identity_platform_id: 0
         value: value
-    RoleMapping:
+    RoleMappingUpdateReq:
       type: object
       properties:
-        create:
-          type: string
-          format: date-time
-          description: time of creating identity platform
-        id:
-          type: integer
-          format: int64
-          description: id of role mapping
-        identity_platform:
-          description: identity platform of role mapping
-          $ref: '#/components/schemas/IdentityPlatform_Nestview'
-        role:
-          type: string
-          description: mapped role of sds platform
-        update:
-          type: string
-          format: date-time
-          description: time of updating identity platform
-        value:
-          type: string
-          description: roles of external identity platform
-      title: RoleMapping
-      description: RoleMapping defines role mappings for auth
+        role_mapping:
+          $ref: '#/components/schemas/RoleMappingUpdateReq_Mapping'
+      title: RoleMappingUpdateReq
       example:
-        role: role
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        value: value
-        identity_platform:
-          name: name
-          id: 6
+        role_mapping:
+          value: value
     RoleMappingUpdateReq_Mapping:
       type: object
       properties:

@@ -1399,138 +1399,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OSBucketSwitchOwnerOSZoneReq:
+    OSBucketMetadataSearchSetReq:
       type: object
       required:
       - os_bucket
       properties:
         os_bucket:
-          $ref: '#/components/schemas/OSBucketSwitchOwnerOSZoneReq_Bucket'
-      title: OSBucketSwitchOwnerOSZoneReq
-    OSBucketUsageCategory:
-      type: object
-      properties:
-        download_bytes:
-          type: integer
-          format: int64
-        ops:
-          type: integer
-          format: int64
-        upload_bytes:
-          type: integer
-          format: int64
-      title: OSBucketUsageCategory
-      description: OSBucketUsageCategory contain usage info
-      example:
-        ops: 6
-        download_bytes: 0
-        upload_bytes: 1
-    OSBucketPolicySetReq:
-      type: object
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketPolicySetReq_Bucket'
-      title: OSBucketPolicySetReq
-    OSBucketRemoveReplicationPathsReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketRemoveReplicationPathsReq_Bucket'
-      title: OSBucketRemoveReplicationPathsReq
-    OSBucketLoggingGrant:
-      type: object
-      properties:
-        os_user_email:
-          type: string
-        os_user_name:
-          type: string
-        permission:
-          type: string
-        uri:
-          type: string
-      title: OSBucketLoggingGrant
-      description: OSBucketLoggingGrant defines logging permissions of os bucket
-      example:
-        os_user_email: os_user_email
-        os_user_name: os_user_name
-        permission: permission
-        uri: uri
-    OSBucketAddReplicationPathsReq_Bucket:
-      type: object
-      properties:
-        os_replication_path_uuids:
-          type: array
-          items:
-            type: string
-        os_replication_paths:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSReplicationPathReq'
-      title: OSBucketAddReplicationPathsReq_Bucket
-    OSBucketAddReplicationZonesReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketAddReplicationZonesReq_Bucket'
-      title: OSBucketAddReplicationZonesReq
-    Paging:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int64
-        duration:
-          type: integer
-          format: int64
-        duration_begin:
-          type: string
-          format: date-time
-        duration_end:
-          type: string
-          format: date-time
-        limit:
-          type: integer
-          format: int64
-        next:
-          type: string
-        offset:
-          type: integer
-          format: int64
-        period:
-          type: string
-        total_count:
-          type: integer
-          format: int64
-        truncated:
-          type: boolean
-      title: Paging
-      description: Paging defines paging object
-      example:
-        duration: 1
-        next: next
-        period: period
-        offset: 5
-        total_count: 2
-        count: 6
-        duration_end: '2000-01-23T04:56:07.000+00:00'
-        limit: 5
-        truncated: true
-        duration_begin: '2000-01-23T04:56:07.000+00:00'
-    OSBucketRemoveLoggingsReq_Bucket:
-      type: object
-      required:
-      - os_bucket_logging_ids
-      properties:
-        os_bucket_logging_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: OSBucketRemoveLoggingsReq_Bucket
+          $ref: '#/components/schemas/OSBucketMetadataSearchSetReq_Bucket'
+      title: OSBucketMetadataSearchSetReq
     ObjectStorageBucket:
       type: object
       properties:
@@ -1688,6 +1564,14 @@ components:
           name: name
           id: 0
         status: status
+    ObjectStorageBucketNFSClientUpdateReq:
+      type: object
+      required:
+      - os_bucket_nfs_client
+      properties:
+        os_bucket_nfs_client:
+          $ref: '#/components/schemas/ObjectStorageBucketNFSClientUpdateReq_Client'
+      title: ObjectStorageBucketNFSClientUpdateReq
     OSSample:
       type: object
       properties:
@@ -1735,6 +1619,199 @@ components:
           ops: 6
           download_bytes: 0
           upload_bytes: 1
+    OSBucketUpdateReplicationPathsReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketUpdateReplicationPathsReq_Bucket'
+      title: OSBucketUpdateReplicationPathsReq
+    ObjectStorageBucket_Nestview_lifecycle:
+      properties:
+        id:
+          type: integer
+          format: int64
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
+          type: string
+      example:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+    ObjectStorageBucketResp:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          description: record of object storage bucket
+          $ref: '#/components/schemas/ObjectStorageBucketRecord'
+      title: ObjectStorageBucketResp
+      example:
+        os_bucket: ''
+    OSBucketAddReplicationZonesReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketAddReplicationZonesReq_Bucket'
+      title: OSBucketAddReplicationZonesReq
+    OSBucketSwitchOwnerOSZoneReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketSwitchOwnerOSZoneReq_Bucket'
+      title: OSBucketSwitchOwnerOSZoneReq
+    OSBucketCustomLabelsUpdateReq_Bucket:
+      type: object
+      required:
+      - labels
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt'
+      title: OSBucketCustomLabelsUpdateReq_Bucket
+    OSBucketCustomLabelsRemoveReq_Bucket:
+      type: object
+      required:
+      - label_ids
+      properties:
+        label_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: OSBucketCustomLabelsRemoveReq_Bucket
+    OSBucketRemoveReplicationZonesReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketRemoveReplicationZonesReq_Bucket'
+      title: OSBucketRemoveReplicationZonesReq
+    ObjectStorageBucketNFSClientResp:
+      type: object
+      required:
+      - os_bucket_nfs_client
+      properties:
+        os_bucket_nfs_client:
+          description: nfs client of object storage bucket
+          $ref: '#/components/schemas/ObjectStorageBucketNFSClient'
+      title: ObjectStorageBucketNFSClientResp
+      example:
+        os_bucket_nfs_client:
+          bucket:
+            lifecycle:
+              rules:
+              - '{}'
+              - '{}'
+              id: 6
+              status: status
+            name: name
+            id: 0
+          client: client
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          permission: permission
+          id: 0
+          status: status
+    LifecycleRule:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        expiration:
+          $ref: '#/components/schemas/LifecycleExpiration'
+        name:
+          type: string
+        prefix:
+          type: string
+        transitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LifecycleTransition'
+      title: LifecycleRule
+      description: LifecycleRule is the details of object storage lifecycle rule
+      example:
+        prefix: prefix
+        name: name
+        expiration: {}
+        transitions:
+        - storage_class: storage_class
+          type: type
+        - storage_class: storage_class
+          type: type
+        enabled: true
+    ObjectStorageZone_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+      title: ObjectStorageZone_Nestview
+      example:
+        id: 7
+        uuid: uuid
+    ObjectStorageBucketNFSClient:
+      type: object
+      properties:
+        bucket:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview'
+        client:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        permission:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: ObjectStorageBucketNFSClient
+      description: ObjectStorageBucketNFSClient defines nfs client
+      example:
+        bucket:
+          lifecycle:
+            rules:
+            - '{}'
+            - '{}'
+            id: 6
+            status: status
+          name: name
+          id: 0
+        client: client
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        permission: permission
+        id: 0
+        status: status
+    OSBucketPolicySetReq_Bucket:
+      type: object
+      required:
+      - bucket_policy
+      properties:
+        bucket_policy:
+          type: string
+      title: OSBucketPolicySetReq_Bucket
     ObjectStorageBucketUpdateReq_Bucket:
       type: object
       properties:
@@ -1770,6 +1847,86 @@ components:
         quota_max_size: 1
         all_user_permission: all_user_permission
         log_delivery_permission: log_delivery_permission
+    OSBucketCustomLabelsAddReq_Bucket:
+      type: object
+      required:
+      - labels
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSBucketCustomLabelsAddReq_Bucket_Labels_Elt'
+      title: OSBucketCustomLabelsAddReq_Bucket
+    OSBucketSetAccessLoggingReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketSetAccessLoggingReq_Bucket'
+      title: OSBucketSetAccessLoggingReq
+    OSBucketUpdateReplicationPathsReq_Bucket:
+      type: object
+      required:
+      - os_replication_path_uuids
+      properties:
+        os_replication_path_uuids:
+          type: array
+          items:
+            type: string
+      title: OSBucketUpdateReplicationPathsReq_Bucket
+    ObjectStorageBucketNFSClientUpdateReq_Client:
+      type: object
+      properties:
+        permission:
+          type: string
+      title: ObjectStorageBucketNFSClientUpdateReq_Client
+    RemoteCluster_Nestview:
+      type: object
+      properties:
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+      title: RemoteCluster_Nestview
+      example:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+    ObjectStorageUser_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: ObjectStorageUser_Nestview
+      example:
+        name: name
+        id: 1
+    OSBucketMetadataSearchSetReq_Bucket:
+      type: object
+      required:
+      - metadata_search_enabled
+      properties:
+        metadata_search_enabled:
+          type: boolean
+      title: OSBucketMetadataSearchSetReq_Bucket
+    OSBucketCustomLabelsRemoveReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketCustomLabelsRemoveReq_Bucket'
+      title: OSBucketCustomLabelsRemoveReq
     OSBucketCustomLabelsUpdateReq:
       type: object
       required:
@@ -1778,6 +1935,34 @@ components:
         os_bucket:
           $ref: '#/components/schemas/OSBucketCustomLabelsUpdateReq_Bucket'
       title: OSBucketCustomLabelsUpdateReq
+    OSBucketLoggingGrant:
+      type: object
+      properties:
+        os_user_email:
+          type: string
+        os_user_name:
+          type: string
+        permission:
+          type: string
+        uri:
+          type: string
+      title: OSBucketLoggingGrant
+      description: OSBucketLoggingGrant defines logging permissions of os bucket
+      example:
+        os_user_email: os_user_email
+        os_user_name: os_user_name
+        permission: permission
+        uri: uri
+    OSBucketRemoveReplicationZonesReq_Bucket:
+      type: object
+      required:
+      - os_replication_zone_uuids
+      properties:
+        os_replication_zone_uuids:
+          type: array
+          items:
+            type: string
+      title: OSBucketRemoveReplicationZonesReq_Bucket
     OSReplicationZoneReq:
       type: object
       required:
@@ -1786,49 +1971,21 @@ components:
         os_remote_policy_uuid:
           type: string
       title: OSReplicationZoneReq
-    ObjectStorageBucketNFSClientUpdateReq_Client:
+    BucketFlag:
       type: object
       properties:
-        permission:
-          type: string
-      title: ObjectStorageBucketNFSClientUpdateReq_Client
-    ObjectStorageBucketUpdateReq:
-      type: object
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/ObjectStorageBucketUpdateReq_Bucket'
-      title: ObjectStorageBucketUpdateReq
+        versioned:
+          type: boolean
+        versions_suspended:
+          type: boolean
+        worm:
+          type: boolean
+      title: BucketFlag
+      description: BucketFlag is the struct of bucket flag
       example:
-        os_bucket:
-          owner_permission: owner_permission
-          flag:
-            versions_suspended: true
-            worm: true
-            versioned: true
-          auth_user_permission: auth_user_permission
-          owner_id: 0
-          quota_max_objects: 6
-          quota_max_size: 1
-          all_user_permission: all_user_permission
-          log_delivery_permission: log_delivery_permission
-    OSBucketCustomLabelsAddReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketCustomLabelsAddReq_Bucket'
-      title: OSBucketCustomLabelsAddReq
-    OSBucketCustomLabelsUpdateReq_Bucket:
-      type: object
-      required:
-      - labels
-      properties:
-        labels:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt'
-      title: OSBucketCustomLabelsUpdateReq_Bucket
+        versions_suspended: true
+        worm: true
+        versioned: true
     ObjectStorageBucketStat:
       title: ObjectStorageBucketStat
       allOf:
@@ -1901,475 +2058,6 @@ components:
             type: number
             format: double
       description: ObjectStorageBucketStat define the object storage bucket statistics
-    OSBucketSetAccessLoggingReq_Bucket:
-      type: object
-      properties:
-        logging_grants:
-          type: array
-          items:
-            type: object
-            properties: {}
-        logging_owner_id:
-          type: integer
-          format: int64
-        logging_prefix:
-          type: string
-        logging_target_bucket_id:
-          type: integer
-          format: int64
-      title: OSBucketSetAccessLoggingReq_Bucket
-    ObjectStorageBucket_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        lifecycle:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
-        name:
-          type: string
-      title: ObjectStorageBucket_Nestview
-      example:
-        lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
-        name: name
-        id: 0
-    ObjectStorageBucketNFSClientsCreateReq_Clients_Elt:
-      type: object
-      required:
-      - client
-      - permission
-      properties:
-        client:
-          type: string
-        permission:
-          type: string
-      title: ObjectStorageBucketNFSClientsCreateReq_Clients_Elt
-    OSBucketUpdateReplicationPathsReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketUpdateReplicationPathsReq_Bucket'
-      title: OSBucketUpdateReplicationPathsReq
-    OSBucketCustomLabelsAddReq_Bucket:
-      type: object
-      required:
-      - labels
-      properties:
-        labels:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSBucketCustomLabelsAddReq_Bucket_Labels_Elt'
-      title: OSBucketCustomLabelsAddReq_Bucket
-    ObjectStorageBucketCreateReq_Bucket:
-      type: object
-      required:
-      - name
-      - owner_id
-      - policy_id
-      properties:
-        all_user_permission:
-          type: string
-          description: permission setting of all users
-        auth_user_permission:
-          type: string
-          description: permission setting of authenticated users
-        flag:
-          description: bucket options
-          $ref: '#/components/schemas/BucketFlag'
-        log_delivery_permission:
-          type: string
-          description: permission setting of log delivery group
-        name:
-          type: string
-          description: bucket name
-        owner_id:
-          type: integer
-          format: int64
-          description: bucket owner
-        owner_permission:
-          type: string
-          description: permission setting of owner
-        policy_id:
-          type: integer
-          format: int64
-          description: storage policy
-        quota_max_objects:
-          type: integer
-          format: int64
-          description: max number of objects
-        quota_max_size:
-          type: integer
-          format: int64
-          description: max size of all objects
-      title: ObjectStorageBucketCreateReq_Bucket
-      example:
-        owner_permission: owner_permission
-        flag:
-          versions_suspended: true
-          worm: true
-          versioned: true
-        policy_id: 6
-        auth_user_permission: auth_user_permission
-        owner_id: 0
-        quota_max_objects: 1
-        name: name
-        quota_max_size: 5
-        all_user_permission: all_user_permission
-        log_delivery_permission: log_delivery_permission
-    MultiObjectStorageBucketsSamplesResp:
-      type: object
-      properties:
-        os_buckets_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectStorageBucketSamplesElem'
-      title: MultiObjectStorageBucketsSamplesResp
-      example:
-        os_buckets_samples:
-        - paging:
-            duration: 1
-            next: next
-            period: period
-            offset: 5
-            total_count: 2
-            count: 6
-            duration_end: '2000-01-23T04:56:07.000+00:00'
-            limit: 5
-            truncated: true
-            duration_begin: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          samples:
-          - ''
-          - ''
-        - paging:
-            duration: 1
-            next: next
-            period: period
-            offset: 5
-            total_count: 2
-            count: 6
-            duration_end: '2000-01-23T04:56:07.000+00:00'
-            limit: 5
-            truncated: true
-            duration_begin: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          samples:
-          - ''
-          - ''
-    OSBucketCustomLabelsRemoveReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketCustomLabelsRemoveReq_Bucket'
-      title: OSBucketCustomLabelsRemoveReq
-    ObjectStorageBucket_Nestview_lifecycle:
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
-    ObjectStorageBucketsResp:
-      type: object
-      required:
-      - os_buckets
-      properties:
-        os_buckets:
-          type: array
-          description: records of object storage bucket
-          items:
-            $ref: '#/components/schemas/ObjectStorageBucketRecord'
-      title: ObjectStorageBucketsResp
-      example:
-        os_buckets:
-        - ''
-        - ''
-    ObjectStorageBucketResp:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          description: record of object storage bucket
-          $ref: '#/components/schemas/ObjectStorageBucketRecord'
-      title: ObjectStorageBucketResp
-      example:
-        os_bucket: ''
-    ObjectStorageBucketSamplesResp:
-      type: object
-      required:
-      - os_bucket_samples
-      properties:
-        os_bucket_samples:
-          type: array
-          description: object storage bucket samples
-          items:
-            $ref: '#/components/schemas/ObjectStorageBucketStat'
-      title: ObjectStorageBucketSamplesResp
-      example:
-        os_bucket_samples:
-        - ''
-        - ''
-    OSBucketCustomLabelsRemoveReq_Bucket:
-      type: object
-      required:
-      - label_ids
-      properties:
-        label_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: OSBucketCustomLabelsRemoveReq_Bucket
-    OSBucketUpdateReplicationPathsReq_Bucket:
-      type: object
-      required:
-      - os_replication_path_uuids
-      properties:
-        os_replication_path_uuids:
-          type: array
-          items:
-            type: string
-      title: OSBucketUpdateReplicationPathsReq_Bucket
-    ObjectStorageBucketNFSClientsDeleteReq:
-      type: object
-      required:
-      - client_ids
-      properties:
-        client_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: ObjectStorageBucketNFSClientsDeleteReq
-    ObjectStorageBucketSamplesElem:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        paging:
-          $ref: '#/components/schemas/Paging'
-        samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectStorageBucketStat'
-      title: ObjectStorageBucketSamplesElem
-      example:
-        paging:
-          duration: 1
-          next: next
-          period: period
-          offset: 5
-          total_count: 2
-          count: 6
-          duration_end: '2000-01-23T04:56:07.000+00:00'
-          limit: 5
-          truncated: true
-          duration_begin: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        samples:
-        - ''
-        - ''
-    OSBucketSetAccessLoggingReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketSetAccessLoggingReq_Bucket'
-      title: OSBucketSetAccessLoggingReq
-    ObjectStorageBucketNFSClientUpdateReq:
-      type: object
-      required:
-      - os_bucket_nfs_client
-      properties:
-        os_bucket_nfs_client:
-          $ref: '#/components/schemas/ObjectStorageBucketNFSClientUpdateReq_Client'
-      title: ObjectStorageBucketNFSClientUpdateReq
-    ObjectStorageLifecycleSetReq:
-      type: object
-      properties:
-        lifecycle_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/LifecycleRule'
-      title: ObjectStorageLifecycleSetReq
-      example:
-        lifecycle_rules:
-        - prefix: prefix
-          name: name
-          expiration: {}
-          transitions:
-          - storage_class: storage_class
-            type: type
-          - storage_class: storage_class
-            type: type
-          enabled: true
-        - prefix: prefix
-          name: name
-          expiration: {}
-          transitions:
-          - storage_class: storage_class
-            type: type
-          - storage_class: storage_class
-            type: type
-          enabled: true
-    LifecycleTransition:
-      type: object
-      required:
-      - storage_class
-      - type
-      properties:
-        storage_class:
-          type: string
-        type:
-          type: string
-      title: LifecycleTransition
-      description: LifecycleTransition is the details of transition of LifecycleRule
-      example:
-        storage_class: storage_class
-        type: type
-    OSBucketCustomLabelsAddReq_Bucket_Labels_Elt:
-      type: object
-      required:
-      - category
-      - name
-      - type
-      properties:
-        category:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-      title: OSBucketCustomLabelsAddReq_Bucket_Labels_Elt
-    ObjectStorageBucketNFSClientResp:
-      type: object
-      required:
-      - os_bucket_nfs_client
-      properties:
-        os_bucket_nfs_client:
-          description: nfs client of object storage bucket
-          $ref: '#/components/schemas/ObjectStorageBucketNFSClient'
-      title: ObjectStorageBucketNFSClientResp
-      example:
-        os_bucket_nfs_client:
-          bucket:
-            lifecycle:
-              rules:
-              - '{}'
-              - '{}'
-              id: 6
-              status: status
-            name: name
-            id: 0
-          client: client
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          permission: permission
-          id: 0
-          status: status
-    OSBucketMetadataSearchSetReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketMetadataSearchSetReq_Bucket'
-      title: OSBucketMetadataSearchSetReq
-    ObjectStorageLifecycle:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      title: ObjectStorageLifecycle
-      description: ObjectStorageLifecycle is the model of object_storage_lifecycle
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
-    OSBucketAddReplicationPathsReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketAddReplicationPathsReq_Bucket'
-      title: OSBucketAddReplicationPathsReq
-    OSBucketSwitchOwnerOSZoneReq_Bucket:
-      type: object
-      properties:
-        os_zone_uuid:
-          type: string
-      title: OSBucketSwitchOwnerOSZoneReq_Bucket
-    BucketFlagReq:
-      type: object
-      properties:
-        versioned:
-          type: boolean
-          description: set versioned flag
-        versions_suspended:
-          type: boolean
-          description: set versioned suspended flag
-        worm:
-          type: boolean
-          description: set worm flag
-      title: BucketFlagReq
-      example:
-        versions_suspended: true
-        worm: true
-        versioned: true
-    OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt:
-      type: object
-      required:
-      - id
-      - type
-      properties:
-        id:
-          type: integer
-          format: int64
-        type:
-          type: string
-      title: OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt
-    OSBucketMetadataSearchSetReq_Bucket:
-      type: object
-      required:
-      - metadata_search_enabled
-      properties:
-        metadata_search_enabled:
-          type: boolean
-      title: OSBucketMetadataSearchSetReq_Bucket
     RawObjectStorageBucketResp:
       type: object
       required:
@@ -2449,18 +2137,236 @@ components:
             name: name
             id: 0
           status: status
-    ObjectStorageUser_Nestview:
+    OSBucketCustomLabelsAddReq:
+      type: object
+      required:
+      - os_bucket
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketCustomLabelsAddReq_Bucket'
+      title: OSBucketCustomLabelsAddReq
+    ObjectStorageBucketUpdateReq:
+      type: object
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/ObjectStorageBucketUpdateReq_Bucket'
+      title: ObjectStorageBucketUpdateReq
+      example:
+        os_bucket:
+          owner_permission: owner_permission
+          flag:
+            versions_suspended: true
+            worm: true
+            versioned: true
+          auth_user_permission: auth_user_permission
+          owner_id: 0
+          quota_max_objects: 6
+          quota_max_size: 1
+          all_user_permission: all_user_permission
+          log_delivery_permission: log_delivery_permission
+    OSBucketUsageCategory:
+      type: object
+      properties:
+        download_bytes:
+          type: integer
+          format: int64
+        ops:
+          type: integer
+          format: int64
+        upload_bytes:
+          type: integer
+          format: int64
+      title: OSBucketUsageCategory
+      description: OSBucketUsageCategory contain usage info
+      example:
+        ops: 6
+        download_bytes: 0
+        upload_bytes: 1
+    Paging:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        duration:
+          type: integer
+          format: int64
+        duration_begin:
+          type: string
+          format: date-time
+        duration_end:
+          type: string
+          format: date-time
+        limit:
+          type: integer
+          format: int64
+        next:
+          type: string
+        offset:
+          type: integer
+          format: int64
+        period:
+          type: string
+        total_count:
+          type: integer
+          format: int64
+        truncated:
+          type: boolean
+      title: Paging
+      description: Paging defines paging object
+      example:
+        duration: 1
+        next: next
+        period: period
+        offset: 5
+        total_count: 2
+        count: 6
+        duration_end: '2000-01-23T04:56:07.000+00:00'
+        limit: 5
+        truncated: true
+        duration_begin: '2000-01-23T04:56:07.000+00:00'
+    LifecycleExpiration:
+      type: object
+      title: LifecycleExpiration
+      description: LifecycleExpiration is the details of expiration of LifecycleRule
+    ObjectStorageLifecycle:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        name:
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
           type: string
-      title: ObjectStorageUser_Nestview
+      title: ObjectStorageLifecycle
+      description: ObjectStorageLifecycle is the model of object_storage_lifecycle
       example:
-        name: name
-        id: 1
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+    LifecycleTransition:
+      type: object
+      required:
+      - storage_class
+      - type
+      properties:
+        storage_class:
+          type: string
+        type:
+          type: string
+      title: LifecycleTransition
+      description: LifecycleTransition is the details of transition of LifecycleRule
+      example:
+        storage_class: storage_class
+        type: type
+    MultiObjectStorageBucketsSamplesResp:
+      type: object
+      properties:
+        os_buckets_samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStorageBucketSamplesElem'
+      title: MultiObjectStorageBucketsSamplesResp
+      example:
+        os_buckets_samples:
+        - paging:
+            duration: 1
+            next: next
+            period: period
+            offset: 5
+            total_count: 2
+            count: 6
+            duration_end: '2000-01-23T04:56:07.000+00:00'
+            limit: 5
+            truncated: true
+            duration_begin: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          samples:
+          - ''
+          - ''
+        - paging:
+            duration: 1
+            next: next
+            period: period
+            offset: 5
+            total_count: 2
+            count: 6
+            duration_end: '2000-01-23T04:56:07.000+00:00'
+            limit: 5
+            truncated: true
+            duration_begin: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          samples:
+          - ''
+          - ''
+    ObjectStorageBucketNFSClientsCreateReq_Clients_Elt:
+      type: object
+      required:
+      - client
+      - permission
+      properties:
+        client:
+          type: string
+        permission:
+          type: string
+      title: ObjectStorageBucketNFSClientsCreateReq_Clients_Elt
+    OSReplicationPathReq:
+      type: object
+      required:
+      - os_zone_uuids
+      properties:
+        os_zone_uuids:
+          type: array
+          items:
+            type: string
+      title: OSReplicationPathReq
+    ObjectStorageBucketSamplesElem:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        paging:
+          $ref: '#/components/schemas/Paging'
+        samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStorageBucketStat'
+      title: ObjectStorageBucketSamplesElem
+      example:
+        paging:
+          duration: 1
+          next: next
+          period: period
+          offset: 5
+          total_count: 2
+          count: 6
+          duration_end: '2000-01-23T04:56:07.000+00:00'
+          limit: 5
+          truncated: true
+          duration_begin: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        samples:
+        - ''
+        - ''
+    OSBucketAddReplicationPathsReq_Bucket:
+      type: object
+      properties:
+        os_replication_path_uuids:
+          type: array
+          items:
+            type: string
+        os_replication_paths:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSReplicationPathReq'
+      title: OSBucketAddReplicationPathsReq_Bucket
     OSBucketRemoveLoggingsReq:
       type: object
       required:
@@ -2469,6 +2375,24 @@ components:
         os_bucket:
           $ref: '#/components/schemas/OSBucketRemoveLoggingsReq_Bucket'
       title: OSBucketRemoveLoggingsReq
+    OSBucketAddReplicationZonesReq_Bucket:
+      type: object
+      properties:
+        os_replication_zone_uuids:
+          type: array
+          items:
+            type: string
+        os_replication_zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSReplicationZoneReq'
+      title: OSBucketAddReplicationZonesReq_Bucket
+    OSBucketPolicySetReq:
+      type: object
+      properties:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketPolicySetReq_Bucket'
+      title: OSBucketPolicySetReq
     ObjectStorageBucketCreateReq:
       type: object
       properties:
@@ -2490,53 +2414,113 @@ components:
           quota_max_size: 5
           all_user_permission: all_user_permission
           log_delivery_permission: log_delivery_permission
-    ObjectStorageZone_Nestview:
+    ObjectStorageBucketSamplesResp:
+      type: object
+      required:
+      - os_bucket_samples
+      properties:
+        os_bucket_samples:
+          type: array
+          description: object storage bucket samples
+          items:
+            $ref: '#/components/schemas/ObjectStorageBucketStat'
+      title: ObjectStorageBucketSamplesResp
+      example:
+        os_bucket_samples:
+        - ''
+        - ''
+    ObjectStorageBucketNFSClientsDeleteReq:
+      type: object
+      required:
+      - client_ids
+      properties:
+        client_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: ObjectStorageBucketNFSClientsDeleteReq
+    ObjectStorageBucketNFSClientsCreateReq:
+      type: object
+      required:
+      - os_bucket_nfs_clients
+      properties:
+        os_bucket_nfs_clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStorageBucketNFSClientsCreateReq_Clients_Elt'
+      title: ObjectStorageBucketNFSClientsCreateReq
+    OSBucketRemoveLoggingsReq_Bucket:
+      type: object
+      required:
+      - os_bucket_logging_ids
+      properties:
+        os_bucket_logging_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: OSBucketRemoveLoggingsReq_Bucket
+    BucketFlagReq:
+      type: object
+      properties:
+        versioned:
+          type: boolean
+          description: set versioned flag
+        versions_suspended:
+          type: boolean
+          description: set versioned suspended flag
+        worm:
+          type: boolean
+          description: set worm flag
+      title: BucketFlagReq
+      example:
+        versions_suspended: true
+        worm: true
+        versioned: true
+    ObjectStorageBucketsResp:
+      type: object
+      required:
+      - os_buckets
+      properties:
+        os_buckets:
+          type: array
+          description: records of object storage bucket
+          items:
+            $ref: '#/components/schemas/ObjectStorageBucketRecord'
+      title: ObjectStorageBucketsResp
+      example:
+        os_buckets:
+        - ''
+        - ''
+    ObjectStorageBucket_Nestview:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        uuid:
+        lifecycle:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
+        name:
           type: string
-      title: ObjectStorageZone_Nestview
+      title: ObjectStorageBucket_Nestview
       example:
-        id: 7
-        uuid: uuid
-    OSReplicationPathReq:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
+    OSBucketAddReplicationPathsReq:
       type: object
       required:
-      - os_zone_uuids
+      - os_bucket
       properties:
-        os_zone_uuids:
-          type: array
-          items:
-            type: string
-      title: OSReplicationPathReq
-    OSBucketRemoveReplicationPathsReq_Bucket:
-      type: object
-      required:
-      - os_replication_path_uuids
-      properties:
-        os_replication_path_uuids:
-          type: array
-          items:
-            type: string
-      title: OSBucketRemoveReplicationPathsReq_Bucket
-    BucketFlag:
-      type: object
-      properties:
-        versioned:
-          type: boolean
-        versions_suspended:
-          type: boolean
-        worm:
-          type: boolean
-      title: BucketFlag
-      description: BucketFlag is the struct of bucket flag
-      example:
-        versions_suspended: true
-        worm: true
-        versioned: true
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketAddReplicationPathsReq_Bucket'
+      title: OSBucketAddReplicationPathsReq
     ObjectStoragePolicy_Nestview:
       type: object
       properties:
@@ -2549,133 +2533,157 @@ components:
       example:
         name: name
         id: 9
-    LifecycleExpiration:
-      type: object
-      title: LifecycleExpiration
-      description: LifecycleExpiration is the details of expiration of LifecycleRule
-    ObjectStorageBucketRecord:
-      title: ObjectStorageBucketRecord
-      allOf:
-      - $ref: '#/components/schemas/ObjectStorageBucket'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/ObjectStorageBucketStat'
-      description: 'ObjectStorageBucketRecord is used to combine ObjectStorageBucket and
-
-        ObjectStorageBucketStat'
-    LifecycleRule:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        expiration:
-          $ref: '#/components/schemas/LifecycleExpiration'
-        name:
-          type: string
-        prefix:
-          type: string
-        transitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LifecycleTransition'
-      title: LifecycleRule
-      description: LifecycleRule is the details of object storage lifecycle rule
-      example:
-        prefix: prefix
-        name: name
-        expiration: {}
-        transitions:
-        - storage_class: storage_class
-          type: type
-        - storage_class: storage_class
-          type: type
-        enabled: true
-    ObjectStorageBucketNFSClientsCreateReq:
+    OSBucketRemoveReplicationPathsReq:
       type: object
       required:
-      - os_bucket_nfs_clients
+      - os_bucket
       properties:
-        os_bucket_nfs_clients:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectStorageBucketNFSClientsCreateReq_Clients_Elt'
-      title: ObjectStorageBucketNFSClientsCreateReq
-    RemoteCluster_Nestview:
-      type: object
-      properties:
-        fs_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        url:
-          type: string
-      title: RemoteCluster_Nestview
-      example:
-        name: name
-        id: 2
-        fs_id: fs_id
-        url: url
-    OSBucketPolicySetReq_Bucket:
+        os_bucket:
+          $ref: '#/components/schemas/OSBucketRemoveReplicationPathsReq_Bucket'
+      title: OSBucketRemoveReplicationPathsReq
+    OSBucketRemoveReplicationPathsReq_Bucket:
       type: object
       required:
-      - bucket_policy
+      - os_replication_path_uuids
       properties:
-        bucket_policy:
-          type: string
-      title: OSBucketPolicySetReq_Bucket
-    ObjectStorageBucketNFSClient:
-      type: object
-      properties:
-        bucket:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview'
-        client:
-          type: string
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        permission:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: ObjectStorageBucketNFSClient
-      description: ObjectStorageBucketNFSClient defines nfs client
-      example:
-        bucket:
-          lifecycle:
-            rules:
-            - '{}'
-            - '{}'
-            id: 6
-            status: status
-          name: name
-          id: 0
-        client: client
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        permission: permission
-        id: 0
-        status: status
-    OSBucketRemoveReplicationZonesReq_Bucket:
-      type: object
-      required:
-      - os_replication_zone_uuids
-      properties:
-        os_replication_zone_uuids:
+        os_replication_path_uuids:
           type: array
           items:
             type: string
-      title: OSBucketRemoveReplicationZonesReq_Bucket
+      title: OSBucketRemoveReplicationPathsReq_Bucket
+    ObjectStorageLifecycleSetReq:
+      type: object
+      properties:
+        lifecycle_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/LifecycleRule'
+      title: ObjectStorageLifecycleSetReq
+      example:
+        lifecycle_rules:
+        - prefix: prefix
+          name: name
+          expiration: {}
+          transitions:
+          - storage_class: storage_class
+            type: type
+          - storage_class: storage_class
+            type: type
+          enabled: true
+        - prefix: prefix
+          name: name
+          expiration: {}
+          transitions:
+          - storage_class: storage_class
+            type: type
+          - storage_class: storage_class
+            type: type
+          enabled: true
+    OSBucketCustomLabelsAddReq_Bucket_Labels_Elt:
+      type: object
+      required:
+      - category
+      - name
+      - type
+      properties:
+        category:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      title: OSBucketCustomLabelsAddReq_Bucket_Labels_Elt
+    OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt:
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          type: string
+      title: OSBucketCustomLabelsUpdateReq_Bucket_Labels_Elt
+    OSBucketSwitchOwnerOSZoneReq_Bucket:
+      type: object
+      properties:
+        os_zone_uuid:
+          type: string
+      title: OSBucketSwitchOwnerOSZoneReq_Bucket
+    OSBucketSetAccessLoggingReq_Bucket:
+      type: object
+      properties:
+        logging_grants:
+          type: array
+          items:
+            type: object
+            properties: {}
+        logging_owner_id:
+          type: integer
+          format: int64
+        logging_prefix:
+          type: string
+        logging_target_bucket_id:
+          type: integer
+          format: int64
+      title: OSBucketSetAccessLoggingReq_Bucket
+    ObjectStorageBucketCreateReq_Bucket:
+      type: object
+      required:
+      - name
+      - owner_id
+      - policy_id
+      properties:
+        all_user_permission:
+          type: string
+          description: permission setting of all users
+        auth_user_permission:
+          type: string
+          description: permission setting of authenticated users
+        flag:
+          description: bucket options
+          $ref: '#/components/schemas/BucketFlag'
+        log_delivery_permission:
+          type: string
+          description: permission setting of log delivery group
+        name:
+          type: string
+          description: bucket name
+        owner_id:
+          type: integer
+          format: int64
+          description: bucket owner
+        owner_permission:
+          type: string
+          description: permission setting of owner
+        policy_id:
+          type: integer
+          format: int64
+          description: storage policy
+        quota_max_objects:
+          type: integer
+          format: int64
+          description: max number of objects
+        quota_max_size:
+          type: integer
+          format: int64
+          description: max size of all objects
+      title: ObjectStorageBucketCreateReq_Bucket
+      example:
+        owner_permission: owner_permission
+        flag:
+          versions_suspended: true
+          worm: true
+          versioned: true
+        policy_id: 6
+        auth_user_permission: auth_user_permission
+        owner_id: 0
+        quota_max_objects: 1
+        name: name
+        quota_max_size: 5
+        all_user_permission: all_user_permission
+        log_delivery_permission: log_delivery_permission
     ObjectStorageBucketNFSClientsResp:
       type: object
       required:
@@ -2719,26 +2727,18 @@ components:
           permission: permission
           id: 0
           status: status
-    OSBucketAddReplicationZonesReq_Bucket:
-      type: object
-      properties:
-        os_replication_zone_uuids:
-          type: array
-          items:
-            type: string
-        os_replication_zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSReplicationZoneReq'
-      title: OSBucketAddReplicationZonesReq_Bucket
-    OSBucketRemoveReplicationZonesReq:
-      type: object
-      required:
-      - os_bucket
-      properties:
-        os_bucket:
-          $ref: '#/components/schemas/OSBucketRemoveReplicationZonesReq_Bucket'
-      title: OSBucketRemoveReplicationZonesReq
+    ObjectStorageBucketRecord:
+      title: ObjectStorageBucketRecord
+      allOf:
+      - $ref: '#/components/schemas/ObjectStorageBucket'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/ObjectStorageBucketStat'
+      description: 'ObjectStorageBucketRecord is used to combine ObjectStorageBucket and
+
+        ObjectStorageBucketStat'
   securitySchemes:
     tokenInHeader:
       description: auth by token

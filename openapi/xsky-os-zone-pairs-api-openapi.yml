@@ -46,6 +46,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OSZonePairsResp:
+      type: object
+      required:
+      - os_zone_pairs
+      properties:
+        os_zone_pairs:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSZonePair'
+      title: OSZonePairsResp
+      example:
+        os_zone_pairs:
+        - clock_diff: 6
+          target_zone_uuid: target_zone_uuid
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          ID: 0
+          source_zone_uuid: source_zone_uuid
+        - clock_diff: 6
+          target_zone_uuid: target_zone_uuid
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          ID: 0
+          source_zone_uuid: source_zone_uuid
     OSZonePair:
       type: object
       properties:
@@ -74,30 +98,6 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         ID: 0
         source_zone_uuid: source_zone_uuid
-    OSZonePairsResp:
-      type: object
-      required:
-      - os_zone_pairs
-      properties:
-        os_zone_pairs:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSZonePair'
-      title: OSZonePairsResp
-      example:
-        os_zone_pairs:
-        - clock_diff: 6
-          target_zone_uuid: target_zone_uuid
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          ID: 0
-          source_zone_uuid: source_zone_uuid
-        - clock_diff: 6
-          target_zone_uuid: target_zone_uuid
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          ID: 0
-          source_zone_uuid: source_zone_uuid
   securitySchemes:
     tokenInHeader:
       description: auth by token

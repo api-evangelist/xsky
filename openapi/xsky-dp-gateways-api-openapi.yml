@@ -268,6 +268,17 @@ components:
       example:
         dp_gateway:
           name: name
+    DpGatewayUpdateReq_Gateway:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: dp gateway name
+      title: DpGatewayUpdateReq_Gateway
+      example:
+        name: name
     DpGatewaysResp:
       type: object
       required:
@@ -303,32 +314,6 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 1
           status: status
-    DpGatewayCreateReq_Gateway:
-      type: object
-      required:
-      - host_id
-      - name
-      properties:
-        host_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpGatewayCreateReq_Gateway
-      example:
-        name: name
-        host_id: 0
-    DpGatewayUpdateReq_Gateway:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: dp gateway name
-      title: DpGatewayUpdateReq_Gateway
-      example:
-        name: name
     DpGatewayResp:
       type: object
       required:
@@ -351,6 +336,21 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 1
           status: status
+    DpGatewayCreateReq_Gateway:
+      type: object
+      required:
+      - host_id
+      - name
+      properties:
+        host_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGatewayCreateReq_Gateway
+      example:
+        name: name
+        host_id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

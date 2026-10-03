@@ -207,6 +207,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CryptoKey:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        enabled:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        size:
+          type: integer
+          format: int64
+        update:
+          type: string
+          format: date-time
+      title: CryptoKey
+      description: CryptoKey is a crypto key
+      example:
+        size: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        enabled: true
     CryptoKeyUpdateReq:
       type: object
       properties:
@@ -216,6 +244,15 @@ components:
       example:
         crypto_key:
           enabled: true
+    CryptoKeyUpdateReq_Key:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: enable or disable the key
+      title: CryptoKeyUpdateReq_Key
+      example:
+        enabled: true
     CryptoKeysResp:
       type: object
       required:
@@ -256,43 +293,6 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 0
           enabled: true
-    CryptoKeyUpdateReq_Key:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: enable or disable the key
-      title: CryptoKeyUpdateReq_Key
-      example:
-        enabled: true
-    CryptoKey:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        enabled:
-          type: boolean
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        size:
-          type: integer
-          format: int64
-        update:
-          type: string
-          format: date-time
-      title: CryptoKey
-      description: CryptoKey is a crypto key
-      example:
-        size: 6
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        enabled: true
   securitySchemes:
     tokenInHeader:
       description: auth by token

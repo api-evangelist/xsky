@@ -265,73 +265,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    VolumeGroupResp:
-      type: object
-      properties:
-        block_volume_group:
-          $ref: '#/components/schemas/VolumeGroup'
-      title: VolumeGroupResp
-      example:
-        block_volume_group:
-          flattened: true
-          block_volume_num: 6
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
-          block_volume_group_snapshot_num: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          progress: 5.962133916683182
-          id: 1
-          action_status: action_status
-          block_volume_group_snapshot:
-            name: name
-            id: 6
-          status: status
-    VolumeGroupCreateReq_VolumeGroup:
-      type: object
-      required:
-      - name
-      properties:
-        block_volume_group_snapshot_id:
-          type: integer
-          format: int64
-        block_volume_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        description:
-          type: string
-        flattened:
-          type: boolean
-        name:
-          type: string
-      title: VolumeGroupCreateReq_VolumeGroup
-      example:
-        flattened: true
-        block_volume_ids:
-        - 6
-        - 6
-        name: name
-        description: description
-        block_volume_group_snapshot_id: 0
-    VolumeGroupUpdateReq_VolumeGroup:
-      type: object
-      required:
-      - name
-      properties:
-        description:
-          type: string
-        flattened:
-          type: boolean
-        name:
-          type: string
-      title: VolumeGroupUpdateReq_VolumeGroup
-      example:
-        flattened: true
-        name: name
-        description: description
     VolumeGroupSnapshot_Nestview:
       type: object
       properties:
@@ -344,59 +277,6 @@ components:
       example:
         name: name
         id: 6
-    VolumeGroupsResp:
-      type: object
-      properties:
-        block_volume_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/VolumeGroup'
-      title: VolumeGroupsResp
-      example:
-        block_volume_groups:
-        - flattened: true
-          block_volume_num: 6
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
-          block_volume_group_snapshot_num: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          progress: 5.962133916683182
-          id: 1
-          action_status: action_status
-          block_volume_group_snapshot:
-            name: name
-            id: 6
-          status: status
-        - flattened: true
-          block_volume_num: 6
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
-          block_volume_group_snapshot_num: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          progress: 5.962133916683182
-          id: 1
-          action_status: action_status
-          block_volume_group_snapshot:
-            name: name
-            id: 6
-          status: status
-    VolumeGroupUpdateReq:
-      type: object
-      required:
-      - block_volume_group
-      properties:
-        block_volume_group:
-          $ref: '#/components/schemas/VolumeGroupUpdateReq_VolumeGroup'
-      title: VolumeGroupUpdateReq
-      example:
-        block_volume_group:
-          flattened: true
-          name: name
-          description: description
     VolumeGroupCreateReq:
       type: object
       required:
@@ -414,6 +294,19 @@ components:
           name: name
           description: description
           block_volume_group_snapshot_id: 0
+    VolumeGroupUpdateReq:
+      type: object
+      required:
+      - block_volume_group
+      properties:
+        block_volume_group:
+          $ref: '#/components/schemas/VolumeGroupUpdateReq_VolumeGroup'
+      title: VolumeGroupUpdateReq
+      example:
+        block_volume_group:
+          flattened: true
+          name: name
+          description: description
     VolumeGroup:
       type: object
       properties:
@@ -498,6 +391,113 @@ components:
         block_volume_ids:
         - 0
         - 0
+    VolumeGroupResp:
+      type: object
+      properties:
+        block_volume_group:
+          $ref: '#/components/schemas/VolumeGroup'
+      title: VolumeGroupResp
+      example:
+        block_volume_group:
+          flattened: true
+          block_volume_num: 6
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+          block_volume_group_snapshot_num: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          progress: 5.962133916683182
+          id: 1
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
+    VolumeGroupCreateReq_VolumeGroup:
+      type: object
+      required:
+      - name
+      properties:
+        block_volume_group_snapshot_id:
+          type: integer
+          format: int64
+        block_volume_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        description:
+          type: string
+        flattened:
+          type: boolean
+        name:
+          type: string
+      title: VolumeGroupCreateReq_VolumeGroup
+      example:
+        flattened: true
+        block_volume_ids:
+        - 6
+        - 6
+        name: name
+        description: description
+        block_volume_group_snapshot_id: 0
+    VolumeGroupUpdateReq_VolumeGroup:
+      type: object
+      required:
+      - name
+      properties:
+        description:
+          type: string
+        flattened:
+          type: boolean
+        name:
+          type: string
+      title: VolumeGroupUpdateReq_VolumeGroup
+      example:
+        flattened: true
+        name: name
+        description: description
+    VolumeGroupsResp:
+      type: object
+      properties:
+        block_volume_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/VolumeGroup'
+      title: VolumeGroupsResp
+      example:
+        block_volume_groups:
+        - flattened: true
+          block_volume_num: 6
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+          block_volume_group_snapshot_num: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          progress: 5.962133916683182
+          id: 1
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
+        - flattened: true
+          block_volume_num: 6
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          latest_snapshot_time: '2000-01-23T04:56:07.000+00:00'
+          block_volume_group_snapshot_num: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          progress: 5.962133916683182
+          id: 1
+          action_status: action_status
+          block_volume_group_snapshot:
+            name: name
+            id: 6
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

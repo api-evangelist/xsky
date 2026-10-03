@@ -182,148 +182,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ProductService:
-      type: object
-      properties:
-        expired_time:
-          type: string
-          format: date-time
-        name:
-          type: string
-        start_time:
-          type: string
-          format: date-time
-      title: ProductService
-      description: ProductService defines product service
-      example:
-        start_time: '2000-01-23T04:56:07.000+00:00'
-        name: name
-        expired_time: '2000-01-23T04:56:07.000+00:00'
-    ProductFeature:
-      type: object
-      properties:
-        functions:
-          type: array
-          items:
-            type: string
-        limits:
-          type: object
-          description: for viewing only
-          additionalProperties:
-            type: string
-        name:
-          type: string
-        protocols:
-          type: array
-          items:
-            type: string
-      title: ProductFeature
-      description: ProductFeature defines product feature
-      example:
-        functions:
-        - functions
-        - functions
-        name: name
-        protocols:
-        - protocols
-        - protocols
-        limits:
-          key: limits
-    LicensesResp:
-      type: object
-      required:
-      - licenses
-      properties:
-        licenses:
-          type: array
-          description: licenses
-          items:
-            $ref: '#/components/schemas/License'
-      title: LicensesResp
-      example:
-        licenses:
-        - signed_time: '2000-01-23T04:56:07.000+00:00'
-          used_capacity: 6
-          used_host_num: 1
-          active: true
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          product_info:
-            series: series
-            model: model
-          services:
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          version: version
-          features:
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          limits: {}
-          customer: customer
-          status: status
-        - signed_time: '2000-01-23T04:56:07.000+00:00'
-          used_capacity: 6
-          used_host_num: 1
-          active: true
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          product_info:
-            series: series
-            model: model
-          services:
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          version: version
-          features:
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          limits: {}
-          customer: customer
-          status: status
     LicenseResp:
       type: object
       required:
@@ -464,6 +322,118 @@ components:
         limits: {}
         customer: customer
         status: status
+    LicensesResp:
+      type: object
+      required:
+      - licenses
+      properties:
+        licenses:
+          type: array
+          description: licenses
+          items:
+            $ref: '#/components/schemas/License'
+      title: LicensesResp
+      example:
+        licenses:
+        - signed_time: '2000-01-23T04:56:07.000+00:00'
+          used_capacity: 6
+          used_host_num: 1
+          active: true
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          product_info:
+            series: series
+            model: model
+          services:
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          version: version
+          features:
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          limits: {}
+          customer: customer
+          status: status
+        - signed_time: '2000-01-23T04:56:07.000+00:00'
+          used_capacity: 6
+          used_host_num: 1
+          active: true
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          product_info:
+            series: series
+            model: model
+          services:
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          version: version
+          features:
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          limits: {}
+          customer: customer
+          status: status
+    ProductService:
+      type: object
+      properties:
+        expired_time:
+          type: string
+          format: date-time
+        name:
+          type: string
+        start_time:
+          type: string
+          format: date-time
+      title: ProductService
+      description: ProductService defines product service
+      example:
+        start_time: '2000-01-23T04:56:07.000+00:00'
+        name: name
+        expired_time: '2000-01-23T04:56:07.000+00:00'
     ProductInfo:
       type: object
       properties:
@@ -476,6 +446,36 @@ components:
       example:
         series: series
         model: model
+    ProductFeature:
+      type: object
+      properties:
+        functions:
+          type: array
+          items:
+            type: string
+        limits:
+          type: object
+          description: for viewing only
+          additionalProperties:
+            type: string
+        name:
+          type: string
+        protocols:
+          type: array
+          items:
+            type: string
+      title: ProductFeature
+      description: ProductFeature defines product feature
+      example:
+        functions:
+        - functions
+        - functions
+        name: name
+        protocols:
+        - protocols
+        - protocols
+        limits:
+          key: limits
     ProductLimits:
       type: object
       description: ProductLimits defines product limits

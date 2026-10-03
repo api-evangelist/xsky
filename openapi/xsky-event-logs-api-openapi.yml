@@ -94,6 +94,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     EventLogsResp:
       type: object
       required:
@@ -198,23 +215,6 @@ components:
       example:
         name: name
         id: 6
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

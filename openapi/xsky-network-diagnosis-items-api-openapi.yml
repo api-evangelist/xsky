@@ -64,6 +64,78 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    NetworkDiagnosisStat:
+      type: object
+      properties:
+        bandwidth:
+          type: integer
+          format: int64
+        coll_pkgs:
+          type: integer
+          format: int64
+        err_pkg_ratio:
+          type: number
+          format: double
+        lost_pkg_ratio:
+          type: number
+          format: double
+        recv_bytes:
+          type: integer
+          format: int64
+        recv_pkgs:
+          type: integer
+          format: int64
+        send_bytes:
+          type: integer
+          format: int64
+        send_pkgs:
+          type: integer
+          format: int64
+        tcp_conn_errs:
+          type: integer
+          format: int64
+        tcp_segment_retrans:
+          type: integer
+          format: int64
+      title: NetworkDiagnosisStat
+      description: NetworkDiagnosisStat defines model of network diagnosis stat
+      example:
+        recv_bytes: 3
+        recv_pkgs: 2
+        tcp_conn_errs: 1
+        bandwidth: 5
+        err_pkg_ratio: 7.061401241503109
+        send_pkgs: 7
+        tcp_segment_retrans: 1
+        lost_pkg_ratio: 9.301444243932576
+        send_bytes: 4
+        coll_pkgs: 2
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    NetworkDiagnosis_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: NetworkDiagnosis_Nestview
+      example:
+        id: 1
     NetworkDiagnosisItem:
       type: object
       properties:
@@ -158,23 +230,6 @@ components:
           id: 0
         src_megabits: 5
         status: status
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     NetworkDiagnosisItemsResp:
       type: object
       required:
@@ -266,61 +321,6 @@ components:
             id: 0
           src_megabits: 5
           status: status
-    NetworkDiagnosisStat:
-      type: object
-      properties:
-        bandwidth:
-          type: integer
-          format: int64
-        coll_pkgs:
-          type: integer
-          format: int64
-        err_pkg_ratio:
-          type: number
-          format: double
-        lost_pkg_ratio:
-          type: number
-          format: double
-        recv_bytes:
-          type: integer
-          format: int64
-        recv_pkgs:
-          type: integer
-          format: int64
-        send_bytes:
-          type: integer
-          format: int64
-        send_pkgs:
-          type: integer
-          format: int64
-        tcp_conn_errs:
-          type: integer
-          format: int64
-        tcp_segment_retrans:
-          type: integer
-          format: int64
-      title: NetworkDiagnosisStat
-      description: NetworkDiagnosisStat defines model of network diagnosis stat
-      example:
-        recv_bytes: 3
-        recv_pkgs: 2
-        tcp_conn_errs: 1
-        bandwidth: 5
-        err_pkg_ratio: 7.061401241503109
-        send_pkgs: 7
-        tcp_segment_retrans: 1
-        lost_pkg_ratio: 9.301444243932576
-        send_bytes: 4
-        coll_pkgs: 2
-    NetworkDiagnosis_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: NetworkDiagnosis_Nestview
-      example:
-        id: 1
   securitySchemes:
     tokenInHeader:
       description: auth by token

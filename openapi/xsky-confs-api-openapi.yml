@@ -195,19 +195,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ConfItemsSetReq:
+    ConfItemResp:
       type: object
       required:
-      - confs
+      - conf
       properties:
-        confs:
-          type: object
-          additionalProperties:
-            type: string
-      title: ConfItemsSetReq
+        conf:
+          description: conf item
+          $ref: '#/components/schemas/ConfItem'
+      title: ConfItemResp
       example:
-        confs:
-          key: confs
+        conf:
+          id: 0
+          type: type
+          value: value
+          key: key
+    ConfItemSetReq:
+      type: object
+      required:
+      - conf
+      properties:
+        conf:
+          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
+      title: ConfItemSetReq
+      example:
+        conf:
+          type: type
+          value: value
+          key: key
     ConfItemsResp:
       type: object
       required:
@@ -229,37 +244,19 @@ components:
           type: type
           value: value
           key: key
-    ConfItemSetReq_ConfItem:
+    ConfItemsSetReq:
       type: object
       required:
-      - key
-      - type
-      - value
+      - confs
       properties:
-        key:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
-      title: ConfItemSetReq_ConfItem
+        confs:
+          type: object
+          additionalProperties:
+            type: string
+      title: ConfItemsSetReq
       example:
-        type: type
-        value: value
-        key: key
-    ConfItemSetReq:
-      type: object
-      required:
-      - conf
-      properties:
-        conf:
-          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
-      title: ConfItemSetReq
-      example:
-        conf:
-          type: type
-          value: value
-          key: key
+        confs:
+          key: confs
     ConfItem:
       type: object
       properties:
@@ -279,21 +276,24 @@ components:
         type: type
         value: value
         key: key
-    ConfItemResp:
+    ConfItemSetReq_ConfItem:
       type: object
       required:
-      - conf
+      - key
+      - type
+      - value
       properties:
-        conf:
-          description: conf item
-          $ref: '#/components/schemas/ConfItem'
-      title: ConfItemResp
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      title: ConfItemSetReq_ConfItem
       example:
-        conf:
-          id: 0
-          type: type
-          value: value
-          key: key
+        type: type
+        value: value
+        key: key
   securitySchemes:
     tokenInHeader:
       description: auth by token

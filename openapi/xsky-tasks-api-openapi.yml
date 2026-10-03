@@ -92,35 +92,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TaskResp:
+    Host_Nestview:
       type: object
       required:
-      - task
+      - admin_ip
       properties:
-        task:
-          description: task
-          $ref: '#/components/schemas/Task'
-      title: TaskResp
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
       example:
-        task:
-          retried: true
-          error_msg: error_msg
-          data: data
-          update: '2000-01-23T04:56:07.000+00:00'
-          priority: 5
-          type: type
-          execute: '2000-01-23T04:56:07.000+00:00'
-          host_role: host_role
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          finish: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          retry: 2
-          retry_type: retry_type
-          status: status
+        name: name
+        admin_ip: admin_ip
+        id: 0
     Task:
       type: object
       properties:
@@ -182,6 +170,35 @@ components:
         retry: 2
         retry_type: retry_type
         status: status
+    TaskResp:
+      type: object
+      required:
+      - task
+      properties:
+        task:
+          description: task
+          $ref: '#/components/schemas/Task'
+      title: TaskResp
+      example:
+        task:
+          retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
     TasksResp:
       type: object
       required:
@@ -231,23 +248,6 @@ components:
           retry: 2
           retry_type: retry_type
           status: status
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

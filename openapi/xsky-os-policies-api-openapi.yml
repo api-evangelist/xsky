@@ -199,97 +199,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStoragePolicyUpdateReq_Policy:
-      type: object
-      properties:
-        cache_pool_id:
-          type: integer
-          format: int64
-        compress:
-          type: boolean
-        crypto:
-          type: boolean
-        default:
-          type: boolean
-        description:
-          type: string
-        shared:
-          type: boolean
-      title: ObjectStoragePolicyUpdateReq_Policy
-      example:
-        shared: true
-        default: true
-        cache_pool_id: 0
-        compress: true
-        description: description
-        crypto: true
-    Pool_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Pool_Nestview
-      example:
-        name: name
-        id: 5
-    ObjectStoragePolicyCreateReq_Policy:
+    ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt:
       type: object
       required:
-      - index_pool_id
+      - active_pool_ids
+      - class
       - name
-      - storage_classes
       properties:
-        cache_pool_id:
-          type: integer
-          format: int64
-        compress:
-          type: boolean
-        crypto:
-          type: boolean
-        description:
-          type: string
-        index_pool_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        shared:
-          type: boolean
-        storage_classes:
+        active_pool_ids:
           type: array
           items:
-            $ref: '#/components/schemas/ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt'
-      title: ObjectStoragePolicyCreateReq_Policy
+            type: integer
+            format: int64
+        class:
+          type: integer
+          format: int32
+        description:
+          type: string
+        inactive_pool_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        name:
+          type: string
+      title: ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt
       example:
-        shared: true
-        storage_classes:
-        - active_pool_ids:
-          - 1
-          - 1
-          name: name
-          description: description
-          class: 5
-          inactive_pool_ids:
-          - 5
-          - 5
-        - active_pool_ids:
-          - 1
-          - 1
-          name: name
-          description: description
-          class: 5
-          inactive_pool_ids:
-          - 5
-          - 5
-        cache_pool_id: 0
-        compress: true
+        active_pool_ids:
+        - 1
+        - 1
         name: name
         description: description
-        index_pool_id: 6
-        crypto: true
+        class: 5
+        inactive_pool_ids:
+        - 5
+        - 5
     ObjectStoragePolicy:
       type: object
       properties:
@@ -350,6 +294,129 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         id: 6
         status: status
+    ObjectStoragePolicyResp:
+      type: object
+      required:
+      - os_policy
+      properties:
+        os_policy:
+          description: object storage policy
+          $ref: '#/components/schemas/ObjectStoragePolicy'
+      title: ObjectStoragePolicyResp
+      example:
+        os_policy:
+          shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+    ObjectStoragePolicyUpdateReq:
+      type: object
+      properties:
+        os_policy:
+          $ref: '#/components/schemas/ObjectStoragePolicyUpdateReq_Policy'
+      title: ObjectStoragePolicyUpdateReq
+      example:
+        os_policy:
+          shared: true
+          default: true
+          cache_pool_id: 0
+          compress: true
+          description: description
+          crypto: true
+    ObjectStoragePolicyCreateReq_Policy:
+      type: object
+      required:
+      - index_pool_id
+      - name
+      - storage_classes
+      properties:
+        cache_pool_id:
+          type: integer
+          format: int64
+        compress:
+          type: boolean
+        crypto:
+          type: boolean
+        description:
+          type: string
+        index_pool_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        shared:
+          type: boolean
+        storage_classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt'
+      title: ObjectStoragePolicyCreateReq_Policy
+      example:
+        shared: true
+        storage_classes:
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        cache_pool_id: 0
+        compress: true
+        name: name
+        description: description
+        index_pool_id: 6
+        crypto: true
+    ObjectStoragePolicyUpdateReq_Policy:
+      type: object
+      properties:
+        cache_pool_id:
+          type: integer
+          format: int64
+        compress:
+          type: boolean
+        crypto:
+          type: boolean
+        default:
+          type: boolean
+        description:
+          type: string
+        shared:
+          type: boolean
+      title: ObjectStoragePolicyUpdateReq_Policy
+      example:
+        shared: true
+        default: true
+        cache_pool_id: 0
+        compress: true
+        description: description
+        crypto: true
     ObjectStoragePolicyCreateReq:
       type: object
       properties:
@@ -383,55 +450,6 @@ components:
           name: name
           description: description
           index_pool_id: 6
-          crypto: true
-    ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt:
-      type: object
-      required:
-      - active_pool_ids
-      - class
-      - name
-      properties:
-        active_pool_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        class:
-          type: integer
-          format: int32
-        description:
-          type: string
-        inactive_pool_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        name:
-          type: string
-      title: ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt
-      example:
-        active_pool_ids:
-        - 1
-        - 1
-        name: name
-        description: description
-        class: 5
-        inactive_pool_ids:
-        - 5
-        - 5
-    ObjectStoragePolicyUpdateReq:
-      type: object
-      properties:
-        os_policy:
-          $ref: '#/components/schemas/ObjectStoragePolicyUpdateReq_Policy'
-      title: ObjectStoragePolicyUpdateReq
-      example:
-        os_policy:
-          shared: true
-          default: true
-          cache_pool_id: 0
-          compress: true
-          description: description
           crypto: true
     ObjectStoragePoliciesResp:
       type: object
@@ -484,36 +502,18 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           id: 6
           status: status
-    ObjectStoragePolicyResp:
+    Pool_Nestview:
       type: object
-      required:
-      - os_policy
       properties:
-        os_policy:
-          description: object storage policy
-          $ref: '#/components/schemas/ObjectStoragePolicy'
-      title: ObjectStoragePolicyResp
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
       example:
-        os_policy:
-          shared: true
-          cache_pool:
-            name: name
-            id: 5
-          compress: true
-          description: description
-          policy_name: policy_name
-          update: '2000-01-23T04:56:07.000+00:00'
-          bucket_num: 0
-          crypto: true
-          index_pool:
-            name: name
-            id: 5
-          object_size_threshold: 1
-          default: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          status: status
+        name: name
+        id: 5
   securitySchemes:
     tokenInHeader:
       description: auth by token

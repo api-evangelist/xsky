@@ -305,51 +305,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserUpdateReq_User:
+    UserSettings_User:
       type: object
       required:
-      - email
-      - enabled
-      - name
+      - settings
       properties:
-        email:
-          type: string
-          description: email of user
-        enabled:
-          type: boolean
-          description: enable or disable the user
-        name:
-          type: string
-          description: name of user
-        roles:
-          type: array
-          description: roles of user
-          items:
-            type: string
-      title: UserUpdateReq_User
+        settings:
+          $ref: '#/components/schemas/UserSettings_User_Settings'
+      title: UserSettings_User
       example:
-        roles:
-        - roles
-        - roles
-        name: name
-        email: email
-        enabled: true
-    ChangePasswordReq:
-      type: object
-      required:
-      - user
-      properties:
-        user:
-          description: user
-          $ref: '#/components/schemas/ChangePasswordReq_Req'
-      title: ChangePasswordReq
-      example:
-        user:
-          original_password: original_password
-          password: password
-          rsa_key_id: rsa_key_id
-          encrypted_original_password: encrypted_original_password
-          encrypted_password: encrypted_password
+        settings:
+          dashboard: dashboard
     UserSettings:
       type: object
       required:
@@ -362,88 +328,31 @@ components:
         user:
           settings:
             dashboard: dashboard
-    UsersResp:
-      type: object
-      required:
-      - users
-      properties:
-        users:
-          type: array
-          description: users
-          items:
-            $ref: '#/components/schemas/UserRecord'
-      title: UsersResp
-      example:
-        users:
-        - ''
-        - ''
-    UserCreateReq:
+    UserResp:
       type: object
       required:
       - user
       properties:
         user:
-          $ref: '#/components/schemas/UserCreateReq_User'
-      title: UserCreateReq
+          description: user
+          $ref: '#/components/schemas/UserRecord'
+      title: UserResp
       example:
-        user:
-          password: password
-          roles:
-          - roles
-          - roles
-          name: name
-          email: email
-          enabled: true
-    UserUpdateReq:
+        user: ''
+    IdentityPlatform_Nestview:
       type: object
-      required:
-      - user
       properties:
-        user:
-          $ref: '#/components/schemas/UserUpdateReq_User'
-      title: UserUpdateReq
-      example:
-        user:
-          roles:
-          - roles
-          - roles
-          name: name
-          email: email
-          enabled: true
-    UserCreateReq_User:
-      type: object
-      required:
-      - email
-      - enabled
-      - name
-      - password
-      properties:
-        email:
-          type: string
-          description: email of user
-        enabled:
-          type: boolean
-          description: enable or disable the user
+        id:
+          type: integer
+          format: int64
+          description: id of identity platform
         name:
           type: string
-          description: name of user
-        password:
-          type: string
-          description: password of user
-        roles:
-          type: array
-          description: roles of user
-          items:
-            type: string
-      title: UserCreateReq_User
+          description: name of identity platform
+      title: IdentityPlatform_Nestview
       example:
-        password: password
-        roles:
-        - roles
-        - roles
         name: name
-        email: email
-        enabled: true
+        id: 6
     UserSettings_User_Settings:
       type: object
       properties:
@@ -481,28 +390,138 @@ components:
         rsa_key_id: rsa_key_id
         encrypted_original_password: encrypted_original_password
         encrypted_password: encrypted_password
-    UserResp:
+    UserUpdateReq_User:
+      type: object
+      required:
+      - email
+      - enabled
+      - name
+      properties:
+        email:
+          type: string
+          description: email of user
+        enabled:
+          type: boolean
+          description: enable or disable the user
+        name:
+          type: string
+          description: name of user
+        roles:
+          type: array
+          description: roles of user
+          items:
+            type: string
+      title: UserUpdateReq_User
+      example:
+        roles:
+        - roles
+        - roles
+        name: name
+        email: email
+        enabled: true
+    UserCreateReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/UserCreateReq_User'
+      title: UserCreateReq
+      example:
+        user:
+          password: password
+          roles:
+          - roles
+          - roles
+          name: name
+          email: email
+          enabled: true
+    ChangePasswordReq:
       type: object
       required:
       - user
       properties:
         user:
           description: user
-          $ref: '#/components/schemas/UserRecord'
-      title: UserResp
+          $ref: '#/components/schemas/ChangePasswordReq_Req'
+      title: ChangePasswordReq
       example:
-        user: ''
-    UserSettings_User:
+        user:
+          original_password: original_password
+          password: password
+          rsa_key_id: rsa_key_id
+          encrypted_original_password: encrypted_original_password
+          encrypted_password: encrypted_password
+    UserCreateReq_User:
       type: object
       required:
-      - settings
+      - email
+      - enabled
+      - name
+      - password
       properties:
-        settings:
-          $ref: '#/components/schemas/UserSettings_User_Settings'
-      title: UserSettings_User
+        email:
+          type: string
+          description: email of user
+        enabled:
+          type: boolean
+          description: enable or disable the user
+        name:
+          type: string
+          description: name of user
+        password:
+          type: string
+          description: password of user
+        roles:
+          type: array
+          description: roles of user
+          items:
+            type: string
+      title: UserCreateReq_User
       example:
-        settings:
-          dashboard: dashboard
+        password: password
+        roles:
+        - roles
+        - roles
+        name: name
+        email: email
+        enabled: true
+    UsersResp:
+      type: object
+      required:
+      - users
+      properties:
+        users:
+          type: array
+          description: users
+          items:
+            $ref: '#/components/schemas/UserRecord'
+      title: UsersResp
+      example:
+        users:
+        - ''
+        - ''
+    UserRecord:
+      title: UserRecord
+      allOf:
+      - $ref: '#/components/schemas/User'
+      description: UserRecord defines user record for api response
+    UserUpdateReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/UserUpdateReq_User'
+      title: UserUpdateReq
+      example:
+        user:
+          roles:
+          - roles
+          - roles
+          name: name
+          email: email
+          enabled: true
     User:
       type: object
       properties:
@@ -539,25 +558,6 @@ components:
           items:
             type: string
       title: User
-    UserRecord:
-      title: UserRecord
-      allOf:
-      - $ref: '#/components/schemas/User'
-      description: UserRecord defines user record for api response
-    IdentityPlatform_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of identity platform
-        name:
-          type: string
-          description: name of identity platform
-      title: IdentityPlatform_Nestview
-      example:
-        name: name
-        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

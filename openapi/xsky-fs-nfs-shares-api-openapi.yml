@@ -311,6 +311,75 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FSNFSShareAddACLsReq_Share:
+      type: object
+      required:
+      - fs_nfs_share_acls
+      properties:
+        fs_nfs_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSNFSShareACLReq'
+      title: FSNFSShareAddACLsReq_Share
+    FSNFSShareResp:
+      type: object
+      required:
+      - fs_nfs_share
+      properties:
+        fs_nfs_share:
+          description: folder share
+          $ref: '#/components/schemas/FSNFSShare'
+      title: FSNFSShareResp
+      example:
+        fs_nfs_share:
+          mapping_num: 1
+          fs_folder:
+            name: name
+            id: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_quota_tree:
+            name: name
+            id: 5
+          update: '2000-01-23T04:56:07.000+00:00'
+          acl_num: 0
+          id: 6
+          fs_gateway_group:
+            name: name
+            id: 6
+            vip_mask: 1
+            vip: vip
+          action_status: action_status
+          status: status
+    FSNFSShareAddACLsReq:
+      type: object
+      required:
+      - fs_nfs_share
+      properties:
+        fs_nfs_share:
+          $ref: '#/components/schemas/FSNFSShareAddACLsReq_Share'
+      title: FSNFSShareAddACLsReq
+    FSNFSShareUpdateACLsReq_Share:
+      type: object
+      properties:
+        fs_nfs_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSNFSShareUpdateACLReq'
+      title: FSNFSShareUpdateACLsReq_Share
+    FSQuotaTree_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSQuotaTree_Nestview
+      example:
+        name: name
+        id: 5
     FSNFSShareACLReq:
       type: object
       properties:
@@ -342,6 +411,97 @@ components:
           type: string
           description: type of share acl
       title: FSNFSShareACLReq
+    FSGatewayGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vip:
+          type: string
+        vip_mask:
+          type: integer
+          format: int64
+      title: FSGatewayGroup_Nestview
+      example:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+    FSNFSShareCreateReq_Share:
+      type: object
+      required:
+      - fs_folder_id
+      - fs_gateway_group_id
+      properties:
+        fs_folder_id:
+          type: integer
+          format: int64
+          description: folder id
+        fs_gateway_group_id:
+          type: integer
+          format: int64
+          description: gateway group id
+        fs_nfs_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSNFSShareACLReq'
+        fs_quota_tree_id:
+          type: integer
+          format: int64
+          description: quota tree id
+      title: FSNFSShareCreateReq_Share
+    FSNFSShareUpdateACLsReq:
+      type: object
+      required:
+      - fs_nfs_share
+      properties:
+        fs_nfs_share:
+          $ref: '#/components/schemas/FSNFSShareUpdateACLsReq_Share'
+      title: FSNFSShareUpdateACLsReq
+    FSNFSShareRemoveACLsReq_Share:
+      type: object
+      required:
+      - fs_nfs_share_acl_ids
+      properties:
+        fs_nfs_share_acl_ids:
+          type: array
+          description: access control array
+          items:
+            type: integer
+            format: int64
+      title: FSNFSShareRemoveACLsReq_Share
+    FSNFSShareRemoveACLsReq:
+      type: object
+      required:
+      - fs_nfs_share
+      properties:
+        fs_nfs_share:
+          $ref: '#/components/schemas/FSNFSShareRemoveACLsReq_Share'
+      title: FSNFSShareRemoveACLsReq
+    FSNFSShareUpdateACLReq:
+      type: object
+      properties:
+        all_squash:
+          type: boolean
+          description: all squash
+        id:
+          type: integer
+          format: int64
+          description: id of user group
+        permission:
+          type: string
+          description: readonly or readwrite access
+        root_squash:
+          type: boolean
+          description: root squash
+        sync:
+          type: boolean
+          description: write to disk by sync or async
+      title: FSNFSShareUpdateACLReq
     FSNFSShareCreateReq:
       type: object
       required:
@@ -399,178 +559,6 @@ components:
             vip: vip
           action_status: action_status
           status: status
-    FSNFSShareUpdateACLsReq_Share:
-      type: object
-      properties:
-        fs_nfs_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSNFSShareUpdateACLReq'
-      title: FSNFSShareUpdateACLsReq_Share
-    FSNFSShareRemoveACLsReq_Share:
-      type: object
-      required:
-      - fs_nfs_share_acl_ids
-      properties:
-        fs_nfs_share_acl_ids:
-          type: array
-          description: access control array
-          items:
-            type: integer
-            format: int64
-      title: FSNFSShareRemoveACLsReq_Share
-    FSNFSShareRemoveACLsReq:
-      type: object
-      required:
-      - fs_nfs_share
-      properties:
-        fs_nfs_share:
-          $ref: '#/components/schemas/FSNFSShareRemoveACLsReq_Share'
-      title: FSNFSShareRemoveACLsReq
-    FSNFSShareResp:
-      type: object
-      required:
-      - fs_nfs_share
-      properties:
-        fs_nfs_share:
-          description: folder share
-          $ref: '#/components/schemas/FSNFSShare'
-      title: FSNFSShareResp
-      example:
-        fs_nfs_share:
-          mapping_num: 1
-          fs_folder:
-            name: name
-            id: 6
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_quota_tree:
-            name: name
-            id: 5
-          update: '2000-01-23T04:56:07.000+00:00'
-          acl_num: 0
-          id: 6
-          fs_gateway_group:
-            name: name
-            id: 6
-            vip_mask: 1
-            vip: vip
-          action_status: action_status
-          status: status
-    FSNFSShareUpdateACLsReq:
-      type: object
-      required:
-      - fs_nfs_share
-      properties:
-        fs_nfs_share:
-          $ref: '#/components/schemas/FSNFSShareUpdateACLsReq_Share'
-      title: FSNFSShareUpdateACLsReq
-    FSQuotaTree_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSQuotaTree_Nestview
-      example:
-        name: name
-        id: 5
-    FSNFSShareAddACLsReq_Share:
-      type: object
-      required:
-      - fs_nfs_share_acls
-      properties:
-        fs_nfs_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSNFSShareACLReq'
-      title: FSNFSShareAddACLsReq_Share
-    FSNFSShareUpdateACLReq:
-      type: object
-      properties:
-        all_squash:
-          type: boolean
-          description: all squash
-        id:
-          type: integer
-          format: int64
-          description: id of user group
-        permission:
-          type: string
-          description: readonly or readwrite access
-        root_squash:
-          type: boolean
-          description: root squash
-        sync:
-          type: boolean
-          description: write to disk by sync or async
-      title: FSNFSShareUpdateACLReq
-    FSFolder_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSFolder_Nestview
-      example:
-        name: name
-        id: 6
-    FSNFSShareAddACLsReq:
-      type: object
-      required:
-      - fs_nfs_share
-      properties:
-        fs_nfs_share:
-          $ref: '#/components/schemas/FSNFSShareAddACLsReq_Share'
-      title: FSNFSShareAddACLsReq
-    FSGatewayGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        vip:
-          type: string
-        vip_mask:
-          type: integer
-          format: int64
-      title: FSGatewayGroup_Nestview
-      example:
-        name: name
-        id: 6
-        vip_mask: 1
-        vip: vip
-    FSNFSShareCreateReq_Share:
-      type: object
-      required:
-      - fs_folder_id
-      - fs_gateway_group_id
-      properties:
-        fs_folder_id:
-          type: integer
-          format: int64
-          description: folder id
-        fs_gateway_group_id:
-          type: integer
-          format: int64
-          description: gateway group id
-        fs_nfs_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSNFSShareACLReq'
-        fs_quota_tree_id:
-          type: integer
-          format: int64
-          description: quota tree id
-      title: FSNFSShareCreateReq_Share
     FSNFSShare:
       type: object
       properties:
@@ -620,6 +608,18 @@ components:
           vip: vip
         action_status: action_status
         status: status
+    FSFolder_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSFolder_Nestview
+      example:
+        name: name
+        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

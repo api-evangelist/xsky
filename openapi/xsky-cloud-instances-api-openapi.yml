@@ -157,16 +157,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudInstanceRecord:
-      title: CloudInstanceRecord
-      allOf:
-      - $ref: '#/components/schemas/CloudInstance'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/CloudInstanceStat'
-      description: CloudInstanceRecord combine CloudInstance and CloudInstanceStat as API response
     CloudInstanceResp:
       type: object
       properties:
@@ -176,35 +166,7 @@ components:
       title: CloudInstanceResp
       example:
         cloud_instance: ''
-    CloudInstanceSamplesResp:
-      type: object
-      properties:
-        cloud_instance_samples:
-          type: array
-          items:
-            $ref: '#/components/schemas/CloudInstanceStat'
-      title: CloudInstanceSamplesResp
-      example:
-        cloud_instance_samples:
-        - read_bandwidth_kbyte: 0.8008281904610115
-          write_bandwidth_kbyte: 2.3021358869347655
-          create: '2000-01-23T04:56:07.000+00:00'
-          total_bandwidth_kbyte: 5.962133916683182
-          write_iops: 7.061401241503109
-          write_latency_us: 9.301444243932576
-          total_iops: 5.637376656633329
-          read_latency_us: 1.4658129805029452
-          read_iops: 6.027456183070403
-        - read_bandwidth_kbyte: 0.8008281904610115
-          write_bandwidth_kbyte: 2.3021358869347655
-          create: '2000-01-23T04:56:07.000+00:00'
-          total_bandwidth_kbyte: 5.962133916683182
-          write_iops: 7.061401241503109
-          write_latency_us: 9.301444243932576
-          total_iops: 5.637376656633329
-          read_latency_us: 1.4658129805029452
-          read_iops: 6.027456183070403
-    CloudDatacenter_Nestview:
+    CloudPlatform_Nestview:
       type: object
       properties:
         id:
@@ -212,10 +174,13 @@ components:
           format: int64
         name:
           type: string
-      title: CloudDatacenter_Nestview
+        type:
+          type: string
+      title: CloudPlatform_Nestview
       example:
         name: name
-        id: 0
+        id: 6
+        type: type
     CloudInstanceStat:
       type: object
       properties:
@@ -258,6 +223,41 @@ components:
         total_iops: 5.637376656633329
         read_latency_us: 1.4658129805029452
         read_iops: 6.027456183070403
+    CloudInstanceRecord:
+      title: CloudInstanceRecord
+      allOf:
+      - $ref: '#/components/schemas/CloudInstance'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/CloudInstanceStat'
+      description: CloudInstanceRecord combine CloudInstance and CloudInstanceStat as API response
+    CloudDatacenter_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: CloudDatacenter_Nestview
+      example:
+        name: name
+        id: 0
+    CloudInstancesResp:
+      type: object
+      properties:
+        cloud_instances:
+          type: array
+          description: cloud instance records
+          items:
+            $ref: '#/components/schemas/CloudInstanceRecord'
+      title: CloudInstancesResp
+      example:
+        cloud_instances:
+        - ''
+        - ''
     CloudInstance:
       type: object
       properties:
@@ -293,34 +293,34 @@ components:
           format: date-time
       title: CloudInstance
       description: CloudInstance defines instances of the cloud platform
-    CloudInstancesResp:
+    CloudInstanceSamplesResp:
       type: object
       properties:
-        cloud_instances:
+        cloud_instance_samples:
           type: array
-          description: cloud instance records
           items:
-            $ref: '#/components/schemas/CloudInstanceRecord'
-      title: CloudInstancesResp
+            $ref: '#/components/schemas/CloudInstanceStat'
+      title: CloudInstanceSamplesResp
       example:
-        cloud_instances:
-        - ''
-        - ''
-    CloudPlatform_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        type:
-          type: string
-      title: CloudPlatform_Nestview
-      example:
-        name: name
-        id: 6
-        type: type
+        cloud_instance_samples:
+        - read_bandwidth_kbyte: 0.8008281904610115
+          write_bandwidth_kbyte: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          total_bandwidth_kbyte: 5.962133916683182
+          write_iops: 7.061401241503109
+          write_latency_us: 9.301444243932576
+          total_iops: 5.637376656633329
+          read_latency_us: 1.4658129805029452
+          read_iops: 6.027456183070403
+        - read_bandwidth_kbyte: 0.8008281904610115
+          write_bandwidth_kbyte: 2.3021358869347655
+          create: '2000-01-23T04:56:07.000+00:00'
+          total_bandwidth_kbyte: 5.962133916683182
+          write_iops: 7.061401241503109
+          write_latency_us: 9.301444243932576
+          total_iops: 5.637376656633329
+          read_latency_us: 1.4658129805029452
+          read_iops: 6.027456183070403
   securitySchemes:
     tokenInHeader:
       description: auth by token

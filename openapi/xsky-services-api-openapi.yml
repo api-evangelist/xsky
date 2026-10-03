@@ -99,6 +99,109 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ServiceResp:
+      type: object
+      required:
+      - service
+      properties:
+        service:
+          description: service
+          $ref: '#/components/schemas/Service'
+      title: ServiceResp
+      example:
+        service:
+          ssl_certificate:
+            force_https: true
+            name: name
+            id: 2
+          heartbeat: '2000-01-23T04:56:07.000+00:00'
+          started_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enabled: true
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          up: true
+          primary: true
+          status: status
+    Service:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        enabled:
+          type: boolean
+        heartbeat:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        primary:
+          type: boolean
+        ssl_certificate:
+          $ref: '#/components/schemas/SSLCertificate_Nestview'
+        started_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        type:
+          type: string
+        up:
+          type: boolean
+        update:
+          type: string
+          format: date-time
+      title: Service
+      description: Service defines basic install task, used to as API
+      example:
+        ssl_certificate:
+          force_https: true
+          name: name
+          id: 2
+        heartbeat: '2000-01-23T04:56:07.000+00:00'
+        started_time: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        type: type
+        enabled: true
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        up: true
+        primary: true
+        status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     ServicesResp:
       type: object
       required:
@@ -168,109 +271,6 @@ components:
         force_https: true
         name: name
         id: 2
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    Service:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        enabled:
-          type: boolean
-        heartbeat:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        primary:
-          type: boolean
-        ssl_certificate:
-          $ref: '#/components/schemas/SSLCertificate_Nestview'
-        started_time:
-          type: string
-          format: date-time
-        status:
-          type: string
-        type:
-          type: string
-        up:
-          type: boolean
-        update:
-          type: string
-          format: date-time
-      title: Service
-      description: Service defines basic install task, used to as API
-      example:
-        ssl_certificate:
-          force_https: true
-          name: name
-          id: 2
-        heartbeat: '2000-01-23T04:56:07.000+00:00'
-        started_time: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        type: type
-        enabled: true
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        up: true
-        primary: true
-        status: status
-    ServiceResp:
-      type: object
-      required:
-      - service
-      properties:
-        service:
-          description: service
-          $ref: '#/components/schemas/Service'
-      title: ServiceResp
-      example:
-        service:
-          ssl_certificate:
-            force_https: true
-            name: name
-            id: 2
-          heartbeat: '2000-01-23T04:56:07.000+00:00'
-          started_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          enabled: true
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          up: true
-          primary: true
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

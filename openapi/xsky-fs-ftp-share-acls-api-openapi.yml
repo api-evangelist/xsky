@@ -75,27 +75,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSFTPShare_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: FSFTPShare_Nestview
-      example:
-        id: 6
-    FSUserGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSUserGroup_Nestview
-      example:
-        name: name
-        id: 1
     FSUser_Nestview:
       type: object
       properties:
@@ -108,59 +87,6 @@ components:
       example:
         name: name
         id: 6
-    FSFTPShareACLsResp:
-      type: object
-      required:
-      - fs_ftp_share_acls
-      properties:
-        fs_ftp_share_acls:
-          type: array
-          description: fs ftp share acls
-          items:
-            $ref: '#/components/schemas/FSFTPShareACL'
-      title: FSFTPShareACLsResp
-      example:
-        fs_ftp_share_acls:
-        - download_enabled: true
-          update: '2000-01-23T04:56:07.000+00:00'
-          delete_enabled: true
-          type: type
-          download_bandwidth: 0
-          fs_user_group:
-            name: name
-            id: 1
-          rename_enabled: true
-          fs_user:
-            name: name
-            id: 6
-          upload_bandwidth: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          upload_enabled: true
-          id: 5
-          create_enabled: true
-          fs_ftp_share:
-            id: 6
-          list_enabled: true
-        - download_enabled: true
-          update: '2000-01-23T04:56:07.000+00:00'
-          delete_enabled: true
-          type: type
-          download_bandwidth: 0
-          fs_user_group:
-            name: name
-            id: 1
-          rename_enabled: true
-          fs_user:
-            name: name
-            id: 6
-          upload_bandwidth: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          upload_enabled: true
-          id: 5
-          create_enabled: true
-          fs_ftp_share:
-            id: 6
-          list_enabled: true
     FSFTPShareACL:
       type: object
       properties:
@@ -222,6 +148,80 @@ components:
         fs_ftp_share:
           id: 6
         list_enabled: true
+    FSUserGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSUserGroup_Nestview
+      example:
+        name: name
+        id: 1
+    FSFTPShareACLsResp:
+      type: object
+      required:
+      - fs_ftp_share_acls
+      properties:
+        fs_ftp_share_acls:
+          type: array
+          description: fs ftp share acls
+          items:
+            $ref: '#/components/schemas/FSFTPShareACL'
+      title: FSFTPShareACLsResp
+      example:
+        fs_ftp_share_acls:
+        - download_enabled: true
+          update: '2000-01-23T04:56:07.000+00:00'
+          delete_enabled: true
+          type: type
+          download_bandwidth: 0
+          fs_user_group:
+            name: name
+            id: 1
+          rename_enabled: true
+          fs_user:
+            name: name
+            id: 6
+          upload_bandwidth: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          upload_enabled: true
+          id: 5
+          create_enabled: true
+          fs_ftp_share:
+            id: 6
+          list_enabled: true
+        - download_enabled: true
+          update: '2000-01-23T04:56:07.000+00:00'
+          delete_enabled: true
+          type: type
+          download_bandwidth: 0
+          fs_user_group:
+            name: name
+            id: 1
+          rename_enabled: true
+          fs_user:
+            name: name
+            id: 6
+          upload_bandwidth: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          upload_enabled: true
+          id: 5
+          create_enabled: true
+          fs_ftp_share:
+            id: 6
+          list_enabled: true
+    FSFTPShare_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: FSFTPShare_Nestview
+      example:
+        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

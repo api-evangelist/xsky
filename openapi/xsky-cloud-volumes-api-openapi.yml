@@ -89,80 +89,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudVolume:
+    CloudPlatform_Nestview:
       type: object
       properties:
-        block_volume:
-          $ref: '#/components/schemas/Volume_Nestview'
-        cloud_datacenter:
-          $ref: '#/components/schemas/CloudDatacenter_Nestview'
-        cloud_platform:
-          $ref: '#/components/schemas/CloudPlatform_Nestview'
-        cloud_volume_id:
-          type: string
-        create:
-          type: string
-          format: date-time
         id:
           type: integer
           format: int64
-        multi_attach:
-          type: boolean
         name:
           type: string
         type:
           type: string
-        update:
-          type: string
-          format: date-time
-      title: CloudVolume
-      description: CloudVolume defines volumes of the cloud platform
+      title: CloudPlatform_Nestview
       example:
-        cloud_volume_id: cloud_volume_id
-        cloud_datacenter:
-          name: name
-          id: 0
-        cloud_platform:
-          name: name
-          id: 6
-          type: type
-        block_volume:
-          original_name: original_name
-          name: name
-          id: 9
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        multi_attach: true
-        id: 1
+        id: 6
         type: type
-    Volume_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        original_name:
-          type: string
-      title: Volume_Nestview
-      example:
-        original_name: original_name
-        name: name
-        id: 9
-    CloudDatacenter_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: CloudDatacenter_Nestview
-      example:
-        name: name
-        id: 0
     CloudVolumesResp:
       type: object
       properties:
@@ -210,6 +151,65 @@ components:
           multi_attach: true
           id: 1
           type: type
+    CloudDatacenter_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: CloudDatacenter_Nestview
+      example:
+        name: name
+        id: 0
+    CloudVolume:
+      type: object
+      properties:
+        block_volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+        cloud_datacenter:
+          $ref: '#/components/schemas/CloudDatacenter_Nestview'
+        cloud_platform:
+          $ref: '#/components/schemas/CloudPlatform_Nestview'
+        cloud_volume_id:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        multi_attach:
+          type: boolean
+        name:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: CloudVolume
+      description: CloudVolume defines volumes of the cloud platform
+      example:
+        cloud_volume_id: cloud_volume_id
+        cloud_datacenter:
+          name: name
+          id: 0
+        cloud_platform:
+          name: name
+          id: 6
+          type: type
+        block_volume:
+          original_name: original_name
+          name: name
+          id: 9
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        multi_attach: true
+        id: 1
+        type: type
     CloudVolumeResp:
       type: object
       properties:
@@ -237,7 +237,7 @@ components:
           multi_attach: true
           id: 1
           type: type
-    CloudPlatform_Nestview:
+    Volume_Nestview:
       type: object
       properties:
         id:
@@ -245,13 +245,13 @@ components:
           format: int64
         name:
           type: string
-        type:
+        original_name:
           type: string
-      title: CloudPlatform_Nestview
+      title: Volume_Nestview
       example:
+        original_name: original_name
         name: name
-        id: 6
-        type: type
+        id: 9
   securitySchemes:
     tokenInHeader:
       description: auth by token

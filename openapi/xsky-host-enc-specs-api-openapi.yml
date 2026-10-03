@@ -180,6 +180,105 @@ components:
         - 0
         position: position
         order: order
+    HostEncSpecResp:
+      type: object
+      required:
+      - host_enc_spec
+      properties:
+        host_enc_spec:
+          description: host enclosure spec
+          $ref: '#/components/schemas/HostEncSpec'
+      title: HostEncSpecResp
+      example:
+        host_enc_spec:
+          vendor: vendor
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          model: model
+          id: 5
+          enclosures:
+          - start_slot: 1
+            slot_num: 6
+            ids:
+            - 0
+            - 0
+            position: position
+            order: order
+          - start_slot: 1
+            slot_num: 6
+            ids:
+            - 0
+            - 0
+            position: position
+            order: order
+    HostEncSpecCreateReq:
+      type: object
+      properties:
+        host_enc_spec:
+          $ref: '#/components/schemas/HostEncSpecCreateReq_HostEncSpec'
+      title: HostEncSpecCreateReq
+      example:
+        host_enc_spec:
+          vendor: vendor
+          model: model
+          enclosures:
+          - start_slot: 1
+            slot_num: 6
+            ids:
+            - 0
+            - 0
+            position: position
+            order: order
+          - start_slot: 1
+            slot_num: 6
+            ids:
+            - 0
+            - 0
+            position: position
+            order: order
+    HostEncSpec:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        enclosures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Enclosure'
+        id:
+          type: integer
+          format: int64
+        model:
+          type: string
+        update:
+          type: string
+          format: date-time
+        vendor:
+          type: string
+      title: HostEncSpec
+      description: HostEncSpec defines host enclosure specification
+      example:
+        vendor: vendor
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        model: model
+        id: 5
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
     HostEncSpecsResp:
       type: object
       required:
@@ -270,105 +369,6 @@ components:
           - 0
           position: position
           order: order
-    HostEncSpec:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        enclosures:
-          type: array
-          items:
-            $ref: '#/components/schemas/Enclosure'
-        id:
-          type: integer
-          format: int64
-        model:
-          type: string
-        update:
-          type: string
-          format: date-time
-        vendor:
-          type: string
-      title: HostEncSpec
-      description: HostEncSpec defines host enclosure specification
-      example:
-        vendor: vendor
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        model: model
-        id: 5
-        enclosures:
-        - start_slot: 1
-          slot_num: 6
-          ids:
-          - 0
-          - 0
-          position: position
-          order: order
-        - start_slot: 1
-          slot_num: 6
-          ids:
-          - 0
-          - 0
-          position: position
-          order: order
-    HostEncSpecCreateReq:
-      type: object
-      properties:
-        host_enc_spec:
-          $ref: '#/components/schemas/HostEncSpecCreateReq_HostEncSpec'
-      title: HostEncSpecCreateReq
-      example:
-        host_enc_spec:
-          vendor: vendor
-          model: model
-          enclosures:
-          - start_slot: 1
-            slot_num: 6
-            ids:
-            - 0
-            - 0
-            position: position
-            order: order
-          - start_slot: 1
-            slot_num: 6
-            ids:
-            - 0
-            - 0
-            position: position
-            order: order
-    HostEncSpecResp:
-      type: object
-      required:
-      - host_enc_spec
-      properties:
-        host_enc_spec:
-          description: host enclosure spec
-          $ref: '#/components/schemas/HostEncSpec'
-      title: HostEncSpecResp
-      example:
-        host_enc_spec:
-          vendor: vendor
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          model: model
-          id: 5
-          enclosures:
-          - start_slot: 1
-            slot_num: 6
-            ids:
-            - 0
-            - 0
-            position: position
-            order: order
-          - start_slot: 1
-            slot_num: 6
-            ids:
-            - 0
-            - 0
-            position: position
-            order: order
   securitySchemes:
     tokenInHeader:
       description: auth by token

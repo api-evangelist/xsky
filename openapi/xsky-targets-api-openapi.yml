@@ -156,30 +156,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TargetResp:
+    TargetCreateReq:
       type: object
-      required:
-      - target
       properties:
         target:
-          $ref: '#/components/schemas/Target'
-      title: TargetResp
+          $ref: '#/components/schemas/TargetCreateReq_Target'
+      title: TargetCreateReq
       example:
         target:
-          access_path:
-            name: name
-            id: 0
-          port: 1
-          iqn: iqn
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          board: 0
-          status: status
+          access_path_id: 0
+          host_id: 6
     Target:
       type: object
       properties:
@@ -223,23 +209,6 @@ components:
         id: 6
         board: 0
         status: status
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     AccessPath_Nestview:
       type: object
       properties:
@@ -252,6 +221,30 @@ components:
       example:
         name: name
         id: 0
+    TargetResp:
+      type: object
+      required:
+      - target
+      properties:
+        target:
+          $ref: '#/components/schemas/Target'
+      title: TargetResp
+      example:
+        target:
+          access_path:
+            name: name
+            id: 0
+          port: 1
+          iqn: iqn
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          board: 0
+          status: status
     TargetsResp:
       type: object
       required:
@@ -292,6 +285,23 @@ components:
           id: 6
           board: 0
           status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     TargetCreateReq_Target:
       type: object
       properties:
@@ -305,16 +315,6 @@ components:
       example:
         access_path_id: 0
         host_id: 6
-    TargetCreateReq:
-      type: object
-      properties:
-        target:
-          $ref: '#/components/schemas/TargetCreateReq_Target'
-      title: TargetCreateReq
-      example:
-        target:
-          access_path_id: 0
-          host_id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

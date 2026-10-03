@@ -123,40 +123,6 @@ components:
         action_logs:
         - ''
         - ''
-    ActionLog_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ActionLog_Nestview
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    ActionLogRecord:
-      title: ActionLogRecord
-      allOf:
-      - $ref: '#/components/schemas/ActionLog'
-      - properties:
-          error_records:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorRecord'
-      description: ActionLogRecord defines the response errors of action log
     ActionLog:
       type: object
       properties:
@@ -202,15 +168,6 @@ components:
           $ref: '#/components/schemas/User_Nestview'
       title: ActionLog
       description: ActionLog defines a user action
-    Alert_Nestview:
-      type: object
-      properties:
-        alarm_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Alert_Nestview
     User_Nestview:
       type: object
       properties:
@@ -225,6 +182,49 @@ components:
       example:
         name: name
         id: 6
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    ActionLog_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ActionLog_Nestview
+    Alert_Nestview:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Alert_Nestview
+    ActionLogRecord:
+      title: ActionLogRecord
+      allOf:
+      - $ref: '#/components/schemas/ActionLog'
+      - properties:
+          error_records:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorRecord'
+      description: ActionLogRecord defines the response errors of action log
     ErrorRecord:
       type: object
       properties:

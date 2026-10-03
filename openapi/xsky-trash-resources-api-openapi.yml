@@ -167,6 +167,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TrashResourcesResp:
+      type: object
+      required:
+      - trash_resources
+      properties:
+        trash_resources:
+          type: array
+          description: trash resources
+          items:
+            $ref: '#/components/schemas/TrashResource'
+      title: TrashResourcesResp
+      example:
+        trash_resources:
+        - resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expire_time: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
+        - resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expire_time: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
     TrashResource:
       type: object
       properties:
@@ -214,35 +243,6 @@ components:
       example:
         trash_resource:
           resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expire_time: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
-    TrashResourcesResp:
-      type: object
-      required:
-      - trash_resources
-      properties:
-        trash_resources:
-          type: array
-          description: trash resources
-          items:
-            $ref: '#/components/schemas/TrashResource'
-      title: TrashResourcesResp
-      example:
-        trash_resources:
-        - resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expire_time: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
-        - resource_type: resource_type
           create: '2000-01-23T04:56:07.000+00:00'
           expire_time: '2000-01-23T04:56:07.000+00:00'
           resource_id: 6

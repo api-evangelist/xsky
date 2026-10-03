@@ -205,127 +205,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudPlatformResp:
-      type: object
-      properties:
-        cloud_platform:
-          description: cloud platform
-          $ref: '#/components/schemas/CloudPlatform'
-      title: CloudPlatformResp
-      example:
-        cloud_platform:
-          attached_cloud_volume_num: 0
-          cloud_volume_num: 1
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          sync_time: '2000-01-23T04:56:07.000+00:00'
-          cloud_instance_num: 6
-          type: type
-          url: url
-          extra_properties:
-            domain_id: domain_id
-            tenant_id: tenant_id
-            domain_name: domain_name
-            tenant_name: tenant_name
-            regions:
-            - regions
-            - regions
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          action_status: action_status
-          status: status
-          username: username
-    CloudExtraProperties:
-      type: object
-      properties:
-        domain_id:
-          type: string
-          description: domain id for openstack
-        domain_name:
-          type: string
-          description: domain name for openstack
-        regions:
-          type: array
-          description: regions for openstack
-          items:
-            type: string
-        tenant_id:
-          type: string
-          description: tenant id for openstack
-        tenant_name:
-          type: string
-          description: tenant name for openstack
-      title: CloudExtraProperties
-      description: CloudExtraProperties contains extra properties
-      example:
-        domain_id: domain_id
-        tenant_id: tenant_id
-        domain_name: domain_name
-        tenant_name: tenant_name
-        regions:
-        - regions
-        - regions
-    CloudPlatformCreateReq:
-      type: object
-      properties:
-        cloud_platform:
-          $ref: '#/components/schemas/CloudPlatformCreateReq_Platform'
-      title: CloudPlatformCreateReq
-      example:
-        cloud_platform:
-          password: password
-          extra_properties:
-            domain_id: domain_id
-            tenant_id: tenant_id
-            domain_name: domain_name
-            tenant_name: tenant_name
-            regions:
-            - regions
-            - regions
-          name: name
-          description: description
-          type: type
-          url: url
-          username: username
-    CloudPlatformCreateReq_Platform:
-      type: object
-      properties:
-        description:
-          type: string
-          description: description of cloud platform
-        extra_properties:
-          description: extra properties of cloud platform
-          $ref: '#/components/schemas/CloudExtraProperties'
-        name:
-          type: string
-          description: name of cloud platform
-        password:
-          type: string
-          description: password of cloud platform user
-        type:
-          type: string
-          description: type of cloud platform
-        url:
-          type: string
-        username:
-          type: string
-      title: CloudPlatformCreateReq_Platform
-      example:
-        password: password
-        extra_properties:
-          domain_id: domain_id
-          tenant_id: tenant_id
-          domain_name: domain_name
-          tenant_name: tenant_name
-          regions:
-          - regions
-          - regions
-        name: name
-        description: description
-        type: type
-        url: url
-        username: username
     CloudPlatform:
       type: object
       properties:
@@ -391,37 +270,36 @@ components:
         action_status: action_status
         status: status
         username: username
-    CloudPlatformUpdateReq_Platform:
+    CloudExtraProperties:
       type: object
       properties:
-        name:
+        domain_id:
           type: string
-          description: name of cloud platform
-        password:
+          description: domain id for openstack
+        domain_name:
           type: string
-          description: password of cloud platform user
-        url:
+          description: domain name for openstack
+        regions:
+          type: array
+          description: regions for openstack
+          items:
+            type: string
+        tenant_id:
           type: string
-        username:
+          description: tenant id for openstack
+        tenant_name:
           type: string
-      title: CloudPlatformUpdateReq_Platform
+          description: tenant name for openstack
+      title: CloudExtraProperties
+      description: CloudExtraProperties contains extra properties
       example:
-        password: password
-        name: name
-        url: url
-        username: username
-    CloudPlatformUpdateReq:
-      type: object
-      properties:
-        cloud_platform:
-          $ref: '#/components/schemas/CloudPlatformUpdateReq_Platform'
-      title: CloudPlatformUpdateReq
-      example:
-        cloud_platform:
-          password: password
-          name: name
-          url: url
-          username: username
+        domain_id: domain_id
+        tenant_id: tenant_id
+        domain_name: domain_name
+        tenant_name: tenant_name
+        regions:
+        - regions
+        - regions
     CloudPlatformsResp:
       type: object
       properties:
@@ -477,6 +355,128 @@ components:
           action_status: action_status
           status: status
           username: username
+    CloudPlatformCreateReq:
+      type: object
+      properties:
+        cloud_platform:
+          $ref: '#/components/schemas/CloudPlatformCreateReq_Platform'
+      title: CloudPlatformCreateReq
+      example:
+        cloud_platform:
+          password: password
+          extra_properties:
+            domain_id: domain_id
+            tenant_id: tenant_id
+            domain_name: domain_name
+            tenant_name: tenant_name
+            regions:
+            - regions
+            - regions
+          name: name
+          description: description
+          type: type
+          url: url
+          username: username
+    CloudPlatformUpdateReq:
+      type: object
+      properties:
+        cloud_platform:
+          $ref: '#/components/schemas/CloudPlatformUpdateReq_Platform'
+      title: CloudPlatformUpdateReq
+      example:
+        cloud_platform:
+          password: password
+          name: name
+          url: url
+          username: username
+    CloudPlatformResp:
+      type: object
+      properties:
+        cloud_platform:
+          description: cloud platform
+          $ref: '#/components/schemas/CloudPlatform'
+      title: CloudPlatformResp
+      example:
+        cloud_platform:
+          attached_cloud_volume_num: 0
+          cloud_volume_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          sync_time: '2000-01-23T04:56:07.000+00:00'
+          cloud_instance_num: 6
+          type: type
+          url: url
+          extra_properties:
+            domain_id: domain_id
+            tenant_id: tenant_id
+            domain_name: domain_name
+            tenant_name: tenant_name
+            regions:
+            - regions
+            - regions
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          status: status
+          username: username
+    CloudPlatformCreateReq_Platform:
+      type: object
+      properties:
+        description:
+          type: string
+          description: description of cloud platform
+        extra_properties:
+          description: extra properties of cloud platform
+          $ref: '#/components/schemas/CloudExtraProperties'
+        name:
+          type: string
+          description: name of cloud platform
+        password:
+          type: string
+          description: password of cloud platform user
+        type:
+          type: string
+          description: type of cloud platform
+        url:
+          type: string
+        username:
+          type: string
+      title: CloudPlatformCreateReq_Platform
+      example:
+        password: password
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        description: description
+        type: type
+        url: url
+        username: username
+    CloudPlatformUpdateReq_Platform:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of cloud platform
+        password:
+          type: string
+          description: password of cloud platform user
+        url:
+          type: string
+        username:
+          type: string
+      title: CloudPlatformUpdateReq_Platform
+      example:
+        password: password
+        name: name
+        url: url
+        username: username
   securitySchemes:
     tokenInHeader:
       description: auth by token
