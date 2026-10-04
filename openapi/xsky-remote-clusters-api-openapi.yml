@@ -228,12 +228,60 @@ components:
       example:
         access_token: access_token
         url: url
+    RemoteClusterResp:
+      type: object
+      properties:
+        remote_cluster:
+          $ref: '#/components/schemas/RemoteCluster'
+      title: RemoteClusterResp
+      example:
+        remote_cluster:
+          dp_site_num: 1
+          block_volume_num: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          version: version
+          os_zone_num: 5
+          url: url
+          access_token: access_token
+          block_snapshot_num: 0
+          connected: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          fs_id: fs_id
+          status: status
+    RemoteClusterCreateReq_RemoteCluster:
+      type: object
+      required:
+      - access_token
+      - url
+      properties:
+        access_token:
+          type: string
+          description: access token of remote cluster
+        url:
+          type: string
+          description: URL of remote cluster
+      title: RemoteClusterCreateReq_RemoteCluster
+      example:
+        access_token: access_token
+        url: url
     RemoteClusterUpdateReq:
       type: object
       properties:
         remote_cluster:
           $ref: '#/components/schemas/RemoteClusterUpdateReq_RemoteCluster'
       title: RemoteClusterUpdateReq
+      example:
+        remote_cluster:
+          access_token: access_token
+          url: url
+    RemoteClusterCreateReq:
+      type: object
+      properties:
+        remote_cluster:
+          $ref: '#/components/schemas/RemoteClusterCreateReq_RemoteCluster'
+      title: RemoteClusterCreateReq
       example:
         remote_cluster:
           access_token: access_token
@@ -293,54 +341,6 @@ components:
         id: 5
         fs_id: fs_id
         status: status
-    RemoteClusterCreateReq:
-      type: object
-      properties:
-        remote_cluster:
-          $ref: '#/components/schemas/RemoteClusterCreateReq_RemoteCluster'
-      title: RemoteClusterCreateReq
-      example:
-        remote_cluster:
-          access_token: access_token
-          url: url
-    RemoteClusterResp:
-      type: object
-      properties:
-        remote_cluster:
-          $ref: '#/components/schemas/RemoteCluster'
-      title: RemoteClusterResp
-      example:
-        remote_cluster:
-          dp_site_num: 1
-          block_volume_num: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          version: version
-          os_zone_num: 5
-          url: url
-          access_token: access_token
-          block_snapshot_num: 0
-          connected: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          fs_id: fs_id
-          status: status
-    RemoteClusterCreateReq_RemoteCluster:
-      type: object
-      required:
-      - access_token
-      - url
-      properties:
-        access_token:
-          type: string
-          description: access token of remote cluster
-        url:
-          type: string
-          description: URL of remote cluster
-      title: RemoteClusterCreateReq_RemoteCluster
-      example:
-        access_token: access_token
-        url: url
     RemoteClustersResp:
       type: object
       properties:

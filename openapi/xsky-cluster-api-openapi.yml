@@ -633,125 +633,140 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    User_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of user
-        name:
-          type: string
-          description: name of user
-      title: User_Nestview
-      example:
-        name: name
-        id: 6
-    Host_Nestview:
+    BootNodeReq_BootNode:
       type: object
       required:
-      - admin_ip
+      - private_network
+      - public_network
       properties:
-        admin_ip:
+        admin_network:
           type: string
-        id:
-          type: integer
-          format: int64
-        name:
+          description: 'admin network: 10.0.0.0/24'
+        gateway_network:
           type: string
-      title: Host_Nestview
+          description: 'gateway networks, multiple networks splited by comma: 10.0.3.0/24,10.0.4.0/24'
+        private_network:
+          type: string
+          description: 'private network : 10.0.2.0/24'
+        public_network:
+          type: string
+          description: 'public network: 10.0.1.0/24'
+      title: BootNodeReq_BootNode
       example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    Cluster:
+        gateway_network: gateway_network
+        private_network: private_network
+        public_network: public_network
+        admin_network: admin_network
+    ClusterRecordResp:
+      type: object
+      required:
+      - cluster
+      properties:
+        cluster:
+          description: cluster info
+          $ref: '#/components/schemas/ClusterRecord'
+      title: ClusterRecordResp
+      example:
+        cluster: ''
+    ClusterUpdateReq_Cluster:
       type: object
       properties:
-        access_token:
-          $ref: '#/components/schemas/AccessToken'
-        access_url:
-          type: string
-        create:
-          type: string
-          format: date-time
         disk_lighting_mode:
           type: string
+          description: disk lighting mode
         down_out_interval:
           type: integer
           format: int64
+          description: down out interval
         elasticsearch_enabled:
           type: boolean
-        fs_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-        maintained:
-          type: boolean
+          description: enabled or disable elasticsearch
         name:
           type: string
+          description: disk lighting mode
         os_gateway_oplog_switch:
           type: boolean
-        snmp_enabled:
-          type: boolean
+          description: os gateway oplog switch
         stats_reserved_days:
           type: integer
           format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        version:
-          type: string
-      title: Cluster
-      description: Cluster defines the ceph cluster @grpc-models-proto
+          description: stats reserve days
+      title: ClusterUpdateReq_Cluster
       example:
-        access_url: access_url
-        snmp_enabled: true
-        update: '2000-01-23T04:56:07.000+00:00'
-        stats_reserved_days: 1
-        version: version
-        down_out_interval: 0
-        os_gateway_oplog_switch: true
-        access_token:
-          roles:
-          - roles
-          - roles
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          used: true
-          user:
-            name: name
-            id: 6
         elasticsearch_enabled: true
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 6
-        maintained: true
-        fs_id: fs_id
+        stats_reserved_days: 6
+        down_out_interval: 0
         disk_lighting_mode: disk_lighting_mode
-        status: status
-    ClusterSetAccessInfoReq_Cluster:
+        os_gateway_oplog_switch: true
+    Pool_Nestview:
       type: object
-      required:
-      - access_token_id
-      - access_url
       properties:
-        access_token_id:
+        id:
           type: integer
           format: int64
-          description: access token
-        access_url:
+        name:
           type: string
-          description: access url
-      title: ClusterSetAccessInfoReq_Cluster
+      title: Pool_Nestview
       example:
-        access_token_id: 0
-        access_url: access_url
+        name: name
+        id: 5
+    ClusterResp:
+      type: object
+      required:
+      - cluster
+      properties:
+        cluster:
+          description: cluster
+          $ref: '#/components/schemas/Cluster'
+      title: ClusterResp
+      example:
+        cluster:
+          access_url: access_url
+          snmp_enabled: true
+          update: '2000-01-23T04:56:07.000+00:00'
+          stats_reserved_days: 1
+          version: version
+          down_out_interval: 0
+          os_gateway_oplog_switch: true
+          access_token:
+            roles:
+            - roles
+            - roles
+            name: name
+            create: '2000-01-23T04:56:07.000+00:00'
+            description: description
+            update: '2000-01-23T04:56:07.000+00:00'
+            id: 0
+            used: true
+            user:
+              name: name
+              id: 6
+          elasticsearch_enabled: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          maintained: true
+          fs_id: fs_id
+          disk_lighting_mode: disk_lighting_mode
+          status: status
+    ClusterUpdateReq:
+      type: object
+      required:
+      - cluster
+      properties:
+        cluster:
+          description: cluster
+          $ref: '#/components/schemas/ClusterUpdateReq_Cluster'
+      title: ClusterUpdateReq
+      example:
+        cluster:
+          elasticsearch_enabled: true
+          name: name
+          stats_reserved_days: 6
+          down_out_interval: 0
+          disk_lighting_mode: disk_lighting_mode
+          os_gateway_oplog_switch: true
     ClusterStat:
       type: object
       properties:
@@ -850,6 +865,21 @@ components:
         os_up_iops: 2.027123023002322
         os_merge_speed: 9
         os_up_bandwidth_kbyte: 3.616076749251911
+    ObjectStorageSetReq:
+      type: object
+      required:
+      - object_storage
+      properties:
+        object_storage:
+          $ref: '#/components/schemas/ObjectStorageSetReq_Info'
+      title: ObjectStorageSetReq
+      example:
+        object_storage:
+          lifecycle_start_on: lifecycle_start_on
+          second_mergence_enabled: true
+          second_mergence_end_on: second_mergence_end_on
+          second_mergence_start_on: second_mergence_start_on
+          lifecycle_end_on: lifecycle_end_on
     ClusterStatsPredictionResp:
       type: object
       properties:
@@ -859,252 +889,6 @@ components:
       title: ClusterStatsPredictionResp
       example:
         stats_usage_bytes_per_day: 0
-    BootNodeReq:
-      type: object
-      required:
-      - bootnode
-      properties:
-        bootnode:
-          $ref: '#/components/schemas/BootNodeReq_BootNode'
-      title: BootNodeReq
-      example:
-        bootnode:
-          gateway_network: gateway_network
-          private_network: private_network
-          public_network: public_network
-          admin_network: admin_network
-    BootNode:
-      type: object
-      required:
-      - admin_network
-      - gateway_network
-      - private_network
-      - public_network
-      properties:
-        admin_network:
-          type: string
-        gateway_network:
-          type: string
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        private_network:
-          type: string
-        public_network:
-          type: string
-        status:
-          type: string
-      title: BootNode
-      description: BootNode defines the status of boot node
-      example:
-        gateway_network: gateway_network
-        private_network: private_network
-        public_network: public_network
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        admin_network: admin_network
-        status: status
-    ObjectStorageInitReq_Info:
-      type: object
-      required:
-      - pool_id
-      properties:
-        pool_id:
-          type: integer
-          format: int64
-          description: system pool id
-      title: ObjectStorageInitReq_Info
-      example:
-        pool_id: 0
-    ClusterInstallation_Steps:
-      type: object
-      properties:
-        bootnode:
-          type: boolean
-          description: step of setting boot node
-        license:
-          type: boolean
-          description: step of registering license
-        user:
-          type: boolean
-          description: step of creating user
-      title: ClusterInstallation_Steps
-      example:
-        license: true
-        bootnode: true
-        user: true
-    ClusterSetAccessInfoReq:
-      type: object
-      required:
-      - cluster
-      properties:
-        cluster:
-          $ref: '#/components/schemas/ClusterSetAccessInfoReq_Cluster'
-      title: ClusterSetAccessInfoReq
-      example:
-        cluster:
-          access_token_id: 0
-          access_url: access_url
-    BootNodeReq_BootNode:
-      type: object
-      required:
-      - private_network
-      - public_network
-      properties:
-        admin_network:
-          type: string
-          description: 'admin network: 10.0.0.0/24'
-        gateway_network:
-          type: string
-          description: 'gateway networks, multiple networks splited by comma: 10.0.3.0/24,10.0.4.0/24'
-        private_network:
-          type: string
-          description: 'private network : 10.0.2.0/24'
-        public_network:
-          type: string
-          description: 'public network: 10.0.1.0/24'
-      title: BootNodeReq_BootNode
-      example:
-        gateway_network: gateway_network
-        private_network: private_network
-        public_network: public_network
-        admin_network: admin_network
-    ClusterServerTimeResp:
-      type: object
-      properties:
-        server_time:
-          type: string
-          format: date-time
-          description: current server time
-      title: ClusterServerTimeResp
-      example:
-        server_time: '2000-01-23T04:56:07.000+00:00'
-    ClusterInstallationResp:
-      type: object
-      properties:
-        installation:
-          description: installation status
-          $ref: '#/components/schemas/ClusterInstallation'
-      title: ClusterInstallationResp
-      example:
-        installation:
-          finished: true
-          steps:
-            license: true
-            bootnode: true
-            user: true
-    ClusterMaintainReq_Cluster:
-      type: object
-      required:
-      - maintained
-      properties:
-        maintained:
-          type: boolean
-      title: ClusterMaintainReq_Cluster
-      example:
-        maintained: true
-    ClusterOverviewResp:
-      type: object
-      required:
-      - cluster_stats
-      properties:
-        cluster_stats:
-          description: cluster overview
-          $ref: '#/components/schemas/ClusterOverview'
-      title: ClusterOverviewResp
-      example:
-        cluster_stats:
-          fs_folder_active_num: 6
-          pool_num: 3
-          block_volume_num: 7
-          fs_gateway_group_active_num: 4
-          osd_offline_num: 4
-          access_path_num: 1
-          os_gateway_active_num: 6
-          partition_used_num: 0
-          nfs_gateway_num: 3
-          s3_load_balancer_num: 9
-          osd_error_num: 0
-          os_bucket_error_num: 0
-          fs_snapshot_num: 9
-          fs_snapshot_active_num: 6
-          os_policy_active_num: 7
-          service_xms_active_num: 7
-          os_policy_error_num: 3
-          s3_load_balancer_error_num: 1
-          pd_active_num: 9
-          nfs_gateway_stopped_num: 3
-          s3_load_balancer_group_warning_num: 8
-          osd_warning_num: 1
-          pool_recovering_num: 0
-          service_mon_stopped_num: 8
-          os_user_num: 3
-          partition_active_num: 4
-          cloud_platform_num: 7
-          snapshot_error_num: 7
-          host_active_num: 6
-          pool_full_num: 4
-          service_xms_num: 3
-          client_group_num: 2
-          pool_error_num: 8
-          access_path_active_num: 0
-          snapshot_active_num: 5
-          service_xdc_error_num: 5
-          fs_gateway_group_error_num: 5
-          service_xms_error_num: 3
-          os_gateway_num: 4
-          nfs_gateway_error_num: 6
-          block_volume_error_num: 2
-          host_error_num: 1
-          partition_error_num: 7
-          s3_load_balancer_active_num: 2
-          pd_error_num: 0
-          os_user_error_num: 5
-          client_group_error_num: 3
-          fs_folder_error_num: 7
-          os_policy_num: 3
-          s3_load_balancer_group_error_num: 6
-          service_xdc_active_num: 0
-          cloud_instance_num: 4
-          access_path_error_num: 6
-          os_gateway_stopped_num: 8
-          osd_active_num: 4
-          fs_snapshot_error_num: 8
-          service_xms_stopped_num: 9
-          access_path_warning_num: 5
-          nfs_gateway_active_num: 5
-          os_bucket_active_num: 7
-          block_volume_active_num: 5
-          fs_user_available_num: 6
-          fs_client_num: 1
-          partition_num: 9
-          fs_user_num: 3
-          os_gateway_error_num: 0
-          pd_warning_num: 5
-          host_warning_num: 6
-          cloud_volume_num: 1
-          pool_degraded_num: 6
-          client_group_active_num: 9
-          fs_client_group_num: 1
-          fs_folder_num: 1
-          fs_gateway_group_warning_num: 9
-          host_offline_num: 6
-          pool_active_num: 4
-          service_mon_error_num: 3
-          service_xdc_num: 5
-          snapshot_num: 0
-          host_num: 2
-          service_mon_num: 9
-          pd_num: 7
-          osd_num: 6
-          os_user_active_num: 7
-          fs_gateway_group_num: 9
-          s3_load_balancer_group_num: 4
-          os_bucket_num: 7
-          service_mon_active_num: 1
-          s3_load_balancer_group_active_num: 8
-          service_xdc_stopped_num: 8
     ClusterSamplesResp:
       type: object
       required:
@@ -1164,144 +948,6 @@ components:
           os_up_iops: 2.027123023002322
           os_merge_speed: 9
           os_up_bandwidth_kbyte: 3.616076749251911
-    ClusterResp:
-      type: object
-      required:
-      - cluster
-      properties:
-        cluster:
-          description: cluster
-          $ref: '#/components/schemas/Cluster'
-      title: ClusterResp
-      example:
-        cluster:
-          access_url: access_url
-          snmp_enabled: true
-          update: '2000-01-23T04:56:07.000+00:00'
-          stats_reserved_days: 1
-          version: version
-          down_out_interval: 0
-          os_gateway_oplog_switch: true
-          access_token:
-            roles:
-            - roles
-            - roles
-            name: name
-            create: '2000-01-23T04:56:07.000+00:00'
-            description: description
-            update: '2000-01-23T04:56:07.000+00:00'
-            id: 0
-            used: true
-            user:
-              name: name
-              id: 6
-          elasticsearch_enabled: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          maintained: true
-          fs_id: fs_id
-          disk_lighting_mode: disk_lighting_mode
-          status: status
-    ClusterUpdateReq_Cluster:
-      type: object
-      properties:
-        disk_lighting_mode:
-          type: string
-          description: disk lighting mode
-        down_out_interval:
-          type: integer
-          format: int64
-          description: down out interval
-        elasticsearch_enabled:
-          type: boolean
-          description: enabled or disable elasticsearch
-        name:
-          type: string
-          description: disk lighting mode
-        os_gateway_oplog_switch:
-          type: boolean
-          description: os gateway oplog switch
-        stats_reserved_days:
-          type: integer
-          format: int64
-          description: stats reserve days
-      title: ClusterUpdateReq_Cluster
-      example:
-        elasticsearch_enabled: true
-        name: name
-        stats_reserved_days: 6
-        down_out_interval: 0
-        disk_lighting_mode: disk_lighting_mode
-        os_gateway_oplog_switch: true
-    BootNodeResp:
-      type: object
-      required:
-      - bootnode
-      properties:
-        bootnode:
-          description: boot node
-          $ref: '#/components/schemas/BootNode'
-      title: BootNodeResp
-      example:
-        bootnode:
-          gateway_network: gateway_network
-          private_network: private_network
-          public_network: public_network
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          admin_network: admin_network
-          status: status
-    ClusterRecord:
-      title: ClusterRecord
-      allOf:
-      - $ref: '#/components/schemas/Cluster'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/ClusterStat'
-      description: ClusterRecord defines the response content of cluster related API
-    ObjectStorageInitReq:
-      type: object
-      required:
-      - object_storage
-      properties:
-        object_storage:
-          $ref: '#/components/schemas/ObjectStorageInitReq_Info'
-      title: ObjectStorageInitReq
-      example:
-        object_storage:
-          pool_id: 0
-    ClusterInstallation:
-      type: object
-      properties:
-        finished:
-          type: boolean
-        steps:
-          $ref: '#/components/schemas/ClusterInstallation_Steps'
-      title: ClusterInstallation
-      description: ClusterInstallation returns installation status of the cluster
-      example:
-        finished: true
-        steps:
-          license: true
-          bootnode: true
-          user: true
-    Pool_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Pool_Nestview
-      example:
-        name: name
-        id: 5
     ClusterOverview:
       type: object
       properties:
@@ -1668,60 +1314,306 @@ components:
         service_mon_active_num: 1
         s3_load_balancer_group_active_num: 8
         service_xdc_stopped_num: 8
-    AccessToken:
+    ClusterInstallationResp:
       type: object
       properties:
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
+        installation:
+          description: installation status
+          $ref: '#/components/schemas/ClusterInstallation'
+      title: ClusterInstallationResp
+      example:
+        installation:
+          finished: true
+          steps:
+            license: true
+            bootnode: true
+            user: true
+    ClusterOverviewResp:
+      type: object
+      required:
+      - cluster_stats
+      properties:
+        cluster_stats:
+          description: cluster overview
+          $ref: '#/components/schemas/ClusterOverview'
+      title: ClusterOverviewResp
+      example:
+        cluster_stats:
+          fs_folder_active_num: 6
+          pool_num: 3
+          block_volume_num: 7
+          fs_gateway_group_active_num: 4
+          osd_offline_num: 4
+          access_path_num: 1
+          os_gateway_active_num: 6
+          partition_used_num: 0
+          nfs_gateway_num: 3
+          s3_load_balancer_num: 9
+          osd_error_num: 0
+          os_bucket_error_num: 0
+          fs_snapshot_num: 9
+          fs_snapshot_active_num: 6
+          os_policy_active_num: 7
+          service_xms_active_num: 7
+          os_policy_error_num: 3
+          s3_load_balancer_error_num: 1
+          pd_active_num: 9
+          nfs_gateway_stopped_num: 3
+          s3_load_balancer_group_warning_num: 8
+          osd_warning_num: 1
+          pool_recovering_num: 0
+          service_mon_stopped_num: 8
+          os_user_num: 3
+          partition_active_num: 4
+          cloud_platform_num: 7
+          snapshot_error_num: 7
+          host_active_num: 6
+          pool_full_num: 4
+          service_xms_num: 3
+          client_group_num: 2
+          pool_error_num: 8
+          access_path_active_num: 0
+          snapshot_active_num: 5
+          service_xdc_error_num: 5
+          fs_gateway_group_error_num: 5
+          service_xms_error_num: 3
+          os_gateway_num: 4
+          nfs_gateway_error_num: 6
+          block_volume_error_num: 2
+          host_error_num: 1
+          partition_error_num: 7
+          s3_load_balancer_active_num: 2
+          pd_error_num: 0
+          os_user_error_num: 5
+          client_group_error_num: 3
+          fs_folder_error_num: 7
+          os_policy_num: 3
+          s3_load_balancer_group_error_num: 6
+          service_xdc_active_num: 0
+          cloud_instance_num: 4
+          access_path_error_num: 6
+          os_gateway_stopped_num: 8
+          osd_active_num: 4
+          fs_snapshot_error_num: 8
+          service_xms_stopped_num: 9
+          access_path_warning_num: 5
+          nfs_gateway_active_num: 5
+          os_bucket_active_num: 7
+          block_volume_active_num: 5
+          fs_user_available_num: 6
+          fs_client_num: 1
+          partition_num: 9
+          fs_user_num: 3
+          os_gateway_error_num: 0
+          pd_warning_num: 5
+          host_warning_num: 6
+          cloud_volume_num: 1
+          pool_degraded_num: 6
+          client_group_active_num: 9
+          fs_client_group_num: 1
+          fs_folder_num: 1
+          fs_gateway_group_warning_num: 9
+          host_offline_num: 6
+          pool_active_num: 4
+          service_mon_error_num: 3
+          service_xdc_num: 5
+          snapshot_num: 0
+          host_num: 2
+          service_mon_num: 9
+          pd_num: 7
+          osd_num: 6
+          os_user_active_num: 7
+          fs_gateway_group_num: 9
+          s3_load_balancer_group_num: 4
+          os_bucket_num: 7
+          service_mon_active_num: 1
+          s3_load_balancer_group_active_num: 8
+          service_xdc_stopped_num: 8
+    User_Nestview:
+      type: object
+      properties:
         id:
           type: integer
           format: int64
+          description: id of user
         name:
           type: string
-        roles:
-          type: array
-          items:
-            type: string
-        update:
-          type: string
-          format: date-time
-        used:
-          type: boolean
-        user:
-          $ref: '#/components/schemas/User_Nestview'
-      title: AccessToken
-      description: AccessToken used for authentication and authorization
+          description: name of user
+      title: User_Nestview
       example:
-        roles:
-        - roles
-        - roles
         name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        used: true
+        id: 6
+    ClusterInstallation:
+      type: object
+      properties:
+        finished:
+          type: boolean
+        steps:
+          $ref: '#/components/schemas/ClusterInstallation_Steps'
+      title: ClusterInstallation
+      description: ClusterInstallation returns installation status of the cluster
+      example:
+        finished: true
+        steps:
+          license: true
+          bootnode: true
+          user: true
+    ObjectStorageInitReq_Info:
+      type: object
+      required:
+      - pool_id
+      properties:
+        pool_id:
+          type: integer
+          format: int64
+          description: system pool id
+      title: ObjectStorageInitReq_Info
+      example:
+        pool_id: 0
+    ClusterMaintainReq:
+      type: object
+      required:
+      - cluster
+      properties:
+        cluster:
+          $ref: '#/components/schemas/ClusterMaintainReq_Cluster'
+      title: ClusterMaintainReq
+      example:
+        cluster:
+          maintained: true
+    ClusterInstallation_Steps:
+      type: object
+      properties:
+        bootnode:
+          type: boolean
+          description: step of setting boot node
+        license:
+          type: boolean
+          description: step of registering license
         user:
-          name: name
-          id: 6
-    ObjectStorageSetReq:
+          type: boolean
+          description: step of creating user
+      title: ClusterInstallation_Steps
+      example:
+        license: true
+        bootnode: true
+        user: true
+    BootNodeResp:
+      type: object
+      required:
+      - bootnode
+      properties:
+        bootnode:
+          description: boot node
+          $ref: '#/components/schemas/BootNode'
+      title: BootNodeResp
+      example:
+        bootnode:
+          gateway_network: gateway_network
+          private_network: private_network
+          public_network: public_network
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          admin_network: admin_network
+          status: status
+    BootNodeReq:
+      type: object
+      required:
+      - bootnode
+      properties:
+        bootnode:
+          $ref: '#/components/schemas/BootNodeReq_BootNode'
+      title: BootNodeReq
+      example:
+        bootnode:
+          gateway_network: gateway_network
+          private_network: private_network
+          public_network: public_network
+          admin_network: admin_network
+    ObjectStorageInitReq:
       type: object
       required:
       - object_storage
       properties:
         object_storage:
-          $ref: '#/components/schemas/ObjectStorageSetReq_Info'
-      title: ObjectStorageSetReq
+          $ref: '#/components/schemas/ObjectStorageInitReq_Info'
+      title: ObjectStorageInitReq
       example:
         object_storage:
-          lifecycle_start_on: lifecycle_start_on
-          second_mergence_enabled: true
-          second_mergence_end_on: second_mergence_end_on
-          second_mergence_start_on: second_mergence_start_on
-          lifecycle_end_on: lifecycle_end_on
+          pool_id: 0
+    Cluster:
+      type: object
+      properties:
+        access_token:
+          $ref: '#/components/schemas/AccessToken'
+        access_url:
+          type: string
+        create:
+          type: string
+          format: date-time
+        disk_lighting_mode:
+          type: string
+        down_out_interval:
+          type: integer
+          format: int64
+        elasticsearch_enabled:
+          type: boolean
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        maintained:
+          type: boolean
+        name:
+          type: string
+        os_gateway_oplog_switch:
+          type: boolean
+        snmp_enabled:
+          type: boolean
+        stats_reserved_days:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        version:
+          type: string
+      title: Cluster
+      description: Cluster defines the ceph cluster @grpc-models-proto
+      example:
+        access_url: access_url
+        snmp_enabled: true
+        update: '2000-01-23T04:56:07.000+00:00'
+        stats_reserved_days: 1
+        version: version
+        down_out_interval: 0
+        os_gateway_oplog_switch: true
+        access_token:
+          roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
+        elasticsearch_enabled: true
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        maintained: true
+        fs_id: fs_id
+        disk_lighting_mode: disk_lighting_mode
+        status: status
     ObjectStorageResp:
       type: object
       properties:
@@ -1747,17 +1639,82 @@ components:
           lifecycle_end_on: lifecycle_end_on
           action_status: action_status
           status: status
-    ClusterMaintainReq:
+    ClusterRecord:
+      title: ClusterRecord
+      allOf:
+      - $ref: '#/components/schemas/Cluster'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/ClusterStat'
+      description: ClusterRecord defines the response content of cluster related API
+    ClusterSetAccessInfoReq_Cluster:
       type: object
       required:
-      - cluster
+      - access_token_id
+      - access_url
       properties:
-        cluster:
-          $ref: '#/components/schemas/ClusterMaintainReq_Cluster'
-      title: ClusterMaintainReq
+        access_token_id:
+          type: integer
+          format: int64
+          description: access token
+        access_url:
+          type: string
+          description: access url
+      title: ClusterSetAccessInfoReq_Cluster
       example:
-        cluster:
-          maintained: true
+        access_token_id: 0
+        access_url: access_url
+    BootNode:
+      type: object
+      required:
+      - admin_network
+      - gateway_network
+      - private_network
+      - public_network
+      properties:
+        admin_network:
+          type: string
+        gateway_network:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        private_network:
+          type: string
+        public_network:
+          type: string
+        status:
+          type: string
+      title: BootNode
+      description: BootNode defines the status of boot node
+      example:
+        gateway_network: gateway_network
+        private_network: private_network
+        public_network: public_network
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        admin_network: admin_network
+        status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     ObjectStorage:
       type: object
       properties:
@@ -1811,6 +1768,57 @@ components:
         lifecycle_end_on: lifecycle_end_on
         action_status: action_status
         status: status
+    AccessToken:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User_Nestview'
+      title: AccessToken
+      description: AccessToken used for authentication and authorization
+      example:
+        roles:
+        - roles
+        - roles
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        used: true
+        user:
+          name: name
+          id: 6
+    ClusterSetAccessInfoReq:
+      type: object
+      required:
+      - cluster
+      properties:
+        cluster:
+          $ref: '#/components/schemas/ClusterSetAccessInfoReq_Cluster'
+      title: ClusterSetAccessInfoReq
+      example:
+        cluster:
+          access_token_id: 0
+          access_url: access_url
     ObjectStorageSetReq_Info:
       type: object
       properties:
@@ -1836,34 +1844,26 @@ components:
         second_mergence_end_on: second_mergence_end_on
         second_mergence_start_on: second_mergence_start_on
         lifecycle_end_on: lifecycle_end_on
-    ClusterRecordResp:
+    ClusterMaintainReq_Cluster:
       type: object
       required:
-      - cluster
+      - maintained
       properties:
-        cluster:
-          description: cluster info
-          $ref: '#/components/schemas/ClusterRecord'
-      title: ClusterRecordResp
+        maintained:
+          type: boolean
+      title: ClusterMaintainReq_Cluster
       example:
-        cluster: ''
-    ClusterUpdateReq:
+        maintained: true
+    ClusterServerTimeResp:
       type: object
-      required:
-      - cluster
       properties:
-        cluster:
-          description: cluster
-          $ref: '#/components/schemas/ClusterUpdateReq_Cluster'
-      title: ClusterUpdateReq
+        server_time:
+          type: string
+          format: date-time
+          description: current server time
+      title: ClusterServerTimeResp
       example:
-        cluster:
-          elasticsearch_enabled: true
-          name: name
-          stats_reserved_days: 6
-          down_out_interval: 0
-          disk_lighting_mode: disk_lighting_mode
-          os_gateway_oplog_switch: true
+        server_time: '2000-01-23T04:56:07.000+00:00'
   securitySchemes:
     tokenInHeader:
       description: auth by token

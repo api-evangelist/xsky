@@ -75,53 +75,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSNFSShareACL:
+    FSNFSShare_Nestview:
       type: object
       properties:
-        all_squash:
-          type: boolean
-        create:
-          type: string
-          format: date-time
-        fs_client:
-          $ref: '#/components/schemas/FSClient_Nestview'
-        fs_client_group:
-          $ref: '#/components/schemas/FSClientGroup_Nestview'
-        fs_nfs_share:
-          $ref: '#/components/schemas/FSNFSShare_Nestview'
         id:
           type: integer
           format: int64
-        permission:
-          type: string
-        root_squash:
-          type: boolean
-        sync:
-          type: boolean
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: FSNFSShareACL
-      description: FSNFSShareACL defines model of fs nfs share ACL
+      title: FSNFSShare_Nestview
       example:
-        all_squash: true
-        fs_client_group:
-          name: name
-          id: 6
-        fs_client:
-          name: name
-          id: 6
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        fs_nfs_share:
-          id: 0
-        permission: permission
         id: 0
-        root_squash: true
-        type: type
-        sync: true
     FSClient_Nestview:
       type: object
       properties:
@@ -179,15 +141,53 @@ components:
           root_squash: true
           type: type
           sync: true
-    FSNFSShare_Nestview:
+    FSNFSShareACL:
       type: object
       properties:
+        all_squash:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        fs_client:
+          $ref: '#/components/schemas/FSClient_Nestview'
+        fs_client_group:
+          $ref: '#/components/schemas/FSClientGroup_Nestview'
+        fs_nfs_share:
+          $ref: '#/components/schemas/FSNFSShare_Nestview'
         id:
           type: integer
           format: int64
-      title: FSNFSShare_Nestview
+        permission:
+          type: string
+        root_squash:
+          type: boolean
+        sync:
+          type: boolean
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: FSNFSShareACL
+      description: FSNFSShareACL defines model of fs nfs share ACL
       example:
+        all_squash: true
+        fs_client_group:
+          name: name
+          id: 6
+        fs_client:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        fs_nfs_share:
+          id: 0
+        permission: permission
         id: 0
+        root_squash: true
+        type: type
+        sync: true
     FSClientGroup_Nestview:
       type: object
       properties:

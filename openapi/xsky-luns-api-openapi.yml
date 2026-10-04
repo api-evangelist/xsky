@@ -91,155 +91,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LunResp:
-      type: object
-      required:
-      - lun
-      properties:
-        lun:
-          description: lun
-          $ref: '#/components/schemas/Lun'
-      title: LunResp
-      example:
-        lun:
-          nestview:
-            hidden: true
-            block_volume_num: 0
-            iqn: iqn
-            client_group_num: 6
-            description: description
-            tname: tname
-            update: '2000-01-23T04:56:07.000+00:00'
-            tsecret: tsecret
-            type: type
-            protection_domain:
-              name: name
-              id: 5
-            vip_group_num: 5
-            name: name
-            create: '2000-01-23T04:56:07.000+00:00'
-            chap: true
-            id: 1
-            action_status: action_status
-            status: status
-          volume:
-            original_name: original_name
-            name: name
-            id: 9
-          create: '2000-01-23T04:56:07.000+00:00'
-          lun_id: 6
-          id: 0
-    Lun:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        lun_id:
-          type: integer
-          format: int64
-        nestview:
-          $ref: '#/components/schemas/AccessPath'
-        volume:
-          $ref: '#/components/schemas/Volume_Nestview'
-      title: Lun
-      description: Lun defines lun id
-      example:
-        nestview:
-          hidden: true
-          block_volume_num: 0
-          iqn: iqn
-          client_group_num: 6
-          description: description
-          tname: tname
-          update: '2000-01-23T04:56:07.000+00:00'
-          tsecret: tsecret
-          type: type
-          protection_domain:
-            name: name
-            id: 5
-          vip_group_num: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          chap: true
-          id: 1
-          action_status: action_status
-          status: status
-        volume:
-          original_name: original_name
-          name: name
-          id: 9
-        create: '2000-01-23T04:56:07.000+00:00'
-        lun_id: 6
-        id: 0
-    AccessPath:
-      type: object
-      properties:
-        action_status:
-          type: string
-        block_volume_num:
-          type: integer
-          format: int64
-        chap:
-          type: boolean
-        client_group_num:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        hidden:
-          type: boolean
-        id:
-          type: integer
-          format: int64
-        iqn:
-          type: string
-        name:
-          type: string
-        protection_domain:
-          $ref: '#/components/schemas/ProtectionDomain_Nestview'
-        status:
-          type: string
-        tname:
-          type: string
-        tsecret:
-          type: string
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-        vip_group_num:
-          type: integer
-          format: int64
-      title: AccessPath
-      description: AccessPath defines access path
-      example:
-        hidden: true
-        block_volume_num: 0
-        iqn: iqn
-        client_group_num: 6
-        description: description
-        tname: tname
-        update: '2000-01-23T04:56:07.000+00:00'
-        tsecret: tsecret
-        type: type
-        protection_domain:
-          name: name
-          id: 5
-        vip_group_num: 5
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        chap: true
-        id: 1
-        action_status: action_status
-        status: status
     LunsResp:
       type: object
       required:
@@ -307,6 +158,44 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           lun_id: 6
           id: 0
+    LunResp:
+      type: object
+      required:
+      - lun
+      properties:
+        lun:
+          description: lun
+          $ref: '#/components/schemas/Lun'
+      title: LunResp
+      example:
+        lun:
+          nestview:
+            hidden: true
+            block_volume_num: 0
+            iqn: iqn
+            client_group_num: 6
+            description: description
+            tname: tname
+            update: '2000-01-23T04:56:07.000+00:00'
+            tsecret: tsecret
+            type: type
+            protection_domain:
+              name: name
+              id: 5
+            vip_group_num: 5
+            name: name
+            create: '2000-01-23T04:56:07.000+00:00'
+            chap: true
+            id: 1
+            action_status: action_status
+            status: status
+          volume:
+            original_name: original_name
+            name: name
+            id: 9
+          create: '2000-01-23T04:56:07.000+00:00'
+          lun_id: 6
+          id: 0
     ProtectionDomain_Nestview:
       type: object
       properties:
@@ -321,6 +210,52 @@ components:
       example:
         name: name
         id: 5
+    Lun:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        lun_id:
+          type: integer
+          format: int64
+        nestview:
+          $ref: '#/components/schemas/AccessPath'
+        volume:
+          $ref: '#/components/schemas/Volume_Nestview'
+      title: Lun
+      description: Lun defines lun id
+      example:
+        nestview:
+          hidden: true
+          block_volume_num: 0
+          iqn: iqn
+          client_group_num: 6
+          description: description
+          tname: tname
+          update: '2000-01-23T04:56:07.000+00:00'
+          tsecret: tsecret
+          type: type
+          protection_domain:
+            name: name
+            id: 5
+          vip_group_num: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 1
+          action_status: action_status
+          status: status
+        volume:
+          original_name: original_name
+          name: name
+          id: 9
+        create: '2000-01-23T04:56:07.000+00:00'
+        lun_id: 6
+        id: 0
     Volume_Nestview:
       type: object
       properties:
@@ -336,6 +271,71 @@ components:
         original_name: original_name
         name: name
         id: 9
+    AccessPath:
+      type: object
+      properties:
+        action_status:
+          type: string
+        block_volume_num:
+          type: integer
+          format: int64
+        chap:
+          type: boolean
+        client_group_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        hidden:
+          type: boolean
+        id:
+          type: integer
+          format: int64
+        iqn:
+          type: string
+        name:
+          type: string
+        protection_domain:
+          $ref: '#/components/schemas/ProtectionDomain_Nestview'
+        status:
+          type: string
+        tname:
+          type: string
+        tsecret:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+        vip_group_num:
+          type: integer
+          format: int64
+      title: AccessPath
+      description: AccessPath defines access path
+      example:
+        hidden: true
+        block_volume_num: 0
+        iqn: iqn
+        client_group_num: 6
+        description: description
+        tname: tname
+        update: '2000-01-23T04:56:07.000+00:00'
+        tsecret: tsecret
+        type: type
+        protection_domain:
+          name: name
+          id: 5
+        vip_group_num: 5
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        chap: true
+        id: 1
+        action_status: action_status
+        status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

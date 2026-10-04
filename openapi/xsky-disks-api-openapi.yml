@@ -293,71 +293,53 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DiskResp:
+    Host_Nestview:
       type: object
       required:
-      - disk
+      - admin_ip
       properties:
-        disk:
-          description: disk
-          $ref: '#/components/schemas/DiskRecord'
-      title: DiskResp
-      example:
-        disk: ''
-    Partition:
-      type: object
-      properties:
-        action_status:
+        admin_ip:
           type: string
-        create:
-          type: string
-          format: date-time
-        disk:
-          $ref: '#/components/schemas/Disk_Nestview'
         id:
           type: integer
           format: int64
-        omap_byte:
-          type: integer
-          format: int64
-        omap_device_path:
+        name:
           type: string
-        path:
-          type: string
-        size:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        used:
-          type: boolean
-        uuid:
-          type: string
-        version:
-          type: integer
-          format: int64
-      title: Partition
-      description: Partition defines cache partition of disk
+      title: Host_Nestview
       example:
-        omap_device_path: omap_device_path
-        update: '2000-01-23T04:56:07.000+00:00'
-        omap_byte: 1
-        used: true
-        uuid: uuid
-        version: 5
-        path: path
-        disk:
-          disk_type: disk_type
-          id: 0
-          device: device
-        size: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 6
-        action_status: action_status
-        status: status
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    DisksResp:
+      type: object
+      required:
+      - disks
+      properties:
+        disks:
+          type: array
+          description: disks
+          items:
+            $ref: '#/components/schemas/DiskRecord'
+      title: DisksResp
+      example:
+        disks:
+        - ''
+        - ''
+    Disk_Nestview:
+      type: object
+      properties:
+        device:
+          type: string
+        disk_type:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Disk_Nestview
+      example:
+        disk_type: disk_type
+        id: 0
+        device: device
     SmartAttr:
       type: object
       properties:
@@ -392,20 +374,91 @@ components:
           type: string
       title: SmartAttr
       description: SmartAttr defines disk smart attribute
-    DiskUpdateReq_Disk:
+    Disk:
       type: object
       properties:
+        action_status:
+          type: string
+        bytes:
+          type: integer
+          format: int64
+          description: size of disk
+        cache_create:
+          type: string
+          format: date-time
+        channel_id:
+          type: string
+        create:
+          type: string
+          format: date-time
+        device:
+          type: string
         disk_type:
           type: string
+        driver_type:
+          type: string
+        enclosure_id:
+          type: string
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        is_cache:
+          type: boolean
+          description: used as cache disk
+        is_root:
+          type: boolean
+          description: used as root disk
         lighting_status:
           type: string
+        model:
+          type: string
+        partition_num:
+          type: integer
+          format: int64
+        partitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Partition'
         power_safe:
           type: boolean
-      title: DiskUpdateReq_Disk
+        rotation_rate:
+          type: string
+        rotational:
+          type: boolean
+        serial:
+          type: string
+        slot_id:
+          type: string
+        smart_attrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmartAttr'
+        ssd_life_left:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        wwid:
+          type: string
+      title: Disk
+      description: Disk defines the available disk @grpc-models-proto
+    PartitionsCreateReq:
+      type: object
+      properties:
+        partitions:
+          $ref: '#/components/schemas/PartitionsCreateReq_Partitions'
+      title: PartitionsCreateReq
       example:
-        power_safe: true
-        disk_type: disk_type
-        lighting_status: lighting_status
+        partitions:
+          num: 0
+          omap_byte: 6
     DiskStat:
       type: object
       properties:
@@ -512,23 +565,121 @@ components:
         used_percent: 5.025004791520295
         kbyte_per_io: 5.637376656633329
         total_io_wait_us: 1.4894159098541704
-    Host_Nestview:
+    DiskUpdateReq:
       type: object
       required:
-      - admin_ip
+      - disk
       properties:
-        admin_ip:
+        disk:
+          $ref: '#/components/schemas/DiskUpdateReq_Disk'
+      title: DiskUpdateReq
+      example:
+        disk:
+          power_safe: true
+          disk_type: disk_type
+          lighting_status: lighting_status
+    PartitionsCreateReq_Partitions:
+      type: object
+      properties:
+        num:
+          type: integer
+          format: int64
+        omap_byte:
+          type: integer
+          format: int64
+      title: PartitionsCreateReq_Partitions
+      example:
+        num: 0
+        omap_byte: 6
+    Partition:
+      type: object
+      properties:
+        action_status:
           type: string
+        create:
+          type: string
+          format: date-time
+        disk:
+          $ref: '#/components/schemas/Disk_Nestview'
         id:
           type: integer
           format: int64
-        name:
+        omap_byte:
+          type: integer
+          format: int64
+        omap_device_path:
           type: string
-      title: Host_Nestview
+        path:
+          type: string
+        size:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        uuid:
+          type: string
+        version:
+          type: integer
+          format: int64
+      title: Partition
+      description: Partition defines cache partition of disk
       example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
+        omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        action_status: action_status
+        status: status
+    DiskRecord:
+      title: DiskRecord
+      allOf:
+      - $ref: '#/components/schemas/Disk'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/DiskStat'
+      description: DiskRecord contains information of a disk
+    DiskResp:
+      type: object
+      required:
+      - disk
+      properties:
+        disk:
+          description: disk
+          $ref: '#/components/schemas/DiskRecord'
+      title: DiskResp
+      example:
+        disk: ''
+    DiskUpdateReq_Disk:
+      type: object
+      properties:
+        disk_type:
+          type: string
+        lighting_status:
+          type: string
+        power_safe:
+          type: boolean
+      title: DiskUpdateReq_Disk
+      example:
+        power_safe: true
+        disk_type: disk_type
+        lighting_status: lighting_status
     DiskSamplesResp:
       type: object
       required:
@@ -592,157 +743,6 @@ components:
           used_percent: 5.025004791520295
           kbyte_per_io: 5.637376656633329
           total_io_wait_us: 1.4894159098541704
-    PartitionsCreateReq:
-      type: object
-      properties:
-        partitions:
-          $ref: '#/components/schemas/PartitionsCreateReq_Partitions'
-      title: PartitionsCreateReq
-      example:
-        partitions:
-          num: 0
-          omap_byte: 6
-    DiskRecord:
-      title: DiskRecord
-      allOf:
-      - $ref: '#/components/schemas/Disk'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/DiskStat'
-      description: DiskRecord contains information of a disk
-    PartitionsCreateReq_Partitions:
-      type: object
-      properties:
-        num:
-          type: integer
-          format: int64
-        omap_byte:
-          type: integer
-          format: int64
-      title: PartitionsCreateReq_Partitions
-      example:
-        num: 0
-        omap_byte: 6
-    DisksResp:
-      type: object
-      required:
-      - disks
-      properties:
-        disks:
-          type: array
-          description: disks
-          items:
-            $ref: '#/components/schemas/DiskRecord'
-      title: DisksResp
-      example:
-        disks:
-        - ''
-        - ''
-    DiskUpdateReq:
-      type: object
-      required:
-      - disk
-      properties:
-        disk:
-          $ref: '#/components/schemas/DiskUpdateReq_Disk'
-      title: DiskUpdateReq
-      example:
-        disk:
-          power_safe: true
-          disk_type: disk_type
-          lighting_status: lighting_status
-    Disk:
-      type: object
-      properties:
-        action_status:
-          type: string
-        bytes:
-          type: integer
-          format: int64
-          description: size of disk
-        cache_create:
-          type: string
-          format: date-time
-        channel_id:
-          type: string
-        create:
-          type: string
-          format: date-time
-        device:
-          type: string
-        disk_type:
-          type: string
-        driver_type:
-          type: string
-        enclosure_id:
-          type: string
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        is_cache:
-          type: boolean
-          description: used as cache disk
-        is_root:
-          type: boolean
-          description: used as root disk
-        lighting_status:
-          type: string
-        model:
-          type: string
-        partition_num:
-          type: integer
-          format: int64
-        partitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Partition'
-        power_safe:
-          type: boolean
-        rotation_rate:
-          type: string
-        rotational:
-          type: boolean
-        serial:
-          type: string
-        slot_id:
-          type: string
-        smart_attrs:
-          type: array
-          items:
-            $ref: '#/components/schemas/SmartAttr'
-        ssd_life_left:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        used:
-          type: boolean
-        wwid:
-          type: string
-      title: Disk
-      description: Disk defines the available disk @grpc-models-proto
-    Disk_Nestview:
-      type: object
-      properties:
-        device:
-          type: string
-        disk_type:
-          type: string
-        id:
-          type: integer
-          format: int64
-      title: Disk_Nestview
-      example:
-        disk_type: disk_type
-        id: 0
-        device: device
   securitySchemes:
     tokenInHeader:
       description: auth by token

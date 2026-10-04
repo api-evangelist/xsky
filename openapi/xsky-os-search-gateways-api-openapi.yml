@@ -144,88 +144,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OSSearchGatewayResp:
-      type: object
-      required:
-      - os_search_gateway
-      properties:
-        os_search_gateway:
-          $ref: '#/components/schemas/OSSearchGatewayRecord'
-      title: OSSearchGatewayResp
-      example:
-        os_search_gateway: ''
-    OSSearchGatewayRecord:
-      title: OSSearchGatewayRecord
-      allOf:
-      - $ref: '#/components/schemas/OSSearchGateway'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/OSSearchGatewayStat'
-      description: 'OSSearchGatewayRecord combine OSSearchGateway and OSSearchGatewayStat to let API
-
-        comfortable'
-    Pool_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Pool_Nestview
-      example:
-        name: name
-        id: 5
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    OSSearchEngine_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: OSSearchEngine_Nestview
-    OSSearchGateway:
-      type: object
-      properties:
-        action_status:
-          type: string
-        create:
-          type: string
-          format: date-time
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
-        id:
-          type: integer
-          format: int64
-        pool:
-          $ref: '#/components/schemas/Pool_Nestview'
-        search_engine:
-          $ref: '#/components/schemas/OSSearchEngine_Nestview'
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: OSSearchGateway
-      description: OSSearchGateway defines model os OS search gateway
     OSSearchGatewayStat:
       type: object
       properties:
@@ -268,6 +186,64 @@ components:
         read_latency_us: 5.637376656633329
         cpu_util: 0.8008281904610115
         read_iops: 5.962133916683182
+    OSSearchGatewayResp:
+      type: object
+      required:
+      - os_search_gateway
+      properties:
+        os_search_gateway:
+          $ref: '#/components/schemas/OSSearchGatewayRecord'
+      title: OSSearchGatewayResp
+      example:
+        os_search_gateway: ''
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    OSSearchEngine_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: OSSearchEngine_Nestview
+    OSSearchGatewayRecord:
+      title: OSSearchGatewayRecord
+      allOf:
+      - $ref: '#/components/schemas/OSSearchGateway'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/OSSearchGatewayStat'
+      description: 'OSSearchGatewayRecord combine OSSearchGateway and OSSearchGatewayStat to let API
+
+        comfortable'
     OSSearchGatewaysResp:
       type: object
       required:
@@ -312,6 +288,30 @@ components:
           read_latency_us: 5.637376656633329
           cpu_util: 0.8008281904610115
           read_iops: 5.962133916683182
+    OSSearchGateway:
+      type: object
+      properties:
+        action_status:
+          type: string
+        create:
+          type: string
+          format: date-time
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        search_engine:
+          $ref: '#/components/schemas/OSSearchEngine_Nestview'
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: OSSearchGateway
+      description: OSSearchGateway defines model os OS search gateway
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -131,53 +131,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OSSample:
-      type: object
-      properties:
-        delete_obj_category:
-          $ref: '#/components/schemas/OSBucketUsageCategory'
-        get_obj_category:
-          $ref: '#/components/schemas/OSBucketUsageCategory'
-        list_bucket_category:
-          $ref: '#/components/schemas/OSBucketUsageCategory'
-        objects:
-          type: integer
-          format: int64
-        post_obj_category:
-          $ref: '#/components/schemas/OSBucketUsageCategory'
-        put_obj_category:
-          $ref: '#/components/schemas/OSBucketUsageCategory'
-        used_capacity_bytes:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int64
-      title: OSSample
-      description: OSSample contains os samples
-      example:
-        used_capacity_bytes:
-          key: 5
-        post_obj_category:
-          ops: 6
-          download_bytes: 0
-          upload_bytes: 1
-        objects: 5
-        delete_obj_category:
-          ops: 6
-          download_bytes: 0
-          upload_bytes: 1
-        get_obj_category:
-          ops: 6
-          download_bytes: 0
-          upload_bytes: 1
-        put_obj_category:
-          ops: 6
-          download_bytes: 0
-          upload_bytes: 1
-        list_bucket_category:
-          ops: 6
-          download_bytes: 0
-          upload_bytes: 1
     OSSampleResp:
       type: object
       properties:
@@ -310,6 +263,53 @@ components:
         ops: 6
         download_bytes: 0
         upload_bytes: 1
+    OSSample:
+      type: object
+      properties:
+        delete_obj_category:
+          $ref: '#/components/schemas/OSBucketUsageCategory'
+        get_obj_category:
+          $ref: '#/components/schemas/OSBucketUsageCategory'
+        list_bucket_category:
+          $ref: '#/components/schemas/OSBucketUsageCategory'
+        objects:
+          type: integer
+          format: int64
+        post_obj_category:
+          $ref: '#/components/schemas/OSBucketUsageCategory'
+        put_obj_category:
+          $ref: '#/components/schemas/OSBucketUsageCategory'
+        used_capacity_bytes:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+      title: OSSample
+      description: OSSample contains os samples
+      example:
+        used_capacity_bytes:
+          key: 5
+        post_obj_category:
+          ops: 6
+          download_bytes: 0
+          upload_bytes: 1
+        objects: 5
+        delete_obj_category:
+          ops: 6
+          download_bytes: 0
+          upload_bytes: 1
+        get_obj_category:
+          ops: 6
+          download_bytes: 0
+          upload_bytes: 1
+        put_obj_category:
+          ops: 6
+          download_bytes: 0
+          upload_bytes: 1
+        list_bucket_category:
+          ops: 6
+          download_bytes: 0
+          upload_bytes: 1
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -44,6 +44,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    HostInfo:
+      type: object
+      properties:
+        ips:
+          type: array
+          items:
+            type: string
+      title: HostInfo
+      example:
+        ips:
+        - ips
+        - ips
     HostInfoResp:
       type: object
       required:
@@ -58,18 +70,6 @@ components:
           ips:
           - ips
           - ips
-    HostInfo:
-      type: object
-      properties:
-        ips:
-          type: array
-          items:
-            type: string
-      title: HostInfo
-      example:
-        ips:
-        - ips
-        - ips
   securitySchemes:
     tokenInHeader:
       description: auth by token

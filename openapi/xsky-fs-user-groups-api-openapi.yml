@@ -293,6 +293,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FSUserGroupCreateReq:
+      type: object
+      required:
+      - fs_user_group
+      properties:
+        fs_user_group:
+          $ref: '#/components/schemas/FSUserGroupCreateReq_UserGroup'
+      title: FSUserGroupCreateReq
+    FSUserGroupCreateReq_UserGroup:
+      type: object
+      required:
+      - name
+      properties:
+        fs_user_ids:
+          type: array
+          description: ids of users, which are required when type is smb or ftp
+          items:
+            type: integer
+            format: int64
+        name:
+          type: string
+          description: name of user group
+      title: FSUserGroupCreateReq_UserGroup
     FSUserGroupAddUsersReq_UserGroup:
       type: object
       properties:
@@ -340,6 +363,36 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 0
         action_status: action_status
+    FSUserGroupResp:
+      type: object
+      required:
+      - fs_user_group
+      properties:
+        fs_user_group:
+          description: file storage user group
+          $ref: '#/components/schemas/FSUserGroup'
+      title: FSUserGroupResp
+      example:
+        fs_user_group:
+          user_num: 6
+          fs_users:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+    FSUserGroupRemoveUsersReq:
+      type: object
+      required:
+      - fs_user_group
+      properties:
+        fs_user_group:
+          $ref: '#/components/schemas/FSUserGroupRemoveUsersReq_UserGroup'
+      title: FSUserGroupRemoveUsersReq
     FSUserGroupsResp:
       type: object
       required:
@@ -383,6 +436,25 @@ components:
         fs_user_group:
           $ref: '#/components/schemas/FSUserGroupUpdateReq_UserGroup'
       title: FSUserGroupUpdateReq
+    FSUserGroupUpdateReq_UserGroup:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: name of user group
+      title: FSUserGroupUpdateReq_UserGroup
+    FSUserGroupRemoveUsersReq_UserGroup:
+      type: object
+      properties:
+        fs_user_ids:
+          type: array
+          description: ids of users, which are required when type is smb or ftp
+          items:
+            type: integer
+            format: int64
+      title: FSUserGroupRemoveUsersReq_UserGroup
     FSUser_Nestview:
       type: object
       properties:
@@ -395,62 +467,6 @@ components:
       example:
         name: name
         id: 6
-    FSUserGroupCreateReq_UserGroup:
-      type: object
-      required:
-      - name
-      properties:
-        fs_user_ids:
-          type: array
-          description: ids of users, which are required when type is smb or ftp
-          items:
-            type: integer
-            format: int64
-        name:
-          type: string
-          description: name of user group
-      title: FSUserGroupCreateReq_UserGroup
-    FSUserGroupResp:
-      type: object
-      required:
-      - fs_user_group
-      properties:
-        fs_user_group:
-          description: file storage user group
-          $ref: '#/components/schemas/FSUserGroup'
-      title: FSUserGroupResp
-      example:
-        fs_user_group:
-          user_num: 6
-          fs_users:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-    FSUserGroupRemoveUsersReq_UserGroup:
-      type: object
-      properties:
-        fs_user_ids:
-          type: array
-          description: ids of users, which are required when type is smb or ftp
-          items:
-            type: integer
-            format: int64
-      title: FSUserGroupRemoveUsersReq_UserGroup
-    FSUserGroupUpdateReq_UserGroup:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: name of user group
-      title: FSUserGroupUpdateReq_UserGroup
     FSUserGroupAddUsersReq:
       type: object
       required:
@@ -459,22 +475,6 @@ components:
         fs_user_group:
           $ref: '#/components/schemas/FSUserGroupAddUsersReq_UserGroup'
       title: FSUserGroupAddUsersReq
-    FSUserGroupRemoveUsersReq:
-      type: object
-      required:
-      - fs_user_group
-      properties:
-        fs_user_group:
-          $ref: '#/components/schemas/FSUserGroupRemoveUsersReq_UserGroup'
-      title: FSUserGroupRemoveUsersReq
-    FSUserGroupCreateReq:
-      type: object
-      required:
-      - fs_user_group
-      properties:
-        fs_user_group:
-          $ref: '#/components/schemas/FSUserGroupCreateReq_UserGroup'
-      title: FSUserGroupCreateReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -73,21 +73,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DomainUserValidatorResp:
-      type: object
-      properties:
-        domain_user_validator:
-          $ref: '#/components/schemas/DomainUserValidator'
-      title: DomainUserValidatorResp
-      example:
-        domain_user_validator:
-          members: '{}'
-          report: '{}'
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          type: type
-          status: status
     DomainUserValidator:
       type: object
       properties:
@@ -120,6 +105,21 @@ components:
         id: 0
         type: type
         status: status
+    DomainUserValidatorCreateReq:
+      type: object
+      properties:
+        domain_user_validator:
+          $ref: '#/components/schemas/DomainUserValidatorCreateReq_Validator'
+      title: DomainUserValidatorCreateReq
+      example:
+        domain_user_validator:
+          groups:
+          - groups
+          - groups
+          type: type
+          users:
+          - users
+          - users
     DomainUserValidatorCreateReq_Validator:
       type: object
       required:
@@ -147,21 +147,21 @@ components:
         users:
         - users
         - users
-    DomainUserValidatorCreateReq:
+    DomainUserValidatorResp:
       type: object
       properties:
         domain_user_validator:
-          $ref: '#/components/schemas/DomainUserValidatorCreateReq_Validator'
-      title: DomainUserValidatorCreateReq
+          $ref: '#/components/schemas/DomainUserValidator'
+      title: DomainUserValidatorResp
       example:
         domain_user_validator:
-          groups:
-          - groups
-          - groups
+          members: '{}'
+          report: '{}'
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
           type: type
-          users:
-          - users
-          - users
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

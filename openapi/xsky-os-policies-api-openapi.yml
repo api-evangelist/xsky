@@ -199,6 +199,142 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ObjectStoragePolicyResp:
+      type: object
+      required:
+      - os_policy
+      properties:
+        os_policy:
+          description: object storage policy
+          $ref: '#/components/schemas/ObjectStoragePolicy'
+      title: ObjectStoragePolicyResp
+      example:
+        os_policy:
+          shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+    ObjectStoragePolicyCreateReq_Policy:
+      type: object
+      required:
+      - index_pool_id
+      - name
+      - storage_classes
+      properties:
+        cache_pool_id:
+          type: integer
+          format: int64
+        compress:
+          type: boolean
+        crypto:
+          type: boolean
+        description:
+          type: string
+        index_pool_id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        shared:
+          type: boolean
+        storage_classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt'
+      title: ObjectStoragePolicyCreateReq_Policy
+      example:
+        shared: true
+        storage_classes:
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        - active_pool_ids:
+          - 1
+          - 1
+          name: name
+          description: description
+          class: 5
+          inactive_pool_ids:
+          - 5
+          - 5
+        cache_pool_id: 0
+        compress: true
+        name: name
+        description: description
+        index_pool_id: 6
+        crypto: true
+    ObjectStoragePoliciesResp:
+      type: object
+      required:
+      - os_policies
+      properties:
+        os_policies:
+          type: array
+          description: object storage policies
+          items:
+            $ref: '#/components/schemas/ObjectStoragePolicy'
+      title: ObjectStoragePoliciesResp
+      example:
+        os_policies:
+        - shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
+        - shared: true
+          cache_pool:
+            name: name
+            id: 5
+          compress: true
+          description: description
+          policy_name: policy_name
+          update: '2000-01-23T04:56:07.000+00:00'
+          bucket_num: 0
+          crypto: true
+          index_pool:
+            name: name
+            id: 5
+          object_size_threshold: 1
+          default: true
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 6
+          status: status
     ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt:
       type: object
       required:
@@ -294,105 +430,6 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         id: 6
         status: status
-    ObjectStoragePolicyResp:
-      type: object
-      required:
-      - os_policy
-      properties:
-        os_policy:
-          description: object storage policy
-          $ref: '#/components/schemas/ObjectStoragePolicy'
-      title: ObjectStoragePolicyResp
-      example:
-        os_policy:
-          shared: true
-          cache_pool:
-            name: name
-            id: 5
-          compress: true
-          description: description
-          policy_name: policy_name
-          update: '2000-01-23T04:56:07.000+00:00'
-          bucket_num: 0
-          crypto: true
-          index_pool:
-            name: name
-            id: 5
-          object_size_threshold: 1
-          default: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          status: status
-    ObjectStoragePolicyUpdateReq:
-      type: object
-      properties:
-        os_policy:
-          $ref: '#/components/schemas/ObjectStoragePolicyUpdateReq_Policy'
-      title: ObjectStoragePolicyUpdateReq
-      example:
-        os_policy:
-          shared: true
-          default: true
-          cache_pool_id: 0
-          compress: true
-          description: description
-          crypto: true
-    ObjectStoragePolicyCreateReq_Policy:
-      type: object
-      required:
-      - index_pool_id
-      - name
-      - storage_classes
-      properties:
-        cache_pool_id:
-          type: integer
-          format: int64
-        compress:
-          type: boolean
-        crypto:
-          type: boolean
-        description:
-          type: string
-        index_pool_id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        shared:
-          type: boolean
-        storage_classes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectStoragePolicyCreateReq_Policy_StorageClasses_Elt'
-      title: ObjectStoragePolicyCreateReq_Policy
-      example:
-        shared: true
-        storage_classes:
-        - active_pool_ids:
-          - 1
-          - 1
-          name: name
-          description: description
-          class: 5
-          inactive_pool_ids:
-          - 5
-          - 5
-        - active_pool_ids:
-          - 1
-          - 1
-          name: name
-          description: description
-          class: 5
-          inactive_pool_ids:
-          - 5
-          - 5
-        cache_pool_id: 0
-        compress: true
-        name: name
-        description: description
-        index_pool_id: 6
-        crypto: true
     ObjectStoragePolicyUpdateReq_Policy:
       type: object
       properties:
@@ -451,57 +488,20 @@ components:
           description: description
           index_pool_id: 6
           crypto: true
-    ObjectStoragePoliciesResp:
+    ObjectStoragePolicyUpdateReq:
       type: object
-      required:
-      - os_policies
       properties:
-        os_policies:
-          type: array
-          description: object storage policies
-          items:
-            $ref: '#/components/schemas/ObjectStoragePolicy'
-      title: ObjectStoragePoliciesResp
+        os_policy:
+          $ref: '#/components/schemas/ObjectStoragePolicyUpdateReq_Policy'
+      title: ObjectStoragePolicyUpdateReq
       example:
-        os_policies:
-        - shared: true
-          cache_pool:
-            name: name
-            id: 5
+        os_policy:
+          shared: true
+          default: true
+          cache_pool_id: 0
           compress: true
           description: description
-          policy_name: policy_name
-          update: '2000-01-23T04:56:07.000+00:00'
-          bucket_num: 0
           crypto: true
-          index_pool:
-            name: name
-            id: 5
-          object_size_threshold: 1
-          default: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          status: status
-        - shared: true
-          cache_pool:
-            name: name
-            id: 5
-          compress: true
-          description: description
-          policy_name: policy_name
-          update: '2000-01-23T04:56:07.000+00:00'
-          bucket_num: 0
-          crypto: true
-          index_pool:
-            name: name
-            id: 5
-          object_size_threshold: 1
-          default: true
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 6
-          status: status
     Pool_Nestview:
       type: object
       properties:

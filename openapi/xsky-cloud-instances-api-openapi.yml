@@ -157,16 +157,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudInstanceResp:
-      type: object
-      properties:
-        cloud_instance:
-          description: cloud instance record
-          $ref: '#/components/schemas/CloudInstanceRecord'
-      title: CloudInstanceResp
-      example:
-        cloud_instance: ''
-    CloudPlatform_Nestview:
+    CloudDatacenter_Nestview:
       type: object
       properties:
         id:
@@ -174,13 +165,20 @@ components:
           format: int64
         name:
           type: string
-        type:
-          type: string
-      title: CloudPlatform_Nestview
+      title: CloudDatacenter_Nestview
       example:
         name: name
-        id: 6
-        type: type
+        id: 0
+    CloudInstanceRecord:
+      title: CloudInstanceRecord
+      allOf:
+      - $ref: '#/components/schemas/CloudInstance'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/CloudInstanceStat'
+      description: CloudInstanceRecord combine CloudInstance and CloudInstanceStat as API response
     CloudInstanceStat:
       type: object
       properties:
@@ -223,41 +221,6 @@ components:
         total_iops: 5.637376656633329
         read_latency_us: 1.4658129805029452
         read_iops: 6.027456183070403
-    CloudInstanceRecord:
-      title: CloudInstanceRecord
-      allOf:
-      - $ref: '#/components/schemas/CloudInstance'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/CloudInstanceStat'
-      description: CloudInstanceRecord combine CloudInstance and CloudInstanceStat as API response
-    CloudDatacenter_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: CloudDatacenter_Nestview
-      example:
-        name: name
-        id: 0
-    CloudInstancesResp:
-      type: object
-      properties:
-        cloud_instances:
-          type: array
-          description: cloud instance records
-          items:
-            $ref: '#/components/schemas/CloudInstanceRecord'
-      title: CloudInstancesResp
-      example:
-        cloud_instances:
-        - ''
-        - ''
     CloudInstance:
       type: object
       properties:
@@ -321,6 +284,43 @@ components:
           total_iops: 5.637376656633329
           read_latency_us: 1.4658129805029452
           read_iops: 6.027456183070403
+    CloudPlatform_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+      title: CloudPlatform_Nestview
+      example:
+        name: name
+        id: 6
+        type: type
+    CloudInstancesResp:
+      type: object
+      properties:
+        cloud_instances:
+          type: array
+          description: cloud instance records
+          items:
+            $ref: '#/components/schemas/CloudInstanceRecord'
+      title: CloudInstancesResp
+      example:
+        cloud_instances:
+        - ''
+        - ''
+    CloudInstanceResp:
+      type: object
+      properties:
+        cloud_instance:
+          description: cloud instance record
+          $ref: '#/components/schemas/CloudInstanceRecord'
+      title: CloudInstanceResp
+      example:
+        cloud_instance: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

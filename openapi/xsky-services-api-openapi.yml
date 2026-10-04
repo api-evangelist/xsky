@@ -129,6 +129,23 @@ components:
           up: true
           primary: true
           status: status
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
     Service:
       type: object
       properties:
@@ -185,23 +202,24 @@ components:
         up: true
         primary: true
         status: status
-    Host_Nestview:
+    SSLCertificate_Nestview:
       type: object
-      required:
-      - admin_ip
       properties:
-        admin_ip:
-          type: string
+        force_https:
+          type: boolean
+          description: redirect http request to https
         id:
           type: integer
           format: int64
+          description: certificate id
         name:
           type: string
-      title: Host_Nestview
+          description: certificate name
+      title: SSLCertificate_Nestview
       example:
+        force_https: true
         name: name
-        admin_ip: admin_ip
-        id: 0
+        id: 2
     ServicesResp:
       type: object
       required:
@@ -253,24 +271,6 @@ components:
           up: true
           primary: true
           status: status
-    SSLCertificate_Nestview:
-      type: object
-      properties:
-        force_https:
-          type: boolean
-          description: redirect http request to https
-        id:
-          type: integer
-          format: int64
-          description: certificate id
-        name:
-          type: string
-          description: certificate name
-      title: SSLCertificate_Nestview
-      example:
-        force_https: true
-        name: name
-        id: 2
   securitySchemes:
     tokenInHeader:
       description: auth by token

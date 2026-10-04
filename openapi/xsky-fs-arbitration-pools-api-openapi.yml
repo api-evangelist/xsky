@@ -177,31 +177,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSArbitrationPoolCreateReq:
+    FSArbitrationPool:
       type: object
-      required:
-      - fs_arbitration_pool
       properties:
-        fs_arbitration_pool:
-          $ref: '#/components/schemas/FSArbitrationPoolCreateReq_Info'
-      title: FSArbitrationPoolCreateReq
-    FSArbitrationPoolResp:
-      type: object
-      required:
-      - fs_arbitration_pool
-      properties:
-        fs_arbitration_pool:
-          description: file storage arbitration pool
-          $ref: '#/components/schemas/FSArbitrationPool'
-      title: FSArbitrationPoolResp
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        pool:
+          $ref: '#/components/schemas/Pool_Nestview'
+        update:
+          type: string
+          format: date-time
+      title: FSArbitrationPool
+      description: FSArbitrationPool defines file system arbitration pool
       example:
-        fs_arbitration_pool:
-          pool:
-            name: name
-            id: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
+        pool:
+          name: name
+          id: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
     FSArbitrationPoolsResp:
       type: object
       required:
@@ -227,39 +225,14 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           update: '2000-01-23T04:56:07.000+00:00'
           id: 0
-    FSArbitrationPoolUpdateReq_Info:
+    FSArbitrationPoolCreateReq:
       type: object
       required:
-      - pool_id
+      - fs_arbitration_pool
       properties:
-        pool_id:
-          type: integer
-          format: int64
-          description: pool used for file system arbitration
-      title: FSArbitrationPoolUpdateReq_Info
-    FSArbitrationPool:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        pool:
-          $ref: '#/components/schemas/Pool_Nestview'
-        update:
-          type: string
-          format: date-time
-      title: FSArbitrationPool
-      description: FSArbitrationPool defines file system arbitration pool
-      example:
-        pool:
-          name: name
-          id: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
+        fs_arbitration_pool:
+          $ref: '#/components/schemas/FSArbitrationPoolCreateReq_Info'
+      title: FSArbitrationPoolCreateReq
     FSArbitrationPoolCreateReq_Info:
       type: object
       required:
@@ -278,6 +251,16 @@ components:
         fs_arbitration_pool:
           $ref: '#/components/schemas/FSArbitrationPoolUpdateReq_Info'
       title: FSArbitrationPoolUpdateReq
+    FSArbitrationPoolUpdateReq_Info:
+      type: object
+      required:
+      - pool_id
+      properties:
+        pool_id:
+          type: integer
+          format: int64
+          description: pool used for file system arbitration
+      title: FSArbitrationPoolUpdateReq_Info
     Pool_Nestview:
       type: object
       properties:
@@ -290,6 +273,23 @@ components:
       example:
         name: name
         id: 5
+    FSArbitrationPoolResp:
+      type: object
+      required:
+      - fs_arbitration_pool
+      properties:
+        fs_arbitration_pool:
+          description: file storage arbitration pool
+          $ref: '#/components/schemas/FSArbitrationPool'
+      title: FSArbitrationPoolResp
+      example:
+        fs_arbitration_pool:
+          pool:
+            name: name
+            id: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -84,22 +84,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageLifecycleResp:
-      type: object
-      required:
-      - os_lifecycle
-      properties:
-        os_lifecycle:
-          description: object storage lifecycle
-          $ref: '#/components/schemas/ObjectStorageLifecycle'
-      title: ObjectStorageLifecycleResp
-      example:
-        os_lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
     ObjectStorageLifecycle:
       type: object
       properties:
@@ -140,6 +124,22 @@ components:
           id: 6
           status: status
         - rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+    ObjectStorageLifecycleResp:
+      type: object
+      required:
+      - os_lifecycle
+      properties:
+        os_lifecycle:
+          description: object storage lifecycle
+          $ref: '#/components/schemas/ObjectStorageLifecycle'
+      title: ObjectStorageLifecycleResp
+      example:
+        os_lifecycle:
+          rules:
           - '{}'
           - '{}'
           id: 6

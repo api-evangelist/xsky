@@ -215,6 +215,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DpGateway_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpGateway_Nestview
+      example:
+        name: name
+        id: 6
     DpBlockBackupPolicy:
       type: object
       properties:
@@ -308,6 +320,21 @@ components:
             id: 6
           id: 5
           status: status
+    DpBlockBackupPolicyUpdateReq:
+      type: object
+      required:
+      - dp_block_backup_policy
+      properties:
+        dp_block_backup_policy:
+          $ref: '#/components/schemas/DpBlockBackupPolicyUpdateReq_Policy'
+      title: DpBlockBackupPolicyUpdateReq
+      example:
+        dp_block_backup_policy:
+          inc_cron_expr: inc_cron_expr
+          retained_max: 0
+          encrypted: true
+          full_cron_expr: full_cron_expr
+          name: name
     DpSite_Nestview:
       type: object
       properties:
@@ -320,6 +347,23 @@ components:
       example:
         name: name
         id: 1
+    DpBlockBackupPolicyCreateReq:
+      type: object
+      required:
+      - dp_block_backup_policy
+      properties:
+        dp_block_backup_policy:
+          $ref: '#/components/schemas/DpBlockBackupPolicyCreateReq_Policy'
+      title: DpBlockBackupPolicyCreateReq
+      example:
+        dp_block_backup_policy:
+          inc_cron_expr: inc_cron_expr
+          retained_max: 1
+          dp_gateway_id: 0
+          encrypted: true
+          full_cron_expr: full_cron_expr
+          name: name
+          dp_site_id: 6
     DpBlockBackupPolicyCreateReq_Policy:
       type: object
       required:
@@ -386,21 +430,6 @@ components:
             id: 6
           id: 5
           status: status
-    DpBlockBackupPolicyUpdateReq:
-      type: object
-      required:
-      - dp_block_backup_policy
-      properties:
-        dp_block_backup_policy:
-          $ref: '#/components/schemas/DpBlockBackupPolicyUpdateReq_Policy'
-      title: DpBlockBackupPolicyUpdateReq
-      example:
-        dp_block_backup_policy:
-          inc_cron_expr: inc_cron_expr
-          retained_max: 0
-          encrypted: true
-          full_cron_expr: full_cron_expr
-          name: name
     DpBlockBackupPolicyUpdateReq_Policy:
       type: object
       properties:
@@ -427,35 +456,6 @@ components:
         encrypted: true
         full_cron_expr: full_cron_expr
         name: name
-    DpBlockBackupPolicyCreateReq:
-      type: object
-      required:
-      - dp_block_backup_policy
-      properties:
-        dp_block_backup_policy:
-          $ref: '#/components/schemas/DpBlockBackupPolicyCreateReq_Policy'
-      title: DpBlockBackupPolicyCreateReq
-      example:
-        dp_block_backup_policy:
-          inc_cron_expr: inc_cron_expr
-          retained_max: 1
-          dp_gateway_id: 0
-          encrypted: true
-          full_cron_expr: full_cron_expr
-          name: name
-          dp_site_id: 6
-    DpGateway_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpGateway_Nestview
-      example:
-        name: name
-        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

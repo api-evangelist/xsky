@@ -177,6 +177,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AlertGroupsResp:
+      type: object
+      required:
+      - alert_groups
+      properties:
+        alert_groups:
+          type: array
+          description: alert groups
+          items:
+            $ref: '#/components/schemas/AlertGroup'
+      title: AlertGroupsResp
+      example:
+        alert_groups:
+        - name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+        - name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    AlertGroupUpdateReq:
+      type: object
+      required:
+      - alert_group
+      properties:
+        alert_group:
+          $ref: '#/components/schemas/AlertGroupUpdateReq_AlertGroup'
+      title: AlertGroupUpdateReq
+      example:
+        alert_group:
+          alert_rule_ids:
+          - 0
+          - 0
+          name: name
+          email_group_ids:
+          - 6
+          - 6
     AlertGroupResp:
       type: object
       required:
@@ -216,27 +254,27 @@ components:
         email_group_ids:
         - 6
         - 6
-    AlertGroupsResp:
+    AlertGroup:
       type: object
-      required:
-      - alert_groups
       properties:
-        alert_groups:
-          type: array
-          description: alert groups
-          items:
-            $ref: '#/components/schemas/AlertGroup'
-      title: AlertGroupsResp
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: AlertGroup
+      description: AlertGroup defines the alert group
       example:
-        alert_groups:
-        - name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-        - name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
     AlertGroupCreateReq:
       type: object
       required:
@@ -282,44 +320,6 @@ components:
         email_group_ids:
         - 6
         - 6
-    AlertGroup:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: AlertGroup
-      description: AlertGroup defines the alert group
-      example:
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-    AlertGroupUpdateReq:
-      type: object
-      required:
-      - alert_group
-      properties:
-        alert_group:
-          $ref: '#/components/schemas/AlertGroupUpdateReq_AlertGroup'
-      title: AlertGroupUpdateReq
-      example:
-        alert_group:
-          alert_rule_ids:
-          - 0
-          - 0
-          name: name
-          email_group_ids:
-          - 6
-          - 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

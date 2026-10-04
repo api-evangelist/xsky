@@ -207,6 +207,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CryptoKeyUpdateReq:
+      type: object
+      properties:
+        crypto_key:
+          $ref: '#/components/schemas/CryptoKeyUpdateReq_Key'
+      title: CryptoKeyUpdateReq
+      example:
+        crypto_key:
+          enabled: true
+    CryptoKeysResp:
+      type: object
+      required:
+      - crypto_keys
+      properties:
+        crypto_keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/CryptoKey'
+      title: CryptoKeysResp
+      example:
+        crypto_keys:
+        - size: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
+        - size: 6
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          enabled: true
     CryptoKey:
       type: object
       properties:
@@ -235,48 +268,6 @@ components:
         update: '2000-01-23T04:56:07.000+00:00'
         id: 0
         enabled: true
-    CryptoKeyUpdateReq:
-      type: object
-      properties:
-        crypto_key:
-          $ref: '#/components/schemas/CryptoKeyUpdateReq_Key'
-      title: CryptoKeyUpdateReq
-      example:
-        crypto_key:
-          enabled: true
-    CryptoKeyUpdateReq_Key:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: enable or disable the key
-      title: CryptoKeyUpdateReq_Key
-      example:
-        enabled: true
-    CryptoKeysResp:
-      type: object
-      required:
-      - crypto_keys
-      properties:
-        crypto_keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/CryptoKey'
-      title: CryptoKeysResp
-      example:
-        crypto_keys:
-        - size: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          enabled: true
-        - size: 6
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          enabled: true
     CryptoKeyResp:
       type: object
       required:
@@ -293,6 +284,15 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 0
           enabled: true
+    CryptoKeyUpdateReq_Key:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: enable or disable the key
+      title: CryptoKeyUpdateReq_Key
+      example:
+        enabled: true
   securitySchemes:
     tokenInHeader:
       description: auth by token

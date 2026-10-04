@@ -210,19 +210,6 @@ components:
           type: type
           value: value
           key: key
-    ConfItemSetReq:
-      type: object
-      required:
-      - conf
-      properties:
-        conf:
-          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
-      title: ConfItemSetReq
-      example:
-        conf:
-          type: type
-          value: value
-          key: key
     ConfItemsResp:
       type: object
       required:
@@ -244,6 +231,24 @@ components:
           type: type
           value: value
           key: key
+    ConfItemSetReq_ConfItem:
+      type: object
+      required:
+      - key
+      - type
+      - value
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      title: ConfItemSetReq_ConfItem
+      example:
+        type: type
+        value: value
+        key: key
     ConfItemsSetReq:
       type: object
       required:
@@ -276,24 +281,19 @@ components:
         type: type
         value: value
         key: key
-    ConfItemSetReq_ConfItem:
+    ConfItemSetReq:
       type: object
       required:
-      - key
-      - type
-      - value
+      - conf
       properties:
-        key:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
-      title: ConfItemSetReq_ConfItem
+        conf:
+          $ref: '#/components/schemas/ConfItemSetReq_ConfItem'
+      title: ConfItemSetReq
       example:
-        type: type
-        value: value
-        key: key
+        conf:
+          type: type
+          value: value
+          key: key
   securitySchemes:
     tokenInHeader:
       description: auth by token

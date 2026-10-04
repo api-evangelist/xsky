@@ -216,73 +216,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSActiveDirectoryCreateReq:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          $ref: '#/components/schemas/FSActiveDirectoryCreateReq_Info'
-      title: FSActiveDirectoryCreateReq
-    FSActiveDirectoryResp:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          description: file storage active directory
-          $ref: '#/components/schemas/FSActiveDirectory'
-      title: FSActiveDirectoryResp
-      example:
-        fs_active_directory:
-          workgroup: workgroup
-          ip: ip
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 0
-          realm: realm
-          id: 6
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          action_status: action_status
-          status: status
-          username: username
-    FSActiveDirectoryCreateReq_Info:
-      type: object
-      required:
-      - name
-      - password
-      - realm
-      - username
-      - workgroup
-      properties:
-        ip:
-          type: string
-          description: ip of dns server
-        name:
-          type: string
-          description: name of active directory
-        password:
-          type: string
-          description: password of active directory
-        realm:
-          type: string
-          description: realm of active directory
-        username:
-          type: string
-          description: username of active directory
-        workgroup:
-          type: string
-          description: workgroup of active directory
-      title: FSActiveDirectoryCreateReq_Info
-    FSActiveDirectoryUpdateReq:
-      type: object
-      required:
-      - fs_active_directory
-      properties:
-        fs_active_directory:
-          $ref: '#/components/schemas/FSActiveDirectoryUpdateReq_Info'
-      title: FSActiveDirectoryUpdateReq
     FSActiveDirectory:
       type: object
       properties:
@@ -330,6 +263,37 @@ components:
         action_status: action_status
         status: status
         username: username
+    FSActiveDirectoryCreateReq:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          $ref: '#/components/schemas/FSActiveDirectoryCreateReq_Info'
+      title: FSActiveDirectoryCreateReq
+    FSActiveDirectoryResp:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          description: file storage active directory
+          $ref: '#/components/schemas/FSActiveDirectory'
+      title: FSActiveDirectoryResp
+      example:
+        fs_active_directory:
+          workgroup: workgroup
+          ip: ip
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 0
+          realm: realm
+          id: 6
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          action_status: action_status
+          status: status
+          username: username
     FSActiveDirectoryUpdateReq_Info:
       type: object
       properties:
@@ -352,6 +316,14 @@ components:
           type: string
           description: workgroup of active directory
       title: FSActiveDirectoryUpdateReq_Info
+    FSActiveDirectoryUpdateReq:
+      type: object
+      required:
+      - fs_active_directory
+      properties:
+        fs_active_directory:
+          $ref: '#/components/schemas/FSActiveDirectoryUpdateReq_Info'
+      title: FSActiveDirectoryUpdateReq
     FSActiveDirectoriesResp:
       type: object
       required:
@@ -389,6 +361,34 @@ components:
           action_status: action_status
           status: status
           username: username
+    FSActiveDirectoryCreateReq_Info:
+      type: object
+      required:
+      - name
+      - password
+      - realm
+      - username
+      - workgroup
+      properties:
+        ip:
+          type: string
+          description: ip of dns server
+        name:
+          type: string
+          description: name of active directory
+        password:
+          type: string
+          description: password of active directory
+        realm:
+          type: string
+          description: realm of active directory
+        username:
+          type: string
+          description: username of active directory
+        workgroup:
+          type: string
+          description: workgroup of active directory
+      title: FSActiveDirectoryCreateReq_Info
   securitySchemes:
     tokenInHeader:
       description: auth by token

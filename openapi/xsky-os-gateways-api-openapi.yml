@@ -257,17 +257,66 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageGatewayResp:
+    ObjectStorageGatewayUpdateReq_Gateway:
+      type: object
+      properties:
+        action:
+          type: string
+      title: ObjectStorageGatewayUpdateReq_Gateway
+      example:
+        action: action
+    Host_Nestview:
       type: object
       required:
-      - os_gateway
+      - admin_ip
       properties:
-        os_gateway:
-          description: object storage gateway
-          $ref: '#/components/schemas/ObjectStorageGatewayRecord'
-      title: ObjectStorageGatewayResp
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
       example:
-        os_gateway: ''
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    ObjectStorageGatewaySamplesResp:
+      type: object
+      required:
+      - os_gateway_samples
+      properties:
+        os_gateway_samples:
+          type: array
+          description: object storage gateway samples
+          items:
+            $ref: '#/components/schemas/ObjectStorageGatewayStat'
+      title: ObjectStorageGatewaySamplesResp
+      example:
+        os_gateway_samples:
+        - up_bandwidth_kbyte: 3.616076749251911
+          up_ops: 2.027123023002322
+          down_bandwidth_kbyte: 6.027456183070403
+          down_ops: 1.4658129805029452
+          sync_down_ops: 9.301444243932576
+          merge_speed: 5
+          mem_usage_percent: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+          requests: 2
+          sync_down_bandwidth_kbyte: 7.061401241503109
+          cpu_util: 0.8008281904610115
+        - up_bandwidth_kbyte: 3.616076749251911
+          up_ops: 2.027123023002322
+          down_bandwidth_kbyte: 6.027456183070403
+          down_ops: 1.4658129805029452
+          sync_down_ops: 9.301444243932576
+          merge_speed: 5
+          mem_usage_percent: 5.962133916683182
+          create: '2000-01-23T04:56:07.000+00:00'
+          requests: 2
+          sync_down_bandwidth_kbyte: 7.061401241503109
+          cpu_util: 0.8008281904610115
     ObjectStorageZone_Nestview:
       type: object
       properties:
@@ -280,15 +329,20 @@ components:
       example:
         id: 7
         uuid: uuid
-    ObjectStorageGatewayUpdateReq:
+    ObjectStorageGatewayCreateReq:
       type: object
       properties:
         os_gateway:
-          $ref: '#/components/schemas/ObjectStorageGatewayUpdateReq_Gateway'
-      title: ObjectStorageGatewayUpdateReq
+          $ref: '#/components/schemas/ObjectStorageGatewayCreateReq_Gateway'
+      title: ObjectStorageGatewayCreateReq
       example:
         os_gateway:
-          action: action
+          role: role
+          port: 6
+          name: name
+          description: description
+          gateway_ip: gateway_ip
+          host_id: 0
     ObjectStorageGatewayStat:
       type: object
       properties:
@@ -339,31 +393,6 @@ components:
         requests: 2
         sync_down_bandwidth_kbyte: 7.061401241503109
         cpu_util: 0.8008281904610115
-    ObjectStorageGatewayUpdateReq_Gateway:
-      type: object
-      properties:
-        action:
-          type: string
-      title: ObjectStorageGatewayUpdateReq_Gateway
-      example:
-        action: action
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     ObjectStorageGatewaysResp:
       type: object
       required:
@@ -424,55 +453,26 @@ components:
           format: date-time
       title: ObjectStorageGateway
       description: ObjectStorageGateway is the model of object_storage_gateway @grpc-models-proto
-    ObjectStorageGatewaySamplesResp:
+    ObjectStorageGatewayResp:
       type: object
       required:
-      - os_gateway_samples
+      - os_gateway
       properties:
-        os_gateway_samples:
-          type: array
-          description: object storage gateway samples
-          items:
-            $ref: '#/components/schemas/ObjectStorageGatewayStat'
-      title: ObjectStorageGatewaySamplesResp
+        os_gateway:
+          description: object storage gateway
+          $ref: '#/components/schemas/ObjectStorageGatewayRecord'
+      title: ObjectStorageGatewayResp
       example:
-        os_gateway_samples:
-        - up_bandwidth_kbyte: 3.616076749251911
-          up_ops: 2.027123023002322
-          down_bandwidth_kbyte: 6.027456183070403
-          down_ops: 1.4658129805029452
-          sync_down_ops: 9.301444243932576
-          merge_speed: 5
-          mem_usage_percent: 5.962133916683182
-          create: '2000-01-23T04:56:07.000+00:00'
-          requests: 2
-          sync_down_bandwidth_kbyte: 7.061401241503109
-          cpu_util: 0.8008281904610115
-        - up_bandwidth_kbyte: 3.616076749251911
-          up_ops: 2.027123023002322
-          down_bandwidth_kbyte: 6.027456183070403
-          down_ops: 1.4658129805029452
-          sync_down_ops: 9.301444243932576
-          merge_speed: 5
-          mem_usage_percent: 5.962133916683182
-          create: '2000-01-23T04:56:07.000+00:00'
-          requests: 2
-          sync_down_bandwidth_kbyte: 7.061401241503109
-          cpu_util: 0.8008281904610115
-    ObjectStorageGatewayCreateReq:
+        os_gateway: ''
+    ObjectStorageGatewayUpdateReq:
       type: object
       properties:
         os_gateway:
-          $ref: '#/components/schemas/ObjectStorageGatewayCreateReq_Gateway'
-      title: ObjectStorageGatewayCreateReq
+          $ref: '#/components/schemas/ObjectStorageGatewayUpdateReq_Gateway'
+      title: ObjectStorageGatewayUpdateReq
       example:
         os_gateway:
-          role: role
-          port: 6
-          name: name
-          description: description
-          gateway_ip: gateway_ip
-          host_id: 0
+          action: action
     ObjectStorageGatewayCreateReq_Gateway:
       type: object
       required:

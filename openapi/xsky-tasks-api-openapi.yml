@@ -92,6 +92,55 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TasksResp:
+      type: object
+      required:
+      - tasks
+      properties:
+        tasks:
+          type: array
+          description: tasks
+          items:
+            $ref: '#/components/schemas/Task'
+      title: TasksResp
+      example:
+        tasks:
+        - retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
+        - retried: true
+          error_msg: error_msg
+          data: data
+          update: '2000-01-23T04:56:07.000+00:00'
+          priority: 5
+          type: type
+          execute: '2000-01-23T04:56:07.000+00:00'
+          host_role: host_role
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          finish: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          retry: 2
+          retry_type: retry_type
+          status: status
     Host_Nestview:
       type: object
       required:
@@ -182,55 +231,6 @@ components:
       example:
         task:
           retried: true
-          error_msg: error_msg
-          data: data
-          update: '2000-01-23T04:56:07.000+00:00'
-          priority: 5
-          type: type
-          execute: '2000-01-23T04:56:07.000+00:00'
-          host_role: host_role
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          finish: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          retry: 2
-          retry_type: retry_type
-          status: status
-    TasksResp:
-      type: object
-      required:
-      - tasks
-      properties:
-        tasks:
-          type: array
-          description: tasks
-          items:
-            $ref: '#/components/schemas/Task'
-      title: TasksResp
-      example:
-        tasks:
-        - retried: true
-          error_msg: error_msg
-          data: data
-          update: '2000-01-23T04:56:07.000+00:00'
-          priority: 5
-          type: type
-          execute: '2000-01-23T04:56:07.000+00:00'
-          host_role: host_role
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          finish: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          retry: 2
-          retry_type: retry_type
-          status: status
-        - retried: true
           error_msg: error_msg
           data: data
           update: '2000-01-23T04:56:07.000+00:00'

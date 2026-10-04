@@ -124,6 +124,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FSFolder_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSFolder_Nestview
+      example:
+        name: name
+        id: 6
     FSSnapshot_Nestview:
       type: object
       properties:
@@ -136,30 +148,18 @@ components:
       example:
         name: name
         id: 1
-    DpFSSnapshotJobResp:
+    DpFSSnapshotPolicy_Nestview:
       type: object
       properties:
-        dp_fs_snapshot_job:
-          $ref: '#/components/schemas/DpFSSnapshotJob'
-      title: DpFSSnapshotJobResp
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpFSSnapshotPolicy_Nestview
       example:
-        dp_fs_snapshot_job:
-          finished_at: '2000-01-23T04:56:07.000+00:00'
-          size: 2
-          updated_at: '2000-01-23T04:56:07.000+00:00'
-          fs_folder:
-            name: name
-            id: 6
-          dp_fs_snapshot_policy:
-            name: name
-            id: 0
-          progress: 5.637376656633329
-          started_at: '2000-01-23T04:56:07.000+00:00'
-          fs_snapshot:
-            name: name
-            id: 1
-          id: 5
-          status: status
+        name: name
+        id: 0
     DpFSSnapshotJobsResp:
       type: object
       properties:
@@ -187,6 +187,30 @@ components:
           id: 5
           status: status
         - finished_at: '2000-01-23T04:56:07.000+00:00'
+          size: 2
+          updated_at: '2000-01-23T04:56:07.000+00:00'
+          fs_folder:
+            name: name
+            id: 6
+          dp_fs_snapshot_policy:
+            name: name
+            id: 0
+          progress: 5.637376656633329
+          started_at: '2000-01-23T04:56:07.000+00:00'
+          fs_snapshot:
+            name: name
+            id: 1
+          id: 5
+          status: status
+    DpFSSnapshotJobResp:
+      type: object
+      properties:
+        dp_fs_snapshot_job:
+          $ref: '#/components/schemas/DpFSSnapshotJob'
+      title: DpFSSnapshotJobResp
+      example:
+        dp_fs_snapshot_job:
+          finished_at: '2000-01-23T04:56:07.000+00:00'
           size: 2
           updated_at: '2000-01-23T04:56:07.000+00:00'
           fs_folder:
@@ -250,30 +274,6 @@ components:
           id: 1
         id: 5
         status: status
-    DpFSSnapshotPolicy_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpFSSnapshotPolicy_Nestview
-      example:
-        name: name
-        id: 0
-    FSFolder_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSFolder_Nestview
-      example:
-        name: name
-        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -217,34 +217,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ObjectStorageBucket_Nestview:
-      type: object
+    ObjectStorageBucket_Nestview_lifecycle:
       properties:
         id:
           type: integer
           format: int64
-        lifecycle:
-          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
-        name:
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
           type: string
-      title: ObjectStorageBucket_Nestview
       example:
-        lifecycle:
-          rules:
-          - '{}'
-          - '{}'
-          id: 6
-          status: status
-        name: name
-        id: 0
-    OSReplicationZoneRecordResp:
-      type: object
-      properties:
-        os_replication_zone:
-          $ref: '#/components/schemas/OSReplicationZoneRecord'
-      title: OSReplicationZoneRecordResp
-      example:
-        os_replication_zone: ''
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
     ObjectStorageZone_Nestview:
       type: object
       properties:
@@ -257,6 +247,74 @@ components:
       example:
         id: 7
         uuid: uuid
+    OSReplicationZoneRecordResp:
+      type: object
+      properties:
+        os_replication_zone:
+          $ref: '#/components/schemas/OSReplicationZoneRecord'
+      title: OSReplicationZoneRecordResp
+      example:
+        os_replication_zone: ''
+    OSReplicationZoneCreateReq:
+      type: object
+      required:
+      - os_replication_zone
+      properties:
+        os_replication_zone:
+          $ref: '#/components/schemas/OSReplicationZoneCreateReq_OSReplicationZone'
+      title: OSReplicationZoneCreateReq
+    OSReplicationZoneRecordsResp:
+      type: object
+      properties:
+        os_replication_zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSReplicationZoneRecord'
+      title: OSReplicationZoneRecordsResp
+      example:
+        os_replication_zones:
+        - ''
+        - ''
+    OSReplicationZoneResp:
+      type: object
+      properties:
+        os_replication_zone:
+          $ref: '#/components/schemas/OSReplicationZone'
+      title: OSReplicationZoneResp
+      example:
+        os_replication_zone:
+          dirty: true
+          replication_uuid: replication_uuid
+          os_zone:
+            id: 7
+            uuid: uuid
+          os_remote_policy_uuid: os_remote_policy_uuid
+          os_zone_uuid: os_zone_uuid
+          update: '2000-01-23T04:56:07.000+00:00'
+          os_remote_policy:
+            name: name
+            uuid: uuid
+          uuid: uuid
+          os_bucket_owner_zone:
+            id: 7
+            uuid: uuid
+          os_bucket_owner_cluster:
+            name: name
+            id: 2
+            fs_id: fs_id
+            url: url
+          os_bucket:
+            lifecycle:
+              rules:
+              - '{}'
+              - '{}'
+              id: 6
+              status: status
+            name: name
+            id: 0
+          create: '2000-01-23T04:56:07.000+00:00'
+          os_replication_path_num: 0
+          status: status
     OSReplicationZone:
       type: object
       properties:
@@ -326,114 +384,6 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         os_replication_path_num: 0
         status: status
-    OSReplicationZoneSamplesResp:
-      type: object
-      required:
-      - os_replication_zone_samples
-      properties:
-        os_replication_zone_samples:
-          type: array
-          description: os replication zone samples
-          items:
-            $ref: '#/components/schemas/OSReplicationZoneStat'
-      title: OSReplicationZoneSamplesResp
-      example:
-        os_replication_zone_samples:
-        - object_kbytes_ps: 6.027456183070403
-          total_objects: 2
-          bandwidth_kbyte: 0.8008281904610115
-          total_bytes: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          objects_pm: 1.4658129805029452
-          total_object_bytes: 5
-        - object_kbytes_ps: 6.027456183070403
-          total_objects: 2
-          bandwidth_kbyte: 0.8008281904610115
-          total_bytes: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-          objects_pm: 1.4658129805029452
-          total_object_bytes: 5
-    OSRemotePolicy_Nestview:
-      type: object
-      properties:
-        name:
-          type: string
-        uuid:
-          type: string
-      title: OSRemotePolicy_Nestview
-      example:
-        name: name
-        uuid: uuid
-    RemoteCluster_Nestview:
-      type: object
-      properties:
-        fs_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        url:
-          type: string
-      title: RemoteCluster_Nestview
-      example:
-        name: name
-        id: 2
-        fs_id: fs_id
-        url: url
-    OSReplicationZoneRecordsResp:
-      type: object
-      properties:
-        os_replication_zones:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSReplicationZoneRecord'
-      title: OSReplicationZoneRecordsResp
-      example:
-        os_replication_zones:
-        - ''
-        - ''
-    OSReplicationZoneResp:
-      type: object
-      properties:
-        os_replication_zone:
-          $ref: '#/components/schemas/OSReplicationZone'
-      title: OSReplicationZoneResp
-      example:
-        os_replication_zone:
-          dirty: true
-          replication_uuid: replication_uuid
-          os_zone:
-            id: 7
-            uuid: uuid
-          os_remote_policy_uuid: os_remote_policy_uuid
-          os_zone_uuid: os_zone_uuid
-          update: '2000-01-23T04:56:07.000+00:00'
-          os_remote_policy:
-            name: name
-            uuid: uuid
-          uuid: uuid
-          os_bucket_owner_zone:
-            id: 7
-            uuid: uuid
-          os_bucket_owner_cluster:
-            name: name
-            id: 2
-            fs_id: fs_id
-            url: url
-          os_bucket:
-            lifecycle:
-              rules:
-              - '{}'
-              - '{}'
-              id: 6
-              status: status
-            name: name
-            id: 0
-          create: '2000-01-23T04:56:07.000+00:00'
-          os_replication_path_num: 0
-          status: status
     OSReplicationZoneStat:
       type: object
       properties:
@@ -468,32 +418,17 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         objects_pm: 1.4658129805029452
         total_object_bytes: 5
-    OSReplicationZoneCreateReq:
+    OSRemotePolicy_Nestview:
       type: object
-      required:
-      - os_replication_zone
       properties:
-        os_replication_zone:
-          $ref: '#/components/schemas/OSReplicationZoneCreateReq_OSReplicationZone'
-      title: OSReplicationZoneCreateReq
-    ObjectStorageBucket_Nestview_lifecycle:
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
+        name:
           type: string
+        uuid:
+          type: string
+      title: OSRemotePolicy_Nestview
       example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
-        status: status
+        name: name
+        uuid: uuid
     OSReplicationZoneCreateReq_OSReplicationZone:
       type: object
       required:
@@ -506,6 +441,51 @@ components:
         uuid:
           type: string
       title: OSReplicationZoneCreateReq_OSReplicationZone
+    RemoteCluster_Nestview:
+      type: object
+      properties:
+        fs_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+      title: RemoteCluster_Nestview
+      example:
+        name: name
+        id: 2
+        fs_id: fs_id
+        url: url
+    OSReplicationZoneSamplesResp:
+      type: object
+      required:
+      - os_replication_zone_samples
+      properties:
+        os_replication_zone_samples:
+          type: array
+          description: os replication zone samples
+          items:
+            $ref: '#/components/schemas/OSReplicationZoneStat'
+      title: OSReplicationZoneSamplesResp
+      example:
+        os_replication_zone_samples:
+        - object_kbytes_ps: 6.027456183070403
+          total_objects: 2
+          bandwidth_kbyte: 0.8008281904610115
+          total_bytes: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          objects_pm: 1.4658129805029452
+          total_object_bytes: 5
+        - object_kbytes_ps: 6.027456183070403
+          total_objects: 2
+          bandwidth_kbyte: 0.8008281904610115
+          total_bytes: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+          objects_pm: 1.4658129805029452
+          total_object_bytes: 5
     OSReplicationZoneRecord:
       title: OSReplicationZoneRecord
       allOf:
@@ -518,6 +498,26 @@ components:
       description: 'OSReplicationZoneRecord is used to combine OSReplicationZone and
 
         OSReplicationZoneStat'
+    ObjectStorageBucket_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        lifecycle:
+          $ref: '#/components/schemas/ObjectStorageBucket_Nestview_lifecycle'
+        name:
+          type: string
+      title: ObjectStorageBucket_Nestview
+      example:
+        lifecycle:
+          rules:
+          - '{}'
+          - '{}'
+          id: 6
+          status: status
+        name: name
+        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

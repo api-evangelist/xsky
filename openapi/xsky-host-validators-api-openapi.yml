@@ -107,6 +107,24 @@ components:
         admin_ip: admin_ip
         host_type: host_type
         private_ip: private_ip
+    HostValidatorCreateReq:
+      type: object
+      properties:
+        host_validator:
+          $ref: '#/components/schemas/HostValidatorCreateReq_Validator'
+      title: HostValidatorCreateReq
+      example:
+        host_validator:
+          gateway_ips:
+          - gateway_ips
+          - gateway_ips
+          public_ip: public_ip
+          host_roles:
+          - host_roles
+          - host_roles
+          admin_ip: admin_ip
+          host_type: host_type
+          private_ip: private_ip
     HostValidatorResp:
       type: object
       properties:
@@ -181,24 +199,6 @@ components:
         host_type: host_type
         private_ip: private_ip
         status: status
-    HostValidatorCreateReq:
-      type: object
-      properties:
-        host_validator:
-          $ref: '#/components/schemas/HostValidatorCreateReq_Validator'
-      title: HostValidatorCreateReq
-      example:
-        host_validator:
-          gateway_ips:
-          - gateway_ips
-          - gateway_ips
-          public_ip: public_ip
-          host_roles:
-          - host_roles
-          - host_roles
-          admin_ip: admin_ip
-          host_type: host_type
-          private_ip: private_ip
   securitySchemes:
     tokenInHeader:
       description: auth by token

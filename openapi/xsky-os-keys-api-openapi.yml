@@ -196,24 +196,47 @@ components:
       example:
         os_key:
           secret_key: secret_key
-    ObjectStorageKeyCreateReq_Key:
+    ObjectStorageKeyCreateReq:
+      type: object
+      properties:
+        os_key:
+          $ref: '#/components/schemas/ObjectStorageKeyCreateReq_Key'
+      title: ObjectStorageKeyCreateReq
+      example:
+        os_key:
+          secret_key: secret_key
+          user_id: 0
+          access_key: access_key
+    ObjectStorageKeyResp:
       type: object
       required:
-      - access_key
-      - user_id
+      - os_key
       properties:
-        access_key:
-          type: string
+        os_key:
+          description: object storage key
+          $ref: '#/components/schemas/ObjectStorageKey'
+      title: ObjectStorageKeyResp
+      example:
+        os_key:
+          secret_key: secret_key
+          reserved: true
+          access_key: access_key
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          type: type
+          user:
+            name: name
+            id: 1
+          status: status
+    ObjectStorageKeyUpdateReq_Key:
+      type: object
+      properties:
         secret_key:
           type: string
-        user_id:
-          type: integer
-          format: int64
-      title: ObjectStorageKeyCreateReq_Key
+      title: ObjectStorageKeyUpdateReq_Key
       example:
         secret_key: secret_key
-        user_id: 0
-        access_key: access_key
     ObjectStorageKey:
       type: object
       properties:
@@ -287,39 +310,6 @@ components:
             name: name
             id: 1
           status: status
-    ObjectStorageKeyResp:
-      type: object
-      required:
-      - os_key
-      properties:
-        os_key:
-          description: object storage key
-          $ref: '#/components/schemas/ObjectStorageKey'
-      title: ObjectStorageKeyResp
-      example:
-        os_key:
-          secret_key: secret_key
-          reserved: true
-          access_key: access_key
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          type: type
-          user:
-            name: name
-            id: 1
-          status: status
-    ObjectStorageKeyCreateReq:
-      type: object
-      properties:
-        os_key:
-          $ref: '#/components/schemas/ObjectStorageKeyCreateReq_Key'
-      title: ObjectStorageKeyCreateReq
-      example:
-        os_key:
-          secret_key: secret_key
-          user_id: 0
-          access_key: access_key
     ObjectStorageUser_Nestview:
       type: object
       properties:
@@ -332,14 +322,24 @@ components:
       example:
         name: name
         id: 1
-    ObjectStorageKeyUpdateReq_Key:
+    ObjectStorageKeyCreateReq_Key:
       type: object
+      required:
+      - access_key
+      - user_id
       properties:
+        access_key:
+          type: string
         secret_key:
           type: string
-      title: ObjectStorageKeyUpdateReq_Key
+        user_id:
+          type: integer
+          format: int64
+      title: ObjectStorageKeyCreateReq_Key
       example:
         secret_key: secret_key
+        user_id: 0
+        access_key: access_key
   securitySchemes:
     tokenInHeader:
       description: auth by token

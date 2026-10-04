@@ -81,42 +81,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OSZonePeriod:
-      type: object
-      properties:
-        action:
-          type: string
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        master_os_zone_uuid:
-          type: string
-        next_master_os_zone_uuid:
-          type: string
-        period_id:
-          type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        uuid:
-          type: string
-      title: OSZonePeriod
-      description: OSZonePeriod records progressing of a zone group operation.
-      example:
-        next_master_os_zone_uuid: next_master_os_zone_uuid
-        action: action
-        create: '2000-01-23T04:56:07.000+00:00'
-        master_os_zone_uuid: master_os_zone_uuid
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        period_id: period_id
-        uuid: uuid
-        status: status
     OSZonePeriodResp:
       type: object
       required:
@@ -166,6 +130,42 @@ components:
           period_id: period_id
           uuid: uuid
           status: status
+    OSZonePeriod:
+      type: object
+      properties:
+        action:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        master_os_zone_uuid:
+          type: string
+        next_master_os_zone_uuid:
+          type: string
+        period_id:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        uuid:
+          type: string
+      title: OSZonePeriod
+      description: OSZonePeriod records progressing of a zone group operation.
+      example:
+        next_master_os_zone_uuid: next_master_os_zone_uuid
+        action: action
+        create: '2000-01-23T04:56:07.000+00:00'
+        master_os_zone_uuid: master_os_zone_uuid
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        period_id: period_id
+        uuid: uuid
+        status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

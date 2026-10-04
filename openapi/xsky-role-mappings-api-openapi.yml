@@ -180,6 +180,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RoleMappingUpdateReq:
+      type: object
+      properties:
+        role_mapping:
+          $ref: '#/components/schemas/RoleMappingUpdateReq_Mapping'
+      title: RoleMappingUpdateReq
+      example:
+        role_mapping:
+          value: value
+    RoleMappingCreateReq_Mapping:
+      type: object
+      properties:
+        identity_platform_id:
+          type: integer
+          format: int64
+          description: id of identity platform
+        role:
+          type: string
+          description: mapped role of sds platform
+        value:
+          type: string
+          description: roles of identity platform
+      title: RoleMappingCreateReq_Mapping
+      example:
+        role: role
+        identity_platform_id: 0
+        value: value
+    RoleMappingUpdateReq_Mapping:
+      type: object
+      properties:
+        value:
+          type: string
+          description: roles of identity platform
+      title: RoleMappingUpdateReq_Mapping
+      example:
+        value: value
     RoleMapping:
       type: object
       properties:
@@ -256,17 +292,6 @@ components:
           identity_platform:
             name: name
             id: 6
-    RoleMappingCreateReq:
-      type: object
-      properties:
-        role_mapping:
-          $ref: '#/components/schemas/RoleMappingCreateReq_Mapping'
-      title: RoleMappingCreateReq
-      example:
-        role_mapping:
-          role: role
-          identity_platform_id: 0
-          value: value
     RoleMappingResp:
       type: object
       properties:
@@ -284,42 +309,17 @@ components:
           identity_platform:
             name: name
             id: 6
-    RoleMappingCreateReq_Mapping:
-      type: object
-      properties:
-        identity_platform_id:
-          type: integer
-          format: int64
-          description: id of identity platform
-        role:
-          type: string
-          description: mapped role of sds platform
-        value:
-          type: string
-          description: roles of identity platform
-      title: RoleMappingCreateReq_Mapping
-      example:
-        role: role
-        identity_platform_id: 0
-        value: value
-    RoleMappingUpdateReq:
+    RoleMappingCreateReq:
       type: object
       properties:
         role_mapping:
-          $ref: '#/components/schemas/RoleMappingUpdateReq_Mapping'
-      title: RoleMappingUpdateReq
+          $ref: '#/components/schemas/RoleMappingCreateReq_Mapping'
+      title: RoleMappingCreateReq
       example:
         role_mapping:
+          role: role
+          identity_platform_id: 0
           value: value
-    RoleMappingUpdateReq_Mapping:
-      type: object
-      properties:
-        value:
-          type: string
-          description: roles of identity platform
-      title: RoleMappingUpdateReq_Mapping
-      example:
-        value: value
   securitySchemes:
     tokenInHeader:
       description: auth by token

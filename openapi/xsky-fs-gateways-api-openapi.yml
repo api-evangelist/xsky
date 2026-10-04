@@ -104,52 +104,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSGateway:
+    NetworkAddress_Nestview:
       type: object
       properties:
-        create:
-          type: string
-          format: date-time
-        fs_gateway_group:
-          $ref: '#/components/schemas/FSGatewayGroup_Nestview'
-        host:
-          $ref: '#/components/schemas/Host_Nestview'
         id:
           type: integer
           format: int64
-        network_address:
-          $ref: '#/components/schemas/NetworkAddress_Nestview'
-        nic_name:
+        ip:
           type: string
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        vip:
-          type: string
-      title: FSGateway
-      description: FSGateway defines model of file storage gateway @grpc-models-proto
+        mask:
+          type: integer
+          format: int64
+      title: NetworkAddress_Nestview
       example:
-        host:
-          name: name
-          admin_ip: admin_ip
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        network_address:
-          ip: ip
-          id: 6
-          mask: 1
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        vip: vip
-        fs_gateway_group:
-          name: name
-          id: 6
-          vip_mask: 1
-          vip: vip
-        nic_name: nic_name
-        status: status
+        ip: ip
+        id: 6
+        mask: 1
     Host_Nestview:
       type: object
       required:
@@ -167,25 +137,6 @@ components:
         name: name
         admin_ip: admin_ip
         id: 0
-    FSGatewayGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        vip:
-          type: string
-        vip_mask:
-          type: integer
-          format: int64
-      title: FSGatewayGroup_Nestview
-      example:
-        name: name
-        id: 6
-        vip_mask: 1
-        vip: vip
     FSGatewayResp:
       type: object
       required:
@@ -216,22 +167,6 @@ components:
             vip: vip
           nic_name: nic_name
           status: status
-    NetworkAddress_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        ip:
-          type: string
-        mask:
-          type: integer
-          format: int64
-      title: NetworkAddress_Nestview
-      example:
-        ip: ip
-        id: 6
-        mask: 1
     FSGatewaysResp:
       type: object
       required:
@@ -283,6 +218,71 @@ components:
             vip: vip
           nic_name: nic_name
           status: status
+    FSGateway:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        fs_gateway_group:
+          $ref: '#/components/schemas/FSGatewayGroup_Nestview'
+        host:
+          $ref: '#/components/schemas/Host_Nestview'
+        id:
+          type: integer
+          format: int64
+        network_address:
+          $ref: '#/components/schemas/NetworkAddress_Nestview'
+        nic_name:
+          type: string
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+        vip:
+          type: string
+      title: FSGateway
+      description: FSGateway defines model of file storage gateway @grpc-models-proto
+      example:
+        host:
+          name: name
+          admin_ip: admin_ip
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        network_address:
+          ip: ip
+          id: 6
+          mask: 1
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        vip: vip
+        fs_gateway_group:
+          name: name
+          id: 6
+          vip_mask: 1
+          vip: vip
+        nic_name: nic_name
+        status: status
+    FSGatewayGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vip:
+          type: string
+        vip_mask:
+          type: integer
+          format: int64
+      title: FSGatewayGroup_Nestview
+      example:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
   securitySchemes:
     tokenInHeader:
       description: auth by token

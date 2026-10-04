@@ -406,94 +406,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AlertRuleSchema:
-      type: object
-      properties:
-        events:
-          type: array
-          items:
-            type: string
-        types:
-          type: array
-          items:
-            type: string
-      title: AlertRuleSchema
-      description: AlertRuleSchema defines alert rule schema
-      example:
-        types:
-        - types
-        - types
-        events:
-        - events
-        - events
-    AlertRuleResourceBlacklistResp:
-      type: object
-      title: AlertRuleResourceBlacklistResp
-    AlertRuleResp:
-      type: object
-      required:
-      - alert_rule
-      properties:
-        alert_rule:
-          description: alert rule
-          $ref: '#/components/schemas/AlertRule'
-      title: AlertRuleResp
-      example:
-        alert_rule:
-          has_resource_blacklist: true
-          level: level
-          resource_type: resource_type
-          trigger_mode: trigger_mode
-          trigger_value: trigger_value
-          update: '2000-01-23T04:56:07.000+00:00'
-          type: type
-          enabled: true
-          trigger_period: 6
-          create: '2000-01-23T04:56:07.000+00:00'
-          alarm_id: alarm_id
-          id: 0
-          group: group
-    AlertRuleCreateReq_Rule:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        level:
-          type: string
-        resource_type:
-          type: string
-        trigger_mode:
-          type: string
-        trigger_period:
-          type: integer
-          format: int64
-        trigger_value:
-          type: string
-        type:
-          type: string
-      title: AlertRuleCreateReq_Rule
-      example:
-        level: level
-        trigger_period: 0
-        resource_type: resource_type
-        trigger_mode: trigger_mode
-        trigger_value: trigger_value
-        type: type
-        enabled: true
-    UpdateAlertRuleResourceBlacklistReq:
-      type: object
-      required:
-      - alert_rule_resource_blacklist
-      properties:
-        alert_rule_resource_blacklist:
-          description: create resource blacklist request
-          $ref: '#/components/schemas/UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist'
-      title: UpdateAlertRuleResourceBlacklistReq
-      example:
-        alert_rule_resource_blacklist:
-          resource_ids:
-          - 0
-          - 0
     AlertRuleSchemaResp:
       type: object
       required:
@@ -523,24 +435,77 @@ components:
             events:
             - events
             - events
-    AlertRuleUpdateReq_Rule:
+    AlertRuleCreateReq_Rule:
       type: object
       properties:
         enabled:
           type: boolean
-          description: enable the alert rule or not
+        level:
+          type: string
+        resource_type:
+          type: string
+        trigger_mode:
+          type: string
         trigger_period:
           type: integer
           format: int64
-          description: trigger period of alert rule
         trigger_value:
           type: string
-          description: trigger value of alert rule
-      title: AlertRuleUpdateReq_Rule
+        type:
+          type: string
+      title: AlertRuleCreateReq_Rule
       example:
+        level: level
         trigger_period: 0
+        resource_type: resource_type
+        trigger_mode: trigger_mode
         trigger_value: trigger_value
+        type: type
         enabled: true
+    AlertRuleSchema:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            type: string
+        types:
+          type: array
+          items:
+            type: string
+      title: AlertRuleSchema
+      description: AlertRuleSchema defines alert rule schema
+      example:
+        types:
+        - types
+        - types
+        events:
+        - events
+        - events
+    AlertRuleResp:
+      type: object
+      required:
+      - alert_rule
+      properties:
+        alert_rule:
+          description: alert rule
+          $ref: '#/components/schemas/AlertRule'
+      title: AlertRuleResp
+      example:
+        alert_rule:
+          has_resource_blacklist: true
+          level: level
+          resource_type: resource_type
+          trigger_mode: trigger_mode
+          trigger_value: trigger_value
+          update: '2000-01-23T04:56:07.000+00:00'
+          type: type
+          enabled: true
+          trigger_period: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          alarm_id: alarm_id
+          id: 0
+          group: group
     AlertRulesResp:
       type: object
       required:
@@ -580,23 +545,6 @@ components:
           alarm_id: alarm_id
           id: 0
           group: group
-    AlertRuleCreateReq:
-      type: object
-      required:
-      - alert_rule
-      properties:
-        alert_rule:
-          $ref: '#/components/schemas/AlertRuleCreateReq_Rule'
-      title: AlertRuleCreateReq
-      example:
-        alert_rule:
-          level: level
-          trigger_period: 0
-          resource_type: resource_type
-          trigger_mode: trigger_mode
-          trigger_value: trigger_value
-          type: type
-          enabled: true
     AlertRule:
       type: object
       properties:
@@ -646,6 +594,36 @@ components:
         alarm_id: alarm_id
         id: 0
         group: group
+    AlertRuleResourceBlacklistResp:
+      type: object
+      title: AlertRuleResourceBlacklistResp
+    AlertRuleUpdateReq:
+      type: object
+      required:
+      - alert_rule
+      properties:
+        alert_rule:
+          $ref: '#/components/schemas/AlertRuleUpdateReq_Rule'
+      title: AlertRuleUpdateReq
+      example:
+        alert_rule:
+          trigger_period: 0
+          trigger_value: trigger_value
+          enabled: true
+    UpdateAlertRuleResourceBlacklistReq:
+      type: object
+      required:
+      - alert_rule_resource_blacklist
+      properties:
+        alert_rule_resource_blacklist:
+          description: create resource blacklist request
+          $ref: '#/components/schemas/UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist'
+      title: UpdateAlertRuleResourceBlacklistReq
+      example:
+        alert_rule_resource_blacklist:
+          resource_ids:
+          - 0
+          - 0
     UpdateAlertRuleResourceBlacklistReq_AlertRuleResourceBlacklist:
       type: object
       properties:
@@ -660,19 +638,41 @@ components:
         resource_ids:
         - 0
         - 0
-    AlertRuleUpdateReq:
+    AlertRuleCreateReq:
       type: object
       required:
       - alert_rule
       properties:
         alert_rule:
-          $ref: '#/components/schemas/AlertRuleUpdateReq_Rule'
-      title: AlertRuleUpdateReq
+          $ref: '#/components/schemas/AlertRuleCreateReq_Rule'
+      title: AlertRuleCreateReq
       example:
         alert_rule:
+          level: level
           trigger_period: 0
+          resource_type: resource_type
+          trigger_mode: trigger_mode
           trigger_value: trigger_value
+          type: type
           enabled: true
+    AlertRuleUpdateReq_Rule:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: enable the alert rule or not
+        trigger_period:
+          type: integer
+          format: int64
+          description: trigger period of alert rule
+        trigger_value:
+          type: string
+          description: trigger value of alert rule
+      title: AlertRuleUpdateReq_Rule
+      example:
+        trigger_period: 0
+        trigger_value: trigger_value
+        enabled: true
   securitySchemes:
     tokenInHeader:
       description: auth by token

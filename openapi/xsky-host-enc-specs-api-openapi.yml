@@ -152,34 +152,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Enclosure:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        order:
-          type: string
-        position:
-          type: string
-        slot_num:
-          type: integer
-          format: int64
-        start_slot:
-          type: integer
-          format: int64
-      title: Enclosure
-      description: Enclosure defines enclosure specification
-      example:
-        start_slot: 1
-        slot_num: 6
-        ids:
-        - 0
-        - 0
-        position: position
-        order: order
     HostEncSpecResp:
       type: object
       required:
@@ -211,6 +183,71 @@ components:
             - 0
             position: position
             order: order
+    Enclosure:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        order:
+          type: string
+        position:
+          type: string
+        slot_num:
+          type: integer
+          format: int64
+        start_slot:
+          type: integer
+          format: int64
+      title: Enclosure
+      description: Enclosure defines enclosure specification
+      example:
+        start_slot: 1
+        slot_num: 6
+        ids:
+        - 0
+        - 0
+        position: position
+        order: order
+    HostEncSpecCreateReq_HostEncSpec:
+      type: object
+      required:
+      - enclosures
+      - model
+      - vendor
+      properties:
+        enclosures:
+          type: array
+          description: host enclosures
+          items:
+            $ref: '#/components/schemas/Enclosure'
+        model:
+          type: string
+          description: host model
+        vendor:
+          type: string
+          description: host vendor
+      title: HostEncSpecCreateReq_HostEncSpec
+      example:
+        vendor: vendor
+        model: model
+        enclosures:
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
+        - start_slot: 1
+          slot_num: 6
+          ids:
+          - 0
+          - 0
+          position: position
+          order: order
     HostEncSpecCreateReq:
       type: object
       properties:
@@ -332,43 +369,6 @@ components:
             - 0
             position: position
             order: order
-    HostEncSpecCreateReq_HostEncSpec:
-      type: object
-      required:
-      - enclosures
-      - model
-      - vendor
-      properties:
-        enclosures:
-          type: array
-          description: host enclosures
-          items:
-            $ref: '#/components/schemas/Enclosure'
-        model:
-          type: string
-          description: host model
-        vendor:
-          type: string
-          description: host vendor
-      title: HostEncSpecCreateReq_HostEncSpec
-      example:
-        vendor: vendor
-        model: model
-        enclosures:
-        - start_slot: 1
-          slot_num: 6
-          ids:
-          - 0
-          - 0
-          position: position
-          order: order
-        - start_slot: 1
-          slot_num: 6
-          ids:
-          - 0
-          - 0
-          position: position
-          order: order
   securitySchemes:
     tokenInHeader:
       description: auth by token

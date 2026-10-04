@@ -400,43 +400,14 @@ components:
             items:
               $ref: '#/components/schemas/OSSearchEngineStat'
       description: OSSearchEngineRecord is used to combine OSSearchEngine and OSSearchEngineStat
-    OSSearchEngineSamplesResp:
+    OSSearchEngineAddGatewaysReq:
       type: object
       required:
-      - os_search_engine_samples
+      - os_search_engine
       properties:
-        os_search_engine_samples:
-          type: array
-          description: os search engine samples
-          items:
-            $ref: '#/components/schemas/OSSearchEngineStat'
-      title: OSSearchEngineSamplesResp
-      example:
-        os_search_engine_samples:
-        - average_meta_query_latency: 0.8008281904610115
-          total_meta_num: 5
-          total_meta_size_bytes: 2
-          create: '2000-01-23T04:56:07.000+00:00'
-          sync_objects_pm: 5.962133916683182
-          meta_query_pm: 6.027456183070403
-          sync_bandwidth_kbyte: 1.4658129805029452
-        - average_meta_query_latency: 0.8008281904610115
-          total_meta_num: 5
-          total_meta_size_bytes: 2
-          create: '2000-01-23T04:56:07.000+00:00'
-          sync_objects_pm: 5.962133916683182
-          meta_query_pm: 6.027456183070403
-          sync_bandwidth_kbyte: 1.4658129805029452
-    OSSearchEngineUpdateReq_SearchEngine:
-      type: object
-      properties:
-        gateway_data_size:
-          type: integer
-          format: int64
-        gateway_flavor_id:
-          type: integer
-          format: int64
-      title: OSSearchEngineUpdateReq_SearchEngine
+        os_search_engine:
+          $ref: '#/components/schemas/OSSearchEngineAddGatewaysReq_SearchEngine'
+      title: OSSearchEngineAddGatewaysReq
     OSSearchEngine:
       type: object
       properties:
@@ -478,6 +449,15 @@ components:
       description: 'OSSearchEngine defines model of OS search engine TODO(penghui): Load balancer
 
         group'
+    VMFlavor_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: VMFlavor_Nestview
     OSSearchGatewayReq:
       type: object
       required:
@@ -492,24 +472,48 @@ components:
           type: integer
           format: int64
       title: OSSearchGatewayReq
-    OSSearchEngineAddGatewaysReq:
+    OSSearchEngineUpdateReq:
       type: object
       required:
       - os_search_engine
       properties:
         os_search_engine:
-          $ref: '#/components/schemas/OSSearchEngineAddGatewaysReq_SearchEngine'
-      title: OSSearchEngineAddGatewaysReq
-    OSSearchEngineAddGatewaysReq_SearchEngine:
+          $ref: '#/components/schemas/OSSearchEngineUpdateReq_SearchEngine'
+      title: OSSearchEngineUpdateReq
+    OSSearchEngineResp:
       type: object
       required:
-      - os_search_gateways
+      - os_search_engine
       properties:
-        os_search_gateways:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSSearchGatewayReq'
-      title: OSSearchEngineAddGatewaysReq_SearchEngine
+        os_search_engine:
+          description: object storage search engine
+          $ref: '#/components/schemas/OSSearchEngineRecord'
+      title: OSSearchEngineResp
+      example:
+        os_search_engine: ''
+    OSSearchEngineCreateReq:
+      type: object
+      required:
+      - os_search_engine
+      properties:
+        os_search_engine:
+          $ref: '#/components/schemas/OSSearchEngineCreateReq_SearchEngine'
+      title: OSSearchEngineCreateReq
+    S3LoadBalancerGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+      title: S3LoadBalancerGroup_Nestview
+      example:
+        name: name
+        id: 6
+        status: status
     OSSearchEngineStat:
       type: object
       properties:
@@ -552,14 +556,52 @@ components:
         os_search_engine:
           $ref: '#/components/schemas/OSSearchEngineRemoveGatewaysReq_SearchEngine'
       title: OSSearchEngineRemoveGatewaysReq
-    OSSearchEngineUpdateReq:
+    OSSearchEngineRemoveGatewaysReq_SearchEngine:
       type: object
       required:
-      - os_search_engine
+      - os_search_gateway_ids
       properties:
-        os_search_engine:
-          $ref: '#/components/schemas/OSSearchEngineUpdateReq_SearchEngine'
-      title: OSSearchEngineUpdateReq
+        os_search_gateway_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: OSSearchEngineRemoveGatewaysReq_SearchEngine
+    OSSearchEngineUpdateReq_SearchEngine:
+      type: object
+      properties:
+        gateway_data_size:
+          type: integer
+          format: int64
+        gateway_flavor_id:
+          type: integer
+          format: int64
+      title: OSSearchEngineUpdateReq_SearchEngine
+    OSSearchEnginesResp:
+      type: object
+      required:
+      - os_search_engines
+      properties:
+        os_search_engines:
+          type: array
+          description: object storage search engine
+          items:
+            $ref: '#/components/schemas/OSSearchEngineRecord'
+      title: OSSearchEnginesResp
+      example:
+        os_search_engines:
+        - ''
+        - ''
+    OSSearchEngineAddGatewaysReq_SearchEngine:
+      type: object
+      required:
+      - os_search_gateways
+      properties:
+        os_search_gateways:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSSearchGatewayReq'
+      title: OSSearchEngineAddGatewaysReq_SearchEngine
     OSSearchEngineCreateReq_SearchEngine:
       type: object
       required:
@@ -584,75 +626,33 @@ components:
           items:
             $ref: '#/components/schemas/OSSearchGatewayReq'
       title: OSSearchEngineCreateReq_SearchEngine
-    OSSearchEngineRemoveGatewaysReq_SearchEngine:
+    OSSearchEngineSamplesResp:
       type: object
       required:
-      - os_search_gateway_ids
+      - os_search_engine_samples
       properties:
-        os_search_gateway_ids:
+        os_search_engine_samples:
           type: array
+          description: os search engine samples
           items:
-            type: integer
-            format: int64
-      title: OSSearchEngineRemoveGatewaysReq_SearchEngine
-    OSSearchEngineResp:
-      type: object
-      required:
-      - os_search_engine
-      properties:
-        os_search_engine:
-          description: object storage search engine
-          $ref: '#/components/schemas/OSSearchEngineRecord'
-      title: OSSearchEngineResp
+            $ref: '#/components/schemas/OSSearchEngineStat'
+      title: OSSearchEngineSamplesResp
       example:
-        os_search_engine: ''
-    S3LoadBalancerGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        status:
-          type: string
-      title: S3LoadBalancerGroup_Nestview
-      example:
-        name: name
-        id: 6
-        status: status
-    OSSearchEnginesResp:
-      type: object
-      required:
-      - os_search_engines
-      properties:
-        os_search_engines:
-          type: array
-          description: object storage search engine
-          items:
-            $ref: '#/components/schemas/OSSearchEngineRecord'
-      title: OSSearchEnginesResp
-      example:
-        os_search_engines:
-        - ''
-        - ''
-    OSSearchEngineCreateReq:
-      type: object
-      required:
-      - os_search_engine
-      properties:
-        os_search_engine:
-          $ref: '#/components/schemas/OSSearchEngineCreateReq_SearchEngine'
-      title: OSSearchEngineCreateReq
-    VMFlavor_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: VMFlavor_Nestview
+        os_search_engine_samples:
+        - average_meta_query_latency: 0.8008281904610115
+          total_meta_num: 5
+          total_meta_size_bytes: 2
+          create: '2000-01-23T04:56:07.000+00:00'
+          sync_objects_pm: 5.962133916683182
+          meta_query_pm: 6.027456183070403
+          sync_bandwidth_kbyte: 1.4658129805029452
+        - average_meta_query_latency: 0.8008281904610115
+          total_meta_num: 5
+          total_meta_size_bytes: 2
+          create: '2000-01-23T04:56:07.000+00:00'
+          sync_objects_pm: 5.962133916683182
+          meta_query_pm: 6.027456183070403
+          sync_bandwidth_kbyte: 1.4658129805029452
   securitySchemes:
     tokenInHeader:
       description: auth by token

@@ -190,97 +190,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DpBlockReplicationPolicyResp:
-      type: object
-      properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicy'
-      title: DpBlockReplicationPolicyResp
-      example:
-        dp_block_replication_policy:
-          dp_site:
-            name: name
-            id: 1
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          timeout_seconds: 6
-          status: status
-    DpBlockReplicationPolicyCreateReq:
-      type: object
-      required:
-      - dp_block_replication_policy
-      properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicyCreateReq_Policy'
-      title: DpBlockReplicationPolicyCreateReq
-      example:
-        dp_block_replication_policy:
-          name: name
-          dp_site_id: 0
-          timeout_seconds: 6
-    DpSite_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpSite_Nestview
-      example:
-        name: name
-        id: 1
-    DpBlockReplicationPolicyUpdateReq:
-      type: object
-      required:
-      - dp_block_replication_policy
-      properties:
-        dp_block_replication_policy:
-          $ref: '#/components/schemas/DpBlockReplicationPolicyUpdateReq_Policy'
-      title: DpBlockReplicationPolicyUpdateReq
-      example:
-        dp_block_replication_policy:
-          name: name
-          timeout_seconds: 0
-    DpBlockReplicationPolicyCreateReq_Policy:
-      type: object
-      required:
-      - dp_site_id
-      - name
-      - timeout_seconds
-      properties:
-        dp_site_id:
-          type: integer
-          format: int64
-          description: protection site id
-        name:
-          type: string
-          description: name
-        timeout_seconds:
-          type: integer
-          format: int64
-          description: replication timeout seconds
-      title: DpBlockReplicationPolicyCreateReq_Policy
-      example:
-        name: name
-        dp_site_id: 0
-        timeout_seconds: 6
-    DpBlockReplicationPolicyUpdateReq_Policy:
-      type: object
-      properties:
-        name:
-          type: string
-          description: name
-        timeout_seconds:
-          type: integer
-          format: int64
-          description: replication timeout seconds
-      title: DpBlockReplicationPolicyUpdateReq_Policy
-      example:
-        name: name
-        timeout_seconds: 0
     DpBlockReplicationPolicy:
       type: object
       properties:
@@ -314,6 +223,32 @@ components:
         id: 0
         timeout_seconds: 6
         status: status
+    DpBlockReplicationPolicyUpdateReq_Policy:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name
+        timeout_seconds:
+          type: integer
+          format: int64
+          description: replication timeout seconds
+      title: DpBlockReplicationPolicyUpdateReq_Policy
+      example:
+        name: name
+        timeout_seconds: 0
+    DpBlockReplicationPolicyUpdateReq:
+      type: object
+      required:
+      - dp_block_replication_policy
+      properties:
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicyUpdateReq_Policy'
+      title: DpBlockReplicationPolicyUpdateReq
+      example:
+        dp_block_replication_policy:
+          name: name
+          timeout_seconds: 0
     DpBlockReplicationPoliciesResp:
       type: object
       properties:
@@ -342,6 +277,71 @@ components:
           id: 0
           timeout_seconds: 6
           status: status
+    DpSite_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpSite_Nestview
+      example:
+        name: name
+        id: 1
+    DpBlockReplicationPolicyCreateReq:
+      type: object
+      required:
+      - dp_block_replication_policy
+      properties:
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicyCreateReq_Policy'
+      title: DpBlockReplicationPolicyCreateReq
+      example:
+        dp_block_replication_policy:
+          name: name
+          dp_site_id: 0
+          timeout_seconds: 6
+    DpBlockReplicationPolicyResp:
+      type: object
+      properties:
+        dp_block_replication_policy:
+          $ref: '#/components/schemas/DpBlockReplicationPolicy'
+      title: DpBlockReplicationPolicyResp
+      example:
+        dp_block_replication_policy:
+          dp_site:
+            name: name
+            id: 1
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          timeout_seconds: 6
+          status: status
+    DpBlockReplicationPolicyCreateReq_Policy:
+      type: object
+      required:
+      - dp_site_id
+      - name
+      - timeout_seconds
+      properties:
+        dp_site_id:
+          type: integer
+          format: int64
+          description: protection site id
+        name:
+          type: string
+          description: name
+        timeout_seconds:
+          type: integer
+          format: int64
+          description: replication timeout seconds
+      title: DpBlockReplicationPolicyCreateReq_Policy
+      example:
+        name: name
+        dp_site_id: 0
+        timeout_seconds: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

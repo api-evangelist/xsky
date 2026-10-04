@@ -75,55 +75,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSSMBShare_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSSMBShare_Nestview
-      example:
-        name: name
-        id: 6
-    FSSMBSessionsResp:
-      type: object
-      required:
-      - fs_smb_sessions
-      properties:
-        fs_smb_sessions:
-          type: array
-          description: fs smb sessions
-          items:
-            $ref: '#/components/schemas/FSSMBSession'
-      title: FSSMBSessionsResp
-      example:
-        fs_smb_sessions:
-        - client_port: 0
-          fs_smb_share:
-            name: name
-            id: 6
-          protocol_version: protocol_version
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          client_ip: client_ip
-          connected_at: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          group: group
-          username: username
-        - client_port: 0
-          fs_smb_share:
-            name: name
-            id: 6
-          protocol_version: protocol_version
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          client_ip: client_ip
-          connected_at: '2000-01-23T04:56:07.000+00:00'
-          id: 1
-          group: group
-          username: username
     FSSMBSession:
       type: object
       properties:
@@ -167,6 +118,55 @@ components:
         id: 1
         group: group
         username: username
+    FSSMBSessionsResp:
+      type: object
+      required:
+      - fs_smb_sessions
+      properties:
+        fs_smb_sessions:
+          type: array
+          description: fs smb sessions
+          items:
+            $ref: '#/components/schemas/FSSMBSession'
+      title: FSSMBSessionsResp
+      example:
+        fs_smb_sessions:
+        - client_port: 0
+          fs_smb_share:
+            name: name
+            id: 6
+          protocol_version: protocol_version
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          client_ip: client_ip
+          connected_at: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          group: group
+          username: username
+        - client_port: 0
+          fs_smb_share:
+            name: name
+            id: 6
+          protocol_version: protocol_version
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          client_ip: client_ip
+          connected_at: '2000-01-23T04:56:07.000+00:00'
+          id: 1
+          group: group
+          username: username
+    FSSMBShare_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSSMBShare_Nestview
+      example:
+        name: name
+        id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

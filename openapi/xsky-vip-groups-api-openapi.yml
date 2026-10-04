@@ -246,6 +246,72 @@ components:
           type: integer
           format: int64
       title: VIPGroupCreateReq_VIPGroup_VIPs_Elt
+    VIPGroupResps:
+      type: object
+      required:
+      - vip_groups
+      properties:
+        vip_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/VIPGroup'
+      title: VIPGroupResps
+      example:
+        vip_groups:
+        - name: name
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          preempt: true
+          action_status: action_status
+          network: network
+          status: status
+        - name: name
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          preempt: true
+          action_status: action_status
+          network: network
+          status: status
+    VIPGroupUpdateReq_VIPGroup:
+      type: object
+      properties:
+        preempt:
+          type: boolean
+      title: VIPGroupUpdateReq_VIPGroup
+    VIPGroupResp:
+      type: object
+      required:
+      - vip_group
+      properties:
+        vip_group:
+          $ref: '#/components/schemas/VIPGroup'
+      title: VIPGroupResp
+      example:
+        vip_group:
+          name: name
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          preempt: true
+          action_status: action_status
+          network: network
+          status: status
+    VIPGroupCreateReq:
+      type: object
+      required:
+      - vip_group
+      properties:
+        vip_group:
+          $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup'
+      title: VIPGroupCreateReq
     VIPGroup:
       type: object
       properties:
@@ -286,46 +352,6 @@ components:
         action_status: action_status
         network: network
         status: status
-    VIPGroupResps:
-      type: object
-      required:
-      - vip_groups
-      properties:
-        vip_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/VIPGroup'
-      title: VIPGroupResps
-      example:
-        vip_groups:
-        - name: name
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          preempt: true
-          action_status: action_status
-          network: network
-          status: status
-        - name: name
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          preempt: true
-          action_status: action_status
-          network: network
-          status: status
-    VIPGroupCreateReq:
-      type: object
-      required:
-      - vip_group
-      properties:
-        vip_group:
-          $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup'
-      title: VIPGroupCreateReq
     VIPGroupCreateReq_VIPGroup:
       type: object
       required:
@@ -348,32 +374,6 @@ components:
           items:
             $ref: '#/components/schemas/VIPGroupCreateReq_VIPGroup_VIPs_Elt'
       title: VIPGroupCreateReq_VIPGroup
-    VIPGroupResp:
-      type: object
-      required:
-      - vip_group
-      properties:
-        vip_group:
-          $ref: '#/components/schemas/VIPGroup'
-      title: VIPGroupResp
-      example:
-        vip_group:
-          name: name
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          preempt: true
-          action_status: action_status
-          network: network
-          status: status
-    VIPGroupUpdateReq_VIPGroup:
-      type: object
-      properties:
-        preempt:
-          type: boolean
-      title: VIPGroupUpdateReq_VIPGroup
     VIPGroupUpdateReq:
       type: object
       required:

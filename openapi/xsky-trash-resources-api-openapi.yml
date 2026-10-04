@@ -196,6 +196,25 @@ components:
           id: 0
           action_status: action_status
           status: status
+    TrashResourceResp:
+      type: object
+      required:
+      - trash_resource
+      properties:
+        trash_resource:
+          description: trash resource
+          $ref: '#/components/schemas/TrashResource'
+      title: TrashResourceResp
+      example:
+        trash_resource:
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expire_time: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          action_status: action_status
+          status: status
     TrashResource:
       type: object
       properties:
@@ -231,25 +250,6 @@ components:
         id: 0
         action_status: action_status
         status: status
-    TrashResourceResp:
-      type: object
-      required:
-      - trash_resource
-      properties:
-        trash_resource:
-          description: trash resource
-          $ref: '#/components/schemas/TrashResource'
-      title: TrashResourceResp
-      example:
-        trash_resource:
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expire_time: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          action_status: action_status
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

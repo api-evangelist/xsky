@@ -192,6 +192,36 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EmailGroupRecord:
+      title: EmailGroupRecord
+      allOf:
+      - $ref: '#/components/schemas/EmailGroup'
+      description: EmailGroupRecord defines email group record
+    EmailGroupUpdateReq:
+      type: object
+      required:
+      - email_group
+      properties:
+        email_group:
+          $ref: '#/components/schemas/EmailGroupUpdateReq_EmailGroup'
+      title: EmailGroupUpdateReq
+      example:
+        email_group:
+          emails:
+          - emails
+          - emails
+          name: name
+    EmailGroupResp:
+      type: object
+      required:
+      - email_group
+      properties:
+        email_group:
+          description: email group
+          $ref: '#/components/schemas/EmailGroupRecord'
+      title: EmailGroupResp
+      example:
+        email_group: ''
     EmailGroupUpdateReq_EmailGroup:
       type: object
       required:
@@ -210,11 +240,6 @@ components:
         - emails
         - emails
         name: name
-    EmailGroupRecord:
-      title: EmailGroupRecord
-      allOf:
-      - $ref: '#/components/schemas/EmailGroup'
-      description: EmailGroupRecord defines email group record
     EmailGroupsResp:
       type: object
       required:
@@ -250,31 +275,6 @@ components:
           format: date-time
       title: EmailGroup
       description: EmailGroup defines the email group
-    EmailGroupUpdateReq:
-      type: object
-      required:
-      - email_group
-      properties:
-        email_group:
-          $ref: '#/components/schemas/EmailGroupUpdateReq_EmailGroup'
-      title: EmailGroupUpdateReq
-      example:
-        email_group:
-          emails:
-          - emails
-          - emails
-          name: name
-    EmailGroupResp:
-      type: object
-      required:
-      - email_group
-      properties:
-        email_group:
-          description: email group
-          $ref: '#/components/schemas/EmailGroupRecord'
-      title: EmailGroupResp
-      example:
-        email_group: ''
   securitySchemes:
     tokenInHeader:
       description: auth by token

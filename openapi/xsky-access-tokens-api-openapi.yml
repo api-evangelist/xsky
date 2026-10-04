@@ -271,6 +271,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AccessTokenUpdateReq:
+      type: object
+      properties:
+        access_token:
+          $ref: '#/components/schemas/AccessTokenUpdateReq_AccessToken'
+      title: AccessTokenUpdateReq
+      example:
+        access_token:
+          name: name
     AccessTokenCreateReq:
       type: object
       properties:
@@ -284,6 +293,54 @@ components:
           - roles
           name: name
           description: description
+    AccessTokenCreateResp:
+      type: object
+      required:
+      - access_token
+      properties:
+        access_token:
+          description: access token
+          $ref: '#/components/schemas/AccessTokenCreateRecord'
+      title: AccessTokenCreateResp
+      example:
+        access_token: ''
+    AccessTokensResp:
+      type: object
+      required:
+      - access_tokens
+      properties:
+        access_tokens:
+          type: array
+          description: access tokens
+          items:
+            $ref: '#/components/schemas/AccessToken'
+      title: AccessTokensResp
+      example:
+        access_tokens:
+        - roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
+        - roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
     AccessTokenCreateRecord:
       title: AccessTokenCreateRecord
       allOf:
@@ -306,15 +363,6 @@ components:
       example:
         name: name
         id: 6
-    AccessTokenUpdateReq:
-      type: object
-      properties:
-        access_token:
-          $ref: '#/components/schemas/AccessTokenUpdateReq_AccessToken'
-      title: AccessTokenUpdateReq
-      example:
-        access_token:
-          name: name
     AccessToken:
       type: object
       properties:
@@ -354,6 +402,27 @@ components:
         user:
           name: name
           id: 6
+    AccessTokenResp:
+      type: object
+      properties:
+        access_token:
+          description: access token
+          $ref: '#/components/schemas/AccessToken'
+      title: AccessTokenResp
+      example:
+        access_token:
+          roles:
+          - roles
+          - roles
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          used: true
+          user:
+            name: name
+            id: 6
     AccessTokenUpdateReq_AccessToken:
       type: object
       required:
@@ -389,75 +458,6 @@ components:
         - roles
         name: name
         description: description
-    AccessTokensResp:
-      type: object
-      required:
-      - access_tokens
-      properties:
-        access_tokens:
-          type: array
-          description: access tokens
-          items:
-            $ref: '#/components/schemas/AccessToken'
-      title: AccessTokensResp
-      example:
-        access_tokens:
-        - roles:
-          - roles
-          - roles
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          used: true
-          user:
-            name: name
-            id: 6
-        - roles:
-          - roles
-          - roles
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          used: true
-          user:
-            name: name
-            id: 6
-    AccessTokenCreateResp:
-      type: object
-      required:
-      - access_token
-      properties:
-        access_token:
-          description: access token
-          $ref: '#/components/schemas/AccessTokenCreateRecord'
-      title: AccessTokenCreateResp
-      example:
-        access_token: ''
-    AccessTokenResp:
-      type: object
-      properties:
-        access_token:
-          description: access token
-          $ref: '#/components/schemas/AccessToken'
-      title: AccessTokenResp
-      example:
-        access_token:
-          roles:
-          - roles
-          - roles
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          used: true
-          user:
-            name: name
-            id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

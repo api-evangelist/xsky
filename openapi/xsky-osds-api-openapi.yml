@@ -528,75 +528,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OsdSamplesResp:
-      type: object
-      required:
-      - osd_samples
-      properties:
-        osd_samples:
-          type: array
-          description: osd samples
-          items:
-            $ref: '#/components/schemas/OsdStat'
-      title: OsdSamplesResp
-      example:
-        osd_samples:
-        - ''
-        - ''
-    Partition:
-      type: object
-      properties:
-        action_status:
-          type: string
-        create:
-          type: string
-          format: date-time
-        disk:
-          $ref: '#/components/schemas/Disk_Nestview'
-        id:
-          type: integer
-          format: int64
-        omap_byte:
-          type: integer
-          format: int64
-        omap_device_path:
-          type: string
-        path:
-          type: string
-        size:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-        used:
-          type: boolean
-        uuid:
-          type: string
-        version:
-          type: integer
-          format: int64
-      title: Partition
-      description: Partition defines cache partition of disk
-      example:
-        omap_device_path: omap_device_path
-        update: '2000-01-23T04:56:07.000+00:00'
-        omap_byte: 1
-        used: true
-        uuid: uuid
-        version: 5
-        path: path
-        disk:
-          disk_type: disk_type
-          id: 0
-          device: device
-        size: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 6
-        action_status: action_status
-        status: status
     OsdUpdateReq:
       type: object
       properties:
@@ -607,126 +538,94 @@ components:
         osd:
           action_status: action_status
           status: status
-    Host_Nestview:
+    Disk_Nestview:
       type: object
-      required:
-      - admin_ip
       properties:
-        admin_ip:
+        device:
+          type: string
+        disk_type:
           type: string
         id:
           type: integer
           format: int64
-        name:
-          type: string
-      title: Host_Nestview
+      title: Disk_Nestview
       example:
-        name: name
-        admin_ip: admin_ip
+        disk_type: disk_type
         id: 0
-    OsdRebuildReq_Osd:
+        device: device
+    OsdUpdateReq_Osd:
       type: object
       properties:
-        new_disk_id:
-          type: integer
-          format: int64
-          description: new data disk id
-        new_omap_byte:
-          type: integer
-          format: int64
-          description: new size of omap partition
-        new_partition_id:
-          type: integer
-          format: int64
-          description: new cache partition id
-        new_read_cache_size:
-          type: integer
-          format: int64
-          description: new read cache size in bytes
-      title: OsdRebuildReq_Osd
+        action_status:
+          type: string
+        status:
+          type: string
+      title: OsdUpdateReq_Osd
       example:
-        new_omap_byte: 6
-        new_partition_id: 1
-        new_read_cache_size: 5
-        new_disk_id: 0
-    OsdCreateReq:
+        action_status: action_status
+        status: status
+    PartitionStat:
       type: object
       properties:
-        osd:
-          $ref: '#/components/schemas/OsdCreateReq_Osd'
-      title: OsdCreateReq
-      example:
-        osd:
-          partition_id: 1
-          role: role
-          omap_byte: 6
-          read_cache_size: 5
-          disk_id: 0
-    OsdResp:
-      type: object
-      required:
-      - osd
-      properties:
-        osd:
-          description: osd
-          $ref: '#/components/schemas/OsdRecord'
-      title: OsdResp
-      example:
-        osd: ''
-    PredictionPoint:
-      type: object
-      properties:
+        avg_queue_len:
+          type: number
+          format: double
         create:
           type: string
           format: date-time
-        used_kbyte:
-          type: integer
-          format: int64
-      title: PredictionPoint
-      description: PredictionPoint is a point in a prediction graph
-      example:
-        used_kbyte: 5
-        create: '2000-01-23T04:56:07.000+00:00'
-    OsdGroup_Nestview:
+        io_util:
+          type: number
+          format: double
+        kbyte_per_io:
+          type: number
+          format: double
+        read_bandwidth_kbyte:
+          type: number
+          format: double
+        read_iops:
+          type: number
+          format: double
+        read_merged_ps:
+          type: number
+          format: double
+        read_wait_us:
+          type: number
+          format: double
+        total_bandwidth_kbyte:
+          type: number
+          format: double
+        total_io_wait_us:
+          type: number
+          format: double
+        total_iops:
+          type: number
+          format: double
+        write_bandwidth_kbyte:
+          type: number
+          format: double
+        write_iops:
+          type: number
+          format: double
+        write_merged_ps:
+          type: number
+          format: double
+        write_wait_us:
+          type: number
+          format: double
+      title: PartitionStat
+      description: PartitionStat defines the basic info of a PartitionStat
+    OsdRebuildReq:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-      title: OsdGroup_Nestview
-    OsdPredictionsResp:
-      type: object
-      required:
-      - osd_predictions
-      properties:
-        osd_predictions:
-          type: array
-          description: osd predictions
-          items:
-            $ref: '#/components/schemas/DiskPrediction'
-      title: OsdPredictionsResp
+        osd:
+          $ref: '#/components/schemas/OsdRebuildReq_Osd'
+      title: OsdRebuildReq
       example:
-        osd_predictions:
-        - used_kbyte_30days: 1
-          used_kbyte_7days: 5
-          used_kbyte_points:
-          - used_kbyte: 5
-            create: '2000-01-23T04:56:07.000+00:00'
-          - used_kbyte: 5
-            create: '2000-01-23T04:56:07.000+00:00'
-          used_kbyte_1day: 6
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-        - used_kbyte_30days: 1
-          used_kbyte_7days: 5
-          used_kbyte_points:
-          - used_kbyte: 5
-            create: '2000-01-23T04:56:07.000+00:00'
-          - used_kbyte: 5
-            create: '2000-01-23T04:56:07.000+00:00'
-          used_kbyte_1day: 6
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
+        osd:
+          new_omap_byte: 6
+          new_partition_id: 1
+          new_read_cache_size: 5
+          new_disk_id: 0
     PlacementGroupScrub:
       type: object
       properties:
@@ -745,73 +644,6 @@ components:
           format: date-time
       title: PlacementGroupScrub
       description: PlacementGroupScrub defines the statistics info of placement group
-    DiskPrediction:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        used_kbyte_1day:
-          type: integer
-          format: int64
-        used_kbyte_30days:
-          type: integer
-          format: int64
-        used_kbyte_7days:
-          type: integer
-          format: int64
-        used_kbyte_points:
-          type: array
-          items:
-            $ref: '#/components/schemas/PredictionPoint'
-      title: DiskPrediction
-      description: DiskPrediction contains disk prediction data
-      example:
-        used_kbyte_30days: 1
-        used_kbyte_7days: 5
-        used_kbyte_points:
-        - used_kbyte: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-        - used_kbyte: 5
-          create: '2000-01-23T04:56:07.000+00:00'
-        used_kbyte_1day: 6
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-    OsdRecord:
-      title: OsdRecord
-      allOf:
-      - $ref: '#/components/schemas/Osd'
-      - properties:
-          samples:
-            type: array
-            items:
-              $ref: '#/components/schemas/OsdStat'
-      description: OsdRecord contains information of a osd
-    PlacementGroup:
-      type: object
-      properties:
-        chunk_id:
-          type: string
-        id:
-          type: integer
-          format: int64
-        osd_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: PlacementGroup
-      description: 'PlacementGroup defines the statistics metric of a placement group PG is not
-
-        exposed to user, rename it as chunk'
     Osd:
       type: object
       properties:
@@ -872,6 +704,175 @@ components:
           type: string
       title: Osd
       description: Osd defines the Ceph Osd @grpc-models-proto
+    Pool_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Pool_Nestview
+      example:
+        name: name
+        id: 5
+    PredictionPoint:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        used_kbyte:
+          type: integer
+          format: int64
+      title: PredictionPoint
+      description: PredictionPoint is a point in a prediction graph
+      example:
+        used_kbyte: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+    OsdRecord:
+      title: OsdRecord
+      allOf:
+      - $ref: '#/components/schemas/Osd'
+      - properties:
+          samples:
+            type: array
+            items:
+              $ref: '#/components/schemas/OsdStat'
+      description: OsdRecord contains information of a osd
+    ChunkRecord:
+      title: ChunkRecord
+      allOf:
+      - $ref: '#/components/schemas/PlacementGroup'
+      - properties:
+          scrubs:
+            type: array
+            items:
+              $ref: '#/components/schemas/PlacementGroupScrub'
+      description: ChunkRecord defines chunks api response
+    ChunksResp:
+      type: object
+      required:
+      - chunks
+      properties:
+        chunks:
+          type: array
+          description: chunks
+          items:
+            $ref: '#/components/schemas/ChunkRecord'
+      title: ChunksResp
+      example:
+        chunks:
+        - ''
+        - ''
+    PlacementGroup:
+      type: object
+      properties:
+        chunk_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+        osd_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: PlacementGroup
+      description: 'PlacementGroup defines the statistics metric of a placement group PG is not
+
+        exposed to user, rename it as chunk'
+    OsdCreateReq_Osd:
+      type: object
+      properties:
+        disk_id:
+          type: integer
+          format: int64
+          description: data disk id
+        omap_byte:
+          type: integer
+          format: int64
+          description: size of omap partition
+        partition_id:
+          type: integer
+          format: int64
+          description: cache partition id
+        read_cache_size:
+          type: integer
+          format: int64
+          description: read cache size in bytes
+        role:
+          type: string
+          description: 'osd role: "data" or "index", default is "data"'
+      title: OsdCreateReq_Osd
+      example:
+        partition_id: 1
+        role: role
+        omap_byte: 6
+        read_cache_size: 5
+        disk_id: 0
+    OsdCreateReq:
+      type: object
+      properties:
+        osd:
+          $ref: '#/components/schemas/OsdCreateReq_Osd'
+      title: OsdCreateReq
+      example:
+        osd:
+          partition_id: 1
+          role: role
+          omap_byte: 6
+          read_cache_size: 5
+          disk_id: 0
+    OsdsResp:
+      type: object
+      required:
+      - osds
+      properties:
+        osds:
+          type: array
+          description: osds
+          items:
+            $ref: '#/components/schemas/OsdRecord'
+      title: OsdsResp
+      example:
+        osds:
+        - ''
+        - ''
+    OsdGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: OsdGroup_Nestview
+    OsdResp:
+      type: object
+      required:
+      - osd
+      properties:
+        osd:
+          description: osd
+          $ref: '#/components/schemas/OsdRecord'
+      title: OsdResp
+      example:
+        osd: ''
+    OsdStat:
+      title: OsdStat
+      allOf:
+      - $ref: '#/components/schemas/DiskStat'
+      - properties:
+          create:
+            type: string
+            format: date-time
+          partition:
+            $ref: '#/components/schemas/PartitionStat'
+      description: OsdStat defines the basic info of a OsdStat
     DiskStat:
       type: object
       properties:
@@ -978,186 +979,185 @@ components:
         used_percent: 5.025004791520295
         kbyte_per_io: 5.637376656633329
         total_io_wait_us: 1.4894159098541704
-    ChunksResp:
+    OsdSamplesResp:
       type: object
       required:
-      - chunks
+      - osd_samples
       properties:
-        chunks:
+        osd_samples:
           type: array
-          description: chunks
+          description: osd samples
           items:
-            $ref: '#/components/schemas/ChunkRecord'
-      title: ChunksResp
+            $ref: '#/components/schemas/OsdStat'
+      title: OsdSamplesResp
       example:
-        chunks:
+        osd_samples:
         - ''
         - ''
-    OsdsResp:
+    Host_Nestview:
       type: object
       required:
-      - osds
+      - admin_ip
       properties:
-        osds:
-          type: array
-          description: osds
-          items:
-            $ref: '#/components/schemas/OsdRecord'
-      title: OsdsResp
-      example:
-        osds:
-        - ''
-        - ''
-    PartitionStat:
-      type: object
-      properties:
-        avg_queue_len:
-          type: number
-          format: double
-        create:
+        admin_ip:
           type: string
-          format: date-time
-        io_util:
-          type: number
-          format: double
-        kbyte_per_io:
-          type: number
-          format: double
-        read_bandwidth_kbyte:
-          type: number
-          format: double
-        read_iops:
-          type: number
-          format: double
-        read_merged_ps:
-          type: number
-          format: double
-        read_wait_us:
-          type: number
-          format: double
-        total_bandwidth_kbyte:
-          type: number
-          format: double
-        total_io_wait_us:
-          type: number
-          format: double
-        total_iops:
-          type: number
-          format: double
-        write_bandwidth_kbyte:
-          type: number
-          format: double
-        write_iops:
-          type: number
-          format: double
-        write_merged_ps:
-          type: number
-          format: double
-        write_wait_us:
-          type: number
-          format: double
-      title: PartitionStat
-      description: PartitionStat defines the basic info of a PartitionStat
-    Pool_Nestview:
-      type: object
-      properties:
         id:
           type: integer
           format: int64
         name:
           type: string
-      title: Pool_Nestview
+      title: Host_Nestview
       example:
         name: name
-        id: 5
-    ChunkRecord:
-      title: ChunkRecord
-      allOf:
-      - $ref: '#/components/schemas/PlacementGroup'
-      - properties:
-          scrubs:
-            type: array
-            items:
-              $ref: '#/components/schemas/PlacementGroupScrub'
-      description: ChunkRecord defines chunks api response
-    Disk_Nestview:
+        admin_ip: admin_ip
+        id: 0
+    DiskPrediction:
       type: object
       properties:
-        device:
+        create:
           type: string
-        disk_type:
-          type: string
+          format: date-time
         id:
           type: integer
           format: int64
-      title: Disk_Nestview
+        used_kbyte_1day:
+          type: integer
+          format: int64
+        used_kbyte_30days:
+          type: integer
+          format: int64
+        used_kbyte_7days:
+          type: integer
+          format: int64
+        used_kbyte_points:
+          type: array
+          items:
+            $ref: '#/components/schemas/PredictionPoint'
+      title: DiskPrediction
+      description: DiskPrediction contains disk prediction data
       example:
-        disk_type: disk_type
+        used_kbyte_30days: 1
+        used_kbyte_7days: 5
+        used_kbyte_points:
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        - used_kbyte: 5
+          create: '2000-01-23T04:56:07.000+00:00'
+        used_kbyte_1day: 6
+        create: '2000-01-23T04:56:07.000+00:00'
         id: 0
-        device: device
-    OsdCreateReq_Osd:
+    OsdPredictionsResp:
       type: object
+      required:
+      - osd_predictions
       properties:
-        disk_id:
-          type: integer
-          format: int64
-          description: data disk id
-        omap_byte:
-          type: integer
-          format: int64
-          description: size of omap partition
-        partition_id:
-          type: integer
-          format: int64
-          description: cache partition id
-        read_cache_size:
-          type: integer
-          format: int64
-          description: read cache size in bytes
-        role:
-          type: string
-          description: 'osd role: "data" or "index", default is "data"'
-      title: OsdCreateReq_Osd
+        osd_predictions:
+          type: array
+          description: osd predictions
+          items:
+            $ref: '#/components/schemas/DiskPrediction'
+      title: OsdPredictionsResp
       example:
-        partition_id: 1
-        role: role
-        omap_byte: 6
-        read_cache_size: 5
-        disk_id: 0
-    OsdStat:
-      title: OsdStat
-      allOf:
-      - $ref: '#/components/schemas/DiskStat'
-      - properties:
-          create:
-            type: string
-            format: date-time
-          partition:
-            $ref: '#/components/schemas/PartitionStat'
-      description: OsdStat defines the basic info of a OsdStat
-    OsdUpdateReq_Osd:
+        osd_predictions:
+        - used_kbyte_30days: 1
+          used_kbyte_7days: 5
+          used_kbyte_points:
+          - used_kbyte: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+          - used_kbyte: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+          used_kbyte_1day: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+        - used_kbyte_30days: 1
+          used_kbyte_7days: 5
+          used_kbyte_points:
+          - used_kbyte: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+          - used_kbyte: 5
+            create: '2000-01-23T04:56:07.000+00:00'
+          used_kbyte_1day: 6
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+    Partition:
       type: object
       properties:
         action_status:
           type: string
+        create:
+          type: string
+          format: date-time
+        disk:
+          $ref: '#/components/schemas/Disk_Nestview'
+        id:
+          type: integer
+          format: int64
+        omap_byte:
+          type: integer
+          format: int64
+        omap_device_path:
+          type: string
+        path:
+          type: string
+        size:
+          type: integer
+          format: int64
         status:
           type: string
-      title: OsdUpdateReq_Osd
+        update:
+          type: string
+          format: date-time
+        used:
+          type: boolean
+        uuid:
+          type: string
+        version:
+          type: integer
+          format: int64
+      title: Partition
+      description: Partition defines cache partition of disk
       example:
+        omap_device_path: omap_device_path
+        update: '2000-01-23T04:56:07.000+00:00'
+        omap_byte: 1
+        used: true
+        uuid: uuid
+        version: 5
+        path: path
+        disk:
+          disk_type: disk_type
+          id: 0
+          device: device
+        size: 5
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 6
         action_status: action_status
         status: status
-    OsdRebuildReq:
+    OsdRebuildReq_Osd:
       type: object
       properties:
-        osd:
-          $ref: '#/components/schemas/OsdRebuildReq_Osd'
-      title: OsdRebuildReq
+        new_disk_id:
+          type: integer
+          format: int64
+          description: new data disk id
+        new_omap_byte:
+          type: integer
+          format: int64
+          description: new size of omap partition
+        new_partition_id:
+          type: integer
+          format: int64
+          description: new cache partition id
+        new_read_cache_size:
+          type: integer
+          format: int64
+          description: new read cache size in bytes
+      title: OsdRebuildReq_Osd
       example:
-        osd:
-          new_omap_byte: 6
-          new_partition_id: 1
-          new_read_cache_size: 5
-          new_disk_id: 0
+        new_omap_byte: 6
+        new_partition_id: 1
+        new_read_cache_size: 5
+        new_disk_id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

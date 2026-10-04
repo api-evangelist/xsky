@@ -89,68 +89,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudPlatform_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        type:
-          type: string
-      title: CloudPlatform_Nestview
-      example:
-        name: name
-        id: 6
-        type: type
-    CloudVolumesResp:
-      type: object
-      properties:
-        cloud_volumes:
-          type: array
-          description: cloud volumes
-          items:
-            $ref: '#/components/schemas/CloudVolume'
-      title: CloudVolumesResp
-      example:
-        cloud_volumes:
-        - cloud_volume_id: cloud_volume_id
-          cloud_datacenter:
-            name: name
-            id: 0
-          cloud_platform:
-            name: name
-            id: 6
-            type: type
-          block_volume:
-            original_name: original_name
-            name: name
-            id: 9
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          multi_attach: true
-          id: 1
-          type: type
-        - cloud_volume_id: cloud_volume_id
-          cloud_datacenter:
-            name: name
-            id: 0
-          cloud_platform:
-            name: name
-            id: 6
-            type: type
-          block_volume:
-            original_name: original_name
-            name: name
-            id: 9
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          multi_attach: true
-          id: 1
-          type: type
     CloudDatacenter_Nestview:
       type: object
       properties:
@@ -237,6 +175,53 @@ components:
           multi_attach: true
           id: 1
           type: type
+    CloudVolumesResp:
+      type: object
+      properties:
+        cloud_volumes:
+          type: array
+          description: cloud volumes
+          items:
+            $ref: '#/components/schemas/CloudVolume'
+      title: CloudVolumesResp
+      example:
+        cloud_volumes:
+        - cloud_volume_id: cloud_volume_id
+          cloud_datacenter:
+            name: name
+            id: 0
+          cloud_platform:
+            name: name
+            id: 6
+            type: type
+          block_volume:
+            original_name: original_name
+            name: name
+            id: 9
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          multi_attach: true
+          id: 1
+          type: type
+        - cloud_volume_id: cloud_volume_id
+          cloud_datacenter:
+            name: name
+            id: 0
+          cloud_platform:
+            name: name
+            id: 6
+            type: type
+          block_volume:
+            original_name: original_name
+            name: name
+            id: 9
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          multi_attach: true
+          id: 1
+          type: type
     Volume_Nestview:
       type: object
       properties:
@@ -252,6 +237,21 @@ components:
         original_name: original_name
         name: name
         id: 9
+    CloudPlatform_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+      title: CloudPlatform_Nestview
+      example:
+        name: name
+        id: 6
+        type: type
   securitySchemes:
     tokenInHeader:
       description: auth by token

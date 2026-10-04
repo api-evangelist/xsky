@@ -93,6 +93,124 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EmailConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        smtp_enable_ssl:
+          type: boolean
+        smtp_host:
+          type: string
+        smtp_password:
+          type: string
+        smtp_port:
+          type: integer
+          format: int64
+        smtp_skip_tls_cert_verify:
+          type: boolean
+        smtp_user:
+          type: string
+        subject:
+          type: string
+      title: EmailConfig
+      description: EmailConfig define email config
+      example:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
+    EmailConfigUpdateReq:
+      type: object
+      properties:
+        email_config:
+          $ref: '#/components/schemas/EmailConfigUpdateReq_EmailConfig'
+      title: EmailConfigUpdateReq
+      example:
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+    EmailConfigResp:
+      type: object
+      properties:
+        email_config:
+          $ref: '#/components/schemas/EmailConfig'
+      title: EmailConfigResp
+      example:
+        email_config:
+          smtp_password: smtp_password
+          smtp_port: 0
+          smtp_user: smtp_user
+          smtp_skip_tls_cert_verify: true
+          subject: subject
+          smtp_host: smtp_host
+          smtp_enable_ssl: true
+          enabled: true
+    Email:
+      type: object
+      properties:
+        body:
+          type: string
+        content_type:
+          type: string
+        from:
+          type: string
+        subject:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+      title: Email
+      description: Email defines email model
+      example:
+        content_type: content_type
+        subject: subject
+        from: from
+        to:
+        - to
+        - to
+        body: body
+    EmailConfigUpdateReq_EmailConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        smtp_enable_ssl:
+          type: boolean
+        smtp_host:
+          type: string
+        smtp_password:
+          type: string
+        smtp_port:
+          type: integer
+          format: int64
+        smtp_skip_tls_cert_verify:
+          type: boolean
+        smtp_user:
+          type: string
+        subject:
+          type: string
+      title: EmailConfigUpdateReq_EmailConfig
+      example:
+        smtp_password: smtp_password
+        smtp_port: 0
+        smtp_user: smtp_user
+        smtp_skip_tls_cert_verify: true
+        subject: subject
+        smtp_host: smtp_host
+        smtp_enable_ssl: true
+        enabled: true
     EmailSendReq_Email:
       type: object
       required:
@@ -130,83 +248,6 @@ components:
           - to
           - to
           body: body
-    EmailConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        smtp_enable_ssl:
-          type: boolean
-        smtp_host:
-          type: string
-        smtp_password:
-          type: string
-        smtp_port:
-          type: integer
-          format: int64
-        smtp_skip_tls_cert_verify:
-          type: boolean
-        smtp_user:
-          type: string
-        subject:
-          type: string
-      title: EmailConfig
-      description: EmailConfig define email config
-      example:
-        smtp_password: smtp_password
-        smtp_port: 0
-        smtp_user: smtp_user
-        smtp_skip_tls_cert_verify: true
-        subject: subject
-        smtp_host: smtp_host
-        smtp_enable_ssl: true
-        enabled: true
-    EmailConfigResp:
-      type: object
-      properties:
-        email_config:
-          $ref: '#/components/schemas/EmailConfig'
-      title: EmailConfigResp
-      example:
-        email_config:
-          smtp_password: smtp_password
-          smtp_port: 0
-          smtp_user: smtp_user
-          smtp_skip_tls_cert_verify: true
-          subject: subject
-          smtp_host: smtp_host
-          smtp_enable_ssl: true
-          enabled: true
-    EmailConfigUpdateReq_EmailConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        smtp_enable_ssl:
-          type: boolean
-        smtp_host:
-          type: string
-        smtp_password:
-          type: string
-        smtp_port:
-          type: integer
-          format: int64
-        smtp_skip_tls_cert_verify:
-          type: boolean
-        smtp_user:
-          type: string
-        subject:
-          type: string
-      title: EmailConfigUpdateReq_EmailConfig
-      example:
-        smtp_password: smtp_password
-        smtp_port: 0
-        smtp_user: smtp_user
-        smtp_skip_tls_cert_verify: true
-        subject: subject
-        smtp_host: smtp_host
-        smtp_enable_ssl: true
-        enabled: true
     EmailSendReq:
       type: object
       properties:
@@ -232,47 +273,6 @@ components:
           smtp_host: smtp_host
           smtp_enable_ssl: true
           enabled: true
-    EmailConfigUpdateReq:
-      type: object
-      properties:
-        email_config:
-          $ref: '#/components/schemas/EmailConfigUpdateReq_EmailConfig'
-      title: EmailConfigUpdateReq
-      example:
-        email_config:
-          smtp_password: smtp_password
-          smtp_port: 0
-          smtp_user: smtp_user
-          smtp_skip_tls_cert_verify: true
-          subject: subject
-          smtp_host: smtp_host
-          smtp_enable_ssl: true
-          enabled: true
-    Email:
-      type: object
-      properties:
-        body:
-          type: string
-        content_type:
-          type: string
-        from:
-          type: string
-        subject:
-          type: string
-        to:
-          type: array
-          items:
-            type: string
-      title: Email
-      description: Email defines email model
-      example:
-        content_type: content_type
-        subject: subject
-        from: from
-        to:
-        - to
-        - to
-        body: body
   securitySchemes:
     tokenInHeader:
       description: auth by token

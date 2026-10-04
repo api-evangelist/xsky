@@ -86,6 +86,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OSZoneTranslogResp:
+      type: object
+      properties:
+        os_zone_translog:
+          $ref: '#/components/schemas/OSZoneTranslog'
+      title: OSZoneTranslogResp
+      example:
+        os_zone_translog:
+          resource_type: resource_type
+          resource_uuid: resource_uuid
+          action: action
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
     OSZoneTranslogsResp:
       type: object
       properties:
@@ -134,20 +148,6 @@ components:
         create: '2000-01-23T04:56:07.000+00:00'
         update: '2000-01-23T04:56:07.000+00:00'
         uuid: uuid
-    OSZoneTranslogResp:
-      type: object
-      properties:
-        os_zone_translog:
-          $ref: '#/components/schemas/OSZoneTranslog'
-      title: OSZoneTranslogResp
-      example:
-        os_zone_translog:
-          resource_type: resource_type
-          resource_uuid: resource_uuid
-          action: action
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
   securitySchemes:
     tokenInHeader:
       description: auth by token

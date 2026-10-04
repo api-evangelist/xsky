@@ -182,58 +182,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LicenseResp:
-      type: object
-      required:
-      - license
-      properties:
-        license:
-          description: license
-          $ref: '#/components/schemas/License'
-      title: LicenseResp
-      example:
-        license:
-          signed_time: '2000-01-23T04:56:07.000+00:00'
-          used_capacity: 6
-          used_host_num: 1
-          active: true
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          product_info:
-            series: series
-            model: model
-          services:
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          version: version
-          features:
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          limits: {}
-          customer: customer
-          status: status
     License:
       type: object
       properties:
@@ -322,6 +270,23 @@ components:
         limits: {}
         customer: customer
         status: status
+    ProductLimits:
+      type: object
+      description: ProductLimits defines product limits
+      additionalProperties:
+        type: string
+    ProductInfo:
+      type: object
+      properties:
+        model:
+          type: string
+        series:
+          type: string
+      title: ProductInfo
+      description: ProductInfo defines product info
+      example:
+        series: series
+        model: model
     LicensesResp:
       type: object
       required:
@@ -417,35 +382,6 @@ components:
           limits: {}
           customer: customer
           status: status
-    ProductService:
-      type: object
-      properties:
-        expired_time:
-          type: string
-          format: date-time
-        name:
-          type: string
-        start_time:
-          type: string
-          format: date-time
-      title: ProductService
-      description: ProductService defines product service
-      example:
-        start_time: '2000-01-23T04:56:07.000+00:00'
-        name: name
-        expired_time: '2000-01-23T04:56:07.000+00:00'
-    ProductInfo:
-      type: object
-      properties:
-        model:
-          type: string
-        series:
-          type: string
-      title: ProductInfo
-      description: ProductInfo defines product info
-      example:
-        series: series
-        model: model
     ProductFeature:
       type: object
       properties:
@@ -476,11 +412,75 @@ components:
         - protocols
         limits:
           key: limits
-    ProductLimits:
+    LicenseResp:
       type: object
-      description: ProductLimits defines product limits
-      additionalProperties:
-        type: string
+      required:
+      - license
+      properties:
+        license:
+          description: license
+          $ref: '#/components/schemas/License'
+      title: LicenseResp
+      example:
+        license:
+          signed_time: '2000-01-23T04:56:07.000+00:00'
+          used_capacity: 6
+          used_host_num: 1
+          active: true
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          product_info:
+            series: series
+            model: model
+          services:
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          version: version
+          features:
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          limits: {}
+          customer: customer
+          status: status
+    ProductService:
+      type: object
+      properties:
+        expired_time:
+          type: string
+          format: date-time
+        name:
+          type: string
+        start_time:
+          type: string
+          format: date-time
+      title: ProductService
+      description: ProductService defines product service
+      example:
+        start_time: '2000-01-23T04:56:07.000+00:00'
+        name: name
+        expired_time: '2000-01-23T04:56:07.000+00:00'
   securitySchemes:
     tokenInHeader:
       description: auth by token

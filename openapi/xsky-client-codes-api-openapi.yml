@@ -67,6 +67,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ClientCode:
+      type: object
+      properties:
+        code:
+          type: string
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        type:
+          type: string
+      title: ClientCode
+      example:
+        code: code
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        type: type
     ClientCodesResp:
       type: object
       required:
@@ -88,25 +107,6 @@ components:
           create: '2000-01-23T04:56:07.000+00:00'
           id: 0
           type: type
-    ClientCode:
-      type: object
-      properties:
-        code:
-          type: string
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        type:
-          type: string
-      title: ClientCode
-      example:
-        code: code
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        type: type
   securitySchemes:
     tokenInHeader:
       description: auth by token

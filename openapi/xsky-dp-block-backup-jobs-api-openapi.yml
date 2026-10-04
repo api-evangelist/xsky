@@ -88,18 +88,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DpBlockBackupPolicy_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: DpBlockBackupPolicy_Nestview
-      example:
-        name: name
-        id: 1
     Snapshot_Nestview:
       type: object
       properties:
@@ -164,6 +152,33 @@ components:
           id: 5
           max_retry_times: 5
           status: status
+    Volume_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        original_name:
+          type: string
+      title: Volume_Nestview
+      example:
+        original_name: original_name
+        name: name
+        id: 9
+    DpBlockBackupPolicy_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: DpBlockBackupPolicy_Nestview
+      example:
+        name: name
+        id: 1
     DpBlockBackupJob:
       type: object
       properties:
@@ -224,21 +239,6 @@ components:
         id: 5
         max_retry_times: 5
         status: status
-    Volume_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        original_name:
-          type: string
-      title: Volume_Nestview
-      example:
-        original_name: original_name
-        name: name
-        id: 9
   securitySchemes:
     tokenInHeader:
       description: auth by token
