@@ -168,23 +168,16 @@ components:
       example:
         name: name
         id: 0
-    Host_Nestview:
+    TargetCreateReq:
       type: object
-      required:
-      - admin_ip
       properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
+        target:
+          $ref: '#/components/schemas/TargetCreateReq_Target'
+      title: TargetCreateReq
       example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
+        target:
+          access_path_id: 0
+          host_id: 6
     TargetResp:
       type: object
       required:
@@ -209,19 +202,6 @@ components:
           id: 6
           board: 0
           status: status
-    TargetCreateReq_Target:
-      type: object
-      properties:
-        access_path_id:
-          type: integer
-          format: int64
-        host_id:
-          type: integer
-          format: int64
-      title: TargetCreateReq_Target
-      example:
-        access_path_id: 0
-        host_id: 6
     TargetsResp:
       type: object
       required:
@@ -305,16 +285,36 @@ components:
         id: 6
         board: 0
         status: status
-    TargetCreateReq:
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    TargetCreateReq_Target:
       type: object
       properties:
-        target:
-          $ref: '#/components/schemas/TargetCreateReq_Target'
-      title: TargetCreateReq
+        access_path_id:
+          type: integer
+          format: int64
+        host_id:
+          type: integer
+          format: int64
+      title: TargetCreateReq_Target
       example:
-        target:
-          access_path_id: 0
-          host_id: 6
+        access_path_id: 0
+        host_id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

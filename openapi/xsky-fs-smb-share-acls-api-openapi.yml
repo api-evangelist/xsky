@@ -75,51 +75,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSSMBShareACL:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShare_Nestview'
-        fs_user:
-          $ref: '#/components/schemas/FSUser_Nestview'
-        fs_user_group:
-          $ref: '#/components/schemas/FSUserGroup_Nestview'
-        fs_user_group_name:
-          type: string
-        fs_user_name:
-          type: string
-        id:
-          type: integer
-          format: int64
-        permission:
-          type: string
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: FSSMBShareACL
-      description: FSSMBShareACL defines model of fs smb share ACL
-      example:
-        fs_smb_share:
-          name: name
-          id: 6
-        fs_user_name: fs_user_name
-        fs_user_group:
-          name: name
-          id: 1
-        fs_user:
-          name: name
-          id: 6
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        permission: permission
-        id: 0
-        type: type
-        fs_user_group_name: fs_user_group_name
     FSSMBShare_Nestview:
       type: object
       properties:
@@ -177,18 +132,6 @@ components:
           id: 0
           type: type
           fs_user_group_name: fs_user_group_name
-    FSUserGroup_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSUserGroup_Nestview
-      example:
-        name: name
-        id: 1
     FSUser_Nestview:
       type: object
       properties:
@@ -201,6 +144,63 @@ components:
       example:
         name: name
         id: 6
+    FSSMBShareACL:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShare_Nestview'
+        fs_user:
+          $ref: '#/components/schemas/FSUser_Nestview'
+        fs_user_group:
+          $ref: '#/components/schemas/FSUserGroup_Nestview'
+        fs_user_group_name:
+          type: string
+        fs_user_name:
+          type: string
+        id:
+          type: integer
+          format: int64
+        permission:
+          type: string
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: FSSMBShareACL
+      description: FSSMBShareACL defines model of fs smb share ACL
+      example:
+        fs_smb_share:
+          name: name
+          id: 6
+        fs_user_name: fs_user_name
+        fs_user_group:
+          name: name
+          id: 1
+        fs_user:
+          name: name
+          id: 6
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        permission: permission
+        id: 0
+        type: type
+        fs_user_group_name: fs_user_group_name
+    FSUserGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSUserGroup_Nestview
+      example:
+        name: name
+        id: 1
   securitySchemes:
     tokenInHeader:
       description: auth by token

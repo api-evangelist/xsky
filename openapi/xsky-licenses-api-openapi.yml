@@ -182,111 +182,75 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    License:
+    LicenseResp:
+      type: object
+      required:
+      - license
+      properties:
+        license:
+          description: license
+          $ref: '#/components/schemas/License'
+      title: LicenseResp
+      example:
+        license:
+          signed_time: '2000-01-23T04:56:07.000+00:00'
+          used_capacity: 6
+          used_host_num: 1
+          active: true
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          product_info:
+            series: series
+            model: model
+          services:
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          - start_time: '2000-01-23T04:56:07.000+00:00'
+            name: name
+            expired_time: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          version: version
+          features:
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          - functions:
+            - functions
+            - functions
+            name: name
+            protocols:
+            - protocols
+            - protocols
+            limits:
+              key: limits
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          limits: {}
+          customer: customer
+          status: status
+    ProductService:
       type: object
       properties:
-        active:
-          type: boolean
-        create:
-          type: string
-          format: date-time
-        customer:
-          type: string
         expired_time:
           type: string
           format: date-time
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductFeature'
-        id:
-          type: integer
-          format: int64
-        limits:
-          $ref: '#/components/schemas/ProductLimits'
-        product_info:
-          $ref: '#/components/schemas/ProductInfo'
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductService'
-        signed_time:
+        name:
+          type: string
+        start_time:
           type: string
           format: date-time
-        status:
-          type: string
-        used_capacity:
-          type: integer
-          format: int64
-        used_host_num:
-          type: integer
-          format: int64
-        uuid:
-          type: string
-        version:
-          type: string
-          description: v2, load from license info
-      title: License
-      description: License is used to manage backend license @grpc-models-proto
+      title: ProductService
+      description: ProductService defines product service
       example:
-        signed_time: '2000-01-23T04:56:07.000+00:00'
-        used_capacity: 6
-        used_host_num: 1
-        active: true
+        start_time: '2000-01-23T04:56:07.000+00:00'
+        name: name
         expired_time: '2000-01-23T04:56:07.000+00:00'
-        product_info:
-          series: series
-          model: model
-        services:
-        - start_time: '2000-01-23T04:56:07.000+00:00'
-          name: name
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-        - start_time: '2000-01-23T04:56:07.000+00:00'
-          name: name
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-        uuid: uuid
-        version: version
-        features:
-        - functions:
-          - functions
-          - functions
-          name: name
-          protocols:
-          - protocols
-          - protocols
-          limits:
-            key: limits
-        - functions:
-          - functions
-          - functions
-          name: name
-          protocols:
-          - protocols
-          - protocols
-          limits:
-            key: limits
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 0
-        limits: {}
-        customer: customer
-        status: status
-    ProductLimits:
-      type: object
-      description: ProductLimits defines product limits
-      additionalProperties:
-        type: string
-    ProductInfo:
-      type: object
-      properties:
-        model:
-          type: string
-        series:
-          type: string
-      title: ProductInfo
-      description: ProductInfo defines product info
-      example:
-        series: series
-        model: model
     LicensesResp:
       type: object
       required:
@@ -382,6 +346,18 @@ components:
           limits: {}
           customer: customer
           status: status
+    ProductInfo:
+      type: object
+      properties:
+        model:
+          type: string
+        series:
+          type: string
+      title: ProductInfo
+      description: ProductInfo defines product info
+      example:
+        series: series
+        model: model
     ProductFeature:
       type: object
       properties:
@@ -412,75 +388,99 @@ components:
         - protocols
         limits:
           key: limits
-    LicenseResp:
-      type: object
-      required:
-      - license
-      properties:
-        license:
-          description: license
-          $ref: '#/components/schemas/License'
-      title: LicenseResp
-      example:
-        license:
-          signed_time: '2000-01-23T04:56:07.000+00:00'
-          used_capacity: 6
-          used_host_num: 1
-          active: true
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          product_info:
-            series: series
-            model: model
-          services:
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          - start_time: '2000-01-23T04:56:07.000+00:00'
-            name: name
-            expired_time: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          version: version
-          features:
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          - functions:
-            - functions
-            - functions
-            name: name
-            protocols:
-            - protocols
-            - protocols
-            limits:
-              key: limits
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          limits: {}
-          customer: customer
-          status: status
-    ProductService:
+    License:
       type: object
       properties:
+        active:
+          type: boolean
+        create:
+          type: string
+          format: date-time
+        customer:
+          type: string
         expired_time:
           type: string
           format: date-time
-        name:
-          type: string
-        start_time:
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductFeature'
+        id:
+          type: integer
+          format: int64
+        limits:
+          $ref: '#/components/schemas/ProductLimits'
+        product_info:
+          $ref: '#/components/schemas/ProductInfo'
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductService'
+        signed_time:
           type: string
           format: date-time
-      title: ProductService
-      description: ProductService defines product service
+        status:
+          type: string
+        used_capacity:
+          type: integer
+          format: int64
+        used_host_num:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+        version:
+          type: string
+          description: v2, load from license info
+      title: License
+      description: License is used to manage backend license @grpc-models-proto
       example:
-        start_time: '2000-01-23T04:56:07.000+00:00'
-        name: name
+        signed_time: '2000-01-23T04:56:07.000+00:00'
+        used_capacity: 6
+        used_host_num: 1
+        active: true
         expired_time: '2000-01-23T04:56:07.000+00:00'
+        product_info:
+          series: series
+          model: model
+        services:
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        - start_time: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+        uuid: uuid
+        version: version
+        features:
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        - functions:
+          - functions
+          - functions
+          name: name
+          protocols:
+          - protocols
+          - protocols
+          limits:
+            key: limits
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 0
+        limits: {}
+        customer: customer
+        status: status
+    ProductLimits:
+      type: object
+      description: ProductLimits defines product limits
+      additionalProperties:
+        type: string
   securitySchemes:
     tokenInHeader:
       description: auth by token

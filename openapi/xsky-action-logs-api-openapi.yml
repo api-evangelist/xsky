@@ -109,30 +109,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ActionLog_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ActionLog_Nestview
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
     ErrorRecord:
       type: object
       properties:
@@ -183,6 +159,20 @@ components:
       example:
         name: name
         id: 6
+    ActionLogsResp:
+      type: object
+      required:
+      - action_logs
+      properties:
+        action_logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionLogRecord'
+      title: ActionLogsResp
+      example:
+        action_logs:
+        - ''
+        - ''
     ActionLog:
       type: object
       properties:
@@ -237,20 +227,30 @@ components:
           type: integer
           format: int64
       title: Alert_Nestview
-    ActionLogsResp:
+    ActionLog_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ActionLog_Nestview
+    Host_Nestview:
       type: object
       required:
-      - action_logs
+      - admin_ip
       properties:
-        action_logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionLogRecord'
-      title: ActionLogsResp
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
       example:
-        action_logs:
-        - ''
-        - ''
+        name: name
+        admin_ip: admin_ip
+        id: 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

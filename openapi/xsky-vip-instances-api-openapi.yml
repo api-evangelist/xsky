@@ -88,6 +88,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    VIPInstancesResp:
+      type: object
+      properties:
+        vip_instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/VIPInstance'
+      title: VIPInstancesResp
+      example:
+        vip_instances:
+        - create: '2000-01-23T04:56:07.000+00:00'
+          network_address:
+            ip: ip
+            id: 6
+            mask: 1
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          priority: 6
+          vip:
+            ip: ip
+            id: 1
+            mask: 5
+          action_status: action_status
+          status: status
+        - create: '2000-01-23T04:56:07.000+00:00'
+          network_address:
+            ip: ip
+            id: 6
+            mask: 1
+          update: '2000-01-23T04:56:07.000+00:00'
+          id: 0
+          priority: 6
+          vip:
+            ip: ip
+            id: 1
+            mask: 5
+          action_status: action_status
+          status: status
     VIP_Nestview:
       type: object
       properties:
@@ -129,44 +167,6 @@ components:
       example:
         vip_instance:
           create: '2000-01-23T04:56:07.000+00:00'
-          network_address:
-            ip: ip
-            id: 6
-            mask: 1
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          priority: 6
-          vip:
-            ip: ip
-            id: 1
-            mask: 5
-          action_status: action_status
-          status: status
-    VIPInstancesResp:
-      type: object
-      properties:
-        vip_instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/VIPInstance'
-      title: VIPInstancesResp
-      example:
-        vip_instances:
-        - create: '2000-01-23T04:56:07.000+00:00'
-          network_address:
-            ip: ip
-            id: 6
-            mask: 1
-          update: '2000-01-23T04:56:07.000+00:00'
-          id: 0
-          priority: 6
-          vip:
-            ip: ip
-            id: 1
-            mask: 5
-          action_status: action_status
-          status: status
-        - create: '2000-01-23T04:56:07.000+00:00'
           network_address:
             ip: ip
             id: 6

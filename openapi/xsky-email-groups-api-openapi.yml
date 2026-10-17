@@ -192,11 +192,46 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EmailGroup:
+      type: object
+      properties:
+        create:
+          type: string
+          format: date-time
+        emails:
+          type: array
+          items:
+            type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: EmailGroup
+      description: EmailGroup defines the email group
     EmailGroupRecord:
       title: EmailGroupRecord
       allOf:
       - $ref: '#/components/schemas/EmailGroup'
       description: EmailGroupRecord defines email group record
+    EmailGroupsResp:
+      type: object
+      required:
+      - email_groups
+      properties:
+        email_groups:
+          type: array
+          description: email groups
+          items:
+            $ref: '#/components/schemas/EmailGroupRecord'
+      title: EmailGroupsResp
+      example:
+        email_groups:
+        - ''
+        - ''
     EmailGroupUpdateReq:
       type: object
       required:
@@ -240,41 +275,6 @@ components:
         - emails
         - emails
         name: name
-    EmailGroupsResp:
-      type: object
-      required:
-      - email_groups
-      properties:
-        email_groups:
-          type: array
-          description: email groups
-          items:
-            $ref: '#/components/schemas/EmailGroupRecord'
-      title: EmailGroupsResp
-      example:
-        email_groups:
-        - ''
-        - ''
-    EmailGroup:
-      type: object
-      properties:
-        create:
-          type: string
-          format: date-time
-        emails:
-          type: array
-          items:
-            type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: EmailGroup
-      description: EmailGroup defines the email group
   securitySchemes:
     tokenInHeader:
       description: auth by token

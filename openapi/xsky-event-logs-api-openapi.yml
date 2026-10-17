@@ -94,6 +94,77 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    User_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of user
+        name:
+          type: string
+          description: name of user
+      title: User_Nestview
+      example:
+        name: name
+        id: 6
+    EventLogsResp:
+      type: object
+      required:
+      - event_logs
+      properties:
+        event_logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventLog'
+      title: EventLogsResp
+      example:
+        event_logs:
+        - data: '{}'
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          id: 0
+          event: event
+          message: message
+          user:
+            name: name
+            id: 6
+        - data: '{}'
+          host:
+            name: name
+            admin_ip: admin_ip
+            id: 0
+          resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          resource_id: 6
+          id: 0
+          event: event
+          message: message
+          user:
+            name: name
+            id: 6
     EventLog:
       type: object
       properties:
@@ -144,77 +215,6 @@ components:
         user:
           name: name
           id: 6
-    User_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of user
-        name:
-          type: string
-          description: name of user
-      title: User_Nestview
-      example:
-        name: name
-        id: 6
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    EventLogsResp:
-      type: object
-      required:
-      - event_logs
-      properties:
-        event_logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventLog'
-      title: EventLogsResp
-      example:
-        event_logs:
-        - data: '{}'
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          id: 0
-          event: event
-          message: message
-          user:
-            name: name
-            id: 6
-        - data: '{}'
-          host:
-            name: name
-            admin_ip: admin_ip
-            id: 0
-          resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          resource_id: 6
-          id: 0
-          event: event
-          message: message
-          user:
-            name: name
-            id: 6
   securitySchemes:
     tokenInHeader:
       description: auth by token

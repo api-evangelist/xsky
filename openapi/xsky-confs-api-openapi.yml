@@ -195,21 +195,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ConfItemResp:
+    ConfItemsSetReq:
       type: object
       required:
-      - conf
+      - confs
       properties:
-        conf:
-          description: conf item
-          $ref: '#/components/schemas/ConfItem'
-      title: ConfItemResp
+        confs:
+          type: object
+          additionalProperties:
+            type: string
+      title: ConfItemsSetReq
       example:
-        conf:
-          id: 0
-          type: type
-          value: value
-          key: key
+        confs:
+          key: confs
     ConfItemsResp:
       type: object
       required:
@@ -231,37 +229,6 @@ components:
           type: type
           value: value
           key: key
-    ConfItemSetReq_ConfItem:
-      type: object
-      required:
-      - key
-      - type
-      - value
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
-      title: ConfItemSetReq_ConfItem
-      example:
-        type: type
-        value: value
-        key: key
-    ConfItemsSetReq:
-      type: object
-      required:
-      - confs
-      properties:
-        confs:
-          type: object
-          additionalProperties:
-            type: string
-      title: ConfItemsSetReq
-      example:
-        confs:
-          key: confs
     ConfItem:
       type: object
       properties:
@@ -278,6 +245,39 @@ components:
       description: ConfItem is a ceph config pair
       example:
         id: 0
+        type: type
+        value: value
+        key: key
+    ConfItemResp:
+      type: object
+      required:
+      - conf
+      properties:
+        conf:
+          description: conf item
+          $ref: '#/components/schemas/ConfItem'
+      title: ConfItemResp
+      example:
+        conf:
+          id: 0
+          type: type
+          value: value
+          key: key
+    ConfItemSetReq_ConfItem:
+      type: object
+      required:
+      - key
+      - type
+      - value
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      title: ConfItemSetReq_ConfItem
+      example:
         type: type
         value: value
         key: key

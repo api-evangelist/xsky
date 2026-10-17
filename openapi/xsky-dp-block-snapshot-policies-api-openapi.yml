@@ -207,20 +207,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DpBlockSnapshotPolicyCreateReq:
-      type: object
-      required:
-      - dp_block_snapshot_policy
-      properties:
-        dp_block_snapshot_policy:
-          $ref: '#/components/schemas/DpBlockSnapshotPolicyCreateReq_Policy'
-      title: DpBlockSnapshotPolicyCreateReq
-      example:
-        dp_block_snapshot_policy:
-          retained_max: 6
-          dp_gateway_id: 0
-          cron_expr: cron_expr
-          name: name
     DpBlockSnapshotPolicyUpdateReq:
       type: object
       required:
@@ -234,6 +220,25 @@ components:
           retained_max: 0
           cron_expr: cron_expr
           name: name
+    DpBlockSnapshotPolicyResp:
+      type: object
+      properties:
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicy'
+      title: DpBlockSnapshotPolicyResp
+      example:
+        dp_block_snapshot_policy:
+          retained_max: 1
+          block_volume_num: 0
+          cron_expr: cron_expr
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          dp_gateway:
+            name: name
+            id: 6
+          id: 6
+          status: status
     DpGateway_Nestview:
       type: object
       properties:
@@ -346,6 +351,20 @@ components:
           id: 6
         id: 6
         status: status
+    DpBlockSnapshotPolicyCreateReq:
+      type: object
+      required:
+      - dp_block_snapshot_policy
+      properties:
+        dp_block_snapshot_policy:
+          $ref: '#/components/schemas/DpBlockSnapshotPolicyCreateReq_Policy'
+      title: DpBlockSnapshotPolicyCreateReq
+      example:
+        dp_block_snapshot_policy:
+          retained_max: 6
+          dp_gateway_id: 0
+          cron_expr: cron_expr
+          name: name
     DpBlockSnapshotPolicyUpdateReq_Policy:
       type: object
       properties:
@@ -364,25 +383,6 @@ components:
         retained_max: 0
         cron_expr: cron_expr
         name: name
-    DpBlockSnapshotPolicyResp:
-      type: object
-      properties:
-        dp_block_snapshot_policy:
-          $ref: '#/components/schemas/DpBlockSnapshotPolicy'
-      title: DpBlockSnapshotPolicyResp
-      example:
-        dp_block_snapshot_policy:
-          retained_max: 1
-          block_volume_num: 0
-          cron_expr: cron_expr
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          dp_gateway:
-            name: name
-            id: 6
-          id: 6
-          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

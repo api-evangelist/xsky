@@ -65,7 +65,7 @@ paths:
       security:
       - tokenInQuery: []
       - tokenInHeader: []
-      summary: List NFS gateway S3 bucket maps
+      summary: List NFS gateway S3Bucket maps
       x-summary-source: derived
 components:
   schemas:
@@ -119,45 +119,6 @@ components:
         nfs_gateway:
           name: name
           id: 2
-        status: status
-    NFSGateway_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: NFSGateway_Nestview
-      example:
-        name: name
-        id: 2
-    ObjectStorageKey_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ObjectStorageKey_Nestview
-      example:
-        id: 5
-    ObjectStorageBucket_Nestview_lifecycle:
-      properties:
-        id:
-          type: integer
-          format: int64
-        rules:
-          type: array
-          items:
-            type: object
-            properties: {}
-        status:
-          type: string
-      example:
-        rules:
-        - '{}'
-        - '{}'
-        id: 6
         status: status
     NFSGatewayBucketMapsResp:
       type: object
@@ -214,6 +175,45 @@ components:
             name: name
             id: 2
           status: status
+    NFSGateway_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: NFSGateway_Nestview
+      example:
+        name: name
+        id: 2
+    ObjectStorageBucket_Nestview_lifecycle:
+      properties:
+        id:
+          type: integer
+          format: int64
+        rules:
+          type: array
+          items:
+            type: object
+            properties: {}
+        status:
+          type: string
+      example:
+        rules:
+        - '{}'
+        - '{}'
+        id: 6
+        status: status
+    ObjectStorageKey_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ObjectStorageKey_Nestview
+      example:
+        id: 5
     ObjectStorageBucket_Nestview:
       type: object
       properties:

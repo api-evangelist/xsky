@@ -198,19 +198,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PlacementNodeTopology:
-      title: PlacementNodeTopology
-      allOf:
-      - $ref: '#/components/schemas/PlacementNode'
-      - properties:
-          available_osd_num:
-            type: integer
-            format: int64
-          children:
-            type: array
-            items:
-              $ref: '#/components/schemas/PlacementNodeTopology'
-      description: PlacementNodeTopology defines the response content of placement node topology
     PlacementNodeProperties:
       type: object
       properties:
@@ -243,31 +230,19 @@ components:
         parent_id: 0
         name: name
         type: type
-    PlacementNodeUpdateReq:
-      type: object
-      properties:
-        placement_node:
-          $ref: '#/components/schemas/PlacementNodeUpdateReq_PlacementNode'
-      title: PlacementNodeUpdateReq
-      example:
-        placement_node:
-          parent_id: 0
-          name: name
-    PlacementNodeUpdateReq_PlacementNode:
-      type: object
-      required:
-      - name
-      - parent_id
-      properties:
-        name:
-          type: string
-        parent_id:
-          type: integer
-          format: int64
-      title: PlacementNodeUpdateReq_PlacementNode
-      example:
-        parent_id: 0
-        name: name
+    PlacementNodeTopology:
+      title: PlacementNodeTopology
+      allOf:
+      - $ref: '#/components/schemas/PlacementNode'
+      - properties:
+          available_osd_num:
+            type: integer
+            format: int64
+          children:
+            type: array
+            items:
+              $ref: '#/components/schemas/PlacementNodeTopology'
+      description: PlacementNodeTopology defines the response content of placement node topology
     PlacementNodeRecord:
       title: PlacementNodeRecord
       allOf:
@@ -284,29 +259,6 @@ components:
       title: PlacementNodeResp
       example:
         placement_node: ''
-    PlacementNodeCreateReq:
-      type: object
-      properties:
-        placement_node:
-          $ref: '#/components/schemas/PlacementNodeCreateReq_PlacementNode'
-      title: PlacementNodeCreateReq
-      example:
-        placement_node:
-          is_witness: true
-          parent_id: 0
-          name: name
-          type: type
-    PlacementNodeTopologyResp:
-      type: object
-      required:
-      - topology
-      properties:
-        topology:
-          description: topology of placement nodes
-          $ref: '#/components/schemas/PlacementNodeTopology'
-      title: PlacementNodeTopologyResp
-      example:
-        topology: ''
     PlacementNode:
       type: object
       properties:
@@ -345,6 +297,54 @@ components:
         type: type
         properties:
           is_witness: true
+    PlacementNodeUpdateReq:
+      type: object
+      properties:
+        placement_node:
+          $ref: '#/components/schemas/PlacementNodeUpdateReq_PlacementNode'
+      title: PlacementNodeUpdateReq
+      example:
+        placement_node:
+          parent_id: 0
+          name: name
+    PlacementNodeCreateReq:
+      type: object
+      properties:
+        placement_node:
+          $ref: '#/components/schemas/PlacementNodeCreateReq_PlacementNode'
+      title: PlacementNodeCreateReq
+      example:
+        placement_node:
+          is_witness: true
+          parent_id: 0
+          name: name
+          type: type
+    PlacementNodeTopologyResp:
+      type: object
+      required:
+      - topology
+      properties:
+        topology:
+          description: topology of placement nodes
+          $ref: '#/components/schemas/PlacementNodeTopology'
+      title: PlacementNodeTopologyResp
+      example:
+        topology: ''
+    PlacementNodeUpdateReq_PlacementNode:
+      type: object
+      required:
+      - name
+      - parent_id
+      properties:
+        name:
+          type: string
+        parent_id:
+          type: integer
+          format: int64
+      title: PlacementNodeUpdateReq_PlacementNode
+      example:
+        parent_id: 0
+        name: name
   securitySchemes:
     tokenInHeader:
       description: auth by token

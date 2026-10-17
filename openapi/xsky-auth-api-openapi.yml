@@ -162,25 +162,110 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TokenCreateReq:
+    TokenResp:
       type: object
       required:
-      - auth
+      - token
       properties:
-        auth:
-          $ref: '#/components/schemas/TokenCreateReq_Auth'
-      title: TokenCreateReq
+        token:
+          description: token
+          $ref: '#/components/schemas/TokenRecord'
+      title: TokenResp
       example:
-        auth:
-          identity:
-            password:
-              user:
-                password: password
-                name: name
-                id: 0
-                email: email
-            token:
-              uuid: uuid
+        token: ''
+    TokenCreateReq_Auth_Identity:
+      type: object
+      properties:
+        password:
+          description: password for auth
+          $ref: '#/components/schemas/AuthPasswordReq'
+        token:
+          description: token for auth
+          $ref: '#/components/schemas/AuthTokenReq'
+      title: TokenCreateReq_Auth_Identity
+      example:
+        password:
+          user:
+            password: password
+            name: name
+            id: 0
+            email: email
+        token:
+          uuid: uuid
+    AuthTokenReq:
+      type: object
+      required:
+      - uuid
+      properties:
+        uuid:
+          type: string
+          description: uuid of authorized token
+      title: AuthTokenReq
+      example:
+        uuid: uuid
+    AuthLoginReq_Auth:
+      type: object
+      properties:
+        encrypted_password:
+          type: string
+          description: encrypted password for auth
+        name:
+          type: string
+          description: user name or email for auth
+        password:
+          type: string
+          description: password for auth
+        platform:
+          type: string
+          description: uuid of the identity platform
+        rsa_key_id:
+          type: string
+          description: rsa key id
+        sign:
+          type: string
+          description: signature of login request
+        timestamp:
+          type: string
+          description: timestamp of platform token
+        token:
+          type: string
+          description: token of the identity platform
+      title: AuthLoginReq_Auth
+      example:
+        password: password
+        name: name
+        rsa_key_id: rsa_key_id
+        sign: sign
+        platform: platform
+        encrypted_password: encrypted_password
+        timestamp: timestamp
+        token: token
+    AuthSecurityPolicyResp:
+      type: object
+      properties:
+        auth_security_policy:
+          $ref: '#/components/schemas/AuthSecurityPolicy'
+      title: AuthSecurityPolicyResp
+      example:
+        auth_security_policy:
+          freeze_duration: 0
+          max_attempts: 6
+          password_expiration_warning: true
+          password_lifetime: 1
+          enabled: true
+    AuthSecurityPolicyUpdateReq:
+      type: object
+      properties:
+        auth_security_policy:
+          $ref: '#/components/schemas/AuthSecurityPolicyUpdateReq_AuthSecurityPolicy'
+      title: AuthSecurityPolicyUpdateReq
+      example:
+        auth_security_policy:
+          freeze_duration: 0
+          max_attempts: 6
+          password_expiration_warning: true
+          password_lifetime: 1
+          enabled: true
     AuthPasswordReq_User:
       type: object
       required:
@@ -205,19 +290,21 @@ components:
         name: name
         id: 0
         email: email
-    AuthSecurityPolicyResp:
+    AuthRSAKey:
       type: object
       properties:
-        auth_security_policy:
-          $ref: '#/components/schemas/AuthSecurityPolicy'
-      title: AuthSecurityPolicyResp
+        expiration:
+          type: string
+          format: date-time
+        id:
+          type: string
+        public_key:
+          type: string
+      title: AuthRSAKey
       example:
-        auth_security_policy:
-          freeze_duration: 0
-          max_attempts: 6
-          password_expiration_warning: true
-          password_lifetime: 1
-          enabled: true
+        public_key: public_key
+        expiration: '2000-01-23T04:56:07.000+00:00'
+        id: id
     AuthLoginReq:
       type: object
       required:
@@ -286,137 +373,6 @@ components:
           items:
             type: string
       title: User
-    AuthRSAKey:
-      type: object
-      properties:
-        expiration:
-          type: string
-          format: date-time
-        id:
-          type: string
-        public_key:
-          type: string
-      title: AuthRSAKey
-      example:
-        public_key: public_key
-        expiration: '2000-01-23T04:56:07.000+00:00'
-        id: id
-    AuthLoginReq_Auth:
-      type: object
-      properties:
-        encrypted_password:
-          type: string
-          description: encrypted password for auth
-        name:
-          type: string
-          description: user name or email for auth
-        password:
-          type: string
-          description: password for auth
-        platform:
-          type: string
-          description: uuid of the identity platform
-        rsa_key_id:
-          type: string
-          description: rsa key id
-        sign:
-          type: string
-          description: signature of login request
-        timestamp:
-          type: string
-          description: timestamp of platform token
-        token:
-          type: string
-          description: token of the identity platform
-      title: AuthLoginReq_Auth
-      example:
-        password: password
-        name: name
-        rsa_key_id: rsa_key_id
-        sign: sign
-        platform: platform
-        encrypted_password: encrypted_password
-        timestamp: timestamp
-        token: token
-    TokenCreateReq_Auth_Identity:
-      type: object
-      properties:
-        password:
-          description: password for auth
-          $ref: '#/components/schemas/AuthPasswordReq'
-        token:
-          description: token for auth
-          $ref: '#/components/schemas/AuthTokenReq'
-      title: TokenCreateReq_Auth_Identity
-      example:
-        password:
-          user:
-            password: password
-            name: name
-            id: 0
-            email: email
-        token:
-          uuid: uuid
-    AuthSecurityPolicyUpdateReq_AuthSecurityPolicy:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        freeze_duration:
-          type: integer
-          format: int64
-        max_attempts:
-          type: integer
-          format: int64
-        password_expiration_warning:
-          type: boolean
-        password_lifetime:
-          type: integer
-          format: int64
-      title: AuthSecurityPolicyUpdateReq_AuthSecurityPolicy
-      example:
-        freeze_duration: 0
-        max_attempts: 6
-        password_expiration_warning: true
-        password_lifetime: 1
-        enabled: true
-    TokenRecord:
-      title: TokenRecord
-      allOf:
-      - $ref: '#/components/schemas/Token'
-      - properties:
-          roles:
-            type: array
-            items:
-              type: string
-      description: TokenRecord defines token record for api response
-    AuthPasswordReq:
-      type: object
-      required:
-      - user
-      properties:
-        user:
-          $ref: '#/components/schemas/AuthPasswordReq_User'
-      title: AuthPasswordReq
-      example:
-        user:
-          password: password
-          name: name
-          id: 0
-          email: email
-    AuthSecurityPolicyUpdateReq:
-      type: object
-      properties:
-        auth_security_policy:
-          $ref: '#/components/schemas/AuthSecurityPolicyUpdateReq_AuthSecurityPolicy'
-      title: AuthSecurityPolicyUpdateReq
-      example:
-        auth_security_policy:
-          freeze_duration: 0
-          max_attempts: 6
-          password_expiration_warning: true
-          password_lifetime: 1
-          enabled: true
     TokenCreateReq_Auth:
       type: object
       required:
@@ -435,17 +391,6 @@ components:
               email: email
           token:
             uuid: uuid
-    AuthTokenReq:
-      type: object
-      required:
-      - uuid
-      properties:
-        uuid:
-          type: string
-          description: uuid of authorized token
-      title: AuthTokenReq
-      example:
-        uuid: uuid
     AuthRSAKeyResp:
       type: object
       properties:
@@ -457,6 +402,20 @@ components:
           public_key: public_key
           expiration: '2000-01-23T04:56:07.000+00:00'
           id: id
+    AuthPasswordReq:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          $ref: '#/components/schemas/AuthPasswordReq_User'
+      title: AuthPasswordReq
+      example:
+        user:
+          password: password
+          name: name
+          id: 0
+          email: email
     Token:
       type: object
       properties:
@@ -484,17 +443,35 @@ components:
         control access to securable objects and to control the ability of the user to
 
         perform various system-related operations on the local computer.'
-    TokenResp:
+    TokenCreateReq:
       type: object
       required:
-      - token
+      - auth
       properties:
-        token:
-          description: token
-          $ref: '#/components/schemas/TokenRecord'
-      title: TokenResp
+        auth:
+          $ref: '#/components/schemas/TokenCreateReq_Auth'
+      title: TokenCreateReq
       example:
-        token: ''
+        auth:
+          identity:
+            password:
+              user:
+                password: password
+                name: name
+                id: 0
+                email: email
+            token:
+              uuid: uuid
+    TokenRecord:
+      title: TokenRecord
+      allOf:
+      - $ref: '#/components/schemas/Token'
+      - properties:
+          roles:
+            type: array
+            items:
+              type: string
+      description: TokenRecord defines token record for api response
     AuthSecurityPolicy:
       type: object
       properties:
@@ -515,6 +492,29 @@ components:
           description: 'unit: second'
       title: AuthSecurityPolicy
       description: AuthSecurityPolicy defines auth security policy
+      example:
+        freeze_duration: 0
+        max_attempts: 6
+        password_expiration_warning: true
+        password_lifetime: 1
+        enabled: true
+    AuthSecurityPolicyUpdateReq_AuthSecurityPolicy:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        freeze_duration:
+          type: integer
+          format: int64
+        max_attempts:
+          type: integer
+          format: int64
+        password_expiration_warning:
+          type: boolean
+        password_lifetime:
+          type: integer
+          format: int64
+      title: AuthSecurityPolicyUpdateReq_AuthSecurityPolicy
       example:
         freeze_duration: 0
         max_attempts: 6

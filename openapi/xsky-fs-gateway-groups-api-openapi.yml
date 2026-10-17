@@ -317,84 +317,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSGatewayGroupCreateReq_GatewayGroup:
-      type: object
-      required:
-      - fs_gateways
-      - name
-      - types
-      - vip
-      properties:
-        description:
-          type: string
-          description: description of gateway group
-        encoding:
-          type: string
-          description: ftp encoding format, default is utf8
-        fs_gateways:
-          type: array
-          description: file storage gateways list
-          items:
-            $ref: '#/components/schemas/FSGatewayReq'
-        name:
-          type: string
-          description: name of gateway group
-        nfs_versions:
-          type: array
-          description: nfs versions of nfs supported
-          items:
-            type: string
-        security:
-          type: string
-          description: smb security type
-        smb1_enabled:
-          type: boolean
-          description: smb version 1.0 enabled
-        smb_ports:
-          type: array
-          description: smb ports
-          items:
-            type: integer
-            format: int64
-        types:
-          type: array
-          description: types of supported (smb, nfs, ftp)
-          items:
-            type: string
-        vip:
-          type: string
-          description: virtual ip of gateway group
-      title: FSGatewayGroupCreateReq_GatewayGroup
-    FSGatewayGroupAddGatewaysReq:
-      type: object
-      required:
-      - fs_gateway_group
-      properties:
-        fs_gateway_group:
-          $ref: '#/components/schemas/FSGatewayGroupAddGatewaysReq_GatewayGroup'
-      title: FSGatewayGroupAddGatewaysReq
-    FSGatewayReq:
-      type: object
-      required:
-      - host_id
-      properties:
-        host_id:
-          type: integer
-          format: int64
-          description: host id
-        network_address_id:
-          type: integer
-          format: int64
-          description: network address id
-      title: FSGatewayReq
-    FSGatewayGroupRemoveGatewaysReq:
-      type: object
-      required:
-      - fs_gateway_group
-      properties:
-        fs_gateway_group:
-          $ref: '#/components/schemas/FSGatewayGroupRemoveGatewaysReq_GatewayGroup'
-      title: FSGatewayGroupRemoveGatewaysReq
     FSGatewayGroup:
       type: object
       properties:
@@ -478,25 +400,18 @@ components:
         action_status: action_status
         folder_num: 0
         status: status
-    FSGatewayGroupAddGatewaysReq_GatewayGroup:
+    FSGatewayGroupRemoveGatewaysReq_GatewayGroup:
       type: object
       required:
-      - fs_gateways
+      - fs_gateway_ids
       properties:
-        fs_gateways:
+        fs_gateway_ids:
           type: array
-          description: file storage gateways list
+          description: file storage gateway ids
           items:
-            $ref: '#/components/schemas/FSGatewayReq'
-      title: FSGatewayGroupAddGatewaysReq_GatewayGroup
-    FSGatewayGroupUpdateReq:
-      type: object
-      required:
-      - fs_gateway_group
-      properties:
-        fs_gateway_group:
-          $ref: '#/components/schemas/FSGatewayGroupUpdateReq_GatewayGroup'
-      title: FSGatewayGroupUpdateReq
+            type: integer
+            format: int64
+      title: FSGatewayGroupRemoveGatewaysReq_GatewayGroup
     FSGatewayGroupUpdateReq_GatewayGroup:
       type: object
       properties:
@@ -535,6 +450,28 @@ components:
           type: string
           description: virtual ip of gateway group
       title: FSGatewayGroupUpdateReq_GatewayGroup
+    FSGatewayReq:
+      type: object
+      required:
+      - host_id
+      properties:
+        host_id:
+          type: integer
+          format: int64
+          description: host id
+        network_address_id:
+          type: integer
+          format: int64
+          description: network address id
+      title: FSGatewayReq
+    FSGatewayGroupAddGatewaysReq:
+      type: object
+      required:
+      - fs_gateway_group
+      properties:
+        fs_gateway_group:
+          $ref: '#/components/schemas/FSGatewayGroupAddGatewaysReq_GatewayGroup'
+      title: FSGatewayGroupAddGatewaysReq
     FSGatewayGroupsResp:
       type: object
       required:
@@ -596,6 +533,17 @@ components:
           action_status: action_status
           folder_num: 0
           status: status
+    FSGatewayGroupAddGatewaysReq_GatewayGroup:
+      type: object
+      required:
+      - fs_gateways
+      properties:
+        fs_gateways:
+          type: array
+          description: file storage gateways list
+          items:
+            $ref: '#/components/schemas/FSGatewayReq'
+      title: FSGatewayGroupAddGatewaysReq_GatewayGroup
     FSGatewayGroupCreateReq:
       type: object
       required:
@@ -604,6 +552,62 @@ components:
         fs_gateway_group:
           $ref: '#/components/schemas/FSGatewayGroupCreateReq_GatewayGroup'
       title: FSGatewayGroupCreateReq
+    FSGatewayGroupCreateReq_GatewayGroup:
+      type: object
+      required:
+      - fs_gateways
+      - name
+      - types
+      - vip
+      properties:
+        description:
+          type: string
+          description: description of gateway group
+        encoding:
+          type: string
+          description: ftp encoding format, default is utf8
+        fs_gateways:
+          type: array
+          description: file storage gateways list
+          items:
+            $ref: '#/components/schemas/FSGatewayReq'
+        name:
+          type: string
+          description: name of gateway group
+        nfs_versions:
+          type: array
+          description: nfs versions of nfs supported
+          items:
+            type: string
+        security:
+          type: string
+          description: smb security type
+        smb1_enabled:
+          type: boolean
+          description: smb version 1.0 enabled
+        smb_ports:
+          type: array
+          description: smb ports
+          items:
+            type: integer
+            format: int64
+        types:
+          type: array
+          description: types of supported (smb, nfs, ftp)
+          items:
+            type: string
+        vip:
+          type: string
+          description: virtual ip of gateway group
+      title: FSGatewayGroupCreateReq_GatewayGroup
+    FSGatewayGroupUpdateReq:
+      type: object
+      required:
+      - fs_gateway_group
+      properties:
+        fs_gateway_group:
+          $ref: '#/components/schemas/FSGatewayGroupUpdateReq_GatewayGroup'
+      title: FSGatewayGroupUpdateReq
     FSGatewayGroupResp:
       type: object
       required:
@@ -639,18 +643,14 @@ components:
           action_status: action_status
           folder_num: 0
           status: status
-    FSGatewayGroupRemoveGatewaysReq_GatewayGroup:
+    FSGatewayGroupRemoveGatewaysReq:
       type: object
       required:
-      - fs_gateway_ids
+      - fs_gateway_group
       properties:
-        fs_gateway_ids:
-          type: array
-          description: file storage gateway ids
-          items:
-            type: integer
-            format: int64
-      title: FSGatewayGroupRemoveGatewaysReq_GatewayGroup
+        fs_gateway_group:
+          $ref: '#/components/schemas/FSGatewayGroupRemoveGatewaysReq_GatewayGroup'
+      title: FSGatewayGroupRemoveGatewaysReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

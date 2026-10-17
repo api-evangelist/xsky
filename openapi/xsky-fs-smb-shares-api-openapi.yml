@@ -360,25 +360,50 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSGatewayGroup_Nestview:
+    FSSMBShareUpdateReq:
       type: object
+      required:
+      - fs_smb_share
       properties:
-        id:
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShareUpdateReq_Share'
+      title: FSSMBShareUpdateReq
+    FSSMBShareCreateReq_Share:
+      type: object
+      required:
+      - fs_folder_id
+      - fs_gateway_group_id
+      properties:
+        acl_inherited:
+          type: boolean
+          description: default acl status
+        case_sensitive:
+          type: boolean
+          description: case sensitive
+        fs_folder_id:
           type: integer
           format: int64
+          description: folder id
+        fs_gateway_group_id:
+          type: integer
+          format: int64
+          description: gateway group id
+        fs_quota_tree_id:
+          type: integer
+          format: int64
+          description: quota tree id
+        fs_smb_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSSMBShareACLReq'
         name:
           type: string
-        vip:
-          type: string
-        vip_mask:
-          type: integer
-          format: int64
-      title: FSGatewayGroup_Nestview
-      example:
-        name: name
-        id: 6
-        vip_mask: 1
-        vip: vip
+          description: name of share
+        recycled:
+          type: boolean
+          description: recycle status
+      title: FSSMBShareCreateReq_Share
     FSSMBShareResp:
       type: object
       required:
@@ -413,6 +438,74 @@ components:
             vip: vip
           action_status: action_status
           status: status
+    FSSMBShareAddACLsReq:
+      type: object
+      required:
+      - fs_smb_share
+      properties:
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShareAddACLsReq_Share'
+      title: FSSMBShareAddACLsReq
+    FSSMBShareACLReq:
+      type: object
+      properties:
+        fs_user_group_id:
+          type: integer
+          format: int64
+          description: id of user group
+        fs_user_group_name:
+          type: string
+          description: id of user group
+        fs_user_id:
+          type: integer
+          format: int64
+          description: id of user
+        fs_user_name:
+          type: string
+          description: id of user
+        id:
+          type: integer
+          format: int64
+          description: id of user group
+        permission:
+          type: string
+          description: readonly or readwrite access
+        type:
+          type: string
+          description: type of share acl
+      title: FSSMBShareACLReq
+    FSSMBShareCreateReq:
+      type: object
+      required:
+      - fs_smb_share
+      properties:
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShareCreateReq_Share'
+      title: FSSMBShareCreateReq
+    FSSMBShareRemoveACLsReq_Share:
+      type: object
+      required:
+      - fs_smb_share_acl_ids
+      properties:
+        fs_smb_share_acl_ids:
+          type: array
+          description: access control array
+          items:
+            type: integer
+            format: int64
+      title: FSSMBShareRemoveACLsReq_Share
+    FSQuotaTree_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSQuotaTree_Nestview
+      example:
+        name: name
+        id: 5
     FSSMBShare:
       type: object
       properties:
@@ -477,6 +570,97 @@ components:
           vip: vip
         action_status: action_status
         status: status
+    FSSMBShareUpdateACLsReq_Share:
+      type: object
+      properties:
+        fs_smb_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSSMBShareUpdateACLReq'
+      title: FSSMBShareUpdateACLsReq_Share
+    FSSMBShareUpdateACLReq:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: id of user group
+        permission:
+          type: string
+          description: readonly or readwrite access
+      title: FSSMBShareUpdateACLReq
+    FSSMBShareAddACLsReq_Share:
+      type: object
+      required:
+      - fs_smb_share_acls
+      properties:
+        fs_smb_share_acls:
+          type: array
+          description: access control array
+          items:
+            $ref: '#/components/schemas/FSSMBShareACLReq'
+      title: FSSMBShareAddACLsReq_Share
+    FSSMBShareUpdateReq_Share:
+      type: object
+      properties:
+        acl_inherited:
+          type: boolean
+          description: default acl status
+        case_sensitive:
+          type: boolean
+          description: case sensitive
+        recycled:
+          type: boolean
+          description: recycle status
+      title: FSSMBShareUpdateReq_Share
+    FSFolder_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      title: FSFolder_Nestview
+      example:
+        name: name
+        id: 6
+    FSGatewayGroup_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vip:
+          type: string
+        vip_mask:
+          type: integer
+          format: int64
+      title: FSGatewayGroup_Nestview
+      example:
+        name: name
+        id: 6
+        vip_mask: 1
+        vip: vip
+    FSSMBShareRemoveACLsReq:
+      type: object
+      required:
+      - fs_smb_share
+      properties:
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShareRemoveACLsReq_Share'
+      title: FSSMBShareRemoveACLsReq
+    FSSMBShareUpdateACLsReq:
+      type: object
+      required:
+      - fs_smb_share
+      properties:
+        fs_smb_share:
+          $ref: '#/components/schemas/FSSMBShareUpdateACLsReq_Share'
+      title: FSSMBShareUpdateACLsReq
     FSSMBSharesResp:
       type: object
       required:
@@ -536,190 +720,6 @@ components:
             vip: vip
           action_status: action_status
           status: status
-    FSSMBShareRemoveACLsReq_Share:
-      type: object
-      required:
-      - fs_smb_share_acl_ids
-      properties:
-        fs_smb_share_acl_ids:
-          type: array
-          description: access control array
-          items:
-            type: integer
-            format: int64
-      title: FSSMBShareRemoveACLsReq_Share
-    FSSMBShareUpdateACLsReq_Share:
-      type: object
-      properties:
-        fs_smb_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSSMBShareUpdateACLReq'
-      title: FSSMBShareUpdateACLsReq_Share
-    FSSMBShareUpdateReq_Share:
-      type: object
-      properties:
-        acl_inherited:
-          type: boolean
-          description: default acl status
-        case_sensitive:
-          type: boolean
-          description: case sensitive
-        recycled:
-          type: boolean
-          description: recycle status
-      title: FSSMBShareUpdateReq_Share
-    FSSMBShareAddACLsReq:
-      type: object
-      required:
-      - fs_smb_share
-      properties:
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShareAddACLsReq_Share'
-      title: FSSMBShareAddACLsReq
-    FSFolder_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSFolder_Nestview
-      example:
-        name: name
-        id: 6
-    FSSMBShareCreateReq_Share:
-      type: object
-      required:
-      - fs_folder_id
-      - fs_gateway_group_id
-      properties:
-        acl_inherited:
-          type: boolean
-          description: default acl status
-        case_sensitive:
-          type: boolean
-          description: case sensitive
-        fs_folder_id:
-          type: integer
-          format: int64
-          description: folder id
-        fs_gateway_group_id:
-          type: integer
-          format: int64
-          description: gateway group id
-        fs_quota_tree_id:
-          type: integer
-          format: int64
-          description: quota tree id
-        fs_smb_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSSMBShareACLReq'
-        name:
-          type: string
-          description: name of share
-        recycled:
-          type: boolean
-          description: recycle status
-      title: FSSMBShareCreateReq_Share
-    FSQuotaTree_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: FSQuotaTree_Nestview
-      example:
-        name: name
-        id: 5
-    FSSMBShareCreateReq:
-      type: object
-      required:
-      - fs_smb_share
-      properties:
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShareCreateReq_Share'
-      title: FSSMBShareCreateReq
-    FSSMBShareUpdateACLsReq:
-      type: object
-      required:
-      - fs_smb_share
-      properties:
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShareUpdateACLsReq_Share'
-      title: FSSMBShareUpdateACLsReq
-    FSSMBShareACLReq:
-      type: object
-      properties:
-        fs_user_group_id:
-          type: integer
-          format: int64
-          description: id of user group
-        fs_user_group_name:
-          type: string
-          description: id of user group
-        fs_user_id:
-          type: integer
-          format: int64
-          description: id of user
-        fs_user_name:
-          type: string
-          description: id of user
-        id:
-          type: integer
-          format: int64
-          description: id of user group
-        permission:
-          type: string
-          description: readonly or readwrite access
-        type:
-          type: string
-          description: type of share acl
-      title: FSSMBShareACLReq
-    FSSMBShareAddACLsReq_Share:
-      type: object
-      required:
-      - fs_smb_share_acls
-      properties:
-        fs_smb_share_acls:
-          type: array
-          description: access control array
-          items:
-            $ref: '#/components/schemas/FSSMBShareACLReq'
-      title: FSSMBShareAddACLsReq_Share
-    FSSMBShareRemoveACLsReq:
-      type: object
-      required:
-      - fs_smb_share
-      properties:
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShareRemoveACLsReq_Share'
-      title: FSSMBShareRemoveACLsReq
-    FSSMBShareUpdateACLReq:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          description: id of user group
-        permission:
-          type: string
-          description: readonly or readwrite access
-      title: FSSMBShareUpdateACLReq
-    FSSMBShareUpdateReq:
-      type: object
-      required:
-      - fs_smb_share
-      properties:
-        fs_smb_share:
-          $ref: '#/components/schemas/FSSMBShareUpdateReq_Share'
-      title: FSSMBShareUpdateReq
   securitySchemes:
     tokenInHeader:
       description: auth by token

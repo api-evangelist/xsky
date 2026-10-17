@@ -212,57 +212,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FSLdapsResp:
-      type: object
-      required:
-      - fs_ldaps
-      properties:
-        fs_ldaps:
-          type: array
-          description: file storage ldaps
-          items:
-            $ref: '#/components/schemas/FSLdap'
-      title: FSLdapsResp
-      example:
-        fs_ldaps:
-        - admin_dn: admin_dn
-          ip: ip
-          update: '2000-01-23T04:56:07.000+00:00'
-          suffix: suffix
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          ips:
-          - ips
-          - ips
-          timeout: 5
-          group_suffix: group_suffix
-          user_suffix: user_suffix
-          port: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 6
-          id: 1
-          connection_timeout: 0
-          action_status: action_status
-          status: status
-        - admin_dn: admin_dn
-          ip: ip
-          update: '2000-01-23T04:56:07.000+00:00'
-          suffix: suffix
-          verify_time: '2000-01-23T04:56:07.000+00:00'
-          ips:
-          - ips
-          - ips
-          timeout: 5
-          group_suffix: group_suffix
-          user_suffix: user_suffix
-          port: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          fs_gateway_group_num: 6
-          id: 1
-          connection_timeout: 0
-          action_status: action_status
-          status: status
     FSLdapResp:
       type: object
       required:
@@ -340,6 +289,61 @@ components:
           type: string
           description: user suffix
       title: FSLdapCreateReq_Info
+    FSLdapUpdateReq_Info:
+      type: object
+      required:
+      - ip
+      - name
+      - port
+      - suffix
+      properties:
+        admin_dn:
+          type: string
+          description: ldap admin dn
+        connection_timeout:
+          type: integer
+          format: int64
+          description: timeout for connection
+        group_suffix:
+          type: string
+          description: group suffix
+        ip:
+          type: string
+          description: ip of server
+        ips:
+          type: array
+          description: ips of standby servers
+          items:
+            type: string
+        name:
+          type: string
+          description: name of ldap
+        password:
+          type: string
+          description: bind password
+        port:
+          type: integer
+          format: int64
+          description: ldap service port
+        suffix:
+          type: string
+          description: ldap suffix
+        timeout:
+          type: integer
+          format: int64
+          description: timeout for searching
+        user_suffix:
+          type: string
+          description: user suffix
+      title: FSLdapUpdateReq_Info
+    FSLdapCreateReq:
+      type: object
+      required:
+      - fs_ldap
+      properties:
+        fs_ldap:
+          $ref: '#/components/schemas/FSLdapCreateReq_Info'
+      title: FSLdapCreateReq
     FSLdapUpdateReq:
       type: object
       required:
@@ -417,61 +421,57 @@ components:
         connection_timeout: 0
         action_status: action_status
         status: status
-    FSLdapCreateReq:
+    FSLdapsResp:
       type: object
       required:
-      - fs_ldap
+      - fs_ldaps
       properties:
-        fs_ldap:
-          $ref: '#/components/schemas/FSLdapCreateReq_Info'
-      title: FSLdapCreateReq
-    FSLdapUpdateReq_Info:
-      type: object
-      required:
-      - ip
-      - name
-      - port
-      - suffix
-      properties:
-        admin_dn:
-          type: string
-          description: ldap admin dn
-        connection_timeout:
-          type: integer
-          format: int64
-          description: timeout for connection
-        group_suffix:
-          type: string
-          description: group suffix
-        ip:
-          type: string
-          description: ip of server
-        ips:
+        fs_ldaps:
           type: array
-          description: ips of standby servers
+          description: file storage ldaps
           items:
-            type: string
-        name:
-          type: string
-          description: name of ldap
-        password:
-          type: string
-          description: bind password
-        port:
-          type: integer
-          format: int64
-          description: ldap service port
-        suffix:
-          type: string
-          description: ldap suffix
-        timeout:
-          type: integer
-          format: int64
-          description: timeout for searching
-        user_suffix:
-          type: string
-          description: user suffix
-      title: FSLdapUpdateReq_Info
+            $ref: '#/components/schemas/FSLdap'
+      title: FSLdapsResp
+      example:
+        fs_ldaps:
+        - admin_dn: admin_dn
+          ip: ip
+          update: '2000-01-23T04:56:07.000+00:00'
+          suffix: suffix
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          ips:
+          - ips
+          - ips
+          timeout: 5
+          group_suffix: group_suffix
+          user_suffix: user_suffix
+          port: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 6
+          id: 1
+          connection_timeout: 0
+          action_status: action_status
+          status: status
+        - admin_dn: admin_dn
+          ip: ip
+          update: '2000-01-23T04:56:07.000+00:00'
+          suffix: suffix
+          verify_time: '2000-01-23T04:56:07.000+00:00'
+          ips:
+          - ips
+          - ips
+          timeout: 5
+          group_suffix: group_suffix
+          user_suffix: user_suffix
+          port: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          fs_gateway_group_num: 6
+          id: 1
+          connection_timeout: 0
+          action_status: action_status
+          status: status
   securitySchemes:
     tokenInHeader:
       description: auth by token

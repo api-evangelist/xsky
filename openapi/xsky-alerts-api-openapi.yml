@@ -316,108 +316,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AlertsActionReq_Alerts:
-      type: object
-      required:
-      - action
-      properties:
-        action:
-          type: string
-      title: AlertsActionReq_Alerts
-      example:
-        action: action
-    AlertStats:
-      type: object
-      properties:
-        critical_num:
-          type: integer
-          format: int64
-        error_num:
-          type: integer
-          format: int64
-        info_num:
-          type: integer
-          format: int64
-        warning_num:
-          type: integer
-          format: int64
-      title: AlertStats
-      example:
-        critical_num: 0
-        info_num: 1
-        error_num: 6
-        warning_num: 5
-    Host_Nestview:
-      type: object
-      required:
-      - admin_ip
-      properties:
-        admin_ip:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-      title: Host_Nestview
-      example:
-        name: name
-        admin_ip: admin_ip
-        id: 0
-    AlertRecord:
-      title: AlertRecord
-      allOf:
-      - $ref: '#/components/schemas/Alert'
-      - properties:
-          error_records:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorRecord'
-      description: AlertRecord defines the response errors of alert
-    AlertsResp:
-      type: object
-      required:
-      - alerts
-      properties:
-        alerts:
-          type: array
-          description: alerts
-          items:
-            $ref: '#/components/schemas/AlertRecord'
-      title: AlertsResp
-      example:
-        alerts:
-        - ''
-        - ''
-    ActionLog_Nestview:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-      title: ActionLog_Nestview
-    AlertsActionReq:
-      type: object
-      required:
-      - alerts
-      properties:
-        alerts:
-          $ref: '#/components/schemas/AlertsActionReq_Alerts'
-      title: AlertsActionReq
-      example:
-        alerts:
-          action: action
-    AlertActionReq:
-      type: object
-      required:
-      - alert
-      properties:
-        alert:
-          $ref: '#/components/schemas/AlertActionReq_Alert'
-      title: AlertActionReq
-      example:
-        alert:
-          action: action
     ErrorRecord:
       type: object
       properties:
@@ -444,6 +342,16 @@ components:
           type: string
       title: ErrorRecord
       description: ErrorRecord defines the error record attributes.
+    AlertRecord:
+      title: AlertRecord
+      allOf:
+      - $ref: '#/components/schemas/Alert'
+      - properties:
+          error_records:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorRecord'
+      description: AlertRecord defines the response errors of alert
     Alert:
       type: object
       properties:
@@ -544,6 +452,73 @@ components:
       title: AlertActionReq_Alert
       example:
         action: action
+    AlertsResp:
+      type: object
+      required:
+      - alerts
+      properties:
+        alerts:
+          type: array
+          description: alerts
+          items:
+            $ref: '#/components/schemas/AlertRecord'
+      title: AlertsResp
+      example:
+        alerts:
+        - ''
+        - ''
+    ActionLog_Nestview:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+      title: ActionLog_Nestview
+    AlertStats:
+      type: object
+      properties:
+        critical_num:
+          type: integer
+          format: int64
+        error_num:
+          type: integer
+          format: int64
+        info_num:
+          type: integer
+          format: int64
+        warning_num:
+          type: integer
+          format: int64
+      title: AlertStats
+      example:
+        critical_num: 0
+        info_num: 1
+        error_num: 6
+        warning_num: 5
+    AlertStatsResp:
+      type: object
+      required:
+      - alert_stats
+      properties:
+        alert_stats:
+          description: alert stats
+          $ref: '#/components/schemas/AlertStats'
+      title: AlertStatsResp
+      example:
+        alert_stats:
+          critical_num: 0
+          info_num: 1
+          error_num: 6
+          warning_num: 5
+    Alert_Nestview:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+        id:
+          type: integer
+          format: int64
+      title: Alert_Nestview
     AlertResp:
       type: object
       required:
@@ -583,30 +558,55 @@ components:
           group: group
           resolved: true
           status: status
-    Alert_Nestview:
+    AlertActionReq:
       type: object
+      required:
+      - alert
       properties:
-        alarm_id:
+        alert:
+          $ref: '#/components/schemas/AlertActionReq_Alert'
+      title: AlertActionReq
+      example:
+        alert:
+          action: action
+    AlertsActionReq:
+      type: object
+      required:
+      - alerts
+      properties:
+        alerts:
+          $ref: '#/components/schemas/AlertsActionReq_Alerts'
+      title: AlertsActionReq
+      example:
+        alerts:
+          action: action
+    Host_Nestview:
+      type: object
+      required:
+      - admin_ip
+      properties:
+        admin_ip:
           type: string
         id:
           type: integer
           format: int64
-      title: Alert_Nestview
-    AlertStatsResp:
+        name:
+          type: string
+      title: Host_Nestview
+      example:
+        name: name
+        admin_ip: admin_ip
+        id: 0
+    AlertsActionReq_Alerts:
       type: object
       required:
-      - alert_stats
+      - action
       properties:
-        alert_stats:
-          description: alert stats
-          $ref: '#/components/schemas/AlertStats'
-      title: AlertStatsResp
+        action:
+          type: string
+      title: AlertsActionReq_Alerts
       example:
-        alert_stats:
-          critical_num: 0
-          info_num: 1
-          error_num: 6
-          warning_num: 5
+        action: action
   securitySchemes:
     tokenInHeader:
       description: auth by token

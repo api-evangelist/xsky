@@ -368,6 +368,114 @@ components:
       example:
         name: name
         id: 0
+    MappingGroupUpdateReq:
+      type: object
+      required:
+      - mapping_group
+      properties:
+        mapping_group:
+          $ref: '#/components/schemas/MappingGroupUpdateReq_MappingGroup'
+      title: MappingGroupUpdateReq
+      example:
+        mapping_group:
+          block_volume_ids:
+          - 0
+          - 0
+    MappingGroupUpdateReq_MappingGroup:
+      type: object
+      properties:
+        block_volume_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: MappingGroupUpdateReq_MappingGroup
+      example:
+        block_volume_ids:
+        - 0
+        - 0
+    MappingGroupAddVolumesReq:
+      type: object
+      required:
+      - block_volume_ids
+      properties:
+        block_volume_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: MappingGroupAddVolumesReq
+      example:
+        block_volume_ids:
+        - 0
+        - 0
+    MappingGroupReq:
+      type: object
+      properties:
+        access_path_id:
+          type: integer
+          format: int64
+        block_volume_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        client_group_id:
+          type: integer
+          format: int64
+      title: MappingGroupReq
+      example:
+        client_group_id: 5
+        block_volume_ids:
+        - 1
+        - 1
+        access_path_id: 6
+    MappingGroupRemoveVolumesReq:
+      type: object
+      required:
+      - block_volume_ids
+      properties:
+        block_volume_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+      title: MappingGroupRemoveVolumesReq
+      example:
+        block_volume_ids:
+        - 0
+        - 0
+    MappingGroup:
+      type: object
+      properties:
+        access_path:
+          $ref: '#/components/schemas/AccessPath_Nestview'
+        client_group:
+          $ref: '#/components/schemas/ClientGroup_Nestview'
+        create:
+          type: string
+          format: date-time
+        id:
+          type: integer
+          format: int64
+        status:
+          type: string
+        update:
+          type: string
+          format: date-time
+      title: MappingGroup
+      description: MappingGroup defines the mapping group of volumes and client groups
+      example:
+        client_group:
+          name: name
+          id: 5
+        access_path:
+          name: name
+          id: 0
+        create: '2000-01-23T04:56:07.000+00:00'
+        update: '2000-01-23T04:56:07.000+00:00'
+        id: 6
+        status: status
     MappingGroupsResp:
       type: object
       required:
@@ -400,6 +508,32 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 6
           status: status
+    MappingGroupUpdateClientGroupReq:
+      type: object
+      required:
+      - client_group_id
+      properties:
+        client_group_id:
+          type: integer
+          format: int64
+      title: MappingGroupUpdateClientGroupReq
+      example:
+        client_group_id: 0
+    MappingGroupCreateReq:
+      type: object
+      required:
+      - mapping_group
+      properties:
+        mapping_group:
+          $ref: '#/components/schemas/MappingGroupReq'
+      title: MappingGroupCreateReq
+      example:
+        mapping_group:
+          client_group_id: 5
+          block_volume_ids:
+          - 1
+          - 1
+          access_path_id: 6
     ClientGroup_Nestview:
       type: object
       properties:
@@ -412,40 +546,6 @@ components:
       example:
         name: name
         id: 5
-    MappingGroupReq:
-      type: object
-      properties:
-        access_path_id:
-          type: integer
-          format: int64
-        block_volume_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        client_group_id:
-          type: integer
-          format: int64
-      title: MappingGroupReq
-      example:
-        client_group_id: 5
-        block_volume_ids:
-        - 1
-        - 1
-        access_path_id: 6
-    MappingGroupUpdateReq_MappingGroup:
-      type: object
-      properties:
-        block_volume_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: MappingGroupUpdateReq_MappingGroup
-      example:
-        block_volume_ids:
-        - 0
-        - 0
     MappingGroupResp:
       type: object
       required:
@@ -466,106 +566,6 @@ components:
           update: '2000-01-23T04:56:07.000+00:00'
           id: 6
           status: status
-    MappingGroup:
-      type: object
-      properties:
-        access_path:
-          $ref: '#/components/schemas/AccessPath_Nestview'
-        client_group:
-          $ref: '#/components/schemas/ClientGroup_Nestview'
-        create:
-          type: string
-          format: date-time
-        id:
-          type: integer
-          format: int64
-        status:
-          type: string
-        update:
-          type: string
-          format: date-time
-      title: MappingGroup
-      description: MappingGroup defines the mapping group of volumes and client groups
-      example:
-        client_group:
-          name: name
-          id: 5
-        access_path:
-          name: name
-          id: 0
-        create: '2000-01-23T04:56:07.000+00:00'
-        update: '2000-01-23T04:56:07.000+00:00'
-        id: 6
-        status: status
-    MappingGroupRemoveVolumesReq:
-      type: object
-      required:
-      - block_volume_ids
-      properties:
-        block_volume_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: MappingGroupRemoveVolumesReq
-      example:
-        block_volume_ids:
-        - 0
-        - 0
-    MappingGroupUpdateClientGroupReq:
-      type: object
-      required:
-      - client_group_id
-      properties:
-        client_group_id:
-          type: integer
-          format: int64
-      title: MappingGroupUpdateClientGroupReq
-      example:
-        client_group_id: 0
-    MappingGroupUpdateReq:
-      type: object
-      required:
-      - mapping_group
-      properties:
-        mapping_group:
-          $ref: '#/components/schemas/MappingGroupUpdateReq_MappingGroup'
-      title: MappingGroupUpdateReq
-      example:
-        mapping_group:
-          block_volume_ids:
-          - 0
-          - 0
-    MappingGroupCreateReq:
-      type: object
-      required:
-      - mapping_group
-      properties:
-        mapping_group:
-          $ref: '#/components/schemas/MappingGroupReq'
-      title: MappingGroupCreateReq
-      example:
-        mapping_group:
-          client_group_id: 5
-          block_volume_ids:
-          - 1
-          - 1
-          access_path_id: 6
-    MappingGroupAddVolumesReq:
-      type: object
-      required:
-      - block_volume_ids
-      properties:
-        block_volume_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-      title: MappingGroupAddVolumesReq
-      example:
-        block_volume_ids:
-        - 0
-        - 0
   securitySchemes:
     tokenInHeader:
       description: auth by token

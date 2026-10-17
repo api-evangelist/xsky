@@ -205,61 +205,71 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CloudPlatformsResp:
+    CloudPlatform:
       type: object
       properties:
-        cloud_platforms:
-          type: array
-          description: cloud platforms
-          items:
-            $ref: '#/components/schemas/CloudPlatform'
-      title: CloudPlatformsResp
+        action_status:
+          type: string
+        attached_cloud_volume_num:
+          type: integer
+          format: int64
+        cloud_instance_num:
+          type: integer
+          format: int64
+        cloud_volume_num:
+          type: integer
+          format: int64
+        create:
+          type: string
+          format: date-time
+        description:
+          type: string
+        extra_properties:
+          $ref: '#/components/schemas/CloudExtraProperties'
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          type: string
+        sync_time:
+          type: string
+          format: date-time
+        type:
+          type: string
+        update:
+          type: string
+          format: date-time
+        url:
+          type: string
+        username:
+          type: string
+      title: CloudPlatform
+      description: CloudPlatform defines different cloud platforms
       example:
-        cloud_platforms:
-        - attached_cloud_volume_num: 0
-          cloud_volume_num: 1
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          sync_time: '2000-01-23T04:56:07.000+00:00'
-          cloud_instance_num: 6
-          type: type
-          url: url
-          extra_properties:
-            domain_id: domain_id
-            tenant_id: tenant_id
-            domain_name: domain_name
-            tenant_name: tenant_name
-            regions:
-            - regions
-            - regions
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          action_status: action_status
-          status: status
-          username: username
-        - attached_cloud_volume_num: 0
-          cloud_volume_num: 1
-          description: description
-          update: '2000-01-23T04:56:07.000+00:00'
-          sync_time: '2000-01-23T04:56:07.000+00:00'
-          cloud_instance_num: 6
-          type: type
-          url: url
-          extra_properties:
-            domain_id: domain_id
-            tenant_id: tenant_id
-            domain_name: domain_name
-            tenant_name: tenant_name
-            regions:
-            - regions
-            - regions
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          id: 5
-          action_status: action_status
-          status: status
-          username: username
+        attached_cloud_volume_num: 0
+        cloud_volume_num: 1
+        description: description
+        update: '2000-01-23T04:56:07.000+00:00'
+        sync_time: '2000-01-23T04:56:07.000+00:00'
+        cloud_instance_num: 6
+        type: type
+        url: url
+        extra_properties:
+          domain_id: domain_id
+          tenant_id: tenant_id
+          domain_name: domain_name
+          tenant_name: tenant_name
+          regions:
+          - regions
+          - regions
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        id: 5
+        action_status: action_status
+        status: status
+        username: username
     CloudPlatformResp:
       type: object
       properties:
@@ -329,6 +339,80 @@ components:
         type: type
         url: url
         username: username
+    CloudPlatformsResp:
+      type: object
+      properties:
+        cloud_platforms:
+          type: array
+          description: cloud platforms
+          items:
+            $ref: '#/components/schemas/CloudPlatform'
+      title: CloudPlatformsResp
+      example:
+        cloud_platforms:
+        - attached_cloud_volume_num: 0
+          cloud_volume_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          sync_time: '2000-01-23T04:56:07.000+00:00'
+          cloud_instance_num: 6
+          type: type
+          url: url
+          extra_properties:
+            domain_id: domain_id
+            tenant_id: tenant_id
+            domain_name: domain_name
+            tenant_name: tenant_name
+            regions:
+            - regions
+            - regions
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          status: status
+          username: username
+        - attached_cloud_volume_num: 0
+          cloud_volume_num: 1
+          description: description
+          update: '2000-01-23T04:56:07.000+00:00'
+          sync_time: '2000-01-23T04:56:07.000+00:00'
+          cloud_instance_num: 6
+          type: type
+          url: url
+          extra_properties:
+            domain_id: domain_id
+            tenant_id: tenant_id
+            domain_name: domain_name
+            tenant_name: tenant_name
+            regions:
+            - regions
+            - regions
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          id: 5
+          action_status: action_status
+          status: status
+          username: username
+    CloudPlatformUpdateReq_Platform:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of cloud platform
+        password:
+          type: string
+          description: password of cloud platform user
+        url:
+          type: string
+        username:
+          type: string
+      title: CloudPlatformUpdateReq_Platform
+      example:
+        password: password
+        name: name
+        url: url
+        username: username
     CloudPlatformCreateReq:
       type: object
       properties:
@@ -351,25 +435,18 @@ components:
           type: type
           url: url
           username: username
-    CloudPlatformUpdateReq_Platform:
+    CloudPlatformUpdateReq:
       type: object
       properties:
-        name:
-          type: string
-          description: name of cloud platform
-        password:
-          type: string
-          description: password of cloud platform user
-        url:
-          type: string
-        username:
-          type: string
-      title: CloudPlatformUpdateReq_Platform
+        cloud_platform:
+          $ref: '#/components/schemas/CloudPlatformUpdateReq_Platform'
+      title: CloudPlatformUpdateReq
       example:
-        password: password
-        name: name
-        url: url
-        username: username
+        cloud_platform:
+          password: password
+          name: name
+          url: url
+          username: username
     CloudExtraProperties:
       type: object
       properties:
@@ -400,83 +477,6 @@ components:
         regions:
         - regions
         - regions
-    CloudPlatform:
-      type: object
-      properties:
-        action_status:
-          type: string
-        attached_cloud_volume_num:
-          type: integer
-          format: int64
-        cloud_instance_num:
-          type: integer
-          format: int64
-        cloud_volume_num:
-          type: integer
-          format: int64
-        create:
-          type: string
-          format: date-time
-        description:
-          type: string
-        extra_properties:
-          $ref: '#/components/schemas/CloudExtraProperties'
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        status:
-          type: string
-        sync_time:
-          type: string
-          format: date-time
-        type:
-          type: string
-        update:
-          type: string
-          format: date-time
-        url:
-          type: string
-        username:
-          type: string
-      title: CloudPlatform
-      description: CloudPlatform defines different cloud platforms
-      example:
-        attached_cloud_volume_num: 0
-        cloud_volume_num: 1
-        description: description
-        update: '2000-01-23T04:56:07.000+00:00'
-        sync_time: '2000-01-23T04:56:07.000+00:00'
-        cloud_instance_num: 6
-        type: type
-        url: url
-        extra_properties:
-          domain_id: domain_id
-          tenant_id: tenant_id
-          domain_name: domain_name
-          tenant_name: tenant_name
-          regions:
-          - regions
-          - regions
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        id: 5
-        action_status: action_status
-        status: status
-        username: username
-    CloudPlatformUpdateReq:
-      type: object
-      properties:
-        cloud_platform:
-          $ref: '#/components/schemas/CloudPlatformUpdateReq_Platform'
-      title: CloudPlatformUpdateReq
-      example:
-        cloud_platform:
-          password: password
-          name: name
-          url: url
-          username: username
   securitySchemes:
     tokenInHeader:
       description: auth by token

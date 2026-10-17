@@ -206,116 +206,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OSExternalStoragePlatform:
-      type: object
-      properties:
-        access_key:
-          type: string
-        buckets:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSExternalStorageBucketInfo'
-        create:
-          type: string
-          format: date-time
-        endpoint:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        secret_key:
-          type: string
-        status:
-          type: string
-        uuid:
-          type: string
-        weight:
-          type: integer
-          format: int64
-      title: OSExternalStoragePlatform
-      description: 'OSExternalStoragePlatform is the model of os_external_storage_platform
-
-        +X:model:generate;with_detailed;order_by=ID'
-      example:
-        secret_key: secret_key
-        endpoint: endpoint
-        access_key: access_key
-        buckets:
-        - name: name
-          weight: 6
-        - name: name
-          weight: 6
-        name: name
-        create: '2000-01-23T04:56:07.000+00:00'
-        weight: 5
-        id: 1
-        uuid: uuid
-        status: status
-    OSExternalStorageClassUpdateReq_ExternalStorageClass:
-      type: object
-      properties:
-        description:
-          type: string
-        external_storage_platforms:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSExternalStoragePlatformInfo'
-        name:
-          type: string
-        storage_pattern:
-          $ref: '#/components/schemas/SliceStringField'
-      title: OSExternalStorageClassUpdateReq_ExternalStorageClass
-    OSExternalStorageClassResp:
-      type: object
-      properties:
-        os_external_storage_class:
-          $ref: '#/components/schemas/OSExternalStorageClass'
-      title: OSExternalStorageClassResp
-      example:
-        os_external_storage_class:
-          platform_type: platform_type
-          storage_pattern:
-          - storage_pattern
-          - storage_pattern
-          external_storage_platforms:
-          - secret_key: secret_key
-            endpoint: endpoint
-            access_key: access_key
-            buckets:
-            - name: name
-              weight: 6
-            - name: name
-              weight: 6
-            name: name
-            create: '2000-01-23T04:56:07.000+00:00'
-            weight: 5
-            id: 1
-            uuid: uuid
-            status: status
-          - secret_key: secret_key
-            endpoint: endpoint
-            access_key: access_key
-            buckets:
-            - name: name
-              weight: 6
-            - name: name
-              weight: 6
-            name: name
-            create: '2000-01-23T04:56:07.000+00:00'
-            weight: 5
-            id: 1
-            uuid: uuid
-            status: status
-          Create: '2000-01-23T04:56:07.000+00:00'
-          name: name
-          description: description
-          id: 5
-          class: 0
-          os_policy_id: 2
-          platform: platform
-          status: status
     OSExternalStorageClass:
       type: object
       required:
@@ -402,40 +292,6 @@ components:
         os_policy_id: 2
         platform: platform
         status: status
-    OSExternalStorageClassUpdateReq:
-      type: object
-      properties:
-        os_external_storage_class:
-          $ref: '#/components/schemas/OSExternalStorageClassUpdateReq_ExternalStorageClass'
-      title: OSExternalStorageClassUpdateReq
-    SliceStringField:
-      type: array
-      description: A slice string field.
-      items:
-        type: string
-    OSExternalStoragePlatformInfo:
-      type: object
-      properties:
-        access_key:
-          type: string
-        buckets:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSExternalStorageBucketInfo'
-        endpoint:
-          type: string
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        secret_key:
-          type: string
-        weight:
-          type: integer
-          format: int64
-      title: OSExternalStoragePlatformInfo
-      description: OSExternalStoragePlatformInfo used for update os external storage class
     OSExternalStorageClassesResp:
       type: object
       properties:
@@ -528,6 +384,86 @@ components:
           os_policy_id: 2
           platform: platform
           status: status
+    SliceStringField:
+      type: array
+      description: A slice string field.
+      items:
+        type: string
+    OSExternalStorageClassUpdateReq:
+      type: object
+      properties:
+        os_external_storage_class:
+          $ref: '#/components/schemas/OSExternalStorageClassUpdateReq_ExternalStorageClass'
+      title: OSExternalStorageClassUpdateReq
+    OSExternalStorageClassResp:
+      type: object
+      properties:
+        os_external_storage_class:
+          $ref: '#/components/schemas/OSExternalStorageClass'
+      title: OSExternalStorageClassResp
+      example:
+        os_external_storage_class:
+          platform_type: platform_type
+          storage_pattern:
+          - storage_pattern
+          - storage_pattern
+          external_storage_platforms:
+          - secret_key: secret_key
+            endpoint: endpoint
+            access_key: access_key
+            buckets:
+            - name: name
+              weight: 6
+            - name: name
+              weight: 6
+            name: name
+            create: '2000-01-23T04:56:07.000+00:00'
+            weight: 5
+            id: 1
+            uuid: uuid
+            status: status
+          - secret_key: secret_key
+            endpoint: endpoint
+            access_key: access_key
+            buckets:
+            - name: name
+              weight: 6
+            - name: name
+              weight: 6
+            name: name
+            create: '2000-01-23T04:56:07.000+00:00'
+            weight: 5
+            id: 1
+            uuid: uuid
+            status: status
+          Create: '2000-01-23T04:56:07.000+00:00'
+          name: name
+          description: description
+          id: 5
+          class: 0
+          os_policy_id: 2
+          platform: platform
+          status: status
+    OSExternalStorageClassUpdateReq_ExternalStorageClass:
+      type: object
+      properties:
+        description:
+          type: string
+        external_storage_platforms:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSExternalStoragePlatformInfo'
+        name:
+          type: string
+        storage_pattern:
+          $ref: '#/components/schemas/SliceStringField'
+      title: OSExternalStorageClassUpdateReq_ExternalStorageClass
+    OSExternalStorageClassCreateReq:
+      type: object
+      properties:
+        os_external_storage_class:
+          $ref: '#/components/schemas/OSExternalStorageClass'
+      title: OSExternalStorageClassCreateReq
     OSExternalStorageBucketInfo:
       type: object
       required:
@@ -544,12 +480,76 @@ components:
       example:
         name: name
         weight: 6
-    OSExternalStorageClassCreateReq:
+    OSExternalStoragePlatform:
       type: object
       properties:
-        os_external_storage_class:
-          $ref: '#/components/schemas/OSExternalStorageClass'
-      title: OSExternalStorageClassCreateReq
+        access_key:
+          type: string
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSExternalStorageBucketInfo'
+        create:
+          type: string
+          format: date-time
+        endpoint:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        secret_key:
+          type: string
+        status:
+          type: string
+        uuid:
+          type: string
+        weight:
+          type: integer
+          format: int64
+      title: OSExternalStoragePlatform
+      description: 'OSExternalStoragePlatform is the model of os_external_storage_platform
+
+        +X:model:generate;with_detailed;order_by=ID'
+      example:
+        secret_key: secret_key
+        endpoint: endpoint
+        access_key: access_key
+        buckets:
+        - name: name
+          weight: 6
+        - name: name
+          weight: 6
+        name: name
+        create: '2000-01-23T04:56:07.000+00:00'
+        weight: 5
+        id: 1
+        uuid: uuid
+        status: status
+    OSExternalStoragePlatformInfo:
+      type: object
+      properties:
+        access_key:
+          type: string
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSExternalStorageBucketInfo'
+        endpoint:
+          type: string
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        secret_key:
+          type: string
+        weight:
+          type: integer
+          format: int64
+      title: OSExternalStoragePlatformInfo
+      description: OSExternalStoragePlatformInfo used for update os external storage class
   securitySchemes:
     tokenInHeader:
       description: auth by token

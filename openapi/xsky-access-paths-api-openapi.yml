@@ -215,20 +215,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ProtectionDomain_Nestview:
+    AccessPathCreateReq_AccessPath:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          description: id of protection domain
+        chap:
+          type: boolean
+        description:
+          type: string
+        host_ids:
+          type: array
+          items:
+            type: integer
+            format: int64
+        mapping_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/MappingGroupReq'
         name:
           type: string
-          description: name of protection domain
-      title: ProtectionDomain_Nestview
+        protection_domain_id:
+          type: integer
+          format: int64
+        tname:
+          type: string
+        tsecret:
+          type: string
+        type:
+          type: string
+      title: AccessPathCreateReq_AccessPath
       example:
         name: name
-        id: 5
+        description: description
+        tname: tname
+        chap: true
+        tsecret: tsecret
+        host_ids:
+        - 0
+        - 0
+        type: type
+        mapping_groups:
+        - client_group_id: 5
+          block_volume_ids:
+          - 1
+          - 1
+          access_path_id: 6
+        - client_group_id: 5
+          block_volume_ids:
+          - 1
+          - 1
+          access_path_id: 6
+        protection_domain_id: 5
     AccessPathCreateReq:
       type: object
       properties:
@@ -279,70 +315,20 @@ components:
         - 1
         - 1
         access_path_id: 6
-    AccessPathResp:
-      type: object
-      required:
-      - access_path
-      properties:
-        access_path:
-          $ref: '#/components/schemas/AccessPath'
-      title: AccessPathResp
-      example:
-        access_path:
-          hidden: true
-          block_volume_num: 0
-          iqn: iqn
-          client_group_num: 6
-          description: description
-          tname: tname
-          update: '2000-01-23T04:56:07.000+00:00'
-          tsecret: tsecret
-          type: type
-          protection_domain:
-            name: name
-            id: 5
-          vip_group_num: 5
-          name: name
-          create: '2000-01-23T04:56:07.000+00:00'
-          chap: true
-          id: 1
-          action_status: action_status
-          status: status
-    AccessPathUpdateReq_AccessPath:
+    ProtectionDomain_Nestview:
       type: object
       properties:
-        chap:
-          type: boolean
-        description:
-          type: string
+        id:
+          type: integer
+          format: int64
+          description: id of protection domain
         name:
           type: string
-        tname:
-          type: string
-        tsecret:
-          type: string
-      title: AccessPathUpdateReq_AccessPath
+          description: name of protection domain
+      title: ProtectionDomain_Nestview
       example:
         name: name
-        description: description
-        tname: tname
-        chap: true
-        tsecret: tsecret
-    AccessPathUpdateReq:
-      type: object
-      required:
-      - access_path
-      properties:
-        access_path:
-          $ref: '#/components/schemas/AccessPathUpdateReq_AccessPath'
-      title: AccessPathUpdateReq
-      example:
-        access_path:
-          name: name
-          description: description
-          tname: tname
-          chap: true
-          tsecret: tsecret
+        id: 5
     AccessPath:
       type: object
       properties:
@@ -408,56 +394,6 @@ components:
         id: 1
         action_status: action_status
         status: status
-    AccessPathCreateReq_AccessPath:
-      type: object
-      properties:
-        chap:
-          type: boolean
-        description:
-          type: string
-        host_ids:
-          type: array
-          items:
-            type: integer
-            format: int64
-        mapping_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/MappingGroupReq'
-        name:
-          type: string
-        protection_domain_id:
-          type: integer
-          format: int64
-        tname:
-          type: string
-        tsecret:
-          type: string
-        type:
-          type: string
-      title: AccessPathCreateReq_AccessPath
-      example:
-        name: name
-        description: description
-        tname: tname
-        chap: true
-        tsecret: tsecret
-        host_ids:
-        - 0
-        - 0
-        type: type
-        mapping_groups:
-        - client_group_id: 5
-          block_volume_ids:
-          - 1
-          - 1
-          access_path_id: 6
-        - client_group_id: 5
-          block_volume_ids:
-          - 1
-          - 1
-          access_path_id: 6
-        protection_domain_id: 5
     AccessPathsResp:
       type: object
       required:
@@ -508,6 +444,70 @@ components:
           id: 1
           action_status: action_status
           status: status
+    AccessPathUpdateReq:
+      type: object
+      required:
+      - access_path
+      properties:
+        access_path:
+          $ref: '#/components/schemas/AccessPathUpdateReq_AccessPath'
+      title: AccessPathUpdateReq
+      example:
+        access_path:
+          name: name
+          description: description
+          tname: tname
+          chap: true
+          tsecret: tsecret
+    AccessPathResp:
+      type: object
+      required:
+      - access_path
+      properties:
+        access_path:
+          $ref: '#/components/schemas/AccessPath'
+      title: AccessPathResp
+      example:
+        access_path:
+          hidden: true
+          block_volume_num: 0
+          iqn: iqn
+          client_group_num: 6
+          description: description
+          tname: tname
+          update: '2000-01-23T04:56:07.000+00:00'
+          tsecret: tsecret
+          type: type
+          protection_domain:
+            name: name
+            id: 5
+          vip_group_num: 5
+          name: name
+          create: '2000-01-23T04:56:07.000+00:00'
+          chap: true
+          id: 1
+          action_status: action_status
+          status: status
+    AccessPathUpdateReq_AccessPath:
+      type: object
+      properties:
+        chap:
+          type: boolean
+        description:
+          type: string
+        name:
+          type: string
+        tname:
+          type: string
+        tsecret:
+          type: string
+      title: AccessPathUpdateReq_AccessPath
+      example:
+        name: name
+        description: description
+        tname: tname
+        chap: true
+        tsecret: tsecret
   securitySchemes:
     tokenInHeader:
       description: auth by token

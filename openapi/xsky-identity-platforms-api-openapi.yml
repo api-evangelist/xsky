@@ -279,7 +279,7 @@ components:
         enabled: true
         key: key
         url: url
-    IdentityPlatformUpdateReq_Platform:
+    IdentityPlatformCreateReq_Platform:
       type: object
       properties:
         enabled:
@@ -287,11 +287,15 @@ components:
         name:
           type: string
           description: name of identity platform
+        type:
+          type: string
+          description: type of identity platform
         url:
           type: string
-      title: IdentityPlatformUpdateReq_Platform
+      title: IdentityPlatformCreateReq_Platform
       example:
         name: name
+        type: type
         enabled: true
         url: url
     IdentityPlatformsResp:
@@ -339,6 +343,21 @@ components:
           type: type
           enabled: true
           url: url
+    IdentityPlatformUpdateReq_Platform:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        name:
+          type: string
+          description: name of identity platform
+        url:
+          type: string
+      title: IdentityPlatformUpdateReq_Platform
+      example:
+        name: name
+        enabled: true
+        url: url
     IdentityPlatformUpdateReq:
       type: object
       properties:
@@ -350,25 +369,6 @@ components:
           name: name
           enabled: true
           url: url
-    IdentityPlatformCreateReq_Platform:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        name:
-          type: string
-          description: name of identity platform
-        type:
-          type: string
-          description: type of identity platform
-        url:
-          type: string
-      title: IdentityPlatformCreateReq_Platform
-      example:
-        name: name
-        type: type
-        enabled: true
-        url: url
   securitySchemes:
     tokenInHeader:
       description: auth by token

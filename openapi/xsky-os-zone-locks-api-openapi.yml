@@ -177,6 +177,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OSZoneLocksResp:
+      type: object
+      required:
+      - os_zone_locks
+      properties:
+        os_zone_locks:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSZoneLock'
+      title: OSZoneLocksResp
+      example:
+        os_zone_locks:
+        - resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          value: value
+          key: key
+        - resource_type: resource_type
+          create: '2000-01-23T04:56:07.000+00:00'
+          expired_time: '2000-01-23T04:56:07.000+00:00'
+          update: '2000-01-23T04:56:07.000+00:00'
+          uuid: uuid
+          value: value
+          key: key
+    OSZoneLockCreateReq:
+      type: object
+      properties:
+        os_zone_lock:
+          $ref: '#/components/schemas/OSZoneLockCreateReq_Lock'
+      title: OSZoneLockCreateReq
     OSZoneLockResp:
       type: object
       required:
@@ -241,38 +273,6 @@ components:
         uuid: uuid
         value: value
         key: key
-    OSZoneLockCreateReq:
-      type: object
-      properties:
-        os_zone_lock:
-          $ref: '#/components/schemas/OSZoneLockCreateReq_Lock'
-      title: OSZoneLockCreateReq
-    OSZoneLocksResp:
-      type: object
-      required:
-      - os_zone_locks
-      properties:
-        os_zone_locks:
-          type: array
-          items:
-            $ref: '#/components/schemas/OSZoneLock'
-      title: OSZoneLocksResp
-      example:
-        os_zone_locks:
-        - resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          value: value
-          key: key
-        - resource_type: resource_type
-          create: '2000-01-23T04:56:07.000+00:00'
-          expired_time: '2000-01-23T04:56:07.000+00:00'
-          update: '2000-01-23T04:56:07.000+00:00'
-          uuid: uuid
-          value: value
-          key: key
   securitySchemes:
     tokenInHeader:
       description: auth by token
